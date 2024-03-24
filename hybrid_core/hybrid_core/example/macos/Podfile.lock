@@ -1,0 +1,23 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - hybrid_core_darwin (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - hybrid_core_darwin (from `Flutter/ephemeral/.symlinks/plugins/hybrid_core_darwin/darwin`)
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  hybrid_core_darwin:
+    :path: Flutter/ephemeral/.symlinks/plugins/hybrid_core_darwin/darwin
+
+SPEC CHECKSUMS:
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  hybrid_core_darwin: 8b7d13d31d0bb08a127e47208f9b290c0ea9f698
+
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+
+COCOAPODS: 1.15.2

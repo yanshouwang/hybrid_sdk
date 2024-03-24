@@ -1,18 +1,64 @@
 # hybrid_core
 
-A new Flutter plugin project.
+The core library of the Hybrid SDK.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Add `hybrid_core` as a dependency in your pubspec.yaml file.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+``` yaml
+dependencies:
+  hybrid_core: ^<latest-version>
+```
 
-The plugin project was generated without specifying the `--platforms` flag, no platforms are currently supported.
-To add platforms, run `flutter create -t plugin --platforms <platforms> .` in this directory.
-You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+Or, run this command in your project folder.
+
+``` shell
+flutter pub add hybrid_core
+```
+
+## Features
+
+|Feature|Android|iOS|macOS|
+|:-|:-:|:-:|:-:|
+|OS|🙆|🙆|🙆|
+
+## Topics
+
+### OS
+
+1. Get the `OS` instance.
+``` Dart
+final os = OS();
+```
+2. Check the OS type.
+``` Dart
+if (os is AndroidOS) {
+    ...
+} else if (os is iOS) {
+    ...
+} else if (os is macOS) {
+    ...
+} else {
+  throw TypeError();
+}
+```
+3.Get the version.
+``` Dart
+// AndroidOS
+final api = os.api;
+// iOS and macOS
+final version = os.versioin;
+```
+4.Check version.
+``` Dart
+// AndroidOS
+final atLeastAPI = os.atLeastAPI(33);
+// iOS and macOS
+final version = DarwinOSVersion.number(17.0);
+final atLeastVersion = os.atLeastVersion(version);
+```
+
+Check the [`example`][1] to see how to use the corresponding API.
+
+[1]: example
