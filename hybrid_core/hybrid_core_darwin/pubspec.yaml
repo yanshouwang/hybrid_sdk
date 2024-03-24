@@ -1,6 +1,6 @@
 name: hybrid_core_darwin
 description: "iOS an macOS implementation of the hybrid_core plugin."
-version: 0.0.1
+version: 0.0.2
 homepage: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:
@@ -21,6 +21,7 @@ dev_dependencies:
 
 flutter:
   plugin:
+    implements: hybrid_core
     platforms:
       ios:
         ffiPlugin: true
