@@ -1,0 +1,17 @@
+# Run with `dart run jnigen --config jnigen.yaml`.
+android_sdk_config:
+  add_gradle_deps: true
+  android_example: ../hybrid_core/example/
+suspend_fun_to_async: true
+enable_experiment:
+  - interface_implementation
+output:
+  c:
+    path: src/
+    library_name: hybrid_core_android
+  dart:
+    path: lib/src/
+classes:
+  - android.os.Build
+preamble: |
+  // ignore_for_file: use_super_parameters

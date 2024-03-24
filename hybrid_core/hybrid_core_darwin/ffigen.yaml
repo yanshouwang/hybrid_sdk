@@ -1,0 +1,18 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: HybridCore
+description: Bindings for HybridCore.
+language: objc
+output: 'lib/src/ffi.g.dart'
+compiler-opts:
+  - '-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks'
+  - '-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/iOSSupport/System/Library/Frameworks'
+headers:
+  entry-points:
+    - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h'
+  #   - 'src/hybrid_core_darwin.h'
+  # include-directives:
+  #   - 'src/hybrid_core_darwin.h'
+exclude-all-by-default: true
+objc-interfaces:
+  include:
+    - NSProcessInfo
