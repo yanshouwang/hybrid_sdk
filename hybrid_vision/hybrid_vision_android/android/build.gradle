@@ -63,3 +63,7 @@ android {
         minSdkVersion 19
     }
 }
+
+dependencies {
+    api 'com.google.mlkit:barcode-scanning:17.2.0'
+}
