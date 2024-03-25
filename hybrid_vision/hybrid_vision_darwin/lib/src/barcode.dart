@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
-import 'dart:ui';
 
+import 'package:flutter/services.dart';
 import 'package:hybrid_core/hybrid_core.dart';
 import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interface.dart';
 
@@ -252,6 +252,16 @@ extension on ffi.NSArray {
   }
 }
 
+class _IsolateMessage {
+  final SendPort sendPort;
+  final RootIsolateToken token;
+
+  _IsolateMessage({
+    required this.sendPort,
+    required this.token,
+  });
+}
+
 class _DetectCommand {
   final int id;
   final int? symbologiesAddress;
@@ -318,7 +328,11 @@ Future<SendPort> _helperIsolateSendPort = () async {
 
   // Start the helper isolate.
   await Isolate.spawn(
-    (sendPort) {
+    (message) {
+      final sendPort = message.sendPort;
+      final token = message.token;
+      // Register the background isolate with the root isolate.
+      BackgroundIsolateBinaryMessenger.ensureInitialized(token);
       final helperReceivePort = ReceivePort()
         ..listen(
           (message) async {
@@ -387,7 +401,10 @@ Future<SendPort> _helperIsolateSendPort = () async {
       // Send the port to the main isolate on which we can receive requests.
       sendPort.send(helperReceivePort.sendPort);
     },
-    receivePort.sendPort,
+    _IsolateMessage(
+      sendPort: receivePort.sendPort,
+      token: ArgumentError.checkNotNull(RootIsolateToken.instance),
+    ),
   );
 
   // Wait until the helper isolate has sent us back the SendPort on which we
@@ -400,19 +417,19 @@ final atLeastiOS17_0 = atLeastiOSVersion(17.0);
 final atLeastmacOS12_0 = atLeastmacOSVersion(12.0);
 final atLeastmacOS14_0 = atLeastmacOSVersion(14.0);
 
-bool atLeastiOSVersion(double version) {
+bool atLeastiOSVersion(double number) {
   final os = OS();
   if (os is iOS) {
-    final version = DarwinOSVersion.number(15.0);
+    final version = DarwinOSVersion.number(number);
     return os.atLeastVersion(version);
   }
   return false;
 }
 
-bool atLeastmacOSVersion(double version) {
+bool atLeastmacOSVersion(double number) {
   final os = OS();
   if (os is macOS) {
-    final version = DarwinOSVersion.number(15.0);
+    final version = DarwinOSVersion.number(number);
     return os.atLeastVersion(version);
   }
   return false;

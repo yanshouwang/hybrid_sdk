@@ -181,9 +181,10 @@ packages:
   hybrid_core:
     dependency: transitive
     description:
-      path: "../../../hybrid_core/hybrid_core"
-      relative: true
-    source: path
+      name: hybrid_core
+      sha256: "1ad027501d432f86f026a1b3acec0fdfae90d66403d21f36ac8cd8b346b9420e"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.2"
   hybrid_core_android:
     dependency: transitive
