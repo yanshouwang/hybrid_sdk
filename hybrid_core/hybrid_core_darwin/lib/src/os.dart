@@ -40,9 +40,9 @@ class DarwinOSImpl implements DarwinOS {
     return ffi.using((arena) {
       final nsVersionPtr = arena<ffi.NSOperatingSystemVersion>();
       final nsVersion = nsVersionPtr.ref;
-      nsVersion.majorVersion = nsVersion.majorVersion;
-      nsVersion.minorVersion = nsVersion.minorVersion;
-      nsVersion.patchVersion = nsVersion.patchVersion;
+      nsVersion.majorVersion = version.majorVersion;
+      nsVersion.minorVersion = version.minorVersion;
+      nsVersion.patchVersion = version.patchVersion;
       return info.isOperatingSystemAtLeastVersion_(nsVersion);
     });
   }

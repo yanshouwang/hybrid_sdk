@@ -115,7 +115,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.0.3"
   hybrid_core_android:
     dependency: transitive
     description:
@@ -128,10 +128,10 @@ packages:
     dependency: transitive
     description:
       name: hybrid_core_darwin
-      sha256: "5673f9bf6687f5846175594b78fef7377b94db8a6543d38975facc3d3a1ac99b"
+      sha256: "2a3ff1f453191c2476418588fdee8cf8b592aac1c3eb47b190908997a46a31e4"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   hybrid_core_platform_interface:
     dependency: transitive
     description:
