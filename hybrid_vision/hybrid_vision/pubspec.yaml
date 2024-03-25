@@ -1,0 +1,30 @@
+name: hybrid_vision
+description: "Apply computer vision algorithms to perform a variety of tasks on input images and video."
+version: 0.0.1
+homepage: "https://github.com/yanshouwang/hybrid_sdk"
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hybrid_vision_platform_interface: ^0.0.1
+  hybrid_vision_android: ^0.0.1
+  hybrid_vision_darwin: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: hybrid_vision_android
+      ios:
+        default_package: hybrid_vision_darwin
+      macos:
+        default_package: hybrid_vision_darwin

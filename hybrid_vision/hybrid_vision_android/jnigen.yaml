@@ -1,0 +1,36 @@
+# Run with `dart run jnigen --config jnigen.yaml`.
+android_sdk_config:
+  add_gradle_deps: true
+  android_example: ../hybrid_vision/example/
+suspend_fun_to_async: true
+enable_experiment:
+  - interface_implementation
+output:
+  c:
+    path: src/
+    library_name: hybrid_vision_android
+  dart:
+    path: lib/src/
+classes:
+  - android.graphics.Bitmap
+  - android.graphics.BitmapFactory
+  - android.graphics.Point
+  - android.graphics.Rect
+  - android.net.Uri
+  - com.google.android.gms.tasks.Task
+  - com.google.android.gms.tasks.Tasks
+  - com.google.android.gms.tasks.OnCompleteListener
+  - com.google.android.gms.tasks.OnSuccessListener
+  - com.google.android.gms.tasks.OnFailureListener
+  - com.google.android.gms.tasks.OnCanceledListener
+  - com.google.mlkit.vision.common.InputImage
+  - com.google.mlkit.vision.barcode.BarcodeScanner
+  - com.google.mlkit.vision.barcode.BarcodeScannerOptions
+  - com.google.mlkit.vision.barcode.BarcodeScanning
+  - com.google.mlkit.vision.barcode.ZoomSuggestionOptions
+  - com.google.mlkit.vision.barcode.common.Barcode
+  - java.lang.Runnable
+  - java.util.concurrent.Executor
+  - java.util.concurrent.Executors
+preamble: |
+  // ignore_for_file: use_super_parameters

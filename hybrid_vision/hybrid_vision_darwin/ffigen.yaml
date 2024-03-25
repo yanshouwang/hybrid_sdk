@@ -1,0 +1,27 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: HybridVision
+description: Bindings for HybridVision.
+language: objc
+output: 'lib/src/ffi.g.dart'
+compiler-opts:
+  - '-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks'
+  - '-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/iOSSupport/System/Library/Frameworks'
+headers:
+  entry-points:
+    - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Vision.framework/Headers/Vision.h'
+    # - 'src/hybrid_vision_darwin.h'
+  # include-directives:
+  #   - 'src/hybrid_vision_darwin.h'
+exclude-all-by-default: true
+objc-interfaces:
+  include:
+    - VNImageRequestHandler
+    - VNDetectBarcodesRequest
+    - VNBarcodeObservation
+typedefs:
+  include:
+    - VNRequestCompletionHandler
+    - VNBarcodeSymbology
+globals:
+  include:
+    - VNBarcodeSymbology.*

@@ -1,0 +1,28 @@
+name: hybrid_vision_android
+description: "Android implementation of the hybrid_vision plugin."
+version: 0.0.1
+homepage: "https://github.com/yanshouwang/hybrid_sdk"
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hybrid_vision_platform_interface: ^0.0.1
+  jni: ^0.7.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  jnigen: ^0.7.0
+
+flutter:
+  plugin:
+    implements: hybrid_vision
+    platforms:
+      android:
+        ffiPlugin: true
+        dartPluginClass: HybridVisionAndroid

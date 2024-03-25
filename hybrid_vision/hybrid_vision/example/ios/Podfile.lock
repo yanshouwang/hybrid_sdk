@@ -1,0 +1,42 @@
+PODS:
+  - Flutter (1.0.0)
+  - hybrid_core_darwin (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - hybrid_vision_darwin (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - image_picker_ios (0.0.1):
+    - Flutter
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - hybrid_core_darwin (from `.symlinks/plugins/hybrid_core_darwin/darwin`)
+  - hybrid_vision_darwin (from `.symlinks/plugins/hybrid_vision_darwin/darwin`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  hybrid_core_darwin:
+    :path: ".symlinks/plugins/hybrid_core_darwin/darwin"
+  hybrid_vision_darwin:
+    :path: ".symlinks/plugins/hybrid_vision_darwin/darwin"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  hybrid_core_darwin: 8b7d13d31d0bb08a127e47208f9b290c0ea9f698
+  hybrid_vision_darwin: d349b603120fc8f32e7a2ac0ee8917b83602bf17
+  image_picker_ios: b545a5f16c0fa88e3ecbbce3ed4de45567a8ec18
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+
+PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+
+COCOAPODS: 1.15.2
