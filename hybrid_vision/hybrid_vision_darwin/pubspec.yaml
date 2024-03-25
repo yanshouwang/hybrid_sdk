@@ -13,7 +13,7 @@ dependencies:
   hybrid_vision_platform_interface:
     path: ../hybrid_vision_platform_interface
   ffi: ^2.1.0
-  hybrid_core: 0.0.2
+  hybrid_core: 0.0.3
 
 dev_dependencies:
   flutter_test:
