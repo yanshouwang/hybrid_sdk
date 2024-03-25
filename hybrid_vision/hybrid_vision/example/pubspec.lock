@@ -220,23 +220,26 @@ packages:
   hybrid_vision_android:
     dependency: transitive
     description:
-      path: "../../hybrid_vision_android"
-      relative: true
-    source: path
+      name: hybrid_vision_android
+      sha256: efb6c9d6139d0911dd331491bc962b77bdb552857c7195ced2192a446a6f00fc
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1"
   hybrid_vision_darwin:
     dependency: transitive
     description:
-      path: "../../hybrid_vision_darwin"
-      relative: true
-    source: path
+      name: hybrid_vision_darwin
+      sha256: "156eca9d6f31eb563038095607b7e6abcf4894afcc6d77711b6f4f6e972ede60"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1"
   hybrid_vision_platform_interface:
     dependency: transitive
     description:
-      path: "../../hybrid_vision_platform_interface"
-      relative: true
-    source: path
+      name: hybrid_vision_platform_interface
+      sha256: a23573b240d951df13c377523be5ac571fd3f9f7d678a7b68c75bc78f72dabb7
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1"
   image_picker:
     dependency: "direct main"

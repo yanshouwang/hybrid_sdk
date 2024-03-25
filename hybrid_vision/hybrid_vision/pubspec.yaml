@@ -10,12 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hybrid_vision_platform_interface:
-    path: ../hybrid_vision_platform_interface
-  hybrid_vision_android:
-    path: ../hybrid_vision_android
-  hybrid_vision_darwin:
-    path: ../hybrid_vision_darwin
+  hybrid_vision_platform_interface: ^0.0.1
+  hybrid_vision_android: ^0.0.1
+  hybrid_vision_darwin: ^0.0.1
 
 dev_dependencies:
   flutter_test:

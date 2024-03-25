@@ -10,10 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hybrid_vision_platform_interface:
-    path: ../hybrid_vision_platform_interface
+  hybrid_vision_platform_interface: ^0.0.1
   ffi: ^2.1.0
-  hybrid_core: 0.0.3
+  hybrid_core: ^0.0.3
 
 dev_dependencies:
   flutter_test:
