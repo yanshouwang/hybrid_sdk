@@ -182,57 +182,57 @@ packages:
     dependency: transitive
     description:
       name: hybrid_core
-      sha256: "1e4542f15150badd39a370521954ee4291b936205dde1dceaca65114582035d8"
+      sha256: cae9071e547d0a27e98ac0029840e606f7d3b42cb6c7efce5ea87764debd4460
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.1.0"
   hybrid_core_android:
     dependency: transitive
     description:
       name: hybrid_core_android
-      sha256: "9134b0b0e7c38d7248b01b923dc42d40addc7e9186aa3ac4c230c85e46e6ee15"
+      sha256: f0a50c06eaf6291e43677ec982197a21a5c89743b2f757637b155a3f8d56986c
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.1.0"
   hybrid_core_darwin:
     dependency: transitive
     description:
       name: hybrid_core_darwin
-      sha256: "2a3ff1f453191c2476418588fdee8cf8b592aac1c3eb47b190908997a46a31e4"
+      sha256: cf04ec443d95a398c6e00bbffc93dc934fc40e4e91465c69843034bf6fe83747
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.1.0"
   hybrid_core_platform_interface:
     dependency: transitive
     description:
       name: hybrid_core_platform_interface
-      sha256: "683f8858f431ce5e78b1594c2dda8fa3be29944309d0c7c35f970e8bab02fc1b"
+      sha256: "36f6f372b14228a4114bf29037e4fdcb8a99f772b327baf39e056f352dda292f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.1.0"
   hybrid_vision:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   hybrid_vision_android:
     dependency: transitive
     description:
       name: hybrid_vision_android
-      sha256: efb6c9d6139d0911dd331491bc962b77bdb552857c7195ced2192a446a6f00fc
+      sha256: a58d2056841502501780b1d25dfac41c238bfce5b69b777a4823024ce93aae18
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   hybrid_vision_darwin:
     dependency: transitive
     description:
       name: hybrid_vision_darwin
-      sha256: "156eca9d6f31eb563038095607b7e6abcf4894afcc6d77711b6f4f6e972ede60"
+      sha256: "9b9294e7eea41711aa9f8b4cb09cd9d738a1a4a0d4876861aed75524faceba0a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   hybrid_vision_platform_interface:
     dependency: transitive
     description:

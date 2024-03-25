@@ -420,7 +420,7 @@ final atLeastmacOS14_0 = atLeastmacOSVersion(14.0);
 bool atLeastiOSVersion(double number) {
   final os = OS();
   if (os is iOS) {
-    final version = DarwinOSVersion.number(number);
+    final version = DarwinVersion.number(number);
     return os.atLeastVersion(version);
   }
   return false;
@@ -429,7 +429,7 @@ bool atLeastiOSVersion(double number) {
 bool atLeastmacOSVersion(double number) {
   final os = OS();
   if (os is macOS) {
-    final version = DarwinOSVersion.number(number);
+    final version = DarwinVersion.number(number);
     return os.atLeastVersion(version);
   }
   return false;
