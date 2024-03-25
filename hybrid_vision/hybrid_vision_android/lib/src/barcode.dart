@@ -232,14 +232,14 @@ Future<SendPort> _helperIsolateSendPort = () async {
                 final scannerRef = jni.Jni.env.NewGlobalRef(scannerPtr);
                 final scanner = jni.BarcodeScanner.fromRef(scannerRef);
                 final task = scanner.process1(inputImage);
-                final onCompleteListener = jni.OnCompleteListener.implement(
-                  jni.$OnCompleteListenerImpl(
+                final onSuccessListener = jni.OnSuccessListener.implement(
+                  jni.$OnSuccessListenerImpl(
                     TResult: task.TResult,
-                    onComplete: (task) {
+                    onSuccess: (cBarcodes) {
                       try {
-                        final barcodes = task
-                            .getResult()
-                            .map((barcode) => barcode.toBarcode(width, height))
+                        final barcodes = cBarcodes
+                            .map(
+                                (cBarcode) => cBarcode.toBarcode(width, height))
                             .whereType<Barcode>()
                             .toList();
                         final reply = _DetectReply(message.id, barcodes, null);
@@ -264,7 +264,7 @@ Future<SendPort> _helperIsolateSendPort = () async {
                   ),
                 );
                 task
-                    .addOnCompleteListener(onCompleteListener)
+                    .addOnSuccessListener(onSuccessListener)
                     .addOnFailureListener(onFailureListener);
               } catch (e) {
                 final reply = _DetectReply(message.id, [], e);
