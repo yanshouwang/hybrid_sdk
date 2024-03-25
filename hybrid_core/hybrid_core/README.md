@@ -33,7 +33,7 @@ final os = OS();
 ```
 2. Check the OS type.
 ``` Dart
-if (os is AndroidOS) {
+if (os is Android) {
     ...
 } else if (os is iOS) {
     ...
@@ -45,14 +45,14 @@ if (os is AndroidOS) {
 ```
 3.Get the version.
 ``` Dart
-// AndroidOS
+// Android
 final api = os.api;
 // iOS and macOS
 final version = os.versioin;
 ```
 4.Check version.
 ``` Dart
-// AndroidOS
+// Android
 final atLeastAPI = os.atLeastAPI(33);
 // iOS and macOS
 final version = DarwinOSVersion.number(17.0);

@@ -6,10 +6,10 @@ class OSPlatformImpl extends OSPlatform {
   @override
   final OS os;
 
-  OSPlatformImpl() : os = AndroidOSImpl();
+  OSPlatformImpl() : os = AndroidImpl();
 }
 
-class AndroidOSImpl implements AndroidOS {
+class AndroidImpl implements Android {
   @override
   int get api => jni.Build_VERSION.SDK_INT;
 

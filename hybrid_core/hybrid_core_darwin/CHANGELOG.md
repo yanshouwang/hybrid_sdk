@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * Fix the issue that `OS#atLeastVersion` always returns true.
+
+## 0.1.0
+
+* Move `DarwinOSImpl` to `DarwinImpl`.

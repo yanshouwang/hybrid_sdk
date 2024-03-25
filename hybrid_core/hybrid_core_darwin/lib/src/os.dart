@@ -16,18 +16,18 @@ class OSPlatformImpl extends OSPlatform {
   OSPlatformImpl() : os = Platform.isIOS ? iOSImpl() : macOSImpl();
 }
 
-class DarwinOSImpl implements DarwinOS {
+class DarwinImpl implements Darwin {
   final ffi.NSProcessInfo info;
 
-  DarwinOSImpl() : info = ffi.NSProcessInfo.alloc(foundation).init();
+  DarwinImpl() : info = ffi.NSProcessInfo.alloc(foundation).init();
 
   @override
-  DarwinOSVersion get version {
+  DarwinVersion get version {
     return ffi.using((arena) {
       final nsVersionPtr = arena<ffi.NSOperatingSystemVersion>();
       info.getOperatingSystemVersion(nsVersionPtr);
       final nsVersion = nsVersionPtr.ref;
-      return DarwinOSVersion(
+      return DarwinVersion(
         majorVersion: nsVersion.majorVersion,
         minorVersion: nsVersion.minorVersion,
         patchVersion: nsVersion.patchVersion,
@@ -36,7 +36,7 @@ class DarwinOSImpl implements DarwinOS {
   }
 
   @override
-  bool atLeastVersion(DarwinOSVersion version) {
+  bool atLeastVersion(DarwinVersion version) {
     return ffi.using((arena) {
       final nsVersionPtr = arena<ffi.NSOperatingSystemVersion>();
       final nsVersion = nsVersionPtr.ref;
@@ -49,7 +49,7 @@ class DarwinOSImpl implements DarwinOS {
 }
 
 // ignore: camel_case_types
-class iOSImpl extends DarwinOSImpl implements iOS {}
+class iOSImpl extends DarwinImpl implements iOS {}
 
 // ignore: camel_case_types
-class macOSImpl extends DarwinOSImpl implements macOS {}
+class macOSImpl extends DarwinImpl implements macOS {}
