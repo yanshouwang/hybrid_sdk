@@ -9,16 +9,16 @@ class OSView extends StatelessWidget {
     final os = OS();
     final String version;
     final bool atLeastVersion;
-    if (os is AndroidOS) {
+    if (os is Android) {
       version = '${os.api}';
       atLeastVersion = os.atLeastAPI(33);
     } else if (os is iOS) {
       version = '${os.version}';
-      final version17_0 = DarwinOSVersion.number(17.0);
+      final version17_0 = DarwinVersion.number(17.0);
       atLeastVersion = os.atLeastVersion(version17_0);
     } else if (os is macOS) {
       version = '${os.version}';
-      final version14_0 = DarwinOSVersion.number(14.0);
+      final version14_0 = DarwinVersion.number(14.0);
       atLeastVersion = os.atLeastVersion(version14_0);
     } else {
       throw TypeError();

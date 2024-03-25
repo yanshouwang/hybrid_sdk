@@ -32,36 +32,36 @@ abstract class OS {
   factory OS() => OSPlatform.instance.os;
 }
 
-abstract class AndroidOS implements OS {
+abstract class Android implements OS {
   int get api;
 
   bool atLeastAPI(int api);
 }
 
-abstract class DarwinOS implements OS {
-  DarwinOSVersion get version;
+abstract class Darwin implements OS {
+  DarwinVersion get version;
 
-  bool atLeastVersion(DarwinOSVersion version);
+  bool atLeastVersion(DarwinVersion version);
 }
 
 // ignore: camel_case_types
-abstract class iOS implements DarwinOS {}
+abstract class iOS implements Darwin {}
 
 // ignore: camel_case_types
-abstract class macOS implements DarwinOS {}
+abstract class macOS implements Darwin {}
 
-class DarwinOSVersion {
+class DarwinVersion {
   final int majorVersion;
   final int minorVersion;
   final int patchVersion;
 
-  DarwinOSVersion({
+  DarwinVersion({
     this.majorVersion = 0,
     this.minorVersion = 0,
     this.patchVersion = 0,
   });
 
-  factory DarwinOSVersion.text(String text) {
+  factory DarwinVersion.text(String text) {
     final texts = text.split('.');
     final majorText = texts.elementAtOrNull(0);
     final minorText = texts.elementAtOrNull(1);
@@ -69,21 +69,21 @@ class DarwinOSVersion {
     final majorVersion = majorText == null ? 0 : int.parse(majorText);
     final minorVersion = minorText == null ? 0 : int.parse(minorText);
     final patchVersion = patchText == null ? 0 : int.parse(patchText);
-    return DarwinOSVersion(
+    return DarwinVersion(
       majorVersion: majorVersion,
       minorVersion: minorVersion,
       patchVersion: patchVersion,
     );
   }
 
-  factory DarwinOSVersion.number(num number) => DarwinOSVersion.text('$number');
+  factory DarwinVersion.number(num number) => DarwinVersion.text('$number');
 
-  DarwinOSVersion copyWith({
+  DarwinVersion copyWith({
     int? majorVersion,
     int? minorVersion,
     int? patchVersion,
   }) {
-    return DarwinOSVersion(
+    return DarwinVersion(
       majorVersion: majorVersion ?? this.majorVersion,
       minorVersion: minorVersion ?? this.minorVersion,
       patchVersion: patchVersion ?? this.patchVersion,
@@ -92,7 +92,7 @@ class DarwinOSVersion {
 
   @override
   operator ==(Object other) {
-    return other is DarwinOSVersion &&
+    return other is DarwinVersion &&
         other.majorVersion == majorVersion &&
         other.minorVersion == minorVersion &&
         other.patchVersion == patchVersion;
