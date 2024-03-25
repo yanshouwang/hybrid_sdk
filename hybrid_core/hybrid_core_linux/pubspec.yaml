@@ -1,0 +1,28 @@
+name: hybrid_core_linux
+description: "Linux implementation of the hybrid_core plugin."
+version: 0.0.1
+homepage: "https://github.com/yanshouwang/hybrid_sdk"
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hybrid_core_platform_interface: ^0.0.1
+  ffi: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  ffigen: ^11.0.0
+
+flutter:
+  plugin:
+    implements: hybrid_core
+    platforms:
+      linux:
+        ffiPlugin: true
+        dartPluginClass: HybridCoreLinux
