@@ -25,6 +25,9 @@ class OSView extends StatelessWidget {
     } else if (os is Windows) {
       version = 'Windows ${os.version}';
       atLeastVersion = os.isWindows10OrGreater;
+    } else if (os is Linux) {
+      version = 'Linux <UNKNOWN>';
+      atLeastVersion = false;
     } else {
       throw TypeError();
     }

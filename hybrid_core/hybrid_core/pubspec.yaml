@@ -11,15 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   hybrid_core_platform_interface: ^0.2.0
-  # hybrid_core_android: ^0.1.0
-  # hybrid_core_darwin: ^0.1.0
+  hybrid_core_android: ^0.2.0
+  hybrid_core_darwin: ^0.2.0
   hybrid_core_windows: ^0.2.0
-  hybrid_core_android:
-    path: ../hybrid_core_android
-  hybrid_core_darwin:
-    path: ../hybrid_core_darwin
-  hybrid_core_linux:
-    path: ../hybrid_core_linux
+  hybrid_core_linux: ^0.2.0
 
 dev_dependencies:
   flutter_test:

@@ -6,3 +6,5 @@ export 'package:hybrid_core_darwin/hybrid_core_darwin.dart'
     hide HybridCoreDarwin, DarwinPlatform, iOSPlatform, macOSPlatform;
 export 'package:hybrid_core_windows/hybrid_core_windows.dart'
     hide HybridCoreWindows, WindowsPlatform;
+export 'package:hybrid_core_linux/hybrid_core_linux.dart'
+    hide HybridCoreLinux, LinuxPlatform;

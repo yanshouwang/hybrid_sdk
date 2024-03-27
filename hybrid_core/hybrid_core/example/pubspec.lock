@@ -156,23 +156,26 @@ packages:
   hybrid_core_android:
     dependency: transitive
     description:
-      path: "../../hybrid_core_android"
-      relative: true
-    source: path
+      name: hybrid_core_android
+      sha256: c1ef14247ce8e38a7911215ad3ab44066e40f59efd6871845b9f34817ba3f886
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   hybrid_core_darwin:
     dependency: transitive
     description:
-      path: "../../hybrid_core_darwin"
-      relative: true
-    source: path
+      name: hybrid_core_darwin
+      sha256: "7f92156ebbd94f37df47982f7f2c82321d6cee3cf1cdef9fe31c63278145e9ac"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   hybrid_core_linux:
     dependency: transitive
     description:
-      path: "../../hybrid_core_linux"
-      relative: true
-    source: path
+      name: hybrid_core_linux
+      sha256: "3baeaa2d7a56c7eddcfb7b1118099ab690a6d2db71535676cfdd7a68cdc109ef"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   hybrid_core_platform_interface:
     dependency: transitive

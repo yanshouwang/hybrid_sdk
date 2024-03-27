@@ -4,4 +4,4 @@
 
 ## 0.2.0
 
-* Update to `0.2.0`.
+* Implement `OSPlatform` interface.
