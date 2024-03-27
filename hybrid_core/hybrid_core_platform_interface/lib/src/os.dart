@@ -1,8 +1,17 @@
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract class OSPlatform extends PlatformInterface {
+abstract class OSPlatform extends PlatformInterface implements OS {
+  final PipelineOwner _owner;
+
   /// Constructs a OSPlatform.
-  OSPlatform() : super(token: _token);
+  OSPlatform()
+      : _owner = PipelineOwner(),
+        super(token: _token);
 
   static final Object _token = Object();
 
@@ -25,88 +34,85 @@ abstract class OSPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  OS get os;
+  @override
+  Future<Uint8List> renderWidgetToMemory({
+    required BuildContext context,
+    required Widget widget,
+    Size? size,
+    ImageByteFormat format = ImageByteFormat.rawRgba,
+  }) async {
+    var isDirty = true;
+    final view = View.of(context);
+    final configuration = ViewConfiguration(
+      size: size ?? view.physicalSize / view.devicePixelRatio,
+      devicePixelRatio: view.devicePixelRatio,
+    );
+    final rrb = RenderRepaintBoundary();
+    final renderView = RenderView(
+      view: view,
+      configuration: configuration,
+      child: rrb,
+    );
+    final owner = BuildOwner(
+      focusManager: FocusManager.instance,
+      onBuildScheduled: () {
+        ///
+        ///current render is dirty, mark it.
+        ///
+        isDirty = true;
+      },
+    );
+    _owner.rootNode = renderView;
+    renderView.prepareInitialFrame();
+    final adapter = RenderObjectToWidgetAdapter(
+      container: rrb,
+      child: Directionality(
+        textDirection: Directionality.of(context),
+        child: widget,
+      ),
+    );
+    final element = adapter.attachToRenderTree(owner);
+    owner
+      ..buildScope(element)
+      ..finalizeTree();
+    _owner
+      ..flushLayout()
+      ..flushCompositingBits()
+      ..flushPaint();
+    while (isDirty || rrb.needsPaint) {
+      owner
+        ..buildScope(element)
+        ..finalizeTree();
+      _owner
+        ..flushLayout()
+        ..flushCompositingBits()
+        ..flushPaint();
+      isDirty = false;
+      const duration = Duration(milliseconds: 100);
+      await Future.delayed(duration);
+    }
+    final image = await rrb.toImage(pixelRatio: view.devicePixelRatio);
+    final data = await image.toByteData(format: format);
+    if (data == null) {
+      throw UnimplementedError();
+    }
+    return data.buffer.asUint8List();
+  }
 }
 
 abstract class OS {
-  factory OS() => OSPlatform.instance.os;
-}
+  factory OS() => OSPlatform.instance;
 
-abstract class Android implements OS {
-  int get api;
-
-  bool atLeastAPI(int api);
-}
-
-abstract class Darwin implements OS {
-  DarwinVersion get version;
-
-  bool atLeastVersion(DarwinVersion version);
-}
-
-// ignore: camel_case_types
-abstract class iOS implements Darwin {}
-
-// ignore: camel_case_types
-abstract class macOS implements Darwin {}
-
-class DarwinVersion {
-  final int majorVersion;
-  final int minorVersion;
-  final int patchVersion;
-
-  DarwinVersion({
-    this.majorVersion = 0,
-    this.minorVersion = 0,
-    this.patchVersion = 0,
+  Future<Uint8List> renderWidgetToMemory({
+    required BuildContext context,
+    required Widget widget,
+    Size? size,
+    ImageByteFormat format = ImageByteFormat.rawRgba,
   });
+}
 
-  factory DarwinVersion.text(String text) {
-    final texts = text.split('.');
-    final majorText = texts.elementAtOrNull(0);
-    final minorText = texts.elementAtOrNull(1);
-    final patchText = texts.elementAtOrNull(2);
-    final majorVersion = majorText == null ? 0 : int.parse(majorText);
-    final minorVersion = minorText == null ? 0 : int.parse(minorText);
-    final patchVersion = patchText == null ? 0 : int.parse(patchText);
-    return DarwinVersion(
-      majorVersion: majorVersion,
-      minorVersion: minorVersion,
-      patchVersion: patchVersion,
-    );
-  }
-
-  factory DarwinVersion.number(num number) => DarwinVersion.text('$number');
-
-  DarwinVersion copyWith({
-    int? majorVersion,
-    int? minorVersion,
-    int? patchVersion,
-  }) {
-    return DarwinVersion(
-      majorVersion: majorVersion ?? this.majorVersion,
-      minorVersion: minorVersion ?? this.minorVersion,
-      patchVersion: patchVersion ?? this.patchVersion,
-    );
-  }
-
-  @override
-  operator ==(Object other) {
-    return other is DarwinVersion &&
-        other.majorVersion == majorVersion &&
-        other.minorVersion == minorVersion &&
-        other.patchVersion == patchVersion;
-  }
-
-  @override
-  int get hashCode => Object.hash(
-        majorVersion,
-        minorVersion,
-        patchVersion,
-      );
-
-  @override
-  String toString() {
-    return '$majorVersion.$minorVersion.$patchVersion';
+extension on RenderRepaintBoundary {
+  bool get needsPaint {
+    return kDebugMode ? debugNeedsPaint : false;
   }
 }

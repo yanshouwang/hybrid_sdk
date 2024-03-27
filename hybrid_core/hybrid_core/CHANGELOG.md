@@ -15,3 +15,9 @@
 * Move `AndroidOS` to `Android`.
 * Move `DarwinOS` to `Darwin`.
 * Move `DarwinOSVersion` to `DarwinVersion`.
+
+## 0.2.0
+
+* Support Windows.
+* Support Linux.
+* Add `OS#renderWidgetToMemory` method.

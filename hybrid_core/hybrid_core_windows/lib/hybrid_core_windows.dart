@@ -1,3 +1,2 @@
-abstract class HybridCoreWindows {
-  static void registerWith() {}
-}
+export 'src/hybrid_core_windows.dart';
+export 'src/os.dart';
