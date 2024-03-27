@@ -185,9 +185,10 @@ packages:
   hybrid_core_windows:
     dependency: transitive
     description:
-      path: "../../hybrid_core_windows"
-      relative: true
-    source: path
+      name: hybrid_core_windows
+      sha256: "1907f7599e704994e6be424f45a74bb56cbc4a9922191c6940b7f20fc2be370e"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   integration_test:
     dependency: "direct dev"
