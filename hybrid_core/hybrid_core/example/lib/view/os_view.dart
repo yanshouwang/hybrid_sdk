@@ -12,18 +12,18 @@ class OSView extends StatelessWidget {
     final String version;
     final bool atLeastVersion;
     if (os is Android) {
-      version = '${os.api}';
+      version = 'Android API${os.api}';
       atLeastVersion = os.atLeastAPI(33);
     } else if (os is iOS) {
-      version = '${os.version}';
+      version = 'iOS ${os.version}';
       final version17_0 = DarwinVersion.number(17.0);
       atLeastVersion = os.atLeastVersion(version17_0);
     } else if (os is macOS) {
-      version = '${os.version}';
+      version = 'macOS ${os.version}';
       final version14_0 = DarwinVersion.number(14.0);
       atLeastVersion = os.atLeastVersion(version14_0);
     } else if (os is Windows) {
-      version = '${os.version}';
+      version = 'Windows ${os.version}';
       atLeastVersion = os.isWindows10OrGreater;
     } else {
       throw TypeError();
@@ -32,7 +32,9 @@ class OSView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('OS'),
       ),
-      body: Center(
+      body: Container(
+        margin: const EdgeInsets.all(20.0),
+        alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -48,8 +50,9 @@ class OSView extends StatelessWidget {
               height: 20.0,
             ),
             Text(
-              'At least API 33+ or iOS 17.0+ or macOS 14.0+ or Windows 10+',
+              'Version at least\nAndroid API 33+\niOS 17.0+\nmacOS 14.0+\nWindows 10+',
               style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
             ),
             Text(
               '$atLeastVersion',

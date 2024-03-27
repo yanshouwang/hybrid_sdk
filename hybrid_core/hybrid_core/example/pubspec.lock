@@ -167,12 +167,20 @@ packages:
       relative: true
     source: path
     version: "0.2.0"
+  hybrid_core_linux:
+    dependency: transitive
+    description:
+      path: "../../hybrid_core_linux"
+      relative: true
+    source: path
+    version: "0.2.0"
   hybrid_core_platform_interface:
     dependency: transitive
     description:
-      path: "../../hybrid_core_platform_interface"
-      relative: true
-    source: path
+      name: hybrid_core_platform_interface
+      sha256: "3683bd7d2bc454c3f4349c4c385bce5ff81c6b0aba9aa075a7f0f080ff147e6a"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   hybrid_core_windows:
     dependency: transitive

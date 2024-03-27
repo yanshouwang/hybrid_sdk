@@ -10,9 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # hybrid_core_platform_interface: ^0.1.0
-  hybrid_core_platform_interface:
-    path: ../hybrid_core_platform_interface
+  hybrid_core_platform_interface: ^0.2.0
   ffi: ^2.1.0
 
 dev_dependencies:
