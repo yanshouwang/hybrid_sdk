@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view/view.dart';
+import 'router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: OSView(),
+    return MaterialApp.router(
+      routerConfig: routerConfig,
     );
   }
 }

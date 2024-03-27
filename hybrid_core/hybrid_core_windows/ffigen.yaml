@@ -1,19 +1,51 @@
-# Run with `flutter pub run ffigen --config ffigen.yaml`.
-name: HybridCoreWindowsBindings
-description: |
-  Bindings for `src/hybrid_core_windows.h`.
-
-  Regenerate bindings with `flutter pub run ffigen --config ffigen.yaml`.
-output: 'lib/hybrid_core_windows_bindings_generated.dart'
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: HybridCore
+description: Bindings for HybridCore.
+output: 'lib/src/ffi.g.dart'
 headers:
   entry-points:
-    - 'src/hybrid_core_windows.h'
-  include-directives:
-    - 'src/hybrid_core_windows.h'
-preamble: |
-  // ignore_for_file: always_specify_types
-  // ignore_for_file: camel_case_types
-  // ignore_for_file: non_constant_identifier_names
-comments:
-  style: any
-  length: full
+    - 'C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\Windows.h'
+  #   - 'src/hybrid_core_windows.h'
+  # include-directives:
+  #   - 'src/hybrid_core_windows.h'
+exclude-all-by-default: true
+functions:
+  include:
+    - GetVersionExW
+    - VerifyVersionInfoW
+    - VerSetConditionMask
+    # - IsWindows7OrGreater
+    # - IsWindows7SP1OrGreater
+    # - IsWindows8OrGreater
+    # - IsWindows8Point1OrGreater
+    # - IsWindowsServer
+    # - IsWindowsVersionOrGreater
+    # - IsWindowsVistaOrGreater
+    # - IsWindowsVistaSP1OrGreater
+    # - IsWindowsVistaSP2OrGreater
+    # - IsWindowsXPOrGreater
+    # - IsWindowsXPSP1OrGreater
+    # - IsWindowsXPSP2OrGreater
+    # - IsWindowsXPSP3OrGreater
+macros:
+  include:
+    - HIBYTE
+    - LOBYTE
+    - 'TRUE'
+    - 'FALSE'
+    - VER_.*
+    - _WIN32_WINNT_.*
+  rename:
+    # Removes '_' from
+    # beginning of a name.
+    '_(.*)': '$1'
+structs:
+  rename:
+    # Removes prefix underscores
+    # from all structures.
+    '_(.*)': '$1'
+  member-rename:
+    '.*': # Matches any struct.
+      # Removes prefix underscores
+      # from members.
+      '_(.*)': '$1'

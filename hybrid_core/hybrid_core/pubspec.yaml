@@ -1,6 +1,6 @@
 name: hybrid_core
 description: "The core library of the Hybrid SDK."
-version: 0.1.0
+version: 0.2.0
 homepage: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:
@@ -10,9 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hybrid_core_platform_interface: ^0.1.0
-  hybrid_core_android: ^0.1.0
-  hybrid_core_darwin: ^0.1.0
+  hybrid_core_platform_interface: ^0.2.0
+  hybrid_core_android: ^0.2.0
+  hybrid_core_darwin: ^0.2.0
+  hybrid_core_windows: ^0.2.0
+  hybrid_core_linux: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -28,3 +30,7 @@ flutter:
         default_package: hybrid_core_darwin
       macos:
         default_package: hybrid_core_darwin
+      windows:
+        default_package: hybrid_core_windows
+      linux: 
+        default_package: hybrid_core_linux
