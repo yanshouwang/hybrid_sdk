@@ -1,18 +1,7 @@
-## 0.0.1
+## 0.3.0
 
-* Implement `OSPlatform` interface.
-
-## 0.0.2
-
-* Fix `OSPlatform.instance` throws UnimplementedError.
-
-## 0.0.3
-
-* Fix the issue that `OS#atLeastVersion` always returns true.
-
-## 0.1.0
-
-* Move `DarwinOSImpl` to `DarwinImpl`.
+* Implement `hybrid_core_platform_interface` 0.3.1.
+* Move `HybridCoreDarwin` to `HybridCoreDarwinPlugin`.
 
 ## 0.2.0
 
@@ -25,3 +14,19 @@
 * Add `DarwinVersion` class.
 * Move `OSPlatformImpl` to `DarwinPlatform`.
 * Remove `DarwinImpl` class.
+
+## 0.1.0
+
+* Move `DarwinOSImpl` to `DarwinImpl`.
+
+## 0.0.3
+
+* Fix the issue that `OS#atLeastVersion` always returns true.
+
+## 0.0.2
+
+* Fix `OSPlatform.instance` throws UnimplementedError.
+
+## 0.0.1
+
+* Implement `OSPlatform` interface.

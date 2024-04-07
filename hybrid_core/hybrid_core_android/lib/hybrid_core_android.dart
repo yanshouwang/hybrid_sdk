@@ -1,2 +1,2 @@
-export 'src/hybrid_core_android.dart';
+export 'src/plugin.dart';
 export 'src/os.dart';

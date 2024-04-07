@@ -1,12 +1,13 @@
-## 0.0.1
+## 0.3.1
 
-* Add `OSPlatform` interface.
+* Remove `OS#renderWidgetToMemory`.
 
-## 0.1.0
+## 0.3.0
 
-* Move `AndroidOS` to `Android`.
-* Move `DarwinOS` to `Darwin`.
-* Move `DarwinOSVersion` to `DarwinVersion`.
+* Add `LogController` interface.
+* Add `LoggerProvider` and `LoggerController` mixin.
+* Move `OS#renderWidgetToMemory` to `renderWidgetToMemory`.
+* Move `OS` factory constructor to `OS#instance`.
 
 ## 0.2.0
 
@@ -17,3 +18,13 @@
 * Remove `iOS` class.
 * Remove `macOS` class.
 * Remove `DarwinVersion` class.
+
+## 0.1.0
+
+* Move `AndroidOS` to `Android`.
+* Move `DarwinOS` to `Darwin`.
+* Move `DarwinOSVersion` to `DarwinVersion`.
+
+## 0.0.1
+
+* Add `OSPlatform` interface.
