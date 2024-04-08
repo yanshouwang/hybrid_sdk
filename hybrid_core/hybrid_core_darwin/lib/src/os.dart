@@ -11,7 +11,7 @@ import 'ffi.g.dart';
 class DarwinPlatform extends OSPlatform implements Darwin {
   final NSProcessInfo info;
 
-  DarwinPlatform() : info = NSProcessInfo.alloc(foundation).init();
+  DarwinPlatform() : info = NSProcessInfo.alloc(foundationLib).init();
 
   @override
   DarwinVersion get version {

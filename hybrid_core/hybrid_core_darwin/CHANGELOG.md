@@ -1,3 +1,7 @@
+## 0.3.1
+
+* Optimize project structure.
+
 ## 0.3.0
 
 * Implement `hybrid_core_platform_interface` 0.3.1.

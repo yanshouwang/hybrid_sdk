@@ -1,6 +1,6 @@
 name: hybrid_core_darwin
 description: "iOS an macOS implementation of the hybrid_core plugin."
-version: 0.3.0
+version: 0.3.1
 homepage: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:

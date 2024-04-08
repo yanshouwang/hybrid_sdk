@@ -1,6 +1,6 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
-name: FFI
-description: Bindings for FFI.
+name: HybridCoreDarwinLibrary
+description: Darwin Library for Hybrid Core.
 language: objc
 output: 'lib/src/ffi.g.dart'
 compiler-opts:
