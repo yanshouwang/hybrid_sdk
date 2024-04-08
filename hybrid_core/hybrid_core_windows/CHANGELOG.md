@@ -1,3 +1,7 @@
+## 0.3.3
+
+* Optimize project structure.
+
 ## 0.3.2
 
 * Move `WindowsHybridCorePlugin` to `HybridCoreWindowsPlugin`.

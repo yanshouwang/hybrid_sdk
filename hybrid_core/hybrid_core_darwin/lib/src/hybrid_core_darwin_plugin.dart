@@ -6,7 +6,6 @@ import 'os.dart';
 
 abstract class HybridCoreDarwinPlugin {
   static void registerWith() {
-    OSPlatform.instance =
-        Platform.isIOS ? iOSPlatformImpl() : macOSPlatformImpl();
+    OSPlatform.instance = Platform.isIOS ? iOSPlatform() : macOSPlatform();
   }
 }

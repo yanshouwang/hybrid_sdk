@@ -4,6 +4,6 @@ import 'os.dart';
 
 abstract class HybridCoreLinuxPlugin {
   static void registerWith() {
-    OSPlatform.instance = LinuxPlatformImpl();
+    OSPlatform.instance = LinuxPlatform();
   }
 }

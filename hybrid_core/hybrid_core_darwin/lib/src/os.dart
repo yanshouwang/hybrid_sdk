@@ -8,10 +8,10 @@ import 'package:hybrid_core_platform_interface/hybrid_core_platform_interface.da
 import 'ffi.dart';
 import 'ffi.g.dart';
 
-class DarwinPlatformImpl extends OSPlatform implements Darwin {
+class DarwinPlatform extends OSPlatform implements Darwin {
   final NSProcessInfo info;
 
-  DarwinPlatformImpl() : info = NSProcessInfo.alloc(foundation).init();
+  DarwinPlatform() : info = NSProcessInfo.alloc(foundation).init();
 
   @override
   DarwinVersion get version {
@@ -40,9 +40,9 @@ class DarwinPlatformImpl extends OSPlatform implements Darwin {
   }
 }
 
-class iOSPlatformImpl extends DarwinPlatformImpl implements iOS {}
+class iOSPlatform extends DarwinPlatform implements iOS {}
 
-class macOSPlatformImpl extends DarwinPlatformImpl implements macOS {}
+class macOSPlatform extends DarwinPlatform implements macOS {}
 
 abstract class Darwin implements OS {
   DarwinVersion get version;
