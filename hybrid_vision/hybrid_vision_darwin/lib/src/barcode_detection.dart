@@ -1,14 +1,16 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'dart:isolate';
 
+import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
 import 'package:hybrid_core/hybrid_core.dart';
 import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interface.dart';
 
-import 'core.dart';
-import 'ffi.dart' as ffi;
+import 'ffi.dart';
+import 'ffi.g.dart';
 
-class BarcodePlatformImpl extends BarcodePlatform {
+class DarwinBarcodeDetectionPlatform extends BarcodeDetectionPlatform {
   @override
   BarcodeDetector createDetector({
     List<BarcodeFormat>? formats,
@@ -18,20 +20,20 @@ class BarcodePlatformImpl extends BarcodePlatform {
         : formats
             .map((format) => format.toVNBarcodeSymbologies())
             .expand((symbologyPtrs) => symbologyPtrs)
-            .map((symbologyPtr) => ffi.DartVNBarcodeSymbology.castFromPointer(
-                vision, symbologyPtr))
+            .map((symbologyPtr) =>
+                DartVNBarcodeSymbology.castFromPointer(visionLib, symbologyPtr))
             .toList()
             .toNSArray();
-    return BarcodeDetectorImpl(
+    return DarwinBarcodeDetector(
       symbologies: symbologies,
     );
   }
 }
 
-class BarcodeDetectorImpl implements BarcodeDetector {
-  final ffi.NSArray? symbologies;
+class DarwinBarcodeDetector implements BarcodeDetector {
+  final NSArray? symbologies;
 
-  BarcodeDetectorImpl({
+  DarwinBarcodeDetector({
     this.symbologies,
   });
 
@@ -52,81 +54,81 @@ class BarcodeDetectorImpl implements BarcodeDetector {
 }
 
 extension on BarcodeFormat {
-  List<ffi.VNBarcodeSymbology> toVNBarcodeSymbologies() {
+  List<VNBarcodeSymbology> toVNBarcodeSymbologies() {
     switch (this) {
       case BarcodeFormat.aztec:
         return [
-          vision.VNBarcodeSymbologyAztec,
+          visionLib.VNBarcodeSymbologyAztec,
         ];
       case BarcodeFormat.codabar:
         return (atLeastiOS15_0 || atLeastmacOS12_0)
             ? [
-                vision.VNBarcodeSymbologyCodabar,
+                visionLib.VNBarcodeSymbologyCodabar,
               ]
             : [];
       case BarcodeFormat.code128:
         return [
-          vision.VNBarcodeSymbologyCode128,
+          visionLib.VNBarcodeSymbologyCode128,
         ];
       case BarcodeFormat.code39:
         return [
-          vision.VNBarcodeSymbologyCode39,
-          vision.VNBarcodeSymbologyCode39Checksum,
-          vision.VNBarcodeSymbologyCode39FullASCII,
-          vision.VNBarcodeSymbologyCode39FullASCIIChecksum,
+          visionLib.VNBarcodeSymbologyCode39,
+          visionLib.VNBarcodeSymbologyCode39Checksum,
+          visionLib.VNBarcodeSymbologyCode39FullASCII,
+          visionLib.VNBarcodeSymbologyCode39FullASCIIChecksum,
         ];
       case BarcodeFormat.code93:
         return [
-          vision.VNBarcodeSymbologyCode93,
-          vision.VNBarcodeSymbologyCode93i,
+          visionLib.VNBarcodeSymbologyCode93,
+          visionLib.VNBarcodeSymbologyCode93i,
         ];
       case BarcodeFormat.dataMatrix:
         return [
-          vision.VNBarcodeSymbologyDataMatrix,
+          visionLib.VNBarcodeSymbologyDataMatrix,
         ];
       case BarcodeFormat.ean13:
         return [
-          vision.VNBarcodeSymbologyEAN13,
+          visionLib.VNBarcodeSymbologyEAN13,
         ];
       case BarcodeFormat.ean8:
         return [
-          vision.VNBarcodeSymbologyEAN8,
+          visionLib.VNBarcodeSymbologyEAN8,
         ];
       case BarcodeFormat.gs1DataBar:
         return (atLeastiOS15_0 || atLeastmacOS12_0)
             ? [
-                vision.VNBarcodeSymbologyGS1DataBar,
-                vision.VNBarcodeSymbologyGS1DataBarExpanded,
-                vision.VNBarcodeSymbologyGS1DataBarLimited,
+                visionLib.VNBarcodeSymbologyGS1DataBar,
+                visionLib.VNBarcodeSymbologyGS1DataBarExpanded,
+                visionLib.VNBarcodeSymbologyGS1DataBarLimited,
               ]
             : [];
       case BarcodeFormat.itf:
         return [
-          vision.VNBarcodeSymbologyITF14,
-          vision.VNBarcodeSymbologyI2of5,
-          vision.VNBarcodeSymbologyI2of5Checksum,
+          visionLib.VNBarcodeSymbologyITF14,
+          visionLib.VNBarcodeSymbologyI2of5,
+          visionLib.VNBarcodeSymbologyI2of5Checksum,
         ];
       case BarcodeFormat.msiPlessey:
         return (atLeastiOS17_0 || atLeastmacOS14_0)
             ? [
-                vision.VNBarcodeSymbologyMSIPlessey,
+                visionLib.VNBarcodeSymbologyMSIPlessey,
               ]
             : [];
       case BarcodeFormat.pdf417:
         return [
-          vision.VNBarcodeSymbologyPDF417,
+          visionLib.VNBarcodeSymbologyPDF417,
           if (atLeastiOS15_0 || atLeastmacOS12_0)
-            vision.VNBarcodeSymbologyMicroPDF417,
+            visionLib.VNBarcodeSymbologyMicroPDF417,
         ];
       case BarcodeFormat.qrCode:
         return [
-          vision.VNBarcodeSymbologyQR,
+          visionLib.VNBarcodeSymbologyQR,
           if (atLeastiOS15_0 || atLeastmacOS12_0)
-            vision.VNBarcodeSymbologyMicroQR,
+            visionLib.VNBarcodeSymbologyMicroQR,
         ];
       case BarcodeFormat.upcE:
         return [
-          vision.VNBarcodeSymbologyUPCE,
+          visionLib.VNBarcodeSymbologyUPCE,
         ];
       default:
         return [];
@@ -134,11 +136,11 @@ extension on BarcodeFormat {
   }
 }
 
-extension on ffi.VNBarcodeObservation {
+extension on VNBarcodeObservation {
   Rect get boundingBox {
-    return ffi.using(
+    return using(
       (arena) {
-        final boundingBoxPtr = arena<ffi.CGRect>();
+        final boundingBoxPtr = arena<CGRect>();
         getBoundingBox(boundingBoxPtr);
         return boundingBoxPtr.ref.toRect();
       },
@@ -159,48 +161,48 @@ extension on ffi.VNBarcodeObservation {
   }
 }
 
-extension on ffi.DartVNBarcodeSymbology {
-  bool equals(ffi.VNBarcodeSymbology other) =>
-      ffi.DartVNBarcodeSymbology.castFromPointer(vision, other)
+extension on DartVNBarcodeSymbology {
+  bool equals(VNBarcodeSymbology other) =>
+      DartVNBarcodeSymbology.castFromPointer(visionLib, other)
           .isEqualToString_(this);
 
-  bool get equalsAztec => equals(vision.VNBarcodeSymbologyAztec);
+  bool get equalsAztec => equals(visionLib.VNBarcodeSymbologyAztec);
   bool get equalsCodabar =>
       (atLeastiOS15_0 || atLeastmacOS12_0) &&
-      equals(vision.VNBarcodeSymbologyCodabar);
-  bool get equalsCode128 => equals(vision.VNBarcodeSymbologyCode128);
+      equals(visionLib.VNBarcodeSymbologyCodabar);
+  bool get equalsCode128 => equals(visionLib.VNBarcodeSymbologyCode128);
   bool get equalsCode39 =>
-      equals(vision.VNBarcodeSymbologyCode39) ||
-      equals(vision.VNBarcodeSymbologyCode39Checksum) ||
-      equals(vision.VNBarcodeSymbologyCode39FullASCII) ||
-      equals(vision.VNBarcodeSymbologyCode39FullASCIIChecksum);
+      equals(visionLib.VNBarcodeSymbologyCode39) ||
+      equals(visionLib.VNBarcodeSymbologyCode39Checksum) ||
+      equals(visionLib.VNBarcodeSymbologyCode39FullASCII) ||
+      equals(visionLib.VNBarcodeSymbologyCode39FullASCIIChecksum);
   bool get equalsCode93 =>
-      equals(vision.VNBarcodeSymbologyCode93) ||
-      equals(vision.VNBarcodeSymbologyCode93i);
-  bool get equalsDataMatrix => equals(vision.VNBarcodeSymbologyDataMatrix);
-  bool get equalsEAN13 => equals(vision.VNBarcodeSymbologyEAN13);
-  bool get equalsEAN8 => equals(vision.VNBarcodeSymbologyEAN8);
+      equals(visionLib.VNBarcodeSymbologyCode93) ||
+      equals(visionLib.VNBarcodeSymbologyCode93i);
+  bool get equalsDataMatrix => equals(visionLib.VNBarcodeSymbologyDataMatrix);
+  bool get equalsEAN13 => equals(visionLib.VNBarcodeSymbologyEAN13);
+  bool get equalsEAN8 => equals(visionLib.VNBarcodeSymbologyEAN8);
   bool get equalsGS1DataBar => (atLeastiOS15_0 || atLeastmacOS12_0)
-      ? equals(vision.VNBarcodeSymbologyGS1DataBar) ||
-          equals(vision.VNBarcodeSymbologyGS1DataBarExpanded) ||
-          equals(vision.VNBarcodeSymbologyGS1DataBarLimited)
+      ? equals(visionLib.VNBarcodeSymbologyGS1DataBar) ||
+          equals(visionLib.VNBarcodeSymbologyGS1DataBarExpanded) ||
+          equals(visionLib.VNBarcodeSymbologyGS1DataBarLimited)
       : false;
   bool get equalsITF =>
-      equals(vision.VNBarcodeSymbologyITF14) ||
-      equals(vision.VNBarcodeSymbologyI2of5) ||
-      equals(vision.VNBarcodeSymbologyI2of5Checksum);
+      equals(visionLib.VNBarcodeSymbologyITF14) ||
+      equals(visionLib.VNBarcodeSymbologyI2of5) ||
+      equals(visionLib.VNBarcodeSymbologyI2of5Checksum);
   bool get equalsMSIPlessey =>
       (atLeastiOS17_0 || atLeastmacOS14_0) &&
-      equals(vision.VNBarcodeSymbologyMSIPlessey);
+      equals(visionLib.VNBarcodeSymbologyMSIPlessey);
   bool get equalsPDF417 => (atLeastiOS15_0 || atLeastmacOS12_0)
-      ? equals(vision.VNBarcodeSymbologyPDF417) ||
-          equals(vision.VNBarcodeSymbologyMicroPDF417)
-      : equals(vision.VNBarcodeSymbologyPDF417);
+      ? equals(visionLib.VNBarcodeSymbologyPDF417) ||
+          equals(visionLib.VNBarcodeSymbologyMicroPDF417)
+      : equals(visionLib.VNBarcodeSymbologyPDF417);
   bool get equalsQrCode => (atLeastiOS15_0 || atLeastmacOS12_0)
-      ? equals(vision.VNBarcodeSymbologyQR) ||
-          equals(vision.VNBarcodeSymbologyMicroQR)
-      : equals(vision.VNBarcodeSymbologyQR);
-  bool get equalsUPCE => equals(vision.VNBarcodeSymbologyUPCE);
+      ? equals(visionLib.VNBarcodeSymbologyQR) ||
+          equals(visionLib.VNBarcodeSymbologyMicroQR)
+      : equals(visionLib.VNBarcodeSymbologyQR);
+  bool get equalsUPCE => equals(visionLib.VNBarcodeSymbologyUPCE);
 
   BarcodeFormat? toBarcodeFormat() {
     if (equalsAztec) {
@@ -237,12 +239,12 @@ extension on ffi.DartVNBarcodeSymbology {
   }
 }
 
-extension on ffi.NSArray {
+extension on NSArray {
   List<Barcode> toBarcodes() {
     final barcodes = <Barcode>[];
     for (var i = 0; i < count; i++) {
       final object = objectAtIndex_(i);
-      final barcode = ffi.VNBarcodeObservation.castFrom(object).toBarcode();
+      final barcode = VNBarcodeObservation.castFrom(object).toBarcode();
       if (barcode == null) {
         continue;
       }
@@ -346,8 +348,8 @@ Future<SendPort> _helperIsolateSendPort = () async {
                         ? image.toVNImageRequestHandler()
                         : throw TypeError();
                 final completionHandler =
-                    ffi.DartVNRequestCompletionHandler.listener(
-                  vision,
+                    DartVNRequestCompletionHandler.listener(
+                  visionLib,
                   (request, error) {
                     try {
                       if (error == null) {
@@ -363,23 +365,22 @@ Future<SendPort> _helperIsolateSendPort = () async {
                     }
                   },
                 );
-                final request = ffi.VNDetectBarcodesRequest.alloc(vision)
+                final request = VNDetectBarcodesRequest.alloc(visionLib)
                     .initWithCompletionHandler_(completionHandler);
                 final symbologiesAddress = message.symbologiesAddress;
                 if (symbologiesAddress != null) {
                   final symbologiesPtr =
-                      ffi.Pointer<ffi.ObjCObject>.fromAddress(
-                          symbologiesAddress);
+                      Pointer<ObjCObject>.fromAddress(symbologiesAddress);
                   final symbologies =
-                      ffi.NSArray.castFromPointer(vision, symbologiesPtr);
+                      NSArray.castFromPointer(visionLib, symbologiesPtr);
                   request.symbologies = symbologies;
                 }
                 final requests = [request].toNSArray();
-                final error = ffi.using((arena) {
-                  final errorPtr = arena<ffi.Pointer<ffi.ObjCObject>>();
+                final error = using((arena) {
+                  final errorPtr = arena<Pointer<ObjCObject>>();
                   return handler.performRequests_error_(requests, errorPtr)
                       ? null
-                      : ffi.NSError.castFromPointer(vision, errorPtr.value)
+                      : NSError.castFromPointer(visionLib, errorPtr.value)
                           .toError();
                 });
                 if (error == null) {
@@ -418,7 +419,7 @@ final atLeastmacOS12_0 = atLeastmacOSVersion(12.0);
 final atLeastmacOS14_0 = atLeastmacOSVersion(14.0);
 
 bool atLeastiOSVersion(double number) {
-  final os = OS();
+  final os = OS.instance;
   if (os is iOS) {
     final version = DarwinVersion.number(number);
     return os.atLeastVersion(version);
@@ -427,7 +428,7 @@ bool atLeastiOSVersion(double number) {
 }
 
 bool atLeastmacOSVersion(double number) {
-  final os = OS();
+  final os = OS.instance;
   if (os is macOS) {
     final version = DarwinVersion.number(number);
     return os.atLeastVersion(version);

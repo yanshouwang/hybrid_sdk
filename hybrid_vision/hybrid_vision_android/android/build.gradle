@@ -61,6 +61,8 @@ android {
 
     defaultConfig {
         minSdkVersion 19
+        // Keeping the classes from being removed by proguard.
+        consumerProguardFiles 'consumer-rules.pro'
     }
 }
 

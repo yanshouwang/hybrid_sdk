@@ -1,0 +1,3 @@
+-printconfiguration ../../build/full-r8-config.txt
+-printusage ../../build/usage.txt
+-printseeds ../../build/seeds.txt

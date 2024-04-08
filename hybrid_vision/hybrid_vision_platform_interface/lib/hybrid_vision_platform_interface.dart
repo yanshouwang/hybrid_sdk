@@ -1,2 +1,2 @@
 export 'src/core.dart';
-export 'src/barcode.dart';
+export 'src/barcode_detection.dart';

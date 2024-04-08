@@ -1,0 +1,2 @@
+-keep class com.google.mlkit.vision.** { *; }
+-keep class com.google.android.gms.tasks.** { *; }
