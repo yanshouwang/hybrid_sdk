@@ -1,6 +1,6 @@
 name: hybrid_vision
 description: "Apply computer vision algorithms to perform a variety of tasks on input images and video."
-version: 0.0.2
+version: 0.1.0
 homepage: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:
@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hybrid_vision_platform_interface: ^0.0.1
-  hybrid_vision_android: ^0.0.2
-  hybrid_vision_darwin: ^0.0.2
+  hybrid_vision_platform_interface: ^0.1.0
+  hybrid_vision_android: ^0.1.0
+  hybrid_vision_darwin: ^0.1.0
 
 dev_dependencies:
   flutter_test:

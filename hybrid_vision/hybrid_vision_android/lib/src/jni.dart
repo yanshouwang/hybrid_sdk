@@ -1,22 +1,77 @@
-export 'package:jni/jni.dart';
+import 'dart:typed_data';
+import 'dart:ui';
 
-export 'android/graphics/Bitmap.dart';
-export 'android/graphics/BitmapFactory.dart';
-export 'android/graphics/Point.dart';
-export 'android/graphics/Rect.dart';
-export 'android/net/Uri.dart';
-export 'com/google/android/gms/tasks/OnCanceledListener.dart';
-export 'com/google/android/gms/tasks/OnCompleteListener.dart';
-export 'com/google/android/gms/tasks/OnFailureListener.dart';
-export 'com/google/android/gms/tasks/OnSuccessListener.dart';
-export 'com/google/android/gms/tasks/Task.dart';
-export 'com/google/android/gms/tasks/Tasks.dart';
-export 'com/google/mlkit/vision/barcode/BarcodeScanner.dart';
-export 'com/google/mlkit/vision/barcode/BarcodeScannerOptions.dart';
-export 'com/google/mlkit/vision/barcode/BarcodeScanning.dart';
-export 'com/google/mlkit/vision/barcode/ZoomSuggestionOptions.dart';
-export 'com/google/mlkit/vision/barcode/common/Barcode.dart';
-export 'com/google/mlkit/vision/common/InputImage.dart';
-export 'java/lang/Runnable.dart';
-export 'java/util/concurrent/Executor.dart';
-export 'java/util/concurrent/Executors.dart';
+import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interface.dart';
+import 'package:jni/jni.dart';
+
+import 'jni.g.dart' as jni;
+
+extension MemoryVisionImageX on MemoryVisionImage {
+  jni.InputImage toCInputImage() {
+    final bitmap = jni.BitmapFactory.decodeByteArray1(
+      memory.toJArray(),
+      0,
+      memory.length,
+    );
+    return jni.InputImage.fromBitmap(
+      bitmap,
+      rotationDegrees,
+    );
+  }
+}
+
+extension UriVisionImageX on UriVisionImage {
+  jni.InputImage toCInputImage() {
+    final activityPtr = Jni.getCurrentActivity();
+    final activity = JObject.fromRef(activityPtr);
+    final uri = this.uri.toCUri();
+    return jni.InputImage.fromFilePath(
+      activity,
+      uri,
+    );
+  }
+}
+
+extension UriX on Uri {
+  jni.Uri toCUri() {
+    final urlString = toString().toJString();
+    return jni.Uri.parse(urlString);
+  }
+}
+
+extension Uint8ListX on Uint8List {
+  JArray<jbyte> toJArray() {
+    final array = JArray(jbyte.type, length);
+    array.setRange(0, length, this);
+    return array;
+  }
+}
+
+extension IntIterableX on Iterable<int> {
+  JArray<jint> toJArray() {
+    final array = JArray(jint.type, length);
+    array.setRange(0, length, this);
+    return array;
+  }
+}
+
+extension JStringArrayX on JArray<JString> {
+  List<String> toList() {
+    final strings = <String>[];
+    for (var i = 0; i < length; i++) {
+      final string = this[i].toDartString(releaseOriginal: true);
+      strings.add(string);
+    }
+    return List.unmodifiable(strings);
+  }
+}
+
+extension JRectX on jni.Rect {
+  Rect toRect() {
+    final left = this.left.toDouble();
+    final top = this.top.toDouble();
+    final right = this.right.toDouble();
+    final bottom = this.bottom.toDouble();
+    return Rect.fromLTRB(left, top, right, bottom);
+  }
+}

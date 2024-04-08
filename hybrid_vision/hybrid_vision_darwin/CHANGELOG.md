@@ -1,3 +1,10 @@
+## 0.1.0
+
+* Move `HybridVisionDarwin` to `HybridVisionDarwinPlugin`.
+* Move `BarcodePlatformImpl` to `DarwinBarcodeDetectionPlatform`.
+* Move `BarcodeDetectorImpl` to `DarwinBarcodeDetector`.
+* Optimize project structure.
+
 ## 0.0.1
 
 * Implement `BarcodePlatform` interface.

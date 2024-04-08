@@ -182,65 +182,81 @@ packages:
     dependency: transitive
     description:
       name: hybrid_core
-      sha256: cae9071e547d0a27e98ac0029840e606f7d3b42cb6c7efce5ea87764debd4460
+      sha256: "25d2d888f3d7a4379b287c7736457729b456e19537e80b701ebb735b2f702ec0"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.3.0"
   hybrid_core_android:
     dependency: transitive
     description:
       name: hybrid_core_android
-      sha256: f0a50c06eaf6291e43677ec982197a21a5c89743b2f757637b155a3f8d56986c
+      sha256: ee87910741d582cf0a54ffb1a5e4ce78392efe6ad51ba259250f378804f090d9
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.3.0"
   hybrid_core_darwin:
     dependency: transitive
     description:
       name: hybrid_core_darwin
-      sha256: cf04ec443d95a398c6e00bbffc93dc934fc40e4e91465c69843034bf6fe83747
+      sha256: bb4120cc7517d35385b294c801759a6ceb491f979d297904be6a0518236ae588
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.3.1"
+  hybrid_core_linux:
+    dependency: transitive
+    description:
+      name: hybrid_core_linux
+      sha256: e90a9c1a430ba22fd3ad7c94ac5014e61fbef80fcbd887026b6432877189fe2f
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   hybrid_core_platform_interface:
     dependency: transitive
     description:
       name: hybrid_core_platform_interface
-      sha256: "36f6f372b14228a4114bf29037e4fdcb8a99f772b327baf39e056f352dda292f"
+      sha256: "6686d3338aba6bd3ff373ffd75d8c3faae623aba999eaa77cd7cb2b1a46fab1d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.3.1"
+  hybrid_core_windows:
+    dependency: transitive
+    description:
+      name: hybrid_core_windows
+      sha256: "463eb23d90d29ff29b4d58b8ffd127f32a3b530b839556bc3590d6f320d8b813"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.4"
   hybrid_vision:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.1.0"
   hybrid_vision_android:
     dependency: transitive
     description:
       name: hybrid_vision_android
-      sha256: a58d2056841502501780b1d25dfac41c238bfce5b69b777a4823024ce93aae18
+      sha256: d534dfc8a2393c885c9986c1b427e6c3db8043483867b13ff9c0d17a3c0ef4e7
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.1.0"
   hybrid_vision_darwin:
     dependency: transitive
     description:
       name: hybrid_vision_darwin
-      sha256: "9b9294e7eea41711aa9f8b4cb09cd9d738a1a4a0d4876861aed75524faceba0a"
+      sha256: "0ddeb1fd55409a1676f1385c926b24f2e9d8323e1fc2aa7ec88790300d3979c1"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.1.0"
   hybrid_vision_platform_interface:
     dependency: transitive
     description:
       name: hybrid_vision_platform_interface
-      sha256: a23573b240d951df13c377523be5ac571fd3f9f7d678a7b68c75bc78f72dabb7
+      sha256: f63dd36dc26447888e736d4f8029679d7d4c58e72220ba71239578fffc0d08a9
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.1.0"
   image_picker:
     dependency: "direct main"
     description:
@@ -350,6 +366,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   matcher:
     dependency: transitive
     description:

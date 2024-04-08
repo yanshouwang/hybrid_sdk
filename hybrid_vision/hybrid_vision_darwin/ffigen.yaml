@@ -1,6 +1,6 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
-name: HybridVision
-description: Bindings for HybridVision.
+name: HybridVisionDarwinLibrary
+description: Darwin Library for HybridVision.
 language: objc
 output: 'lib/src/ffi.g.dart'
 compiler-opts:

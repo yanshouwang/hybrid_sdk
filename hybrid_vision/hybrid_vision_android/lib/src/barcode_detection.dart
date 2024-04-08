@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'dart:ffi' as ffi;
+import 'dart:ffi';
 import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interface.dart';
+import 'package:jni/jni.dart';
 
-import 'core.dart';
-import 'jni.dart' as jni;
+import 'jni.dart';
+import 'jni.g.dart' as jni;
 
-class BarcodePlatformImpl extends BarcodePlatform {
+class AndroidBarcodeDetectionPlatform extends BarcodeDetectionPlatform {
   @override
   BarcodeDetector createDetector({
     List<BarcodeFormat>? formats,
@@ -28,14 +29,14 @@ class BarcodePlatformImpl extends BarcodePlatform {
     }
     final options = builder.build();
     final scanner = jni.BarcodeScanning.getClient1(options);
-    return BarcodeDetectorImpl(scanner);
+    return AndroidBarcodeDetector(scanner);
   }
 }
 
-class BarcodeDetectorImpl implements BarcodeDetector {
+class AndroidBarcodeDetector implements BarcodeDetector {
   final jni.BarcodeScanner scanner;
 
-  BarcodeDetectorImpl(this.scanner);
+  AndroidBarcodeDetector(this.scanner);
 
   @override
   Future<List<Barcode>> detect(VisionImage image) async {
@@ -228,8 +229,8 @@ Future<SendPort> _helperIsolateSendPort = () async {
                 final width = inputImage.getWidth().toDouble();
                 final height = inputImage.getHeight().toDouble();
                 final scannerPtr =
-                    ffi.Pointer<ffi.Void>.fromAddress(message.scannerAddress);
-                final scannerRef = jni.Jni.env.NewGlobalRef(scannerPtr);
+                    Pointer<Void>.fromAddress(message.scannerAddress);
+                final scannerRef = Jni.env.NewGlobalRef(scannerPtr);
                 final scanner = jni.BarcodeScanner.fromRef(scannerRef);
                 final task = scanner.process1(inputImage);
                 final onSuccessListener = jni.OnSuccessListener.implement(

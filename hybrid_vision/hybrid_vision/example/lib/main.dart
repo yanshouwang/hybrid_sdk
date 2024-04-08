@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'view/view.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
