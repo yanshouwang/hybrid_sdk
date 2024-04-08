@@ -1,118 +1,119 @@
 import 'dart:ffi';
 
+import 'package:ffi/ffi.dart';
 import 'package:hybrid_core_platform_interface/hybrid_core_platform_interface.dart';
 
-import 'ffi.dart' as ffi;
+import 'ffi.dart';
+import 'ffi.g.dart';
 
 class WindowsPlatform extends OSPlatform implements Windows {
-  WindowsPlatform();
-
   @override
-  WindowsVersion get version => ffi.using((arena) {
-        final osvi = arena<ffi.OSVERSIONINFOEXW>();
-        osvi.ref.dwOSVersionInfoSize = ffi.sizeOf<ffi.OSVERSIONINFOEXW>();
-        ffi.kernel32.GetVersionExW(osvi.cast());
-        return osvi.ref.toWindowsVersion();
+  WindowsVersion get version => using((arena) {
+        final osviex = arena<OSVERSIONINFOEXW>();
+        osviex.ref.dwOSVersionInfoSize = sizeOf<OSVERSIONINFOEXW>();
+        final osvi = osviex.cast<OSVERSIONINFOW>();
+        kernel32Lib.GetVersionExW(osvi);
+        return osviex.ref.toWindowsVersion();
       });
 
   @override
   bool get isWindows10OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WINTHRESHOLD),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WINTHRESHOLD),
+        majorVersion: HIBYTE(WIN32_WINNT_WINTHRESHOLD),
+        minorVersion: LOBYTE(WIN32_WINNT_WINTHRESHOLD),
         servicePackMajor: 0,
       );
 
   @override
   bool get isWindows7OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WIN7),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WIN7),
+        majorVersion: HIBYTE(WIN32_WINNT_WIN7),
+        minorVersion: LOBYTE(WIN32_WINNT_WIN7),
         servicePackMajor: 0,
       );
 
   @override
   bool get isWindows7SP1OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WIN7),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WIN7),
+        majorVersion: HIBYTE(WIN32_WINNT_WIN7),
+        minorVersion: LOBYTE(WIN32_WINNT_WIN7),
         servicePackMajor: 1,
       );
 
   @override
   bool get isWindows8OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WIN8),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WIN8),
+        majorVersion: HIBYTE(WIN32_WINNT_WIN8),
+        minorVersion: LOBYTE(WIN32_WINNT_WIN8),
         servicePackMajor: 0,
       );
 
   @override
   bool get isWindows8Point1OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WINBLUE),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WINBLUE),
+        majorVersion: HIBYTE(WIN32_WINNT_WINBLUE),
+        minorVersion: LOBYTE(WIN32_WINNT_WINBLUE),
         servicePackMajor: 0,
       );
 
   @override
-  bool get isWindowsServer => ffi.using((arena) {
-        final osvi = arena<ffi.OSVERSIONINFOEXW>();
-        osvi.ref.wProductType = ffi.VER_NT_WORKSTATION;
-        final dwlConditionMask = ffi.kernel32.VerSetConditionMask(
+  bool get isWindowsServer => using((arena) {
+        final osvi = arena<OSVERSIONINFOEXW>();
+        osvi.ref.wProductType = VER_NT_WORKSTATION;
+        final dwlConditionMask = kernel32Lib.VerSetConditionMask(
           0,
-          ffi.VER_PRODUCT_TYPE,
-          ffi.VER_EQUAL,
+          VER_PRODUCT_TYPE,
+          VER_EQUAL,
         );
-        return ffi.kernel32.VerifyVersionInfoW(
+        return kernel32Lib.VerifyVersionInfoW(
               osvi,
-              ffi.VER_PRODUCT_TYPE,
+              VER_PRODUCT_TYPE,
               dwlConditionMask,
             ) ==
-            ffi.FALSE;
+            FALSE;
       });
 
   @override
   bool get isWindowsVistaOrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_VISTA),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_VISTA),
+        majorVersion: HIBYTE(WIN32_WINNT_VISTA),
+        minorVersion: LOBYTE(WIN32_WINNT_VISTA),
         servicePackMajor: 0,
       );
 
   @override
   bool get isWindowsVistaSP1OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_VISTA),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_VISTA),
+        majorVersion: HIBYTE(WIN32_WINNT_VISTA),
+        minorVersion: LOBYTE(WIN32_WINNT_VISTA),
         servicePackMajor: 1,
       );
 
   @override
   bool get isWindowsVistaSP2OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_VISTA),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_VISTA),
+        majorVersion: HIBYTE(WIN32_WINNT_VISTA),
+        minorVersion: LOBYTE(WIN32_WINNT_VISTA),
         servicePackMajor: 2,
       );
 
   @override
   bool get isWindowsXPOrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WINXP),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WINXP),
+        majorVersion: HIBYTE(WIN32_WINNT_WINXP),
+        minorVersion: LOBYTE(WIN32_WINNT_WINXP),
         servicePackMajor: 0,
       );
 
   @override
   bool get isWindowsXPSP1OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WINXP),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WINXP),
+        majorVersion: HIBYTE(WIN32_WINNT_WINXP),
+        minorVersion: LOBYTE(WIN32_WINNT_WINXP),
         servicePackMajor: 1,
       );
 
   @override
   bool get isWindowsXPSP2OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WINXP),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WINXP),
+        majorVersion: HIBYTE(WIN32_WINNT_WINXP),
+        minorVersion: LOBYTE(WIN32_WINNT_WINXP),
         servicePackMajor: 2,
       );
 
   @override
   bool get isWindowsXPSP3OrGreater => isWindowsVersionOrGreater(
-        majorVersion: ffi.HIBYTE(ffi.WIN32_WINNT_WINXP),
-        minorVersion: ffi.LOBYTE(ffi.WIN32_WINNT_WINXP),
+        majorVersion: HIBYTE(WIN32_WINNT_WINXP),
+        minorVersion: LOBYTE(WIN32_WINNT_WINXP),
         servicePackMajor: 3,
       );
 
@@ -122,32 +123,30 @@ class WindowsPlatform extends OSPlatform implements Windows {
     int minorVersion = 0,
     int servicePackMajor = 0,
   }) {
-    return ffi.using((arena) {
-      final osvi = arena<ffi.OSVERSIONINFOEXW>();
-      final dwlConditionMask = ffi.kernel32.VerSetConditionMask(
-        ffi.kernel32.VerSetConditionMask(
-          ffi.kernel32.VerSetConditionMask(
+    return using((arena) {
+      final osvi = arena<OSVERSIONINFOEXW>();
+      final dwlConditionMask = kernel32Lib.VerSetConditionMask(
+        kernel32Lib.VerSetConditionMask(
+          kernel32Lib.VerSetConditionMask(
             0,
-            ffi.VER_MAJORVERSION,
-            ffi.VER_GREATER_EQUAL,
+            VER_MAJORVERSION,
+            VER_GREATER_EQUAL,
           ),
-          ffi.VER_MINORVERSION,
-          ffi.VER_GREATER_EQUAL,
+          VER_MINORVERSION,
+          VER_GREATER_EQUAL,
         ),
-        ffi.VER_SERVICEPACKMAJOR,
-        ffi.VER_GREATER_EQUAL,
+        VER_SERVICEPACKMAJOR,
+        VER_GREATER_EQUAL,
       );
       osvi.ref.dwMajorVersion = majorVersion;
       osvi.ref.dwMinorVersion = minorVersion;
       osvi.ref.wServicePackMajor = servicePackMajor;
-      return ffi.kernel32.VerifyVersionInfoW(
+      return kernel32Lib.VerifyVersionInfoW(
             osvi,
-            ffi.VER_MAJORVERSION |
-                ffi.VER_MINORVERSION |
-                ffi.VER_SERVICEPACKMAJOR,
+            VER_MAJORVERSION | VER_MINORVERSION | VER_SERVICEPACKMAJOR,
             dwlConditionMask,
           ) !=
-          ffi.FALSE;
+          FALSE;
     });
   }
 }
@@ -208,7 +207,7 @@ enum WindowsType {
   server,
 }
 
-extension on ffi.OSVERSIONINFOEXW {
+extension on OSVERSIONINFOEXW {
   WindowsVersion toWindowsVersion() {
     final charCodes = <int>[];
     for (var i = 0; i < 128; i++) {
@@ -234,11 +233,11 @@ extension on ffi.OSVERSIONINFOEXW {
 extension on int {
   WindowsType toWindowsType() {
     switch (this) {
-      case ffi.VER_NT_WORKSTATION:
+      case VER_NT_WORKSTATION:
         return WindowsType.workstation;
-      case ffi.VER_NT_DOMAIN_CONTROLLER:
+      case VER_NT_DOMAIN_CONTROLLER:
         return WindowsType.domainController;
-      case ffi.VER_NT_SERVER:
+      case VER_NT_SERVER:
         return WindowsType.server;
       default:
         return WindowsType.unknown;

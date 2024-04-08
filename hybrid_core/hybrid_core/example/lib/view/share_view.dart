@@ -5,9 +5,7 @@ import 'package:hybrid_core/hybrid_core.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ShareView extends StatelessWidget {
-  final OS os;
-
-  ShareView({super.key}) : os = OS();
+  const ShareView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +38,7 @@ class ShareView extends StatelessWidget {
                       size: 80.0,
                     ),
                   );
-                  final memory = await os.renderWidgetToMemory(
+                  final memory = await renderWidgetToMemory(
                     context: context,
                     widget: widget,
                     size: const Size.square(200.0),

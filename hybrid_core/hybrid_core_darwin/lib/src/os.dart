@@ -1,18 +1,22 @@
 // ignore_for_file: camel_case_types
 
+import 'dart:ffi';
+
+import 'package:ffi/ffi.dart';
 import 'package:hybrid_core_platform_interface/hybrid_core_platform_interface.dart';
 
-import 'ffi.dart' as ffi;
+import 'ffi.dart';
+import 'ffi.g.dart';
 
 class DarwinPlatform extends OSPlatform implements Darwin {
-  final ffi.NSProcessInfo info;
+  final NSProcessInfo info;
 
-  DarwinPlatform() : info = ffi.NSProcessInfo.alloc(ffi.foundation).init();
+  DarwinPlatform() : info = NSProcessInfo.alloc(foundationLib).init();
 
   @override
   DarwinVersion get version {
-    return ffi.using((arena) {
-      final nsVersionPtr = arena<ffi.NSOperatingSystemVersion>();
+    return using((arena) {
+      final nsVersionPtr = arena<NSOperatingSystemVersion>();
       info.getOperatingSystemVersion(nsVersionPtr);
       final nsVersion = nsVersionPtr.ref;
       return DarwinVersion(
@@ -25,8 +29,8 @@ class DarwinPlatform extends OSPlatform implements Darwin {
 
   @override
   bool atLeastVersion(DarwinVersion version) {
-    return ffi.using((arena) {
-      final nsVersionPtr = arena<ffi.NSOperatingSystemVersion>();
+    return using((arena) {
+      final nsVersionPtr = arena<NSOperatingSystemVersion>();
       final nsVersion = nsVersionPtr.ref;
       nsVersion.majorVersion = version.majorVersion;
       nsVersion.minorVersion = version.minorVersion;

@@ -23,7 +23,7 @@ flutter pub add hybrid_core
 
 1. Get the `OS` instance.
 ``` Dart
-final os = OS();
+final os = OS.instance;
 ```
 2. Check the OS type.
 ``` Dart
@@ -79,7 +79,7 @@ final isWindowsVersionOrGreater = os.isWindowsVersionOrGreater(
 ```
 5. Render a widget to memory.
 ``` Dart
-final memory = await os.renderWidgetToMemory(
+final memory = await renderWidgetToMemory(
   context: context,
   widget: widget,
   size: size,

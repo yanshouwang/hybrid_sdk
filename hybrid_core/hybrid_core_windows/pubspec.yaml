@@ -1,6 +1,6 @@
 name: hybrid_core_windows
 description: "Windows implementation of the hybrid_core plugin."
-version: 0.2.0
+version: 0.3.4
 homepage: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hybrid_core_platform_interface: ^0.2.0
+  hybrid_core_platform_interface: ^0.3.1
   ffi: ^2.1.0
 
 dev_dependencies:
@@ -25,4 +25,4 @@ flutter:
     platforms:
       windows:
         ffiPlugin: true
-        dartPluginClass: HybridCoreWindows
+        dartPluginClass: HybridCoreWindowsPlugin

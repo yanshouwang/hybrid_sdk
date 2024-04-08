@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hybrid_core/hybrid_core.dart';
 
 class OSView extends StatelessWidget {
-  final OS os;
-
-  OSView({super.key}) : os = OS();
+  const OSView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final os = this.os;
+    final os = OS.instance;
     final String version;
     final bool atLeastVersion;
     if (os is Android) {
-      version = 'Android API${os.api}';
+      version = 'Android API ${os.api}';
       atLeastVersion = os.atLeastAPI(33);
     } else if (os is iOS) {
       version = 'iOS ${os.version}';

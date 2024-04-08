@@ -10,7 +10,8 @@ output:
     path: src/
     library_name: hybrid_core_android
   dart:
-    path: lib/src/
+    structure: single_file
+    path: lib/src/jni.g.dart
 classes:
   - android.os.Build
 preamble: |

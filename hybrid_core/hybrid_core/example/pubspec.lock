@@ -152,47 +152,47 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.2.0"
+    version: "0.3.0"
   hybrid_core_android:
     dependency: transitive
     description:
       name: hybrid_core_android
-      sha256: c1ef14247ce8e38a7911215ad3ab44066e40f59efd6871845b9f34817ba3f886
+      sha256: ee87910741d582cf0a54ffb1a5e4ce78392efe6ad51ba259250f378804f090d9
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   hybrid_core_darwin:
     dependency: transitive
     description:
       name: hybrid_core_darwin
-      sha256: "7f92156ebbd94f37df47982f7f2c82321d6cee3cf1cdef9fe31c63278145e9ac"
+      sha256: bb4120cc7517d35385b294c801759a6ceb491f979d297904be6a0518236ae588
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.1"
   hybrid_core_linux:
     dependency: transitive
     description:
       name: hybrid_core_linux
-      sha256: "3baeaa2d7a56c7eddcfb7b1118099ab690a6d2db71535676cfdd7a68cdc109ef"
+      sha256: e90a9c1a430ba22fd3ad7c94ac5014e61fbef80fcbd887026b6432877189fe2f
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   hybrid_core_platform_interface:
     dependency: transitive
     description:
       name: hybrid_core_platform_interface
-      sha256: "3683bd7d2bc454c3f4349c4c385bce5ff81c6b0aba9aa075a7f0f080ff147e6a"
+      sha256: "6686d3338aba6bd3ff373ffd75d8c3faae623aba999eaa77cd7cb2b1a46fab1d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.1"
   hybrid_core_windows:
     dependency: transitive
     description:
       name: hybrid_core_windows
-      sha256: "1907f7599e704994e6be424f45a74bb56cbc4a9922191c6940b7f20fc2be370e"
+      sha256: "463eb23d90d29ff29b4d58b8ffd127f32a3b530b839556bc3590d6f320d8b813"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.4"
   integration_test:
     dependency: "direct dev"
     description: flutter

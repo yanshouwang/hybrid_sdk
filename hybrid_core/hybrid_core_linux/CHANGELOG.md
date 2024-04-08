@@ -1,7 +1,12 @@
-## 0.0.1
+## 0.3.0
 
-* Add support for Linux.
+* Implement `hybrid_core_platform_interface` 0.3.1.
+* Move `HybridCoreLinux` to `HybridCoreLinuxPlugin`.
 
 ## 0.2.0
 
 * Implement `OSPlatform` interface.
+
+## 0.0.1
+
+* Add support for Linux.

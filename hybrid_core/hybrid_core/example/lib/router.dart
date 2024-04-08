@@ -16,7 +16,7 @@ final routerConfig = GoRouter(
           routes: [
             GoRoute(
               path: '/os',
-              builder: (context, state) => OSView(),
+              builder: (context, state) => const OSView(),
             ),
           ],
         ),
@@ -24,7 +24,7 @@ final routerConfig = GoRouter(
           routes: [
             GoRoute(
               path: '/share',
-              builder: (context, state) => ShareView(),
+              builder: (context, state) => const ShareView(),
             ),
           ],
         ),
