@@ -7,14 +7,13 @@ import 'ffi.dart';
 import 'ffi.g.dart';
 
 class WindowsPlatform extends OSPlatform implements Windows {
-  WindowsPlatform();
-
   @override
   WindowsVersion get version => using((arena) {
-        final osvi = arena<OSVERSIONINFOEXW>();
-        osvi.ref.dwOSVersionInfoSize = sizeOf<OSVERSIONINFOEXW>();
-        kernel32.GetVersionExW(osvi.cast());
-        return osvi.ref.toWindowsVersion();
+        final osviex = arena<OSVERSIONINFOEXW>();
+        osviex.ref.dwOSVersionInfoSize = sizeOf<OSVERSIONINFOEXW>();
+        final osvi = osviex.cast<OSVERSIONINFOW>();
+        kernel32Lib.GetVersionExW(osvi);
+        return osviex.ref.toWindowsVersion();
       });
 
   @override
@@ -56,12 +55,12 @@ class WindowsPlatform extends OSPlatform implements Windows {
   bool get isWindowsServer => using((arena) {
         final osvi = arena<OSVERSIONINFOEXW>();
         osvi.ref.wProductType = VER_NT_WORKSTATION;
-        final dwlConditionMask = kernel32.VerSetConditionMask(
+        final dwlConditionMask = kernel32Lib.VerSetConditionMask(
           0,
           VER_PRODUCT_TYPE,
           VER_EQUAL,
         );
-        return kernel32.VerifyVersionInfoW(
+        return kernel32Lib.VerifyVersionInfoW(
               osvi,
               VER_PRODUCT_TYPE,
               dwlConditionMask,
@@ -126,9 +125,9 @@ class WindowsPlatform extends OSPlatform implements Windows {
   }) {
     return using((arena) {
       final osvi = arena<OSVERSIONINFOEXW>();
-      final dwlConditionMask = kernel32.VerSetConditionMask(
-        kernel32.VerSetConditionMask(
-          kernel32.VerSetConditionMask(
+      final dwlConditionMask = kernel32Lib.VerSetConditionMask(
+        kernel32Lib.VerSetConditionMask(
+          kernel32Lib.VerSetConditionMask(
             0,
             VER_MAJORVERSION,
             VER_GREATER_EQUAL,
@@ -142,7 +141,7 @@ class WindowsPlatform extends OSPlatform implements Windows {
       osvi.ref.dwMajorVersion = majorVersion;
       osvi.ref.dwMinorVersion = minorVersion;
       osvi.ref.wServicePackMajor = servicePackMajor;
-      return kernel32.VerifyVersionInfoW(
+      return kernel32Lib.VerifyVersionInfoW(
             osvi,
             VER_MAJORVERSION | VER_MINORVERSION | VER_SERVICEPACKMAJOR,
             dwlConditionMask,
