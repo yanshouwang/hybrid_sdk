@@ -13,7 +13,7 @@ dependencies:
   hybrid_core_platform_interface: ^0.3.1
   hybrid_core_android: ^0.3.0
   hybrid_core_darwin: ^0.3.1
-  hybrid_core_windows: ^0.3.3
+  hybrid_core_windows: ^0.3.4
   hybrid_core_linux: ^0.3.0
 
 dev_dependencies:
@@ -24,8 +24,8 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
-      # android:
-      #   default_package: hybrid_core_android
+      android:
+        default_package: hybrid_core_android
       ios:
         default_package: hybrid_core_darwin
       macos:
