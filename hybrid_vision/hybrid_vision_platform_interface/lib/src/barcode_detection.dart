@@ -4,16 +4,16 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'core.dart';
 
-abstract class BarcodePlatform extends PlatformInterface {
-  /// Constructs a BarcodePlatform.
-  BarcodePlatform() : super(token: _token);
+abstract class BarcodeDetectionPlatform extends PlatformInterface {
+  /// Constructs a BarcodeDetectionPlatform.
+  BarcodeDetectionPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static BarcodePlatform? _instance;
+  static BarcodeDetectionPlatform? _instance;
 
-  /// The default instance of [BarcodePlatform] to use.
-  static BarcodePlatform get instance {
+  /// The default instance of [BarcodeDetectionPlatform] to use.
+  static BarcodeDetectionPlatform get instance {
     final instance = _instance;
     if (instance == null) {
       throw UnimplementedError('Barcode is not implemented on this platform.');
@@ -22,9 +22,9 @@ abstract class BarcodePlatform extends PlatformInterface {
   }
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [BarcodePlatform] when
+  /// platform-specific class that extends [BarcodeDetectionPlatform] when
   /// they register themselves.
-  static set instance(BarcodePlatform instance) {
+  static set instance(BarcodeDetectionPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
@@ -40,7 +40,7 @@ abstract class BarcodeDetector {
   factory BarcodeDetector({
     List<BarcodeFormat>? formats,
   }) =>
-      BarcodePlatform.instance.createDetector(
+      BarcodeDetectionPlatform.instance.createDetector(
         formats: formats,
       );
 }
