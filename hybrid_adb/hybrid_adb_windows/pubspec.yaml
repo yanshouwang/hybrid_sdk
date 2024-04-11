@@ -1,0 +1,27 @@
+name: hybrid_adb_windows
+description: "Windows implementation of the hybrid_adb plugin."
+version: 0.0.1
+homepage: "https://github.com/yanshouwang/hybrid_sdk"
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hybrid_adb_platform_interface:
+    path: ../hybrid_adb_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  plugin:
+    implements: hybrid_adb
+    platforms:
+      windows:
+        pluginClass: HybridAdbWindowsPluginCApi
+        dartPluginClass: WindowsADB
