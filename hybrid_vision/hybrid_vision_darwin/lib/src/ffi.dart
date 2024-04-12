@@ -7,9 +7,9 @@ import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interfac
 
 import 'ffi.g.dart';
 
-const visionPath = '/System/Library/Frameworks/Vision.framework/Vision';
-final visionDyLib = DynamicLibrary.open(visionPath);
-final visionLib = HybridVisionDarwinLibrary(visionDyLib);
+const _visionPath = '/System/Library/Frameworks/Vision.framework/Vision';
+final _visionLib = DynamicLibrary.open(_visionPath);
+final visionLib = HybridVisionDarwinLibrary(_visionLib);
 
 extension MemoryVisionImageX on MemoryVisionImage {
   VNImageRequestHandler toVNImageRequestHandler() {

@@ -10,7 +10,7 @@ import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interfac
 import 'ffi.dart';
 import 'ffi.g.dart';
 
-class DarwinBarcodeDetectionPlatform extends BarcodeDetectionPlatform {
+base class DarwinBarcodeDetectionImpl extends BarcodeDetectionImpl {
   @override
   BarcodeDetector createDetector({
     List<BarcodeFormat>? formats,
