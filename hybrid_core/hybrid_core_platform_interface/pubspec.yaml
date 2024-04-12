@@ -1,11 +1,11 @@
 name: hybrid_core_platform_interface
 description: "A common platform interface for the hybrid_core plugin."
-version: 0.3.1
+version: 0.4.0
 homepage: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
 
 dependencies:
   flutter:

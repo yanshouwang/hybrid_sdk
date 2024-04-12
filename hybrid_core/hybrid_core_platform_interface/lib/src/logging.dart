@@ -1,6 +1,6 @@
 import 'package:logging/logging.dart';
 
-abstract class LogController {
+abstract interface class LogController {
   /// Effective level considering the levels established in this logger's
   /// parents (when [hierarchicalLoggingEnabled] is true).
   Level get logLevel;
