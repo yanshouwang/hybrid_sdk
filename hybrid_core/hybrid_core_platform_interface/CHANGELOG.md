@@ -1,3 +1,12 @@
+## 0.5.0
+
+* Move `NativeOS` to `OSImpl`.
+
+## 0.4.0
+
+* Add `interface` and `base` keyword to corresponding classes.
+* Move `OSPlatform` to `NativeOS`.
+
 ## 0.3.1
 
 * Remove `OS#renderWidgetToMemory`.

@@ -1,2 +1,2 @@
-export 'src/hybrid_core_darwin_plugin.dart';
+export 'src/core.dart';
 export 'src/os.dart';
