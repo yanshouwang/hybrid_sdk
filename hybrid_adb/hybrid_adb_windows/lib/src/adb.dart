@@ -1,10 +1,12 @@
 import 'package:hybrid_adb_platform_interface/hybrid_adb_platform_interface.dart';
 
-base class WindowsADB extends NativeADB {
+abstract class HybridADBWindowsPlugin {
   static void registerWith() {
-    NativeADB.instance = WindowsADB();
+    ADBImpl.instance = WindowsADBImpl();
   }
+}
 
+base class WindowsADBImpl extends ADBImpl {
   @override
   String get executable => 'platform-tools/adb.exe';
 }

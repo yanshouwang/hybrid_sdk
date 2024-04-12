@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract base class NativeADB extends PlatformInterface implements ADB {
-  /// Constructs a [NativeADB].
-  NativeADB() : super(token: _token);
+abstract base class ADBImpl extends PlatformInterface implements ADB {
+  /// Constructs a [ADBImpl].
+  ADBImpl() : super(token: _token);
 
   static final Object _token = Object();
 
-  static NativeADB? _instance;
+  static ADBImpl? _instance;
 
-  /// The default instance of [NativeADB] to use.
-  static NativeADB get instance {
+  /// The default instance of [ADBImpl] to use.
+  static ADBImpl get instance {
     final instance = _instance;
     if (instance == null) {
       throw UnimplementedError('ADB is not implemented on this platform.');
@@ -20,9 +20,9 @@ abstract base class NativeADB extends PlatformInterface implements ADB {
   }
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [NativeADB] when
+  /// platform-specific class that extends [ADBImpl] when
   /// they register themselves.
-  static set instance(NativeADB instance) {
+  static set instance(ADBImpl instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
@@ -44,7 +44,7 @@ abstract base class NativeADB extends PlatformInterface implements ADB {
 }
 
 abstract interface class ADB {
-  static ADB get instance => NativeADB.instance;
+  static ADB get instance => ADBImpl.instance;
 
   Future<String> execute(List<String> commandArguments);
 }

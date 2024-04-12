@@ -24,4 +24,4 @@ flutter:
     platforms:
       windows:
         pluginClass: HybridAdbWindowsPluginCApi
-        dartPluginClass: WindowsADB
+        dartPluginClass: HybridADBWindowsPlugin
