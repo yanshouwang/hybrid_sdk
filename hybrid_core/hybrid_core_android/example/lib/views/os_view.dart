@@ -35,7 +35,7 @@ class OSView extends StatelessWidget {
               height: 20.0,
             ),
             Text(
-              'Version at least\nAndroid API 33+\niOS 17.0+\nmacOS 14.0+\nWindows 10+',
+              'Version at least\nAndroid API 33+',
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),

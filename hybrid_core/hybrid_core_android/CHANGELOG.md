@@ -1,7 +1,7 @@
 ## 0.5.0
 
 * Add example.
-* Move `HybridCoreAndroidPlugin` to `CoreAndroidPlugin`.
+* Move `HybridCoreAndroidPlugin` to `AndroidCorePlugin`.
 * Move `AndroidPlatform` to `AndroidImpl`.
 
 ## 0.3.0
