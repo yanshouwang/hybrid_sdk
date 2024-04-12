@@ -1,15 +1,15 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract base class NativeOS extends PlatformInterface implements OS {
-  /// Constructs a [NativeOS].
-  NativeOS() : super(token: _token);
+abstract base class OSImpl extends PlatformInterface implements OS {
+  /// Constructs a [OSImpl].
+  OSImpl() : super(token: _token);
 
   static final Object _token = Object();
 
-  static NativeOS? _instance;
+  static OSImpl? _instance;
 
-  /// The default instance of [NativeOS] to use.
-  static NativeOS get instance {
+  /// The default instance of [OSImpl] to use.
+  static OSImpl get instance {
     final instance = _instance;
     if (instance == null) {
       throw UnimplementedError('OS is not implemented on this platform.');
@@ -18,14 +18,14 @@ abstract base class NativeOS extends PlatformInterface implements OS {
   }
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [NativeOS] when
+  /// platform-specific class that extends [OSImpl] when
   /// they register themselves.
-  static set instance(NativeOS instance) {
+  static set instance(OSImpl instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 }
 
 abstract interface class OS {
-  static OS get instance => NativeOS.instance;
+  static OS get instance => OSImpl.instance;
 }

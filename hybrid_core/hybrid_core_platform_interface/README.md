@@ -9,9 +9,9 @@ same interface.
 # Usage
 
 To implement a new platform-specific implementation of `hybrid_core`, extend 
-[`NativeOS`][2] with an implementation that performs the
+[`OSImpl`][2] with an implementation that performs the
 platform-specific behavior, and when you register your plugin, set the 
-default `NativeOS` by calling `NativeOS.instance = NativeOSImpl()`.
+default `OSImpl` by calling `OSImpl.instance = XXXOSImpl()`.
 
 # Note on breaking changes
 
