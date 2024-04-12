@@ -1,3 +1,7 @@
+## 0.5.1
+
+* Move `AndroidCorePlugin` to `HybridCoreAndroidPlugin`.
+
 ## 0.5.0
 
 * Add example.

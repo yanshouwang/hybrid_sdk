@@ -1,3 +1,7 @@
+## 0.5.1
+
+* Move `WindowsCorePlugin` to `HybridCoreWindowsPlugin`.
+
 ## 0.5.0
 
 * Add example.
