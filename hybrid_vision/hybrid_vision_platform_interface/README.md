@@ -9,9 +9,9 @@ interface.
 # Usage
 
 To implement a new platform-specific implementation of `hybrid_vision`, extend 
-[`BarcodeDetectionPlatform`][2] with an implementation that performs the platform-specific 
+[`BarcodeDetectionImpl`][2] with an implementation that performs the platform-specific 
 behavior, and when you register your plugin, set the default `BarcodeDetectionPlatform` by 
-calling `BarcodeDetectionPlatform.instance = XXXBarcodeDetectionPlatform()`.
+calling `BarcodeDetectionImpl.instance = XXXBarcodeDetectionImpl()`.
 
 # Note on breaking changes
 

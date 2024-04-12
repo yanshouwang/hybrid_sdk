@@ -4,6 +4,6 @@ import 'barcode_detection.dart';
 
 abstract class HybridVisionDarwinPlugin {
   static void registerWith() {
-    BarcodeDetectionPlatform.instance = DarwinBarcodeDetectionPlatform();
+    BarcodeDetectionImpl.instance = DarwinBarcodeDetectionImpl();
   }
 }

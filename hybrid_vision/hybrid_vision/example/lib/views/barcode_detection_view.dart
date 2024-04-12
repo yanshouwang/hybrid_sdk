@@ -7,14 +7,14 @@ import 'package:image_picker/image_picker.dart';
 
 typedef SizeListener = void Function(int width, int height);
 
-class BarcodeView extends StatefulWidget {
-  const BarcodeView({super.key});
+class BarcodeDetectionView extends StatefulWidget {
+  const BarcodeDetectionView({super.key});
 
   @override
-  State<BarcodeView> createState() => _BarcodeViewState();
+  State<BarcodeDetectionView> createState() => _BarcodeDetectionViewState();
 }
 
-class _BarcodeViewState extends State<BarcodeView> {
+class _BarcodeDetectionViewState extends State<BarcodeDetectionView> {
   late final ImagePicker imagePicker;
   late final BarcodeDetector detector;
   late final ValueNotifier<bool> detecting;

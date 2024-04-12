@@ -5,6 +5,7 @@
 // ignore_for_file: camel_case_extensions
 // ignore_for_file: camel_case_types
 // ignore_for_file: constant_identifier_names
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: no_leading_underscores_for_local_identifiers
@@ -32,9 +33,9 @@ class Bitmap_CompressFormat extends jni.JObject {
   @override
   late final jni.JObjType<Bitmap_CompressFormat> $type = type;
 
-  Bitmap_CompressFormat.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Bitmap_CompressFormat.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Bitmap_CompressFormatType();
@@ -46,7 +47,7 @@ class Bitmap_CompressFormat extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$CompressFormat JPEG
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_CompressFormat get JPEG =>
-      const $Bitmap_CompressFormatType().fromRef(_get_JPEG().object);
+      _get_JPEG().object(const $Bitmap_CompressFormatType());
 
   static final _get_PNG =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -56,7 +57,7 @@ class Bitmap_CompressFormat extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$CompressFormat PNG
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_CompressFormat get PNG =>
-      const $Bitmap_CompressFormatType().fromRef(_get_PNG().object);
+      _get_PNG().object(const $Bitmap_CompressFormatType());
 
   static final _get_WEBP =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -66,7 +67,7 @@ class Bitmap_CompressFormat extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$CompressFormat WEBP
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_CompressFormat get WEBP =>
-      const $Bitmap_CompressFormatType().fromRef(_get_WEBP().object);
+      _get_WEBP().object(const $Bitmap_CompressFormatType());
 
   static final _get_WEBP_LOSSY =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -76,7 +77,7 @@ class Bitmap_CompressFormat extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$CompressFormat WEBP_LOSSY
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_CompressFormat get WEBP_LOSSY =>
-      const $Bitmap_CompressFormatType().fromRef(_get_WEBP_LOSSY().object);
+      _get_WEBP_LOSSY().object(const $Bitmap_CompressFormatType());
 
   static final _get_WEBP_LOSSLESS =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -86,7 +87,7 @@ class Bitmap_CompressFormat extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$CompressFormat WEBP_LOSSLESS
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_CompressFormat get WEBP_LOSSLESS =>
-      const $Bitmap_CompressFormatType().fromRef(_get_WEBP_LOSSLESS().object);
+      _get_WEBP_LOSSLESS().object(const $Bitmap_CompressFormatType());
 
   static final _values =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -96,8 +97,7 @@ class Bitmap_CompressFormat extends jni.JObject {
   /// from: static public android.graphics.Bitmap$CompressFormat[] values()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<Bitmap_CompressFormat> values() {
-    return const jni.JArrayType($Bitmap_CompressFormatType())
-        .fromRef(_values().object);
+    return _values().object(const jni.JArrayType($Bitmap_CompressFormatType()));
   }
 
   static final _valueOf = jniLookup<
@@ -111,8 +111,8 @@ class Bitmap_CompressFormat extends jni.JObject {
   static Bitmap_CompressFormat valueOf(
     jni.JString string,
   ) {
-    return const $Bitmap_CompressFormatType()
-        .fromRef(_valueOf(string.reference).object);
+    return _valueOf(string.reference.pointer)
+        .object(const $Bitmap_CompressFormatType());
   }
 }
 
@@ -124,8 +124,8 @@ final class $Bitmap_CompressFormatType
   String get signature => r"Landroid/graphics/Bitmap$CompressFormat;";
 
   @override
-  Bitmap_CompressFormat fromRef(jni.JObjectPtr ref) =>
-      Bitmap_CompressFormat.fromRef(ref);
+  Bitmap_CompressFormat fromReference(jni.JReference reference) =>
+      Bitmap_CompressFormat.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -148,9 +148,9 @@ class Bitmap_Config extends jni.JObject {
   @override
   late final jni.JObjType<Bitmap_Config> $type = type;
 
-  Bitmap_Config.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Bitmap_Config.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Bitmap_ConfigType();
@@ -162,7 +162,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config ALPHA_8
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get ALPHA_8 =>
-      const $Bitmap_ConfigType().fromRef(_get_ALPHA_8().object);
+      _get_ALPHA_8().object(const $Bitmap_ConfigType());
 
   static final _get_RGB_565 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -172,7 +172,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config RGB_565
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get RGB_565 =>
-      const $Bitmap_ConfigType().fromRef(_get_RGB_565().object);
+      _get_RGB_565().object(const $Bitmap_ConfigType());
 
   static final _get_ARGB_4444 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -182,7 +182,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config ARGB_4444
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get ARGB_4444 =>
-      const $Bitmap_ConfigType().fromRef(_get_ARGB_4444().object);
+      _get_ARGB_4444().object(const $Bitmap_ConfigType());
 
   static final _get_ARGB_8888 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -192,7 +192,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config ARGB_8888
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get ARGB_8888 =>
-      const $Bitmap_ConfigType().fromRef(_get_ARGB_8888().object);
+      _get_ARGB_8888().object(const $Bitmap_ConfigType());
 
   static final _get_RGBA_F16 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -202,7 +202,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config RGBA_F16
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get RGBA_F16 =>
-      const $Bitmap_ConfigType().fromRef(_get_RGBA_F16().object);
+      _get_RGBA_F16().object(const $Bitmap_ConfigType());
 
   static final _get_HARDWARE =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -212,7 +212,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config HARDWARE
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get HARDWARE =>
-      const $Bitmap_ConfigType().fromRef(_get_HARDWARE().object);
+      _get_HARDWARE().object(const $Bitmap_ConfigType());
 
   static final _get_RGBA_1010102 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -222,7 +222,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public final android.graphics.Bitmap$Config RGBA_1010102
   /// The returned object must be released after use, by calling the [release] method.
   static Bitmap_Config get RGBA_1010102 =>
-      const $Bitmap_ConfigType().fromRef(_get_RGBA_1010102().object);
+      _get_RGBA_1010102().object(const $Bitmap_ConfigType());
 
   static final _values =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -232,7 +232,7 @@ class Bitmap_Config extends jni.JObject {
   /// from: static public android.graphics.Bitmap$Config[] values()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<Bitmap_Config> values() {
-    return const jni.JArrayType($Bitmap_ConfigType()).fromRef(_values().object);
+    return _values().object(const jni.JArrayType($Bitmap_ConfigType()));
   }
 
   static final _valueOf = jniLookup<
@@ -246,8 +246,8 @@ class Bitmap_Config extends jni.JObject {
   static Bitmap_Config valueOf(
     jni.JString string,
   ) {
-    return const $Bitmap_ConfigType()
-        .fromRef(_valueOf(string.reference).object);
+    return _valueOf(string.reference.pointer)
+        .object(const $Bitmap_ConfigType());
   }
 }
 
@@ -258,7 +258,8 @@ final class $Bitmap_ConfigType extends jni.JObjType<Bitmap_Config> {
   String get signature => r"Landroid/graphics/Bitmap$Config;";
 
   @override
-  Bitmap_Config fromRef(jni.JObjectPtr ref) => Bitmap_Config.fromRef(ref);
+  Bitmap_Config fromReference(jni.JReference reference) =>
+      Bitmap_Config.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -281,9 +282,9 @@ class Bitmap extends jni.JObject {
   @override
   late final jni.JObjType<Bitmap> $type = type;
 
-  Bitmap.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Bitmap.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BitmapType();
@@ -295,11 +296,10 @@ class Bitmap extends jni.JObject {
   /// from: static public final android.os.Parcelable$Creator CREATOR
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get CREATOR =>
-      const jni.JObjectType().fromRef(_get_CREATOR().object);
+      _get_CREATOR().object(const jni.JObjectType());
 
   /// from: static public final int DENSITY_NONE
   static const DENSITY_NONE = 0;
-
   static final _getDensity = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -308,7 +308,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getDensity()
   int getDensity() {
-    return _getDensity(reference).integer;
+    return _getDensity(reference.pointer).integer;
   }
 
   static final _setDensity = jniLookup<
@@ -321,7 +321,7 @@ class Bitmap extends jni.JObject {
   void setDensity(
     int i,
   ) {
-    return _setDensity(reference, i).check();
+    _setDensity(reference.pointer, i).check();
   }
 
   static final _reconfigure = jniLookup<
@@ -338,7 +338,7 @@ class Bitmap extends jni.JObject {
     int i1,
     Bitmap_Config config,
   ) {
-    return _reconfigure(reference, i, i1, config.reference).check();
+    _reconfigure(reference.pointer, i, i1, config.reference.pointer).check();
   }
 
   static final _setWidth = jniLookup<
@@ -351,7 +351,7 @@ class Bitmap extends jni.JObject {
   void setWidth(
     int i,
   ) {
-    return _setWidth(reference, i).check();
+    _setWidth(reference.pointer, i).check();
   }
 
   static final _setHeight = jniLookup<
@@ -364,7 +364,7 @@ class Bitmap extends jni.JObject {
   void setHeight(
     int i,
   ) {
-    return _setHeight(reference, i).check();
+    _setHeight(reference.pointer, i).check();
   }
 
   static final _setConfig = jniLookup<
@@ -379,7 +379,7 @@ class Bitmap extends jni.JObject {
   void setConfig(
     Bitmap_Config config,
   ) {
-    return _setConfig(reference, config.reference).check();
+    _setConfig(reference.pointer, config.reference.pointer).check();
   }
 
   static final _recycle = jniLookup<
@@ -389,7 +389,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public void recycle()
   void recycle() {
-    return _recycle(reference).check();
+    _recycle(reference.pointer).check();
   }
 
   static final _isRecycled = jniLookup<
@@ -400,7 +400,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public boolean isRecycled()
   bool isRecycled() {
-    return _isRecycled(reference).boolean;
+    return _isRecycled(reference.pointer).boolean;
   }
 
   static final _getGenerationId = jniLookup<
@@ -411,7 +411,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getGenerationId()
   int getGenerationId() {
-    return _getGenerationId(reference).integer;
+    return _getGenerationId(reference.pointer).integer;
   }
 
   static final _copyPixelsToBuffer = jniLookup<
@@ -426,7 +426,7 @@ class Bitmap extends jni.JObject {
   void copyPixelsToBuffer(
     jni.JBuffer buffer,
   ) {
-    return _copyPixelsToBuffer(reference, buffer.reference).check();
+    _copyPixelsToBuffer(reference.pointer, buffer.reference.pointer).check();
   }
 
   static final _copyPixelsFromBuffer = jniLookup<
@@ -441,7 +441,7 @@ class Bitmap extends jni.JObject {
   void copyPixelsFromBuffer(
     jni.JBuffer buffer,
   ) {
-    return _copyPixelsFromBuffer(reference, buffer.reference).check();
+    _copyPixelsFromBuffer(reference.pointer, buffer.reference.pointer).check();
   }
 
   static final _copy = jniLookup<
@@ -458,8 +458,8 @@ class Bitmap extends jni.JObject {
     Bitmap_Config config,
     bool z,
   ) {
-    return const $BitmapType()
-        .fromRef(_copy(reference, config.reference, z ? 1 : 0).object);
+    return _copy(reference.pointer, config.reference.pointer, z ? 1 : 0)
+        .object(const $BitmapType());
   }
 
   static final _asShared = jniLookup<
@@ -471,7 +471,7 @@ class Bitmap extends jni.JObject {
   /// from: public android.graphics.Bitmap asShared()
   /// The returned object must be released after use, by calling the [release] method.
   Bitmap asShared() {
-    return const $BitmapType().fromRef(_asShared(reference).object);
+    return _asShared(reference.pointer).object(const $BitmapType());
   }
 
   static final _wrapHardwareBuffer = jniLookup<
@@ -488,9 +488,9 @@ class Bitmap extends jni.JObject {
     jni.JObject hardwareBuffer,
     jni.JObject colorSpace,
   ) {
-    return const $BitmapType().fromRef(
-        _wrapHardwareBuffer(hardwareBuffer.reference, colorSpace.reference)
-            .object);
+    return _wrapHardwareBuffer(
+            hardwareBuffer.reference.pointer, colorSpace.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createScaledBitmap = jniLookup<
@@ -508,8 +508,8 @@ class Bitmap extends jni.JObject {
     int i1,
     bool z,
   ) {
-    return const $BitmapType().fromRef(
-        _createScaledBitmap(bitmap.reference, i, i1, z ? 1 : 0).object);
+    return _createScaledBitmap(bitmap.reference.pointer, i, i1, z ? 1 : 0)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap = jniLookup<
@@ -523,7 +523,7 @@ class Bitmap extends jni.JObject {
   static Bitmap createBitmap(
     Bitmap bitmap,
   ) {
-    return const $BitmapType().fromRef(_createBitmap(bitmap.reference).object);
+    return _createBitmap(bitmap.reference.pointer).object(const $BitmapType());
   }
 
   static final _createBitmap1 = jniLookup<
@@ -542,8 +542,8 @@ class Bitmap extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return const $BitmapType()
-        .fromRef(_createBitmap1(bitmap.reference, i, i1, i2, i3).object);
+    return _createBitmap1(bitmap.reference.pointer, i, i1, i2, i3)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap2 = jniLookup<
@@ -571,9 +571,9 @@ class Bitmap extends jni.JObject {
     jni.JObject matrix,
     bool z,
   ) {
-    return const $BitmapType().fromRef(_createBitmap2(
-            bitmap.reference, i, i1, i2, i3, matrix.reference, z ? 1 : 0)
-        .object);
+    return _createBitmap2(bitmap.reference.pointer, i, i1, i2, i3,
+            matrix.reference.pointer, z ? 1 : 0)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap3 = jniLookup<
@@ -589,8 +589,8 @@ class Bitmap extends jni.JObject {
     int i1,
     Bitmap_Config config,
   ) {
-    return const $BitmapType()
-        .fromRef(_createBitmap3(i, i1, config.reference).object);
+    return _createBitmap3(i, i1, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap4 = jniLookup<
@@ -609,9 +609,9 @@ class Bitmap extends jni.JObject {
     int i1,
     Bitmap_Config config,
   ) {
-    return const $BitmapType().fromRef(
-        _createBitmap4(displayMetrics.reference, i, i1, config.reference)
-            .object);
+    return _createBitmap4(
+            displayMetrics.reference.pointer, i, i1, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap5 = jniLookup<
@@ -629,8 +629,8 @@ class Bitmap extends jni.JObject {
     Bitmap_Config config,
     bool z,
   ) {
-    return const $BitmapType()
-        .fromRef(_createBitmap5(i, i1, config.reference, z ? 1 : 0).object);
+    return _createBitmap5(i, i1, config.reference.pointer, z ? 1 : 0)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap6 = jniLookup<
@@ -654,9 +654,9 @@ class Bitmap extends jni.JObject {
     bool z,
     jni.JObject colorSpace,
   ) {
-    return const $BitmapType().fromRef(
-        _createBitmap6(i, i1, config.reference, z ? 1 : 0, colorSpace.reference)
-            .object);
+    return _createBitmap6(i, i1, config.reference.pointer, z ? 1 : 0,
+            colorSpace.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap7 = jniLookup<
@@ -680,9 +680,9 @@ class Bitmap extends jni.JObject {
     Bitmap_Config config,
     bool z,
   ) {
-    return const $BitmapType().fromRef(_createBitmap7(
-            displayMetrics.reference, i, i1, config.reference, z ? 1 : 0)
-        .object);
+    return _createBitmap7(displayMetrics.reference.pointer, i, i1,
+            config.reference.pointer, z ? 1 : 0)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap8 = jniLookup<
@@ -708,9 +708,9 @@ class Bitmap extends jni.JObject {
     bool z,
     jni.JObject colorSpace,
   ) {
-    return const $BitmapType().fromRef(_createBitmap8(displayMetrics.reference,
-            i, i1, config.reference, z ? 1 : 0, colorSpace.reference)
-        .object);
+    return _createBitmap8(displayMetrics.reference.pointer, i, i1,
+            config.reference.pointer, z ? 1 : 0, colorSpace.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap9 = jniLookup<
@@ -736,8 +736,9 @@ class Bitmap extends jni.JObject {
     int i3,
     Bitmap_Config config,
   ) {
-    return const $BitmapType().fromRef(
-        _createBitmap9(is0.reference, i, i1, i2, i3, config.reference).object);
+    return _createBitmap9(
+            is0.reference.pointer, i, i1, i2, i3, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap10 = jniLookup<
@@ -765,9 +766,9 @@ class Bitmap extends jni.JObject {
     int i3,
     Bitmap_Config config,
   ) {
-    return const $BitmapType().fromRef(_createBitmap10(displayMetrics.reference,
-            is0.reference, i, i1, i2, i3, config.reference)
-        .object);
+    return _createBitmap10(displayMetrics.reference.pointer,
+            is0.reference.pointer, i, i1, i2, i3, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap11 = jniLookup<
@@ -786,8 +787,9 @@ class Bitmap extends jni.JObject {
     int i1,
     Bitmap_Config config,
   ) {
-    return const $BitmapType().fromRef(
-        _createBitmap11(is0.reference, i, i1, config.reference).object);
+    return _createBitmap11(
+            is0.reference.pointer, i, i1, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap12 = jniLookup<
@@ -811,9 +813,9 @@ class Bitmap extends jni.JObject {
     int i1,
     Bitmap_Config config,
   ) {
-    return const $BitmapType().fromRef(_createBitmap12(
-            displayMetrics.reference, is0.reference, i, i1, config.reference)
-        .object);
+    return _createBitmap12(displayMetrics.reference.pointer,
+            is0.reference.pointer, i, i1, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap13 = jniLookup<
@@ -827,8 +829,8 @@ class Bitmap extends jni.JObject {
   static Bitmap createBitmap13(
     jni.JObject picture,
   ) {
-    return const $BitmapType()
-        .fromRef(_createBitmap13(picture.reference).object);
+    return _createBitmap13(picture.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _createBitmap14 = jniLookup<
@@ -847,8 +849,9 @@ class Bitmap extends jni.JObject {
     int i1,
     Bitmap_Config config,
   ) {
-    return const $BitmapType().fromRef(
-        _createBitmap14(picture.reference, i, i1, config.reference).object);
+    return _createBitmap14(
+            picture.reference.pointer, i, i1, config.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _getNinePatchChunk = jniLookup<
@@ -860,8 +863,8 @@ class Bitmap extends jni.JObject {
   /// from: public byte[] getNinePatchChunk()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jbyte> getNinePatchChunk() {
-    return const jni.JArrayType(jni.jbyteType())
-        .fromRef(_getNinePatchChunk(reference).object);
+    return _getNinePatchChunk(reference.pointer)
+        .object(const jni.JArrayType(jni.jbyteType()));
   }
 
   static final _compress = jniLookup<
@@ -881,8 +884,8 @@ class Bitmap extends jni.JObject {
     int i,
     jni.JObject outputStream,
   ) {
-    return _compress(
-            reference, compressFormat.reference, i, outputStream.reference)
+    return _compress(reference.pointer, compressFormat.reference.pointer, i,
+            outputStream.reference.pointer)
         .boolean;
   }
 
@@ -894,7 +897,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public boolean isMutable()
   bool isMutable() {
-    return _isMutable(reference).boolean;
+    return _isMutable(reference.pointer).boolean;
   }
 
   static final _isPremultiplied = jniLookup<
@@ -905,7 +908,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public boolean isPremultiplied()
   bool isPremultiplied() {
-    return _isPremultiplied(reference).boolean;
+    return _isPremultiplied(reference.pointer).boolean;
   }
 
   static final _setPremultiplied = jniLookup<
@@ -918,7 +921,7 @@ class Bitmap extends jni.JObject {
   void setPremultiplied(
     bool z,
   ) {
-    return _setPremultiplied(reference, z ? 1 : 0).check();
+    _setPremultiplied(reference.pointer, z ? 1 : 0).check();
   }
 
   static final _getWidth = jniLookup<
@@ -929,7 +932,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getWidth()
   int getWidth() {
-    return _getWidth(reference).integer;
+    return _getWidth(reference.pointer).integer;
   }
 
   static final _getHeight = jniLookup<
@@ -940,7 +943,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getHeight()
   int getHeight() {
-    return _getHeight(reference).integer;
+    return _getHeight(reference.pointer).integer;
   }
 
   static final _getScaledWidth = jniLookup<
@@ -955,7 +958,7 @@ class Bitmap extends jni.JObject {
   int getScaledWidth(
     jni.JObject canvas,
   ) {
-    return _getScaledWidth(reference, canvas.reference).integer;
+    return _getScaledWidth(reference.pointer, canvas.reference.pointer).integer;
   }
 
   static final _getScaledHeight = jniLookup<
@@ -970,7 +973,8 @@ class Bitmap extends jni.JObject {
   int getScaledHeight(
     jni.JObject canvas,
   ) {
-    return _getScaledHeight(reference, canvas.reference).integer;
+    return _getScaledHeight(reference.pointer, canvas.reference.pointer)
+        .integer;
   }
 
   static final _getScaledWidth1 = jniLookup<
@@ -985,7 +989,8 @@ class Bitmap extends jni.JObject {
   int getScaledWidth1(
     jni.JObject displayMetrics,
   ) {
-    return _getScaledWidth1(reference, displayMetrics.reference).integer;
+    return _getScaledWidth1(reference.pointer, displayMetrics.reference.pointer)
+        .integer;
   }
 
   static final _getScaledHeight1 = jniLookup<
@@ -1000,7 +1005,9 @@ class Bitmap extends jni.JObject {
   int getScaledHeight1(
     jni.JObject displayMetrics,
   ) {
-    return _getScaledHeight1(reference, displayMetrics.reference).integer;
+    return _getScaledHeight1(
+            reference.pointer, displayMetrics.reference.pointer)
+        .integer;
   }
 
   static final _getScaledWidth2 = jniLookup<
@@ -1013,7 +1020,7 @@ class Bitmap extends jni.JObject {
   int getScaledWidth2(
     int i,
   ) {
-    return _getScaledWidth2(reference, i).integer;
+    return _getScaledWidth2(reference.pointer, i).integer;
   }
 
   static final _getScaledHeight2 = jniLookup<
@@ -1026,7 +1033,7 @@ class Bitmap extends jni.JObject {
   int getScaledHeight2(
     int i,
   ) {
-    return _getScaledHeight2(reference, i).integer;
+    return _getScaledHeight2(reference.pointer, i).integer;
   }
 
   static final _getRowBytes = jniLookup<
@@ -1037,7 +1044,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getRowBytes()
   int getRowBytes() {
-    return _getRowBytes(reference).integer;
+    return _getRowBytes(reference.pointer).integer;
   }
 
   static final _getByteCount = jniLookup<
@@ -1048,7 +1055,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getByteCount()
   int getByteCount() {
-    return _getByteCount(reference).integer;
+    return _getByteCount(reference.pointer).integer;
   }
 
   static final _getAllocationByteCount = jniLookup<
@@ -1059,7 +1066,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int getAllocationByteCount()
   int getAllocationByteCount() {
-    return _getAllocationByteCount(reference).integer;
+    return _getAllocationByteCount(reference.pointer).integer;
   }
 
   static final _getConfig = jniLookup<
@@ -1071,7 +1078,7 @@ class Bitmap extends jni.JObject {
   /// from: public android.graphics.Bitmap$Config getConfig()
   /// The returned object must be released after use, by calling the [release] method.
   Bitmap_Config getConfig() {
-    return const $Bitmap_ConfigType().fromRef(_getConfig(reference).object);
+    return _getConfig(reference.pointer).object(const $Bitmap_ConfigType());
   }
 
   static final _hasAlpha = jniLookup<
@@ -1082,7 +1089,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public boolean hasAlpha()
   bool hasAlpha() {
-    return _hasAlpha(reference).boolean;
+    return _hasAlpha(reference.pointer).boolean;
   }
 
   static final _setHasAlpha = jniLookup<
@@ -1095,7 +1102,7 @@ class Bitmap extends jni.JObject {
   void setHasAlpha(
     bool z,
   ) {
-    return _setHasAlpha(reference, z ? 1 : 0).check();
+    _setHasAlpha(reference.pointer, z ? 1 : 0).check();
   }
 
   static final _hasMipMap = jniLookup<
@@ -1106,7 +1113,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public boolean hasMipMap()
   bool hasMipMap() {
-    return _hasMipMap(reference).boolean;
+    return _hasMipMap(reference.pointer).boolean;
   }
 
   static final _setHasMipMap = jniLookup<
@@ -1119,7 +1126,7 @@ class Bitmap extends jni.JObject {
   void setHasMipMap(
     bool z,
   ) {
-    return _setHasMipMap(reference, z ? 1 : 0).check();
+    _setHasMipMap(reference.pointer, z ? 1 : 0).check();
   }
 
   static final _getColorSpace = jniLookup<
@@ -1131,7 +1138,7 @@ class Bitmap extends jni.JObject {
   /// from: public android.graphics.ColorSpace getColorSpace()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getColorSpace() {
-    return const jni.JObjectType().fromRef(_getColorSpace(reference).object);
+    return _getColorSpace(reference.pointer).object(const jni.JObjectType());
   }
 
   static final _setColorSpace = jniLookup<
@@ -1146,7 +1153,7 @@ class Bitmap extends jni.JObject {
   void setColorSpace(
     jni.JObject colorSpace,
   ) {
-    return _setColorSpace(reference, colorSpace.reference).check();
+    _setColorSpace(reference.pointer, colorSpace.reference.pointer).check();
   }
 
   static final _hasGainmap = jniLookup<
@@ -1157,7 +1164,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public boolean hasGainmap()
   bool hasGainmap() {
-    return _hasGainmap(reference).boolean;
+    return _hasGainmap(reference.pointer).boolean;
   }
 
   static final _getGainmap = jniLookup<
@@ -1169,7 +1176,7 @@ class Bitmap extends jni.JObject {
   /// from: public android.graphics.Gainmap getGainmap()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getGainmap() {
-    return const jni.JObjectType().fromRef(_getGainmap(reference).object);
+    return _getGainmap(reference.pointer).object(const jni.JObjectType());
   }
 
   static final _setGainmap = jniLookup<
@@ -1184,7 +1191,7 @@ class Bitmap extends jni.JObject {
   void setGainmap(
     jni.JObject gainmap,
   ) {
-    return _setGainmap(reference, gainmap.reference).check();
+    _setGainmap(reference.pointer, gainmap.reference.pointer).check();
   }
 
   static final _eraseColor = jniLookup<
@@ -1197,7 +1204,7 @@ class Bitmap extends jni.JObject {
   void eraseColor(
     int i,
   ) {
-    return _eraseColor(reference, i).check();
+    _eraseColor(reference.pointer, i).check();
   }
 
   static final _eraseColor1 = jniLookup<
@@ -1210,7 +1217,7 @@ class Bitmap extends jni.JObject {
   void eraseColor1(
     int j,
   ) {
-    return _eraseColor1(reference, j).check();
+    _eraseColor1(reference.pointer, j).check();
   }
 
   static final _getPixel = jniLookup<
@@ -1224,7 +1231,7 @@ class Bitmap extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _getPixel(reference, i, i1).integer;
+    return _getPixel(reference.pointer, i, i1).integer;
   }
 
   static final _getColor = jniLookup<
@@ -1239,7 +1246,7 @@ class Bitmap extends jni.JObject {
     int i,
     int i1,
   ) {
-    return const jni.JObjectType().fromRef(_getColor(reference, i, i1).object);
+    return _getColor(reference.pointer, i, i1).object(const jni.JObjectType());
   }
 
   static final _getPixels = jniLookup<
@@ -1267,7 +1274,8 @@ class Bitmap extends jni.JObject {
     int i4,
     int i5,
   ) {
-    return _getPixels(reference, is0.reference, i, i1, i2, i3, i4, i5).check();
+    _getPixels(reference.pointer, is0.reference.pointer, i, i1, i2, i3, i4, i5)
+        .check();
   }
 
   static final _setPixel = jniLookup<
@@ -1283,7 +1291,7 @@ class Bitmap extends jni.JObject {
     int i1,
     int i2,
   ) {
-    return _setPixel(reference, i, i1, i2).check();
+    _setPixel(reference.pointer, i, i1, i2).check();
   }
 
   static final _setPixels = jniLookup<
@@ -1311,7 +1319,8 @@ class Bitmap extends jni.JObject {
     int i4,
     int i5,
   ) {
-    return _setPixels(reference, is0.reference, i, i1, i2, i3, i4, i5).check();
+    _setPixels(reference.pointer, is0.reference.pointer, i, i1, i2, i3, i4, i5)
+        .check();
   }
 
   static final _describeContents = jniLookup<
@@ -1322,7 +1331,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public int describeContents()
   int describeContents() {
-    return _describeContents(reference).integer;
+    return _describeContents(reference.pointer).integer;
   }
 
   static final _writeToParcel = jniLookup<
@@ -1338,7 +1347,7 @@ class Bitmap extends jni.JObject {
     jni.JObject parcel,
     int i,
   ) {
-    return _writeToParcel(reference, parcel.reference, i).check();
+    _writeToParcel(reference.pointer, parcel.reference.pointer, i).check();
   }
 
   static final _extractAlpha = jniLookup<
@@ -1350,7 +1359,7 @@ class Bitmap extends jni.JObject {
   /// from: public android.graphics.Bitmap extractAlpha()
   /// The returned object must be released after use, by calling the [release] method.
   Bitmap extractAlpha() {
-    return const $BitmapType().fromRef(_extractAlpha(reference).object);
+    return _extractAlpha(reference.pointer).object(const $BitmapType());
   }
 
   static final _extractAlpha1 = jniLookup<
@@ -1369,8 +1378,9 @@ class Bitmap extends jni.JObject {
     jni.JObject paint,
     jni.JArray<jni.jint> is0,
   ) {
-    return const $BitmapType().fromRef(
-        _extractAlpha1(reference, paint.reference, is0.reference).object);
+    return _extractAlpha1(
+            reference.pointer, paint.reference.pointer, is0.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _sameAs = jniLookup<
@@ -1385,7 +1395,7 @@ class Bitmap extends jni.JObject {
   bool sameAs(
     Bitmap bitmap,
   ) {
-    return _sameAs(reference, bitmap.reference).boolean;
+    return _sameAs(reference.pointer, bitmap.reference.pointer).boolean;
   }
 
   static final _prepareToDraw = jniLookup<
@@ -1396,7 +1406,7 @@ class Bitmap extends jni.JObject {
 
   /// from: public void prepareToDraw()
   void prepareToDraw() {
-    return _prepareToDraw(reference).check();
+    _prepareToDraw(reference.pointer).check();
   }
 
   static final _getHardwareBuffer = jniLookup<
@@ -1408,8 +1418,8 @@ class Bitmap extends jni.JObject {
   /// from: public android.hardware.HardwareBuffer getHardwareBuffer()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getHardwareBuffer() {
-    return const jni.JObjectType()
-        .fromRef(_getHardwareBuffer(reference).object);
+    return _getHardwareBuffer(reference.pointer)
+        .object(const jni.JObjectType());
   }
 }
 
@@ -1420,7 +1430,8 @@ final class $BitmapType extends jni.JObjType<Bitmap> {
   String get signature => r"Landroid/graphics/Bitmap;";
 
   @override
-  Bitmap fromRef(jni.JObjectPtr ref) => Bitmap.fromRef(ref);
+  Bitmap fromReference(jni.JReference reference) =>
+      Bitmap.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -1442,9 +1453,9 @@ class BitmapFactory_Options extends jni.JObject {
   @override
   late final jni.JObjType<BitmapFactory_Options> $type = type;
 
-  BitmapFactory_Options.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  BitmapFactory_Options.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BitmapFactory_OptionsType();
@@ -1469,12 +1480,12 @@ class BitmapFactory_Options extends jni.JObject {
   /// from: public android.graphics.Bitmap inBitmap
   /// The returned object must be released after use, by calling the [release] method.
   Bitmap get inBitmap =>
-      const $BitmapType().fromRef(_get_inBitmap(reference).object);
+      _get_inBitmap(reference.pointer).object(const $BitmapType());
 
   /// from: public android.graphics.Bitmap inBitmap
   /// The returned object must be released after use, by calling the [release] method.
   set inBitmap(Bitmap value) =>
-      _set_inBitmap(reference, value.reference).check();
+      _set_inBitmap(reference.pointer, value.reference.pointer).check();
 
   static final _get_inDensity = jniLookup<
           ffi.NativeFunction<
@@ -1493,10 +1504,10 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int inDensity
-  int get inDensity => _get_inDensity(reference).integer;
+  int get inDensity => _get_inDensity(reference.pointer).integer;
 
   /// from: public int inDensity
-  set inDensity(int value) => _set_inDensity(reference, value).check();
+  set inDensity(int value) => _set_inDensity(reference.pointer, value).check();
 
   static final _get_inDither = jniLookup<
           ffi.NativeFunction<
@@ -1515,10 +1526,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inDither
-  bool get inDither => _get_inDither(reference).boolean;
+  bool get inDither => _get_inDither(reference.pointer).boolean;
 
   /// from: public boolean inDither
-  set inDither(bool value) => _set_inDither(reference, value ? 1 : 0).check();
+  set inDither(bool value) =>
+      _set_inDither(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inInputShareable = jniLookup<
           ffi.NativeFunction<
@@ -1537,11 +1549,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inInputShareable
-  bool get inInputShareable => _get_inInputShareable(reference).boolean;
+  bool get inInputShareable => _get_inInputShareable(reference.pointer).boolean;
 
   /// from: public boolean inInputShareable
   set inInputShareable(bool value) =>
-      _set_inInputShareable(reference, value ? 1 : 0).check();
+      _set_inInputShareable(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inJustDecodeBounds = jniLookup<
           ffi.NativeFunction<
@@ -1560,11 +1572,12 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inJustDecodeBounds
-  bool get inJustDecodeBounds => _get_inJustDecodeBounds(reference).boolean;
+  bool get inJustDecodeBounds =>
+      _get_inJustDecodeBounds(reference.pointer).boolean;
 
   /// from: public boolean inJustDecodeBounds
   set inJustDecodeBounds(bool value) =>
-      _set_inJustDecodeBounds(reference, value ? 1 : 0).check();
+      _set_inJustDecodeBounds(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inMutable = jniLookup<
           ffi.NativeFunction<
@@ -1583,10 +1596,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inMutable
-  bool get inMutable => _get_inMutable(reference).boolean;
+  bool get inMutable => _get_inMutable(reference.pointer).boolean;
 
   /// from: public boolean inMutable
-  set inMutable(bool value) => _set_inMutable(reference, value ? 1 : 0).check();
+  set inMutable(bool value) =>
+      _set_inMutable(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inPreferQualityOverSpeed = jniLookup<
           ffi.NativeFunction<
@@ -1606,11 +1620,11 @@ class BitmapFactory_Options extends jni.JObject {
 
   /// from: public boolean inPreferQualityOverSpeed
   bool get inPreferQualityOverSpeed =>
-      _get_inPreferQualityOverSpeed(reference).boolean;
+      _get_inPreferQualityOverSpeed(reference.pointer).boolean;
 
   /// from: public boolean inPreferQualityOverSpeed
   set inPreferQualityOverSpeed(bool value) =>
-      _set_inPreferQualityOverSpeed(reference, value ? 1 : 0).check();
+      _set_inPreferQualityOverSpeed(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inPreferredColorSpace = jniLookup<
           ffi.NativeFunction<
@@ -1632,13 +1646,15 @@ class BitmapFactory_Options extends jni.JObject {
 
   /// from: public android.graphics.ColorSpace inPreferredColorSpace
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject get inPreferredColorSpace => const jni.JObjectType()
-      .fromRef(_get_inPreferredColorSpace(reference).object);
+  jni.JObject get inPreferredColorSpace =>
+      _get_inPreferredColorSpace(reference.pointer)
+          .object(const jni.JObjectType());
 
   /// from: public android.graphics.ColorSpace inPreferredColorSpace
   /// The returned object must be released after use, by calling the [release] method.
   set inPreferredColorSpace(jni.JObject value) =>
-      _set_inPreferredColorSpace(reference, value.reference).check();
+      _set_inPreferredColorSpace(reference.pointer, value.reference.pointer)
+          .check();
 
   static final _get_inPreferredConfig = jniLookup<
           ffi.NativeFunction<
@@ -1660,13 +1676,15 @@ class BitmapFactory_Options extends jni.JObject {
 
   /// from: public android.graphics.Bitmap$Config inPreferredConfig
   /// The returned object must be released after use, by calling the [release] method.
-  Bitmap_Config get inPreferredConfig => const $Bitmap_ConfigType()
-      .fromRef(_get_inPreferredConfig(reference).object);
+  Bitmap_Config get inPreferredConfig =>
+      _get_inPreferredConfig(reference.pointer)
+          .object(const $Bitmap_ConfigType());
 
   /// from: public android.graphics.Bitmap$Config inPreferredConfig
   /// The returned object must be released after use, by calling the [release] method.
   set inPreferredConfig(Bitmap_Config value) =>
-      _set_inPreferredConfig(reference, value.reference).check();
+      _set_inPreferredConfig(reference.pointer, value.reference.pointer)
+          .check();
 
   static final _get_inPremultiplied = jniLookup<
           ffi.NativeFunction<
@@ -1685,11 +1703,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inPremultiplied
-  bool get inPremultiplied => _get_inPremultiplied(reference).boolean;
+  bool get inPremultiplied => _get_inPremultiplied(reference.pointer).boolean;
 
   /// from: public boolean inPremultiplied
   set inPremultiplied(bool value) =>
-      _set_inPremultiplied(reference, value ? 1 : 0).check();
+      _set_inPremultiplied(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inPurgeable = jniLookup<
           ffi.NativeFunction<
@@ -1708,11 +1726,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inPurgeable
-  bool get inPurgeable => _get_inPurgeable(reference).boolean;
+  bool get inPurgeable => _get_inPurgeable(reference.pointer).boolean;
 
   /// from: public boolean inPurgeable
   set inPurgeable(bool value) =>
-      _set_inPurgeable(reference, value ? 1 : 0).check();
+      _set_inPurgeable(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inSampleSize = jniLookup<
           ffi.NativeFunction<
@@ -1731,10 +1749,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int inSampleSize
-  int get inSampleSize => _get_inSampleSize(reference).integer;
+  int get inSampleSize => _get_inSampleSize(reference.pointer).integer;
 
   /// from: public int inSampleSize
-  set inSampleSize(int value) => _set_inSampleSize(reference, value).check();
+  set inSampleSize(int value) =>
+      _set_inSampleSize(reference.pointer, value).check();
 
   static final _get_inScaled = jniLookup<
           ffi.NativeFunction<
@@ -1753,10 +1772,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean inScaled
-  bool get inScaled => _get_inScaled(reference).boolean;
+  bool get inScaled => _get_inScaled(reference.pointer).boolean;
 
   /// from: public boolean inScaled
-  set inScaled(bool value) => _set_inScaled(reference, value ? 1 : 0).check();
+  set inScaled(bool value) =>
+      _set_inScaled(reference.pointer, value ? 1 : 0).check();
 
   static final _get_inScreenDensity = jniLookup<
           ffi.NativeFunction<
@@ -1775,11 +1795,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int inScreenDensity
-  int get inScreenDensity => _get_inScreenDensity(reference).integer;
+  int get inScreenDensity => _get_inScreenDensity(reference.pointer).integer;
 
   /// from: public int inScreenDensity
   set inScreenDensity(int value) =>
-      _set_inScreenDensity(reference, value).check();
+      _set_inScreenDensity(reference.pointer, value).check();
 
   static final _get_inTargetDensity = jniLookup<
           ffi.NativeFunction<
@@ -1798,11 +1818,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int inTargetDensity
-  int get inTargetDensity => _get_inTargetDensity(reference).integer;
+  int get inTargetDensity => _get_inTargetDensity(reference.pointer).integer;
 
   /// from: public int inTargetDensity
   set inTargetDensity(int value) =>
-      _set_inTargetDensity(reference, value).check();
+      _set_inTargetDensity(reference.pointer, value).check();
 
   static final _get_inTempStorage = jniLookup<
           ffi.NativeFunction<
@@ -1825,13 +1845,13 @@ class BitmapFactory_Options extends jni.JObject {
   /// from: public byte[] inTempStorage
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jbyte> get inTempStorage =>
-      const jni.JArrayType(jni.jbyteType())
-          .fromRef(_get_inTempStorage(reference).object);
+      _get_inTempStorage(reference.pointer)
+          .object(const jni.JArrayType(jni.jbyteType()));
 
   /// from: public byte[] inTempStorage
   /// The returned object must be released after use, by calling the [release] method.
   set inTempStorage(jni.JArray<jni.jbyte> value) =>
-      _set_inTempStorage(reference, value.reference).check();
+      _set_inTempStorage(reference.pointer, value.reference.pointer).check();
 
   static final _get_mCancel = jniLookup<
           ffi.NativeFunction<
@@ -1850,10 +1870,11 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public boolean mCancel
-  bool get mCancel => _get_mCancel(reference).boolean;
+  bool get mCancel => _get_mCancel(reference.pointer).boolean;
 
   /// from: public boolean mCancel
-  set mCancel(bool value) => _set_mCancel(reference, value ? 1 : 0).check();
+  set mCancel(bool value) =>
+      _set_mCancel(reference.pointer, value ? 1 : 0).check();
 
   static final _get_outColorSpace = jniLookup<
           ffi.NativeFunction<
@@ -1876,12 +1897,12 @@ class BitmapFactory_Options extends jni.JObject {
   /// from: public android.graphics.ColorSpace outColorSpace
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject get outColorSpace =>
-      const jni.JObjectType().fromRef(_get_outColorSpace(reference).object);
+      _get_outColorSpace(reference.pointer).object(const jni.JObjectType());
 
   /// from: public android.graphics.ColorSpace outColorSpace
   /// The returned object must be released after use, by calling the [release] method.
   set outColorSpace(jni.JObject value) =>
-      _set_outColorSpace(reference, value.reference).check();
+      _set_outColorSpace(reference.pointer, value.reference.pointer).check();
 
   static final _get_outConfig = jniLookup<
           ffi.NativeFunction<
@@ -1904,12 +1925,12 @@ class BitmapFactory_Options extends jni.JObject {
   /// from: public android.graphics.Bitmap$Config outConfig
   /// The returned object must be released after use, by calling the [release] method.
   Bitmap_Config get outConfig =>
-      const $Bitmap_ConfigType().fromRef(_get_outConfig(reference).object);
+      _get_outConfig(reference.pointer).object(const $Bitmap_ConfigType());
 
   /// from: public android.graphics.Bitmap$Config outConfig
   /// The returned object must be released after use, by calling the [release] method.
   set outConfig(Bitmap_Config value) =>
-      _set_outConfig(reference, value.reference).check();
+      _set_outConfig(reference.pointer, value.reference.pointer).check();
 
   static final _get_outHeight = jniLookup<
           ffi.NativeFunction<
@@ -1928,10 +1949,10 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int outHeight
-  int get outHeight => _get_outHeight(reference).integer;
+  int get outHeight => _get_outHeight(reference.pointer).integer;
 
   /// from: public int outHeight
-  set outHeight(int value) => _set_outHeight(reference, value).check();
+  set outHeight(int value) => _set_outHeight(reference.pointer, value).check();
 
   static final _get_outMimeType = jniLookup<
           ffi.NativeFunction<
@@ -1954,12 +1975,12 @@ class BitmapFactory_Options extends jni.JObject {
   /// from: public java.lang.String outMimeType
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString get outMimeType =>
-      const jni.JStringType().fromRef(_get_outMimeType(reference).object);
+      _get_outMimeType(reference.pointer).object(const jni.JStringType());
 
   /// from: public java.lang.String outMimeType
   /// The returned object must be released after use, by calling the [release] method.
   set outMimeType(jni.JString value) =>
-      _set_outMimeType(reference, value.reference).check();
+      _set_outMimeType(reference.pointer, value.reference.pointer).check();
 
   static final _get_outWidth = jniLookup<
           ffi.NativeFunction<
@@ -1978,10 +1999,10 @@ class BitmapFactory_Options extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int outWidth
-  int get outWidth => _get_outWidth(reference).integer;
+  int get outWidth => _get_outWidth(reference.pointer).integer;
 
   /// from: public int outWidth
-  set outWidth(int value) => _set_outWidth(reference, value).check();
+  set outWidth(int value) => _set_outWidth(reference.pointer, value).check();
 
   static final _new0 = jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
           "BitmapFactory_Options__new0")
@@ -1990,7 +2011,7 @@ class BitmapFactory_Options extends jni.JObject {
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory BitmapFactory_Options() {
-    return BitmapFactory_Options.fromRef(_new0().object);
+    return BitmapFactory_Options.fromReference(_new0().reference);
   }
 
   static final _requestCancelDecode = jniLookup<
@@ -2001,7 +2022,7 @@ class BitmapFactory_Options extends jni.JObject {
 
   /// from: public void requestCancelDecode()
   void requestCancelDecode() {
-    return _requestCancelDecode(reference).check();
+    _requestCancelDecode(reference.pointer).check();
   }
 }
 
@@ -2013,8 +2034,8 @@ final class $BitmapFactory_OptionsType
   String get signature => r"Landroid/graphics/BitmapFactory$Options;";
 
   @override
-  BitmapFactory_Options fromRef(jni.JObjectPtr ref) =>
-      BitmapFactory_Options.fromRef(ref);
+  BitmapFactory_Options fromReference(jni.JReference reference) =>
+      BitmapFactory_Options.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -2037,9 +2058,9 @@ class BitmapFactory extends jni.JObject {
   @override
   late final jni.JObjType<BitmapFactory> $type = type;
 
-  BitmapFactory.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  BitmapFactory.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BitmapFactoryType();
@@ -2050,7 +2071,7 @@ class BitmapFactory extends jni.JObject {
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory BitmapFactory() {
-    return BitmapFactory.fromRef(_new0().object);
+    return BitmapFactory.fromReference(_new0().reference);
   }
 
   static final _decodeFile = jniLookup<
@@ -2067,8 +2088,8 @@ class BitmapFactory extends jni.JObject {
     jni.JString string,
     BitmapFactory_Options options,
   ) {
-    return const $BitmapType()
-        .fromRef(_decodeFile(string.reference, options.reference).object);
+    return _decodeFile(string.reference.pointer, options.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeFile1 = jniLookup<
@@ -2082,7 +2103,7 @@ class BitmapFactory extends jni.JObject {
   static Bitmap decodeFile1(
     jni.JString string,
   ) {
-    return const $BitmapType().fromRef(_decodeFile1(string.reference).object);
+    return _decodeFile1(string.reference.pointer).object(const $BitmapType());
   }
 
   static final _decodeResourceStream = jniLookup<
@@ -2111,13 +2132,13 @@ class BitmapFactory extends jni.JObject {
     Rect rect,
     BitmapFactory_Options options,
   ) {
-    return const $BitmapType().fromRef(_decodeResourceStream(
-            resources.reference,
-            typedValue.reference,
-            inputStream.reference,
-            rect.reference,
-            options.reference)
-        .object);
+    return _decodeResourceStream(
+            resources.reference.pointer,
+            typedValue.reference.pointer,
+            inputStream.reference.pointer,
+            rect.reference.pointer,
+            options.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeResource = jniLookup<
@@ -2135,8 +2156,9 @@ class BitmapFactory extends jni.JObject {
     int i,
     BitmapFactory_Options options,
   ) {
-    return const $BitmapType().fromRef(
-        _decodeResource(resources.reference, i, options.reference).object);
+    return _decodeResource(
+            resources.reference.pointer, i, options.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeResource1 = jniLookup<
@@ -2151,8 +2173,8 @@ class BitmapFactory extends jni.JObject {
     jni.JObject resources,
     int i,
   ) {
-    return const $BitmapType()
-        .fromRef(_decodeResource1(resources.reference, i).object);
+    return _decodeResource1(resources.reference.pointer, i)
+        .object(const $BitmapType());
   }
 
   static final _decodeByteArray = jniLookup<
@@ -2174,8 +2196,9 @@ class BitmapFactory extends jni.JObject {
     int i1,
     BitmapFactory_Options options,
   ) {
-    return const $BitmapType().fromRef(
-        _decodeByteArray(bs.reference, i, i1, options.reference).object);
+    return _decodeByteArray(
+            bs.reference.pointer, i, i1, options.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeByteArray1 = jniLookup<
@@ -2191,8 +2214,8 @@ class BitmapFactory extends jni.JObject {
     int i,
     int i1,
   ) {
-    return const $BitmapType()
-        .fromRef(_decodeByteArray1(bs.reference, i, i1).object);
+    return _decodeByteArray1(bs.reference.pointer, i, i1)
+        .object(const $BitmapType());
   }
 
   static final _decodeStream = jniLookup<
@@ -2212,9 +2235,9 @@ class BitmapFactory extends jni.JObject {
     Rect rect,
     BitmapFactory_Options options,
   ) {
-    return const $BitmapType().fromRef(
-        _decodeStream(inputStream.reference, rect.reference, options.reference)
-            .object);
+    return _decodeStream(inputStream.reference.pointer, rect.reference.pointer,
+            options.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeStream1 = jniLookup<
@@ -2228,8 +2251,8 @@ class BitmapFactory extends jni.JObject {
   static Bitmap decodeStream1(
     jni.JObject inputStream,
   ) {
-    return const $BitmapType()
-        .fromRef(_decodeStream1(inputStream.reference).object);
+    return _decodeStream1(inputStream.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeFileDescriptor = jniLookup<
@@ -2248,9 +2271,9 @@ class BitmapFactory extends jni.JObject {
     Rect rect,
     BitmapFactory_Options options,
   ) {
-    return const $BitmapType().fromRef(_decodeFileDescriptor(
-            fileDescriptor.reference, rect.reference, options.reference)
-        .object);
+    return _decodeFileDescriptor(fileDescriptor.reference.pointer,
+            rect.reference.pointer, options.reference.pointer)
+        .object(const $BitmapType());
   }
 
   static final _decodeFileDescriptor1 = jniLookup<
@@ -2264,8 +2287,8 @@ class BitmapFactory extends jni.JObject {
   static Bitmap decodeFileDescriptor1(
     jni.JObject fileDescriptor,
   ) {
-    return const $BitmapType()
-        .fromRef(_decodeFileDescriptor1(fileDescriptor.reference).object);
+    return _decodeFileDescriptor1(fileDescriptor.reference.pointer)
+        .object(const $BitmapType());
   }
 }
 
@@ -2276,7 +2299,8 @@ final class $BitmapFactoryType extends jni.JObjType<BitmapFactory> {
   String get signature => r"Landroid/graphics/BitmapFactory;";
 
   @override
-  BitmapFactory fromRef(jni.JObjectPtr ref) => BitmapFactory.fromRef(ref);
+  BitmapFactory fromReference(jni.JReference reference) =>
+      BitmapFactory.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -2299,9 +2323,9 @@ class Point extends jni.JObject {
   @override
   late final jni.JObjType<Point> $type = type;
 
-  Point.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Point.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $PointType();
@@ -2313,7 +2337,7 @@ class Point extends jni.JObject {
   /// from: static public final android.os.Parcelable$Creator CREATOR
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get CREATOR =>
-      const jni.JObjectType().fromRef(_get_CREATOR().object);
+      _get_CREATOR().object(const jni.JObjectType());
 
   static final _get_x = jniLookup<
           ffi.NativeFunction<
@@ -2332,10 +2356,10 @@ class Point extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int x
-  int get x => _get_x(reference).integer;
+  int get x => _get_x(reference.pointer).integer;
 
   /// from: public int x
-  set x(int value) => _set_x(reference, value).check();
+  set x(int value) => _set_x(reference.pointer, value).check();
 
   static final _get_y = jniLookup<
           ffi.NativeFunction<
@@ -2354,10 +2378,10 @@ class Point extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int y
-  int get y => _get_y(reference).integer;
+  int get y => _get_y(reference.pointer).integer;
 
   /// from: public int y
-  set y(int value) => _set_y(reference, value).check();
+  set y(int value) => _set_y(reference.pointer, value).check();
 
   static final _new0 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>("Point__new0")
@@ -2366,7 +2390,7 @@ class Point extends jni.JObject {
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory Point() {
-    return Point.fromRef(_new0().object);
+    return Point.fromReference(_new0().reference);
   }
 
   static final _new1 = jniLookup<
@@ -2380,7 +2404,7 @@ class Point extends jni.JObject {
     int i,
     int i1,
   ) {
-    return Point.fromRef(_new1(i, i1).object);
+    return Point.fromReference(_new1(i, i1).reference);
   }
 
   static final _new2 = jniLookup<
@@ -2393,7 +2417,7 @@ class Point extends jni.JObject {
   factory Point.new2(
     Point point,
   ) {
-    return Point.fromRef(_new2(point.reference).object);
+    return Point.fromReference(_new2(point.reference.pointer).reference);
   }
 
   static final _set0 = jniLookup<
@@ -2407,7 +2431,7 @@ class Point extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _set0(reference, i, i1).check();
+    _set0(reference.pointer, i, i1).check();
   }
 
   static final _negate = jniLookup<
@@ -2417,7 +2441,7 @@ class Point extends jni.JObject {
 
   /// from: public final void negate()
   void negate() {
-    return _negate(reference).check();
+    _negate(reference.pointer).check();
   }
 
   static final _offset = jniLookup<
@@ -2431,36 +2455,36 @@ class Point extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _offset(reference, i, i1).check();
+    _offset(reference.pointer, i, i1).check();
+  }
+
+  static final _equals = jniLookup<
+          ffi.NativeFunction<
+              jni.JniResult Function(ffi.Pointer<ffi.Void>, ffi.Int32,
+                  ffi.Int32)>>("Point__equals")
+      .asFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>, int, int)>();
+
+  /// from: public final boolean equals(int i, int i1)
+  bool equals(
+    int i,
+    int i1,
+  ) {
+    return _equals(reference.pointer, i, i1).boolean;
   }
 
   static final _equals1 = jniLookup<
           ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, ffi.Int32,
-                  ffi.Int32)>>("Point__equals1")
-      .asFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>, int, int)>();
-
-  /// from: public final boolean equals(int i, int i1)
-  bool equals1(
-    int i,
-    int i1,
-  ) {
-    return _equals1(reference, i, i1).boolean;
-  }
-
-  static final _equals2 = jniLookup<
-          ffi.NativeFunction<
               jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>>("Point__equals2")
+                  ffi.Pointer<ffi.Void>)>>("Point__equals1")
       .asFunction<
           jni.JniResult Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   /// from: public boolean equals(java.lang.Object object)
-  bool equals2(
+  bool equals1(
     jni.JObject object,
   ) {
-    return _equals2(reference, object.reference).boolean;
+    return _equals1(reference.pointer, object.reference.pointer).boolean;
   }
 
   static final _hashCode1 = jniLookup<
@@ -2471,7 +2495,7 @@ class Point extends jni.JObject {
 
   /// from: public int hashCode()
   int hashCode1() {
-    return _hashCode1(reference).integer;
+    return _hashCode1(reference.pointer).integer;
   }
 
   static final _toString1 = jniLookup<
@@ -2483,7 +2507,7 @@ class Point extends jni.JObject {
   /// from: public java.lang.String toString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString toString1() {
-    return const jni.JStringType().fromRef(_toString1(reference).object);
+    return _toString1(reference.pointer).object(const jni.JStringType());
   }
 
   static final _describeContents = jniLookup<
@@ -2494,7 +2518,7 @@ class Point extends jni.JObject {
 
   /// from: public int describeContents()
   int describeContents() {
-    return _describeContents(reference).integer;
+    return _describeContents(reference.pointer).integer;
   }
 
   static final _writeToParcel = jniLookup<
@@ -2510,7 +2534,7 @@ class Point extends jni.JObject {
     jni.JObject parcel,
     int i,
   ) {
-    return _writeToParcel(reference, parcel.reference, i).check();
+    _writeToParcel(reference.pointer, parcel.reference.pointer, i).check();
   }
 
   static final _readFromParcel = jniLookup<
@@ -2525,7 +2549,7 @@ class Point extends jni.JObject {
   void readFromParcel(
     jni.JObject parcel,
   ) {
-    return _readFromParcel(reference, parcel.reference).check();
+    _readFromParcel(reference.pointer, parcel.reference.pointer).check();
   }
 }
 
@@ -2536,7 +2560,8 @@ final class $PointType extends jni.JObjType<Point> {
   String get signature => r"Landroid/graphics/Point;";
 
   @override
-  Point fromRef(jni.JObjectPtr ref) => Point.fromRef(ref);
+  Point fromReference(jni.JReference reference) =>
+      Point.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -2558,9 +2583,9 @@ class Rect extends jni.JObject {
   @override
   late final jni.JObjType<Rect> $type = type;
 
-  Rect.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Rect.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $RectType();
@@ -2572,7 +2597,7 @@ class Rect extends jni.JObject {
   /// from: static public final android.os.Parcelable$Creator CREATOR
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get CREATOR =>
-      const jni.JObjectType().fromRef(_get_CREATOR().object);
+      _get_CREATOR().object(const jni.JObjectType());
 
   static final _get_bottom = jniLookup<
           ffi.NativeFunction<
@@ -2591,10 +2616,10 @@ class Rect extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int bottom
-  int get bottom => _get_bottom(reference).integer;
+  int get bottom => _get_bottom(reference.pointer).integer;
 
   /// from: public int bottom
-  set bottom(int value) => _set_bottom(reference, value).check();
+  set bottom(int value) => _set_bottom(reference.pointer, value).check();
 
   static final _get_left = jniLookup<
           ffi.NativeFunction<
@@ -2613,10 +2638,10 @@ class Rect extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int left
-  int get left => _get_left(reference).integer;
+  int get left => _get_left(reference.pointer).integer;
 
   /// from: public int left
-  set left(int value) => _set_left(reference, value).check();
+  set left(int value) => _set_left(reference.pointer, value).check();
 
   static final _get_right = jniLookup<
           ffi.NativeFunction<
@@ -2635,10 +2660,10 @@ class Rect extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int right
-  int get right => _get_right(reference).integer;
+  int get right => _get_right(reference.pointer).integer;
 
   /// from: public int right
-  set right(int value) => _set_right(reference, value).check();
+  set right(int value) => _set_right(reference.pointer, value).check();
 
   static final _get_top = jniLookup<
           ffi.NativeFunction<
@@ -2657,10 +2682,10 @@ class Rect extends jni.JObject {
       .asFunction<jni.JniResult Function(jni.JObjectPtr, int)>();
 
   /// from: public int top
-  int get top => _get_top(reference).integer;
+  int get top => _get_top(reference.pointer).integer;
 
   /// from: public int top
-  set top(int value) => _set_top(reference, value).check();
+  set top(int value) => _set_top(reference.pointer, value).check();
 
   static final _new0 =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>("Rect__new0")
@@ -2669,7 +2694,7 @@ class Rect extends jni.JObject {
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory Rect() {
-    return Rect.fromRef(_new0().object);
+    return Rect.fromReference(_new0().reference);
   }
 
   static final _new1 = jniLookup<
@@ -2686,7 +2711,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return Rect.fromRef(_new1(i, i1, i2, i3).object);
+    return Rect.fromReference(_new1(i, i1, i2, i3).reference);
   }
 
   static final _new2 = jniLookup<
@@ -2699,22 +2724,22 @@ class Rect extends jni.JObject {
   factory Rect.new2(
     Rect rect,
   ) {
-    return Rect.fromRef(_new2(rect.reference).object);
+    return Rect.fromReference(_new2(rect.reference.pointer).reference);
   }
 
-  static final _equals1 = jniLookup<
+  static final _equals = jniLookup<
           ffi.NativeFunction<
               jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>>("Rect__equals1")
+                  ffi.Pointer<ffi.Void>)>>("Rect__equals")
       .asFunction<
           jni.JniResult Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   /// from: public boolean equals(java.lang.Object object)
-  bool equals1(
+  bool equals(
     jni.JObject object,
   ) {
-    return _equals1(reference, object.reference).boolean;
+    return _equals(reference.pointer, object.reference.pointer).boolean;
   }
 
   static final _hashCode1 = jniLookup<
@@ -2724,7 +2749,7 @@ class Rect extends jni.JObject {
 
   /// from: public int hashCode()
   int hashCode1() {
-    return _hashCode1(reference).integer;
+    return _hashCode1(reference.pointer).integer;
   }
 
   static final _toString1 = jniLookup<
@@ -2735,7 +2760,7 @@ class Rect extends jni.JObject {
   /// from: public java.lang.String toString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString toString1() {
-    return const jni.JStringType().fromRef(_toString1(reference).object);
+    return _toString1(reference.pointer).object(const jni.JStringType());
   }
 
   static final _toShortString = jniLookup<
@@ -2747,7 +2772,7 @@ class Rect extends jni.JObject {
   /// from: public java.lang.String toShortString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString toShortString() {
-    return const jni.JStringType().fromRef(_toShortString(reference).object);
+    return _toShortString(reference.pointer).object(const jni.JStringType());
   }
 
   static final _flattenToString = jniLookup<
@@ -2759,7 +2784,7 @@ class Rect extends jni.JObject {
   /// from: public java.lang.String flattenToString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString flattenToString() {
-    return const jni.JStringType().fromRef(_flattenToString(reference).object);
+    return _flattenToString(reference.pointer).object(const jni.JStringType());
   }
 
   static final _unflattenFromString = jniLookup<
@@ -2773,8 +2798,8 @@ class Rect extends jni.JObject {
   static Rect unflattenFromString(
     jni.JString string,
   ) {
-    return const $RectType()
-        .fromRef(_unflattenFromString(string.reference).object);
+    return _unflattenFromString(string.reference.pointer)
+        .object(const $RectType());
   }
 
   static final _isEmpty = jniLookup<
@@ -2784,7 +2809,7 @@ class Rect extends jni.JObject {
 
   /// from: public boolean isEmpty()
   bool isEmpty() {
-    return _isEmpty(reference).boolean;
+    return _isEmpty(reference.pointer).boolean;
   }
 
   static final _width = jniLookup<
@@ -2794,7 +2819,7 @@ class Rect extends jni.JObject {
 
   /// from: public int width()
   int width() {
-    return _width(reference).integer;
+    return _width(reference.pointer).integer;
   }
 
   static final _height = jniLookup<
@@ -2804,7 +2829,7 @@ class Rect extends jni.JObject {
 
   /// from: public int height()
   int height() {
-    return _height(reference).integer;
+    return _height(reference.pointer).integer;
   }
 
   static final _centerX = jniLookup<
@@ -2814,7 +2839,7 @@ class Rect extends jni.JObject {
 
   /// from: public int centerX()
   int centerX() {
-    return _centerX(reference).integer;
+    return _centerX(reference.pointer).integer;
   }
 
   static final _centerY = jniLookup<
@@ -2824,7 +2849,7 @@ class Rect extends jni.JObject {
 
   /// from: public int centerY()
   int centerY() {
-    return _centerY(reference).integer;
+    return _centerY(reference.pointer).integer;
   }
 
   static final _exactCenterX = jniLookup<
@@ -2835,7 +2860,7 @@ class Rect extends jni.JObject {
 
   /// from: public float exactCenterX()
   double exactCenterX() {
-    return _exactCenterX(reference).float;
+    return _exactCenterX(reference.pointer).float;
   }
 
   static final _exactCenterY = jniLookup<
@@ -2846,7 +2871,7 @@ class Rect extends jni.JObject {
 
   /// from: public float exactCenterY()
   double exactCenterY() {
-    return _exactCenterY(reference).float;
+    return _exactCenterY(reference.pointer).float;
   }
 
   static final _setEmpty = jniLookup<
@@ -2856,7 +2881,7 @@ class Rect extends jni.JObject {
 
   /// from: public void setEmpty()
   void setEmpty() {
-    return _setEmpty(reference).check();
+    _setEmpty(reference.pointer).check();
   }
 
   static final _set0 = jniLookup<
@@ -2873,7 +2898,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return _set0(reference, i, i1, i2, i3).check();
+    _set0(reference.pointer, i, i1, i2, i3).check();
   }
 
   static final _set1 = jniLookup<
@@ -2888,7 +2913,7 @@ class Rect extends jni.JObject {
   void set1(
     Rect rect,
   ) {
-    return _set1(reference, rect.reference).check();
+    _set1(reference.pointer, rect.reference.pointer).check();
   }
 
   static final _offset = jniLookup<
@@ -2902,7 +2927,7 @@ class Rect extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _offset(reference, i, i1).check();
+    _offset(reference.pointer, i, i1).check();
   }
 
   static final _offsetTo = jniLookup<
@@ -2916,7 +2941,7 @@ class Rect extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _offsetTo(reference, i, i1).check();
+    _offsetTo(reference.pointer, i, i1).check();
   }
 
   static final _inset = jniLookup<
@@ -2930,7 +2955,7 @@ class Rect extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _inset(reference, i, i1).check();
+    _inset(reference.pointer, i, i1).check();
   }
 
   static final _inset1 = jniLookup<
@@ -2945,7 +2970,7 @@ class Rect extends jni.JObject {
   void inset1(
     jni.JObject insets,
   ) {
-    return _inset1(reference, insets.reference).check();
+    _inset1(reference.pointer, insets.reference.pointer).check();
   }
 
   static final _inset2 = jniLookup<
@@ -2962,7 +2987,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return _inset2(reference, i, i1, i2, i3).check();
+    _inset2(reference.pointer, i, i1, i2, i3).check();
   }
 
   static final _contains = jniLookup<
@@ -2976,7 +3001,7 @@ class Rect extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _contains(reference, i, i1).boolean;
+    return _contains(reference.pointer, i, i1).boolean;
   }
 
   static final _contains1 = jniLookup<
@@ -2993,7 +3018,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return _contains1(reference, i, i1, i2, i3).boolean;
+    return _contains1(reference.pointer, i, i1, i2, i3).boolean;
   }
 
   static final _contains2 = jniLookup<
@@ -3008,7 +3033,7 @@ class Rect extends jni.JObject {
   bool contains2(
     Rect rect,
   ) {
-    return _contains2(reference, rect.reference).boolean;
+    return _contains2(reference.pointer, rect.reference.pointer).boolean;
   }
 
   static final _intersect = jniLookup<
@@ -3025,7 +3050,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return _intersect(reference, i, i1, i2, i3).boolean;
+    return _intersect(reference.pointer, i, i1, i2, i3).boolean;
   }
 
   static final _intersect1 = jniLookup<
@@ -3040,7 +3065,7 @@ class Rect extends jni.JObject {
   bool intersect1(
     Rect rect,
   ) {
-    return _intersect1(reference, rect.reference).boolean;
+    return _intersect1(reference.pointer, rect.reference.pointer).boolean;
   }
 
   static final _setIntersect = jniLookup<
@@ -3058,7 +3083,9 @@ class Rect extends jni.JObject {
     Rect rect,
     Rect rect1,
   ) {
-    return _setIntersect(reference, rect.reference, rect1.reference).boolean;
+    return _setIntersect(
+            reference.pointer, rect.reference.pointer, rect1.reference.pointer)
+        .boolean;
   }
 
   static final _intersects = jniLookup<
@@ -3075,7 +3102,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return _intersects(reference, i, i1, i2, i3).boolean;
+    return _intersects(reference.pointer, i, i1, i2, i3).boolean;
   }
 
   static final _intersects1 = jniLookup<
@@ -3091,7 +3118,8 @@ class Rect extends jni.JObject {
     Rect rect,
     Rect rect1,
   ) {
-    return _intersects1(rect.reference, rect1.reference).boolean;
+    return _intersects1(rect.reference.pointer, rect1.reference.pointer)
+        .boolean;
   }
 
   static final _union = jniLookup<
@@ -3108,7 +3136,7 @@ class Rect extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return _union(reference, i, i1, i2, i3).check();
+    _union(reference.pointer, i, i1, i2, i3).check();
   }
 
   static final _union1 = jniLookup<
@@ -3123,7 +3151,7 @@ class Rect extends jni.JObject {
   void union1(
     Rect rect,
   ) {
-    return _union1(reference, rect.reference).check();
+    _union1(reference.pointer, rect.reference.pointer).check();
   }
 
   static final _union2 = jniLookup<
@@ -3137,7 +3165,7 @@ class Rect extends jni.JObject {
     int i,
     int i1,
   ) {
-    return _union2(reference, i, i1).check();
+    _union2(reference.pointer, i, i1).check();
   }
 
   static final _sort = jniLookup<
@@ -3147,7 +3175,7 @@ class Rect extends jni.JObject {
 
   /// from: public void sort()
   void sort() {
-    return _sort(reference).check();
+    _sort(reference.pointer).check();
   }
 
   static final _describeContents = jniLookup<
@@ -3158,7 +3186,7 @@ class Rect extends jni.JObject {
 
   /// from: public int describeContents()
   int describeContents() {
-    return _describeContents(reference).integer;
+    return _describeContents(reference.pointer).integer;
   }
 
   static final _writeToParcel = jniLookup<
@@ -3174,7 +3202,7 @@ class Rect extends jni.JObject {
     jni.JObject parcel,
     int i,
   ) {
-    return _writeToParcel(reference, parcel.reference, i).check();
+    _writeToParcel(reference.pointer, parcel.reference.pointer, i).check();
   }
 
   static final _readFromParcel = jniLookup<
@@ -3189,7 +3217,7 @@ class Rect extends jni.JObject {
   void readFromParcel(
     jni.JObject parcel,
   ) {
-    return _readFromParcel(reference, parcel.reference).check();
+    _readFromParcel(reference.pointer, parcel.reference.pointer).check();
   }
 }
 
@@ -3200,7 +3228,7 @@ final class $RectType extends jni.JObjType<Rect> {
   String get signature => r"Landroid/graphics/Rect;";
 
   @override
-  Rect fromRef(jni.JObjectPtr ref) => Rect.fromRef(ref);
+  Rect fromReference(jni.JReference reference) => Rect.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -3222,9 +3250,9 @@ class Uri_Builder extends jni.JObject {
   @override
   late final jni.JObjType<Uri_Builder> $type = type;
 
-  Uri_Builder.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Uri_Builder.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Uri_BuilderType();
@@ -3235,7 +3263,7 @@ class Uri_Builder extends jni.JObject {
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory Uri_Builder() {
-    return Uri_Builder.fromRef(_new0().object);
+    return Uri_Builder.fromReference(_new0().reference);
   }
 
   static final _scheme = jniLookup<
@@ -3251,8 +3279,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder scheme(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_scheme(reference, string.reference).object);
+    return _scheme(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _opaquePart = jniLookup<
@@ -3268,8 +3296,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder opaquePart(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_opaquePart(reference, string.reference).object);
+    return _opaquePart(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _encodedOpaquePart = jniLookup<
@@ -3285,8 +3313,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder encodedOpaquePart(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_encodedOpaquePart(reference, string.reference).object);
+    return _encodedOpaquePart(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _authority = jniLookup<
@@ -3302,8 +3330,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder authority(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_authority(reference, string.reference).object);
+    return _authority(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _encodedAuthority = jniLookup<
@@ -3319,8 +3347,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder encodedAuthority(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_encodedAuthority(reference, string.reference).object);
+    return _encodedAuthority(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _path = jniLookup<
@@ -3336,8 +3364,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder path(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_path(reference, string.reference).object);
+    return _path(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _encodedPath = jniLookup<
@@ -3353,8 +3381,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder encodedPath(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_encodedPath(reference, string.reference).object);
+    return _encodedPath(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _appendPath = jniLookup<
@@ -3370,8 +3398,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder appendPath(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_appendPath(reference, string.reference).object);
+    return _appendPath(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _appendEncodedPath = jniLookup<
@@ -3387,8 +3415,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder appendEncodedPath(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_appendEncodedPath(reference, string.reference).object);
+    return _appendEncodedPath(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _query = jniLookup<
@@ -3404,8 +3432,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder query(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_query(reference, string.reference).object);
+    return _query(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _encodedQuery = jniLookup<
@@ -3421,8 +3449,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder encodedQuery(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_encodedQuery(reference, string.reference).object);
+    return _encodedQuery(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _fragment = jniLookup<
@@ -3438,8 +3466,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder fragment(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_fragment(reference, string.reference).object);
+    return _fragment(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _encodedFragment = jniLookup<
@@ -3455,8 +3483,8 @@ class Uri_Builder extends jni.JObject {
   Uri_Builder encodedFragment(
     jni.JString string,
   ) {
-    return const $Uri_BuilderType()
-        .fromRef(_encodedFragment(reference, string.reference).object);
+    return _encodedFragment(reference.pointer, string.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _appendQueryParameter = jniLookup<
@@ -3475,9 +3503,9 @@ class Uri_Builder extends jni.JObject {
     jni.JString string,
     jni.JString string1,
   ) {
-    return const $Uri_BuilderType().fromRef(
-        _appendQueryParameter(reference, string.reference, string1.reference)
-            .object);
+    return _appendQueryParameter(reference.pointer, string.reference.pointer,
+            string1.reference.pointer)
+        .object(const $Uri_BuilderType());
   }
 
   static final _clearQuery = jniLookup<
@@ -3489,7 +3517,7 @@ class Uri_Builder extends jni.JObject {
   /// from: public android.net.Uri$Builder clearQuery()
   /// The returned object must be released after use, by calling the [release] method.
   Uri_Builder clearQuery() {
-    return const $Uri_BuilderType().fromRef(_clearQuery(reference).object);
+    return _clearQuery(reference.pointer).object(const $Uri_BuilderType());
   }
 
   static final _build = jniLookup<
@@ -3501,7 +3529,7 @@ class Uri_Builder extends jni.JObject {
   /// from: public android.net.Uri build()
   /// The returned object must be released after use, by calling the [release] method.
   Uri build() {
-    return const $UriType().fromRef(_build(reference).object);
+    return _build(reference.pointer).object(const $UriType());
   }
 
   static final _toString1 = jniLookup<
@@ -3513,7 +3541,7 @@ class Uri_Builder extends jni.JObject {
   /// from: public java.lang.String toString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString toString1() {
-    return const jni.JStringType().fromRef(_toString1(reference).object);
+    return _toString1(reference.pointer).object(const jni.JStringType());
   }
 }
 
@@ -3524,7 +3552,8 @@ final class $Uri_BuilderType extends jni.JObjType<Uri_Builder> {
   String get signature => r"Landroid/net/Uri$Builder;";
 
   @override
-  Uri_Builder fromRef(jni.JObjectPtr ref) => Uri_Builder.fromRef(ref);
+  Uri_Builder fromReference(jni.JReference reference) =>
+      Uri_Builder.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -3546,9 +3575,9 @@ class Uri extends jni.JObject {
   @override
   late final jni.JObjType<Uri> $type = type;
 
-  Uri.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Uri.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $UriType();
@@ -3560,7 +3589,7 @@ class Uri extends jni.JObject {
   /// from: static public final android.os.Parcelable$Creator CREATOR
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject get CREATOR =>
-      const jni.JObjectType().fromRef(_get_CREATOR().object);
+      _get_CREATOR().object(const jni.JObjectType());
 
   static final _get_EMPTY =
       jniLookup<ffi.NativeFunction<jni.JniResult Function()>>("get_Uri__EMPTY")
@@ -3568,7 +3597,7 @@ class Uri extends jni.JObject {
 
   /// from: static public final android.net.Uri EMPTY
   /// The returned object must be released after use, by calling the [release] method.
-  static Uri get EMPTY => const $UriType().fromRef(_get_EMPTY().object);
+  static Uri get EMPTY => _get_EMPTY().object(const $UriType());
 
   static final _isHierarchical = jniLookup<
               ffi
@@ -3578,7 +3607,7 @@ class Uri extends jni.JObject {
 
   /// from: public abstract boolean isHierarchical()
   bool isHierarchical() {
-    return _isHierarchical(reference).boolean;
+    return _isHierarchical(reference.pointer).boolean;
   }
 
   static final _isOpaque = jniLookup<
@@ -3588,7 +3617,7 @@ class Uri extends jni.JObject {
 
   /// from: public boolean isOpaque()
   bool isOpaque() {
-    return _isOpaque(reference).boolean;
+    return _isOpaque(reference.pointer).boolean;
   }
 
   static final _isRelative = jniLookup<
@@ -3598,7 +3627,7 @@ class Uri extends jni.JObject {
 
   /// from: public abstract boolean isRelative()
   bool isRelative() {
-    return _isRelative(reference).boolean;
+    return _isRelative(reference.pointer).boolean;
   }
 
   static final _isAbsolute = jniLookup<
@@ -3608,7 +3637,7 @@ class Uri extends jni.JObject {
 
   /// from: public boolean isAbsolute()
   bool isAbsolute() {
-    return _isAbsolute(reference).boolean;
+    return _isAbsolute(reference.pointer).boolean;
   }
 
   static final _getScheme = jniLookup<
@@ -3619,7 +3648,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getScheme()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getScheme() {
-    return const jni.JStringType().fromRef(_getScheme(reference).object);
+    return _getScheme(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getSchemeSpecificPart = jniLookup<
@@ -3631,8 +3660,8 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getSchemeSpecificPart()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getSchemeSpecificPart() {
-    return const jni.JStringType()
-        .fromRef(_getSchemeSpecificPart(reference).object);
+    return _getSchemeSpecificPart(reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getEncodedSchemeSpecificPart = jniLookup<
@@ -3644,8 +3673,8 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getEncodedSchemeSpecificPart()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getEncodedSchemeSpecificPart() {
-    return const jni.JStringType()
-        .fromRef(_getEncodedSchemeSpecificPart(reference).object);
+    return _getEncodedSchemeSpecificPart(reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getAuthority = jniLookup<
@@ -3657,7 +3686,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getAuthority()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAuthority() {
-    return const jni.JStringType().fromRef(_getAuthority(reference).object);
+    return _getAuthority(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getEncodedAuthority = jniLookup<
@@ -3669,8 +3698,8 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getEncodedAuthority()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getEncodedAuthority() {
-    return const jni.JStringType()
-        .fromRef(_getEncodedAuthority(reference).object);
+    return _getEncodedAuthority(reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getUserInfo = jniLookup<
@@ -3682,7 +3711,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getUserInfo()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getUserInfo() {
-    return const jni.JStringType().fromRef(_getUserInfo(reference).object);
+    return _getUserInfo(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getEncodedUserInfo = jniLookup<
@@ -3694,8 +3723,8 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getEncodedUserInfo()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getEncodedUserInfo() {
-    return const jni.JStringType()
-        .fromRef(_getEncodedUserInfo(reference).object);
+    return _getEncodedUserInfo(reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getHost = jniLookup<
@@ -3706,7 +3735,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getHost()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getHost() {
-    return const jni.JStringType().fromRef(_getHost(reference).object);
+    return _getHost(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getPort = jniLookup<
@@ -3716,7 +3745,7 @@ class Uri extends jni.JObject {
 
   /// from: public abstract int getPort()
   int getPort() {
-    return _getPort(reference).integer;
+    return _getPort(reference.pointer).integer;
   }
 
   static final _getPath = jniLookup<
@@ -3727,7 +3756,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getPath()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getPath() {
-    return const jni.JStringType().fromRef(_getPath(reference).object);
+    return _getPath(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getEncodedPath = jniLookup<
@@ -3739,7 +3768,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getEncodedPath()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getEncodedPath() {
-    return const jni.JStringType().fromRef(_getEncodedPath(reference).object);
+    return _getEncodedPath(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getQuery = jniLookup<
@@ -3750,7 +3779,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getQuery()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getQuery() {
-    return const jni.JStringType().fromRef(_getQuery(reference).object);
+    return _getQuery(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getEncodedQuery = jniLookup<
@@ -3762,7 +3791,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getEncodedQuery()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getEncodedQuery() {
-    return const jni.JStringType().fromRef(_getEncodedQuery(reference).object);
+    return _getEncodedQuery(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getFragment = jniLookup<
@@ -3774,7 +3803,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getFragment()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getFragment() {
-    return const jni.JStringType().fromRef(_getFragment(reference).object);
+    return _getFragment(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getEncodedFragment = jniLookup<
@@ -3786,8 +3815,8 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getEncodedFragment()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getEncodedFragment() {
-    return const jni.JStringType()
-        .fromRef(_getEncodedFragment(reference).object);
+    return _getEncodedFragment(reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getPathSegments = jniLookup<
@@ -3799,8 +3828,8 @@ class Uri extends jni.JObject {
   /// from: public abstract java.util.List getPathSegments()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<jni.JString> getPathSegments() {
-    return const jni.JListType(jni.JStringType())
-        .fromRef(_getPathSegments(reference).object);
+    return _getPathSegments(reference.pointer)
+        .object(const jni.JListType(jni.JStringType()));
   }
 
   static final _getLastPathSegment = jniLookup<
@@ -3812,23 +3841,23 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String getLastPathSegment()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getLastPathSegment() {
-    return const jni.JStringType()
-        .fromRef(_getLastPathSegment(reference).object);
+    return _getLastPathSegment(reference.pointer)
+        .object(const jni.JStringType());
   }
 
-  static final _equals1 = jniLookup<
+  static final _equals = jniLookup<
           ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>>("Uri__equals1")
+              jni.JniResult Function(
+                  ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>("Uri__equals")
       .asFunction<
           jni.JniResult Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   /// from: public boolean equals(java.lang.Object object)
-  bool equals1(
+  bool equals(
     jni.JObject object,
   ) {
-    return _equals1(reference, object.reference).boolean;
+    return _equals(reference.pointer, object.reference.pointer).boolean;
   }
 
   static final _hashCode1 = jniLookup<
@@ -3838,7 +3867,7 @@ class Uri extends jni.JObject {
 
   /// from: public int hashCode()
   int hashCode1() {
-    return _hashCode1(reference).integer;
+    return _hashCode1(reference.pointer).integer;
   }
 
   static final _compareTo = jniLookup<
@@ -3853,7 +3882,7 @@ class Uri extends jni.JObject {
   int compareTo(
     Uri uri,
   ) {
-    return _compareTo(reference, uri.reference).integer;
+    return _compareTo(reference.pointer, uri.reference.pointer).integer;
   }
 
   static final _toString1 = jniLookup<
@@ -3864,7 +3893,7 @@ class Uri extends jni.JObject {
   /// from: public abstract java.lang.String toString()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString toString1() {
-    return const jni.JStringType().fromRef(_toString1(reference).object);
+    return _toString1(reference.pointer).object(const jni.JStringType());
   }
 
   static final _buildUpon = jniLookup<
@@ -3875,7 +3904,7 @@ class Uri extends jni.JObject {
   /// from: public abstract android.net.Uri$Builder buildUpon()
   /// The returned object must be released after use, by calling the [release] method.
   Uri_Builder buildUpon() {
-    return const $Uri_BuilderType().fromRef(_buildUpon(reference).object);
+    return _buildUpon(reference.pointer).object(const $Uri_BuilderType());
   }
 
   static final _parse = jniLookup<
@@ -3888,7 +3917,7 @@ class Uri extends jni.JObject {
   static Uri parse(
     jni.JString string,
   ) {
-    return const $UriType().fromRef(_parse(string.reference).object);
+    return _parse(string.reference.pointer).object(const $UriType());
   }
 
   static final _fromFile = jniLookup<
@@ -3901,7 +3930,7 @@ class Uri extends jni.JObject {
   static Uri fromFile(
     jni.JObject file,
   ) {
-    return const $UriType().fromRef(_fromFile(file.reference).object);
+    return _fromFile(file.reference.pointer).object(const $UriType());
   }
 
   static final _fromParts = jniLookup<
@@ -3921,9 +3950,9 @@ class Uri extends jni.JObject {
     jni.JString string1,
     jni.JString string2,
   ) {
-    return const $UriType().fromRef(
-        _fromParts(string.reference, string1.reference, string2.reference)
-            .object);
+    return _fromParts(string.reference.pointer, string1.reference.pointer,
+            string2.reference.pointer)
+        .object(const $UriType());
   }
 
   static final _getQueryParameterNames = jniLookup<
@@ -3935,8 +3964,8 @@ class Uri extends jni.JObject {
   /// from: public java.util.Set getQueryParameterNames()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JSet<jni.JString> getQueryParameterNames() {
-    return const jni.JSetType(jni.JStringType())
-        .fromRef(_getQueryParameterNames(reference).object);
+    return _getQueryParameterNames(reference.pointer)
+        .object(const jni.JSetType(jni.JStringType()));
   }
 
   static final _getQueryParameters = jniLookup<
@@ -3952,8 +3981,8 @@ class Uri extends jni.JObject {
   jni.JList<jni.JString> getQueryParameters(
     jni.JString string,
   ) {
-    return const jni.JListType(jni.JStringType())
-        .fromRef(_getQueryParameters(reference, string.reference).object);
+    return _getQueryParameters(reference.pointer, string.reference.pointer)
+        .object(const jni.JListType(jni.JStringType()));
   }
 
   static final _getQueryParameter = jniLookup<
@@ -3969,8 +3998,8 @@ class Uri extends jni.JObject {
   jni.JString getQueryParameter(
     jni.JString string,
   ) {
-    return const jni.JStringType()
-        .fromRef(_getQueryParameter(reference, string.reference).object);
+    return _getQueryParameter(reference.pointer, string.reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getBooleanQueryParameter = jniLookup<
@@ -3988,7 +4017,8 @@ class Uri extends jni.JObject {
     jni.JString string,
     bool z,
   ) {
-    return _getBooleanQueryParameter(reference, string.reference, z ? 1 : 0)
+    return _getBooleanQueryParameter(
+            reference.pointer, string.reference.pointer, z ? 1 : 0)
         .boolean;
   }
 
@@ -4001,7 +4031,7 @@ class Uri extends jni.JObject {
   /// from: public android.net.Uri normalizeScheme()
   /// The returned object must be released after use, by calling the [release] method.
   Uri normalizeScheme() {
-    return const $UriType().fromRef(_normalizeScheme(reference).object);
+    return _normalizeScheme(reference.pointer).object(const $UriType());
   }
 
   static final _writeToParcel = jniLookup<
@@ -4017,7 +4047,7 @@ class Uri extends jni.JObject {
     jni.JObject parcel,
     Uri uri,
   ) {
-    return _writeToParcel(parcel.reference, uri.reference).check();
+    _writeToParcel(parcel.reference.pointer, uri.reference.pointer).check();
   }
 
   static final _encode = jniLookup<
@@ -4030,7 +4060,7 @@ class Uri extends jni.JObject {
   static jni.JString encode(
     jni.JString string,
   ) {
-    return const jni.JStringType().fromRef(_encode(string.reference).object);
+    return _encode(string.reference.pointer).object(const jni.JStringType());
   }
 
   static final _encode1 = jniLookup<
@@ -4047,8 +4077,8 @@ class Uri extends jni.JObject {
     jni.JString string,
     jni.JString string1,
   ) {
-    return const jni.JStringType()
-        .fromRef(_encode1(string.reference, string1.reference).object);
+    return _encode1(string.reference.pointer, string1.reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _decode = jniLookup<
@@ -4061,7 +4091,7 @@ class Uri extends jni.JObject {
   static jni.JString decode(
     jni.JString string,
   ) {
-    return const jni.JStringType().fromRef(_decode(string.reference).object);
+    return _decode(string.reference.pointer).object(const jni.JStringType());
   }
 
   static final _withAppendedPath = jniLookup<
@@ -4078,8 +4108,8 @@ class Uri extends jni.JObject {
     Uri uri,
     jni.JString string,
   ) {
-    return const $UriType()
-        .fromRef(_withAppendedPath(uri.reference, string.reference).object);
+    return _withAppendedPath(uri.reference.pointer, string.reference.pointer)
+        .object(const $UriType());
   }
 
   static final _compareTo1 = jniLookup<
@@ -4094,7 +4124,7 @@ class Uri extends jni.JObject {
   int compareTo1(
     jni.JObject object,
   ) {
-    return _compareTo1(reference, object.reference).integer;
+    return _compareTo1(reference.pointer, object.reference.pointer).integer;
   }
 }
 
@@ -4105,7 +4135,7 @@ final class $UriType extends jni.JObjType<Uri> {
   String get signature => r"Landroid/net/Uri;";
 
   @override
-  Uri fromRef(jni.JObjectPtr ref) => Uri.fromRef(ref);
+  Uri fromReference(jni.JReference reference) => Uri.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -4129,10 +4159,10 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
 
   final jni.JObjType<$TResult> TResult;
 
-  Task.fromRef(
+  Task.fromReference(
     this.TResult,
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static $TaskType<$TResult> type<$TResult extends jni.JObject>(
@@ -4156,8 +4186,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   Task<$TResult> addOnCanceledListener(
     OnCanceledListener onCanceledListener,
   ) {
-    return $TaskType(TResult).fromRef(
-        _addOnCanceledListener(reference, onCanceledListener.reference).object);
+    return _addOnCanceledListener(
+            reference.pointer, onCanceledListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnCanceledListener1 = jniLookup<
@@ -4176,9 +4207,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject activity,
     OnCanceledListener onCanceledListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnCanceledListener1(
-            reference, activity.reference, onCanceledListener.reference)
-        .object);
+    return _addOnCanceledListener1(reference.pointer,
+            activity.reference.pointer, onCanceledListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnCanceledListener2 = jniLookup<
@@ -4197,9 +4228,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     Executor executor,
     OnCanceledListener onCanceledListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnCanceledListener2(
-            reference, executor.reference, onCanceledListener.reference)
-        .object);
+    return _addOnCanceledListener2(reference.pointer,
+            executor.reference.pointer, onCanceledListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnCompleteListener = jniLookup<
@@ -4215,8 +4246,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   Task<$TResult> addOnCompleteListener(
     OnCompleteListener<$TResult> onCompleteListener,
   ) {
-    return $TaskType(TResult).fromRef(
-        _addOnCompleteListener(reference, onCompleteListener.reference).object);
+    return _addOnCompleteListener(
+            reference.pointer, onCompleteListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnCompleteListener1 = jniLookup<
@@ -4235,9 +4267,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject activity,
     OnCompleteListener<$TResult> onCompleteListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnCompleteListener1(
-            reference, activity.reference, onCompleteListener.reference)
-        .object);
+    return _addOnCompleteListener1(reference.pointer,
+            activity.reference.pointer, onCompleteListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnCompleteListener2 = jniLookup<
@@ -4256,9 +4288,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     Executor executor,
     OnCompleteListener<$TResult> onCompleteListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnCompleteListener2(
-            reference, executor.reference, onCompleteListener.reference)
-        .object);
+    return _addOnCompleteListener2(reference.pointer,
+            executor.reference.pointer, onCompleteListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnFailureListener = jniLookup<
@@ -4274,8 +4306,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   Task<$TResult> addOnFailureListener(
     OnFailureListener onFailureListener,
   ) {
-    return $TaskType(TResult).fromRef(
-        _addOnFailureListener(reference, onFailureListener.reference).object);
+    return _addOnFailureListener(
+            reference.pointer, onFailureListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnFailureListener1 = jniLookup<
@@ -4294,9 +4327,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject activity,
     OnFailureListener onFailureListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnFailureListener1(
-            reference, activity.reference, onFailureListener.reference)
-        .object);
+    return _addOnFailureListener1(reference.pointer, activity.reference.pointer,
+            onFailureListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnFailureListener2 = jniLookup<
@@ -4315,9 +4348,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     Executor executor,
     OnFailureListener onFailureListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnFailureListener2(
-            reference, executor.reference, onFailureListener.reference)
-        .object);
+    return _addOnFailureListener2(reference.pointer, executor.reference.pointer,
+            onFailureListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnSuccessListener = jniLookup<
@@ -4333,8 +4366,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   Task<$TResult> addOnSuccessListener(
     OnSuccessListener<$TResult> onSuccessListener,
   ) {
-    return $TaskType(TResult).fromRef(
-        _addOnSuccessListener(reference, onSuccessListener.reference).object);
+    return _addOnSuccessListener(
+            reference.pointer, onSuccessListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnSuccessListener1 = jniLookup<
@@ -4353,9 +4387,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject activity,
     OnSuccessListener<$TResult> onSuccessListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnSuccessListener1(
-            reference, activity.reference, onSuccessListener.reference)
-        .object);
+    return _addOnSuccessListener1(reference.pointer, activity.reference.pointer,
+            onSuccessListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _addOnSuccessListener2 = jniLookup<
@@ -4374,9 +4408,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     Executor executor,
     OnSuccessListener<$TResult> onSuccessListener,
   ) {
-    return $TaskType(TResult).fromRef(_addOnSuccessListener2(
-            reference, executor.reference, onSuccessListener.reference)
-        .object);
+    return _addOnSuccessListener2(reference.pointer, executor.reference.pointer,
+            onSuccessListener.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _continueWith = jniLookup<
@@ -4394,8 +4428,8 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject continuation, {
     required jni.JObjType<$TContinuationResult> TContinuationResult,
   }) {
-    return $TaskType(TContinuationResult)
-        .fromRef(_continueWith(reference, continuation.reference).object);
+    return _continueWith(reference.pointer, continuation.reference.pointer)
+        .object($TaskType(TContinuationResult));
   }
 
   static final _continueWith1 = jniLookup<
@@ -4416,9 +4450,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject continuation, {
     required jni.JObjType<$TContinuationResult> TContinuationResult,
   }) {
-    return $TaskType(TContinuationResult).fromRef(
-        _continueWith1(reference, executor.reference, continuation.reference)
-            .object);
+    return _continueWith1(reference.pointer, executor.reference.pointer,
+            continuation.reference.pointer)
+        .object($TaskType(TContinuationResult));
   }
 
   static final _continueWithTask = jniLookup<
@@ -4436,8 +4470,8 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject continuation, {
     required jni.JObjType<$TContinuationResult> TContinuationResult,
   }) {
-    return $TaskType(TContinuationResult)
-        .fromRef(_continueWithTask(reference, continuation.reference).object);
+    return _continueWithTask(reference.pointer, continuation.reference.pointer)
+        .object($TaskType(TContinuationResult));
   }
 
   static final _continueWithTask1 = jniLookup<
@@ -4458,9 +4492,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject continuation, {
     required jni.JObjType<$TContinuationResult> TContinuationResult,
   }) {
-    return $TaskType(TContinuationResult).fromRef(_continueWithTask1(
-            reference, executor.reference, continuation.reference)
-        .object);
+    return _continueWithTask1(reference.pointer, executor.reference.pointer,
+            continuation.reference.pointer)
+        .object($TaskType(TContinuationResult));
   }
 
   static final _onSuccessTask = jniLookup<
@@ -4478,8 +4512,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject successContinuation, {
     required jni.JObjType<$TContinuationResult> TContinuationResult,
   }) {
-    return $TaskType(TContinuationResult).fromRef(
-        _onSuccessTask(reference, successContinuation.reference).object);
+    return _onSuccessTask(
+            reference.pointer, successContinuation.reference.pointer)
+        .object($TaskType(TContinuationResult));
   }
 
   static final _onSuccessTask1 = jniLookup<
@@ -4500,9 +4535,9 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject successContinuation, {
     required jni.JObjType<$TContinuationResult> TContinuationResult,
   }) {
-    return $TaskType(TContinuationResult).fromRef(_onSuccessTask1(
-            reference, executor.reference, successContinuation.reference)
-        .object);
+    return _onSuccessTask1(reference.pointer, executor.reference.pointer,
+            successContinuation.reference.pointer)
+        .object($TaskType(TContinuationResult));
   }
 
   static final _getException = jniLookup<
@@ -4514,7 +4549,7 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   /// from: public abstract java.lang.Exception getException()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getException() {
-    return const jni.JObjectType().fromRef(_getException(reference).object);
+    return _getException(reference.pointer).object(const jni.JObjectType());
   }
 
   static final _getResult = jniLookup<
@@ -4525,7 +4560,7 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   /// from: public abstract TResult getResult()
   /// The returned object must be released after use, by calling the [release] method.
   $TResult getResult() {
-    return TResult.fromRef(_getResult(reference).object);
+    return _getResult(reference.pointer).object(TResult);
   }
 
   static final _getResult1 = jniLookup<
@@ -4542,7 +4577,8 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
     jni.JObject class0, {
     required jni.JObjType<$X> X,
   }) {
-    return TResult.fromRef(_getResult1(reference, class0.reference).object);
+    return _getResult1(reference.pointer, class0.reference.pointer)
+        .object(TResult);
   }
 
   static final _new0 =
@@ -4554,7 +4590,7 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
   factory Task({
     required jni.JObjType<$TResult> TResult,
   }) {
-    return Task.fromRef(TResult, _new0().object);
+    return Task.fromReference(TResult, _new0().reference);
   }
 
   static final _isCanceled = jniLookup<
@@ -4565,7 +4601,7 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
 
   /// from: public abstract boolean isCanceled()
   bool isCanceled() {
-    return _isCanceled(reference).boolean;
+    return _isCanceled(reference.pointer).boolean;
   }
 
   static final _isComplete = jniLookup<
@@ -4576,7 +4612,7 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
 
   /// from: public abstract boolean isComplete()
   bool isComplete() {
-    return _isComplete(reference).boolean;
+    return _isComplete(reference.pointer).boolean;
   }
 
   static final _isSuccessful = jniLookup<
@@ -4587,7 +4623,7 @@ class Task<$TResult extends jni.JObject> extends jni.JObject {
 
   /// from: public abstract boolean isSuccessful()
   bool isSuccessful() {
-    return _isSuccessful(reference).boolean;
+    return _isSuccessful(reference.pointer).boolean;
   }
 }
 
@@ -4603,7 +4639,8 @@ final class $TaskType<$TResult extends jni.JObject>
   String get signature => r"Lcom/google/android/gms/tasks/Task;";
 
   @override
-  Task<$TResult> fromRef(jni.JObjectPtr ref) => Task.fromRef(TResult, ref);
+  Task<$TResult> fromReference(jni.JReference reference) =>
+      Task.fromReference(TResult, reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -4627,9 +4664,9 @@ class Tasks extends jni.JObject {
   @override
   late final jni.JObjType<Tasks> $type = type;
 
-  Tasks.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Tasks.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $TasksType();
@@ -4644,7 +4681,7 @@ class Tasks extends jni.JObject {
     jni.JObject callable, {
     required jni.JObjType<$TResult> TResult,
   }) {
-    return $TaskType(TResult).fromRef(_call(callable.reference).object);
+    return _call(callable.reference.pointer).object($TaskType(TResult));
   }
 
   static final _call1 = jniLookup<
@@ -4662,8 +4699,8 @@ class Tasks extends jni.JObject {
     jni.JObject callable, {
     required jni.JObjType<$TResult> TResult,
   }) {
-    return $TaskType(TResult)
-        .fromRef(_call1(executor.reference, callable.reference).object);
+    return _call1(executor.reference.pointer, callable.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _forCanceled =
@@ -4676,7 +4713,7 @@ class Tasks extends jni.JObject {
   static Task<$TResult> forCanceled<$TResult extends jni.JObject>({
     required jni.JObjType<$TResult> TResult,
   }) {
-    return $TaskType(TResult).fromRef(_forCanceled().object);
+    return _forCanceled().object($TaskType(TResult));
   }
 
   static final _forException = jniLookup<
@@ -4691,8 +4728,8 @@ class Tasks extends jni.JObject {
     jni.JObject exception, {
     required jni.JObjType<$TResult> TResult,
   }) {
-    return $TaskType(TResult)
-        .fromRef(_forException(exception.reference).object);
+    return _forException(exception.reference.pointer)
+        .object($TaskType(TResult));
   }
 
   static final _forResult = jniLookup<
@@ -4710,7 +4747,7 @@ class Tasks extends jni.JObject {
     TResult ??= jni.lowestCommonSuperType([
       object.$type,
     ]) as jni.JObjType<$TResult>;
-    return $TaskType(TResult).fromRef(_forResult(object.reference).object);
+    return _forResult(object.reference.pointer).object($TaskType(TResult));
   }
 
   static final _whenAll = jniLookup<
@@ -4723,8 +4760,8 @@ class Tasks extends jni.JObject {
   static Task<jni.JObject> whenAll(
     jni.JObject collection,
   ) {
-    return const $TaskType(jni.JObjectType())
-        .fromRef(_whenAll(collection.reference).object);
+    return _whenAll(collection.reference.pointer)
+        .object(const $TaskType(jni.JObjectType()));
   }
 
   static final _whenAll1 = jniLookup<
@@ -4737,8 +4774,8 @@ class Tasks extends jni.JObject {
   static Task<jni.JObject> whenAll1(
     jni.JArray<Task<jni.JObject>> tasks,
   ) {
-    return const $TaskType(jni.JObjectType())
-        .fromRef(_whenAll1(tasks.reference).object);
+    return _whenAll1(tasks.reference.pointer)
+        .object(const $TaskType(jni.JObjectType()));
   }
 
   static final _whenAllComplete = jniLookup<
@@ -4752,8 +4789,8 @@ class Tasks extends jni.JObject {
   static Task<jni.JList<Task<jni.JObject>>> whenAllComplete(
     jni.JObject collection,
   ) {
-    return const $TaskType(jni.JListType($TaskType(jni.JObjectType())))
-        .fromRef(_whenAllComplete(collection.reference).object);
+    return _whenAllComplete(collection.reference.pointer)
+        .object(const $TaskType(jni.JListType($TaskType(jni.JObjectType()))));
   }
 
   static final _whenAllComplete1 = jniLookup<
@@ -4767,8 +4804,8 @@ class Tasks extends jni.JObject {
   static Task<jni.JList<Task<jni.JObject>>> whenAllComplete1(
     jni.JArray<Task<jni.JObject>> tasks,
   ) {
-    return const $TaskType(jni.JListType($TaskType(jni.JObjectType())))
-        .fromRef(_whenAllComplete1(tasks.reference).object);
+    return _whenAllComplete1(tasks.reference.pointer)
+        .object(const $TaskType(jni.JListType($TaskType(jni.JObjectType()))));
   }
 
   static final _whenAllSuccess = jniLookup<
@@ -4783,8 +4820,8 @@ class Tasks extends jni.JObject {
     jni.JObject collection, {
     required jni.JObjType<$TResult> TResult,
   }) {
-    return $TaskType(jni.JListType(TResult))
-        .fromRef(_whenAllSuccess(collection.reference).object);
+    return _whenAllSuccess(collection.reference.pointer)
+        .object($TaskType(jni.JListType(TResult)));
   }
 
   static final _whenAllSuccess1 = jniLookup<
@@ -4800,8 +4837,8 @@ class Tasks extends jni.JObject {
     jni.JArray<Task<jni.JObject>> tasks, {
     required jni.JObjType<$TResult> TResult,
   }) {
-    return $TaskType(jni.JListType(TResult))
-        .fromRef(_whenAllSuccess1(tasks.reference).object);
+    return _whenAllSuccess1(tasks.reference.pointer)
+        .object($TaskType(jni.JListType(TResult)));
   }
 
   static final _withTimeout = jniLookup<
@@ -4823,8 +4860,8 @@ class Tasks extends jni.JObject {
     T ??= jni.lowestCommonSuperType([
       (task.$type as $TaskType).TResult,
     ]) as jni.JObjType<$T>;
-    return $TaskType(T)
-        .fromRef(_withTimeout(task.reference, j, timeUnit.reference).object);
+    return _withTimeout(task.reference.pointer, j, timeUnit.reference.pointer)
+        .object($TaskType(T));
   }
 
   static final _await0 = jniLookup<
@@ -4841,7 +4878,7 @@ class Tasks extends jni.JObject {
     TResult ??= jni.lowestCommonSuperType([
       (task.$type as $TaskType).TResult,
     ]) as jni.JObjType<$TResult>;
-    return TResult.fromRef(_await0(task.reference).object);
+    return _await0(task.reference.pointer).object(TResult);
   }
 
   static final _await1 = jniLookup<
@@ -4863,8 +4900,8 @@ class Tasks extends jni.JObject {
     TResult ??= jni.lowestCommonSuperType([
       (task.$type as $TaskType).TResult,
     ]) as jni.JObjType<$TResult>;
-    return TResult.fromRef(
-        _await1(task.reference, j, timeUnit.reference).object);
+    return _await1(task.reference.pointer, j, timeUnit.reference.pointer)
+        .object(TResult);
   }
 }
 
@@ -4875,7 +4912,8 @@ final class $TasksType extends jni.JObjType<Tasks> {
   String get signature => r"Lcom/google/android/gms/tasks/Tasks;";
 
   @override
-  Tasks fromRef(jni.JObjectPtr ref) => Tasks.fromRef(ref);
+  Tasks fromReference(jni.JReference reference) =>
+      Tasks.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -4899,10 +4937,10 @@ class OnCompleteListener<$TResult extends jni.JObject> extends jni.JObject {
 
   final jni.JObjType<$TResult> TResult;
 
-  OnCompleteListener.fromRef(
+  OnCompleteListener.fromReference(
     this.TResult,
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static $OnCompleteListenerType<$TResult> type<$TResult extends jni.JObject>(
@@ -4925,7 +4963,7 @@ class OnCompleteListener<$TResult extends jni.JObject> extends jni.JObject {
   void onComplete(
     Task<$TResult> task,
   ) {
-    return _onComplete(reference, task.reference).check();
+    _onComplete(reference.pointer, task.reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -4976,7 +5014,7 @@ class OnCompleteListener<$TResult extends jni.JObject> extends jni.JObject {
     $OnCompleteListenerImpl<$TResult> $impl,
   ) {
     final $p = ReceivePort();
-    final $x = OnCompleteListener.fromRef(
+    final $x = OnCompleteListener.fromReference(
       $impl.TResult,
       ProtectedJniExtensions.newPortProxy(
         r"com.google.android.gms.tasks.OnCompleteListener",
@@ -5000,7 +5038,7 @@ class OnCompleteListener<$TResult extends jni.JObject> extends jni.JObject {
   }
 }
 
-abstract class $OnCompleteListenerImpl<$TResult extends jni.JObject> {
+abstract interface class $OnCompleteListenerImpl<$TResult extends jni.JObject> {
   factory $OnCompleteListenerImpl({
     required jni.JObjType<$TResult> TResult,
     required void Function(Task<$TResult> task) onComplete,
@@ -5040,8 +5078,8 @@ final class $OnCompleteListenerType<$TResult extends jni.JObject>
   String get signature => r"Lcom/google/android/gms/tasks/OnCompleteListener;";
 
   @override
-  OnCompleteListener<$TResult> fromRef(jni.JObjectPtr ref) =>
-      OnCompleteListener.fromRef(TResult, ref);
+  OnCompleteListener<$TResult> fromReference(jni.JReference reference) =>
+      OnCompleteListener.fromReference(TResult, reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5067,10 +5105,10 @@ class OnSuccessListener<$TResult extends jni.JObject> extends jni.JObject {
 
   final jni.JObjType<$TResult> TResult;
 
-  OnSuccessListener.fromRef(
+  OnSuccessListener.fromReference(
     this.TResult,
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static $OnSuccessListenerType<$TResult> type<$TResult extends jni.JObject>(
@@ -5093,7 +5131,7 @@ class OnSuccessListener<$TResult extends jni.JObject> extends jni.JObject {
   void onSuccess(
     $TResult object,
   ) {
-    return _onSuccess(reference, object.reference).check();
+    _onSuccess(reference.pointer, object.reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5144,7 +5182,7 @@ class OnSuccessListener<$TResult extends jni.JObject> extends jni.JObject {
     $OnSuccessListenerImpl<$TResult> $impl,
   ) {
     final $p = ReceivePort();
-    final $x = OnSuccessListener.fromRef(
+    final $x = OnSuccessListener.fromReference(
       $impl.TResult,
       ProtectedJniExtensions.newPortProxy(
         r"com.google.android.gms.tasks.OnSuccessListener",
@@ -5168,7 +5206,7 @@ class OnSuccessListener<$TResult extends jni.JObject> extends jni.JObject {
   }
 }
 
-abstract class $OnSuccessListenerImpl<$TResult extends jni.JObject> {
+abstract interface class $OnSuccessListenerImpl<$TResult extends jni.JObject> {
   factory $OnSuccessListenerImpl({
     required jni.JObjType<$TResult> TResult,
     required void Function($TResult object) onSuccess,
@@ -5208,8 +5246,8 @@ final class $OnSuccessListenerType<$TResult extends jni.JObject>
   String get signature => r"Lcom/google/android/gms/tasks/OnSuccessListener;";
 
   @override
-  OnSuccessListener<$TResult> fromRef(jni.JObjectPtr ref) =>
-      OnSuccessListener.fromRef(TResult, ref);
+  OnSuccessListener<$TResult> fromReference(jni.JReference reference) =>
+      OnSuccessListener.fromReference(TResult, reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5233,9 +5271,9 @@ class OnFailureListener extends jni.JObject {
   @override
   late final jni.JObjType<OnFailureListener> $type = type;
 
-  OnFailureListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  OnFailureListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $OnFailureListenerType();
@@ -5251,7 +5289,7 @@ class OnFailureListener extends jni.JObject {
   void onFailure(
     jni.JObject exception,
   ) {
-    return _onFailure(reference, exception.reference).check();
+    _onFailure(reference.pointer, exception.reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5302,7 +5340,7 @@ class OnFailureListener extends jni.JObject {
     $OnFailureListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = OnFailureListener.fromRef(
+    final $x = OnFailureListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.android.gms.tasks.OnFailureListener",
         $p,
@@ -5325,7 +5363,7 @@ class OnFailureListener extends jni.JObject {
   }
 }
 
-abstract class $OnFailureListenerImpl {
+abstract interface class $OnFailureListenerImpl {
   factory $OnFailureListenerImpl({
     required void Function(jni.JObject exception) onFailure,
   }) = _$OnFailureListenerImpl;
@@ -5352,8 +5390,8 @@ final class $OnFailureListenerType extends jni.JObjType<OnFailureListener> {
   String get signature => r"Lcom/google/android/gms/tasks/OnFailureListener;";
 
   @override
-  OnFailureListener fromRef(jni.JObjectPtr ref) =>
-      OnFailureListener.fromRef(ref);
+  OnFailureListener fromReference(jni.JReference reference) =>
+      OnFailureListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5376,9 +5414,9 @@ class OnCanceledListener extends jni.JObject {
   @override
   late final jni.JObjType<OnCanceledListener> $type = type;
 
-  OnCanceledListener.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  OnCanceledListener.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $OnCanceledListenerType();
@@ -5390,7 +5428,7 @@ class OnCanceledListener extends jni.JObject {
 
   /// from: public abstract void onCanceled()
   void onCanceled() {
-    return _onCanceled(reference).check();
+    _onCanceled(reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5439,7 +5477,7 @@ class OnCanceledListener extends jni.JObject {
     $OnCanceledListenerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = OnCanceledListener.fromRef(
+    final $x = OnCanceledListener.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.android.gms.tasks.OnCanceledListener",
         $p,
@@ -5462,7 +5500,7 @@ class OnCanceledListener extends jni.JObject {
   }
 }
 
-abstract class $OnCanceledListenerImpl {
+abstract interface class $OnCanceledListenerImpl {
   factory $OnCanceledListenerImpl({
     required void Function() onCanceled,
   }) = _$OnCanceledListenerImpl;
@@ -5489,8 +5527,8 @@ final class $OnCanceledListenerType extends jni.JObjType<OnCanceledListener> {
   String get signature => r"Lcom/google/android/gms/tasks/OnCanceledListener;";
 
   @override
-  OnCanceledListener fromRef(jni.JObjectPtr ref) =>
-      OnCanceledListener.fromRef(ref);
+  OnCanceledListener fromReference(jni.JReference reference) =>
+      OnCanceledListener.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5513,9 +5551,9 @@ class InputImage_ImageFormat extends jni.JObject {
   @override
   late final jni.JObjType<InputImage_ImageFormat> $type = type;
 
-  InputImage_ImageFormat.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  InputImage_ImageFormat.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $InputImage_ImageFormatType();
@@ -5562,7 +5600,7 @@ class InputImage_ImageFormat extends jni.JObject {
     $InputImage_ImageFormatImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = InputImage_ImageFormat.fromRef(
+    final $x = InputImage_ImageFormat.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.common.InputImage$ImageFormat",
         $p,
@@ -5585,7 +5623,7 @@ class InputImage_ImageFormat extends jni.JObject {
   }
 }
 
-abstract class $InputImage_ImageFormatImpl {
+abstract interface class $InputImage_ImageFormatImpl {
   factory $InputImage_ImageFormatImpl() = _$InputImage_ImageFormatImpl;
 }
 
@@ -5602,8 +5640,8 @@ final class $InputImage_ImageFormatType
       r"Lcom/google/mlkit/vision/common/InputImage$ImageFormat;";
 
   @override
-  InputImage_ImageFormat fromRef(jni.JObjectPtr ref) =>
-      InputImage_ImageFormat.fromRef(ref);
+  InputImage_ImageFormat fromReference(jni.JReference reference) =>
+      InputImage_ImageFormat.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5626,9 +5664,9 @@ class InputImage extends jni.JObject {
   @override
   late final jni.JObjType<InputImage> $type = type;
 
-  InputImage.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  InputImage.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $InputImageType();
@@ -5644,7 +5682,6 @@ class InputImage extends jni.JObject {
 
   /// from: static public final int IMAGE_FORMAT_YUV_420_888
   static const IMAGE_FORMAT_YUV_420_888 = 35;
-
   static final _getFormat = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -5653,7 +5690,7 @@ class InputImage extends jni.JObject {
 
   /// from: public int getFormat()
   int getFormat() {
-    return _getFormat(reference).integer;
+    return _getFormat(reference.pointer).integer;
   }
 
   static final _getHeight = jniLookup<
@@ -5664,7 +5701,7 @@ class InputImage extends jni.JObject {
 
   /// from: public int getHeight()
   int getHeight() {
-    return _getHeight(reference).integer;
+    return _getHeight(reference.pointer).integer;
   }
 
   static final _getRotationDegrees = jniLookup<
@@ -5675,7 +5712,7 @@ class InputImage extends jni.JObject {
 
   /// from: public int getRotationDegrees()
   int getRotationDegrees() {
-    return _getRotationDegrees(reference).integer;
+    return _getRotationDegrees(reference.pointer).integer;
   }
 
   static final _getWidth = jniLookup<
@@ -5686,7 +5723,7 @@ class InputImage extends jni.JObject {
 
   /// from: public int getWidth()
   int getWidth() {
-    return _getWidth(reference).integer;
+    return _getWidth(reference.pointer).integer;
   }
 
   static final _getBitmapInternal = jniLookup<
@@ -5698,7 +5735,7 @@ class InputImage extends jni.JObject {
   /// from: public android.graphics.Bitmap getBitmapInternal()
   /// The returned object must be released after use, by calling the [release] method.
   Bitmap getBitmapInternal() {
-    return const $BitmapType().fromRef(_getBitmapInternal(reference).object);
+    return _getBitmapInternal(reference.pointer).object(const $BitmapType());
   }
 
   static final _getCoordinatesMatrix = jniLookup<
@@ -5710,8 +5747,8 @@ class InputImage extends jni.JObject {
   /// from: public android.graphics.Matrix getCoordinatesMatrix()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getCoordinatesMatrix() {
-    return const jni.JObjectType()
-        .fromRef(_getCoordinatesMatrix(reference).object);
+    return _getCoordinatesMatrix(reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _getMediaImage = jniLookup<
@@ -5723,7 +5760,7 @@ class InputImage extends jni.JObject {
   /// from: public android.media.Image getMediaImage()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject getMediaImage() {
-    return const jni.JObjectType().fromRef(_getMediaImage(reference).object);
+    return _getMediaImage(reference.pointer).object(const jni.JObjectType());
   }
 
   static final _fromBitmap = jniLookup<
@@ -5738,8 +5775,8 @@ class InputImage extends jni.JObject {
     Bitmap bitmap,
     int i,
   ) {
-    return const $InputImageType()
-        .fromRef(_fromBitmap(bitmap.reference, i).object);
+    return _fromBitmap(bitmap.reference.pointer, i)
+        .object(const $InputImageType());
   }
 
   static final _fromByteArray = jniLookup<
@@ -5762,8 +5799,8 @@ class InputImage extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return const $InputImageType()
-        .fromRef(_fromByteArray(bs.reference, i, i1, i2, i3).object);
+    return _fromByteArray(bs.reference.pointer, i, i1, i2, i3)
+        .object(const $InputImageType());
   }
 
   static final _fromByteBuffer = jniLookup<
@@ -5786,8 +5823,8 @@ class InputImage extends jni.JObject {
     int i2,
     int i3,
   ) {
-    return const $InputImageType()
-        .fromRef(_fromByteBuffer(byteBuffer.reference, i, i1, i2, i3).object);
+    return _fromByteBuffer(byteBuffer.reference.pointer, i, i1, i2, i3)
+        .object(const $InputImageType());
   }
 
   static final _fromFilePath = jniLookup<
@@ -5804,8 +5841,8 @@ class InputImage extends jni.JObject {
     jni.JObject context,
     Uri uri,
   ) {
-    return const $InputImageType()
-        .fromRef(_fromFilePath(context.reference, uri.reference).object);
+    return _fromFilePath(context.reference.pointer, uri.reference.pointer)
+        .object(const $InputImageType());
   }
 
   static final _fromMediaImage = jniLookup<
@@ -5820,8 +5857,8 @@ class InputImage extends jni.JObject {
     jni.JObject image,
     int i,
   ) {
-    return const $InputImageType()
-        .fromRef(_fromMediaImage(image.reference, i).object);
+    return _fromMediaImage(image.reference.pointer, i)
+        .object(const $InputImageType());
   }
 
   static final _fromMediaImage1 = jniLookup<
@@ -5839,8 +5876,9 @@ class InputImage extends jni.JObject {
     int i,
     jni.JObject matrix,
   ) {
-    return const $InputImageType()
-        .fromRef(_fromMediaImage1(image.reference, i, matrix.reference).object);
+    return _fromMediaImage1(
+            image.reference.pointer, i, matrix.reference.pointer)
+        .object(const $InputImageType());
   }
 
   static final _getByteBuffer = jniLookup<
@@ -5852,8 +5890,8 @@ class InputImage extends jni.JObject {
   /// from: public java.nio.ByteBuffer getByteBuffer()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JByteBuffer getByteBuffer() {
-    return const jni.JByteBufferType()
-        .fromRef(_getByteBuffer(reference).object);
+    return _getByteBuffer(reference.pointer)
+        .object(const jni.JByteBufferType());
   }
 
   static final _getPlanes = jniLookup<
@@ -5865,8 +5903,8 @@ class InputImage extends jni.JObject {
   /// from: public android.media.Image$Plane[] getPlanes()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.JObject> getPlanes() {
-    return const jni.JArrayType(jni.JObjectType())
-        .fromRef(_getPlanes(reference).object);
+    return _getPlanes(reference.pointer)
+        .object(const jni.JArrayType(jni.JObjectType()));
   }
 }
 
@@ -5877,7 +5915,8 @@ final class $InputImageType extends jni.JObjType<InputImage> {
   String get signature => r"Lcom/google/mlkit/vision/common/InputImage;";
 
   @override
-  InputImage fromRef(jni.JObjectPtr ref) => InputImage.fromRef(ref);
+  InputImage fromReference(jni.JReference reference) =>
+      InputImage.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -5899,9 +5938,9 @@ class BarcodeScanner extends jni.JObject {
   @override
   late final jni.JObjType<BarcodeScanner> $type = type;
 
-  BarcodeScanner.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  BarcodeScanner.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BarcodeScannerType();
@@ -5918,8 +5957,8 @@ class BarcodeScanner extends jni.JObject {
   Task<jni.JList<Barcode>> process(
     jni.JObject mlImage,
   ) {
-    return const $TaskType(jni.JListType($BarcodeType()))
-        .fromRef(_process(reference, mlImage.reference).object);
+    return _process(reference.pointer, mlImage.reference.pointer)
+        .object(const $TaskType(jni.JListType($BarcodeType())));
   }
 
   static final _process1 = jniLookup<
@@ -5935,8 +5974,8 @@ class BarcodeScanner extends jni.JObject {
   Task<jni.JList<Barcode>> process1(
     InputImage inputImage,
   ) {
-    return const $TaskType(jni.JListType($BarcodeType()))
-        .fromRef(_process1(reference, inputImage.reference).object);
+    return _process1(reference.pointer, inputImage.reference.pointer)
+        .object(const $TaskType(jni.JListType($BarcodeType())));
   }
 
   static final _close = jniLookup<
@@ -5947,7 +5986,7 @@ class BarcodeScanner extends jni.JObject {
 
   /// from: public abstract void close()
   void close() {
-    return _close(reference).check();
+    _close(reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -5987,14 +6026,20 @@ class BarcodeScanner extends jni.JObject {
         final $r = _$impls[$p]!.process(
           $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
       if ($d ==
           r"process(Lcom/google/mlkit/vision/common/InputImage;)Lcom/google/android/gms/tasks/Task;") {
         final $r = _$impls[$p]!.process1(
           $a[0].castTo(const $InputImageType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject).castTo(const jni.JObjectType()).toPointer();
+        return ($r as jni.JObject)
+            .castTo(const jni.JObjectType())
+            .reference
+            .toPointer();
       }
       if ($d == r"close()V") {
         _$impls[$p]!.close();
@@ -6010,7 +6055,7 @@ class BarcodeScanner extends jni.JObject {
     $BarcodeScannerImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = BarcodeScanner.fromRef(
+    final $x = BarcodeScanner.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.BarcodeScanner",
         $p,
@@ -6033,7 +6078,7 @@ class BarcodeScanner extends jni.JObject {
   }
 }
 
-abstract class $BarcodeScannerImpl {
+abstract interface class $BarcodeScannerImpl {
   factory $BarcodeScannerImpl({
     required Task<jni.JList<Barcode>> Function(jni.JObject mlImage) process,
     required Task<jni.JList<Barcode>> Function(InputImage inputImage) process1,
@@ -6078,7 +6123,8 @@ final class $BarcodeScannerType extends jni.JObjType<BarcodeScanner> {
   String get signature => r"Lcom/google/mlkit/vision/barcode/BarcodeScanner;";
 
   @override
-  BarcodeScanner fromRef(jni.JObjectPtr ref) => BarcodeScanner.fromRef(ref);
+  BarcodeScanner fromReference(jni.JReference reference) =>
+      BarcodeScanner.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6101,9 +6147,9 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
   @override
   late final jni.JObjType<BarcodeScannerOptions_Builder> $type = type;
 
-  BarcodeScannerOptions_Builder.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  BarcodeScannerOptions_Builder.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BarcodeScannerOptions_BuilderType();
@@ -6116,8 +6162,8 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.BarcodeScannerOptions$Builder enableAllPotentialBarcodes()
   /// The returned object must be released after use, by calling the [release] method.
   BarcodeScannerOptions_Builder enableAllPotentialBarcodes() {
-    return const $BarcodeScannerOptions_BuilderType()
-        .fromRef(_enableAllPotentialBarcodes(reference).object);
+    return _enableAllPotentialBarcodes(reference.pointer)
+        .object(const $BarcodeScannerOptions_BuilderType());
   }
 
   static final _setBarcodeFormats = jniLookup<
@@ -6135,8 +6181,8 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
     int i,
     jni.JArray<jni.jint> is0,
   ) {
-    return const $BarcodeScannerOptions_BuilderType()
-        .fromRef(_setBarcodeFormats(reference, i, is0.reference).object);
+    return _setBarcodeFormats(reference.pointer, i, is0.reference.pointer)
+        .object(const $BarcodeScannerOptions_BuilderType());
   }
 
   static final _setExecutor = jniLookup<
@@ -6153,8 +6199,8 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
   BarcodeScannerOptions_Builder setExecutor(
     Executor executor,
   ) {
-    return const $BarcodeScannerOptions_BuilderType()
-        .fromRef(_setExecutor(reference, executor.reference).object);
+    return _setExecutor(reference.pointer, executor.reference.pointer)
+        .object(const $BarcodeScannerOptions_BuilderType());
   }
 
   static final _setZoomSuggestionOptions = jniLookup<
@@ -6171,9 +6217,9 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
   BarcodeScannerOptions_Builder setZoomSuggestionOptions(
     ZoomSuggestionOptions zoomSuggestionOptions,
   ) {
-    return const $BarcodeScannerOptions_BuilderType().fromRef(
-        _setZoomSuggestionOptions(reference, zoomSuggestionOptions.reference)
-            .object);
+    return _setZoomSuggestionOptions(
+            reference.pointer, zoomSuggestionOptions.reference.pointer)
+        .object(const $BarcodeScannerOptions_BuilderType());
   }
 
   static final _build = jniLookup<
@@ -6185,7 +6231,7 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.BarcodeScannerOptions build()
   /// The returned object must be released after use, by calling the [release] method.
   BarcodeScannerOptions build() {
-    return const $BarcodeScannerOptionsType().fromRef(_build(reference).object);
+    return _build(reference.pointer).object(const $BarcodeScannerOptionsType());
   }
 
   static final _new0 = jniLookup<ffi.NativeFunction<jni.JniResult Function()>>(
@@ -6195,7 +6241,7 @@ class BarcodeScannerOptions_Builder extends jni.JObject {
   /// from: public void <init>()
   /// The returned object must be released after use, by calling the [release] method.
   factory BarcodeScannerOptions_Builder() {
-    return BarcodeScannerOptions_Builder.fromRef(_new0().object);
+    return BarcodeScannerOptions_Builder.fromReference(_new0().reference);
   }
 }
 
@@ -6208,8 +6254,8 @@ final class $BarcodeScannerOptions_BuilderType
       r"Lcom/google/mlkit/vision/barcode/BarcodeScannerOptions$Builder;";
 
   @override
-  BarcodeScannerOptions_Builder fromRef(jni.JObjectPtr ref) =>
-      BarcodeScannerOptions_Builder.fromRef(ref);
+  BarcodeScannerOptions_Builder fromReference(jni.JReference reference) =>
+      BarcodeScannerOptions_Builder.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6232,9 +6278,9 @@ class BarcodeScannerOptions extends jni.JObject {
   @override
   late final jni.JObjType<BarcodeScannerOptions> $type = type;
 
-  BarcodeScannerOptions.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  BarcodeScannerOptions.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BarcodeScannerOptionsType();
@@ -6246,22 +6292,22 @@ class BarcodeScannerOptions extends jni.JObject {
 
   /// from: public int hashCode()
   int hashCode1() {
-    return _hashCode1(reference).integer;
+    return _hashCode1(reference.pointer).integer;
   }
 
-  static final _equals1 = jniLookup<
+  static final _equals = jniLookup<
           ffi.NativeFunction<
               jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>>("BarcodeScannerOptions__equals1")
+                  ffi.Pointer<ffi.Void>)>>("BarcodeScannerOptions__equals")
       .asFunction<
           jni.JniResult Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   /// from: public boolean equals(java.lang.Object object)
-  bool equals1(
+  bool equals(
     jni.JObject object,
   ) {
-    return _equals1(reference, object.reference).boolean;
+    return _equals(reference.pointer, object.reference.pointer).boolean;
   }
 
   static final _zza = jniLookup<
@@ -6272,7 +6318,7 @@ class BarcodeScannerOptions extends jni.JObject {
 
   /// from: public final int zza()
   int zza() {
-    return _zza(reference).integer;
+    return _zza(reference.pointer).integer;
   }
 
   static final _zzb = jniLookup<
@@ -6284,7 +6330,7 @@ class BarcodeScannerOptions extends jni.JObject {
   /// from: public final com.google.mlkit.vision.barcode.ZoomSuggestionOptions zzb()
   /// The returned object must be released after use, by calling the [release] method.
   ZoomSuggestionOptions zzb() {
-    return const $ZoomSuggestionOptionsType().fromRef(_zzb(reference).object);
+    return _zzb(reference.pointer).object(const $ZoomSuggestionOptionsType());
   }
 
   static final _zzc = jniLookup<
@@ -6296,7 +6342,7 @@ class BarcodeScannerOptions extends jni.JObject {
   /// from: public final java.util.concurrent.Executor zzc()
   /// The returned object must be released after use, by calling the [release] method.
   Executor zzc() {
-    return const $ExecutorType().fromRef(_zzc(reference).object);
+    return _zzc(reference.pointer).object(const $ExecutorType());
   }
 
   static final _zzd = jniLookup<
@@ -6307,7 +6353,7 @@ class BarcodeScannerOptions extends jni.JObject {
 
   /// from: public final boolean zzd()
   bool zzd() {
-    return _zzd(reference).boolean;
+    return _zzd(reference.pointer).boolean;
   }
 }
 
@@ -6320,8 +6366,8 @@ final class $BarcodeScannerOptionsType
       r"Lcom/google/mlkit/vision/barcode/BarcodeScannerOptions;";
 
   @override
-  BarcodeScannerOptions fromRef(jni.JObjectPtr ref) =>
-      BarcodeScannerOptions.fromRef(ref);
+  BarcodeScannerOptions fromReference(jni.JReference reference) =>
+      BarcodeScannerOptions.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6344,9 +6390,9 @@ class BarcodeScanning extends jni.JObject {
   @override
   late final jni.JObjType<BarcodeScanning> $type = type;
 
-  BarcodeScanning.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  BarcodeScanning.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BarcodeScanningType();
@@ -6358,7 +6404,7 @@ class BarcodeScanning extends jni.JObject {
   /// from: static public com.google.mlkit.vision.barcode.BarcodeScanner getClient()
   /// The returned object must be released after use, by calling the [release] method.
   static BarcodeScanner getClient() {
-    return const $BarcodeScannerType().fromRef(_getClient().object);
+    return _getClient().object(const $BarcodeScannerType());
   }
 
   static final _getClient1 = jniLookup<
@@ -6372,8 +6418,8 @@ class BarcodeScanning extends jni.JObject {
   static BarcodeScanner getClient1(
     BarcodeScannerOptions barcodeScannerOptions,
   ) {
-    return const $BarcodeScannerType()
-        .fromRef(_getClient1(barcodeScannerOptions.reference).object);
+    return _getClient1(barcodeScannerOptions.reference.pointer)
+        .object(const $BarcodeScannerType());
   }
 }
 
@@ -6384,7 +6430,8 @@ final class $BarcodeScanningType extends jni.JObjType<BarcodeScanning> {
   String get signature => r"Lcom/google/mlkit/vision/barcode/BarcodeScanning;";
 
   @override
-  BarcodeScanning fromRef(jni.JObjectPtr ref) => BarcodeScanning.fromRef(ref);
+  BarcodeScanning fromReference(jni.JReference reference) =>
+      BarcodeScanning.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6407,9 +6454,9 @@ class ZoomSuggestionOptions_Builder extends jni.JObject {
   @override
   late final jni.JObjType<ZoomSuggestionOptions_Builder> $type = type;
 
-  ZoomSuggestionOptions_Builder.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  ZoomSuggestionOptions_Builder.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $ZoomSuggestionOptions_BuilderType();
@@ -6424,8 +6471,8 @@ class ZoomSuggestionOptions_Builder extends jni.JObject {
   ZoomSuggestionOptions_Builder setMaxSupportedZoomRatio(
     double f,
   ) {
-    return const $ZoomSuggestionOptions_BuilderType()
-        .fromRef(_setMaxSupportedZoomRatio(reference, f).object);
+    return _setMaxSupportedZoomRatio(reference.pointer, f)
+        .object(const $ZoomSuggestionOptions_BuilderType());
   }
 
   static final _build = jniLookup<
@@ -6437,7 +6484,7 @@ class ZoomSuggestionOptions_Builder extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.ZoomSuggestionOptions build()
   /// The returned object must be released after use, by calling the [release] method.
   ZoomSuggestionOptions build() {
-    return const $ZoomSuggestionOptionsType().fromRef(_build(reference).object);
+    return _build(reference.pointer).object(const $ZoomSuggestionOptionsType());
   }
 
   static final _new0 = jniLookup<
@@ -6451,8 +6498,8 @@ class ZoomSuggestionOptions_Builder extends jni.JObject {
   factory ZoomSuggestionOptions_Builder(
     ZoomSuggestionOptions_ZoomCallback zoomCallback,
   ) {
-    return ZoomSuggestionOptions_Builder.fromRef(
-        _new0(zoomCallback.reference).object);
+    return ZoomSuggestionOptions_Builder.fromReference(
+        _new0(zoomCallback.reference.pointer).reference);
   }
 }
 
@@ -6465,8 +6512,8 @@ final class $ZoomSuggestionOptions_BuilderType
       r"Lcom/google/mlkit/vision/barcode/ZoomSuggestionOptions$Builder;";
 
   @override
-  ZoomSuggestionOptions_Builder fromRef(jni.JObjectPtr ref) =>
-      ZoomSuggestionOptions_Builder.fromRef(ref);
+  ZoomSuggestionOptions_Builder fromReference(jni.JReference reference) =>
+      ZoomSuggestionOptions_Builder.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6489,9 +6536,9 @@ class ZoomSuggestionOptions_ZoomCallback extends jni.JObject {
   @override
   late final jni.JObjType<ZoomSuggestionOptions_ZoomCallback> $type = type;
 
-  ZoomSuggestionOptions_ZoomCallback.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  ZoomSuggestionOptions_ZoomCallback.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $ZoomSuggestionOptions_ZoomCallbackType();
@@ -6505,7 +6552,7 @@ class ZoomSuggestionOptions_ZoomCallback extends jni.JObject {
   bool setZoom(
     double f,
   ) {
-    return _setZoom(reference, f).boolean;
+    return _setZoom(reference.pointer, f).boolean;
   }
 
   /// Maps a specific port to the implemented interface.
@@ -6546,7 +6593,7 @@ class ZoomSuggestionOptions_ZoomCallback extends jni.JObject {
               .castTo(const jni.JFloatType(), releaseOriginal: true)
               .floatValue(releaseOriginal: true),
         );
-        return jni.JBoolean($r).toPointer();
+        return jni.JBoolean($r).reference.toPointer();
       }
     } catch (e) {
       return ProtectedJniExtensions.newDartException(e.toString());
@@ -6558,7 +6605,7 @@ class ZoomSuggestionOptions_ZoomCallback extends jni.JObject {
     $ZoomSuggestionOptions_ZoomCallbackImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = ZoomSuggestionOptions_ZoomCallback.fromRef(
+    final $x = ZoomSuggestionOptions_ZoomCallback.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.ZoomSuggestionOptions$ZoomCallback",
         $p,
@@ -6581,7 +6628,7 @@ class ZoomSuggestionOptions_ZoomCallback extends jni.JObject {
   }
 }
 
-abstract class $ZoomSuggestionOptions_ZoomCallbackImpl {
+abstract interface class $ZoomSuggestionOptions_ZoomCallbackImpl {
   factory $ZoomSuggestionOptions_ZoomCallbackImpl({
     required bool Function(double f) setZoom,
   }) = _$ZoomSuggestionOptions_ZoomCallbackImpl;
@@ -6611,8 +6658,8 @@ final class $ZoomSuggestionOptions_ZoomCallbackType
       r"Lcom/google/mlkit/vision/barcode/ZoomSuggestionOptions$ZoomCallback;";
 
   @override
-  ZoomSuggestionOptions_ZoomCallback fromRef(jni.JObjectPtr ref) =>
-      ZoomSuggestionOptions_ZoomCallback.fromRef(ref);
+  ZoomSuggestionOptions_ZoomCallback fromReference(jni.JReference reference) =>
+      ZoomSuggestionOptions_ZoomCallback.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6635,9 +6682,9 @@ class ZoomSuggestionOptions extends jni.JObject {
   @override
   late final jni.JObjType<ZoomSuggestionOptions> $type = type;
 
-  ZoomSuggestionOptions.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  ZoomSuggestionOptions.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $ZoomSuggestionOptionsType();
@@ -6649,22 +6696,22 @@ class ZoomSuggestionOptions extends jni.JObject {
 
   /// from: public int hashCode()
   int hashCode1() {
-    return _hashCode1(reference).integer;
+    return _hashCode1(reference.pointer).integer;
   }
 
-  static final _equals1 = jniLookup<
+  static final _equals = jniLookup<
           ffi.NativeFunction<
               jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>>("ZoomSuggestionOptions__equals1")
+                  ffi.Pointer<ffi.Void>)>>("ZoomSuggestionOptions__equals")
       .asFunction<
           jni.JniResult Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   /// from: public boolean equals(java.lang.Object object)
-  bool equals1(
+  bool equals(
     jni.JObject object,
   ) {
-    return _equals1(reference, object.reference).boolean;
+    return _equals(reference.pointer, object.reference.pointer).boolean;
   }
 
   static final _zza = jniLookup<
@@ -6675,7 +6722,7 @@ class ZoomSuggestionOptions extends jni.JObject {
 
   /// from: public final float zza()
   double zza() {
-    return _zza(reference).float;
+    return _zza(reference.pointer).float;
   }
 
   static final _zzb = jniLookup<
@@ -6687,8 +6734,8 @@ class ZoomSuggestionOptions extends jni.JObject {
   /// from: public final com.google.mlkit.vision.barcode.ZoomSuggestionOptions$ZoomCallback zzb()
   /// The returned object must be released after use, by calling the [release] method.
   ZoomSuggestionOptions_ZoomCallback zzb() {
-    return const $ZoomSuggestionOptions_ZoomCallbackType()
-        .fromRef(_zzb(reference).object);
+    return _zzb(reference.pointer)
+        .object(const $ZoomSuggestionOptions_ZoomCallbackType());
   }
 }
 
@@ -6701,8 +6748,8 @@ final class $ZoomSuggestionOptionsType
       r"Lcom/google/mlkit/vision/barcode/ZoomSuggestionOptions;";
 
   @override
-  ZoomSuggestionOptions fromRef(jni.JObjectPtr ref) =>
-      ZoomSuggestionOptions.fromRef(ref);
+  ZoomSuggestionOptions fromReference(jni.JReference reference) =>
+      ZoomSuggestionOptions.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6725,9 +6772,9 @@ class Barcode_Address_AddressType extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Address_AddressType> $type = type;
 
-  Barcode_Address_AddressType.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Address_AddressType.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_Address_AddressTypeType();
@@ -6774,7 +6821,7 @@ class Barcode_Address_AddressType extends jni.JObject {
     $Barcode_Address_AddressTypeImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Barcode_Address_AddressType.fromRef(
+    final $x = Barcode_Address_AddressType.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.common.Barcode$Address$AddressType",
         $p,
@@ -6797,7 +6844,7 @@ class Barcode_Address_AddressType extends jni.JObject {
   }
 }
 
-abstract class $Barcode_Address_AddressTypeImpl {
+abstract interface class $Barcode_Address_AddressTypeImpl {
   factory $Barcode_Address_AddressTypeImpl() =
       _$Barcode_Address_AddressTypeImpl;
 }
@@ -6816,8 +6863,8 @@ final class $Barcode_Address_AddressTypeType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Address$AddressType;";
 
   @override
-  Barcode_Address_AddressType fromRef(jni.JObjectPtr ref) =>
-      Barcode_Address_AddressType.fromRef(ref);
+  Barcode_Address_AddressType fromReference(jni.JReference reference) =>
+      Barcode_Address_AddressType.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6840,9 +6887,9 @@ class Barcode_Address extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Address> $type = type;
 
-  Barcode_Address.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Address.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_AddressType();
@@ -6855,7 +6902,6 @@ class Barcode_Address extends jni.JObject {
 
   /// from: static public final int TYPE_HOME
   static const TYPE_HOME = 2;
-
   static final _getType = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -6864,7 +6910,7 @@ class Barcode_Address extends jni.JObject {
 
   /// from: public int getType()
   int getType() {
-    return _getType(reference).integer;
+    return _getType(reference.pointer).integer;
   }
 
   static final _new0 = jniLookup<
@@ -6879,7 +6925,8 @@ class Barcode_Address extends jni.JObject {
     int i,
     jni.JArray<jni.JString> strings,
   ) {
-    return Barcode_Address.fromRef(_new0(i, strings.reference).object);
+    return Barcode_Address.fromReference(
+        _new0(i, strings.reference.pointer).reference);
   }
 
   static final _getAddressLines = jniLookup<
@@ -6891,8 +6938,8 @@ class Barcode_Address extends jni.JObject {
   /// from: public java.lang.String[] getAddressLines()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.JString> getAddressLines() {
-    return const jni.JArrayType(jni.JStringType())
-        .fromRef(_getAddressLines(reference).object);
+    return _getAddressLines(reference.pointer)
+        .object(const jni.JArrayType(jni.JStringType()));
   }
 }
 
@@ -6904,7 +6951,8 @@ final class $Barcode_AddressType extends jni.JObjType<Barcode_Address> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Address;";
 
   @override
-  Barcode_Address fromRef(jni.JObjectPtr ref) => Barcode_Address.fromRef(ref);
+  Barcode_Address fromReference(jni.JReference reference) =>
+      Barcode_Address.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -6927,9 +6975,9 @@ class Barcode_BarcodeFormat extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_BarcodeFormat> $type = type;
 
-  Barcode_BarcodeFormat.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_BarcodeFormat.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_BarcodeFormatType();
@@ -6976,7 +7024,7 @@ class Barcode_BarcodeFormat extends jni.JObject {
     $Barcode_BarcodeFormatImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Barcode_BarcodeFormat.fromRef(
+    final $x = Barcode_BarcodeFormat.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.common.Barcode$BarcodeFormat",
         $p,
@@ -6999,7 +7047,7 @@ class Barcode_BarcodeFormat extends jni.JObject {
   }
 }
 
-abstract class $Barcode_BarcodeFormatImpl {
+abstract interface class $Barcode_BarcodeFormatImpl {
   factory $Barcode_BarcodeFormatImpl() = _$Barcode_BarcodeFormatImpl;
 }
 
@@ -7016,8 +7064,8 @@ final class $Barcode_BarcodeFormatType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$BarcodeFormat;";
 
   @override
-  Barcode_BarcodeFormat fromRef(jni.JObjectPtr ref) =>
-      Barcode_BarcodeFormat.fromRef(ref);
+  Barcode_BarcodeFormat fromReference(jni.JReference reference) =>
+      Barcode_BarcodeFormat.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7040,9 +7088,9 @@ class Barcode_BarcodeValueType extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_BarcodeValueType> $type = type;
 
-  Barcode_BarcodeValueType.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_BarcodeValueType.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_BarcodeValueTypeType();
@@ -7089,7 +7137,7 @@ class Barcode_BarcodeValueType extends jni.JObject {
     $Barcode_BarcodeValueTypeImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Barcode_BarcodeValueType.fromRef(
+    final $x = Barcode_BarcodeValueType.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.common.Barcode$BarcodeValueType",
         $p,
@@ -7112,7 +7160,7 @@ class Barcode_BarcodeValueType extends jni.JObject {
   }
 }
 
-abstract class $Barcode_BarcodeValueTypeImpl {
+abstract interface class $Barcode_BarcodeValueTypeImpl {
   factory $Barcode_BarcodeValueTypeImpl() = _$Barcode_BarcodeValueTypeImpl;
 }
 
@@ -7129,8 +7177,8 @@ final class $Barcode_BarcodeValueTypeType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$BarcodeValueType;";
 
   @override
-  Barcode_BarcodeValueType fromRef(jni.JObjectPtr ref) =>
-      Barcode_BarcodeValueType.fromRef(ref);
+  Barcode_BarcodeValueType fromReference(jni.JReference reference) =>
+      Barcode_BarcodeValueType.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7153,9 +7201,9 @@ class Barcode_CalendarDateTime extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_CalendarDateTime> $type = type;
 
-  Barcode_CalendarDateTime.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_CalendarDateTime.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_CalendarDateTimeType();
@@ -7167,7 +7215,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public int getDay()
   int getDay() {
-    return _getDay(reference).integer;
+    return _getDay(reference.pointer).integer;
   }
 
   static final _getHours = jniLookup<
@@ -7178,7 +7226,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public int getHours()
   int getHours() {
-    return _getHours(reference).integer;
+    return _getHours(reference.pointer).integer;
   }
 
   static final _getMinutes = jniLookup<
@@ -7189,7 +7237,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public int getMinutes()
   int getMinutes() {
-    return _getMinutes(reference).integer;
+    return _getMinutes(reference.pointer).integer;
   }
 
   static final _getMonth = jniLookup<
@@ -7200,7 +7248,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public int getMonth()
   int getMonth() {
-    return _getMonth(reference).integer;
+    return _getMonth(reference.pointer).integer;
   }
 
   static final _getSeconds = jniLookup<
@@ -7211,7 +7259,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public int getSeconds()
   int getSeconds() {
-    return _getSeconds(reference).integer;
+    return _getSeconds(reference.pointer).integer;
   }
 
   static final _getYear = jniLookup<
@@ -7222,7 +7270,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public int getYear()
   int getYear() {
-    return _getYear(reference).integer;
+    return _getYear(reference.pointer).integer;
   }
 
   static final _getRawValue = jniLookup<
@@ -7234,7 +7282,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
   /// from: public java.lang.String getRawValue()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getRawValue() {
-    return const jni.JStringType().fromRef(_getRawValue(reference).object);
+    return _getRawValue(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -7264,8 +7312,9 @@ class Barcode_CalendarDateTime extends jni.JObject {
     bool z,
     jni.JString string,
   ) {
-    return Barcode_CalendarDateTime.fromRef(
-        _new0(i, i1, i2, i3, i4, i5, z ? 1 : 0, string.reference).object);
+    return Barcode_CalendarDateTime.fromReference(
+        _new0(i, i1, i2, i3, i4, i5, z ? 1 : 0, string.reference.pointer)
+            .reference);
   }
 
   static final _isUtc = jniLookup<
@@ -7276,7 +7325,7 @@ class Barcode_CalendarDateTime extends jni.JObject {
 
   /// from: public boolean isUtc()
   bool isUtc() {
-    return _isUtc(reference).boolean;
+    return _isUtc(reference.pointer).boolean;
   }
 }
 
@@ -7289,8 +7338,8 @@ final class $Barcode_CalendarDateTimeType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$CalendarDateTime;";
 
   @override
-  Barcode_CalendarDateTime fromRef(jni.JObjectPtr ref) =>
-      Barcode_CalendarDateTime.fromRef(ref);
+  Barcode_CalendarDateTime fromReference(jni.JReference reference) =>
+      Barcode_CalendarDateTime.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7313,9 +7362,9 @@ class Barcode_CalendarEvent extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_CalendarEvent> $type = type;
 
-  Barcode_CalendarEvent.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_CalendarEvent.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_CalendarEventType();
@@ -7328,8 +7377,8 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$CalendarDateTime getEnd()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_CalendarDateTime getEnd() {
-    return const $Barcode_CalendarDateTimeType()
-        .fromRef(_getEnd(reference).object);
+    return _getEnd(reference.pointer)
+        .object(const $Barcode_CalendarDateTimeType());
   }
 
   static final _getStart = jniLookup<
@@ -7341,8 +7390,8 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$CalendarDateTime getStart()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_CalendarDateTime getStart() {
-    return const $Barcode_CalendarDateTimeType()
-        .fromRef(_getStart(reference).object);
+    return _getStart(reference.pointer)
+        .object(const $Barcode_CalendarDateTimeType());
   }
 
   static final _getDescription = jniLookup<
@@ -7354,7 +7403,7 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public java.lang.String getDescription()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getDescription() {
-    return const jni.JStringType().fromRef(_getDescription(reference).object);
+    return _getDescription(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getLocation = jniLookup<
@@ -7366,7 +7415,7 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public java.lang.String getLocation()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getLocation() {
-    return const jni.JStringType().fromRef(_getLocation(reference).object);
+    return _getLocation(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getOrganizer = jniLookup<
@@ -7378,7 +7427,7 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public java.lang.String getOrganizer()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getOrganizer() {
-    return const jni.JStringType().fromRef(_getOrganizer(reference).object);
+    return _getOrganizer(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getStatus = jniLookup<
@@ -7390,7 +7439,7 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public java.lang.String getStatus()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getStatus() {
-    return const jni.JStringType().fromRef(_getStatus(reference).object);
+    return _getStatus(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getSummary = jniLookup<
@@ -7402,7 +7451,7 @@ class Barcode_CalendarEvent extends jni.JObject {
   /// from: public java.lang.String getSummary()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getSummary() {
-    return const jni.JStringType().fromRef(_getSummary(reference).object);
+    return _getSummary(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -7436,15 +7485,15 @@ class Barcode_CalendarEvent extends jni.JObject {
     Barcode_CalendarDateTime calendarDateTime,
     Barcode_CalendarDateTime calendarDateTime1,
   ) {
-    return Barcode_CalendarEvent.fromRef(_new0(
-            string.reference,
-            string1.reference,
-            string2.reference,
-            string3.reference,
-            string4.reference,
-            calendarDateTime.reference,
-            calendarDateTime1.reference)
-        .object);
+    return Barcode_CalendarEvent.fromReference(_new0(
+            string.reference.pointer,
+            string1.reference.pointer,
+            string2.reference.pointer,
+            string3.reference.pointer,
+            string4.reference.pointer,
+            calendarDateTime.reference.pointer,
+            calendarDateTime1.reference.pointer)
+        .reference);
   }
 }
 
@@ -7457,8 +7506,8 @@ final class $Barcode_CalendarEventType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$CalendarEvent;";
 
   @override
-  Barcode_CalendarEvent fromRef(jni.JObjectPtr ref) =>
-      Barcode_CalendarEvent.fromRef(ref);
+  Barcode_CalendarEvent fromReference(jni.JReference reference) =>
+      Barcode_CalendarEvent.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7481,9 +7530,9 @@ class Barcode_ContactInfo extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_ContactInfo> $type = type;
 
-  Barcode_ContactInfo.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_ContactInfo.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_ContactInfoType();
@@ -7496,7 +7545,7 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$PersonName getName()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_PersonName getName() {
-    return const $Barcode_PersonNameType().fromRef(_getName(reference).object);
+    return _getName(reference.pointer).object(const $Barcode_PersonNameType());
   }
 
   static final _getOrganization = jniLookup<
@@ -7508,7 +7557,7 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public java.lang.String getOrganization()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getOrganization() {
-    return const jni.JStringType().fromRef(_getOrganization(reference).object);
+    return _getOrganization(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getTitle = jniLookup<
@@ -7520,7 +7569,7 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public java.lang.String getTitle()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getTitle() {
-    return const jni.JStringType().fromRef(_getTitle(reference).object);
+    return _getTitle(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getAddresses = jniLookup<
@@ -7532,8 +7581,8 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public java.util.List getAddresses()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<Barcode_Address> getAddresses() {
-    return const jni.JListType($Barcode_AddressType())
-        .fromRef(_getAddresses(reference).object);
+    return _getAddresses(reference.pointer)
+        .object(const jni.JListType($Barcode_AddressType()));
   }
 
   static final _getEmails = jniLookup<
@@ -7545,8 +7594,8 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public java.util.List getEmails()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<Barcode_Email> getEmails() {
-    return const jni.JListType($Barcode_EmailType())
-        .fromRef(_getEmails(reference).object);
+    return _getEmails(reference.pointer)
+        .object(const jni.JListType($Barcode_EmailType()));
   }
 
   static final _getPhones = jniLookup<
@@ -7558,8 +7607,8 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public java.util.List getPhones()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<Barcode_Phone> getPhones() {
-    return const jni.JListType($Barcode_PhoneType())
-        .fromRef(_getPhones(reference).object);
+    return _getPhones(reference.pointer)
+        .object(const jni.JListType($Barcode_PhoneType()));
   }
 
   static final _getUrls = jniLookup<
@@ -7571,8 +7620,8 @@ class Barcode_ContactInfo extends jni.JObject {
   /// from: public java.util.List getUrls()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JList<jni.JString> getUrls() {
-    return const jni.JListType(jni.JStringType())
-        .fromRef(_getUrls(reference).object);
+    return _getUrls(reference.pointer)
+        .object(const jni.JListType(jni.JStringType()));
   }
 
   static final _new0 = jniLookup<
@@ -7606,15 +7655,15 @@ class Barcode_ContactInfo extends jni.JObject {
     jni.JList<jni.JString> list2,
     jni.JList<Barcode_Address> list3,
   ) {
-    return Barcode_ContactInfo.fromRef(_new0(
-            personName.reference,
-            string.reference,
-            string1.reference,
-            list.reference,
-            list1.reference,
-            list2.reference,
-            list3.reference)
-        .object);
+    return Barcode_ContactInfo.fromReference(_new0(
+            personName.reference.pointer,
+            string.reference.pointer,
+            string1.reference.pointer,
+            list.reference.pointer,
+            list1.reference.pointer,
+            list2.reference.pointer,
+            list3.reference.pointer)
+        .reference);
   }
 }
 
@@ -7626,8 +7675,8 @@ final class $Barcode_ContactInfoType extends jni.JObjType<Barcode_ContactInfo> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$ContactInfo;";
 
   @override
-  Barcode_ContactInfo fromRef(jni.JObjectPtr ref) =>
-      Barcode_ContactInfo.fromRef(ref);
+  Barcode_ContactInfo fromReference(jni.JReference reference) =>
+      Barcode_ContactInfo.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7650,9 +7699,9 @@ class Barcode_DriverLicense extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_DriverLicense> $type = type;
 
-  Barcode_DriverLicense.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_DriverLicense.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_DriverLicenseType();
@@ -7665,7 +7714,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getAddressCity()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAddressCity() {
-    return const jni.JStringType().fromRef(_getAddressCity(reference).object);
+    return _getAddressCity(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getAddressState = jniLookup<
@@ -7677,7 +7726,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getAddressState()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAddressState() {
-    return const jni.JStringType().fromRef(_getAddressState(reference).object);
+    return _getAddressState(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getAddressStreet = jniLookup<
@@ -7689,7 +7738,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getAddressStreet()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAddressStreet() {
-    return const jni.JStringType().fromRef(_getAddressStreet(reference).object);
+    return _getAddressStreet(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getAddressZip = jniLookup<
@@ -7701,7 +7750,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getAddressZip()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAddressZip() {
-    return const jni.JStringType().fromRef(_getAddressZip(reference).object);
+    return _getAddressZip(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getBirthDate = jniLookup<
@@ -7713,7 +7762,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getBirthDate()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getBirthDate() {
-    return const jni.JStringType().fromRef(_getBirthDate(reference).object);
+    return _getBirthDate(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getDocumentType = jniLookup<
@@ -7725,7 +7774,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getDocumentType()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getDocumentType() {
-    return const jni.JStringType().fromRef(_getDocumentType(reference).object);
+    return _getDocumentType(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getExpiryDate = jniLookup<
@@ -7737,7 +7786,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getExpiryDate()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getExpiryDate() {
-    return const jni.JStringType().fromRef(_getExpiryDate(reference).object);
+    return _getExpiryDate(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getFirstName = jniLookup<
@@ -7749,7 +7798,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getFirstName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getFirstName() {
-    return const jni.JStringType().fromRef(_getFirstName(reference).object);
+    return _getFirstName(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getGender = jniLookup<
@@ -7761,7 +7810,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getGender()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getGender() {
-    return const jni.JStringType().fromRef(_getGender(reference).object);
+    return _getGender(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getIssueDate = jniLookup<
@@ -7773,7 +7822,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getIssueDate()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getIssueDate() {
-    return const jni.JStringType().fromRef(_getIssueDate(reference).object);
+    return _getIssueDate(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getIssuingCountry = jniLookup<
@@ -7785,8 +7834,8 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getIssuingCountry()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getIssuingCountry() {
-    return const jni.JStringType()
-        .fromRef(_getIssuingCountry(reference).object);
+    return _getIssuingCountry(reference.pointer)
+        .object(const jni.JStringType());
   }
 
   static final _getLastName = jniLookup<
@@ -7798,7 +7847,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getLastName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getLastName() {
-    return const jni.JStringType().fromRef(_getLastName(reference).object);
+    return _getLastName(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getLicenseNumber = jniLookup<
@@ -7810,7 +7859,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getLicenseNumber()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getLicenseNumber() {
-    return const jni.JStringType().fromRef(_getLicenseNumber(reference).object);
+    return _getLicenseNumber(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getMiddleName = jniLookup<
@@ -7822,7 +7871,7 @@ class Barcode_DriverLicense extends jni.JObject {
   /// from: public java.lang.String getMiddleName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getMiddleName() {
-    return const jni.JStringType().fromRef(_getMiddleName(reference).object);
+    return _getMiddleName(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -7877,22 +7926,22 @@ class Barcode_DriverLicense extends jni.JObject {
     jni.JString string12,
     jni.JString string13,
   ) {
-    return Barcode_DriverLicense.fromRef(_new0(
-            string.reference,
-            string1.reference,
-            string2.reference,
-            string3.reference,
-            string4.reference,
-            string5.reference,
-            string6.reference,
-            string7.reference,
-            string8.reference,
-            string9.reference,
-            string10.reference,
-            string11.reference,
-            string12.reference,
-            string13.reference)
-        .object);
+    return Barcode_DriverLicense.fromReference(_new0(
+            string.reference.pointer,
+            string1.reference.pointer,
+            string2.reference.pointer,
+            string3.reference.pointer,
+            string4.reference.pointer,
+            string5.reference.pointer,
+            string6.reference.pointer,
+            string7.reference.pointer,
+            string8.reference.pointer,
+            string9.reference.pointer,
+            string10.reference.pointer,
+            string11.reference.pointer,
+            string12.reference.pointer,
+            string13.reference.pointer)
+        .reference);
   }
 }
 
@@ -7905,8 +7954,8 @@ final class $Barcode_DriverLicenseType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$DriverLicense;";
 
   @override
-  Barcode_DriverLicense fromRef(jni.JObjectPtr ref) =>
-      Barcode_DriverLicense.fromRef(ref);
+  Barcode_DriverLicense fromReference(jni.JReference reference) =>
+      Barcode_DriverLicense.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -7929,9 +7978,9 @@ class Barcode_Email_FormatType extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Email_FormatType> $type = type;
 
-  Barcode_Email_FormatType.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Email_FormatType.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_Email_FormatTypeType();
@@ -7978,7 +8027,7 @@ class Barcode_Email_FormatType extends jni.JObject {
     $Barcode_Email_FormatTypeImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Barcode_Email_FormatType.fromRef(
+    final $x = Barcode_Email_FormatType.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.common.Barcode$Email$FormatType",
         $p,
@@ -8001,7 +8050,7 @@ class Barcode_Email_FormatType extends jni.JObject {
   }
 }
 
-abstract class $Barcode_Email_FormatTypeImpl {
+abstract interface class $Barcode_Email_FormatTypeImpl {
   factory $Barcode_Email_FormatTypeImpl() = _$Barcode_Email_FormatTypeImpl;
 }
 
@@ -8018,8 +8067,8 @@ final class $Barcode_Email_FormatTypeType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Email$FormatType;";
 
   @override
-  Barcode_Email_FormatType fromRef(jni.JObjectPtr ref) =>
-      Barcode_Email_FormatType.fromRef(ref);
+  Barcode_Email_FormatType fromReference(jni.JReference reference) =>
+      Barcode_Email_FormatType.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8042,9 +8091,9 @@ class Barcode_Email extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Email> $type = type;
 
-  Barcode_Email.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Email.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_EmailType();
@@ -8057,7 +8106,6 @@ class Barcode_Email extends jni.JObject {
 
   /// from: static public final int TYPE_HOME
   static const TYPE_HOME = 2;
-
   static final _getType = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -8066,7 +8114,7 @@ class Barcode_Email extends jni.JObject {
 
   /// from: public int getType()
   int getType() {
-    return _getType(reference).integer;
+    return _getType(reference.pointer).integer;
   }
 
   static final _getAddress = jniLookup<
@@ -8078,7 +8126,7 @@ class Barcode_Email extends jni.JObject {
   /// from: public java.lang.String getAddress()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getAddress() {
-    return const jni.JStringType().fromRef(_getAddress(reference).object);
+    return _getAddress(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getBody = jniLookup<
@@ -8090,7 +8138,7 @@ class Barcode_Email extends jni.JObject {
   /// from: public java.lang.String getBody()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getBody() {
-    return const jni.JStringType().fromRef(_getBody(reference).object);
+    return _getBody(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getSubject = jniLookup<
@@ -8102,7 +8150,7 @@ class Barcode_Email extends jni.JObject {
   /// from: public java.lang.String getSubject()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getSubject() {
-    return const jni.JStringType().fromRef(_getSubject(reference).object);
+    return _getSubject(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -8124,9 +8172,9 @@ class Barcode_Email extends jni.JObject {
     jni.JString string1,
     jni.JString string2,
   ) {
-    return Barcode_Email.fromRef(
-        _new0(i, string.reference, string1.reference, string2.reference)
-            .object);
+    return Barcode_Email.fromReference(_new0(i, string.reference.pointer,
+            string1.reference.pointer, string2.reference.pointer)
+        .reference);
   }
 }
 
@@ -8138,7 +8186,8 @@ final class $Barcode_EmailType extends jni.JObjType<Barcode_Email> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Email;";
 
   @override
-  Barcode_Email fromRef(jni.JObjectPtr ref) => Barcode_Email.fromRef(ref);
+  Barcode_Email fromReference(jni.JReference reference) =>
+      Barcode_Email.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8161,9 +8210,9 @@ class Barcode_GeoPoint extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_GeoPoint> $type = type;
 
-  Barcode_GeoPoint.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_GeoPoint.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_GeoPointType();
@@ -8175,7 +8224,7 @@ class Barcode_GeoPoint extends jni.JObject {
 
   /// from: public double getLat()
   double getLat() {
-    return _getLat(reference).doubleFloat;
+    return _getLat(reference.pointer).doubleFloat;
   }
 
   static final _getLng = jniLookup<
@@ -8186,7 +8235,7 @@ class Barcode_GeoPoint extends jni.JObject {
 
   /// from: public double getLng()
   double getLng() {
-    return _getLng(reference).doubleFloat;
+    return _getLng(reference.pointer).doubleFloat;
   }
 
   static final _new0 = jniLookup<
@@ -8201,7 +8250,7 @@ class Barcode_GeoPoint extends jni.JObject {
     double d,
     double d1,
   ) {
-    return Barcode_GeoPoint.fromRef(_new0(d, d1).object);
+    return Barcode_GeoPoint.fromReference(_new0(d, d1).reference);
   }
 }
 
@@ -8213,7 +8262,8 @@ final class $Barcode_GeoPointType extends jni.JObjType<Barcode_GeoPoint> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$GeoPoint;";
 
   @override
-  Barcode_GeoPoint fromRef(jni.JObjectPtr ref) => Barcode_GeoPoint.fromRef(ref);
+  Barcode_GeoPoint fromReference(jni.JReference reference) =>
+      Barcode_GeoPoint.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8236,9 +8286,9 @@ class Barcode_PersonName extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_PersonName> $type = type;
 
-  Barcode_PersonName.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_PersonName.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_PersonNameType();
@@ -8251,7 +8301,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getFirst()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getFirst() {
-    return const jni.JStringType().fromRef(_getFirst(reference).object);
+    return _getFirst(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getFormattedName = jniLookup<
@@ -8263,7 +8313,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getFormattedName()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getFormattedName() {
-    return const jni.JStringType().fromRef(_getFormattedName(reference).object);
+    return _getFormattedName(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getLast = jniLookup<
@@ -8275,7 +8325,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getLast()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getLast() {
-    return const jni.JStringType().fromRef(_getLast(reference).object);
+    return _getLast(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getMiddle = jniLookup<
@@ -8287,7 +8337,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getMiddle()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getMiddle() {
-    return const jni.JStringType().fromRef(_getMiddle(reference).object);
+    return _getMiddle(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getPrefix = jniLookup<
@@ -8299,7 +8349,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getPrefix()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getPrefix() {
-    return const jni.JStringType().fromRef(_getPrefix(reference).object);
+    return _getPrefix(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getPronunciation = jniLookup<
@@ -8311,7 +8361,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getPronunciation()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getPronunciation() {
-    return const jni.JStringType().fromRef(_getPronunciation(reference).object);
+    return _getPronunciation(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getSuffix = jniLookup<
@@ -8323,7 +8373,7 @@ class Barcode_PersonName extends jni.JObject {
   /// from: public java.lang.String getSuffix()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getSuffix() {
-    return const jni.JStringType().fromRef(_getSuffix(reference).object);
+    return _getSuffix(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -8357,15 +8407,15 @@ class Barcode_PersonName extends jni.JObject {
     jni.JString string5,
     jni.JString string6,
   ) {
-    return Barcode_PersonName.fromRef(_new0(
-            string.reference,
-            string1.reference,
-            string2.reference,
-            string3.reference,
-            string4.reference,
-            string5.reference,
-            string6.reference)
-        .object);
+    return Barcode_PersonName.fromReference(_new0(
+            string.reference.pointer,
+            string1.reference.pointer,
+            string2.reference.pointer,
+            string3.reference.pointer,
+            string4.reference.pointer,
+            string5.reference.pointer,
+            string6.reference.pointer)
+        .reference);
   }
 }
 
@@ -8377,8 +8427,8 @@ final class $Barcode_PersonNameType extends jni.JObjType<Barcode_PersonName> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$PersonName;";
 
   @override
-  Barcode_PersonName fromRef(jni.JObjectPtr ref) =>
-      Barcode_PersonName.fromRef(ref);
+  Barcode_PersonName fromReference(jni.JReference reference) =>
+      Barcode_PersonName.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8401,9 +8451,9 @@ class Barcode_Phone_FormatType extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Phone_FormatType> $type = type;
 
-  Barcode_Phone_FormatType.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Phone_FormatType.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_Phone_FormatTypeType();
@@ -8450,7 +8500,7 @@ class Barcode_Phone_FormatType extends jni.JObject {
     $Barcode_Phone_FormatTypeImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Barcode_Phone_FormatType.fromRef(
+    final $x = Barcode_Phone_FormatType.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.common.Barcode$Phone$FormatType",
         $p,
@@ -8473,7 +8523,7 @@ class Barcode_Phone_FormatType extends jni.JObject {
   }
 }
 
-abstract class $Barcode_Phone_FormatTypeImpl {
+abstract interface class $Barcode_Phone_FormatTypeImpl {
   factory $Barcode_Phone_FormatTypeImpl() = _$Barcode_Phone_FormatTypeImpl;
 }
 
@@ -8490,8 +8540,8 @@ final class $Barcode_Phone_FormatTypeType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Phone$FormatType;";
 
   @override
-  Barcode_Phone_FormatType fromRef(jni.JObjectPtr ref) =>
-      Barcode_Phone_FormatType.fromRef(ref);
+  Barcode_Phone_FormatType fromReference(jni.JReference reference) =>
+      Barcode_Phone_FormatType.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8514,9 +8564,9 @@ class Barcode_Phone extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Phone> $type = type;
 
-  Barcode_Phone.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Phone.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_PhoneType();
@@ -8535,7 +8585,6 @@ class Barcode_Phone extends jni.JObject {
 
   /// from: static public final int TYPE_MOBILE
   static const TYPE_MOBILE = 4;
-
   static final _getType = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -8544,7 +8593,7 @@ class Barcode_Phone extends jni.JObject {
 
   /// from: public int getType()
   int getType() {
-    return _getType(reference).integer;
+    return _getType(reference.pointer).integer;
   }
 
   static final _getNumber = jniLookup<
@@ -8556,7 +8605,7 @@ class Barcode_Phone extends jni.JObject {
   /// from: public java.lang.String getNumber()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getNumber() {
-    return const jni.JStringType().fromRef(_getNumber(reference).object);
+    return _getNumber(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -8571,7 +8620,8 @@ class Barcode_Phone extends jni.JObject {
     jni.JString string,
     int i,
   ) {
-    return Barcode_Phone.fromRef(_new0(string.reference, i).object);
+    return Barcode_Phone.fromReference(
+        _new0(string.reference.pointer, i).reference);
   }
 }
 
@@ -8583,7 +8633,8 @@ final class $Barcode_PhoneType extends jni.JObjType<Barcode_Phone> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Phone;";
 
   @override
-  Barcode_Phone fromRef(jni.JObjectPtr ref) => Barcode_Phone.fromRef(ref);
+  Barcode_Phone fromReference(jni.JReference reference) =>
+      Barcode_Phone.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8606,9 +8657,9 @@ class Barcode_Sms extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_Sms> $type = type;
 
-  Barcode_Sms.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_Sms.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_SmsType();
@@ -8621,7 +8672,7 @@ class Barcode_Sms extends jni.JObject {
   /// from: public java.lang.String getMessage()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getMessage() {
-    return const jni.JStringType().fromRef(_getMessage(reference).object);
+    return _getMessage(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getPhoneNumber = jniLookup<
@@ -8633,7 +8684,7 @@ class Barcode_Sms extends jni.JObject {
   /// from: public java.lang.String getPhoneNumber()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getPhoneNumber() {
-    return const jni.JStringType().fromRef(_getPhoneNumber(reference).object);
+    return _getPhoneNumber(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -8650,8 +8701,8 @@ class Barcode_Sms extends jni.JObject {
     jni.JString string,
     jni.JString string1,
   ) {
-    return Barcode_Sms.fromRef(
-        _new0(string.reference, string1.reference).object);
+    return Barcode_Sms.fromReference(
+        _new0(string.reference.pointer, string1.reference.pointer).reference);
   }
 }
 
@@ -8663,7 +8714,8 @@ final class $Barcode_SmsType extends jni.JObjType<Barcode_Sms> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$Sms;";
 
   @override
-  Barcode_Sms fromRef(jni.JObjectPtr ref) => Barcode_Sms.fromRef(ref);
+  Barcode_Sms fromReference(jni.JReference reference) =>
+      Barcode_Sms.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8685,9 +8737,9 @@ class Barcode_UrlBookmark extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_UrlBookmark> $type = type;
 
-  Barcode_UrlBookmark.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_UrlBookmark.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_UrlBookmarkType();
@@ -8700,7 +8752,7 @@ class Barcode_UrlBookmark extends jni.JObject {
   /// from: public java.lang.String getTitle()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getTitle() {
-    return const jni.JStringType().fromRef(_getTitle(reference).object);
+    return _getTitle(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getUrl = jniLookup<
@@ -8712,7 +8764,7 @@ class Barcode_UrlBookmark extends jni.JObject {
   /// from: public java.lang.String getUrl()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getUrl() {
-    return const jni.JStringType().fromRef(_getUrl(reference).object);
+    return _getUrl(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -8729,8 +8781,8 @@ class Barcode_UrlBookmark extends jni.JObject {
     jni.JString string,
     jni.JString string1,
   ) {
-    return Barcode_UrlBookmark.fromRef(
-        _new0(string.reference, string1.reference).object);
+    return Barcode_UrlBookmark.fromReference(
+        _new0(string.reference.pointer, string1.reference.pointer).reference);
   }
 }
 
@@ -8742,8 +8794,8 @@ final class $Barcode_UrlBookmarkType extends jni.JObjType<Barcode_UrlBookmark> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$UrlBookmark;";
 
   @override
-  Barcode_UrlBookmark fromRef(jni.JObjectPtr ref) =>
-      Barcode_UrlBookmark.fromRef(ref);
+  Barcode_UrlBookmark fromReference(jni.JReference reference) =>
+      Barcode_UrlBookmark.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8766,9 +8818,9 @@ class Barcode_WiFi_EncryptionType extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_WiFi_EncryptionType> $type = type;
 
-  Barcode_WiFi_EncryptionType.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_WiFi_EncryptionType.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_WiFi_EncryptionTypeType();
@@ -8815,7 +8867,7 @@ class Barcode_WiFi_EncryptionType extends jni.JObject {
     $Barcode_WiFi_EncryptionTypeImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Barcode_WiFi_EncryptionType.fromRef(
+    final $x = Barcode_WiFi_EncryptionType.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"com.google.mlkit.vision.barcode.common.Barcode$WiFi$EncryptionType",
         $p,
@@ -8838,7 +8890,7 @@ class Barcode_WiFi_EncryptionType extends jni.JObject {
   }
 }
 
-abstract class $Barcode_WiFi_EncryptionTypeImpl {
+abstract interface class $Barcode_WiFi_EncryptionTypeImpl {
   factory $Barcode_WiFi_EncryptionTypeImpl() =
       _$Barcode_WiFi_EncryptionTypeImpl;
 }
@@ -8857,8 +8909,8 @@ final class $Barcode_WiFi_EncryptionTypeType
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$WiFi$EncryptionType;";
 
   @override
-  Barcode_WiFi_EncryptionType fromRef(jni.JObjectPtr ref) =>
-      Barcode_WiFi_EncryptionType.fromRef(ref);
+  Barcode_WiFi_EncryptionType fromReference(jni.JReference reference) =>
+      Barcode_WiFi_EncryptionType.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8881,9 +8933,9 @@ class Barcode_WiFi extends jni.JObject {
   @override
   late final jni.JObjType<Barcode_WiFi> $type = type;
 
-  Barcode_WiFi.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode_WiFi.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $Barcode_WiFiType();
@@ -8896,7 +8948,6 @@ class Barcode_WiFi extends jni.JObject {
 
   /// from: static public final int TYPE_WEP
   static const TYPE_WEP = 3;
-
   static final _getEncryptionType = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -8905,7 +8956,7 @@ class Barcode_WiFi extends jni.JObject {
 
   /// from: public int getEncryptionType()
   int getEncryptionType() {
-    return _getEncryptionType(reference).integer;
+    return _getEncryptionType(reference.pointer).integer;
   }
 
   static final _getPassword = jniLookup<
@@ -8917,7 +8968,7 @@ class Barcode_WiFi extends jni.JObject {
   /// from: public java.lang.String getPassword()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getPassword() {
-    return const jni.JStringType().fromRef(_getPassword(reference).object);
+    return _getPassword(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getSsid = jniLookup<
@@ -8929,7 +8980,7 @@ class Barcode_WiFi extends jni.JObject {
   /// from: public java.lang.String getSsid()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getSsid() {
-    return const jni.JStringType().fromRef(_getSsid(reference).object);
+    return _getSsid(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -8947,8 +8998,9 @@ class Barcode_WiFi extends jni.JObject {
     jni.JString string1,
     int i,
   ) {
-    return Barcode_WiFi.fromRef(
-        _new0(string.reference, string1.reference, i).object);
+    return Barcode_WiFi.fromReference(
+        _new0(string.reference.pointer, string1.reference.pointer, i)
+            .reference);
   }
 }
 
@@ -8960,7 +9012,8 @@ final class $Barcode_WiFiType extends jni.JObjType<Barcode_WiFi> {
       r"Lcom/google/mlkit/vision/barcode/common/Barcode$WiFi;";
 
   @override
-  Barcode_WiFi fromRef(jni.JObjectPtr ref) => Barcode_WiFi.fromRef(ref);
+  Barcode_WiFi fromReference(jni.JReference reference) =>
+      Barcode_WiFi.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -8983,9 +9036,9 @@ class Barcode extends jni.JObject {
   @override
   late final jni.JObjType<Barcode> $type = type;
 
-  Barcode.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Barcode.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $BarcodeType();
@@ -9073,7 +9126,6 @@ class Barcode extends jni.JObject {
 
   /// from: static public final int TYPE_DRIVER_LICENSE
   static const TYPE_DRIVER_LICENSE = 12;
-
   static final _getFormat = jniLookup<
               ffi
               .NativeFunction<jni.JniResult Function(ffi.Pointer<ffi.Void>)>>(
@@ -9082,7 +9134,7 @@ class Barcode extends jni.JObject {
 
   /// from: public int getFormat()
   int getFormat() {
-    return _getFormat(reference).integer;
+    return _getFormat(reference.pointer).integer;
   }
 
   static final _getValueType = jniLookup<
@@ -9093,7 +9145,7 @@ class Barcode extends jni.JObject {
 
   /// from: public int getValueType()
   int getValueType() {
-    return _getValueType(reference).integer;
+    return _getValueType(reference.pointer).integer;
   }
 
   static final _getBoundingBox = jniLookup<
@@ -9105,7 +9157,7 @@ class Barcode extends jni.JObject {
   /// from: public android.graphics.Rect getBoundingBox()
   /// The returned object must be released after use, by calling the [release] method.
   Rect getBoundingBox() {
-    return const $RectType().fromRef(_getBoundingBox(reference).object);
+    return _getBoundingBox(reference.pointer).object(const $RectType());
   }
 
   static final _getCalendarEvent = jniLookup<
@@ -9117,8 +9169,8 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$CalendarEvent getCalendarEvent()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_CalendarEvent getCalendarEvent() {
-    return const $Barcode_CalendarEventType()
-        .fromRef(_getCalendarEvent(reference).object);
+    return _getCalendarEvent(reference.pointer)
+        .object(const $Barcode_CalendarEventType());
   }
 
   static final _getContactInfo = jniLookup<
@@ -9130,8 +9182,8 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$ContactInfo getContactInfo()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_ContactInfo getContactInfo() {
-    return const $Barcode_ContactInfoType()
-        .fromRef(_getContactInfo(reference).object);
+    return _getContactInfo(reference.pointer)
+        .object(const $Barcode_ContactInfoType());
   }
 
   static final _getDriverLicense = jniLookup<
@@ -9143,8 +9195,8 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$DriverLicense getDriverLicense()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_DriverLicense getDriverLicense() {
-    return const $Barcode_DriverLicenseType()
-        .fromRef(_getDriverLicense(reference).object);
+    return _getDriverLicense(reference.pointer)
+        .object(const $Barcode_DriverLicenseType());
   }
 
   static final _getEmail = jniLookup<
@@ -9156,7 +9208,7 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$Email getEmail()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_Email getEmail() {
-    return const $Barcode_EmailType().fromRef(_getEmail(reference).object);
+    return _getEmail(reference.pointer).object(const $Barcode_EmailType());
   }
 
   static final _getGeoPoint = jniLookup<
@@ -9168,8 +9220,8 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$GeoPoint getGeoPoint()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_GeoPoint getGeoPoint() {
-    return const $Barcode_GeoPointType()
-        .fromRef(_getGeoPoint(reference).object);
+    return _getGeoPoint(reference.pointer)
+        .object(const $Barcode_GeoPointType());
   }
 
   static final _getPhone = jniLookup<
@@ -9181,7 +9233,7 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$Phone getPhone()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_Phone getPhone() {
-    return const $Barcode_PhoneType().fromRef(_getPhone(reference).object);
+    return _getPhone(reference.pointer).object(const $Barcode_PhoneType());
   }
 
   static final _getSms = jniLookup<
@@ -9192,7 +9244,7 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$Sms getSms()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_Sms getSms() {
-    return const $Barcode_SmsType().fromRef(_getSms(reference).object);
+    return _getSms(reference.pointer).object(const $Barcode_SmsType());
   }
 
   static final _getUrl = jniLookup<
@@ -9203,7 +9255,7 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$UrlBookmark getUrl()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_UrlBookmark getUrl() {
-    return const $Barcode_UrlBookmarkType().fromRef(_getUrl(reference).object);
+    return _getUrl(reference.pointer).object(const $Barcode_UrlBookmarkType());
   }
 
   static final _getWifi = jniLookup<
@@ -9215,7 +9267,7 @@ class Barcode extends jni.JObject {
   /// from: public com.google.mlkit.vision.barcode.common.Barcode$WiFi getWifi()
   /// The returned object must be released after use, by calling the [release] method.
   Barcode_WiFi getWifi() {
-    return const $Barcode_WiFiType().fromRef(_getWifi(reference).object);
+    return _getWifi(reference.pointer).object(const $Barcode_WiFiType());
   }
 
   static final _getDisplayValue = jniLookup<
@@ -9227,7 +9279,7 @@ class Barcode extends jni.JObject {
   /// from: public java.lang.String getDisplayValue()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getDisplayValue() {
-    return const jni.JStringType().fromRef(_getDisplayValue(reference).object);
+    return _getDisplayValue(reference.pointer).object(const jni.JStringType());
   }
 
   static final _getRawValue = jniLookup<
@@ -9239,7 +9291,7 @@ class Barcode extends jni.JObject {
   /// from: public java.lang.String getRawValue()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getRawValue() {
-    return const jni.JStringType().fromRef(_getRawValue(reference).object);
+    return _getRawValue(reference.pointer).object(const jni.JStringType());
   }
 
   static final _new0 = jniLookup<
@@ -9252,7 +9304,8 @@ class Barcode extends jni.JObject {
   factory Barcode(
     jni.JObject barcodeSource,
   ) {
-    return Barcode.fromRef(_new0(barcodeSource.reference).object);
+    return Barcode.fromReference(
+        _new0(barcodeSource.reference.pointer).reference);
   }
 
   static final _new1 = jniLookup<
@@ -9269,8 +9322,9 @@ class Barcode extends jni.JObject {
     jni.JObject barcodeSource,
     jni.JObject matrix,
   ) {
-    return Barcode.fromRef(
-        _new1(barcodeSource.reference, matrix.reference).object);
+    return Barcode.fromReference(
+        _new1(barcodeSource.reference.pointer, matrix.reference.pointer)
+            .reference);
   }
 
   static final _getRawBytes = jniLookup<
@@ -9282,8 +9336,8 @@ class Barcode extends jni.JObject {
   /// from: public byte[] getRawBytes()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jbyte> getRawBytes() {
-    return const jni.JArrayType(jni.jbyteType())
-        .fromRef(_getRawBytes(reference).object);
+    return _getRawBytes(reference.pointer)
+        .object(const jni.JArrayType(jni.jbyteType()));
   }
 
   static final _getCornerPoints = jniLookup<
@@ -9295,8 +9349,8 @@ class Barcode extends jni.JObject {
   /// from: public android.graphics.Point[] getCornerPoints()
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<Point> getCornerPoints() {
-    return const jni.JArrayType($PointType())
-        .fromRef(_getCornerPoints(reference).object);
+    return _getCornerPoints(reference.pointer)
+        .object(const jni.JArrayType($PointType()));
   }
 }
 
@@ -9307,7 +9361,8 @@ final class $BarcodeType extends jni.JObjType<Barcode> {
   String get signature => r"Lcom/google/mlkit/vision/barcode/common/Barcode;";
 
   @override
-  Barcode fromRef(jni.JObjectPtr ref) => Barcode.fromRef(ref);
+  Barcode fromReference(jni.JReference reference) =>
+      Barcode.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -9329,9 +9384,9 @@ class Runnable extends jni.JObject {
   @override
   late final jni.JObjType<Runnable> $type = type;
 
-  Runnable.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Runnable.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $RunnableType();
@@ -9342,7 +9397,7 @@ class Runnable extends jni.JObject {
 
   /// from: public abstract void run()
   void run() {
-    return _run(reference).check();
+    _run(reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -9391,7 +9446,7 @@ class Runnable extends jni.JObject {
     $RunnableImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Runnable.fromRef(
+    final $x = Runnable.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"java.lang.Runnable",
         $p,
@@ -9414,7 +9469,7 @@ class Runnable extends jni.JObject {
   }
 }
 
-abstract class $RunnableImpl {
+abstract interface class $RunnableImpl {
   factory $RunnableImpl({
     required void Function() run,
   }) = _$RunnableImpl;
@@ -9441,7 +9496,8 @@ final class $RunnableType extends jni.JObjType<Runnable> {
   String get signature => r"Ljava/lang/Runnable;";
 
   @override
-  Runnable fromRef(jni.JObjectPtr ref) => Runnable.fromRef(ref);
+  Runnable fromReference(jni.JReference reference) =>
+      Runnable.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -9463,9 +9519,9 @@ class Executor extends jni.JObject {
   @override
   late final jni.JObjType<Executor> $type = type;
 
-  Executor.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Executor.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $ExecutorType();
@@ -9481,7 +9537,7 @@ class Executor extends jni.JObject {
   void execute(
     Runnable runnable,
   ) {
-    return _execute(reference, runnable.reference).check();
+    _execute(reference.pointer, runnable.reference.pointer).check();
   }
 
   /// Maps a specific port to the implemented interface.
@@ -9532,7 +9588,7 @@ class Executor extends jni.JObject {
     $ExecutorImpl $impl,
   ) {
     final $p = ReceivePort();
-    final $x = Executor.fromRef(
+    final $x = Executor.fromReference(
       ProtectedJniExtensions.newPortProxy(
         r"java.util.concurrent.Executor",
         $p,
@@ -9555,7 +9611,7 @@ class Executor extends jni.JObject {
   }
 }
 
-abstract class $ExecutorImpl {
+abstract interface class $ExecutorImpl {
   factory $ExecutorImpl({
     required void Function(Runnable runnable) execute,
   }) = _$ExecutorImpl;
@@ -9582,7 +9638,8 @@ final class $ExecutorType extends jni.JObjType<Executor> {
   String get signature => r"Ljava/util/concurrent/Executor;";
 
   @override
-  Executor fromRef(jni.JObjectPtr ref) => Executor.fromRef(ref);
+  Executor fromReference(jni.JReference reference) =>
+      Executor.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();
@@ -9604,9 +9661,9 @@ class Executors extends jni.JObject {
   @override
   late final jni.JObjType<Executors> $type = type;
 
-  Executors.fromRef(
-    jni.JObjectPtr ref,
-  ) : super.fromRef(ref);
+  Executors.fromReference(
+    jni.JReference reference,
+  ) : super.fromReference(reference);
 
   /// The type which includes information such as the signature of this class.
   static const type = $ExecutorsType();
@@ -9620,7 +9677,7 @@ class Executors extends jni.JObject {
   static jni.JObject newFixedThreadPool(
     int i,
   ) {
-    return const jni.JObjectType().fromRef(_newFixedThreadPool(i).object);
+    return _newFixedThreadPool(i).object(const jni.JObjectType());
   }
 
   static final _newWorkStealingPool =
@@ -9633,7 +9690,7 @@ class Executors extends jni.JObject {
   static jni.JObject newWorkStealingPool(
     int i,
   ) {
-    return const jni.JObjectType().fromRef(_newWorkStealingPool(i).object);
+    return _newWorkStealingPool(i).object(const jni.JObjectType());
   }
 
   static final _newWorkStealingPool1 =
@@ -9644,7 +9701,7 @@ class Executors extends jni.JObject {
   /// from: static public java.util.concurrent.ExecutorService newWorkStealingPool()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject newWorkStealingPool1() {
-    return const jni.JObjectType().fromRef(_newWorkStealingPool1().object);
+    return _newWorkStealingPool1().object(const jni.JObjectType());
   }
 
   static final _newFixedThreadPool1 = jniLookup<
@@ -9659,8 +9716,8 @@ class Executors extends jni.JObject {
     int i,
     jni.JObject threadFactory,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_newFixedThreadPool1(i, threadFactory.reference).object);
+    return _newFixedThreadPool1(i, threadFactory.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _newSingleThreadExecutor =
@@ -9671,7 +9728,7 @@ class Executors extends jni.JObject {
   /// from: static public java.util.concurrent.ExecutorService newSingleThreadExecutor()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject newSingleThreadExecutor() {
-    return const jni.JObjectType().fromRef(_newSingleThreadExecutor().object);
+    return _newSingleThreadExecutor().object(const jni.JObjectType());
   }
 
   static final _newSingleThreadExecutor1 = jniLookup<
@@ -9685,8 +9742,8 @@ class Executors extends jni.JObject {
   static jni.JObject newSingleThreadExecutor1(
     jni.JObject threadFactory,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_newSingleThreadExecutor1(threadFactory.reference).object);
+    return _newSingleThreadExecutor1(threadFactory.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _newCachedThreadPool =
@@ -9697,7 +9754,7 @@ class Executors extends jni.JObject {
   /// from: static public java.util.concurrent.ExecutorService newCachedThreadPool()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject newCachedThreadPool() {
-    return const jni.JObjectType().fromRef(_newCachedThreadPool().object);
+    return _newCachedThreadPool().object(const jni.JObjectType());
   }
 
   static final _newCachedThreadPool1 = jniLookup<
@@ -9711,8 +9768,8 @@ class Executors extends jni.JObject {
   static jni.JObject newCachedThreadPool1(
     jni.JObject threadFactory,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_newCachedThreadPool1(threadFactory.reference).object);
+    return _newCachedThreadPool1(threadFactory.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _newSingleThreadScheduledExecutor =
@@ -9723,8 +9780,7 @@ class Executors extends jni.JObject {
   /// from: static public java.util.concurrent.ScheduledExecutorService newSingleThreadScheduledExecutor()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject newSingleThreadScheduledExecutor() {
-    return const jni.JObjectType()
-        .fromRef(_newSingleThreadScheduledExecutor().object);
+    return _newSingleThreadScheduledExecutor().object(const jni.JObjectType());
   }
 
   static final _newSingleThreadScheduledExecutor1 = jniLookup<
@@ -9738,8 +9794,8 @@ class Executors extends jni.JObject {
   static jni.JObject newSingleThreadScheduledExecutor1(
     jni.JObject threadFactory,
   ) {
-    return const jni.JObjectType().fromRef(
-        _newSingleThreadScheduledExecutor1(threadFactory.reference).object);
+    return _newSingleThreadScheduledExecutor1(threadFactory.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _newScheduledThreadPool =
@@ -9752,7 +9808,7 @@ class Executors extends jni.JObject {
   static jni.JObject newScheduledThreadPool(
     int i,
   ) {
-    return const jni.JObjectType().fromRef(_newScheduledThreadPool(i).object);
+    return _newScheduledThreadPool(i).object(const jni.JObjectType());
   }
 
   static final _newScheduledThreadPool1 = jniLookup<
@@ -9767,8 +9823,8 @@ class Executors extends jni.JObject {
     int i,
     jni.JObject threadFactory,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_newScheduledThreadPool1(i, threadFactory.reference).object);
+    return _newScheduledThreadPool1(i, threadFactory.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _unconfigurableExecutorService = jniLookup<
@@ -9782,8 +9838,8 @@ class Executors extends jni.JObject {
   static jni.JObject unconfigurableExecutorService(
     jni.JObject executorService,
   ) {
-    return const jni.JObjectType().fromRef(
-        _unconfigurableExecutorService(executorService.reference).object);
+    return _unconfigurableExecutorService(executorService.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _unconfigurableScheduledExecutorService = jniLookup<
@@ -9797,10 +9853,9 @@ class Executors extends jni.JObject {
   static jni.JObject unconfigurableScheduledExecutorService(
     jni.JObject scheduledExecutorService,
   ) {
-    return const jni.JObjectType().fromRef(
-        _unconfigurableScheduledExecutorService(
-                scheduledExecutorService.reference)
-            .object);
+    return _unconfigurableScheduledExecutorService(
+            scheduledExecutorService.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _defaultThreadFactory =
@@ -9811,7 +9866,7 @@ class Executors extends jni.JObject {
   /// from: static public java.util.concurrent.ThreadFactory defaultThreadFactory()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject defaultThreadFactory() {
-    return const jni.JObjectType().fromRef(_defaultThreadFactory().object);
+    return _defaultThreadFactory().object(const jni.JObjectType());
   }
 
   static final _privilegedThreadFactory =
@@ -9822,7 +9877,7 @@ class Executors extends jni.JObject {
   /// from: static public java.util.concurrent.ThreadFactory privilegedThreadFactory()
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JObject privilegedThreadFactory() {
-    return const jni.JObjectType().fromRef(_privilegedThreadFactory().object);
+    return _privilegedThreadFactory().object(const jni.JObjectType());
   }
 
   static final _callable = jniLookup<
@@ -9843,8 +9898,8 @@ class Executors extends jni.JObject {
     T ??= jni.lowestCommonSuperType([
       object.$type,
     ]) as jni.JObjType<$T>;
-    return const jni.JObjectType()
-        .fromRef(_callable(runnable.reference, object.reference).object);
+    return _callable(runnable.reference.pointer, object.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _callable1 = jniLookup<
@@ -9858,8 +9913,8 @@ class Executors extends jni.JObject {
   static jni.JObject callable1(
     Runnable runnable,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_callable1(runnable.reference).object);
+    return _callable1(runnable.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _callable2 = jniLookup<
@@ -9873,8 +9928,8 @@ class Executors extends jni.JObject {
   static jni.JObject callable2(
     jni.JObject privilegedAction,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_callable2(privilegedAction.reference).object);
+    return _callable2(privilegedAction.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _callable3 = jniLookup<
@@ -9888,8 +9943,8 @@ class Executors extends jni.JObject {
   static jni.JObject callable3(
     jni.JObject privilegedExceptionAction,
   ) {
-    return const jni.JObjectType()
-        .fromRef(_callable3(privilegedExceptionAction.reference).object);
+    return _callable3(privilegedExceptionAction.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _privilegedCallable = jniLookup<
@@ -9904,8 +9959,8 @@ class Executors extends jni.JObject {
     jni.JObject callable, {
     required jni.JObjType<$T> T,
   }) {
-    return const jni.JObjectType()
-        .fromRef(_privilegedCallable(callable.reference).object);
+    return _privilegedCallable(callable.reference.pointer)
+        .object(const jni.JObjectType());
   }
 
   static final _privilegedCallableUsingCurrentClassLoader = jniLookup<
@@ -9921,8 +9976,9 @@ class Executors extends jni.JObject {
     jni.JObject callable, {
     required jni.JObjType<$T> T,
   }) {
-    return const jni.JObjectType().fromRef(
-        _privilegedCallableUsingCurrentClassLoader(callable.reference).object);
+    return _privilegedCallableUsingCurrentClassLoader(
+            callable.reference.pointer)
+        .object(const jni.JObjectType());
   }
 }
 
@@ -9933,7 +9989,8 @@ final class $ExecutorsType extends jni.JObjType<Executors> {
   String get signature => r"Ljava/util/concurrent/Executors;";
 
   @override
-  Executors fromRef(jni.JObjectPtr ref) => Executors.fromRef(ref);
+  Executors fromReference(jni.JReference reference) =>
+      Executors.fromReference(reference);
 
   @override
   jni.JObjType get superType => const jni.JObjectType();

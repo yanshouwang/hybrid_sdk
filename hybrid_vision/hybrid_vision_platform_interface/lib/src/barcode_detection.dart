@@ -2,18 +2,19 @@ import 'dart:ui';
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'core.dart';
+import 'common.dart';
 
-abstract class BarcodeDetectionPlatform extends PlatformInterface {
-  /// Constructs a BarcodeDetectionPlatform.
-  BarcodeDetectionPlatform() : super(token: _token);
+abstract base class BarcodeDetectionImpl extends PlatformInterface
+    implements BarcodeDetection {
+  /// Constructs a [BarcodeDetectionImpl].
+  BarcodeDetectionImpl() : super(token: _token);
 
   static final Object _token = Object();
 
-  static BarcodeDetectionPlatform? _instance;
+  static BarcodeDetectionImpl? _instance;
 
-  /// The default instance of [BarcodeDetectionPlatform] to use.
-  static BarcodeDetectionPlatform get instance {
+  /// The default instance of [BarcodeDetectionImpl] to use.
+  static BarcodeDetectionImpl get instance {
     final instance = _instance;
     if (instance == null) {
       throw UnimplementedError('Barcode is not implemented on this platform.');
@@ -22,25 +23,27 @@ abstract class BarcodeDetectionPlatform extends PlatformInterface {
   }
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [BarcodeDetectionPlatform] when
+  /// platform-specific class that extends [BarcodeDetectionImpl] when
   /// they register themselves.
-  static set instance(BarcodeDetectionPlatform instance) {
+  static set instance(BarcodeDetectionImpl instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
+}
 
+abstract interface class BarcodeDetection {
   BarcodeDetector createDetector({
     List<BarcodeFormat>? formats,
   });
 }
 
-abstract class BarcodeDetector {
+abstract interface class BarcodeDetector {
   Future<List<Barcode>> detect(VisionImage image);
 
   factory BarcodeDetector({
     List<BarcodeFormat>? formats,
   }) =>
-      BarcodeDetectionPlatform.instance.createDetector(
+      BarcodeDetectionImpl.instance.createDetector(
         formats: formats,
       );
 }

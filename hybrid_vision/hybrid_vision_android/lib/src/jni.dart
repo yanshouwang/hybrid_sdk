@@ -22,8 +22,8 @@ extension MemoryVisionImageX on MemoryVisionImage {
 
 extension UriVisionImageX on UriVisionImage {
   jni.InputImage toCInputImage() {
-    final activityPtr = Jni.getCurrentActivity();
-    final activity = JObject.fromRef(activityPtr);
+    final activityReference = Jni.getCurrentActivity();
+    final activity = JObject.fromReference(activityReference);
     final uri = this.uri.toCUri();
     return jni.InputImage.fromFilePath(
       activity,
