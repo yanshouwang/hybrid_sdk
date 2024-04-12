@@ -1,3 +1,8 @@
+## 0.2.0
+
+* Add example.
+* Move `DarwinBarcodeDetectionPlatform` to `DarwinBarcodeDetectionImpl`.
+
 ## 0.1.0
 
 * Move `HybridVisionDarwin` to `HybridVisionDarwinPlugin`.

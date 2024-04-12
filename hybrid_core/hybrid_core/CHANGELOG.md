@@ -1,3 +1,11 @@
+## 0.5.1
+
+* Downgrade the flutter SDK version to `3.0.0`.
+
+## 0.5.0
+
+* Optimize project structure.
+
 ## 0.3.0
 
 * Add `LogController` interface.

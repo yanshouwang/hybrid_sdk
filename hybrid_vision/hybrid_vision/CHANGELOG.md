@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Optimize project structure.
+
 ## 0.1.0
 
 * `Android` Fix the crash issue caused by r8 on release mode.

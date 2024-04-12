@@ -2,7 +2,7 @@ import 'package:hybrid_core_platform_interface/hybrid_core_platform_interface.da
 
 import 'jni.g.dart';
 
-class AndroidPlatform extends OSPlatform implements Android {
+base class AndroidImpl extends OSImpl implements Android {
   @override
   int get api => Build_VERSION.SDK_INT;
 

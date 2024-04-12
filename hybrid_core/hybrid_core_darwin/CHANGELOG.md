@@ -1,3 +1,10 @@
+## 0.5.0
+
+* Add example.
+* Move `DarwinPlatform` to `DarwinImpl`.
+* Move `iOSPlatform` to `iOSImpl`.
+* Move `macOSPlatform` to `macOSImpl`.
+
 ## 0.3.1
 
 * Optimize project structure.

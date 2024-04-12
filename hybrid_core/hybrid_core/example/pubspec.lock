@@ -152,47 +152,47 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.3.0"
+    version: "0.5.1"
   hybrid_core_android:
     dependency: transitive
     description:
       name: hybrid_core_android
-      sha256: ee87910741d582cf0a54ffb1a5e4ce78392efe6ad51ba259250f378804f090d9
+      sha256: d575b9c643abb85c2d6ee01d99b89706847a6aec95a3716c88df8871ff8d6d3a
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.5.2"
   hybrid_core_darwin:
     dependency: transitive
     description:
       name: hybrid_core_darwin
-      sha256: bb4120cc7517d35385b294c801759a6ceb491f979d297904be6a0518236ae588
+      sha256: c086f07f2f24f0b78b3f963b4202e409987157b4c55071476d0e3f432ccc2a7b
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.1"
+    version: "0.5.0"
   hybrid_core_linux:
     dependency: transitive
     description:
       name: hybrid_core_linux
-      sha256: e90a9c1a430ba22fd3ad7c94ac5014e61fbef80fcbd887026b6432877189fe2f
+      sha256: "9c71fc1751bc5b83257306999c6bce3b90948425bfbbef7d0d8651704eef761d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.5.0"
   hybrid_core_platform_interface:
     dependency: transitive
     description:
       name: hybrid_core_platform_interface
-      sha256: "6686d3338aba6bd3ff373ffd75d8c3faae623aba999eaa77cd7cb2b1a46fab1d"
+      sha256: "504aad6922525d0c0b5e1151933768111b103ed9c78068e8b24453643c5e51ee"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.1"
+    version: "0.5.0"
   hybrid_core_windows:
     dependency: transitive
     description:
       name: hybrid_core_windows
-      sha256: "463eb23d90d29ff29b4d58b8ffd127f32a3b530b839556bc3590d6f320d8b813"
+      sha256: "8bb6cfc802e21aa985890888b4a483b70342c28e126b5ce8a15883ab0aeb0829"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.4"
+    version: "0.5.2"
   integration_test:
     dependency: "direct dev"
     description: flutter
@@ -202,10 +202,10 @@ packages:
     dependency: transitive
     description:
       name: jni
-      sha256: "499558e919997adfc45809a66caf0b95b91393e23289dd2826b152f8f04e6611"
+      sha256: "63984817b9ac1d07a02d0a8da20b1d526ba1872d75c6667b4d667f4facc39222"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.3"
+    version: "0.8.0"
   leak_tracker:
     dependency: transitive
     description:

@@ -1919,29 +1919,29 @@ JniResult Point__offset(jobject self_,int32_t i,int32_t i1) {
     return (JniResult){.value = {.j = 0}, .exception = check_exception()};
 }
 
-jmethodID _m_Point__equals1 = NULL;
+jmethodID _m_Point__equals = NULL;
 FFI_PLUGIN_EXPORT
-JniResult Point__equals1(jobject self_,int32_t i,int32_t i1) {
+JniResult Point__equals(jobject self_,int32_t i,int32_t i1) {
     load_env();
         load_class_global_ref(&_c_Point, "android/graphics/Point");
     if (_c_Point == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
     load_method(_c_Point,
-      &_m_Point__equals1, "equals", "(II)Z");
-    if (_m_Point__equals1 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
-    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Point__equals1, i, i1);
+      &_m_Point__equals, "equals", "(II)Z");
+    if (_m_Point__equals == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
+    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Point__equals, i, i1);
     return (JniResult){.value = {.z = _result}, .exception = check_exception()};
 }
 
-jmethodID _m_Point__equals2 = NULL;
+jmethodID _m_Point__equals1 = NULL;
 FFI_PLUGIN_EXPORT
-JniResult Point__equals2(jobject self_,jobject object) {
+JniResult Point__equals1(jobject self_,jobject object) {
     load_env();
         load_class_global_ref(&_c_Point, "android/graphics/Point");
     if (_c_Point == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
     load_method(_c_Point,
-      &_m_Point__equals2, "equals", "(Ljava/lang/Object;)Z");
-    if (_m_Point__equals2 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
-    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Point__equals2, object);
+      &_m_Point__equals1, "equals", "(Ljava/lang/Object;)Z");
+    if (_m_Point__equals1 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
+    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Point__equals1, object);
     return (JniResult){.value = {.z = _result}, .exception = check_exception()};
 }
 
@@ -2110,16 +2110,16 @@ JniResult Rect__new2(jobject rect) {
     return to_global_ref_result(_result);
 }
 
-jmethodID _m_Rect__equals1 = NULL;
+jmethodID _m_Rect__equals = NULL;
 FFI_PLUGIN_EXPORT
-JniResult Rect__equals1(jobject self_,jobject object) {
+JniResult Rect__equals(jobject self_,jobject object) {
     load_env();
         load_class_global_ref(&_c_Rect, "android/graphics/Rect");
     if (_c_Rect == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
     load_method(_c_Rect,
-      &_m_Rect__equals1, "equals", "(Ljava/lang/Object;)Z");
-    if (_m_Rect__equals1 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
-    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Rect__equals1, object);
+      &_m_Rect__equals, "equals", "(Ljava/lang/Object;)Z");
+    if (_m_Rect__equals == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
+    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Rect__equals, object);
     return (JniResult){.value = {.z = _result}, .exception = check_exception()};
 }
 
@@ -3195,16 +3195,16 @@ JniResult Uri__getLastPathSegment(jobject self_) {
     return to_global_ref_result(_result);
 }
 
-jmethodID _m_Uri__equals1 = NULL;
+jmethodID _m_Uri__equals = NULL;
 FFI_PLUGIN_EXPORT
-JniResult Uri__equals1(jobject self_,jobject object) {
+JniResult Uri__equals(jobject self_,jobject object) {
     load_env();
         load_class_global_ref(&_c_Uri, "android/net/Uri");
     if (_c_Uri == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
     load_method(_c_Uri,
-      &_m_Uri__equals1, "equals", "(Ljava/lang/Object;)Z");
-    if (_m_Uri__equals1 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
-    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Uri__equals1, object);
+      &_m_Uri__equals, "equals", "(Ljava/lang/Object;)Z");
+    if (_m_Uri__equals == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
+    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_Uri__equals, object);
     return (JniResult){.value = {.z = _result}, .exception = check_exception()};
 }
 
@@ -4383,16 +4383,16 @@ JniResult BarcodeScannerOptions__hashCode1(jobject self_) {
     return (JniResult){.value = {.i = _result}, .exception = check_exception()};
 }
 
-jmethodID _m_BarcodeScannerOptions__equals1 = NULL;
+jmethodID _m_BarcodeScannerOptions__equals = NULL;
 FFI_PLUGIN_EXPORT
-JniResult BarcodeScannerOptions__equals1(jobject self_,jobject object) {
+JniResult BarcodeScannerOptions__equals(jobject self_,jobject object) {
     load_env();
         load_class_global_ref(&_c_BarcodeScannerOptions, "com/google/mlkit/vision/barcode/BarcodeScannerOptions");
     if (_c_BarcodeScannerOptions == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
     load_method(_c_BarcodeScannerOptions,
-      &_m_BarcodeScannerOptions__equals1, "equals", "(Ljava/lang/Object;)Z");
-    if (_m_BarcodeScannerOptions__equals1 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
-    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_BarcodeScannerOptions__equals1, object);
+      &_m_BarcodeScannerOptions__equals, "equals", "(Ljava/lang/Object;)Z");
+    if (_m_BarcodeScannerOptions__equals == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
+    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_BarcodeScannerOptions__equals, object);
     return (JniResult){.value = {.z = _result}, .exception = check_exception()};
 }
 
@@ -4551,16 +4551,16 @@ JniResult ZoomSuggestionOptions__hashCode1(jobject self_) {
     return (JniResult){.value = {.i = _result}, .exception = check_exception()};
 }
 
-jmethodID _m_ZoomSuggestionOptions__equals1 = NULL;
+jmethodID _m_ZoomSuggestionOptions__equals = NULL;
 FFI_PLUGIN_EXPORT
-JniResult ZoomSuggestionOptions__equals1(jobject self_,jobject object) {
+JniResult ZoomSuggestionOptions__equals(jobject self_,jobject object) {
     load_env();
         load_class_global_ref(&_c_ZoomSuggestionOptions, "com/google/mlkit/vision/barcode/ZoomSuggestionOptions");
     if (_c_ZoomSuggestionOptions == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
     load_method(_c_ZoomSuggestionOptions,
-      &_m_ZoomSuggestionOptions__equals1, "equals", "(Ljava/lang/Object;)Z");
-    if (_m_ZoomSuggestionOptions__equals1 == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
-    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_ZoomSuggestionOptions__equals1, object);
+      &_m_ZoomSuggestionOptions__equals, "equals", "(Ljava/lang/Object;)Z");
+    if (_m_ZoomSuggestionOptions__equals == NULL) return (JniResult){.value = {.j = 0}, .exception = check_exception()};
+    uint8_t _result = (*jniEnv)->CallBooleanMethod(jniEnv, self_, _m_ZoomSuggestionOptions__equals, object);
     return (JniResult){.value = {.z = _result}, .exception = check_exception()};
 }
 
