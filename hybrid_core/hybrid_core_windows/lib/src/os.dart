@@ -6,7 +6,7 @@ import 'package:hybrid_core_platform_interface/hybrid_core_platform_interface.da
 import 'ffi.dart';
 import 'ffi.g.dart';
 
-class WindowsPlatform extends OSPlatform implements Windows {
+base class WindowsImpl extends OSImpl implements Windows {
   @override
   WindowsVersion get version => using((arena) {
         final osviex = arena<OSVERSIONINFOEXW>();

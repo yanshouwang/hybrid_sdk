@@ -1,3 +1,10 @@
+## 0.5.0
+
+* Add example.
+* Move `HybridCoreWindowsPlugin` to `WindowsCorePlugin`.
+* Move `HybridCoreWindowsLibrary` to `WindowsCoreLibrary`.
+* Move `WindowsPlatform` to `WindowsImpl`.
+
 ## 0.3.4
 
 * Optimize project structure.

@@ -1,5 +1,5 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
-name: HybridCoreWindowsLibrary
+name: WindowsCoreLibrary
 description: Windows Library for Hybrid Core.
 output: 'lib/src/ffi.g.dart'
 headers:
@@ -14,19 +14,19 @@ functions:
     - GetVersionExW
     - VerifyVersionInfoW
     - VerSetConditionMask
-    # - IsWindows7OrGreater
-    # - IsWindows7SP1OrGreater
-    # - IsWindows8OrGreater
-    # - IsWindows8Point1OrGreater
-    # - IsWindowsServer
-    # - IsWindowsVersionOrGreater
-    # - IsWindowsVistaOrGreater
-    # - IsWindowsVistaSP1OrGreater
-    # - IsWindowsVistaSP2OrGreater
-    # - IsWindowsXPOrGreater
-    # - IsWindowsXPSP1OrGreater
-    # - IsWindowsXPSP2OrGreater
-    # - IsWindowsXPSP3OrGreater
+    - IsWindows7OrGreater
+    - IsWindows7SP1OrGreater
+    - IsWindows8OrGreater
+    - IsWindows8Point1OrGreater
+    - IsWindowsServer
+    - IsWindowsVersionOrGreater
+    - IsWindowsVistaOrGreater
+    - IsWindowsVistaSP1OrGreater
+    - IsWindowsVistaSP2OrGreater
+    - IsWindowsXPOrGreater
+    - IsWindowsXPSP1OrGreater
+    - IsWindowsXPSP2OrGreater
+    - IsWindowsXPSP3OrGreater
 macros:
   include:
     - HIBYTE
