@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
-import 'view/view.dart';
+import 'views/views.dart';
 
 final routerConfig = GoRouter(
   initialLocation: '/os',
