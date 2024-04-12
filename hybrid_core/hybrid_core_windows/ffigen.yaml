@@ -1,5 +1,5 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
-name: WindowsCoreLibrary
+name: HybridCoreWindowsLibrary
 description: Windows Library for Hybrid Core.
 output: 'lib/src/ffi.g.dart'
 headers:

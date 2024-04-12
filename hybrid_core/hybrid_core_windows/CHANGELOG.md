@@ -1,6 +1,7 @@
 ## 0.5.2
 
 * Update `pubspec.lock`.
+* Move `WindowsCoreLibrary` to `HybridCoreWindowsLibrary`.
 
 ## 0.5.1
 

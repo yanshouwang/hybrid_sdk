@@ -5,17 +5,17 @@
 import 'dart:ffi' as ffi;
 
 /// Windows Library for Hybrid Core.
-class WindowsCoreLibrary {
+class HybridCoreWindowsLibrary {
   /// Holds the symbol lookup function.
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
       _lookup;
 
   /// The symbols are looked up in [dynamicLibrary].
-  WindowsCoreLibrary(ffi.DynamicLibrary dynamicLibrary)
+  HybridCoreWindowsLibrary(ffi.DynamicLibrary dynamicLibrary)
       : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
-  WindowsCoreLibrary.fromLookup(
+  HybridCoreWindowsLibrary.fromLookup(
       ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
           lookup)
       : _lookup = lookup;
