@@ -1,3 +1,8 @@
+## 0.2.0
+
+* Add example.
+* Move `AndroidBarcodeDetectionPlatform` to `AndroidBarcodeDetectionImpl`.
+
 ## 0.1.0
 
 * Move `HybridVisionAndroid` to `HybridVisionAndroidPlugin`.

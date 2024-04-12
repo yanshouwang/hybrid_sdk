@@ -9,7 +9,7 @@ import 'package:jni/jni.dart';
 import 'jni.dart';
 import 'jni.g.dart' as jni;
 
-class AndroidBarcodeDetectionPlatform extends BarcodeDetectionPlatform {
+base class AndroidBarcodeDetectionImpl extends BarcodeDetectionImpl {
   @override
   BarcodeDetector createDetector({
     List<BarcodeFormat>? formats,
@@ -44,7 +44,9 @@ class AndroidBarcodeDetector implements BarcodeDetector {
     final int id = _detectId++;
     final _DetectCommand command = _DetectCommand(
       id,
-      scanner.reference.address,
+      // TODO: 使用 scanner 代替 scannerAddress.
+      // https://github.com/dart-lang/native/issues/979
+      scanner.reference.pointer.address,
       image,
     );
     final completer = Completer<List<Barcode>>();
@@ -220,24 +222,26 @@ Future<SendPort> _helperIsolateSendPort = () async {
             // On the helper isolate listen to requests and respond to them.
             if (message is _DetectCommand) {
               try {
+                final scannerAddress = message.scannerAddress;
+                final scannerPtr = Pointer<Void>.fromAddress(scannerAddress);
+                final scannerNewPtr = Jni.env.NewGlobalRef(scannerPtr);
+                final scannerReference = JGlobalReference(scannerNewPtr);
+                final scanner =
+                    jni.BarcodeScanner.fromReference(scannerReference);
                 final image = message.image;
                 final inputImage = image is MemoryVisionImage
                     ? image.toCInputImage()
                     : image is UriVisionImage
                         ? image.toCInputImage()
                         : throw TypeError();
-                final width = inputImage.getWidth().toDouble();
-                final height = inputImage.getHeight().toDouble();
-                final scannerPtr =
-                    Pointer<Void>.fromAddress(message.scannerAddress);
-                final scannerRef = Jni.env.NewGlobalRef(scannerPtr);
-                final scanner = jni.BarcodeScanner.fromRef(scannerRef);
                 final task = scanner.process1(inputImage);
                 final onSuccessListener = jni.OnSuccessListener.implement(
                   jni.$OnSuccessListenerImpl(
                     TResult: task.TResult,
                     onSuccess: (cBarcodes) {
                       try {
+                        final width = inputImage.getWidth().toDouble();
+                        final height = inputImage.getHeight().toDouble();
                         final barcodes = cBarcodes
                             .map(
                                 (cBarcode) => cBarcode.toBarcode(width, height))
