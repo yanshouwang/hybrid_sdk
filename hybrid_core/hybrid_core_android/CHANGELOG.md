@@ -1,3 +1,7 @@
+## 0.5.2
+
+* Update `pubspec.lock`.
+
 ## 0.5.1
 
 * Move `AndroidCorePlugin` to `HybridCoreAndroidPlugin`.
