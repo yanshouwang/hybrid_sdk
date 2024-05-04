@@ -1,0 +1,14 @@
+name: hybrid_logging
+description: "The logging library of the Hybrid SDK."
+version: 1.0.0
+repository: "https://github.com/yanshouwang/hybrid_sdk"
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  logging: ^1.2.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
