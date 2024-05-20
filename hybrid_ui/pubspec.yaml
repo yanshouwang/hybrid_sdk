@@ -1,0 +1,23 @@
+name: hybrid_ui
+description: "The ui library of the Hybrid SDK."
+version: 0.0.1
+homepage: "https://github.com/yanshouwang/hybrid_sdk"
+repository: "https://github.com/yanshouwang/hybrid_sdk"
+issue_tracker: "https://github.com/yanshouwang/hybrid_sdk/issues"
+topics:
+  - ui
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:

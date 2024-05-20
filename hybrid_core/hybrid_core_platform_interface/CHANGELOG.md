@@ -1,3 +1,8 @@
+## 0.5.1
+
+* Remove `logging` package.
+* Remove `ui` package.
+
 ## 0.5.0
 
 * Move `NativeOS` to `OSImpl`.
