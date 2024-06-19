@@ -1,14 +1,18 @@
+import 'dart:ffi';
+
 import 'package:ffi/ffi.dart';
 import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
+
+import 'ffi.g.dart';
 
 /// DarwinPlatform.
 abstract base class DarwinPlatform extends OSPlatform implements Darwin {
   final NSProcessInfo info;
 
-  DarwinPlatform() : info = NSProcessInfo.alloc(foundationLib).init();
+  DarwinPlatform() : info = NSProcessInfo.alloc().init();
 
   @override
-  DarwinVersion get operatingSystemVersion {
+  DarwinVersion get version {
     return using((arena) {
       final nsVersionPtr = arena<NSOperatingSystemVersion>();
       info.getOperatingSystemVersion(nsVersionPtr);
@@ -22,7 +26,7 @@ abstract base class DarwinPlatform extends OSPlatform implements Darwin {
   }
 
   @override
-  bool isOperatingSystemAtLeastVersion(DarwinVersion version) {
+  bool isAtLeastVersion(DarwinVersion version) {
     return using((arena) {
       final nsVersionPtr = arena<NSOperatingSystemVersion>();
       final nsVersion = nsVersionPtr.ref;
@@ -37,14 +41,14 @@ abstract base class DarwinPlatform extends OSPlatform implements Darwin {
 /// Darwin.
 abstract interface class Darwin implements OS {
   /// The version of the operating system on which the process is executing.
-  DarwinVersion get operatingSystemVersion;
+  DarwinVersion get version;
 
   /// Returns a Boolean value indicating whether the version of the operating
   /// system on which the process is executing is the same or later than the given
   /// version.
   ///
   /// [version] The operating system version to test against.
-  bool isOperatingSystemAtLeastVersion(DarwinVersion version);
+  bool isAtLeastVersion(DarwinVersion version);
 }
 
 /// A structure that contains version information about the currently executing

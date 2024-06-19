@@ -9,15 +9,15 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final os = OS();
     final String version;
-    final bool atLeastVersion;
+    final bool isAtLeastVersion;
     if (os is iOS) {
-      version = 'iOS ${os.operatingSystemVersion}';
+      version = 'iOS ${os.version}';
       final version17_0 = DarwinVersion.fromNumber(17.0);
-      atLeastVersion = os.isOperatingSystemAtLeastVersion(version17_0);
+      isAtLeastVersion = os.isAtLeastVersion(version17_0);
     } else if (os is macOS) {
-      version = 'macOS ${os.operatingSystemVersion}';
+      version = 'macOS ${os.version}';
       final version14_0 = DarwinVersion.fromNumber(14.0);
-      atLeastVersion = os.isOperatingSystemAtLeastVersion(version14_0);
+      isAtLeastVersion = os.isAtLeastVersion(version14_0);
     } else {
       throw TypeError();
     }
@@ -48,7 +48,7 @@ class HomeView extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              '$atLeastVersion',
+              '$isAtLeastVersion',
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],

@@ -154,6 +154,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
+  objective_c:
+    dependency: transitive
+    description:
+      name: objective_c
+      sha256: "32fb4ae9525491f83248272b52c80c16569fe7d5e9c157b0ff5275033212b697"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   path:
     dependency: transitive
     description:
@@ -239,6 +247,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.2.1"
+  yaml:
+    dependency: transitive
+    description:
+      name: yaml
+      sha256: "75769501ea3489fca56601ff33454fe45507ea3bfb014161abc3b43ae25989d5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
 sdks:
   dart: ">=3.4.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"

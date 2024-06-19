@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   hybrid_os_platform_interface: ^0.0.1
   ffi: ^2.1.2
+  objective_c: ^1.0.1
 
 dev_dependencies:
   flutter_test:
