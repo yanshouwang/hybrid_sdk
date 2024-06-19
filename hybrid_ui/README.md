@@ -1,6 +1,6 @@
 # hybrid_ui
 
-The core library of the Hybrid SDK.
+The UI library of the Hybrid SDK.
 
 ## Getting Started
 
