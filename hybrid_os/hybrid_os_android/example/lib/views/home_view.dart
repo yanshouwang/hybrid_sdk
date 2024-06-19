@@ -12,7 +12,8 @@ class HomeView extends StatelessWidget {
       throw TypeError();
     }
     final sdkVersion = 'Android ${os.sdkVersion}';
-    final upsideDownCakeOrLater = os.sdkVersion >= VersionCodes.upsideDownCake;
+    final upsideDownCakeOrLater =
+        os.sdkVersion >= AndroidSDKVersions.upsideDownCake;
     return Scaffold(
       appBar: AppBar(
         title: const Text('OS'),
