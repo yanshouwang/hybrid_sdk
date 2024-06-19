@@ -1,3 +1,5 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Add `Linux` interface class.
+* Add `LinuxPlatform` class.
+* Add `HybridOSLinuxPlugin` class.

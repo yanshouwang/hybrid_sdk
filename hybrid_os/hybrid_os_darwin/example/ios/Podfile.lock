@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - hybrid_os_darwin (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - objective_c (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - hybrid_os_darwin (from `.symlinks/plugins/hybrid_os_darwin/darwin`)
+  - objective_c (from `.symlinks/plugins/objective_c/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  hybrid_os_darwin:
+    :path: ".symlinks/plugins/hybrid_os_darwin/darwin"
+  objective_c:
+    :path: ".symlinks/plugins/objective_c/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  hybrid_os_darwin: 602dedd1674ec1ab0ffd9f487cac85fc1b67e058
+  objective_c: 77e887b5ba1827970907e10e832eec1683f3431d
+
+PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+
+COCOAPODS: 1.15.2

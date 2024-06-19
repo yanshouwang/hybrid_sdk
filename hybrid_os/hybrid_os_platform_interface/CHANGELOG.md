@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Add `OS` interface class.
+* Add `OSPlatform` base class.

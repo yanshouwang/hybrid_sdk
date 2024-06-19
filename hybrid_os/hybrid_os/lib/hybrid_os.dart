@@ -1,14 +1,12 @@
-// You have generated a new plugin project without specifying the `--platforms`
-// flag. A plugin project with no platform support was generated. To add a
-// platform, run `flutter create -t plugin --platforms <platforms> .` under the
-// same directory. You can also find a detailed instruction on how to add
-// platforms in the `pubspec.yaml` at
-// https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+/// hybrid_os.
+library hybrid_os;
 
-import 'hybrid_os_platform_interface.dart';
-
-class HybridOs {
-  Future<String?> getPlatformVersion() {
-    return HybridOsPlatform.instance.getPlatformVersion();
-  }
-}
+export 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart'
+    show OS;
+export 'package:hybrid_os_android/hybrid_os_android.dart'
+    show Android, AndroidSDKVersions;
+export 'package:hybrid_os_darwin/hybrid_os_darwin.dart'
+    show Darwin, DarwinVersion, iOS, macOS;
+export 'package:hybrid_os_windows/hybrid_os_windows.dart'
+    show Windows, WindowsVersion, WindowsType;
+export 'package:hybrid_os_linux/hybrid_os_linux.dart' show Linux;

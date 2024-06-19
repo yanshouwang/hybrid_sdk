@@ -1,3 +1,6 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Add `Android` interface class.
+* Add `AndroidSDKVersions` class.
+* Add `AndroidPlatform` class.
+* Add `HybridOSAndroidPlugin` class.
