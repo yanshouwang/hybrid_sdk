@@ -2,4 +2,8 @@
 
 import 'darwin.dart';
 
-abstract class iOS implements Darwin {}
+/// iOSPlatform.
+final class iOSPlatform extends DarwinPlatform implements iOS {}
+
+/// iOS.
+abstract interface class iOS implements Darwin {}

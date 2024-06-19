@@ -1,21 +1,73 @@
-abstract class Darwin implements OS {
-  DarwinVersion get version;
+import 'package:ffi/ffi.dart';
+import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
 
-  bool atLeastVersion(DarwinVersion version);
+/// DarwinPlatform.
+abstract base class DarwinPlatform extends OSPlatform implements Darwin {
+  final NSProcessInfo info;
+
+  DarwinPlatform() : info = NSProcessInfo.alloc(foundationLib).init();
+
+  @override
+  DarwinVersion get operatingSystemVersion {
+    return using((arena) {
+      final nsVersionPtr = arena<NSOperatingSystemVersion>();
+      info.getOperatingSystemVersion(nsVersionPtr);
+      final nsVersion = nsVersionPtr.ref;
+      return DarwinVersion(
+        majorVersion: nsVersion.majorVersion,
+        minorVersion: nsVersion.minorVersion,
+        patchVersion: nsVersion.patchVersion,
+      );
+    });
+  }
+
+  @override
+  bool isOperatingSystemAtLeastVersion(DarwinVersion version) {
+    return using((arena) {
+      final nsVersionPtr = arena<NSOperatingSystemVersion>();
+      final nsVersion = nsVersionPtr.ref;
+      nsVersion.majorVersion = version.majorVersion;
+      nsVersion.minorVersion = version.minorVersion;
+      nsVersion.patchVersion = version.patchVersion;
+      return info.isOperatingSystemAtLeastVersion_(nsVersion);
+    });
+  }
 }
 
-class DarwinVersion {
+/// Darwin.
+abstract interface class Darwin implements OS {
+  /// The version of the operating system on which the process is executing.
+  DarwinVersion get operatingSystemVersion;
+
+  /// Returns a Boolean value indicating whether the version of the operating
+  /// system on which the process is executing is the same or later than the given
+  /// version.
+  ///
+  /// [version] The operating system version to test against.
+  bool isOperatingSystemAtLeastVersion(DarwinVersion version);
+}
+
+/// A structure that contains version information about the currently executing
+/// operating system, including major, minor, and patch version numbers.
+final class DarwinVersion {
+  /// The major release number, such as 10 in version 10.9.3.
   final int majorVersion;
+
+  /// The minor release number, such as 9 in version 10.9.3.
   final int minorVersion;
+
+  /// The update release number, such as 3 in version 10.9.3.
   final int patchVersion;
 
+  /// Constructs a [DarwinVersion].
   DarwinVersion({
     this.majorVersion = 0,
     this.minorVersion = 0,
     this.patchVersion = 0,
   });
 
-  factory DarwinVersion.text(String text) {
+  /// Constructs a [DarwinVersion] from [String].
+  factory DarwinVersion.fromString(String text) {
     final texts = text.split('.');
     final majorText = texts.elementAtOrNull(0);
     final minorText = texts.elementAtOrNull(1);
@@ -30,8 +82,11 @@ class DarwinVersion {
     );
   }
 
-  factory DarwinVersion.number(num number) => DarwinVersion.text('$number');
+  /// Constructs a [DarwinVersion] from [num].
+  factory DarwinVersion.fromNumber(num number) =>
+      DarwinVersion.fromString('$number');
 
+  /// Copies a [DarwinVersion].
   DarwinVersion copyWith({
     int? majorVersion,
     int? minorVersion,

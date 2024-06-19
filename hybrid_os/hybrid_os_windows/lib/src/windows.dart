@@ -6,7 +6,7 @@ import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
 import 'ffi.dart';
 import 'ffi.g.dart';
 
-/// Windows Platform.
+/// WindowsPlatform.
 final class WindowsPlatform extends OSPlatform implements Windows {
   @override
   WindowsVersion get version => using((arena) {
@@ -152,7 +152,7 @@ final class WindowsPlatform extends OSPlatform implements Windows {
   }
 }
 
-/// Windows OS.
+/// Windows.
 abstract interface class Windows implements OS {
   /// [`GetVersionEx` may be altered or unavailable for releases after Windows 8.1.
   /// Instead, use the [Version Helper functions](https://learn.microsoft.com/en-us/windows/desktop/SysInfo/version-helper-apis)]
@@ -265,7 +265,7 @@ final class WindowsVersion {
   /// A null-terminated string, such as "Service Pack 3", that indicates the latest
   /// Service Pack installed on the system. If no Service Pack has been installed,
   /// the string is empty.
-  final String servicePack;
+  final String csdVersion;
 
   /// The major version number of the latest Service Pack installed on the system.
   /// For example, for Service Pack 3, the major version number is 3. If no Service
@@ -286,16 +286,18 @@ final class WindowsVersion {
   /// |VER_NT_WORKSTATION<br>0x0000001|The operating system is Windows 8, Windows 7, Windows Vista, Windows XP Professional, Windows XP Home Edition, or Windows 2000 Professional.|
   final WindowsType type;
 
+  /// Constructs a [WindowsVersion].
   WindowsVersion({
     this.majorVersion = 0,
     this.minorVersion = 0,
     this.buildNumber = 0,
-    this.servicePack = '',
+    this.csdVersion = '',
     this.servicePackMajor = 0,
     this.servicePackMinor = 0,
     this.type = WindowsType.unknown,
   });
 
+  /// Constructs a [WindowsVersion] from [OSVERSIONINFOEXW].
   factory WindowsVersion.fromOSVERSIONINFOEXW(OSVERSIONINFOEXW info) {
     final csdVersionCharCodes = <int>[];
     for (var i = 0; i < 128; i++) {
@@ -310,7 +312,7 @@ final class WindowsVersion {
       majorVersion: info.dwMajorVersion,
       minorVersion: info.dwMinorVersion,
       buildNumber: info.dwBuildNumber,
-      servicePack: csdVersion,
+      csdVersion: csdVersion,
       servicePackMajor: info.wServicePackMajor,
       servicePackMinor: info.wServicePackMinor,
       type: info.wProductType.toWindowsType(),
@@ -320,11 +322,11 @@ final class WindowsVersion {
   @override
   String toString() {
     final mainVersion = '$majorVersion.$minorVersion.$buildNumber';
-    return servicePack.isEmpty ? mainVersion : '$mainVersion $servicePack';
+    return csdVersion.isEmpty ? mainVersion : '$mainVersion $csdVersion';
   }
 }
 
-/// Windows Type.
+/// WindowsType.
 enum WindowsType {
   /// The operating system is unknown.
   unknown,

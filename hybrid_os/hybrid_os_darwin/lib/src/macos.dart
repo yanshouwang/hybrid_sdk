@@ -2,4 +2,8 @@
 
 import 'darwin.dart';
 
-abstract class macOS implements Darwin {}
+/// macOSPlatform.
+final class macOSPlatform extends DarwinPlatform implements macOS {}
+
+/// macOS.
+abstract interface class macOS implements Darwin {}

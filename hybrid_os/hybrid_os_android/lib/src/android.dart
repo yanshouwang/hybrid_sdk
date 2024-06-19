@@ -2,7 +2,7 @@ import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
 
 import 'jni.g.dart';
 
-/// Android Platform.
+/// AndroidPlatform.
 final class AndroidPlatform extends OSPlatform implements Android {
   @override
   String get baseOS => Build_VERSION.BASE_OS.toDartString();
@@ -37,7 +37,7 @@ final class AndroidPlatform extends OSPlatform implements Android {
   String get securityPatch => Build_VERSION.SECURITY_PATCH.toDartString();
 }
 
-/// Android OS.
+/// Android.
 abstract interface class Android implements OS {
   /// The base OS build the product is based on.
   ///
