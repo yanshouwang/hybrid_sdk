@@ -38,7 +38,7 @@ final class AndroidPlatform extends OSPlatform implements Android {
 }
 
 /// Android OS.
-abstract class Android implements OS {
+abstract interface class Android implements OS {
   /// The base OS build the product is based on.
   ///
   /// Added in API level 23
@@ -128,7 +128,7 @@ abstract class Android implements OS {
 /// Enumeration of the currently known SDK version codes. These are the values
 /// that can be found in VERSION#SDK. Version numbers increment monotonically
 /// with each official platform release.
-abstract class AndroidSDKVersions {
+abstract final class AndroidSDKVersions {
   /// The original, first, version of Android. Yay!
   ///
   /// Released publicly as Android 1.0 in September 2008.
