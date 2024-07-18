@@ -7,6 +7,7 @@ project(hybrid_os_darwin_library VERSION 0.0.1 LANGUAGES C)
 
 add_library(hybrid_os_darwin SHARED
   "hybrid_os_darwin.c"
+  "ffi.g.m"
 )
 
 set_target_properties(hybrid_os_darwin PROPERTIES
