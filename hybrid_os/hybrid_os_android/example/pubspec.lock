@@ -97,7 +97,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   hybrid_os_platform_interface:
     dependency: "direct main"
     description:
