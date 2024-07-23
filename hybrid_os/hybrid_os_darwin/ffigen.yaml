@@ -2,7 +2,9 @@
 name: HybridOSDarwinLibrary
 description: Darwin Library for Hybrid OS.
 language: objc
-output: 'lib/src/ffi.g.dart'
+output: 
+  bindings: 'lib/src/ffi.g.dart'
+  objc-bindings: 'src/ffi.g.m'
 compiler-opts:
   - '-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks'
   - '-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/iOSSupport/System/Library/Frameworks'

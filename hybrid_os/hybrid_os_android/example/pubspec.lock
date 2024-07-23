@@ -97,7 +97,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   hybrid_os_platform_interface:
     dependency: "direct main"
     description:
@@ -110,10 +110,10 @@ packages:
     dependency: transitive
     description:
       name: jni
-      sha256: "6f8e04339f96cb32879acb181c60b2c1e2310ff86f3c62bcd1afcfb4b28b665d"
+      sha256: f377c585ea9c08d48b427dc2e03780af2889d1bb094440da853c6883c1acba4b
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.2"
+    version: "0.10.1"
   leak_tracker:
     dependency: transitive
     description:

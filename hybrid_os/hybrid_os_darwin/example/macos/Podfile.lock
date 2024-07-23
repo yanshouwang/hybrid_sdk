@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   hybrid_os_darwin: 602dedd1674ec1ab0ffd9f487cac85fc1b67e058
-  objective_c: e5f8194456e8fc943e034d1af00510a1bc29c067
+  objective_c: c13d3306e0fbf006bad001fd523e4bf8ebda8953
 
 PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
 
