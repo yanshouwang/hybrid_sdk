@@ -1,0 +1,6 @@
+[submodule "hybrid_uvc/third_party/libuvc"]
+	path = hybrid_uvc/third_party/libuvc
+	url = git@github.com:libuvc/libuvc.git
+[submodule "hybrid_uvc/third_party/libusb"]
+	path = hybrid_uvc/third_party/libusb
+	url = git@github.com:libusb/libusb.git
