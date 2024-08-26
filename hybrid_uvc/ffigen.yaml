@@ -1,5 +1,5 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
-name: HybridUvcBindings
+name: HybridUVCLibrary
 description: |
   Bindings for `src/hybrid_uvc.h`.
 
@@ -8,6 +8,8 @@ output: 'lib/hybrid_uvc_bindings_generated.dart'
 headers:
   entry-points:
     - 'src/hybrid_uvc.h'
+    - 'include/libuvc/libuvc.h'
+    - 'include/libuvc/libuvc_config.h'
   include-directives:
     - 'src/hybrid_uvc.h'
 preamble: |
