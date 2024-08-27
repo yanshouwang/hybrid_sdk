@@ -1,17 +1,17 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
-name: HybridUVCLibrary
+name: LibUVC
 description: |
-  Bindings for `src/hybrid_uvc.h`.
-
-  Regenerate bindings with `dart run ffigen --config ffigen.yaml`.
-output: 'lib/hybrid_uvc_bindings_generated.dart'
+  Bindings for `libuvc`.
+output: 'lib/src/libuvc.g.dart'
+compiler-opts:
+  - '-I../third_party/libuvc/out/include'
 headers:
   entry-points:
-    - 'src/hybrid_uvc.h'
-    - 'include/libuvc/libuvc.h'
-    - 'include/libuvc/libuvc_config.h'
+    - '../third_party/libuvc/out/include/libuvc/libuvc.h'
+    - '../third_party/libuvc/out/include/libuvc/libuvc_config.h'
   include-directives:
-    - 'src/hybrid_uvc.h'
+    - '../third_party/libuvc/out/include/libuvc/libuvc.h'
+    - '../third_party/libuvc/out/include/libuvc/libuvc_config.h'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types
