@@ -3,15 +3,15 @@ name: LibUVC
 description: |
   Bindings for `libuvc`.
 output: 'lib/src/libuvc.g.dart'
-compiler-opts:
-  - '-I../third_party/libuvc/out/include'
+# compiler-opts:
+#   - '-I/usr/local/include'
 headers:
   entry-points:
-    - '../third_party/libuvc/out/include/libuvc/libuvc.h'
-    - '../third_party/libuvc/out/include/libuvc/libuvc_config.h'
+    - '/usr/local/include/libuvc/libuvc.h'
+    - '/usr/local/include/libuvc/libuvc_config.h'
   include-directives:
-    - '../third_party/libuvc/out/include/libuvc/libuvc.h'
-    - '../third_party/libuvc/out/include/libuvc/libuvc_config.h'
+    - '/usr/local/include/libuvc/libuvc.h'
+    - '/usr/local/include/libuvc/libuvc_config.h'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types

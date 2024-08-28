@@ -183,6 +183,26 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "hybrid_uvc_example",
+            "cwd": "hybrid_uvc/example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hybrid_uvc_example (profile mode)",
+            "cwd": "hybrid_uvc/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hybrid_uvc_example (release mode)",
+            "cwd": "hybrid_uvc/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         }
     ]
 }

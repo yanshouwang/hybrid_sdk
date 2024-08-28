@@ -3945,6 +3945,18 @@ final class _IO_codecvt extends ffi.Opaque {}
 
 final class _IO_wide_data extends ffi.Opaque {}
 
+const int LIBUVC_VERSION_MAJOR = 0;
+
+const int LIBUVC_VERSION_MINOR = 0;
+
+const int LIBUVC_VERSION_PATCH = 7;
+
+const String LIBUVC_VERSION_STR = '0.0.7';
+
+const int LIBUVC_VERSION_INT = 7;
+
+const int LIBUVC_HAS_JPEG = 1;
+
 const int UVC_COLOR_FORMAT_UNKNOWN = 0;
 
 const int UVC_COLOR_FORMAT_UNCOMPRESSED = 1;
@@ -3966,15 +3978,3 @@ const int UVC_COLOR_FORMAT_GRAY8 = 9;
 const int UVC_COLOR_FORMAT_GRAY16 = 10;
 
 const int UVC_COLOR_FORMAT_NV12 = 17;
-
-const int LIBUVC_VERSION_MAJOR = 0;
-
-const int LIBUVC_VERSION_MINOR = 0;
-
-const int LIBUVC_VERSION_PATCH = 7;
-
-const String LIBUVC_VERSION_STR = '0.0.7';
-
-const int LIBUVC_VERSION_INT = 7;
-
-const int LIBUVC_HAS_JPEG = 1;

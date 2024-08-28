@@ -25,17 +25,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder(
-        valueListenable: image,
-        builder: (context, image, child) {
-          if (image == null) {
-            return Container();
-          } else {
+      body: SizedBox.expand(
+        child: ValueListenableBuilder(
+          valueListenable: image,
+          builder: (context, image, child) {
             return RawImage(
               image: image,
+              fit: BoxFit.cover,
             );
-          }
-        },
+          },
+        ),
       ),
     );
   }

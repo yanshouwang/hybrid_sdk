@@ -45,12 +45,8 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
 set(hybrid_uvc_bundled_libraries
-  "${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/libusb/out/lib/libusb-1.0.so"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/libusb/out/lib/libusb-1.0.so.0"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/libusb/out/lib/libusb-1.0.so.0.4.0"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/libuvc/out/lib/libuvc.so"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/libuvc/out/lib/libuvc.so.0"
-  "${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/libuvc/out/lib/libuvc.so.0.0.7"
+  "${CMAKE_CURRENT_SOURCE_DIR}/lib/libusb-1.0.so"
+  "${CMAKE_CURRENT_SOURCE_DIR}/lib/libuvc.so"
   PARENT_SCOPE
 )
 
