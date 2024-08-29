@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:clover/clover.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
+import 'view_models.dart';
 import 'views.dart';
 
 void main() {
@@ -29,11 +31,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Hybrid UVC'),
-        ),
-        body: const HomeView(),
+      home: ViewModelBinding(
+        viewBuilder: (context) => const HomeView(),
+        viewModelBuilder: (context) => HomeViewModel(),
       ),
     );
   }

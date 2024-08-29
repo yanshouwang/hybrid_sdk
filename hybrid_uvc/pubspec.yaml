@@ -16,7 +16,6 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   ffi: ^2.1.3
   logging: ^1.2.0
-  hybrid_logging: ^1.0.0
 
 dev_dependencies:
   flutter_test:
