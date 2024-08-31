@@ -86,6 +86,7 @@ extension UInt32PointerX on Pointer<Uint32> {
         break;
       }
       elements.add(item);
+      i++;
     }
     return Uint32List.fromList(elements);
   }

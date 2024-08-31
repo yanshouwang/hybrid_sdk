@@ -34,28 +34,32 @@ final class HomeViewModel extends ViewModel with TypeLogger {
             'frameDescriptor: ${frameDescriptor.width}x${frameDescriptor.height}');
       }
     }
-    final formatDescriptor = formatDescriptors.first;
+    final formatDescriptor = formatDescriptors[0];
     final frameDescriptors = formatDescriptor.frameDescriptors;
-    final frameDescriptor = frameDescriptors.first;
+    final frameDescriptor = frameDescriptors[0];
     final UVCFrameFormat frameFormat;
     switch (frameDescriptor.descriptorSubtype) {
-      case UVCVideoStreamingDescriptorSubtype.formatMJPEG:
+      case UVCVideoStreamingDescriptorSubtype.frameMJPEG:
         frameFormat = UVCFrameFormat.mjpeg;
         break;
-      case UVCVideoStreamingDescriptorSubtype.formatFrameBased:
+      case UVCVideoStreamingDescriptorSubtype.frameFrameBased:
         frameFormat = UVCFrameFormat.h264;
         break;
       default:
         frameFormat = UVCFrameFormat.yuyv;
         break;
     }
+    final width = frameDescriptor.width;
+    final height = frameDescriptor.height;
+    final fps = 1000 * 1000 * 10 ~/ frameDescriptor.defaultFrameInterval;
     final control = _uvc.getStreamControl(
       device,
       format: frameFormat,
-      width: frameDescriptor.width,
-      height: frameDescriptor.height,
-      fps: 1000 * 1000 * 10 ~/ frameDescriptor.defaultFrameInterval,
+      width: width,
+      height: height,
+      fps: fps,
     );
+    logger.info('stream control: $frameFormat, ${width}x$height, $fps');
     _uvc.startStreaming(
       device,
       control: control,

@@ -56,6 +56,7 @@ abstract base class HybridUVCPlugin extends PlatformInterface implements UVC {
   }
 }
 
+// TODO: free native resources when finalize.
 final class _HybridUVCPlugin extends HybridUVCPlugin {
   final USB _usb;
   Pointer<uvc_context>? _ctxPtr;
@@ -95,7 +96,6 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
     });
   }
 
-  // TODO: call `exit` method when finalize.
   void exit() {
     _libUVC.uvc_exit(ctxPtr);
   }
@@ -240,25 +240,23 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
     if (device is! _UVCDevice) {
       throw TypeError();
     }
-    return using((arena) {
-      final ctrlPtr = arena<uvc_stream_ctrl>();
-      final err = _libUVC.uvc_get_stream_ctrl_format_size(
-        device.devhPtr,
-        ctrlPtr,
-        format.ffiValue,
-        width,
-        height,
-        fps,
+    final ctrlPtr = calloc<uvc_stream_ctrl>();
+    final err = _libUVC.uvc_get_stream_ctrl_format_size(
+      device.devhPtr,
+      ctrlPtr,
+      format.ffiValue,
+      width,
+      height,
+      fps,
+    );
+    if (err != uvc_error.UVC_SUCCESS) {
+      _libUVC.uvc_perror(
+        err,
+        'uvc_get_stream_ctrl_format_size'.toNativeUtf8().cast(),
       );
-      if (err != uvc_error.UVC_SUCCESS) {
-        _libUVC.uvc_perror(
-          err,
-          'uvc_get_stream_ctrl_format_size'.toNativeUtf8().cast(),
-        );
-        throw UVCError('getStreamControl failed, $err');
-      }
-      return _UVCStreamControl(ctrlPtr);
-    });
+      throw UVCError('getStreamControl failed, $err');
+    }
+    return _UVCStreamControl(ctrlPtr);
   }
 
   @override
@@ -405,6 +403,7 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   }
 }
 
+// TODO: free native resources when finalize.
 final class _UVCDevice implements UVCDevice {
   final Pointer<uvc_device> devPtr;
 
@@ -445,6 +444,7 @@ final class _UVCDevice implements UVCDevice {
   _UVCDevice(this.devPtr);
 }
 
+// TODO: free native resources when finalize.
 final class _UVCStreamControl implements UVCStreamControl {
   final Pointer<uvc_stream_ctrl> ctrlPtr;
 
