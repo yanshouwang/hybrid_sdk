@@ -1,0 +1,16 @@
+enum UVCVideoStreamingDescriptorSubtype {
+  undefined,
+  inputHeader,
+  outputHeader,
+  stillImageFrame,
+  fromatUncompressed,
+  frameUncompressed,
+  formatMJPEG,
+  frameMJPEG,
+  formatMPEG2TS,
+  formatDV,
+  colorformat,
+  formatFrameBased,
+  frameFrameBased,
+  formatStreamBased,
+}

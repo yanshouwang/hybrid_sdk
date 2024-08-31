@@ -3,6 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  hybrid_jpeg
+  hybrid_usb
   hybrid_uvc
 )
 

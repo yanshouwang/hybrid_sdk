@@ -1,15 +1,15 @@
 final class UVCDeviceDescriptor {
   final int vid;
   final int pid;
-  final String sn;
-  final String manufacturerName;
-  final String productName;
+  final String? sn;
+  final String? manufacturer;
+  final String? product;
 
   UVCDeviceDescriptor({
     required this.vid,
     required this.pid,
-    required this.sn,
-    required this.manufacturerName,
-    required this.productName,
+    this.sn,
+    this.manufacturer,
+    this.product,
   });
 }

@@ -2,9 +2,10 @@
 name: LibUVC
 description: |
   Bindings for `libuvc`.
-output: 'lib/src/ffi/libuvc.g.dart'
-# compiler-opts:
-#   - '-I/usr/local/include'
+output: 'lib/src/ffi/ffi.g.dart'
+compiler-opts:
+  -DLIBUSB_API_VERSION=0x0100010A
+  # '-I/usr/local/include'
 headers:
   entry-points:
     - '/usr/local/include/libuvc/libuvc.h'

@@ -5,6 +5,7 @@ import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
+import 'package:hybrid_usb/hybrid_usb.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'ffi.dart';
@@ -12,27 +13,28 @@ import 'uvc.dart';
 import 'uvc_device.dart';
 import 'uvc_device_descriptor.dart';
 import 'uvc_error.dart';
+import 'uvc_format_descriptor.dart';
 import 'uvc_frame.dart';
-import 'uvc_zoom_rel.dart';
+import 'uvc_frame_format.dart';
+import 'uvc_stream_control.dart';
+import 'uvc_zoom_relative.dart';
 
-const String _libName = 'uvc';
+const _uvc = 'uvc';
 
-/// The dynamic library in which the symbols for [HybridUvcBindings] can be found.
-final DynamicLibrary _dynamicLibrary = () {
+final _dylibUVC = () {
   if (Platform.isMacOS || Platform.isIOS) {
-    return DynamicLibrary.open('$_libName.framework/$_libName');
+    return DynamicLibrary.open('$_uvc.framework/$_uvc');
   }
   if (Platform.isAndroid || Platform.isLinux) {
-    return DynamicLibrary.open('lib$_libName.so');
+    return DynamicLibrary.open('lib$_uvc.so');
   }
   if (Platform.isWindows) {
-    return DynamicLibrary.open('$_libName.dll');
+    return DynamicLibrary.open('$_uvc.dll');
   }
   throw UnsupportedError('Unknown platform: ${Platform.operatingSystem}');
 }();
 
-/// The bindings to the native functions in [_dynamicLibrary].
-final LibUVC _libUVC = LibUVC(_dynamicLibrary);
+final _libUVC = LibUVC(_dylibUVC);
 
 abstract base class HybridUVCPlugin extends PlatformInterface implements UVC {
   /// Constructs a [HybridUVCPlugin].
@@ -40,17 +42,10 @@ abstract base class HybridUVCPlugin extends PlatformInterface implements UVC {
 
   static final Object _token = Object();
 
-  static HybridUVCPlugin? _instance = _HybridUVCPlugin();
+  static HybridUVCPlugin _instance = _HybridUVCPlugin();
 
   /// The default instance of [HybridUVCPlugin] to use.
-  static HybridUVCPlugin get instance {
-    final instance = _instance;
-    if (instance == null) {
-      throw UnimplementedError(
-          'HybridUVC is not implemented on this platform.');
-    }
-    return instance;
-  }
+  static HybridUVCPlugin get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [HybridUVCPlugin] when
@@ -62,37 +57,38 @@ abstract base class HybridUVCPlugin extends PlatformInterface implements UVC {
 }
 
 final class _HybridUVCPlugin extends HybridUVCPlugin {
+  final USB _usb;
   Pointer<uvc_context>? _ctxPtr;
 
-  _HybridUVCPlugin() {
-    _init();
+  _HybridUVCPlugin() : _usb = USB() {
+    init();
   }
 
   Pointer<uvc_context> get ctxPtr {
-    final ctx = _ctxPtr;
-    if (ctx == null) {
-      throw UVCError('UVC is uninitialized.');
+    final ctxPtr = _ctxPtr;
+    if (ctxPtr == null) {
+      throw UVCError('ctxPtr is null.');
     }
-    return ctx;
+    return ctxPtr;
   }
 
   set ctxPtr(Pointer<uvc_context> value) {
     _ctxPtr = value;
   }
 
-  void _init() {
+  void init() {
+    if (Platform.isAndroid) {
+      _usb.setOption(USBOption.noDeviceDiscovery);
+    }
     ctxPtr = using((arena) {
       final ctxPtr2 = arena<Pointer<uvc_context>>();
-      // Initialize a UVC service context. Libuvc will set up its own libusb
-      // context. Replace NULL with a libusb_context pointer to run libuvc
-      // from an existing libusb context.
       final err = _libUVC.uvc_init(ctxPtr2, nullptr);
       if (err != uvc_error.UVC_SUCCESS) {
         _libUVC.uvc_perror(
           err,
           'uvc_init'.toNativeUtf8().cast(),
         );
-        throw UVCError('UVC initialize failed, $err');
+        throw UVCError('init failed, $err');
       }
       final ctxPtr = ctxPtr2.value;
       return ctxPtr;
@@ -100,7 +96,7 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   }
 
   // TODO: call `exit` method when finalize.
-  void _exit() {
+  void exit() {
     _libUVC.uvc_exit(ctxPtr);
   }
 
@@ -124,7 +120,7 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
           err,
           'uvc_find_devices'.toNativeUtf8().cast(),
         );
-        throw UVCError('UVC find devices failed, $err.');
+        throw UVCError('findDevices failed, $err.');
       }
       final devices = <UVCDevice>[];
       final devsPtr = devsPtr2.value;
@@ -161,11 +157,32 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
           err,
           'uvc_find_device'.toNativeUtf8().cast(),
         );
-        throw UVCError('UVC find device failed, $err.');
+        throw UVCError('findDevice failed, $err.');
       }
       final devPtr = devPtr2.value;
       final device = _UVCDevice(devPtr);
       return device;
+    });
+  }
+
+  @override
+  UVCDeviceDescriptor getDeviceDescriptor(UVCDevice device) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    return using((arena) {
+      final descPtr2 = arena<Pointer<uvc_device_descriptor>>();
+      final err = _libUVC.uvc_get_device_descriptor(device.devPtr, descPtr2);
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_device_descriptor'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getDeviceDescriptor failed, $err');
+      }
+      final descPtr = descPtr2.value;
+      final desc = descPtr.ref;
+      return desc.dartValue;
     });
   }
 
@@ -182,7 +199,7 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
           err,
           'uvc_open'.toNativeUtf8().cast(),
         );
-        throw UVCError('UVC open failed, $err.');
+        throw UVCError('open failed, $err.');
       }
       final devhPtr = devhPtr2.value;
       return devhPtr;
@@ -198,34 +215,37 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   }
 
   @override
-  void startStreaming(UVCDevice device, UVCFrameCallback callback) {
+  List<UVCFormatDescriptor> getFormatDescriptors(UVCDevice device) {
     if (device is! _UVCDevice) {
       throw TypeError();
     }
-    device.cbPtr = using((arena) {
+    final formatDescriptors = <UVCFormatDescriptor>[];
+    var formatDescPtr = _libUVC.uvc_get_format_descs(device.devhPtr);
+    while (formatDescPtr != nullptr) {
+      final formatDesc = formatDescPtr.ref;
+      formatDescriptors.add(formatDesc.dartValue);
+      formatDescPtr = formatDesc.next;
+    }
+    return formatDescriptors;
+  }
+
+  @override
+  UVCStreamControl getStreamControl(
+    UVCDevice device, {
+    required UVCFrameFormat format,
+    required int width,
+    required int height,
+    required int fps,
+  }) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    return using((arena) {
       final ctrlPtr = arena<uvc_stream_ctrl>();
-      final uvc_frame_format format;
-      final descs = _libUVC.uvc_get_format_descs(device.devhPtr).ref;
-      final type = uvc_vs_desc_subtype.fromValue(descs.bDescriptorSubtype);
-      switch (type) {
-        case uvc_vs_desc_subtype.UVC_VS_FORMAT_MJPEG:
-          format = uvc_frame_format.UVC_FRAME_FORMAT_MJPEG;
-          break;
-        case uvc_vs_desc_subtype.UVC_VS_FORMAT_FRAME_BASED:
-          format = uvc_frame_format.UVC_FRAME_FORMAT_H264;
-          break;
-        default:
-          format = uvc_frame_format.UVC_FRAME_FORMAT_YUYV;
-          break;
-      }
-      final frameDescs = descs.frame_descs.ref;
-      final width = frameDescs.wWidth;
-      final height = frameDescs.wHeight;
-      final fps = 10 * 1000 * 1000 ~/ frameDescs.dwDefaultFrameInterval;
-      var err = _libUVC.uvc_get_stream_ctrl_format_size(
+      final err = _libUVC.uvc_get_stream_ctrl_format_size(
         device.devhPtr,
         ctrlPtr,
-        format,
+        format.ffiValue,
         width,
         height,
         fps,
@@ -235,8 +255,22 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
           err,
           'uvc_get_stream_ctrl_format_size'.toNativeUtf8().cast(),
         );
-        throw UVCError('UVC get stream ctrl format size failed, $err');
+        throw UVCError('getStreamControl failed, $err');
       }
+      return _UVCStreamControl(ctrlPtr);
+    });
+  }
+
+  @override
+  void startStreaming(
+    UVCDevice device, {
+    required UVCStreamControl control,
+    required UVCFrameCallback callback,
+  }) {
+    if (device is! _UVCDevice || control is! _UVCStreamControl) {
+      throw TypeError();
+    }
+    device.cbPtr = using((arena) {
       void cb(Pointer<uvc_frame> framePtr, Pointer<void> formatPtr) async {
         if (_any2RGBACompleter != null) {
           return;
@@ -261,9 +295,9 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
           Void Function(
               Pointer<uvc_frame> framePtr, Pointer<Void> userPtr)>.listener(cb);
       final userPtr = arena<Int32>()..value = 12345;
-      err = _libUVC.uvc_start_streaming(
+      final err = _libUVC.uvc_start_streaming(
         device.devhPtr,
-        ctrlPtr,
+        control.ctrlPtr,
         cbPtr.nativeFunction,
         userPtr.cast(),
         0,
@@ -273,7 +307,7 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
           err,
           'uvc_start_streaming'.toNativeUtf8().cast(),
         );
-        throw UVCError('UVC start streaming failed, $err');
+        throw UVCError('startStreaming failed, $err');
       }
       return cbPtr;
     });
@@ -301,35 +335,13 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   }
 
   @override
-  UVCDeviceDescriptor getDevicedescriptor(UVCDevice device) {
-    if (device is! _UVCDevice) {
-      throw TypeError();
-    }
-    return using((arena) {
-      final descPtr2 = arena<Pointer<uvc_device_descriptor>>();
-      final err = _libUVC.uvc_get_device_descriptor(device.devPtr, descPtr2);
-      if (err != uvc_error.UVC_SUCCESS) {
-        _libUVC.uvc_perror(
-          err,
-          'uvc_get_device_descriptor'.toNativeUtf8().cast(),
-        );
-        throw UVCError('UVC get device descriptor failed, $err');
-      }
-      final descPtr = descPtr2.value;
-      final desc = descPtr.ref;
-      final descriptor = desc.dartValue;
-      return descriptor;
-    });
-  }
-
-  @override
   int getZoomAbs(UVCDevice device) {
     // TODO: implement getZoomAbs
     throw UnimplementedError();
   }
 
   @override
-  UVCZoomRel getZoomRel() {
+  UVCZoomRelative getZoomRel() {
     // TODO: implement getZoomRel
     throw UnimplementedError();
   }
@@ -352,7 +364,7 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   }
 
   @override
-  void setZoomRel(UVCZoomRel zoomRel) {
+  void setZoomRel(UVCZoomRelative zoomRel) {
     // TODO: implement setZoomRel
   }
 
@@ -404,7 +416,7 @@ final class _UVCDevice implements UVCDevice {
   Pointer<uvc_device_handle> get devhPtr {
     final devhPtr = _devhPtr;
     if (devhPtr == null) {
-      throw UVCError('UVC is closed.');
+      throw UVCError('devhPtr is null.');
     }
     return devhPtr;
   }
@@ -418,7 +430,7 @@ final class _UVCDevice implements UVCDevice {
       get cbPtr {
     final cbPtr = _cbPtr;
     if (cbPtr == null) {
-      throw UVCError('UVC is not streaming.');
+      throw UVCError('cbPtr is null.');
     }
     return cbPtr;
   }
@@ -431,6 +443,12 @@ final class _UVCDevice implements UVCDevice {
   }
 
   _UVCDevice(this.devPtr);
+}
+
+final class _UVCStreamControl implements UVCStreamControl {
+  final Pointer<uvc_stream_ctrl> ctrlPtr;
+
+  _UVCStreamControl(this.ctrlPtr);
 }
 
 class _IsolateMessage {
@@ -469,7 +487,6 @@ class _Any2RGBAReply {
 
 Completer<UVCFrame>? _any2RGBACompleter;
 
-/// The SendPort belonging to the helper isolate.
 Future<SendPort> _isolateSendPort = () async {
   // The helper isolate is going to send us back a SendPort, which we want to
   // wait for.

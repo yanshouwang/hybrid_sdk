@@ -7,12 +7,13 @@ import 'package:hybrid_uvc/hybrid_uvc.dart';
 final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
   UVCDevice? _device;
+  UVCStreamControl? _control;
   ui.Image? _image;
   bool _handling = false;
 
   HomeViewModel() : _uvc = UVC();
 
-  bool get streaming => _device != null;
+  bool get streaming => _device != null && _control != null;
   ui.Image? get image => _image;
 
   void startStreaming() {
@@ -20,12 +21,48 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       throw StateError('Streaming.');
     }
     final device = _uvc.findDevice();
-    final descriptor = _uvc.getDevicedescriptor(device);
+    final deviceDescriptor = _uvc.getDeviceDescriptor(device);
     logger.info(
-        'Device found: VId: ${descriptor.vid}, PId: ${descriptor.pid}, SN: ${descriptor.sn}, Manufacturer Name: ${descriptor.manufacturerName}, Product Name: ${descriptor.productName}');
+        'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}');
     _uvc.open(device);
-    _uvc.startStreaming(device, _decode);
+    final formatDescriptors = _uvc.getFormatDescriptors(device);
+    for (var formatDescriptor in formatDescriptors) {
+      logger.info('formatDescriptor: ${formatDescriptor.descriptorSubtype}');
+      final frameDescriptors = formatDescriptor.frameDescriptors;
+      for (var frameDescriptor in frameDescriptors) {
+        logger.info(
+            'frameDescriptor: ${frameDescriptor.width}x${frameDescriptor.height}');
+      }
+    }
+    final formatDescriptor = formatDescriptors.first;
+    final frameDescriptors = formatDescriptor.frameDescriptors;
+    final frameDescriptor = frameDescriptors.first;
+    final UVCFrameFormat frameFormat;
+    switch (frameDescriptor.descriptorSubtype) {
+      case UVCVideoStreamingDescriptorSubtype.formatMJPEG:
+        frameFormat = UVCFrameFormat.mjpeg;
+        break;
+      case UVCVideoStreamingDescriptorSubtype.formatFrameBased:
+        frameFormat = UVCFrameFormat.h264;
+        break;
+      default:
+        frameFormat = UVCFrameFormat.yuyv;
+        break;
+    }
+    final control = _uvc.getStreamControl(
+      device,
+      format: frameFormat,
+      width: frameDescriptor.width,
+      height: frameDescriptor.height,
+      fps: 1000 * 1000 * 10 ~/ frameDescriptor.defaultFrameInterval,
+    );
+    _uvc.startStreaming(
+      device,
+      control: control,
+      callback: _decode,
+    );
     _device = device;
+    _control = control;
     notifyListeners();
   }
 
