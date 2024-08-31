@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_extensions
+// ignore_for_file: camel_case_types, camel_case_extensions
 
 import 'dart:ffi';
 import 'dart:typed_data';
@@ -10,6 +10,8 @@ import 'package:hybrid_uvc/src/uvc_format_specific_data.dart';
 import 'package:hybrid_uvc/src/uvc_format_specifier.dart';
 import 'package:hybrid_uvc/src/uvc_frame_descriptor.dart';
 import 'package:hybrid_uvc/src/uvc_frame_format.dart';
+import 'package:hybrid_uvc/src/uvc_input_terminal.dart';
+import 'package:hybrid_uvc/src/uvc_input_terminal_type.dart';
 import 'package:hybrid_uvc/src/uvc_still_frame_descriptor.dart';
 import 'package:hybrid_uvc/src/uvc_still_frame_resolution.dart';
 import 'package:hybrid_uvc/src/uvc_video_streaming_descriptor_subtype.dart';
@@ -228,6 +230,32 @@ extension uvc_vs_desc_subtype_x on uvc_vs_desc_subtype {
         return UVCVideoStreamingDescriptorSubtype.frameFrameBased;
       case uvc_vs_desc_subtype.UVC_VS_FORMAT_STREAM_BASED:
         return UVCVideoStreamingDescriptorSubtype.formatStreamBased;
+    }
+  }
+}
+
+extension uvc_input_terminal_x on uvc_input_terminal {
+  UVCInputTerminal get dartValue {
+    return UVCInputTerminal(
+      terminalId: bTerminalID,
+      terminalType: uvc_it_type.fromValue(wTerminalType).dartValue,
+      minimumObjectiveFocalLength: wObjectiveFocalLengthMin,
+      maximumObjectiveFocalLength: wObjectiveFocalLengthMax,
+      ocularFocalLength: wOcularFocalLength,
+      controls: bmControls,
+    );
+  }
+}
+
+extension uvc_it_type_x on uvc_it_type {
+  UVCInputTerminalType get dartValue {
+    switch (this) {
+      case uvc_it_type.UVC_ITT_VENDOR_SPECIFIC:
+        return UVCInputTerminalType.vendorSpecific;
+      case uvc_it_type.UVC_ITT_CAMERA:
+        return UVCInputTerminalType.camera;
+      case uvc_it_type.UVC_ITT_MEDIA_TRANSPORT_INPUT:
+        return UVCInputTerminalType.mediaTransportInput;
     }
   }
 }

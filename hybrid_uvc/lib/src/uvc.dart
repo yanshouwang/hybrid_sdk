@@ -4,7 +4,9 @@ import 'uvc_device_descriptor.dart';
 import 'uvc_format_descriptor.dart';
 import 'uvc_frame.dart';
 import 'uvc_frame_format.dart';
+import 'uvc_input_terminal.dart';
 import 'uvc_stream_control.dart';
+import 'uvc_zoom_absolute.dart';
 import 'uvc_zoom_relative.dart';
 
 typedef UVCFrameCallback = void Function(UVCFrame frame);
@@ -43,10 +45,21 @@ abstract interface class UVC {
   });
   void stopStreaming(UVCDevice device);
 
-  int getZoomAbs(UVCDevice device);
-  void setZoomAbs(UVCDevice device, int focalLength);
-  UVCZoomRelative getZoomRel();
-  void setZoomRel(UVCZoomRelative zoomRel);
+  List<UVCInputTerminal> getInputTerminals(UVCDevice device);
+
+  UVCZoomAbsolute getZoomAbsolute(UVCDevice device);
+  void setZoomAbsolute(
+    UVCDevice device, {
+    required int focalLength,
+  });
+
+  UVCZoomRelative getZoomRelative(UVCDevice device);
+  void setZoomRelative(
+    UVCDevice device, {
+    required int direction,
+    required int digitalZoom,
+    required int speed,
+  });
 
   UVCFrame mjpeg2RGB(UVCFrame frame);
   UVCFrame mjpeg2Gray(UVCFrame frame);

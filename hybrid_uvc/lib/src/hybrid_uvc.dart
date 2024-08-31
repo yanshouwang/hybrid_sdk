@@ -6,6 +6,7 @@ import 'dart:isolate';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
 import 'package:hybrid_usb/hybrid_usb.dart';
+import 'package:hybrid_uvc/src/uvc_input_terminal.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'ffi.dart';
@@ -17,6 +18,7 @@ import 'uvc_format_descriptor.dart';
 import 'uvc_frame.dart';
 import 'uvc_frame_format.dart';
 import 'uvc_stream_control.dart';
+import 'uvc_zoom_absolute.dart';
 import 'uvc_zoom_relative.dart';
 
 const _uvc = 'uvc';
@@ -321,6 +323,243 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   }
 
   @override
+  List<UVCInputTerminal> getInputTerminals(UVCDevice device) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    final inputTerminals = <UVCInputTerminal>[];
+    var inputTerminalPtr = _libUVC.uvc_get_input_terminals(device.devhPtr);
+    while (inputTerminalPtr != nullptr) {
+      final inputTerminal = inputTerminalPtr.ref;
+      inputTerminals.add(inputTerminal.dartValue);
+      inputTerminalPtr = inputTerminal.next;
+    }
+    return inputTerminals;
+  }
+
+  @override
+  UVCZoomAbsolute getZoomAbsolute(UVCDevice device) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    return using((arena) {
+      final minimumPtr = arena<Uint16>();
+      var err = _libUVC.uvc_get_zoom_abs(
+        device.devhPtr,
+        minimumPtr,
+        uvc_req_code.UVC_GET_MIN,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_abs'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomAbsolute failed, $err.');
+      }
+      final maximumPtr = arena<Uint16>();
+      err = _libUVC.uvc_get_zoom_abs(
+        device.devhPtr,
+        maximumPtr,
+        uvc_req_code.UVC_GET_MAX,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_abs'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomAbsolute failed, $err.');
+      }
+      final resolutionPtr = arena<Uint16>();
+      err = _libUVC.uvc_get_zoom_abs(
+        device.devhPtr,
+        resolutionPtr,
+        uvc_req_code.UVC_GET_RES,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_abs'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomAbsolute failed, $err.');
+      }
+      final undefinedPtr = arena<Uint16>();
+      err = _libUVC.uvc_get_zoom_abs(
+        device.devhPtr,
+        undefinedPtr,
+        uvc_req_code.UVC_GET_DEF,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_abs'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomAbsolute failed, $err.');
+      }
+      final currentPtr = arena<Uint16>();
+      err = _libUVC.uvc_get_zoom_abs(
+        device.devhPtr,
+        currentPtr,
+        uvc_req_code.UVC_GET_CUR,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_abs'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomAbsolute failed, $err.');
+      }
+      return UVCZoomAbsolute(
+        minimum: minimumPtr.value,
+        maximum: maximumPtr.value,
+        resolution: resolutionPtr.value,
+        undefined: undefinedPtr.value,
+        current: currentPtr.value,
+      );
+    });
+  }
+
+  @override
+  void setZoomAbsolute(
+    UVCDevice device, {
+    required int focalLength,
+  }) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    final err = _libUVC.uvc_set_zoom_abs(
+      device.devhPtr,
+      focalLength,
+    );
+    if (err != uvc_error.UVC_SUCCESS) {
+      _libUVC.uvc_perror(
+        err,
+        'uvc_set_zoom_abs'.toNativeUtf8().cast(),
+      );
+      throw UVCError('setZoomAbsolute failed, $err');
+    }
+  }
+
+  @override
+  UVCZoomRelative getZoomRelative(UVCDevice device) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    return using((arena) {
+      final directionPtr = arena<Int8>();
+      final digitalZoomPtr = arena<Uint8>();
+      final minimumSpeedPtr = arena<Uint8>();
+      var err = _libUVC.uvc_get_zoom_rel(
+        device.devhPtr,
+        directionPtr,
+        digitalZoomPtr,
+        minimumSpeedPtr,
+        uvc_req_code.UVC_GET_MIN,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_rel'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomRelative failed, $err.');
+      }
+      final maximumSpeedPtr = arena<Uint8>();
+      err = _libUVC.uvc_get_zoom_rel(
+        device.devhPtr,
+        directionPtr,
+        digitalZoomPtr,
+        maximumSpeedPtr,
+        uvc_req_code.UVC_GET_MAX,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_rel'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomRelative failed, $err.');
+      }
+      final resolutionSpeedPtr = arena<Uint8>();
+      err = _libUVC.uvc_get_zoom_rel(
+        device.devhPtr,
+        directionPtr,
+        digitalZoomPtr,
+        resolutionSpeedPtr,
+        uvc_req_code.UVC_GET_RES,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_rel'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomRelative failed, $err.');
+      }
+      final undefinedSpeedPtr = arena<Uint8>();
+      err = _libUVC.uvc_get_zoom_rel(
+        device.devhPtr,
+        directionPtr,
+        digitalZoomPtr,
+        undefinedSpeedPtr,
+        uvc_req_code.UVC_GET_DEF,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_rel'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomRelative failed, $err.');
+      }
+      final currentSpeedPtr = arena<Uint8>();
+      err = _libUVC.uvc_get_zoom_rel(
+        device.devhPtr,
+        directionPtr,
+        digitalZoomPtr,
+        currentSpeedPtr,
+        uvc_req_code.UVC_GET_CUR,
+      );
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_get_zoom_rel'.toNativeUtf8().cast(),
+        );
+        throw UVCError('getZoomRelative failed, $err.');
+      }
+      return UVCZoomRelative(
+        direction: directionPtr.value,
+        digitalZoom: digitalZoomPtr.value,
+        minimumSpeed: minimumSpeedPtr.value,
+        maximumSpeed: maximumSpeedPtr.value,
+        resolutionSpeed: resolutionSpeedPtr.value,
+        undefinedSpeed: undefinedSpeedPtr.value,
+        currentSpeed: currentSpeedPtr.value,
+      );
+    });
+  }
+
+  @override
+  void setZoomRelative(
+    UVCDevice device, {
+    required int direction,
+    required int digitalZoom,
+    required int speed,
+  }) {
+    if (device is! _UVCDevice) {
+      throw TypeError();
+    }
+    final err = _libUVC.uvc_set_zoom_rel(
+      device.devhPtr,
+      direction,
+      digitalZoom,
+      speed,
+    );
+    if (err != uvc_error.UVC_SUCCESS) {
+      _libUVC.uvc_perror(
+        err,
+        'uvc_set_zoom_rel'.toNativeUtf8().cast(),
+      );
+      throw UVCError('setZoomRelative failed, $err');
+    }
+  }
+
+  @override
   UVCFrame any2BGR(UVCFrame frame) {
     // TODO: implement any2BGR
     throw UnimplementedError();
@@ -329,18 +568,6 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   @override
   UVCFrame any2RGB(UVCFrame frame) {
     // TODO: implement any2RGB
-    throw UnimplementedError();
-  }
-
-  @override
-  int getZoomAbs(UVCDevice device) {
-    // TODO: implement getZoomAbs
-    throw UnimplementedError();
-  }
-
-  @override
-  UVCZoomRelative getZoomRel() {
-    // TODO: implement getZoomRel
     throw UnimplementedError();
   }
 
@@ -354,16 +581,6 @@ final class _HybridUVCPlugin extends HybridUVCPlugin {
   UVCFrame mjpeg2RGB(UVCFrame frame) {
     // TODO: implement mjpeg2RGB
     throw UnimplementedError();
-  }
-
-  @override
-  void setZoomAbs(UVCDevice device, int focalLength) {
-    // TODO: implement setZoomAbs
-  }
-
-  @override
-  void setZoomRel(UVCZoomRelative zoomRel) {
-    // TODO: implement setZoomRel
   }
 
   @override

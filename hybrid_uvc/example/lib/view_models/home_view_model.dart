@@ -8,12 +8,16 @@ final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
   UVCDevice? _device;
   UVCStreamControl? _control;
+  UVCZoomAbsolute? _zoomAbsolute;
+  UVCZoomRelative? _zoomRelative;
   ui.Image? _image;
   bool _handling = false;
 
   HomeViewModel() : _uvc = UVC();
 
   bool get streaming => _device != null && _control != null;
+  UVCZoomAbsolute? get zoomAbsolute => _zoomAbsolute;
+  UVCZoomRelative? get zoomRelative => _zoomRelative;
   ui.Image? get image => _image;
 
   void startStreaming() {
@@ -65,8 +69,29 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       control: control,
       callback: _decode,
     );
+    final inputTerminals = _uvc.getInputTerminals(device);
+    for (var inputTermianl in inputTerminals) {
+      logger.info(
+          'inputTerminal: terminalId ${inputTermianl.terminalId}, terminalType ${inputTermianl.terminalType}, minimumObjectiveFocalLength ${inputTermianl.minimumObjectiveFocalLength}, maximumObjectiveFocalLength ${inputTermianl.maximumObjectiveFocalLength}, ocularFocalLength ${inputTermianl.ocularFocalLength}, controls ${inputTermianl.controls}');
+      final canZoomAbsolute = (inputTermianl.controls &
+              UVCCameraTerminalControlSelector.zoomAbsoluteControl.value) !=
+          0;
+      final canZoomRelative = (inputTermianl.controls &
+              UVCCameraTerminalControlSelector.zoomRelativeControl.value) !=
+          0;
+      logger.info(
+          'canZoomAbsolute $canZoomAbsolute, canZoomRelative $canZoomRelative');
+    }
+    final zoomAbsolute = _uvc.getZoomAbsolute(device);
+    logger.info(
+        'zoomAbsolute: minimum ${zoomAbsolute.minimum}, maximum ${zoomAbsolute.maximum}, resolution ${zoomAbsolute.resolution}, undefined ${zoomAbsolute.undefined}, current ${zoomAbsolute.current}');
+    // final zoomRelative = _uvc.getZoomRelative(device);
+    // logger.info(
+    //     'zoomRelative: direction ${zoomRelative.direction}, digitalZoom ${zoomRelative.digitalZoom}, minimumSpeed ${zoomRelative.minimumSpeed}, maximumSpeed ${zoomRelative.maximumSpeed}, resolutionSpeed ${zoomRelative.resolutionSpeed}, undefinedSpeed ${zoomRelative.undefinedSpeed}, currentSpeed ${zoomRelative.currentSpeed}');
     _device = device;
     _control = control;
+    _zoomAbsolute = zoomAbsolute;
+    _zoomRelative = zoomRelative;
     notifyListeners();
   }
 
@@ -79,6 +104,40 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.close(device);
     _device = null;
     _image = null;
+    notifyListeners();
+  }
+
+  void setZoomAbsolute(int focalLength) {
+    final device = _device;
+    if (device == null) {
+      throw StateError('Not Streaming.');
+    }
+    _uvc.setZoomAbsolute(
+      device,
+      focalLength: focalLength,
+    );
+    final zoomAbsolute = _uvc.getZoomAbsolute(device);
+    logger.info(
+        'zoomAbsolute: minimum ${zoomAbsolute.minimum}, maximum ${zoomAbsolute.maximum}, undefined ${zoomAbsolute.undefined}, current ${zoomAbsolute.current}, resolution ${zoomAbsolute.resolution}');
+    _zoomAbsolute = zoomAbsolute;
+    notifyListeners();
+  }
+
+  void setZoomRelative(int direction, int digitalZoom, int speed) {
+    final device = _device;
+    if (device == null) {
+      throw StateError('Not Streaming.');
+    }
+    _uvc.setZoomRelative(
+      device,
+      direction: direction,
+      digitalZoom: digitalZoom,
+      speed: speed,
+    );
+    final zoomRelative = _uvc.getZoomRelative(device);
+    logger.info(
+        'zoomRelative: direction ${zoomRelative.direction}, digitalZoom ${zoomRelative.digitalZoom}, minimumSpeed ${zoomRelative.minimumSpeed}, maximumSpeed ${zoomRelative.maximumSpeed}, resolutionSpeed ${zoomRelative.resolutionSpeed}, undefinedSpeed ${zoomRelative.undefinedSpeed}, currentSpeed ${zoomRelative.currentSpeed}');
+    _zoomRelative = zoomRelative;
     notifyListeners();
   }
 
