@@ -8,15 +8,13 @@ final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
   UVCDevice? _device;
   UVCStreamControl? _control;
-  UVCZoomAbsolute? _zoomAbsolute;
   UVCZoomRelative? _zoomRelative;
   ui.Image? _image;
-  bool _handling = false;
+  bool _decoding = false;
 
   HomeViewModel() : _uvc = UVC();
 
   bool get streaming => _device != null && _control != null;
-  UVCZoomAbsolute? get zoomAbsolute => _zoomAbsolute;
   UVCZoomRelative? get zoomRelative => _zoomRelative;
   ui.Image? get image => _image;
 
@@ -31,7 +29,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.open(device);
     final formatDescriptors = _uvc.getFormatDescriptors(device);
     for (var formatDescriptor in formatDescriptors) {
-      logger.info('formatDescriptor: ${formatDescriptor.descriptorSubtype}');
+      logger.info('formatDescriptor: ${formatDescriptor.subtype}');
       final frameDescriptors = formatDescriptor.frameDescriptors;
       for (var frameDescriptor in frameDescriptors) {
         logger.info(
@@ -42,7 +40,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     final frameDescriptors = formatDescriptor.frameDescriptors;
     final frameDescriptor = frameDescriptors[0];
     final UVCFrameFormat frameFormat;
-    switch (frameDescriptor.descriptorSubtype) {
+    switch (frameDescriptor.subtype) {
       case UVCVideoStreamingDescriptorSubtype.frameMJPEG:
         frameFormat = UVCFrameFormat.mjpeg;
         break;
@@ -55,7 +53,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     }
     final width = frameDescriptor.width;
     final height = frameDescriptor.height;
-    final fps = 1000 * 1000 * 10 ~/ frameDescriptor.defaultFrameInterval;
+    final fps = 1000 * 1000 * 10 ~/ frameDescriptor.defaultInterval;
     final control = _uvc.getStreamControl(
       device,
       format: frameFormat,
@@ -72,7 +70,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     final inputTerminals = _uvc.getInputTerminals(device);
     for (var inputTermianl in inputTerminals) {
       logger.info(
-          'inputTerminal: terminalId ${inputTermianl.terminalId}, terminalType ${inputTermianl.terminalType}, minimumObjectiveFocalLength ${inputTermianl.minimumObjectiveFocalLength}, maximumObjectiveFocalLength ${inputTermianl.maximumObjectiveFocalLength}, ocularFocalLength ${inputTermianl.ocularFocalLength}, controls ${inputTermianl.controls}');
+          'inputTerminal: terminalId ${inputTermianl.id}, terminalType ${inputTermianl.type}, minimumObjectiveFocalLength ${inputTermianl.minimumObjectiveFocalLength}, maximumObjectiveFocalLength ${inputTermianl.maximumObjectiveFocalLength}, ocularFocalLength ${inputTermianl.ocularFocalLength}, controls ${inputTermianl.controls}');
       final canZoomAbsolute = (inputTermianl.controls &
               UVCCameraTerminalControlSelector.zoomAbsoluteControl.value) !=
           0;
@@ -82,16 +80,17 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       logger.info(
           'canZoomAbsolute $canZoomAbsolute, canZoomRelative $canZoomRelative');
     }
-    final zoomAbsolute = _uvc.getZoomAbsolute(device);
-    logger.info(
-        'zoomAbsolute: minimum ${zoomAbsolute.minimum}, maximum ${zoomAbsolute.maximum}, resolution ${zoomAbsolute.resolution}, undefined ${zoomAbsolute.undefined}, current ${zoomAbsolute.current}');
+    // final zoomAbsolute = _uvc.getZoomAbsolute(
+    //   device,
+    //   requestCode: UVCRequestCode.getMinimum,
+    // );
+    // logger.info(
+    //     'zoomAbsolute: minimum ${zoomAbsolute.minimum}, maximum ${zoomAbsolute.maximum}, resolution ${zoomAbsolute.resolution}, undefined ${zoomAbsolute.undefined}, current ${zoomAbsolute.current}');
     // final zoomRelative = _uvc.getZoomRelative(device);
     // logger.info(
     //     'zoomRelative: direction ${zoomRelative.direction}, digitalZoom ${zoomRelative.digitalZoom}, minimumSpeed ${zoomRelative.minimumSpeed}, maximumSpeed ${zoomRelative.maximumSpeed}, resolutionSpeed ${zoomRelative.resolutionSpeed}, undefinedSpeed ${zoomRelative.undefinedSpeed}, currentSpeed ${zoomRelative.currentSpeed}');
     _device = device;
     _control = control;
-    _zoomAbsolute = zoomAbsolute;
-    _zoomRelative = zoomRelative;
     notifyListeners();
   }
 
@@ -103,7 +102,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.stopStreaming(device);
     _uvc.close(device);
     _device = null;
-    _image = null;
+    // _frame = null;
     notifyListeners();
   }
 
@@ -116,44 +115,29 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       device,
       focalLength: focalLength,
     );
-    final zoomAbsolute = _uvc.getZoomAbsolute(device);
-    logger.info(
-        'zoomAbsolute: minimum ${zoomAbsolute.minimum}, maximum ${zoomAbsolute.maximum}, undefined ${zoomAbsolute.undefined}, current ${zoomAbsolute.current}, resolution ${zoomAbsolute.resolution}');
-    _zoomAbsolute = zoomAbsolute;
-    notifyListeners();
   }
 
-  void setZoomRelative(int direction, int digitalZoom, int speed) {
+  void setZoomRelative(int zoomRelative, int digitalZoom, int speed) {
     final device = _device;
     if (device == null) {
       throw StateError('Not Streaming.');
     }
     _uvc.setZoomRelative(
       device,
-      direction: direction,
+      zoomRelative: zoomRelative,
       digitalZoom: digitalZoom,
       speed: speed,
     );
-    final zoomRelative = _uvc.getZoomRelative(device);
-    logger.info(
-        'zoomRelative: direction ${zoomRelative.direction}, digitalZoom ${zoomRelative.digitalZoom}, minimumSpeed ${zoomRelative.minimumSpeed}, maximumSpeed ${zoomRelative.maximumSpeed}, resolutionSpeed ${zoomRelative.resolutionSpeed}, undefinedSpeed ${zoomRelative.undefinedSpeed}, currentSpeed ${zoomRelative.currentSpeed}');
-    _zoomRelative = zoomRelative;
-    notifyListeners();
   }
 
   void _decode(UVCFrame frame) async {
-    if (_handling) {
+    if (_decoding) {
       return;
     }
-    _handling = true;
+    _decoding = true;
     try {
-      final buffer = await ui.ImmutableBuffer.fromUint8List(frame.value);
-      final descriptor = ui.ImageDescriptor.raw(
-        buffer,
-        width: frame.width,
-        height: frame.height,
-        pixelFormat: ui.PixelFormat.rgba8888,
-      );
+      final buffer = await ui.ImmutableBuffer.fromUint8List(frame.data);
+      final descriptor = await ui.ImageDescriptor.encoded(buffer);
       final codec = await descriptor.instantiateCodec();
       final info = await codec.getNextFrame();
       if (!streaming) {
@@ -162,7 +146,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       _image = info.image;
       notifyListeners();
     } finally {
-      _handling = false;
+      _decoding = false;
     }
   }
 

@@ -4,32 +4,17 @@ import 'uvc_frame_descriptor.dart';
 import 'uvc_still_frame_descriptor.dart';
 import 'uvc_video_streaming_descriptor_subtype.dart';
 
-final class UVCFormatDescriptor {
-  final UVCVideoStreamingDescriptorSubtype descriptorSubtype;
-  final int formatIndex;
-  final UVCFormatSpecifier formatSpecifier;
-  final UVCFormatSpecificData formatSpecificData;
-  final int defaultFrameIndex;
-  final int aspectRatioX;
-  final int aspectRatioY;
-  final int interlaceFlags;
-  final int copyProtect;
-  final int variableSize;
-  final List<UVCFrameDescriptor> frameDescriptors;
-  final List<UVCStillFrameDescriptor> stillFrameDescriptors;
-
-  UVCFormatDescriptor({
-    required this.descriptorSubtype,
-    required this.formatIndex,
-    required this.formatSpecifier,
-    required this.formatSpecificData,
-    required this.defaultFrameIndex,
-    required this.aspectRatioX,
-    required this.aspectRatioY,
-    required this.interlaceFlags,
-    required this.copyProtect,
-    required this.variableSize,
-    required this.frameDescriptors,
-    required this.stillFrameDescriptors,
-  });
+abstract interface class UVCFormatDescriptor {
+  UVCVideoStreamingDescriptorSubtype get subtype;
+  int get index;
+  UVCFormatSpecifier get specifier;
+  UVCFormatSpecificData get specificData;
+  int get defaultIndex;
+  int get aspectRatioX;
+  int get aspectRatioY;
+  int get interlaceFlags;
+  int get copyProtect;
+  int get variableSize;
+  List<UVCFrameDescriptor> get frameDescriptors;
+  List<UVCStillFrameDescriptor> get stillFrameDescriptors;
 }

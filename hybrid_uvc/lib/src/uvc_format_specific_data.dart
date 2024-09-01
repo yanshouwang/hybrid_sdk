@@ -1,9 +1,4 @@
-class UVCFormatSpecificData {
-  final int bitsPerPixel;
-  final int flags;
-
-  UVCFormatSpecificData({
-    required this.bitsPerPixel,
-    required this.flags,
-  });
+abstract interface class UVCFormatSpecificData {
+  int get bitsPerPixel;
+  int get flags;
 }

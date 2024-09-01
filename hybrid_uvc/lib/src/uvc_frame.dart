@@ -1,9 +1,15 @@
 import 'dart:typed_data';
 
-class UVCFrame {
-  final int width;
-  final int height;
-  final Uint8List value;
+import 'uvc_frame_format.dart';
 
-  UVCFrame(this.width, this.height, this.value);
+abstract interface class UVCFrame {
+  Uint8List get data;
+  int get width;
+  int get height;
+  UVCFrameFormat get format;
+  int get step;
+  int get sequence;
+  DateTime get captureTime;
+  DateTime get captureTimeFinished;
+  Uint8List get metadata;
 }

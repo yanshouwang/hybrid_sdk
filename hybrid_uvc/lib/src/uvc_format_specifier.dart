@@ -1,9 +1,4 @@
-class UVCFormatSpecifier {
-  final List<int> guid;
-  final List<int> fourCC;
-
-  UVCFormatSpecifier({
-    required this.guid,
-    required this.fourCC,
-  });
+abstract class UVCFormatSpecifier {
+  List<int> get guid;
+  List<int> get fourCC;
 }

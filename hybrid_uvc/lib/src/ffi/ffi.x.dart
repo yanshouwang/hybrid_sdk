@@ -4,16 +4,9 @@ import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
-import 'package:hybrid_uvc/src/uvc_device_descriptor.dart';
-import 'package:hybrid_uvc/src/uvc_format_descriptor.dart';
-import 'package:hybrid_uvc/src/uvc_format_specific_data.dart';
-import 'package:hybrid_uvc/src/uvc_format_specifier.dart';
-import 'package:hybrid_uvc/src/uvc_frame_descriptor.dart';
 import 'package:hybrid_uvc/src/uvc_frame_format.dart';
-import 'package:hybrid_uvc/src/uvc_input_terminal.dart';
 import 'package:hybrid_uvc/src/uvc_input_terminal_type.dart';
-import 'package:hybrid_uvc/src/uvc_still_frame_descriptor.dart';
-import 'package:hybrid_uvc/src/uvc_still_frame_resolution.dart';
+import 'package:hybrid_uvc/src/uvc_request_code.dart';
 import 'package:hybrid_uvc/src/uvc_video_streaming_descriptor_subtype.dart';
 
 import 'ffi.g.dart';
@@ -67,6 +60,31 @@ extension UVCFrameFormatX on UVCFrameFormat {
   }
 }
 
+extension UVCRequestCodeX on UVCRequestCode {
+  uvc_req_code get ffiValue {
+    switch (this) {
+      case UVCRequestCode.undefined:
+        return uvc_req_code.UVC_RC_UNDEFINED;
+      case UVCRequestCode.setCurrent:
+        return uvc_req_code.UVC_SET_CUR;
+      case UVCRequestCode.getCurrent:
+        return uvc_req_code.UVC_GET_CUR;
+      case UVCRequestCode.getMinimum:
+        return uvc_req_code.UVC_GET_MIN;
+      case UVCRequestCode.getMaximum:
+        return uvc_req_code.UVC_GET_MAX;
+      case UVCRequestCode.getResolution:
+        return uvc_req_code.UVC_GET_RES;
+      case UVCRequestCode.getLength:
+        return uvc_req_code.UVC_GET_LEN;
+      case UVCRequestCode.getInfo:
+        return uvc_req_code.UVC_GET_INFO;
+      case UVCRequestCode.getDefault:
+        return uvc_req_code.UVC_GET_DEF;
+    }
+  }
+}
+
 extension Uint8ArrayX on Array<Uint8> {
   Uint8List toList(int length) {
     final elements = <int>[];
@@ -98,104 +116,6 @@ extension CharPointerX on Pointer<Char> {
   String? toDartString() {
     final utf8Ptr = cast<Utf8>();
     return utf8Ptr == nullptr ? null : utf8Ptr.toDartString();
-  }
-}
-
-extension uvc_device_descriptor_x on uvc_device_descriptor {
-  UVCDeviceDescriptor get dartValue {
-    return UVCDeviceDescriptor(
-      vid: idVendor,
-      pid: idProduct,
-      sn: serialNumber.toDartString(),
-      manufacturer: manufacturer.toDartString(),
-      product: product.toDartString(),
-    );
-  }
-}
-
-extension uvc_format_desc_x on uvc_format_desc {
-  UVCFormatDescriptor get dartValue {
-    final frameDescriptors = <UVCFrameDescriptor>[];
-    var frameDescPtr = frame_descs;
-    while (frameDescPtr != nullptr) {
-      final frameDesc = frameDescPtr.ref;
-      frameDescriptors.add(frameDesc.dartValue);
-      frameDescPtr = frameDesc.next;
-    }
-    final stillFrameDescriptors = <UVCStillFrameDescriptor>[];
-    var stillFrameDescPtr = still_frame_desc;
-    while (stillFrameDescPtr != nullptr) {
-      final stillFrameDesc = stillFrameDescPtr.ref;
-      stillFrameDescriptors.add(stillFrameDesc.dartValue);
-      stillFrameDescPtr = stillFrameDesc.next;
-    }
-    return UVCFormatDescriptor(
-      descriptorSubtype:
-          uvc_vs_desc_subtype.fromValue(bDescriptorSubtype).dartValue,
-      formatIndex: bFormatIndex,
-      formatSpecifier: unnamed.dartValue,
-      formatSpecificData: unnamed1.dartValue,
-      defaultFrameIndex: bDefaultFrameIndex,
-      aspectRatioX: bAspectRatioX,
-      aspectRatioY: bAspectRatioY,
-      interlaceFlags: bmInterlaceFlags,
-      copyProtect: bCopyProtect,
-      variableSize: bVariableSize,
-      frameDescriptors: frameDescriptors,
-      stillFrameDescriptors: stillFrameDescriptors,
-    );
-  }
-}
-
-extension uvc_frame_desc_x on uvc_frame_desc {
-  UVCFrameDescriptor get dartValue {
-    return UVCFrameDescriptor(
-      descriptorSubtype:
-          uvc_vs_desc_subtype.fromValue(bDescriptorSubtype).dartValue,
-      frameIndex: bFrameIndex,
-      capabilities: bmCapabilities,
-      width: wWidth,
-      height: wHeight,
-      minBitRate: dwMinBitRate,
-      maxBitRate: dwMaxBitRate,
-      maxVideoFrameBufferSize: dwMaxVideoFrameBufferSize,
-      defaultFrameInterval: dwDefaultFrameInterval,
-      minFrameInterval: dwMinFrameInterval,
-      maxFrameInterval: dwMaxFrameInterval,
-      frameIntervalStep: dwFrameIntervalStep,
-      frameIntervalType: bFrameIntervalType,
-      bytesPerLine: dwBytesPerLine,
-      intervals: intervals.toList(),
-    );
-  }
-}
-
-extension uvc_still_frame_desc_x on uvc_still_frame_desc {
-  UVCStillFrameDescriptor get dartValue {
-    final imageSizePatterns = <UVCStillFrameResolution>[];
-    var imageSizePatternPtr = this.imageSizePatterns;
-    while (imageSizePatternPtr != nullptr) {
-      final imageSizePattern = imageSizePatternPtr.ref;
-      imageSizePatterns.add(imageSizePattern.dartValue);
-      imageSizePatternPtr = imageSizePattern.next;
-    }
-    return UVCStillFrameDescriptor(
-      descriptorSubtype:
-          uvc_vs_desc_subtype.fromValue(bDescriptorSubtype).dartValue,
-      endpointAddress: bEndPointAddress,
-      imageSizePatterns: imageSizePatterns,
-      compression: bCompression.value,
-    );
-  }
-}
-
-extension uvc_still_frame_res_x on uvc_still_frame_res {
-  UVCStillFrameResolution get dartValue {
-    return UVCStillFrameResolution(
-      resolutionIndex: bResolutionIndex,
-      width: wWidth,
-      height: wHeight,
-    );
   }
 }
 
@@ -234,19 +154,6 @@ extension uvc_vs_desc_subtype_x on uvc_vs_desc_subtype {
   }
 }
 
-extension uvc_input_terminal_x on uvc_input_terminal {
-  UVCInputTerminal get dartValue {
-    return UVCInputTerminal(
-      terminalId: bTerminalID,
-      terminalType: uvc_it_type.fromValue(wTerminalType).dartValue,
-      minimumObjectiveFocalLength: wObjectiveFocalLengthMin,
-      maximumObjectiveFocalLength: wObjectiveFocalLengthMax,
-      ocularFocalLength: wOcularFocalLength,
-      controls: bmControls,
-    );
-  }
-}
-
 extension uvc_it_type_x on uvc_it_type {
   UVCInputTerminalType get dartValue {
     switch (this) {
@@ -260,20 +167,69 @@ extension uvc_it_type_x on uvc_it_type {
   }
 }
 
-extension UnnamedUnion1X on UnnamedUnion1 {
-  UVCFormatSpecifier get dartValue {
-    return UVCFormatSpecifier(
-      guid: guidFormat.toList(16),
-      fourCC: fourccFormat.toList(4),
+extension uvc_frame_format_x on uvc_frame_format {
+  UVCFrameFormat get dartValue {
+    switch (this) {
+      case uvc_frame_format.UVC_FRAME_FORMAT_UNKNOWN:
+        return UVCFrameFormat.unknown;
+      case uvc_frame_format.UVC_FRAME_FORMAT_UNCOMPRESSED:
+        return UVCFrameFormat.uncompressed;
+      case uvc_frame_format.UVC_FRAME_FORMAT_COMPRESSED:
+        return UVCFrameFormat.commpressed;
+      case uvc_frame_format.UVC_FRAME_FORMAT_YUYV:
+        return UVCFrameFormat.yuyv;
+      case uvc_frame_format.UVC_FRAME_FORMAT_UYVY:
+        return UVCFrameFormat.uyvy;
+      case uvc_frame_format.UVC_FRAME_FORMAT_RGB:
+        return UVCFrameFormat.rgb;
+      case uvc_frame_format.UVC_FRAME_FORMAT_BGR:
+        return UVCFrameFormat.bgr;
+      case uvc_frame_format.UVC_FRAME_FORMAT_MJPEG:
+        return UVCFrameFormat.mjpeg;
+      case uvc_frame_format.UVC_FRAME_FORMAT_H264:
+        return UVCFrameFormat.h264;
+      case uvc_frame_format.UVC_FRAME_FORMAT_GRAY8:
+        return UVCFrameFormat.gray8;
+      case uvc_frame_format.UVC_FRAME_FORMAT_GRAY16:
+        return UVCFrameFormat.gray16;
+      case uvc_frame_format.UVC_FRAME_FORMAT_BY8:
+        return UVCFrameFormat.by8;
+      case uvc_frame_format.UVC_FRAME_FORMAT_BA81:
+        return UVCFrameFormat.ba81;
+      case uvc_frame_format.UVC_FRAME_FORMAT_SGRBG8:
+        return UVCFrameFormat.sgrbg8;
+      case uvc_frame_format.UVC_FRAME_FORMAT_SGBRG8:
+        return UVCFrameFormat.sgbrg8;
+      case uvc_frame_format.UVC_FRAME_FORMAT_SRGGB8:
+        return UVCFrameFormat.srggb8;
+      case uvc_frame_format.UVC_FRAME_FORMAT_SBGGR8:
+        return UVCFrameFormat.sbggr8;
+      case uvc_frame_format.UVC_FRAME_FORMAT_NV12:
+        return UVCFrameFormat.nv12;
+      case uvc_frame_format.UVC_FRAME_FORMAT_P010:
+        return UVCFrameFormat.p010;
+      case uvc_frame_format.UVC_FRAME_FORMAT_COUNT:
+        return UVCFrameFormat.count;
+    }
+  }
+}
+
+extension timeval_x on timeval {
+  DateTime get dartValue {
+    final millisecondsSinceEpoch = tv_sec * 1000 * 1000 + tv_usec;
+    return DateTime.fromMillisecondsSinceEpoch(
+      millisecondsSinceEpoch,
+      isUtc: true,
     );
   }
 }
 
-extension UnnamedUnion2X on UnnamedUnion2 {
-  UVCFormatSpecificData get dartValue {
-    return UVCFormatSpecificData(
-      bitsPerPixel: bBitsPerPixel,
-      flags: bmFlags,
+extension timespec_x on timespec {
+  DateTime get dartValue {
+    final millisecondsSinceEpoch = tv_sec * 1000 * 1000 + tv_nsec ~/ 1000;
+    return DateTime.fromMillisecondsSinceEpoch(
+      millisecondsSinceEpoch,
+      isUtc: true,
     );
   }
 }

@@ -1,1 +1,1 @@
-class UVCStreamControl {}
+abstract interface class UVCStreamControl {}
