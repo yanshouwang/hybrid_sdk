@@ -13,6 +13,7 @@ class HomeView extends StatelessWidget {
     final image = viewModel.image;
     // final zoomAbsolute = viewModel.zoomAbsolute;
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -23,7 +24,7 @@ class HomeView extends StatelessWidget {
                     image: image,
                     width: image.width / devicePixelRatio,
                     height: image.height / devicePixelRatio,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
           ),
           // if (zoomAbsolute != null)

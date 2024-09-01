@@ -9,6 +9,7 @@
 #include <hybrid_jpeg/hybrid_jpeg_plugin_c_api.h>
 #include <hybrid_usb/hybrid_usb_plugin_c_api.h>
 #include <hybrid_uvc/hybrid_uvc_plugin_c_api.h>
+#include <permission_handler_windows/permission_handler_windows_plugin.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
   HybridJpegPluginCApiRegisterWithRegistrar(
@@ -17,4 +18,6 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("HybridUsbPluginCApi"));
   HybridUvcPluginCApiRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("HybridUvcPluginCApi"));
+  PermissionHandlerWindowsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("PermissionHandlerWindowsPlugin"));
 }

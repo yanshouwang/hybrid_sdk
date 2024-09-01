@@ -1,14 +1,12 @@
-import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
-import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
 import 'package:hybrid_usb/hybrid_usb.dart';
 
 import 'ffi.dart';
-import 'hybrid_uvc.dart';
+import 'hybrid_uvc_plugin.dart';
 import 'uvc.dart';
 import 'uvc_device.dart';
 import 'uvc_device_descriptor.dart';
@@ -46,10 +44,17 @@ final _dylibUVC = () {
 final _libUVC = LibUVC(_dylibUVC);
 
 final class HybridUVCPluginImpl extends HybridUVCPlugin {
+  @override
+  UVC createUVC() {
+    return UVCImpl();
+  }
+}
+
+final class UVCImpl implements UVC {
   final USB _usb;
   Pointer<uvc_context>? _ctxPtr;
 
-  HybridUVCPluginImpl() : _usb = USB() {
+  UVCImpl() : _usb = USB() {
     init();
   }
 
@@ -199,6 +204,22 @@ final class HybridUVCPluginImpl extends HybridUVCPlugin {
       throw TypeError();
     }
     _libUVC.uvc_close(device.devhPtr);
+  }
+
+  @override
+  UVCDevice wrap(int fileDescriptor) {
+    return using((arena) {
+      final devhPtr2 = arena<Pointer<uvc_device_handle>>();
+      final err = _libUVC.uvc_wrap(fileDescriptor, ctxPtr, devhPtr2);
+      if (err != uvc_error.UVC_SUCCESS) {
+        _libUVC.uvc_perror(
+          err,
+          'uvc_wrap'.toNativeUtf8().cast(),
+        );
+        throw UVCError('wrap failed, $err.');
+      }
+      return UVCDeviceImpl(nullptr)..devhPtr = devhPtr2.value;
+    });
   }
 
   @override
@@ -875,162 +896,3 @@ final class UVCZoomRelativeImpl implements UVCZoomRelative {
     required this.speed,
   });
 }
-
-// class _IsolateMessage {
-//   final SendPort sendPort;
-//   final RootIsolateToken token;
-
-//   _IsolateMessage({
-//     required this.sendPort,
-//     required this.token,
-//   });
-// }
-
-// class _Any2RGBACommand {
-//   final Pointer<uvc_frame> framePtr;
-//   final Pointer<void> userPtr;
-
-//   _Any2RGBACommand({
-//     required this.framePtr,
-//     required this.userPtr,
-//   });
-// }
-
-// class _Any2RGBAReply {
-//   final int width;
-//   final int height;
-//   final Uint8List value;
-//   final Object? error;
-
-//   _Any2RGBAReply({
-//     required this.width,
-//     required this.height,
-//     required this.value,
-//     this.error,
-//   });
-// }
-
-// Completer<UVCFrame>? _any2RGBACompleter;
-
-// Future<SendPort> _isolateSendPort = () async {
-//   // The helper isolate is going to send us back a SendPort, which we want to
-//   // wait for.
-//   final completer = Completer<SendPort>();
-
-//   // Receive port on the main isolate to receive messages from the helper.
-//   // We receive two types of messages:
-//   // 1. A port to send messages on.
-//   // 2. Responses to requests we sent.
-//   final receivePort = ReceivePort()
-//     ..listen(
-//       (message) {
-//         if (message is SendPort) {
-//           // The helper isolate sent us the port on which we can sent it requests.
-//           completer.complete(message);
-//         } else if (message is _Any2RGBAReply) {
-//           final completer = _any2RGBACompleter;
-//           if (completer == null) {
-//             return;
-//           }
-//           final error = message.error;
-//           if (error == null) {
-//             final frame =
-//                 UVCFrame(message.width, message.height, message.value);
-//             completer.complete(frame);
-//           } else {
-//             completer.completeError(error);
-//           }
-//         } else {
-//           throw UnsupportedError(
-//             'Unsupported message type: ${message.runtimeType}',
-//           );
-//         }
-//       },
-//     );
-
-//   // Start the helper isolate.
-//   await Isolate.spawn(
-//     (message) {
-//       final sendPort = message.sendPort;
-//       final token = message.token;
-//       // Register the background isolate with the root isolate.
-//       BackgroundIsolateBinaryMessenger.ensureInitialized(token);
-//       final isolatePort = ReceivePort()
-//         ..listen(
-//           (message) async {
-//             // On the isolate listen to requests and respond to them.
-//             if (message is _Any2RGBACommand) {
-//               try {
-//                 final framePtr = message.framePtr;
-//                 final frame = framePtr.ref;
-//                 final rgbPtr =
-//                     _libUVC.uvc_allocate_frame(frame.width * frame.height * 3);
-//                 if (rgbPtr == nullptr) {
-//                   throw UVCError('Unable to allocate RBG frame!');
-//                 }
-//                 final format = uvc_frame_format.fromValue(frame.frame_format);
-//                 switch (format) {
-//                   case uvc_frame_format.UVC_FRAME_FORMAT_H264:
-//                   case uvc_frame_format.UVC_FRAME_FORMAT_MJPEG:
-//                   case uvc_frame_format.UVC_FRAME_FORMAT_YUYV:
-//                     final err = _libUVC.uvc_any2rgb(framePtr, rgbPtr);
-//                     if (err != uvc_error.UVC_SUCCESS) {
-//                       _libUVC.uvc_perror(
-//                         err,
-//                         'uvc_any2rgb'.toNativeUtf8().cast(),
-//                       );
-//                       _libUVC.uvc_free_frame(rgbPtr);
-//                       throw UVCError('UVC any to RGB failed, $err');
-//                     }
-//                     break;
-//                   default:
-//                     throw UVCError('Unknown frame format $format.');
-//                 }
-//                 final rgb = rgbPtr.ref;
-//                 final width = rgb.width;
-//                 final height = rgb.height;
-//                 final data = rgb.data.cast<Uint8>().asTypedList(rgb.data_bytes);
-//                 final value = Uint8List(width * height * 4);
-//                 for (var i = 0; i < width * height; i++) {
-//                   final start = i * 4;
-//                   final end = start + 3;
-//                   final skipCount = i * 3;
-//                   value.setRange(start, end, data, skipCount);
-//                   value[end] = 0xff;
-//                 }
-//                 final reply = _Any2RGBAReply(
-//                   width: width,
-//                   height: height,
-//                   value: value,
-//                 );
-//                 sendPort.send(reply);
-//               } catch (e) {
-//                 final reply = _Any2RGBAReply(
-//                   width: 0,
-//                   height: 0,
-//                   value: Uint8List(0),
-//                   error: e,
-//                 );
-//                 sendPort.send(reply);
-//               }
-//             } else {
-//               throw UnsupportedError(
-//                 'Unsupported message type: ${message.runtimeType}',
-//               );
-//             }
-//           },
-//         );
-
-//       // Send the port to the main isolate on which we can receive requests.
-//       sendPort.send(isolatePort.sendPort);
-//     },
-//     _IsolateMessage(
-//       sendPort: receivePort.sendPort,
-//       token: ArgumentError.checkNotNull(RootIsolateToken.instance),
-//     ),
-//   );
-
-//   // Wait until the helper isolate has sent us back the SendPort on which we
-//   // can start sending requests.
-//   return completer.future;
-// }();

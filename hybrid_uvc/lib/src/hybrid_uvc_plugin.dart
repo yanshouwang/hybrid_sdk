@@ -3,7 +3,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'uvc.dart';
 import 'uvc_impl.dart';
 
-abstract base class HybridUVCPlugin extends PlatformInterface implements UVC {
+abstract base class HybridUVCPlugin extends PlatformInterface {
   /// Constructs a [HybridUVCPlugin].
   HybridUVCPlugin() : super(token: _token);
 
@@ -21,4 +21,6 @@ abstract base class HybridUVCPlugin extends PlatformInterface implements UVC {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
+
+  UVC createUVC();
 }

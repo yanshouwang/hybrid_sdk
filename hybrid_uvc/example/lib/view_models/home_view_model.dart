@@ -1,8 +1,11 @@
+import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
 import 'package:hybrid_uvc/hybrid_uvc.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:usb/usb.dart';
 
 final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
@@ -18,15 +21,39 @@ final class HomeViewModel extends ViewModel with TypeLogger {
   UVCZoomRelative? get zoomRelative => _zoomRelative;
   ui.Image? get image => _image;
 
-  void startStreaming() {
+  void startStreaming() async {
     if (_device != null) {
       throw StateError('Streaming.');
     }
-    final device = _uvc.findDevice();
-    final deviceDescriptor = _uvc.getDeviceDescriptor(device);
-    logger.info(
-        'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}');
-    _uvc.open(device);
+    final UVCDevice device;
+    if (Platform.isAndroid) {
+      var isCameraGranted = await Permission.camera.isGranted;
+      if (!isCameraGranted) {
+        final status = await Permission.camera.request();
+        isCameraGranted = status == PermissionStatus.granted;
+      }
+      if (!isCameraGranted) {
+        throw StateError('No Permission.');
+      }
+      final usbManager = UsbManager.instance;
+      final usbDevices = await usbManager.getDevices();
+      final usbDevice = usbDevices.values.first;
+      var hasPermission = await usbManager.hasDevicePermission(usbDevice);
+      if (!hasPermission) {
+        hasPermission = await usbManager.requestDevicePermission(usbDevice);
+      }
+      if (!hasPermission) {
+        throw StateError('No Permission.');
+      }
+      final fileDescriptor = await usbManager.openDevice(usbDevice);
+      device = _uvc.wrap(fileDescriptor);
+    } else {
+      device = _uvc.findDevice();
+      final deviceDescriptor = _uvc.getDeviceDescriptor(device);
+      logger.info(
+          'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}');
+      _uvc.open(device);
+    }
     final formatDescriptors = _uvc.getFormatDescriptors(device);
     for (var formatDescriptor in formatDescriptors) {
       logger.info('formatDescriptor: ${formatDescriptor.subtype}');
@@ -102,7 +129,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.stopStreaming(device);
     _uvc.close(device);
     _device = null;
-    // _frame = null;
+    _image = null;
     notifyListeners();
   }
 

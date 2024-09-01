@@ -1,4 +1,4 @@
-import 'hybrid_uvc.dart';
+import 'hybrid_uvc_plugin.dart';
 import 'uvc_device.dart';
 import 'uvc_device_descriptor.dart';
 import 'uvc_format_descriptor.dart';
@@ -12,6 +12,16 @@ import 'uvc_zoom_relative.dart';
 typedef UVCFrameCallback = void Function(UVCFrame frame);
 
 abstract interface class UVC {
+  static UVC? _instance;
+
+  factory UVC() {
+    var instance = _instance;
+    if (instance == null) {
+      _instance = instance = HybridUVCPlugin.instance.createUVC();
+    }
+    return instance;
+  }
+
   List<UVCDevice> findDevices({
     int? vid,
     int? pid,
@@ -28,6 +38,8 @@ abstract interface class UVC {
 
   void open(UVCDevice device);
   void close(UVCDevice device);
+
+  UVCDevice wrap(int fileDescriptor);
 
   List<UVCFormatDescriptor> getFormatDescriptors(UVCDevice device);
 
@@ -77,6 +89,4 @@ abstract interface class UVC {
   UVCFrame uyvy2BGR(UVCFrame frame);
   UVCFrame any2RGB(UVCFrame frame);
   UVCFrame any2BGR(UVCFrame frame);
-
-  factory UVC() => HybridUVCPlugin.instance;
 }
