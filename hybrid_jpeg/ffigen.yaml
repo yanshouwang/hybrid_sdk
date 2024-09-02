@@ -1,0 +1,25 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: LibJPEG
+description: |
+  Bindings for `libjpeg`.
+output: 'lib/src/ffi/ffi.g.dart'
+headers:
+  entry-points:
+    - 'src/include/jconfig.h'
+    - 'src/include/jerror.h'
+    - 'src/include/jmorecfg.h'
+    - 'src/include/jpeglib.h'
+    - 'src/include/turbojpeg.h'
+  include-directives:
+    - 'src/include/jconfig.h'
+    - 'src/include/jerror.h'
+    - 'src/include/jmorecfg.h'
+    - 'src/include/jpeglib.h'
+    - 'src/include/turbojpeg.h'
+preamble: |
+  // ignore_for_file: always_specify_types
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+comments:
+  style: any
+  length: full

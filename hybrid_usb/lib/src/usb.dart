@@ -1,8 +1,16 @@
-import 'hybrid_usb.dart';
+import 'hybrid_usb_plugin.dart';
 import 'usb_option.dart';
 
 abstract interface class USB {
-  factory USB() => HybridUSBPlugin.instance;
+  static USB? _instance;
+
+  factory USB() {
+    var instance = _instance;
+    if (instance == null) {
+      _instance = instance = HybridUSBPlugin.instance.createUSB();
+    }
+    return instance;
+  }
 
   void setOption(USBOption option);
 }

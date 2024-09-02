@@ -35,15 +35,36 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       if (!isCameraGranted) {
         throw StateError('No Permission.');
       }
+      UsbDevice? usbDevice;
       final usbManager = UsbManager.instance;
       final usbDevices = await usbManager.getDevices();
-      final usbDevice = usbDevices.values.first;
-      var hasPermission = await usbManager.hasDevicePermission(usbDevice);
-      if (!hasPermission) {
-        hasPermission = await usbManager.requestDevicePermission(usbDevice);
+      for (var value in usbDevices.values) {
+        var hasPermission = await usbManager.hasDevicePermission(value);
+        if (!hasPermission) {
+          hasPermission = await usbManager.requestDevicePermission(value);
+        }
+        final vid = await value.getVendorId();
+        final pid = await value.getProductId();
+        final sn = await value.getSerialNumber();
+        final manufacturerName = await value.getManufacturerName();
+        final productName = await value.getProductName();
+        final deviceName = await value.getDeviceName();
+        final deviceProtocol = await value.getDeviceProtocol();
+        final deviceClass = await value.getDeviceClass();
+        final deviceSubClass = await value.getDeviceSubClass();
+        logger.info(
+            'vid $vid, pid $pid, sn $sn, manufacturerName $manufacturerName, productName $productName, deviceName $deviceName, deviceProtocol $deviceProtocol, deviceClass $deviceClass, deviceSubClass $deviceSubClass.');
+        if (vid != 0x0EDC || pid != 0x3080) {
+          continue;
+        }
+        if (!hasPermission) {
+          throw StateError('No Permission.');
+        }
+        usbDevice = value;
+        break;
       }
-      if (!hasPermission) {
-        throw StateError('No Permission.');
+      if (usbDevice == null) {
+        throw ArgumentError.notNull('usbDevice');
       }
       final fileDescriptor = await usbManager.openDevice(usbDevice);
       device = _uvc.wrap(fileDescriptor);
@@ -59,8 +80,10 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       logger.info('formatDescriptor: ${formatDescriptor.subtype}');
       final frameDescriptors = formatDescriptor.frameDescriptors;
       for (var frameDescriptor in frameDescriptors) {
-        logger.info(
-            'frameDescriptor: ${frameDescriptor.width}x${frameDescriptor.height}');
+        final width = frameDescriptor.width;
+        final height = frameDescriptor.height;
+        final fps = 1000 * 1000 * 10 ~/ frameDescriptor.defaultInterval;
+        logger.info('frameDescriptor: ${width}x$height, $fps fps.');
       }
     }
     final formatDescriptor = formatDescriptors[0];
@@ -159,6 +182,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
 
   void _decode(UVCFrame frame) async {
     if (_decoding) {
+      logger.warning('Frame dropped.');
       return;
     }
     _decoding = true;
@@ -171,6 +195,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
         return;
       }
       _image = info.image;
+      logger.info('Frame decoded.');
       notifyListeners();
     } finally {
       _decoding = false;

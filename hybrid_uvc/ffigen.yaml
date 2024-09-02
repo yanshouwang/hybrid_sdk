@@ -4,15 +4,15 @@ description: |
   Bindings for `libuvc`.
 output: 'lib/src/ffi/ffi.g.dart'
 compiler-opts:
-  -DLIBUSB_API_VERSION=0x0100010A
-  # '-I/usr/local/include'
+  - '-Isrc/include'
+  - '-DLIBUSB_API_VERSION=0x0100010A'
 headers:
   entry-points:
-    - '/usr/local/include/libuvc/libuvc.h'
-    - '/usr/local/include/libuvc/libuvc_config.h'
+    - 'src/include/libuvc/libuvc.h'
+    - 'src/include/libuvc/libuvc_config.h'
   include-directives:
-    - '/usr/local/include/libuvc/libuvc.h'
-    - '/usr/local/include/libuvc/libuvc_config.h'
+    - 'src/include/libuvc/libuvc.h'
+    - 'src/include/libuvc/libuvc_config.h'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types

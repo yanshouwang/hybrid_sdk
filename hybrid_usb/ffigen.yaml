@@ -3,13 +3,11 @@ name: LibUSB
 description: |
   Bindings for `libusb`.
 output: 'lib/src/ffi/ffi.g.dart'
-# compiler-opts:
-#   '-I/usr/local/include'
 headers:
   entry-points:
-    - '/usr/local/include/libusb-1.0/libusb.h'
+    - 'src/include/libusb-1.0/libusb.h'
   include-directives:
-    - '/usr/local/include/libusb-1.0/libusb.h'
+    - 'src/include/libusb-1.0/libusb.h'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types
