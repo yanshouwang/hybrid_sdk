@@ -1,7 +1,9 @@
+import 'package:hybrid_logging/hybrid_logging.dart';
+
 import 'hybrid_usb_plugin.dart';
 import 'usb_option.dart';
 
-abstract interface class USB {
+abstract interface class USB implements LogController {
   static USB? _instance;
 
   factory USB() {

@@ -3570,22 +3570,25 @@ typedef Dartlibusb_log_cbFunction = void Function(
     ffi.Pointer<libusb_context> ctx,
     libusb_log_level level,
     ffi.Pointer<ffi.Char> str);
-typedef ssize_t = __ssize_t;
-typedef __ssize_t = ffi.Long;
-typedef Dart__ssize_t = int;
+typedef ssize_t = __darwin_ssize_t;
+typedef __darwin_ssize_t = ffi.Long;
+typedef Dart__darwin_ssize_t = int;
 
 final class timeval extends ffi.Struct {
-  @__time_t()
+  /// seconds
+  @__darwin_time_t()
   external int tv_sec;
 
-  @__suseconds_t()
+  /// and microseconds
+  @__darwin_suseconds_t()
   external int tv_usec;
 }
 
-typedef __time_t = ffi.Long;
-typedef Dart__time_t = int;
-typedef __suseconds_t = ffi.Long;
-typedef Dart__suseconds_t = int;
+typedef __darwin_time_t = ffi.Long;
+typedef Dart__darwin_time_t = int;
+typedef __darwin_suseconds_t = __int32_t;
+typedef __int32_t = ffi.Int;
+typedef Dart__int32_t = int;
 
 /// \ingroup libusb_poll
 /// File descriptor for polling

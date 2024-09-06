@@ -1,8 +1,8 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
 name: LibUVC
 description: |
-  Bindings for `libuvc`.
-output: 'lib/src/ffi/ffi.g.dart'
+  Bindings for `hybrid_uvc`.
+output: 'lib/src/uvc_ffi/uvc_ffi.g.dart'
 compiler-opts:
   - '-Isrc/include'
   - '-DLIBUSB_API_VERSION=0x0100010A'

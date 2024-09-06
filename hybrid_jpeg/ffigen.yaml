@@ -2,14 +2,15 @@
 name: LibJPEG
 description: |
   Bindings for `libjpeg`.
-output: 'lib/src/ffi/ffi.g.dart'
+output: 'lib/src/jpeg_ffi/jpeg_ffi.g.dart'
 headers:
   entry-points:
     - 'src/include/jconfig.h'
     - 'src/include/jerror.h'
     - 'src/include/jmorecfg.h'
-    - 'src/include/jpeglib.h'
+    # - 'src/include/jpeglib.h'
     - 'src/include/turbojpeg.h'
+    - 'src/include/hybrid_jpeg.h'
   include-directives:
     - 'src/include/jconfig.h'
     - 'src/include/jerror.h'

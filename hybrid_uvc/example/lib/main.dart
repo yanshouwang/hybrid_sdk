@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         viewBuilder: (context) => const HomeView(),
         viewModelBuilder: (context) => HomeViewModel(),
       ),
+      // showPerformanceOverlay: true,
     );
   }
 }

@@ -8,7 +8,7 @@
 // ignore_for_file: type=lint
 import 'dart:ffi' as ffi;
 
-/// Bindings for `libuvc`.
+/// Bindings for `hybrid_uvc`.
 ///
 class LibUVC {
   /// Holds the symbol lookup function.
@@ -3715,28 +3715,29 @@ final class uvc_frame extends ffi.Struct {
 }
 
 final class timeval extends ffi.Struct {
-  @__time_t()
+  /// seconds
+  @__darwin_time_t()
   external int tv_sec;
 
-  @__suseconds_t()
+  /// and microseconds
+  @__darwin_suseconds_t()
   external int tv_usec;
 }
 
-typedef __time_t = ffi.Long;
-typedef Dart__time_t = int;
-typedef __suseconds_t = ffi.Long;
-typedef Dart__suseconds_t = int;
+typedef __darwin_time_t = ffi.Long;
+typedef Dart__darwin_time_t = int;
+typedef __darwin_suseconds_t = __int32_t;
+typedef __int32_t = ffi.Int;
+typedef Dart__int32_t = int;
 
 final class timespec extends ffi.Struct {
-  @__time_t()
+  @__darwin_time_t()
   external int tv_sec;
 
-  @__syscall_slong_t()
+  @ffi.Long()
   external int tv_nsec;
 }
 
-typedef __syscall_slong_t = ffi.Long;
-typedef Dart__syscall_slong_t = int;
 typedef uvc_device_handle_t = uvc_device_handle;
 
 /// Streaming mode, includes all information needed to select stream
@@ -3879,103 +3880,150 @@ typedef uvc_stream_handle_t = uvc_stream_handle;
 /// An image frame received from the UVC device
 /// @ingroup streaming
 typedef uvc_frame_t = uvc_frame;
-typedef FILE = _IO_FILE;
 
-final class _IO_FILE extends ffi.Struct {
+/// stdio state variables.
+///
+/// The following always hold:
+///
+/// if (_flags&(__SLBF|__SWR)) == (__SLBF|__SWR),
+/// _lbfsize is -_bf._size, else _lbfsize is 0
+/// if _flags&__SRD, _w is 0
+/// if _flags&__SWR, _r is 0
+///
+/// This ensures that the getc and putc macros (or inline functions) never
+/// try to write or read from a file that is in `read' or `write' mode.
+/// (Moreover, they can, and do, automatically switch from read mode to
+/// write mode, and back, on "r+" and "w+" files.)
+///
+/// _lbfsize is used only to make the inline line-buffered output stream
+/// code as compact as possible.
+///
+/// _ub, _up, and _ur are used when ungetc() pushes back more characters
+/// than fit in the current _bf, or when ungetc() pushes back a character
+/// that does not match the previous one in _bf.  When this happens,
+/// _ub._base becomes non-nil (i.e., a stream has ungetc() data iff
+/// _ub._base!=NULL) and _up and _ur save the current values of _p and _r.
+///
+/// NB: see WARNING above before changing the layout of this structure!
+typedef FILE = __sFILE;
+
+/// stdio state variables.
+///
+/// The following always hold:
+///
+/// if (_flags&(__SLBF|__SWR)) == (__SLBF|__SWR),
+/// _lbfsize is -_bf._size, else _lbfsize is 0
+/// if _flags&__SRD, _w is 0
+/// if _flags&__SWR, _r is 0
+///
+/// This ensures that the getc and putc macros (or inline functions) never
+/// try to write or read from a file that is in `read' or `write' mode.
+/// (Moreover, they can, and do, automatically switch from read mode to
+/// write mode, and back, on "r+" and "w+" files.)
+///
+/// _lbfsize is used only to make the inline line-buffered output stream
+/// code as compact as possible.
+///
+/// _ub, _up, and _ur are used when ungetc() pushes back more characters
+/// than fit in the current _bf, or when ungetc() pushes back a character
+/// that does not match the previous one in _bf.  When this happens,
+/// _ub._base becomes non-nil (i.e., a stream has ungetc() data iff
+/// _ub._base!=NULL) and _up and _ur save the current values of _p and _r.
+///
+/// NB: see WARNING above before changing the layout of this structure!
+final class __sFILE extends ffi.Struct {
+  /// current position in (some) buffer
+  external ffi.Pointer<ffi.UnsignedChar> _p;
+
+  /// read space left for getc()
   @ffi.Int()
+  external int _r;
+
+  /// write space left for putc()
+  @ffi.Int()
+  external int _w;
+
+  /// flags, below; this FILE is free if 0
+  @ffi.Short()
   external int _flags;
 
-  external ffi.Pointer<ffi.Char> _IO_read_ptr;
+  /// fileno, if Unix descriptor, else -1
+  @ffi.Short()
+  external int _file;
 
-  external ffi.Pointer<ffi.Char> _IO_read_end;
+  /// the buffer (at least 1 byte, if !NULL)
+  external __sbuf _bf;
 
-  external ffi.Pointer<ffi.Char> _IO_read_base;
-
-  external ffi.Pointer<ffi.Char> _IO_write_base;
-
-  external ffi.Pointer<ffi.Char> _IO_write_ptr;
-
-  external ffi.Pointer<ffi.Char> _IO_write_end;
-
-  external ffi.Pointer<ffi.Char> _IO_buf_base;
-
-  external ffi.Pointer<ffi.Char> _IO_buf_end;
-
-  external ffi.Pointer<ffi.Char> _IO_save_base;
-
-  external ffi.Pointer<ffi.Char> _IO_backup_base;
-
-  external ffi.Pointer<ffi.Char> _IO_save_end;
-
-  external ffi.Pointer<_IO_marker> _markers;
-
-  external ffi.Pointer<_IO_FILE> _chain;
-
+  /// 0 or -_bf._size, for inline putc
   @ffi.Int()
-  external int _fileno;
+  external int _lbfsize;
 
+  /// cookie passed to io functions
+  external ffi.Pointer<ffi.Void> _cookie;
+
+  external ffi
+      .Pointer<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>
+      _close;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _read;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>> _seek;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _write;
+
+  /// ungetc buffer
+  external __sbuf _ub;
+
+  /// additions to FILE to not break ABI
+  external ffi.Pointer<__sFILEX> _extra;
+
+  /// saved _r when _r is counting ungetc data
   @ffi.Int()
-  external int _flags2;
+  external int _ur;
 
-  @__off_t()
-  external int _old_offset;
+  /// guarantee an ungetc() buffer
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedChar> _ubuf;
 
-  @ffi.UnsignedShort()
-  external int _cur_column;
-
-  @ffi.SignedChar()
-  external int _vtable_offset;
-
+  /// guarantee a getc() buffer
   @ffi.Array.multi([1])
-  external ffi.Array<ffi.Char> _shortbuf;
+  external ffi.Array<ffi.UnsignedChar> _nbuf;
 
-  external ffi.Pointer<_IO_lock_t> _lock;
+  /// buffer for fgetln()
+  external __sbuf _lb;
 
-  @__off64_t()
-  external int _offset;
-
-  external ffi.Pointer<_IO_codecvt> _codecvt;
-
-  external ffi.Pointer<_IO_wide_data> _wide_data;
-
-  external ffi.Pointer<_IO_FILE> _freeres_list;
-
-  external ffi.Pointer<ffi.Void> _freeres_buf;
-
-  @ffi.Size()
-  external int __pad5;
-
+  /// stat.st_blksize (may be != _bf._size)
   @ffi.Int()
-  external int _mode;
+  external int _blksize;
 
-  @ffi.Array.multi([20])
-  external ffi.Array<ffi.Char> _unused2;
+  /// current lseek offset (see WARNING)
+  @fpos_t()
+  external int _offset;
 }
 
-final class _IO_marker extends ffi.Opaque {}
+/// stdio buffers
+final class __sbuf extends ffi.Struct {
+  external ffi.Pointer<ffi.UnsignedChar> _base;
 
-typedef __off_t = ffi.Long;
-typedef Dart__off_t = int;
-typedef _IO_lock_t = ffi.Void;
-typedef Dart_IO_lock_t = void;
-typedef __off64_t = ffi.Long;
-typedef Dart__off64_t = int;
+  @ffi.Int()
+  external int _size;
+}
 
-final class _IO_codecvt extends ffi.Opaque {}
+typedef fpos_t = __darwin_off_t;
+typedef __darwin_off_t = __int64_t;
+typedef __int64_t = ffi.LongLong;
+typedef Dart__int64_t = int;
 
-final class _IO_wide_data extends ffi.Opaque {}
-
-const int LIBUVC_VERSION_MAJOR = 0;
-
-const int LIBUVC_VERSION_MINOR = 0;
-
-const int LIBUVC_VERSION_PATCH = 7;
-
-const String LIBUVC_VERSION_STR = '0.0.7';
-
-const int LIBUVC_VERSION_INT = 7;
-
-const int LIBUVC_HAS_JPEG = 1;
+/// hold a buncha junk that would grow the ABI
+final class __sFILEX extends ffi.Opaque {}
 
 const int UVC_COLOR_FORMAT_UNKNOWN = 0;
 
@@ -3998,3 +4046,15 @@ const int UVC_COLOR_FORMAT_GRAY8 = 9;
 const int UVC_COLOR_FORMAT_GRAY16 = 10;
 
 const int UVC_COLOR_FORMAT_NV12 = 17;
+
+const int LIBUVC_VERSION_MAJOR = 0;
+
+const int LIBUVC_VERSION_MINOR = 0;
+
+const int LIBUVC_VERSION_PATCH = 7;
+
+const String LIBUVC_VERSION_STR = '0.0.7';
+
+const int LIBUVC_VERSION_INT = 7;
+
+const int LIBUVC_HAS_JPEG = 1;

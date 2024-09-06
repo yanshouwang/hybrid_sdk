@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'dart:io';
-import 'dart:ui' as ui;
 
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
@@ -9,17 +9,34 @@ import 'package:usb/usb.dart';
 
 final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
+  final USBManager _usbManager;
   UVCDevice? _device;
   UVCStreamControl? _control;
   UVCZoomRelative? _zoomRelative;
-  ui.Image? _image;
-  bool _decoding = false;
+  UVCFrame? _frame;
+  int _frames;
+  int _fps;
+  late final Timer _fpsTimer;
 
-  HomeViewModel() : _uvc = UVC();
+  HomeViewModel()
+      : _uvc = UVC(),
+        _usbManager = USBManager(),
+        _frames = 0,
+        _fps = 0 {
+    _fpsTimer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        _fps = _frames;
+        logger.info('Streaming with $_fps FPS.');
+        _frames = 0;
+        notifyListeners();
+      },
+    );
+  }
 
   bool get streaming => _device != null && _control != null;
   UVCZoomRelative? get zoomRelative => _zoomRelative;
-  ui.Image? get image => _image;
+  UVCFrame? get frame => _frame;
 
   void startStreaming() async {
     if (_device != null) {
@@ -35,13 +52,12 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       if (!isCameraGranted) {
         throw StateError('No Permission.');
       }
-      UsbDevice? usbDevice;
-      final usbManager = UsbManager.instance;
-      final usbDevices = await usbManager.getDevices();
+      USBDevice? usbDevice;
+      final usbDevices = await _usbManager.getDevices();
       for (var value in usbDevices.values) {
-        var hasPermission = await usbManager.hasDevicePermission(value);
+        var hasPermission = await _usbManager.hasDevicePermission(value);
         if (!hasPermission) {
-          hasPermission = await usbManager.requestDevicePermission(value);
+          hasPermission = await _usbManager.requestDevicePermission(value);
         }
         final vid = await value.getVendorId();
         final pid = await value.getProductId();
@@ -66,7 +82,8 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       if (usbDevice == null) {
         throw ArgumentError.notNull('usbDevice');
       }
-      final fileDescriptor = await usbManager.openDevice(usbDevice);
+      final connection = await _usbManager.openDevice(usbDevice);
+      final fileDescriptor = await connection.getFileDescriptor();
       device = _uvc.wrap(fileDescriptor);
     } else {
       device = _uvc.findDevice();
@@ -152,7 +169,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.stopStreaming(device);
     _uvc.close(device);
     _device = null;
-    _image = null;
+    _fps = _frames = 0;
     notifyListeners();
   }
 
@@ -181,25 +198,9 @@ final class HomeViewModel extends ViewModel with TypeLogger {
   }
 
   void _decode(UVCFrame frame) async {
-    if (_decoding) {
-      logger.warning('Frame dropped.');
-      return;
-    }
-    _decoding = true;
-    try {
-      final buffer = await ui.ImmutableBuffer.fromUint8List(frame.data);
-      final descriptor = await ui.ImageDescriptor.encoded(buffer);
-      final codec = await descriptor.instantiateCodec();
-      final info = await codec.getNextFrame();
-      if (!streaming) {
-        return;
-      }
-      _image = info.image;
-      logger.info('Frame decoded.');
-      notifyListeners();
-    } finally {
-      _decoding = false;
-    }
+    _frame = frame;
+    _frames++;
+    notifyListeners();
   }
 
   @override
@@ -208,6 +209,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     if (device != null) {
       _uvc.close(device);
     }
+    _fpsTimer.cancel();
     super.dispose();
   }
 }

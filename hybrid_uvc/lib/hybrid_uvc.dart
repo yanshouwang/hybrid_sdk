@@ -18,4 +18,5 @@ export 'src/uvc_still_frame_descriptor.dart';
 export 'src/uvc_still_frame_resolution.dart';
 export 'src/uvc_stream_control.dart';
 export 'src/uvc_video_streaming_descriptor_subtype.dart';
+export 'src/uvc_view.dart';
 export 'src/uvc_zoom_relative.dart';

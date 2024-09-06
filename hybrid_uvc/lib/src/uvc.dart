@@ -1,3 +1,5 @@
+import 'package:hybrid_logging/hybrid_logging.dart';
+
 import 'hybrid_uvc_plugin.dart';
 import 'uvc_device.dart';
 import 'uvc_device_descriptor.dart';
@@ -11,7 +13,7 @@ import 'uvc_zoom_relative.dart';
 
 typedef UVCFrameCallback = void Function(UVCFrame frame);
 
-abstract interface class UVC {
+abstract interface class UVC implements LogController {
   static UVC? _instance;
 
   factory UVC() {
@@ -81,12 +83,15 @@ abstract interface class UVC {
 
   UVCFrame mjpeg2RGB(UVCFrame frame);
   UVCFrame mjpeg2Gray(UVCFrame frame);
+
   UVCFrame yuyv2RGB(UVCFrame frame);
   UVCFrame yuyv2BGR(UVCFrame frame);
   UVCFrame yuyv2Y(UVCFrame frame);
   UVCFrame yuyv2UV(UVCFrame frame);
+
   UVCFrame uyvy2RGB(UVCFrame frame);
   UVCFrame uyvy2BGR(UVCFrame frame);
+
   UVCFrame any2RGB(UVCFrame frame);
   UVCFrame any2BGR(UVCFrame frame);
 }

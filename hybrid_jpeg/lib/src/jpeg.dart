@@ -1,6 +1,8 @@
+import 'package:hybrid_logging/hybrid_logging.dart';
+
 import 'hybrid_jpeg_plugin.dart';
 
-abstract interface class JPEG {
+abstract interface class JPEG implements LogController {
   static JPEG? _instance;
 
   factory JPEG() {

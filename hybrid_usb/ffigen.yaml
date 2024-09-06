@@ -2,7 +2,7 @@
 name: LibUSB
 description: |
   Bindings for `libusb`.
-output: 'lib/src/ffi/ffi.g.dart'
+output: 'lib/src/usb_ffi/usb_ffi.g.dart'
 headers:
   entry-points:
     - 'src/include/libusb-1.0/libusb.h'
