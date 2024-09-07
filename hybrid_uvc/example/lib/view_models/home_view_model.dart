@@ -9,6 +9,7 @@ import 'package:usb/usb.dart';
 
 final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
+  USBDeviceConnection? _connection;
   UVCDevice? _device;
   UVCStreamControl? _control;
   UVCZoomRelative? _zoomRelative;
@@ -43,20 +44,21 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     final UVCDevice device;
     if (Platform.isAndroid) {
       final usbManager = USBManager();
-      USBDevice? usbDevice;
       final usbDevices = await usbManager.getDevices();
-      for (var item in usbDevices.values) {
-        final vid = await item.getVendorId();
-        final pid = await item.getProductId();
-        final sn = await item.getSerialNumber();
-        final manufacturer = item.getManufacturerName();
-        final product = item.getProductName();
-        if (vid != 0x0EDC || pid != 0x3080) {
+      USBDevice? usbDevice;
+      for (var value in usbDevices.values) {
+        final deviceClass = await value.getDeviceClass();
+        if (deviceClass != USBConstants.usbClassVideo) {
           continue;
         }
+        final vid = await value.getVendorId();
+        final pid = await value.getProductId();
+        final sn = await value.getSerialNumber();
+        final manufacturer = value.getManufacturerName();
+        final product = value.getProductName();
         logger.info(
             'usbDevice: VId $vid, PId $pid, SN $sn, Manufacturer $manufacturer, Product $product.');
-        usbDevice = item;
+        usbDevice = value;
         break;
       }
       if (usbDevice == null) {
@@ -81,6 +83,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       final connection = await usbManager.openDevice(usbDevice);
       final fileDescriptor = await connection.getFileDescriptor();
       device = _uvc.wrap(fileDescriptor);
+      _connection = connection;
     } else {
       device = _uvc.findDevice();
       final deviceDescriptor = _uvc.getDeviceDescriptor(device);
@@ -128,7 +131,11 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.startStreaming(
       device,
       control: control,
-      callback: _decode,
+      callback: (frame) {
+        _frame = frame;
+        _frames++;
+        notifyListeners();
+      },
     );
     final inputTerminals = _uvc.getInputTerminals(device);
     for (var inputTermianl in inputTerminals) {
@@ -157,12 +164,19 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     notifyListeners();
   }
 
-  void stopStreaming() {
+  void stopStreaming() async {
     final device = _device;
     if (device == null) {
       throw StateError('Not Streaming.');
     }
     _uvc.stopStreaming(device);
+    if (Platform.isAndroid) {
+      final connection = _connection;
+      if (connection == null) {
+        throw ArgumentError.notNull('connection');
+      }
+      await connection.close();
+    }
     _uvc.close(device);
     _device = null;
     _frame = null;
@@ -194,16 +208,14 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     );
   }
 
-  void _decode(UVCFrame frame) async {
-    _frame = frame;
-    _frames++;
-    notifyListeners();
-  }
-
   @override
   void dispose() {
     final device = _device;
     if (device != null) {
+      _uvc.stopStreaming(device);
+      if (Platform.isAndroid) {
+        _connection?.close();
+      }
       _uvc.close(device);
     }
     _fpsTimer.cancel();

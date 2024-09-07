@@ -1,16 +1,10 @@
 package dev.hebei.hybrid_uvc
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Rect
 import android.util.Log
-import android.view.SurfaceHolder
-import android.view.SurfaceView
-import android.view.View
 import io.flutter.plugin.common.StandardMessageCodec
 import io.flutter.plugin.platform.PlatformView
 import io.flutter.plugin.platform.PlatformViewFactory
-import kotlin.concurrent.thread
 
 
 object UVCViewFactory : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
