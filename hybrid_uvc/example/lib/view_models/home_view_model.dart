@@ -41,56 +41,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     if (_device != null) {
       throw StateError('Streaming.');
     }
-    final UVCDevice device;
-    if (Platform.isAndroid) {
-      final usbManager = USBManager();
-      final usbDevices = await usbManager.getDevices();
-      USBDevice? usbDevice;
-      for (var value in usbDevices.values) {
-        final deviceClass = await value.getDeviceClass();
-        if (deviceClass != USBConstants.usbClassVideo) {
-          continue;
-        }
-        final vid = await value.getVendorId();
-        final pid = await value.getProductId();
-        final sn = await value.getSerialNumber();
-        final manufacturer = value.getManufacturerName();
-        final product = value.getProductName();
-        logger.info(
-            'usbDevice: VId $vid, PId $pid, SN $sn, Manufacturer $manufacturer, Product $product.');
-        usbDevice = value;
-        break;
-      }
-      if (usbDevice == null) {
-        throw ArgumentError.notNull('usbDevice');
-      }
-      // UVC need CAMERA is authorized.
-      var cameraAuthorized = await Permission.camera.isGranted;
-      if (!cameraAuthorized) {
-        final status = await Permission.camera.request();
-        cameraAuthorized = status == PermissionStatus.granted;
-      }
-      if (!cameraAuthorized) {
-        throw StateError('Camera is unauthorized.');
-      }
-      var usbAuthorized = await usbManager.hasDevicePermission(usbDevice);
-      if (!usbAuthorized) {
-        usbAuthorized = await usbManager.requestDevicePermission(usbDevice);
-      }
-      if (!usbAuthorized) {
-        throw StateError('USB is unauthorized.');
-      }
-      final connection = await usbManager.openDevice(usbDevice);
-      final fileDescriptor = await connection.getFileDescriptor();
-      device = _uvc.wrap(fileDescriptor);
-      _connection = connection;
-    } else {
-      device = _uvc.findDevice();
-      final deviceDescriptor = _uvc.getDeviceDescriptor(device);
-      logger.info(
-          'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}.');
-      _uvc.open(device);
-    }
+    final device = await _findAndOpenDevice();
     final formatDescriptors = _uvc.getFormatDescriptors(device);
     for (var formatDescriptor in formatDescriptors) {
       logger.info('formatDescriptor: ${formatDescriptor.subtype}');
@@ -220,5 +171,71 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     }
     _fpsTimer.cancel();
     super.dispose();
+  }
+
+  Future<UVCDevice> _findAndOpenDevice() async {
+    if (Platform.isAndroid) {
+      final usbManager = USBManager();
+      final devices = await usbManager.getDevices();
+      USBDevice? device;
+      for (var value in devices.values) {
+        final deviceClass = await value.getDeviceClass();
+        if (deviceClass == USBConstants.usbClassVideo) {
+          device = value;
+          break;
+        } else if (deviceClass == USBConstants.usbClassMisc) {
+          final interfaceCount = await value.getInterfaceCount();
+          for (var i = 0; i < interfaceCount; i++) {
+            final interface = await value.getInterface(i);
+            final interfaceClass = await interface.getInterfaceClass();
+            if (interfaceClass != USBConstants.usbClassVideo) {
+              continue;
+            }
+            device = value;
+            break;
+          }
+          if (device != null) {
+            break;
+          }
+        }
+      }
+      if (device == null) {
+        throw ArgumentError.notNull('device');
+      }
+      // UVC need CAMERA is authorized.
+      var cameraAuthorized = await Permission.camera.isGranted;
+      if (!cameraAuthorized) {
+        final status = await Permission.camera.request();
+        cameraAuthorized = status == PermissionStatus.granted;
+      }
+      if (!cameraAuthorized) {
+        throw StateError('Camera is unauthorized.');
+      }
+      var usbAuthorized = await usbManager.hasDevicePermission(device);
+      if (!usbAuthorized) {
+        usbAuthorized = await usbManager.requestDevicePermission(device);
+      }
+      if (!usbAuthorized) {
+        throw StateError('USB is unauthorized.');
+      }
+      final vid = await device.getVendorId();
+      final pid = await device.getProductId();
+      final sn = await device.getSerialNumber();
+      final manufacturer = await device.getManufacturerName();
+      final product = await device.getProductName();
+      logger.info(
+          'device: VId $vid, PId $pid, SN $sn, Manufacturer $manufacturer, Product $product.');
+      final connection = await usbManager.openDevice(device);
+      final fileDescriptor = await connection.getFileDescriptor();
+      _connection = connection;
+      return _uvc.wrap(fileDescriptor);
+    } else {
+      final device = _uvc.findDevice();
+      final deviceDescriptor = _uvc.getDeviceDescriptor(device);
+      logger.info(
+          'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}.');
+      _uvc.open(device);
+      return device;
+    }
   }
 }
