@@ -32,7 +32,7 @@ class HomeView extends StatelessWidget {
                       fpsVisible: true,
                       fpsStyle:
                           Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: Colors.green,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                     ),
             ),

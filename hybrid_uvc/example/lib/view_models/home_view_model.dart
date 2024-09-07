@@ -9,7 +9,6 @@ import 'package:usb/usb.dart';
 
 final class HomeViewModel extends ViewModel with TypeLogger {
   final UVC _uvc;
-  final USBManager _usbManager;
   UVCDevice? _device;
   UVCStreamControl? _control;
   UVCZoomRelative? _zoomRelative;
@@ -20,7 +19,6 @@ final class HomeViewModel extends ViewModel with TypeLogger {
 
   HomeViewModel()
       : _uvc = UVC(),
-        _usbManager = USBManager(),
         _frames = 0,
         _fps = 0 {
     _fpsTimer = Timer.periodic(
@@ -44,52 +42,50 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     }
     final UVCDevice device;
     if (Platform.isAndroid) {
-      var isCameraGranted = await Permission.camera.isGranted;
-      if (!isCameraGranted) {
-        final status = await Permission.camera.request();
-        isCameraGranted = status == PermissionStatus.granted;
-      }
-      if (!isCameraGranted) {
-        throw StateError('No Permission.');
-      }
+      final usbManager = USBManager();
       USBDevice? usbDevice;
-      final usbDevices = await _usbManager.getDevices();
-      for (var value in usbDevices.values) {
-        var hasPermission = await _usbManager.hasDevicePermission(value);
-        if (!hasPermission) {
-          hasPermission = await _usbManager.requestDevicePermission(value);
-        }
-        final vid = await value.getVendorId();
-        final pid = await value.getProductId();
-        final sn = await value.getSerialNumber();
-        final manufacturerName = await value.getManufacturerName();
-        final productName = await value.getProductName();
-        final deviceName = await value.getDeviceName();
-        final deviceProtocol = await value.getDeviceProtocol();
-        final deviceClass = await value.getDeviceClass();
-        final deviceSubClass = await value.getDeviceSubClass();
-        logger.info(
-            'vid $vid, pid $pid, sn $sn, manufacturerName $manufacturerName, productName $productName, deviceName $deviceName, deviceProtocol $deviceProtocol, deviceClass $deviceClass, deviceSubClass $deviceSubClass.');
+      final usbDevices = await usbManager.getDevices();
+      for (var item in usbDevices.values) {
+        final vid = await item.getVendorId();
+        final pid = await item.getProductId();
+        final sn = await item.getSerialNumber();
+        final manufacturer = item.getManufacturerName();
+        final product = item.getProductName();
         if (vid != 0x0EDC || pid != 0x3080) {
           continue;
         }
-        if (!hasPermission) {
-          throw StateError('No Permission.');
-        }
-        usbDevice = value;
+        logger.info(
+            'usbDevice: VId $vid, PId $pid, SN $sn, Manufacturer $manufacturer, Product $product.');
+        usbDevice = item;
         break;
       }
       if (usbDevice == null) {
         throw ArgumentError.notNull('usbDevice');
       }
-      final connection = await _usbManager.openDevice(usbDevice);
+      // UVC need CAMERA is authorized.
+      var cameraAuthorized = await Permission.camera.isGranted;
+      if (!cameraAuthorized) {
+        final status = await Permission.camera.request();
+        cameraAuthorized = status == PermissionStatus.granted;
+      }
+      if (!cameraAuthorized) {
+        throw StateError('Camera is unauthorized.');
+      }
+      var usbAuthorized = await usbManager.hasDevicePermission(usbDevice);
+      if (!usbAuthorized) {
+        usbAuthorized = await usbManager.requestDevicePermission(usbDevice);
+      }
+      if (!usbAuthorized) {
+        throw StateError('USB is unauthorized.');
+      }
+      final connection = await usbManager.openDevice(usbDevice);
       final fileDescriptor = await connection.getFileDescriptor();
       device = _uvc.wrap(fileDescriptor);
     } else {
       device = _uvc.findDevice();
       final deviceDescriptor = _uvc.getDeviceDescriptor(device);
       logger.info(
-          'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}');
+          'deviceDescriptor: VId ${deviceDescriptor.vid}, PId ${deviceDescriptor.pid}, SN ${deviceDescriptor.sn}, Manufacturer ${deviceDescriptor.manufacturer}, Product ${deviceDescriptor.product}.');
       _uvc.open(device);
     }
     final formatDescriptors = _uvc.getFormatDescriptors(device);
@@ -169,6 +165,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
     _uvc.stopStreaming(device);
     _uvc.close(device);
     _device = null;
+    _frame = null;
     _fps = _frames = 0;
     notifyListeners();
   }

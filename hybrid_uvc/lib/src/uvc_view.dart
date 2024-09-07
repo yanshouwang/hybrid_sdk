@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -30,17 +32,20 @@ class UVCView extends StatefulWidget with TypeLogger {
 }
 
 class _UVCViewState extends State<UVCView> {
-  int? _id;
-  late int _frames;
+  late final ValueNotifier<ui.Image?> _image;
   late final ValueNotifier<int> _fps;
   late final Timer _fpsTimer;
+
+  int? _id;
+  int _frames = 0;
+  bool _decoding = false;
 
   Logger get logger => widget.logger;
 
   @override
   void initState() {
     super.initState();
-    _frames = 0;
+    _image = ValueNotifier(null);
     _fps = ValueNotifier(0);
     _fpsTimer = Timer.periodic(
       const Duration(seconds: 1),
@@ -57,8 +62,6 @@ class _UVCViewState extends State<UVCView> {
 
   @override
   Widget build(BuildContext context) {
-    final frame = widget.frame;
-    final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
     return ValueListenableBuilder(
       valueListenable: _fps,
       builder: (context, fps, child) {
@@ -67,10 +70,45 @@ class _UVCViewState extends State<UVCView> {
             fps: widget.fpsVisible ? fps : null,
             style: widget.fpsStyle,
           ),
+          position: DecorationPosition.foreground,
           child: child,
         );
       },
-      child: FittedBox(
+      child: _buildFrame(context),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant UVCView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final logLevel = widget.logLevel;
+    if (logLevel != oldWidget.logLevel) {
+      _updateLogLevel(logLevel);
+    }
+    final id = _id;
+    final frame = widget.frame;
+    if (frame != oldWidget.frame) {
+      if (Platform.isAndroid && id != null) {
+        _updateNativeMemory(id, frame);
+      } else {
+        _updateImage(frame);
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _fpsTimer.cancel();
+    _image.dispose();
+    _fps.dispose();
+    super.dispose();
+  }
+
+  Widget _buildFrame(BuildContext context) {
+    final frame = widget.frame;
+    final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+    if (Platform.isAndroid) {
+      return FittedBox(
         fit: widget.fit,
         child: SizedBox(
           width: frame.width / devicePixelRatio,
@@ -98,21 +136,46 @@ class _UVCViewState extends State<UVCView> {
             },
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      // TODO: use `PlatformView` instead of `RawImage`.
+      return ValueListenableBuilder(
+        valueListenable: _image,
+        builder: (context, image, child) {
+          return RawImage(
+            image: image,
+            width: frame.width / devicePixelRatio,
+            height: frame.height / devicePixelRatio,
+            fit: widget.fit,
+          );
+        },
+      );
+    }
   }
 
-  @override
-  void didUpdateWidget(covariant UVCView oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    final id = _id;
-    final frame = widget.frame;
-    if (id != null && frame != oldWidget.frame) {
-      _updateNativeMemory(id, frame);
-    }
-    final logLevel = widget.logLevel;
-    if (logLevel != oldWidget.logLevel) {
-      _updateLogLevel(logLevel);
+  AndroidViewController _initHybridAndroidView(
+    PlatformViewCreationParams params, {
+    required bool hybridComposition,
+    TextDirection layoutDirection = TextDirection.ltr,
+    dynamic creationParams,
+    MessageCodec<dynamic>? creationParamsCodec,
+  }) {
+    if (hybridComposition) {
+      return PlatformViewsService.initExpensiveAndroidView(
+        id: params.id,
+        viewType: params.viewType,
+        layoutDirection: layoutDirection,
+        creationParams: creationParams,
+        creationParamsCodec: creationParamsCodec,
+      );
+    } else {
+      return PlatformViewsService.initSurfaceAndroidView(
+        id: params.id,
+        viewType: params.viewType,
+        layoutDirection: layoutDirection,
+        creationParams: creationParams,
+        creationParamsCodec: creationParamsCodec,
+      );
     }
   }
 
@@ -121,7 +184,6 @@ class _UVCViewState extends State<UVCView> {
   }
 
   void _updateNativeMemory(int id, UVCFrame frame) async {
-    final stopwatch = Stopwatch()..start();
     final view = jni.UVCViewFactory.INSTANCE.retrieve(id);
     var memory = view.getMemory();
     if (!memory.isNull) {
@@ -131,40 +193,29 @@ class _UVCViewState extends State<UVCView> {
     final memroy = frame.data.toJArray();
     view.setMemory(memroy);
     _frames++;
-    stopwatch.stop();
   }
 
-  @override
-  void dispose() {
-    _fpsTimer.cancel();
-    _fps.dispose();
-    super.dispose();
-  }
-}
-
-AndroidViewController _initHybridAndroidView(
-  PlatformViewCreationParams params, {
-  required bool hybridComposition,
-  TextDirection layoutDirection = TextDirection.ltr,
-  dynamic creationParams,
-  MessageCodec<dynamic>? creationParamsCodec,
-}) {
-  if (hybridComposition) {
-    return PlatformViewsService.initExpensiveAndroidView(
-      id: params.id,
-      viewType: params.viewType,
-      layoutDirection: layoutDirection,
-      creationParams: creationParams,
-      creationParamsCodec: creationParamsCodec,
-    );
-  } else {
-    return PlatformViewsService.initSurfaceAndroidView(
-      id: params.id,
-      viewType: params.viewType,
-      layoutDirection: layoutDirection,
-      creationParams: creationParams,
-      creationParamsCodec: creationParamsCodec,
-    );
+  void _updateImage(UVCFrame frame) async {
+    if (_decoding) {
+      logger.warning('UVC frame dropped.');
+      return;
+    }
+    _decoding = true;
+    try {
+      final buffer = await ui.ImmutableBuffer.fromUint8List(frame.data);
+      final descriptor = await ui.ImageDescriptor.encoded(buffer);
+      final codec = await descriptor.instantiateCodec(
+        targetWidth: frame.width,
+        targetHeight: frame.height,
+      );
+      final info = await codec.getNextFrame();
+      _image.value = info.image;
+      _frames++;
+    } catch (e) {
+      logger.warning('Decode image failed, $e');
+    } finally {
+      _decoding = false;
+    }
   }
 }
 
