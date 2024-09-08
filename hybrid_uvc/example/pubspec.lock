@@ -128,7 +128,7 @@ packages:
       path: "../../hybrid_jpeg"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.1-dev.0"
   hybrid_logging:
     dependency: "direct main"
     description:
@@ -143,14 +143,14 @@ packages:
       path: "../../hybrid_usb"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.1-dev.0"
   hybrid_uvc:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.1-dev.0"
   integration_test:
     dependency: "direct dev"
     description: flutter

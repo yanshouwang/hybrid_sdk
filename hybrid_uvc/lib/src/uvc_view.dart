@@ -223,7 +223,7 @@ final class _FPSDecoration extends Decoration {
   final int? fps;
   final TextStyle? style;
 
-  _FPSDecoration({
+  const _FPSDecoration({
     required this.fps,
     this.style,
   });
