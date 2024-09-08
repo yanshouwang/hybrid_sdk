@@ -30,14 +30,14 @@ flutter:
       android:
         package: dev.hebei.hybrid_jpeg
         pluginClass: HybridJpegPlugin
-      ios:
-        pluginClass: HybridJpegPlugin
+      # ios:
+      #   pluginClass: HybridJpegPlugin
       linux:
         pluginClass: HybridJpegPlugin
-      macos:
-        pluginClass: HybridJpegPlugin
-      windows:
-        pluginClass: HybridJpegPluginCApi
-      web:
-        pluginClass: HybridJpegWeb
-        fileName: hybrid_jpeg_web.dart
+      # macos:
+      #   pluginClass: HybridJpegPlugin
+      # windows:
+      #   pluginClass: HybridJpegPluginCApi
+      # web:
+      #   pluginClass: HybridJpegWeb
+      #   fileName: hybrid_jpeg_web.dart

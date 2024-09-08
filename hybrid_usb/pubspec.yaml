@@ -30,14 +30,14 @@ flutter:
       android:
         package: dev.hebei.hybrid_usb
         pluginClass: HybridUsbPlugin
-      ios:
-        pluginClass: HybridUsbPlugin
+      # ios:
+      #   pluginClass: HybridUsbPlugin
       linux:
         pluginClass: HybridUsbPlugin
-      macos:
-        pluginClass: HybridUsbPlugin
-      windows:
-        pluginClass: HybridUsbPluginCApi
-      web:
-        pluginClass: HybridUsbWeb
-        fileName: hybrid_usb_web.dart
+      # macos:
+      #   pluginClass: HybridUsbPlugin
+      # windows:
+      #   pluginClass: HybridUsbPluginCApi
+      # web:
+      #   pluginClass: HybridUsbWeb
+      #   fileName: hybrid_usb_web.dart

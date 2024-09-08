@@ -125,9 +125,10 @@ packages:
   hybrid_jpeg:
     dependency: transitive
     description:
-      path: "../../hybrid_jpeg"
-      relative: true
-    source: path
+      name: hybrid_jpeg
+      sha256: "31df846eac31fba18f7b24d3201e08a5ea591c3077b5ef913b5119abe10fa12b"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1-dev.0"
   hybrid_logging:
     dependency: "direct main"
@@ -140,9 +141,10 @@ packages:
   hybrid_usb:
     dependency: transitive
     description:
-      path: "../../hybrid_usb"
-      relative: true
-    source: path
+      name: hybrid_usb
+      sha256: aeb8b5e2f9845b8cb5a2b26821dde5ad88069a3e9b83a7f76bd19ed8cc69b294
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1-dev.0"
   hybrid_uvc:
     dependency: "direct main"
