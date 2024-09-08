@@ -1,0 +1,5 @@
+build/
+out/
+
+android/libs/
+android/obj/

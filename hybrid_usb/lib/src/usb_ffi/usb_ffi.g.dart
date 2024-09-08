@@ -137,10 +137,10 @@ class LibUSB {
       _libusb_has_capabilityPtr.asFunction<int Function(int)>();
 
   ffi.Pointer<ffi.Char> libusb_error_name(
-    int error_code,
+    int errcode,
   ) {
     return _libusb_error_name(
-      error_code,
+      errcode,
     );
   }
 
@@ -534,57 +534,6 @@ class LibUSB {
       _libusb_free_ss_usb_device_capability_descriptorPtr.asFunction<
           void Function(
               ffi.Pointer<libusb_ss_usb_device_capability_descriptor>)>();
-
-  int libusb_get_ssplus_usb_device_capability_descriptor(
-    ffi.Pointer<libusb_context> ctx,
-    ffi.Pointer<libusb_bos_dev_capability_descriptor> dev_cap,
-    ffi.Pointer<ffi.Pointer<libusb_ssplus_usb_device_capability_descriptor>>
-        ssplus_usb_device_cap,
-  ) {
-    return _libusb_get_ssplus_usb_device_capability_descriptor(
-      ctx,
-      dev_cap,
-      ssplus_usb_device_cap,
-    );
-  }
-
-  late final _libusb_get_ssplus_usb_device_capability_descriptorPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Int Function(
-                  ffi.Pointer<libusb_context>,
-                  ffi.Pointer<libusb_bos_dev_capability_descriptor>,
-                  ffi.Pointer<
-                      ffi.Pointer<
-                          libusb_ssplus_usb_device_capability_descriptor>>)>>(
-      'libusb_get_ssplus_usb_device_capability_descriptor');
-  late final _libusb_get_ssplus_usb_device_capability_descriptor =
-      _libusb_get_ssplus_usb_device_capability_descriptorPtr.asFunction<
-          int Function(
-              ffi.Pointer<libusb_context>,
-              ffi.Pointer<libusb_bos_dev_capability_descriptor>,
-              ffi.Pointer<
-                  ffi
-                  .Pointer<libusb_ssplus_usb_device_capability_descriptor>>)>();
-
-  void libusb_free_ssplus_usb_device_capability_descriptor(
-    ffi.Pointer<libusb_ssplus_usb_device_capability_descriptor>
-        ssplus_usb_device_cap,
-  ) {
-    return _libusb_free_ssplus_usb_device_capability_descriptor(
-      ssplus_usb_device_cap,
-    );
-  }
-
-  late final _libusb_free_ssplus_usb_device_capability_descriptorPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Pointer<
-                      libusb_ssplus_usb_device_capability_descriptor>)>>(
-      'libusb_free_ssplus_usb_device_capability_descriptor');
-  late final _libusb_free_ssplus_usb_device_capability_descriptor =
-      _libusb_free_ssplus_usb_device_capability_descriptorPtr.asFunction<
-          void Function(
-              ffi.Pointer<libusb_ssplus_usb_device_capability_descriptor>)>();
 
   int libusb_get_container_id_descriptor(
     ffi.Pointer<libusb_context> ctx,
@@ -1354,7 +1303,7 @@ class LibUSB {
   /// sync I/O
   int libusb_control_transfer(
     ffi.Pointer<libusb_device_handle> dev_handle,
-    int bmRequestType,
+    int request_type,
     int bRequest,
     int wValue,
     int wIndex,
@@ -1364,7 +1313,7 @@ class LibUSB {
   ) {
     return _libusb_control_transfer(
       dev_handle,
-      bmRequestType,
+      request_type,
       bRequest,
       wValue,
       wIndex,
@@ -1394,7 +1343,7 @@ class LibUSB {
     int endpoint,
     ffi.Pointer<ffi.UnsignedChar> data,
     int length,
-    ffi.Pointer<ffi.Int> transferred,
+    ffi.Pointer<ffi.Int> actual_length,
     int timeout,
   ) {
     return _libusb_bulk_transfer(
@@ -1402,7 +1351,7 @@ class LibUSB {
       endpoint,
       data,
       length,
-      transferred,
+      actual_length,
       timeout,
     );
   }
@@ -1425,7 +1374,7 @@ class LibUSB {
     int endpoint,
     ffi.Pointer<ffi.UnsignedChar> data,
     int length,
-    ffi.Pointer<ffi.Int> transferred,
+    ffi.Pointer<ffi.Int> actual_length,
     int timeout,
   ) {
     return _libusb_interrupt_transfer(
@@ -1433,7 +1382,7 @@ class LibUSB {
       endpoint,
       data,
       length,
-      transferred,
+      actual_length,
       timeout,
     );
   }
@@ -2425,10 +2374,7 @@ enum libusb_bos_type {
   LIBUSB_BT_CONTAINER_ID(4),
 
   /// Platform descriptor
-  LIBUSB_BT_PLATFORM_DESCRIPTOR(5),
-
-  /// SuperSpeedPlus device capability
-  LIBUSB_BT_SUPERSPEED_PLUS_CAPABILITY(10);
+  LIBUSB_BT_PLATFORM_DESCRIPTOR(5);
 
   final int value;
   const libusb_bos_type(this.value);
@@ -2439,7 +2385,6 @@ enum libusb_bos_type {
         3 => LIBUSB_BT_SS_USB_DEVICE_CAPABILITY,
         4 => LIBUSB_BT_CONTAINER_ID,
         5 => LIBUSB_BT_PLATFORM_DESCRIPTOR,
-        10 => LIBUSB_BT_SUPERSPEED_PLUS_CAPABILITY,
         _ => throw ArgumentError("Unknown value for libusb_bos_type: $value"),
       };
 }
@@ -2881,132 +2826,6 @@ final class libusb_ss_usb_device_capability_descriptor extends ffi.Struct {
 }
 
 /// \ingroup libusb_desc
-/// enum used in \ref libusb_ssplus_sublink_attribute
-enum libusb_superspeedplus_sublink_attribute_sublink_type {
-  LIBUSB_SSPLUS_ATTR_TYPE_SYM(0),
-  LIBUSB_SSPLUS_ATTR_TYPE_ASYM(1);
-
-  final int value;
-  const libusb_superspeedplus_sublink_attribute_sublink_type(this.value);
-
-  static libusb_superspeedplus_sublink_attribute_sublink_type fromValue(
-          int value) =>
-      switch (value) {
-        0 => LIBUSB_SSPLUS_ATTR_TYPE_SYM,
-        1 => LIBUSB_SSPLUS_ATTR_TYPE_ASYM,
-        _ => throw ArgumentError(
-            "Unknown value for libusb_superspeedplus_sublink_attribute_sublink_type: $value"),
-      };
-}
-
-/// \ingroup libusb_desc
-/// enum used in \ref libusb_ssplus_sublink_attribute
-enum libusb_superspeedplus_sublink_attribute_sublink_direction {
-  LIBUSB_SSPLUS_ATTR_DIR_RX(0),
-  LIBUSB_SSPLUS_ATTR_DIR_TX(1);
-
-  final int value;
-  const libusb_superspeedplus_sublink_attribute_sublink_direction(this.value);
-
-  static libusb_superspeedplus_sublink_attribute_sublink_direction fromValue(
-          int value) =>
-      switch (value) {
-        0 => LIBUSB_SSPLUS_ATTR_DIR_RX,
-        1 => LIBUSB_SSPLUS_ATTR_DIR_TX,
-        _ => throw ArgumentError(
-            "Unknown value for libusb_superspeedplus_sublink_attribute_sublink_direction: $value"),
-      };
-}
-
-/// \ingroup libusb_desc
-/// enum used in \ref libusb_ssplus_sublink_attribute
-/// Bit   = Bits per second
-/// Kb = Kbps
-/// Mb = Mbps
-/// Gb = Gbps
-enum libusb_superspeedplus_sublink_attribute_exponent {
-  LIBUSB_SSPLUS_ATTR_EXP_BPS(0),
-  LIBUSB_SSPLUS_ATTR_EXP_KBS(1),
-  LIBUSB_SSPLUS_ATTR_EXP_MBS(2),
-  LIBUSB_SSPLUS_ATTR_EXP_GBS(3);
-
-  final int value;
-  const libusb_superspeedplus_sublink_attribute_exponent(this.value);
-
-  static libusb_superspeedplus_sublink_attribute_exponent fromValue(
-          int value) =>
-      switch (value) {
-        0 => LIBUSB_SSPLUS_ATTR_EXP_BPS,
-        1 => LIBUSB_SSPLUS_ATTR_EXP_KBS,
-        2 => LIBUSB_SSPLUS_ATTR_EXP_MBS,
-        3 => LIBUSB_SSPLUS_ATTR_EXP_GBS,
-        _ => throw ArgumentError(
-            "Unknown value for libusb_superspeedplus_sublink_attribute_exponent: $value"),
-      };
-}
-
-/// \ingroup libusb_desc
-/// enum used in \ref libusb_ssplus_sublink_attribute
-enum libusb_superspeedplus_sublink_attribute_link_protocol {
-  LIBUSB_SSPLUS_ATTR_PROT_SS(0),
-  LIBUSB_SSPLUS_ATTR_PROT_SSPLUS(1);
-
-  final int value;
-  const libusb_superspeedplus_sublink_attribute_link_protocol(this.value);
-
-  static libusb_superspeedplus_sublink_attribute_link_protocol fromValue(
-          int value) =>
-      switch (value) {
-        0 => LIBUSB_SSPLUS_ATTR_PROT_SS,
-        1 => LIBUSB_SSPLUS_ATTR_PROT_SSPLUS,
-        _ => throw ArgumentError(
-            "Unknown value for libusb_superspeedplus_sublink_attribute_link_protocol: $value"),
-      };
-}
-
-/// \ingroup libusb_desc
-/// Expose \ref libusb_ssplus_usb_device_capability_descriptor.sublinkSpeedAttributes
-final class libusb_ssplus_sublink_attribute extends ffi.Struct {
-  /// Sublink Speed Attribute ID (SSID).
-  /// This field is an ID that uniquely identifies the speed of this sublink
-  @ffi.Uint8()
-  external int ssid;
-
-  /// This field defines the
-  /// base 10 exponent times 3, that shall be applied to the
-  /// mantissa.
-  @ffi.UnsignedInt()
-  external int exponent;
-
-  /// This field identifies whether the
-  /// Sublink Speed Attribute defines a symmetric or
-  /// asymmetric bit rate.
-  @ffi.UnsignedInt()
-  external int type;
-
-  /// This field  indicates if this
-  /// Sublink Speed Attribute defines the receive or
-  /// transmit bit rate.
-  @ffi.UnsignedInt()
-  external int direction;
-
-  /// This field identifies the protocol
-  /// supported by the link.
-  @ffi.UnsignedInt()
-  external int protocol;
-
-  /// This field defines the mantissa that shall be applied to the exponent when
-  /// calculating the maximum bit rate.
-  @ffi.Uint16()
-  external int mantissa;
-}
-
-/// \ingroup libusb_desc
-/// A structure representing the SuperSpeedPlus descriptor
-/// This descriptor is documented in section 9.6.2.5 of the USB 3.1 specification.
-final class libusb_ssplus_usb_device_capability_descriptor extends ffi.Opaque {}
-
-/// \ingroup libusb_desc
 /// A structure representing the Container ID descriptor.
 /// This descriptor is documented in section 9.6.2.3 of the USB 3.0 specification.
 /// All multiple-byte fields, except UUIDs, are represented in host-endian format.
@@ -3124,10 +2943,7 @@ enum libusb_speed {
   LIBUSB_SPEED_SUPER(4),
 
   /// The device is operating at super speed plus (10000MBit/s).
-  LIBUSB_SPEED_SUPER_PLUS(5),
-
-  /// The device is operating at super speed plus x2 (20000MBit/s).
-  LIBUSB_SPEED_SUPER_PLUS_X2(6);
+  LIBUSB_SPEED_SUPER_PLUS(5);
 
   final int value;
   const libusb_speed(this.value);
@@ -3139,7 +2955,6 @@ enum libusb_speed {
         3 => LIBUSB_SPEED_HIGH,
         4 => LIBUSB_SPEED_SUPER,
         5 => LIBUSB_SPEED_SUPER_PLUS,
-        6 => LIBUSB_SPEED_SUPER_PLUS_X2,
         _ => throw ArgumentError("Unknown value for libusb_speed: $value"),
       };
 }
@@ -3570,25 +3385,22 @@ typedef Dartlibusb_log_cbFunction = void Function(
     ffi.Pointer<libusb_context> ctx,
     libusb_log_level level,
     ffi.Pointer<ffi.Char> str);
-typedef ssize_t = __darwin_ssize_t;
-typedef __darwin_ssize_t = ffi.Long;
-typedef Dart__darwin_ssize_t = int;
+typedef ssize_t = __ssize_t;
+typedef __ssize_t = ffi.Long;
+typedef Dart__ssize_t = int;
 
 final class timeval extends ffi.Struct {
-  /// seconds
-  @__darwin_time_t()
+  @__time_t()
   external int tv_sec;
 
-  /// and microseconds
-  @__darwin_suseconds_t()
+  @__suseconds_t()
   external int tv_usec;
 }
 
-typedef __darwin_time_t = ffi.Long;
-typedef Dart__darwin_time_t = int;
-typedef __darwin_suseconds_t = __int32_t;
-typedef __int32_t = ffi.Int;
-typedef Dart__int32_t = int;
+typedef __time_t = ffi.Long;
+typedef Dart__time_t = int;
+typedef __suseconds_t = ffi.Long;
+typedef Dart__suseconds_t = int;
 
 /// \ingroup libusb_poll
 /// File descriptor for polling
@@ -3752,13 +3564,9 @@ const int LIBUSB_DT_BOS_SIZE = 5;
 
 const int LIBUSB_DT_DEVICE_CAPABILITY_SIZE = 3;
 
-const int LIBUSB_DT_INTERFACE_ASSOCIATION_SIZE = 8;
-
 const int LIBUSB_BT_USB_2_0_EXTENSION_SIZE = 7;
 
 const int LIBUSB_BT_SS_USB_DEVICE_CAPABILITY_SIZE = 10;
-
-const int LIBUSB_BT_SSPLUS_USB_DEVICE_CAPABILITY_SIZE = 12;
 
 const int LIBUSB_BT_CONTAINER_ID_SIZE = 20;
 

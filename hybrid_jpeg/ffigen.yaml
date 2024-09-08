@@ -5,12 +5,12 @@ description: |
 output: 'lib/src/jpeg_ffi/jpeg_ffi.g.dart'
 headers:
   entry-points:
+    - 'src/include/hybrid_jpeg.h'
     - 'src/include/jconfig.h'
     - 'src/include/jerror.h'
     - 'src/include/jmorecfg.h'
     # - 'src/include/jpeglib.h'
     - 'src/include/turbojpeg.h'
-    - 'src/include/hybrid_jpeg.h'
   include-directives:
     - 'src/include/jconfig.h'
     - 'src/include/jerror.h'

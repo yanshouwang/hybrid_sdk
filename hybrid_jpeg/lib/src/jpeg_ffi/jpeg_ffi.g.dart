@@ -24,8 +24,1101 @@ class LibJPEG {
           lookup)
       : _lookup = lookup;
 
-  /// MCU block width (in pixels) for a given level of chrominance subsampling
-  ///
+  /// Default error-management setup
+  ffi.Pointer<jpeg_error_mgr> jpeg_std_error(
+    ffi.Pointer<jpeg_error_mgr> err,
+  ) {
+    return _jpeg_std_error(
+      err,
+    );
+  }
+
+  late final _jpeg_std_errorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<jpeg_error_mgr> Function(
+              ffi.Pointer<jpeg_error_mgr>)>>('jpeg_std_error');
+  late final _jpeg_std_error = _jpeg_std_errorPtr.asFunction<
+      ffi.Pointer<jpeg_error_mgr> Function(ffi.Pointer<jpeg_error_mgr>)>();
+
+  void jpeg_CreateCompress(
+    j_compress_ptr cinfo,
+    int version,
+    int structsize,
+  ) {
+    return _jpeg_CreateCompress(
+      cinfo,
+      version,
+      structsize,
+    );
+  }
+
+  late final _jpeg_CreateCompressPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              j_compress_ptr, ffi.Int, ffi.Size)>>('jpeg_CreateCompress');
+  late final _jpeg_CreateCompress = _jpeg_CreateCompressPtr
+      .asFunction<void Function(j_compress_ptr, int, int)>();
+
+  void jpeg_CreateDecompress(
+    j_decompress_ptr cinfo,
+    int version,
+    int structsize,
+  ) {
+    return _jpeg_CreateDecompress(
+      cinfo,
+      version,
+      structsize,
+    );
+  }
+
+  late final _jpeg_CreateDecompressPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              j_decompress_ptr, ffi.Int, ffi.Size)>>('jpeg_CreateDecompress');
+  late final _jpeg_CreateDecompress = _jpeg_CreateDecompressPtr
+      .asFunction<void Function(j_decompress_ptr, int, int)>();
+
+  /// Destruction of JPEG compression objects
+  void jpeg_destroy_compress(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_destroy_compress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_destroy_compressPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_destroy_compress');
+  late final _jpeg_destroy_compress =
+      _jpeg_destroy_compressPtr.asFunction<void Function(j_compress_ptr)>();
+
+  void jpeg_destroy_decompress(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_destroy_decompress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_destroy_decompressPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
+          'jpeg_destroy_decompress');
+  late final _jpeg_destroy_decompress =
+      _jpeg_destroy_decompressPtr.asFunction<void Function(j_decompress_ptr)>();
+
+  /// Standard data source and destination managers: stdio streams. */
+  /// /* Caller is responsible for opening the file before and closing after.
+  void jpeg_stdio_dest(
+    j_compress_ptr cinfo,
+    ffi.Pointer<FILE> outfile,
+  ) {
+    return _jpeg_stdio_dest(
+      cinfo,
+      outfile,
+    );
+  }
+
+  late final _jpeg_stdio_destPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              j_compress_ptr, ffi.Pointer<FILE>)>>('jpeg_stdio_dest');
+  late final _jpeg_stdio_dest = _jpeg_stdio_destPtr
+      .asFunction<void Function(j_compress_ptr, ffi.Pointer<FILE>)>();
+
+  void jpeg_stdio_src(
+    j_decompress_ptr cinfo,
+    ffi.Pointer<FILE> infile,
+  ) {
+    return _jpeg_stdio_src(
+      cinfo,
+      infile,
+    );
+  }
+
+  late final _jpeg_stdio_srcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              j_decompress_ptr, ffi.Pointer<FILE>)>>('jpeg_stdio_src');
+  late final _jpeg_stdio_src = _jpeg_stdio_srcPtr
+      .asFunction<void Function(j_decompress_ptr, ffi.Pointer<FILE>)>();
+
+  /// Data source and destination managers: memory buffers.
+  void jpeg_mem_dest(
+    j_compress_ptr cinfo,
+    ffi.Pointer<ffi.Pointer<ffi.UnsignedChar>> outbuffer,
+    ffi.Pointer<ffi.UnsignedLong> outsize,
+  ) {
+    return _jpeg_mem_dest(
+      cinfo,
+      outbuffer,
+      outsize,
+    );
+  }
+
+  late final _jpeg_mem_destPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              j_compress_ptr,
+              ffi.Pointer<ffi.Pointer<ffi.UnsignedChar>>,
+              ffi.Pointer<ffi.UnsignedLong>)>>('jpeg_mem_dest');
+  late final _jpeg_mem_dest = _jpeg_mem_destPtr.asFunction<
+      void Function(j_compress_ptr, ffi.Pointer<ffi.Pointer<ffi.UnsignedChar>>,
+          ffi.Pointer<ffi.UnsignedLong>)>();
+
+  void jpeg_mem_src(
+    j_decompress_ptr cinfo,
+    ffi.Pointer<ffi.UnsignedChar> inbuffer,
+    int insize,
+  ) {
+    return _jpeg_mem_src(
+      cinfo,
+      inbuffer,
+      insize,
+    );
+  }
+
+  late final _jpeg_mem_srcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_decompress_ptr, ffi.Pointer<ffi.UnsignedChar>,
+              ffi.UnsignedLong)>>('jpeg_mem_src');
+  late final _jpeg_mem_src = _jpeg_mem_srcPtr.asFunction<
+      void Function(j_decompress_ptr, ffi.Pointer<ffi.UnsignedChar>, int)>();
+
+  /// Default parameter setup for compression
+  void jpeg_set_defaults(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_set_defaults(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_set_defaultsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_set_defaults');
+  late final _jpeg_set_defaults =
+      _jpeg_set_defaultsPtr.asFunction<void Function(j_compress_ptr)>();
+
+  /// Compression parameter setup aids
+  void jpeg_set_colorspace(
+    j_compress_ptr cinfo,
+    J_COLOR_SPACE colorspace,
+  ) {
+    return _jpeg_set_colorspace(
+      cinfo,
+      colorspace.value,
+    );
+  }
+
+  late final _jpeg_set_colorspacePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.UnsignedInt)>>(
+      'jpeg_set_colorspace');
+  late final _jpeg_set_colorspace =
+      _jpeg_set_colorspacePtr.asFunction<void Function(j_compress_ptr, int)>();
+
+  void jpeg_default_colorspace(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_default_colorspace(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_default_colorspacePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_default_colorspace');
+  late final _jpeg_default_colorspace =
+      _jpeg_default_colorspacePtr.asFunction<void Function(j_compress_ptr)>();
+
+  void jpeg_set_quality(
+    j_compress_ptr cinfo,
+    int quality,
+    int force_baseline,
+  ) {
+    return _jpeg_set_quality(
+      cinfo,
+      quality,
+      force_baseline,
+    );
+  }
+
+  late final _jpeg_set_qualityPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int, boolean)>>(
+      'jpeg_set_quality');
+  late final _jpeg_set_quality = _jpeg_set_qualityPtr
+      .asFunction<void Function(j_compress_ptr, int, int)>();
+
+  void jpeg_set_linear_quality(
+    j_compress_ptr cinfo,
+    int scale_factor,
+    int force_baseline,
+  ) {
+    return _jpeg_set_linear_quality(
+      cinfo,
+      scale_factor,
+      force_baseline,
+    );
+  }
+
+  late final _jpeg_set_linear_qualityPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int, boolean)>>(
+      'jpeg_set_linear_quality');
+  late final _jpeg_set_linear_quality = _jpeg_set_linear_qualityPtr
+      .asFunction<void Function(j_compress_ptr, int, int)>();
+
+  void jpeg_add_quant_table(
+    j_compress_ptr cinfo,
+    int which_tbl,
+    ffi.Pointer<ffi.UnsignedInt> basic_table,
+    int scale_factor,
+    int force_baseline,
+  ) {
+    return _jpeg_add_quant_table(
+      cinfo,
+      which_tbl,
+      basic_table,
+      scale_factor,
+      force_baseline,
+    );
+  }
+
+  late final _jpeg_add_quant_tablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              j_compress_ptr,
+              ffi.Int,
+              ffi.Pointer<ffi.UnsignedInt>,
+              ffi.Int,
+              boolean)>>('jpeg_add_quant_table');
+  late final _jpeg_add_quant_table = _jpeg_add_quant_tablePtr.asFunction<
+      void Function(
+          j_compress_ptr, int, ffi.Pointer<ffi.UnsignedInt>, int, int)>();
+
+  int jpeg_quality_scaling(
+    int quality,
+  ) {
+    return _jpeg_quality_scaling(
+      quality,
+    );
+  }
+
+  late final _jpeg_quality_scalingPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
+          'jpeg_quality_scaling');
+  late final _jpeg_quality_scaling =
+      _jpeg_quality_scalingPtr.asFunction<int Function(int)>();
+
+  void jpeg_enable_lossless(
+    j_compress_ptr cinfo,
+    int predictor_selection_value,
+    int point_transform,
+  ) {
+    return _jpeg_enable_lossless(
+      cinfo,
+      predictor_selection_value,
+      point_transform,
+    );
+  }
+
+  late final _jpeg_enable_losslessPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int, ffi.Int)>>(
+      'jpeg_enable_lossless');
+  late final _jpeg_enable_lossless = _jpeg_enable_losslessPtr
+      .asFunction<void Function(j_compress_ptr, int, int)>();
+
+  void jpeg_simple_progression(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_simple_progression(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_simple_progressionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_simple_progression');
+  late final _jpeg_simple_progression =
+      _jpeg_simple_progressionPtr.asFunction<void Function(j_compress_ptr)>();
+
+  void jpeg_suppress_tables(
+    j_compress_ptr cinfo,
+    int suppress,
+  ) {
+    return _jpeg_suppress_tables(
+      cinfo,
+      suppress,
+    );
+  }
+
+  late final _jpeg_suppress_tablesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr, boolean)>>(
+          'jpeg_suppress_tables');
+  late final _jpeg_suppress_tables =
+      _jpeg_suppress_tablesPtr.asFunction<void Function(j_compress_ptr, int)>();
+
+  ffi.Pointer<JQUANT_TBL> jpeg_alloc_quant_table(
+    j_common_ptr cinfo,
+  ) {
+    return _jpeg_alloc_quant_table(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_alloc_quant_tablePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<JQUANT_TBL> Function(j_common_ptr)>>(
+      'jpeg_alloc_quant_table');
+  late final _jpeg_alloc_quant_table = _jpeg_alloc_quant_tablePtr
+      .asFunction<ffi.Pointer<JQUANT_TBL> Function(j_common_ptr)>();
+
+  ffi.Pointer<JHUFF_TBL> jpeg_alloc_huff_table(
+    j_common_ptr cinfo,
+  ) {
+    return _jpeg_alloc_huff_table(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_alloc_huff_tablePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<JHUFF_TBL> Function(j_common_ptr)>>(
+      'jpeg_alloc_huff_table');
+  late final _jpeg_alloc_huff_table = _jpeg_alloc_huff_tablePtr
+      .asFunction<ffi.Pointer<JHUFF_TBL> Function(j_common_ptr)>();
+
+  /// Main entry points for compression
+  void jpeg_start_compress(
+    j_compress_ptr cinfo,
+    int write_all_tables,
+  ) {
+    return _jpeg_start_compress(
+      cinfo,
+      write_all_tables,
+    );
+  }
+
+  late final _jpeg_start_compressPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr, boolean)>>(
+          'jpeg_start_compress');
+  late final _jpeg_start_compress =
+      _jpeg_start_compressPtr.asFunction<void Function(j_compress_ptr, int)>();
+
+  int jpeg_write_scanlines(
+    j_compress_ptr cinfo,
+    JSAMPARRAY scanlines,
+    int num_lines,
+  ) {
+    return _jpeg_write_scanlines(
+      cinfo,
+      scanlines,
+      num_lines,
+    );
+  }
+
+  late final _jpeg_write_scanlinesPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(
+              j_compress_ptr, JSAMPARRAY, JDIMENSION)>>('jpeg_write_scanlines');
+  late final _jpeg_write_scanlines = _jpeg_write_scanlinesPtr
+      .asFunction<int Function(j_compress_ptr, JSAMPARRAY, int)>();
+
+  int jpeg12_write_scanlines(
+    j_compress_ptr cinfo,
+    J12SAMPARRAY scanlines,
+    int num_lines,
+  ) {
+    return _jpeg12_write_scanlines(
+      cinfo,
+      scanlines,
+      num_lines,
+    );
+  }
+
+  late final _jpeg12_write_scanlinesPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_compress_ptr, J12SAMPARRAY,
+              JDIMENSION)>>('jpeg12_write_scanlines');
+  late final _jpeg12_write_scanlines = _jpeg12_write_scanlinesPtr
+      .asFunction<int Function(j_compress_ptr, J12SAMPARRAY, int)>();
+
+  int jpeg16_write_scanlines(
+    j_compress_ptr cinfo,
+    J16SAMPARRAY scanlines,
+    int num_lines,
+  ) {
+    return _jpeg16_write_scanlines(
+      cinfo,
+      scanlines,
+      num_lines,
+    );
+  }
+
+  late final _jpeg16_write_scanlinesPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_compress_ptr, J16SAMPARRAY,
+              JDIMENSION)>>('jpeg16_write_scanlines');
+  late final _jpeg16_write_scanlines = _jpeg16_write_scanlinesPtr
+      .asFunction<int Function(j_compress_ptr, J16SAMPARRAY, int)>();
+
+  void jpeg_finish_compress(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_finish_compress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_finish_compressPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_finish_compress');
+  late final _jpeg_finish_compress =
+      _jpeg_finish_compressPtr.asFunction<void Function(j_compress_ptr)>();
+
+  /// Replaces jpeg_write_scanlines when writing raw downsampled data.
+  int jpeg_write_raw_data(
+    j_compress_ptr cinfo,
+    JSAMPIMAGE data,
+    int num_lines,
+  ) {
+    return _jpeg_write_raw_data(
+      cinfo,
+      data,
+      num_lines,
+    );
+  }
+
+  late final _jpeg_write_raw_dataPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(
+              j_compress_ptr, JSAMPIMAGE, JDIMENSION)>>('jpeg_write_raw_data');
+  late final _jpeg_write_raw_data = _jpeg_write_raw_dataPtr
+      .asFunction<int Function(j_compress_ptr, JSAMPIMAGE, int)>();
+
+  int jpeg12_write_raw_data(
+    j_compress_ptr cinfo,
+    J12SAMPIMAGE data,
+    int num_lines,
+  ) {
+    return _jpeg12_write_raw_data(
+      cinfo,
+      data,
+      num_lines,
+    );
+  }
+
+  late final _jpeg12_write_raw_dataPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_compress_ptr, J12SAMPIMAGE,
+              JDIMENSION)>>('jpeg12_write_raw_data');
+  late final _jpeg12_write_raw_data = _jpeg12_write_raw_dataPtr
+      .asFunction<int Function(j_compress_ptr, J12SAMPIMAGE, int)>();
+
+  /// Write a special marker.  See libjpeg.txt concerning safe usage.
+  void jpeg_write_marker(
+    j_compress_ptr cinfo,
+    int marker,
+    ffi.Pointer<JOCTET> dataptr,
+    int datalen,
+  ) {
+    return _jpeg_write_marker(
+      cinfo,
+      marker,
+      dataptr,
+      datalen,
+    );
+  }
+
+  late final _jpeg_write_markerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_compress_ptr, ffi.Int, ffi.Pointer<JOCTET>,
+              ffi.UnsignedInt)>>('jpeg_write_marker');
+  late final _jpeg_write_marker = _jpeg_write_markerPtr.asFunction<
+      void Function(j_compress_ptr, int, ffi.Pointer<JOCTET>, int)>();
+
+  /// Same, but piecemeal.
+  void jpeg_write_m_header(
+    j_compress_ptr cinfo,
+    int marker,
+    int datalen,
+  ) {
+    return _jpeg_write_m_header(
+      cinfo,
+      marker,
+      datalen,
+    );
+  }
+
+  late final _jpeg_write_m_headerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_compress_ptr, ffi.Int,
+              ffi.UnsignedInt)>>('jpeg_write_m_header');
+  late final _jpeg_write_m_header = _jpeg_write_m_headerPtr
+      .asFunction<void Function(j_compress_ptr, int, int)>();
+
+  void jpeg_write_m_byte(
+    j_compress_ptr cinfo,
+    int val,
+  ) {
+    return _jpeg_write_m_byte(
+      cinfo,
+      val,
+    );
+  }
+
+  late final _jpeg_write_m_bytePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int)>>(
+          'jpeg_write_m_byte');
+  late final _jpeg_write_m_byte =
+      _jpeg_write_m_bytePtr.asFunction<void Function(j_compress_ptr, int)>();
+
+  /// Alternate compression function: just write an abbreviated table file
+  void jpeg_write_tables(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_write_tables(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_write_tablesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_write_tables');
+  late final _jpeg_write_tables =
+      _jpeg_write_tablesPtr.asFunction<void Function(j_compress_ptr)>();
+
+  /// Write ICC profile.  See libjpeg.txt for usage information.
+  void jpeg_write_icc_profile(
+    j_compress_ptr cinfo,
+    ffi.Pointer<JOCTET> icc_data_ptr,
+    int icc_data_len,
+  ) {
+    return _jpeg_write_icc_profile(
+      cinfo,
+      icc_data_ptr,
+      icc_data_len,
+    );
+  }
+
+  late final _jpeg_write_icc_profilePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_compress_ptr, ffi.Pointer<JOCTET>,
+              ffi.UnsignedInt)>>('jpeg_write_icc_profile');
+  late final _jpeg_write_icc_profile = _jpeg_write_icc_profilePtr
+      .asFunction<void Function(j_compress_ptr, ffi.Pointer<JOCTET>, int)>();
+
+  /// Decompression startup: read start of JPEG datastream to see what's there
+  int jpeg_read_header(
+    j_decompress_ptr cinfo,
+    int require_image,
+  ) {
+    return _jpeg_read_header(
+      cinfo,
+      require_image,
+    );
+  }
+
+  late final _jpeg_read_headerPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(j_decompress_ptr, boolean)>>(
+          'jpeg_read_header');
+  late final _jpeg_read_header =
+      _jpeg_read_headerPtr.asFunction<int Function(j_decompress_ptr, int)>();
+
+  /// Main entry points for decompression
+  int jpeg_start_decompress(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_start_decompress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_start_decompressPtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
+          'jpeg_start_decompress');
+  late final _jpeg_start_decompress =
+      _jpeg_start_decompressPtr.asFunction<int Function(j_decompress_ptr)>();
+
+  int jpeg_read_scanlines(
+    j_decompress_ptr cinfo,
+    JSAMPARRAY scanlines,
+    int max_lines,
+  ) {
+    return _jpeg_read_scanlines(
+      cinfo,
+      scanlines,
+      max_lines,
+    );
+  }
+
+  late final _jpeg_read_scanlinesPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_decompress_ptr, JSAMPARRAY,
+              JDIMENSION)>>('jpeg_read_scanlines');
+  late final _jpeg_read_scanlines = _jpeg_read_scanlinesPtr
+      .asFunction<int Function(j_decompress_ptr, JSAMPARRAY, int)>();
+
+  int jpeg12_read_scanlines(
+    j_decompress_ptr cinfo,
+    J12SAMPARRAY scanlines,
+    int max_lines,
+  ) {
+    return _jpeg12_read_scanlines(
+      cinfo,
+      scanlines,
+      max_lines,
+    );
+  }
+
+  late final _jpeg12_read_scanlinesPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_decompress_ptr, J12SAMPARRAY,
+              JDIMENSION)>>('jpeg12_read_scanlines');
+  late final _jpeg12_read_scanlines = _jpeg12_read_scanlinesPtr
+      .asFunction<int Function(j_decompress_ptr, J12SAMPARRAY, int)>();
+
+  int jpeg16_read_scanlines(
+    j_decompress_ptr cinfo,
+    J16SAMPARRAY scanlines,
+    int max_lines,
+  ) {
+    return _jpeg16_read_scanlines(
+      cinfo,
+      scanlines,
+      max_lines,
+    );
+  }
+
+  late final _jpeg16_read_scanlinesPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_decompress_ptr, J16SAMPARRAY,
+              JDIMENSION)>>('jpeg16_read_scanlines');
+  late final _jpeg16_read_scanlines = _jpeg16_read_scanlinesPtr
+      .asFunction<int Function(j_decompress_ptr, J16SAMPARRAY, int)>();
+
+  int jpeg_skip_scanlines(
+    j_decompress_ptr cinfo,
+    int num_lines,
+  ) {
+    return _jpeg_skip_scanlines(
+      cinfo,
+      num_lines,
+    );
+  }
+
+  late final _jpeg_skip_scanlinesPtr = _lookup<
+          ffi
+          .NativeFunction<JDIMENSION Function(j_decompress_ptr, JDIMENSION)>>(
+      'jpeg_skip_scanlines');
+  late final _jpeg_skip_scanlines =
+      _jpeg_skip_scanlinesPtr.asFunction<int Function(j_decompress_ptr, int)>();
+
+  int jpeg12_skip_scanlines(
+    j_decompress_ptr cinfo,
+    int num_lines,
+  ) {
+    return _jpeg12_skip_scanlines(
+      cinfo,
+      num_lines,
+    );
+  }
+
+  late final _jpeg12_skip_scanlinesPtr = _lookup<
+          ffi
+          .NativeFunction<JDIMENSION Function(j_decompress_ptr, JDIMENSION)>>(
+      'jpeg12_skip_scanlines');
+  late final _jpeg12_skip_scanlines = _jpeg12_skip_scanlinesPtr
+      .asFunction<int Function(j_decompress_ptr, int)>();
+
+  void jpeg_crop_scanline(
+    j_decompress_ptr cinfo,
+    ffi.Pointer<JDIMENSION> xoffset,
+    ffi.Pointer<JDIMENSION> width,
+  ) {
+    return _jpeg_crop_scanline(
+      cinfo,
+      xoffset,
+      width,
+    );
+  }
+
+  late final _jpeg_crop_scanlinePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
+              ffi.Pointer<JDIMENSION>)>>('jpeg_crop_scanline');
+  late final _jpeg_crop_scanline = _jpeg_crop_scanlinePtr.asFunction<
+      void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
+          ffi.Pointer<JDIMENSION>)>();
+
+  void jpeg12_crop_scanline(
+    j_decompress_ptr cinfo,
+    ffi.Pointer<JDIMENSION> xoffset,
+    ffi.Pointer<JDIMENSION> width,
+  ) {
+    return _jpeg12_crop_scanline(
+      cinfo,
+      xoffset,
+      width,
+    );
+  }
+
+  late final _jpeg12_crop_scanlinePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
+              ffi.Pointer<JDIMENSION>)>>('jpeg12_crop_scanline');
+  late final _jpeg12_crop_scanline = _jpeg12_crop_scanlinePtr.asFunction<
+      void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
+          ffi.Pointer<JDIMENSION>)>();
+
+  int jpeg_finish_decompress(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_finish_decompress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_finish_decompressPtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
+          'jpeg_finish_decompress');
+  late final _jpeg_finish_decompress =
+      _jpeg_finish_decompressPtr.asFunction<int Function(j_decompress_ptr)>();
+
+  /// Replaces jpeg_read_scanlines when reading raw downsampled data.
+  int jpeg_read_raw_data(
+    j_decompress_ptr cinfo,
+    JSAMPIMAGE data,
+    int max_lines,
+  ) {
+    return _jpeg_read_raw_data(
+      cinfo,
+      data,
+      max_lines,
+    );
+  }
+
+  late final _jpeg_read_raw_dataPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(
+              j_decompress_ptr, JSAMPIMAGE, JDIMENSION)>>('jpeg_read_raw_data');
+  late final _jpeg_read_raw_data = _jpeg_read_raw_dataPtr
+      .asFunction<int Function(j_decompress_ptr, JSAMPIMAGE, int)>();
+
+  int jpeg12_read_raw_data(
+    j_decompress_ptr cinfo,
+    J12SAMPIMAGE data,
+    int max_lines,
+  ) {
+    return _jpeg12_read_raw_data(
+      cinfo,
+      data,
+      max_lines,
+    );
+  }
+
+  late final _jpeg12_read_raw_dataPtr = _lookup<
+      ffi.NativeFunction<
+          JDIMENSION Function(j_decompress_ptr, J12SAMPIMAGE,
+              JDIMENSION)>>('jpeg12_read_raw_data');
+  late final _jpeg12_read_raw_data = _jpeg12_read_raw_dataPtr
+      .asFunction<int Function(j_decompress_ptr, J12SAMPIMAGE, int)>();
+
+  /// Additional entry points for buffered-image mode.
+  int jpeg_has_multiple_scans(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_has_multiple_scans(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_has_multiple_scansPtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
+          'jpeg_has_multiple_scans');
+  late final _jpeg_has_multiple_scans =
+      _jpeg_has_multiple_scansPtr.asFunction<int Function(j_decompress_ptr)>();
+
+  int jpeg_start_output(
+    j_decompress_ptr cinfo,
+    int scan_number,
+  ) {
+    return _jpeg_start_output(
+      cinfo,
+      scan_number,
+    );
+  }
+
+  late final _jpeg_start_outputPtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr, ffi.Int)>>(
+          'jpeg_start_output');
+  late final _jpeg_start_output =
+      _jpeg_start_outputPtr.asFunction<int Function(j_decompress_ptr, int)>();
+
+  int jpeg_finish_output(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_finish_output(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_finish_outputPtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
+          'jpeg_finish_output');
+  late final _jpeg_finish_output =
+      _jpeg_finish_outputPtr.asFunction<int Function(j_decompress_ptr)>();
+
+  int jpeg_input_complete(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_input_complete(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_input_completePtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
+          'jpeg_input_complete');
+  late final _jpeg_input_complete =
+      _jpeg_input_completePtr.asFunction<int Function(j_decompress_ptr)>();
+
+  void jpeg_new_colormap(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_new_colormap(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_new_colormapPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
+          'jpeg_new_colormap');
+  late final _jpeg_new_colormap =
+      _jpeg_new_colormapPtr.asFunction<void Function(j_decompress_ptr)>();
+
+  int jpeg_consume_input(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_consume_input(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_consume_inputPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(j_decompress_ptr)>>(
+          'jpeg_consume_input');
+  late final _jpeg_consume_input =
+      _jpeg_consume_inputPtr.asFunction<int Function(j_decompress_ptr)>();
+
+  void jpeg_calc_output_dimensions(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_calc_output_dimensions(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_calc_output_dimensionsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
+          'jpeg_calc_output_dimensions');
+  late final _jpeg_calc_output_dimensions = _jpeg_calc_output_dimensionsPtr
+      .asFunction<void Function(j_decompress_ptr)>();
+
+  /// Control saving of COM and APPn markers into marker_list.
+  void jpeg_save_markers(
+    j_decompress_ptr cinfo,
+    int marker_code,
+    int length_limit,
+  ) {
+    return _jpeg_save_markers(
+      cinfo,
+      marker_code,
+      length_limit,
+    );
+  }
+
+  late final _jpeg_save_markersPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_decompress_ptr, ffi.Int,
+              ffi.UnsignedInt)>>('jpeg_save_markers');
+  late final _jpeg_save_markers = _jpeg_save_markersPtr
+      .asFunction<void Function(j_decompress_ptr, int, int)>();
+
+  /// Install a special processing method for COM or APPn markers.
+  void jpeg_set_marker_processor(
+    j_decompress_ptr cinfo,
+    int marker_code,
+    jpeg_marker_parser_method routine,
+  ) {
+    return _jpeg_set_marker_processor(
+      cinfo,
+      marker_code,
+      routine,
+    );
+  }
+
+  late final _jpeg_set_marker_processorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_decompress_ptr, ffi.Int,
+              jpeg_marker_parser_method)>>('jpeg_set_marker_processor');
+  late final _jpeg_set_marker_processor =
+      _jpeg_set_marker_processorPtr.asFunction<
+          void Function(j_decompress_ptr, int, jpeg_marker_parser_method)>();
+
+  /// Read or write raw DCT coefficients --- useful for lossless transcoding.
+  ffi.Pointer<jvirt_barray_ptr> jpeg_read_coefficients(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_read_coefficients(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_read_coefficientsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<jvirt_barray_ptr> Function(
+              j_decompress_ptr)>>('jpeg_read_coefficients');
+  late final _jpeg_read_coefficients = _jpeg_read_coefficientsPtr
+      .asFunction<ffi.Pointer<jvirt_barray_ptr> Function(j_decompress_ptr)>();
+
+  void jpeg_write_coefficients(
+    j_compress_ptr cinfo,
+    ffi.Pointer<jvirt_barray_ptr> coef_arrays,
+  ) {
+    return _jpeg_write_coefficients(
+      cinfo,
+      coef_arrays,
+    );
+  }
+
+  late final _jpeg_write_coefficientsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(j_compress_ptr,
+              ffi.Pointer<jvirt_barray_ptr>)>>('jpeg_write_coefficients');
+  late final _jpeg_write_coefficients = _jpeg_write_coefficientsPtr.asFunction<
+      void Function(j_compress_ptr, ffi.Pointer<jvirt_barray_ptr>)>();
+
+  void jpeg_copy_critical_parameters(
+    j_decompress_ptr srcinfo,
+    j_compress_ptr dstinfo,
+  ) {
+    return _jpeg_copy_critical_parameters(
+      srcinfo,
+      dstinfo,
+    );
+  }
+
+  late final _jpeg_copy_critical_parametersPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(j_decompress_ptr, j_compress_ptr)>>(
+      'jpeg_copy_critical_parameters');
+  late final _jpeg_copy_critical_parameters = _jpeg_copy_critical_parametersPtr
+      .asFunction<void Function(j_decompress_ptr, j_compress_ptr)>();
+
+  /// If you choose to abort compression or decompression before completing
+  /// jpeg_finish_(de)compress, then you need to clean up to release memory,
+  /// temporary files, etc.  You can just call jpeg_destroy_(de)compress
+  /// if you're done with the JPEG object, but if you want to clean it up and
+  /// reuse it, call this:
+  void jpeg_abort_compress(
+    j_compress_ptr cinfo,
+  ) {
+    return _jpeg_abort_compress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_abort_compressPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
+          'jpeg_abort_compress');
+  late final _jpeg_abort_compress =
+      _jpeg_abort_compressPtr.asFunction<void Function(j_compress_ptr)>();
+
+  void jpeg_abort_decompress(
+    j_decompress_ptr cinfo,
+  ) {
+    return _jpeg_abort_decompress(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_abort_decompressPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
+          'jpeg_abort_decompress');
+  late final _jpeg_abort_decompress =
+      _jpeg_abort_decompressPtr.asFunction<void Function(j_decompress_ptr)>();
+
+  /// Generic versions of jpeg_abort and jpeg_destroy that work on either
+  /// flavor of JPEG object.  These may be more convenient in some places.
+  void jpeg_abort(
+    j_common_ptr cinfo,
+  ) {
+    return _jpeg_abort(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_abortPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_common_ptr)>>(
+          'jpeg_abort');
+  late final _jpeg_abort =
+      _jpeg_abortPtr.asFunction<void Function(j_common_ptr)>();
+
+  void jpeg_destroy(
+    j_common_ptr cinfo,
+  ) {
+    return _jpeg_destroy(
+      cinfo,
+    );
+  }
+
+  late final _jpeg_destroyPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(j_common_ptr)>>(
+          'jpeg_destroy');
+  late final _jpeg_destroy =
+      _jpeg_destroyPtr.asFunction<void Function(j_common_ptr)>();
+
+  /// Default restart-marker-resync procedure for use by data source modules
+  int jpeg_resync_to_restart(
+    j_decompress_ptr cinfo,
+    int desired,
+  ) {
+    return _jpeg_resync_to_restart(
+      cinfo,
+      desired,
+    );
+  }
+
+  late final _jpeg_resync_to_restartPtr =
+      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr, ffi.Int)>>(
+          'jpeg_resync_to_restart');
+  late final _jpeg_resync_to_restart = _jpeg_resync_to_restartPtr
+      .asFunction<int Function(j_decompress_ptr, int)>();
+
+  /// Read ICC profile.  See libjpeg.txt for usage information.
+  int jpeg_read_icc_profile(
+    j_decompress_ptr cinfo,
+    ffi.Pointer<ffi.Pointer<JOCTET>> icc_data_ptr,
+    ffi.Pointer<ffi.UnsignedInt> icc_data_len,
+  ) {
+    return _jpeg_read_icc_profile(
+      cinfo,
+      icc_data_ptr,
+      icc_data_len,
+    );
+  }
+
+  late final _jpeg_read_icc_profilePtr = _lookup<
+      ffi.NativeFunction<
+          boolean Function(j_decompress_ptr, ffi.Pointer<ffi.Pointer<JOCTET>>,
+              ffi.Pointer<ffi.UnsignedInt>)>>('jpeg_read_icc_profile');
+  late final _jpeg_read_icc_profile = _jpeg_read_icc_profilePtr.asFunction<
+      int Function(j_decompress_ptr, ffi.Pointer<ffi.Pointer<JOCTET>>,
+          ffi.Pointer<ffi.UnsignedInt>)>();
+
+  /// MCU block width (in pixels) for a given level of chrominance subsampling.
   /// MCU block sizes:
   /// - 8x8 for no subsampling or grayscale
   /// - 16x8 for 4:2:2
@@ -40,8 +1133,7 @@ class LibJPEG {
 
   set tjMCUWidth(ffi.Pointer<ffi.Int> value) => _tjMCUWidth.value = value;
 
-  /// MCU block height (in pixels) for a given level of chrominance subsampling
-  ///
+  /// MCU block height (in pixels) for a given level of chrominance subsampling.
   /// MCU block sizes:
   /// - 8x8 for no subsampling or grayscale
   /// - 16x8 for 4:2:2
@@ -56,13 +1148,12 @@ class LibJPEG {
 
   set tjMCUHeight(ffi.Pointer<ffi.Int> value) => _tjMCUHeight.value = value;
 
-  /// Red offset (in samples) for a given pixel format
-  ///
-  /// This specifies the number of samples that the red component is offset from
-  /// the start of the pixel.  For instance, if an 8-bit-per-component pixel of
-  /// format TJPF_BGRX is stored in `unsigned char pixel[]`, then the red
-  /// component is `pixel[tjRedOffset[TJPF_BGRX]]`.  The offset is -1 if the pixel
-  /// format does not have a red component.
+  /// Red offset (in samples) for a given pixel format.  This specifies the number
+  /// of samples that the red component is offset from the start of the pixel.
+  /// For instance, if an 8-bit-per-component pixel of format TJPF_BGRX is stored
+  /// in `unsigned char pixel[]`, then the red component will be
+  /// `pixel[tjRedOffset[TJPF_BGRX]]`.  This will be -1 if the pixel format does
+  /// not have a red component.
   late final ffi.Pointer<ffi.Pointer<ffi.Int>> _tjRedOffset =
       _lookup<ffi.Pointer<ffi.Int>>('tjRedOffset');
 
@@ -70,13 +1161,12 @@ class LibJPEG {
 
   set tjRedOffset(ffi.Pointer<ffi.Int> value) => _tjRedOffset.value = value;
 
-  /// Green offset (in samples) for a given pixel format
-  ///
-  /// This specifies the number of samples that the green component is offset from
-  /// the start of the pixel.  For instance, if an 8-bit-per-component pixel of
-  /// format TJPF_BGRX is stored in `unsigned char pixel[]`, then the green
-  /// component is `pixel[tjGreenOffset[TJPF_BGRX]]`.  The offset is -1 if the
-  /// pixel format does not have a green component.
+  /// Green offset (in samples) for a given pixel format.  This specifies the
+  /// number of samples that the green component is offset from the start of the
+  /// pixel.  For instance, if an 8-bit-per-component pixel of format TJPF_BGRX is
+  /// stored in `unsigned char pixel[]`, then the green component will be
+  /// `pixel[tjGreenOffset[TJPF_BGRX]]`.  This will be -1 if the pixel format does
+  /// not have a green component.
   late final ffi.Pointer<ffi.Pointer<ffi.Int>> _tjGreenOffset =
       _lookup<ffi.Pointer<ffi.Int>>('tjGreenOffset');
 
@@ -84,13 +1174,12 @@ class LibJPEG {
 
   set tjGreenOffset(ffi.Pointer<ffi.Int> value) => _tjGreenOffset.value = value;
 
-  /// Blue offset (in samples) for a given pixel format
-  ///
-  /// This specifies the number of samples that the blue component is offset from
-  /// the start of the pixel.  For instance, if an 8-bit-per-component pixel of
-  /// format TJPF_BGRX is stored in `unsigned char pixel[]`, then the blue
-  /// component is `pixel[tjBlueOffset[TJPF_BGRX]]`.  The offset is -1 if the
-  /// pixel format does not have a blue component.
+  /// Blue offset (in samples) for a given pixel format.  This specifies the
+  /// number of samples that the blue component is offset from the start of the
+  /// pixel.  For instance, if an 8-bit-per-component pixel of format TJPF_BGRX is
+  /// stored in `unsigned char pixel[]`, then the blue component will be
+  /// `pixel[tjBlueOffset[TJPF_BGRX]]`.  This will be -1 if the pixel format does
+  /// not have a blue component.
   late final ffi.Pointer<ffi.Pointer<ffi.Int>> _tjBlueOffset =
       _lookup<ffi.Pointer<ffi.Int>>('tjBlueOffset');
 
@@ -98,13 +1187,12 @@ class LibJPEG {
 
   set tjBlueOffset(ffi.Pointer<ffi.Int> value) => _tjBlueOffset.value = value;
 
-  /// Alpha offset (in samples) for a given pixel format
-  ///
-  /// This specifies the number of samples that the alpha component is offset from
-  /// the start of the pixel.  For instance, if an 8-bit-per-component pixel of
-  /// format TJPF_BGRA is stored in `unsigned char pixel[]`, then the alpha
-  /// component is `pixel[tjAlphaOffset[TJPF_BGRA]]`.  The offset is -1 if the
-  /// pixel format does not have an alpha component.
+  /// Alpha offset (in samples) for a given pixel format.  This specifies the
+  /// number of samples that the alpha component is offset from the start of the
+  /// pixel.  For instance, if an 8-bit-per-component pixel of format TJPF_BGRA is
+  /// stored in `unsigned char pixel[]`, then the alpha component will be
+  /// `pixel[tjAlphaOffset[TJPF_BGRA]]`.  This will be -1 if the pixel format does
+  /// not have an alpha component.
   late final ffi.Pointer<ffi.Pointer<ffi.Int>> _tjAlphaOffset =
       _lookup<ffi.Pointer<ffi.Int>>('tjAlphaOffset');
 
@@ -636,13 +1724,13 @@ class LibJPEG {
   ///
   /// @param componentID ID number of the image plane (0 = Y, 1 = U/Cb, 2 = V/Cr)
   ///
-  /// @param width width (in pixels) of the YUV image.  NOTE: This is the width of
+  /// @param width width (in pixels) of the YUV image.  NOTE: this is the width of
   /// the whole image, not the plane width.
   ///
   /// @param stride bytes per row in the image plane.  Setting this to 0 is the
   /// equivalent of setting it to the plane width.
   ///
-  /// @param height height (in pixels) of the YUV image.  NOTE: This is the height
+  /// @param height height (in pixels) of the YUV image.  NOTE: this is the height
   /// of the whole image, not the plane height.
   ///
   /// @param subsamp level of chrominance subsampling in the image (see
@@ -1004,7 +2092,7 @@ class LibJPEG {
   /// @param croppingRegion #tjregion structure that specifies a subregion of the
   /// JPEG image to decompress, or <tt>#TJUNCROPPED</tt> for no cropping.  The
   /// left boundary of the cropping region must be evenly divisible by the scaled
-  /// MCU block width-- <tt>#TJSCALED(#tjMCUWidth[subsamp], scalingFactor)</tt>,
+  /// MCU block width (<tt>#TJSCALED(#tjMCUWidth[subsamp], scalingFactor)</tt>,
   /// where `subsamp` is the level of chrominance subsampling in the JPEG image
   /// (see #TJPARAM_SUBSAMP) and `scalingFactor` is the decompression scaling
   /// factor (see #tj3SetScalingFactor().)  The cropping region should be
@@ -1617,7 +2705,7 @@ class LibJPEG {
   ///
   /// @param pixelFormat pointer to an integer variable that specifies or will
   /// receive the pixel format of the packed-pixel buffer.  The behavior of this
-  /// function varies depending on the value of `*pixelFormat` passed to the
+  /// function will vary depending on the value of `*pixelFormat` passed to the
   /// function:
   /// - @ref TJPF_UNKNOWN : The packed-pixel buffer returned by this function will
   /// use the most optimal pixel format for the file type, and `*pixelFormat` will
@@ -3107,2237 +4195,7 @@ class LibJPEG {
   late final _tjSaveImage = _tjSaveImagePtr.asFunction<
       int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int,
           int, int, int, int)>();
-
-  /// Default error-management setup
-  ffi.Pointer<jpeg_error_mgr> jpeg_std_error(
-    ffi.Pointer<jpeg_error_mgr> err,
-  ) {
-    return _jpeg_std_error(
-      err,
-    );
-  }
-
-  late final _jpeg_std_errorPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<jpeg_error_mgr> Function(
-              ffi.Pointer<jpeg_error_mgr>)>>('jpeg_std_error');
-  late final _jpeg_std_error = _jpeg_std_errorPtr.asFunction<
-      ffi.Pointer<jpeg_error_mgr> Function(ffi.Pointer<jpeg_error_mgr>)>();
-
-  void jpeg_CreateCompress(
-    j_compress_ptr cinfo,
-    int version,
-    int structsize,
-  ) {
-    return _jpeg_CreateCompress(
-      cinfo,
-      version,
-      structsize,
-    );
-  }
-
-  late final _jpeg_CreateCompressPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              j_compress_ptr, ffi.Int, ffi.Size)>>('jpeg_CreateCompress');
-  late final _jpeg_CreateCompress = _jpeg_CreateCompressPtr
-      .asFunction<void Function(j_compress_ptr, int, int)>();
-
-  void jpeg_CreateDecompress(
-    j_decompress_ptr cinfo,
-    int version,
-    int structsize,
-  ) {
-    return _jpeg_CreateDecompress(
-      cinfo,
-      version,
-      structsize,
-    );
-  }
-
-  late final _jpeg_CreateDecompressPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              j_decompress_ptr, ffi.Int, ffi.Size)>>('jpeg_CreateDecompress');
-  late final _jpeg_CreateDecompress = _jpeg_CreateDecompressPtr
-      .asFunction<void Function(j_decompress_ptr, int, int)>();
-
-  /// Destruction of JPEG compression objects
-  void jpeg_destroy_compress(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_destroy_compress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_destroy_compressPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_destroy_compress');
-  late final _jpeg_destroy_compress =
-      _jpeg_destroy_compressPtr.asFunction<void Function(j_compress_ptr)>();
-
-  void jpeg_destroy_decompress(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_destroy_decompress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_destroy_decompressPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
-          'jpeg_destroy_decompress');
-  late final _jpeg_destroy_decompress =
-      _jpeg_destroy_decompressPtr.asFunction<void Function(j_decompress_ptr)>();
-
-  /// Standard data source and destination managers: stdio streams. */
-  /// /* Caller is responsible for opening the file before and closing after.
-  void jpeg_stdio_dest(
-    j_compress_ptr cinfo,
-    ffi.Pointer<FILE> outfile,
-  ) {
-    return _jpeg_stdio_dest(
-      cinfo,
-      outfile,
-    );
-  }
-
-  late final _jpeg_stdio_destPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              j_compress_ptr, ffi.Pointer<FILE>)>>('jpeg_stdio_dest');
-  late final _jpeg_stdio_dest = _jpeg_stdio_destPtr
-      .asFunction<void Function(j_compress_ptr, ffi.Pointer<FILE>)>();
-
-  void jpeg_stdio_src(
-    j_decompress_ptr cinfo,
-    ffi.Pointer<FILE> infile,
-  ) {
-    return _jpeg_stdio_src(
-      cinfo,
-      infile,
-    );
-  }
-
-  late final _jpeg_stdio_srcPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              j_decompress_ptr, ffi.Pointer<FILE>)>>('jpeg_stdio_src');
-  late final _jpeg_stdio_src = _jpeg_stdio_srcPtr
-      .asFunction<void Function(j_decompress_ptr, ffi.Pointer<FILE>)>();
-
-  /// Data source and destination managers: memory buffers.
-  void jpeg_mem_dest(
-    j_compress_ptr cinfo,
-    ffi.Pointer<ffi.Pointer<ffi.UnsignedChar>> outbuffer,
-    ffi.Pointer<ffi.UnsignedLong> outsize,
-  ) {
-    return _jpeg_mem_dest(
-      cinfo,
-      outbuffer,
-      outsize,
-    );
-  }
-
-  late final _jpeg_mem_destPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              j_compress_ptr,
-              ffi.Pointer<ffi.Pointer<ffi.UnsignedChar>>,
-              ffi.Pointer<ffi.UnsignedLong>)>>('jpeg_mem_dest');
-  late final _jpeg_mem_dest = _jpeg_mem_destPtr.asFunction<
-      void Function(j_compress_ptr, ffi.Pointer<ffi.Pointer<ffi.UnsignedChar>>,
-          ffi.Pointer<ffi.UnsignedLong>)>();
-
-  void jpeg_mem_src(
-    j_decompress_ptr cinfo,
-    ffi.Pointer<ffi.UnsignedChar> inbuffer,
-    int insize,
-  ) {
-    return _jpeg_mem_src(
-      cinfo,
-      inbuffer,
-      insize,
-    );
-  }
-
-  late final _jpeg_mem_srcPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_decompress_ptr, ffi.Pointer<ffi.UnsignedChar>,
-              ffi.UnsignedLong)>>('jpeg_mem_src');
-  late final _jpeg_mem_src = _jpeg_mem_srcPtr.asFunction<
-      void Function(j_decompress_ptr, ffi.Pointer<ffi.UnsignedChar>, int)>();
-
-  /// Default parameter setup for compression
-  void jpeg_set_defaults(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_set_defaults(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_set_defaultsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_set_defaults');
-  late final _jpeg_set_defaults =
-      _jpeg_set_defaultsPtr.asFunction<void Function(j_compress_ptr)>();
-
-  /// Compression parameter setup aids
-  void jpeg_set_colorspace(
-    j_compress_ptr cinfo,
-    J_COLOR_SPACE colorspace,
-  ) {
-    return _jpeg_set_colorspace(
-      cinfo,
-      colorspace.value,
-    );
-  }
-
-  late final _jpeg_set_colorspacePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.UnsignedInt)>>(
-      'jpeg_set_colorspace');
-  late final _jpeg_set_colorspace =
-      _jpeg_set_colorspacePtr.asFunction<void Function(j_compress_ptr, int)>();
-
-  void jpeg_default_colorspace(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_default_colorspace(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_default_colorspacePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_default_colorspace');
-  late final _jpeg_default_colorspace =
-      _jpeg_default_colorspacePtr.asFunction<void Function(j_compress_ptr)>();
-
-  void jpeg_set_quality(
-    j_compress_ptr cinfo,
-    int quality,
-    int force_baseline,
-  ) {
-    return _jpeg_set_quality(
-      cinfo,
-      quality,
-      force_baseline,
-    );
-  }
-
-  late final _jpeg_set_qualityPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int, boolean)>>(
-      'jpeg_set_quality');
-  late final _jpeg_set_quality = _jpeg_set_qualityPtr
-      .asFunction<void Function(j_compress_ptr, int, int)>();
-
-  void jpeg_set_linear_quality(
-    j_compress_ptr cinfo,
-    int scale_factor,
-    int force_baseline,
-  ) {
-    return _jpeg_set_linear_quality(
-      cinfo,
-      scale_factor,
-      force_baseline,
-    );
-  }
-
-  late final _jpeg_set_linear_qualityPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int, boolean)>>(
-      'jpeg_set_linear_quality');
-  late final _jpeg_set_linear_quality = _jpeg_set_linear_qualityPtr
-      .asFunction<void Function(j_compress_ptr, int, int)>();
-
-  void jpeg_add_quant_table(
-    j_compress_ptr cinfo,
-    int which_tbl,
-    ffi.Pointer<ffi.UnsignedInt> basic_table,
-    int scale_factor,
-    int force_baseline,
-  ) {
-    return _jpeg_add_quant_table(
-      cinfo,
-      which_tbl,
-      basic_table,
-      scale_factor,
-      force_baseline,
-    );
-  }
-
-  late final _jpeg_add_quant_tablePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              j_compress_ptr,
-              ffi.Int,
-              ffi.Pointer<ffi.UnsignedInt>,
-              ffi.Int,
-              boolean)>>('jpeg_add_quant_table');
-  late final _jpeg_add_quant_table = _jpeg_add_quant_tablePtr.asFunction<
-      void Function(
-          j_compress_ptr, int, ffi.Pointer<ffi.UnsignedInt>, int, int)>();
-
-  int jpeg_quality_scaling(
-    int quality,
-  ) {
-    return _jpeg_quality_scaling(
-      quality,
-    );
-  }
-
-  late final _jpeg_quality_scalingPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
-          'jpeg_quality_scaling');
-  late final _jpeg_quality_scaling =
-      _jpeg_quality_scalingPtr.asFunction<int Function(int)>();
-
-  void jpeg_enable_lossless(
-    j_compress_ptr cinfo,
-    int predictor_selection_value,
-    int point_transform,
-  ) {
-    return _jpeg_enable_lossless(
-      cinfo,
-      predictor_selection_value,
-      point_transform,
-    );
-  }
-
-  late final _jpeg_enable_losslessPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int, ffi.Int)>>(
-      'jpeg_enable_lossless');
-  late final _jpeg_enable_lossless = _jpeg_enable_losslessPtr
-      .asFunction<void Function(j_compress_ptr, int, int)>();
-
-  void jpeg_simple_progression(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_simple_progression(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_simple_progressionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_simple_progression');
-  late final _jpeg_simple_progression =
-      _jpeg_simple_progressionPtr.asFunction<void Function(j_compress_ptr)>();
-
-  void jpeg_suppress_tables(
-    j_compress_ptr cinfo,
-    int suppress,
-  ) {
-    return _jpeg_suppress_tables(
-      cinfo,
-      suppress,
-    );
-  }
-
-  late final _jpeg_suppress_tablesPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr, boolean)>>(
-          'jpeg_suppress_tables');
-  late final _jpeg_suppress_tables =
-      _jpeg_suppress_tablesPtr.asFunction<void Function(j_compress_ptr, int)>();
-
-  ffi.Pointer<JQUANT_TBL> jpeg_alloc_quant_table(
-    j_common_ptr cinfo,
-  ) {
-    return _jpeg_alloc_quant_table(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_alloc_quant_tablePtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<JQUANT_TBL> Function(j_common_ptr)>>(
-      'jpeg_alloc_quant_table');
-  late final _jpeg_alloc_quant_table = _jpeg_alloc_quant_tablePtr
-      .asFunction<ffi.Pointer<JQUANT_TBL> Function(j_common_ptr)>();
-
-  ffi.Pointer<JHUFF_TBL> jpeg_alloc_huff_table(
-    j_common_ptr cinfo,
-  ) {
-    return _jpeg_alloc_huff_table(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_alloc_huff_tablePtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<JHUFF_TBL> Function(j_common_ptr)>>(
-      'jpeg_alloc_huff_table');
-  late final _jpeg_alloc_huff_table = _jpeg_alloc_huff_tablePtr
-      .asFunction<ffi.Pointer<JHUFF_TBL> Function(j_common_ptr)>();
-
-  /// Main entry points for compression
-  void jpeg_start_compress(
-    j_compress_ptr cinfo,
-    int write_all_tables,
-  ) {
-    return _jpeg_start_compress(
-      cinfo,
-      write_all_tables,
-    );
-  }
-
-  late final _jpeg_start_compressPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr, boolean)>>(
-          'jpeg_start_compress');
-  late final _jpeg_start_compress =
-      _jpeg_start_compressPtr.asFunction<void Function(j_compress_ptr, int)>();
-
-  int jpeg_write_scanlines(
-    j_compress_ptr cinfo,
-    JSAMPARRAY scanlines,
-    int num_lines,
-  ) {
-    return _jpeg_write_scanlines(
-      cinfo,
-      scanlines,
-      num_lines,
-    );
-  }
-
-  late final _jpeg_write_scanlinesPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(
-              j_compress_ptr, JSAMPARRAY, JDIMENSION)>>('jpeg_write_scanlines');
-  late final _jpeg_write_scanlines = _jpeg_write_scanlinesPtr
-      .asFunction<int Function(j_compress_ptr, JSAMPARRAY, int)>();
-
-  int jpeg12_write_scanlines(
-    j_compress_ptr cinfo,
-    J12SAMPARRAY scanlines,
-    int num_lines,
-  ) {
-    return _jpeg12_write_scanlines(
-      cinfo,
-      scanlines,
-      num_lines,
-    );
-  }
-
-  late final _jpeg12_write_scanlinesPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_compress_ptr, J12SAMPARRAY,
-              JDIMENSION)>>('jpeg12_write_scanlines');
-  late final _jpeg12_write_scanlines = _jpeg12_write_scanlinesPtr
-      .asFunction<int Function(j_compress_ptr, J12SAMPARRAY, int)>();
-
-  int jpeg16_write_scanlines(
-    j_compress_ptr cinfo,
-    J16SAMPARRAY scanlines,
-    int num_lines,
-  ) {
-    return _jpeg16_write_scanlines(
-      cinfo,
-      scanlines,
-      num_lines,
-    );
-  }
-
-  late final _jpeg16_write_scanlinesPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_compress_ptr, J16SAMPARRAY,
-              JDIMENSION)>>('jpeg16_write_scanlines');
-  late final _jpeg16_write_scanlines = _jpeg16_write_scanlinesPtr
-      .asFunction<int Function(j_compress_ptr, J16SAMPARRAY, int)>();
-
-  void jpeg_finish_compress(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_finish_compress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_finish_compressPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_finish_compress');
-  late final _jpeg_finish_compress =
-      _jpeg_finish_compressPtr.asFunction<void Function(j_compress_ptr)>();
-
-  /// Replaces jpeg_write_scanlines when writing raw downsampled data.
-  int jpeg_write_raw_data(
-    j_compress_ptr cinfo,
-    JSAMPIMAGE data,
-    int num_lines,
-  ) {
-    return _jpeg_write_raw_data(
-      cinfo,
-      data,
-      num_lines,
-    );
-  }
-
-  late final _jpeg_write_raw_dataPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(
-              j_compress_ptr, JSAMPIMAGE, JDIMENSION)>>('jpeg_write_raw_data');
-  late final _jpeg_write_raw_data = _jpeg_write_raw_dataPtr
-      .asFunction<int Function(j_compress_ptr, JSAMPIMAGE, int)>();
-
-  int jpeg12_write_raw_data(
-    j_compress_ptr cinfo,
-    J12SAMPIMAGE data,
-    int num_lines,
-  ) {
-    return _jpeg12_write_raw_data(
-      cinfo,
-      data,
-      num_lines,
-    );
-  }
-
-  late final _jpeg12_write_raw_dataPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_compress_ptr, J12SAMPIMAGE,
-              JDIMENSION)>>('jpeg12_write_raw_data');
-  late final _jpeg12_write_raw_data = _jpeg12_write_raw_dataPtr
-      .asFunction<int Function(j_compress_ptr, J12SAMPIMAGE, int)>();
-
-  /// Write a special marker.  See libjpeg.txt concerning safe usage.
-  void jpeg_write_marker(
-    j_compress_ptr cinfo,
-    int marker,
-    ffi.Pointer<JOCTET> dataptr,
-    int datalen,
-  ) {
-    return _jpeg_write_marker(
-      cinfo,
-      marker,
-      dataptr,
-      datalen,
-    );
-  }
-
-  late final _jpeg_write_markerPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_compress_ptr, ffi.Int, ffi.Pointer<JOCTET>,
-              ffi.UnsignedInt)>>('jpeg_write_marker');
-  late final _jpeg_write_marker = _jpeg_write_markerPtr.asFunction<
-      void Function(j_compress_ptr, int, ffi.Pointer<JOCTET>, int)>();
-
-  /// Same, but piecemeal.
-  void jpeg_write_m_header(
-    j_compress_ptr cinfo,
-    int marker,
-    int datalen,
-  ) {
-    return _jpeg_write_m_header(
-      cinfo,
-      marker,
-      datalen,
-    );
-  }
-
-  late final _jpeg_write_m_headerPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_compress_ptr, ffi.Int,
-              ffi.UnsignedInt)>>('jpeg_write_m_header');
-  late final _jpeg_write_m_header = _jpeg_write_m_headerPtr
-      .asFunction<void Function(j_compress_ptr, int, int)>();
-
-  void jpeg_write_m_byte(
-    j_compress_ptr cinfo,
-    int val,
-  ) {
-    return _jpeg_write_m_byte(
-      cinfo,
-      val,
-    );
-  }
-
-  late final _jpeg_write_m_bytePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr, ffi.Int)>>(
-          'jpeg_write_m_byte');
-  late final _jpeg_write_m_byte =
-      _jpeg_write_m_bytePtr.asFunction<void Function(j_compress_ptr, int)>();
-
-  /// Alternate compression function: just write an abbreviated table file
-  void jpeg_write_tables(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_write_tables(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_write_tablesPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_write_tables');
-  late final _jpeg_write_tables =
-      _jpeg_write_tablesPtr.asFunction<void Function(j_compress_ptr)>();
-
-  /// Write ICC profile.  See libjpeg.txt for usage information.
-  void jpeg_write_icc_profile(
-    j_compress_ptr cinfo,
-    ffi.Pointer<JOCTET> icc_data_ptr,
-    int icc_data_len,
-  ) {
-    return _jpeg_write_icc_profile(
-      cinfo,
-      icc_data_ptr,
-      icc_data_len,
-    );
-  }
-
-  late final _jpeg_write_icc_profilePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_compress_ptr, ffi.Pointer<JOCTET>,
-              ffi.UnsignedInt)>>('jpeg_write_icc_profile');
-  late final _jpeg_write_icc_profile = _jpeg_write_icc_profilePtr
-      .asFunction<void Function(j_compress_ptr, ffi.Pointer<JOCTET>, int)>();
-
-  /// Decompression startup: read start of JPEG datastream to see what's there
-  int jpeg_read_header(
-    j_decompress_ptr cinfo,
-    int require_image,
-  ) {
-    return _jpeg_read_header(
-      cinfo,
-      require_image,
-    );
-  }
-
-  late final _jpeg_read_headerPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(j_decompress_ptr, boolean)>>(
-          'jpeg_read_header');
-  late final _jpeg_read_header =
-      _jpeg_read_headerPtr.asFunction<int Function(j_decompress_ptr, int)>();
-
-  /// Main entry points for decompression
-  int jpeg_start_decompress(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_start_decompress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_start_decompressPtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
-          'jpeg_start_decompress');
-  late final _jpeg_start_decompress =
-      _jpeg_start_decompressPtr.asFunction<int Function(j_decompress_ptr)>();
-
-  int jpeg_read_scanlines(
-    j_decompress_ptr cinfo,
-    JSAMPARRAY scanlines,
-    int max_lines,
-  ) {
-    return _jpeg_read_scanlines(
-      cinfo,
-      scanlines,
-      max_lines,
-    );
-  }
-
-  late final _jpeg_read_scanlinesPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_decompress_ptr, JSAMPARRAY,
-              JDIMENSION)>>('jpeg_read_scanlines');
-  late final _jpeg_read_scanlines = _jpeg_read_scanlinesPtr
-      .asFunction<int Function(j_decompress_ptr, JSAMPARRAY, int)>();
-
-  int jpeg12_read_scanlines(
-    j_decompress_ptr cinfo,
-    J12SAMPARRAY scanlines,
-    int max_lines,
-  ) {
-    return _jpeg12_read_scanlines(
-      cinfo,
-      scanlines,
-      max_lines,
-    );
-  }
-
-  late final _jpeg12_read_scanlinesPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_decompress_ptr, J12SAMPARRAY,
-              JDIMENSION)>>('jpeg12_read_scanlines');
-  late final _jpeg12_read_scanlines = _jpeg12_read_scanlinesPtr
-      .asFunction<int Function(j_decompress_ptr, J12SAMPARRAY, int)>();
-
-  int jpeg16_read_scanlines(
-    j_decompress_ptr cinfo,
-    J16SAMPARRAY scanlines,
-    int max_lines,
-  ) {
-    return _jpeg16_read_scanlines(
-      cinfo,
-      scanlines,
-      max_lines,
-    );
-  }
-
-  late final _jpeg16_read_scanlinesPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_decompress_ptr, J16SAMPARRAY,
-              JDIMENSION)>>('jpeg16_read_scanlines');
-  late final _jpeg16_read_scanlines = _jpeg16_read_scanlinesPtr
-      .asFunction<int Function(j_decompress_ptr, J16SAMPARRAY, int)>();
-
-  int jpeg_skip_scanlines(
-    j_decompress_ptr cinfo,
-    int num_lines,
-  ) {
-    return _jpeg_skip_scanlines(
-      cinfo,
-      num_lines,
-    );
-  }
-
-  late final _jpeg_skip_scanlinesPtr = _lookup<
-          ffi
-          .NativeFunction<JDIMENSION Function(j_decompress_ptr, JDIMENSION)>>(
-      'jpeg_skip_scanlines');
-  late final _jpeg_skip_scanlines =
-      _jpeg_skip_scanlinesPtr.asFunction<int Function(j_decompress_ptr, int)>();
-
-  int jpeg12_skip_scanlines(
-    j_decompress_ptr cinfo,
-    int num_lines,
-  ) {
-    return _jpeg12_skip_scanlines(
-      cinfo,
-      num_lines,
-    );
-  }
-
-  late final _jpeg12_skip_scanlinesPtr = _lookup<
-          ffi
-          .NativeFunction<JDIMENSION Function(j_decompress_ptr, JDIMENSION)>>(
-      'jpeg12_skip_scanlines');
-  late final _jpeg12_skip_scanlines = _jpeg12_skip_scanlinesPtr
-      .asFunction<int Function(j_decompress_ptr, int)>();
-
-  void jpeg_crop_scanline(
-    j_decompress_ptr cinfo,
-    ffi.Pointer<JDIMENSION> xoffset,
-    ffi.Pointer<JDIMENSION> width,
-  ) {
-    return _jpeg_crop_scanline(
-      cinfo,
-      xoffset,
-      width,
-    );
-  }
-
-  late final _jpeg_crop_scanlinePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
-              ffi.Pointer<JDIMENSION>)>>('jpeg_crop_scanline');
-  late final _jpeg_crop_scanline = _jpeg_crop_scanlinePtr.asFunction<
-      void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
-          ffi.Pointer<JDIMENSION>)>();
-
-  void jpeg12_crop_scanline(
-    j_decompress_ptr cinfo,
-    ffi.Pointer<JDIMENSION> xoffset,
-    ffi.Pointer<JDIMENSION> width,
-  ) {
-    return _jpeg12_crop_scanline(
-      cinfo,
-      xoffset,
-      width,
-    );
-  }
-
-  late final _jpeg12_crop_scanlinePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
-              ffi.Pointer<JDIMENSION>)>>('jpeg12_crop_scanline');
-  late final _jpeg12_crop_scanline = _jpeg12_crop_scanlinePtr.asFunction<
-      void Function(j_decompress_ptr, ffi.Pointer<JDIMENSION>,
-          ffi.Pointer<JDIMENSION>)>();
-
-  int jpeg_finish_decompress(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_finish_decompress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_finish_decompressPtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
-          'jpeg_finish_decompress');
-  late final _jpeg_finish_decompress =
-      _jpeg_finish_decompressPtr.asFunction<int Function(j_decompress_ptr)>();
-
-  /// Replaces jpeg_read_scanlines when reading raw downsampled data.
-  int jpeg_read_raw_data(
-    j_decompress_ptr cinfo,
-    JSAMPIMAGE data,
-    int max_lines,
-  ) {
-    return _jpeg_read_raw_data(
-      cinfo,
-      data,
-      max_lines,
-    );
-  }
-
-  late final _jpeg_read_raw_dataPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(
-              j_decompress_ptr, JSAMPIMAGE, JDIMENSION)>>('jpeg_read_raw_data');
-  late final _jpeg_read_raw_data = _jpeg_read_raw_dataPtr
-      .asFunction<int Function(j_decompress_ptr, JSAMPIMAGE, int)>();
-
-  int jpeg12_read_raw_data(
-    j_decompress_ptr cinfo,
-    J12SAMPIMAGE data,
-    int max_lines,
-  ) {
-    return _jpeg12_read_raw_data(
-      cinfo,
-      data,
-      max_lines,
-    );
-  }
-
-  late final _jpeg12_read_raw_dataPtr = _lookup<
-      ffi.NativeFunction<
-          JDIMENSION Function(j_decompress_ptr, J12SAMPIMAGE,
-              JDIMENSION)>>('jpeg12_read_raw_data');
-  late final _jpeg12_read_raw_data = _jpeg12_read_raw_dataPtr
-      .asFunction<int Function(j_decompress_ptr, J12SAMPIMAGE, int)>();
-
-  /// Additional entry points for buffered-image mode.
-  int jpeg_has_multiple_scans(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_has_multiple_scans(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_has_multiple_scansPtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
-          'jpeg_has_multiple_scans');
-  late final _jpeg_has_multiple_scans =
-      _jpeg_has_multiple_scansPtr.asFunction<int Function(j_decompress_ptr)>();
-
-  int jpeg_start_output(
-    j_decompress_ptr cinfo,
-    int scan_number,
-  ) {
-    return _jpeg_start_output(
-      cinfo,
-      scan_number,
-    );
-  }
-
-  late final _jpeg_start_outputPtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr, ffi.Int)>>(
-          'jpeg_start_output');
-  late final _jpeg_start_output =
-      _jpeg_start_outputPtr.asFunction<int Function(j_decompress_ptr, int)>();
-
-  int jpeg_finish_output(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_finish_output(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_finish_outputPtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
-          'jpeg_finish_output');
-  late final _jpeg_finish_output =
-      _jpeg_finish_outputPtr.asFunction<int Function(j_decompress_ptr)>();
-
-  int jpeg_input_complete(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_input_complete(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_input_completePtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr)>>(
-          'jpeg_input_complete');
-  late final _jpeg_input_complete =
-      _jpeg_input_completePtr.asFunction<int Function(j_decompress_ptr)>();
-
-  void jpeg_new_colormap(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_new_colormap(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_new_colormapPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
-          'jpeg_new_colormap');
-  late final _jpeg_new_colormap =
-      _jpeg_new_colormapPtr.asFunction<void Function(j_decompress_ptr)>();
-
-  int jpeg_consume_input(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_consume_input(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_consume_inputPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(j_decompress_ptr)>>(
-          'jpeg_consume_input');
-  late final _jpeg_consume_input =
-      _jpeg_consume_inputPtr.asFunction<int Function(j_decompress_ptr)>();
-
-  void jpeg_calc_output_dimensions(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_calc_output_dimensions(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_calc_output_dimensionsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
-          'jpeg_calc_output_dimensions');
-  late final _jpeg_calc_output_dimensions = _jpeg_calc_output_dimensionsPtr
-      .asFunction<void Function(j_decompress_ptr)>();
-
-  /// Control saving of COM and APPn markers into marker_list.
-  void jpeg_save_markers(
-    j_decompress_ptr cinfo,
-    int marker_code,
-    int length_limit,
-  ) {
-    return _jpeg_save_markers(
-      cinfo,
-      marker_code,
-      length_limit,
-    );
-  }
-
-  late final _jpeg_save_markersPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_decompress_ptr, ffi.Int,
-              ffi.UnsignedInt)>>('jpeg_save_markers');
-  late final _jpeg_save_markers = _jpeg_save_markersPtr
-      .asFunction<void Function(j_decompress_ptr, int, int)>();
-
-  /// Install a special processing method for COM or APPn markers.
-  void jpeg_set_marker_processor(
-    j_decompress_ptr cinfo,
-    int marker_code,
-    jpeg_marker_parser_method routine,
-  ) {
-    return _jpeg_set_marker_processor(
-      cinfo,
-      marker_code,
-      routine,
-    );
-  }
-
-  late final _jpeg_set_marker_processorPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_decompress_ptr, ffi.Int,
-              jpeg_marker_parser_method)>>('jpeg_set_marker_processor');
-  late final _jpeg_set_marker_processor =
-      _jpeg_set_marker_processorPtr.asFunction<
-          void Function(j_decompress_ptr, int, jpeg_marker_parser_method)>();
-
-  /// Read or write raw DCT coefficients --- useful for lossless transcoding.
-  ffi.Pointer<jvirt_barray_ptr> jpeg_read_coefficients(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_read_coefficients(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_read_coefficientsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<jvirt_barray_ptr> Function(
-              j_decompress_ptr)>>('jpeg_read_coefficients');
-  late final _jpeg_read_coefficients = _jpeg_read_coefficientsPtr
-      .asFunction<ffi.Pointer<jvirt_barray_ptr> Function(j_decompress_ptr)>();
-
-  void jpeg_write_coefficients(
-    j_compress_ptr cinfo,
-    ffi.Pointer<jvirt_barray_ptr> coef_arrays,
-  ) {
-    return _jpeg_write_coefficients(
-      cinfo,
-      coef_arrays,
-    );
-  }
-
-  late final _jpeg_write_coefficientsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(j_compress_ptr,
-              ffi.Pointer<jvirt_barray_ptr>)>>('jpeg_write_coefficients');
-  late final _jpeg_write_coefficients = _jpeg_write_coefficientsPtr.asFunction<
-      void Function(j_compress_ptr, ffi.Pointer<jvirt_barray_ptr>)>();
-
-  void jpeg_copy_critical_parameters(
-    j_decompress_ptr srcinfo,
-    j_compress_ptr dstinfo,
-  ) {
-    return _jpeg_copy_critical_parameters(
-      srcinfo,
-      dstinfo,
-    );
-  }
-
-  late final _jpeg_copy_critical_parametersPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(j_decompress_ptr, j_compress_ptr)>>(
-      'jpeg_copy_critical_parameters');
-  late final _jpeg_copy_critical_parameters = _jpeg_copy_critical_parametersPtr
-      .asFunction<void Function(j_decompress_ptr, j_compress_ptr)>();
-
-  /// If you choose to abort compression or decompression before completing
-  /// jpeg_finish_(de)compress, then you need to clean up to release memory,
-  /// temporary files, etc.  You can just call jpeg_destroy_(de)compress
-  /// if you're done with the JPEG object, but if you want to clean it up and
-  /// reuse it, call this:
-  void jpeg_abort_compress(
-    j_compress_ptr cinfo,
-  ) {
-    return _jpeg_abort_compress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_abort_compressPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_compress_ptr)>>(
-          'jpeg_abort_compress');
-  late final _jpeg_abort_compress =
-      _jpeg_abort_compressPtr.asFunction<void Function(j_compress_ptr)>();
-
-  void jpeg_abort_decompress(
-    j_decompress_ptr cinfo,
-  ) {
-    return _jpeg_abort_decompress(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_abort_decompressPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_decompress_ptr)>>(
-          'jpeg_abort_decompress');
-  late final _jpeg_abort_decompress =
-      _jpeg_abort_decompressPtr.asFunction<void Function(j_decompress_ptr)>();
-
-  /// Generic versions of jpeg_abort and jpeg_destroy that work on either
-  /// flavor of JPEG object.  These may be more convenient in some places.
-  void jpeg_abort(
-    j_common_ptr cinfo,
-  ) {
-    return _jpeg_abort(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_abortPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_common_ptr)>>(
-          'jpeg_abort');
-  late final _jpeg_abort =
-      _jpeg_abortPtr.asFunction<void Function(j_common_ptr)>();
-
-  void jpeg_destroy(
-    j_common_ptr cinfo,
-  ) {
-    return _jpeg_destroy(
-      cinfo,
-    );
-  }
-
-  late final _jpeg_destroyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(j_common_ptr)>>(
-          'jpeg_destroy');
-  late final _jpeg_destroy =
-      _jpeg_destroyPtr.asFunction<void Function(j_common_ptr)>();
-
-  /// Default restart-marker-resync procedure for use by data source modules
-  int jpeg_resync_to_restart(
-    j_decompress_ptr cinfo,
-    int desired,
-  ) {
-    return _jpeg_resync_to_restart(
-      cinfo,
-      desired,
-    );
-  }
-
-  late final _jpeg_resync_to_restartPtr =
-      _lookup<ffi.NativeFunction<boolean Function(j_decompress_ptr, ffi.Int)>>(
-          'jpeg_resync_to_restart');
-  late final _jpeg_resync_to_restart = _jpeg_resync_to_restartPtr
-      .asFunction<int Function(j_decompress_ptr, int)>();
-
-  /// Read ICC profile.  See libjpeg.txt for usage information.
-  int jpeg_read_icc_profile(
-    j_decompress_ptr cinfo,
-    ffi.Pointer<ffi.Pointer<JOCTET>> icc_data_ptr,
-    ffi.Pointer<ffi.UnsignedInt> icc_data_len,
-  ) {
-    return _jpeg_read_icc_profile(
-      cinfo,
-      icc_data_ptr,
-      icc_data_len,
-    );
-  }
-
-  late final _jpeg_read_icc_profilePtr = _lookup<
-      ffi.NativeFunction<
-          boolean Function(j_decompress_ptr, ffi.Pointer<ffi.Pointer<JOCTET>>,
-              ffi.Pointer<ffi.UnsignedInt>)>>('jpeg_read_icc_profile');
-  late final _jpeg_read_icc_profile = _jpeg_read_icc_profilePtr.asFunction<
-      int Function(j_decompress_ptr, ffi.Pointer<ffi.Pointer<JOCTET>>,
-          ffi.Pointer<ffi.UnsignedInt>)>();
 }
-
-enum J_MESSAGE_CODE {
-  JMSG_NOMESSAGE(0),
-  JERR_ARITH_NOTIMPL(1),
-  JERR_BAD_ALIGN_TYPE(2),
-  JERR_BAD_ALLOC_CHUNK(3),
-  JERR_BAD_BUFFER_MODE(4),
-  JERR_BAD_COMPONENT_ID(5),
-  JERR_BAD_DCT_COEF(6),
-  JERR_BAD_DCTSIZE(7),
-  JERR_BAD_HUFF_TABLE(8),
-  JERR_BAD_IN_COLORSPACE(9),
-  JERR_BAD_J_COLORSPACE(10),
-  JERR_BAD_LENGTH(11),
-  JERR_BAD_LIB_VERSION(12),
-  JERR_BAD_MCU_SIZE(13),
-  JERR_BAD_POOL_ID(14),
-  JERR_BAD_PRECISION(15),
-  JERR_BAD_PROGRESSION(16),
-  JERR_BAD_PROG_SCRIPT(17),
-  JERR_BAD_SAMPLING(18),
-  JERR_BAD_SCAN_SCRIPT(19),
-  JERR_BAD_STATE(20),
-  JERR_BAD_STRUCT_SIZE(21),
-  JERR_BAD_VIRTUAL_ACCESS(22),
-  JERR_BUFFER_SIZE(23),
-  JERR_CANT_SUSPEND(24),
-  JERR_CCIR601_NOTIMPL(25),
-  JERR_COMPONENT_COUNT(26),
-  JERR_CONVERSION_NOTIMPL(27),
-  JERR_DAC_INDEX(28),
-  JERR_DAC_VALUE(29),
-  JERR_DHT_INDEX(30),
-  JERR_DQT_INDEX(31),
-  JERR_EMPTY_IMAGE(32),
-  JERR_EMS_READ(33),
-  JERR_EMS_WRITE(34),
-  JERR_EOI_EXPECTED(35),
-  JERR_FILE_READ(36),
-  JERR_FILE_WRITE(37),
-  JERR_FRACT_SAMPLE_NOTIMPL(38),
-  JERR_HUFF_CLEN_OVERFLOW(39),
-  JERR_HUFF_MISSING_CODE(40),
-  JERR_IMAGE_TOO_BIG(41),
-  JERR_INPUT_EMPTY(42),
-  JERR_INPUT_EOF(43),
-  JERR_MISMATCHED_QUANT_TABLE(44),
-  JERR_MISSING_DATA(45),
-  JERR_MODE_CHANGE(46),
-  JERR_NOTIMPL(47),
-  JERR_NOT_COMPILED(48),
-  JERR_NO_BACKING_STORE(49),
-  JERR_NO_HUFF_TABLE(50),
-  JERR_NO_IMAGE(51),
-  JERR_NO_QUANT_TABLE(52),
-  JERR_NO_SOI(53),
-  JERR_OUT_OF_MEMORY(54),
-  JERR_QUANT_COMPONENTS(55),
-  JERR_QUANT_FEW_COLORS(56),
-  JERR_QUANT_MANY_COLORS(57),
-  JERR_SOF_DUPLICATE(58),
-  JERR_SOF_NO_SOS(59),
-  JERR_SOF_UNSUPPORTED(60),
-  JERR_SOI_DUPLICATE(61),
-  JERR_SOS_NO_SOF(62),
-  JERR_TFILE_CREATE(63),
-  JERR_TFILE_READ(64),
-  JERR_TFILE_SEEK(65),
-  JERR_TFILE_WRITE(66),
-  JERR_TOO_LITTLE_DATA(67),
-  JERR_UNKNOWN_MARKER(68),
-  JERR_VIRTUAL_BUG(69),
-  JERR_WIDTH_OVERFLOW(70),
-  JERR_XMS_READ(71),
-  JERR_XMS_WRITE(72),
-  JMSG_COPYRIGHT(73),
-  JMSG_VERSION(74),
-  JTRC_16BIT_TABLES(75),
-  JTRC_ADOBE(76),
-  JTRC_APP0(77),
-  JTRC_APP14(78),
-  JTRC_DAC(79),
-  JTRC_DHT(80),
-  JTRC_DQT(81),
-  JTRC_DRI(82),
-  JTRC_EMS_CLOSE(83),
-  JTRC_EMS_OPEN(84),
-  JTRC_EOI(85),
-  JTRC_HUFFBITS(86),
-  JTRC_JFIF(87),
-  JTRC_JFIF_BADTHUMBNAILSIZE(88),
-  JTRC_JFIF_EXTENSION(89),
-  JTRC_JFIF_THUMBNAIL(90),
-  JTRC_MISC_MARKER(91),
-  JTRC_PARMLESS_MARKER(92),
-  JTRC_QUANTVALS(93),
-  JTRC_QUANT_3_NCOLORS(94),
-  JTRC_QUANT_NCOLORS(95),
-  JTRC_QUANT_SELECTED(96),
-  JTRC_RECOVERY_ACTION(97),
-  JTRC_RST(98),
-  JTRC_SMOOTH_NOTIMPL(99),
-  JTRC_SOF(100),
-  JTRC_SOF_COMPONENT(101),
-  JTRC_SOI(102),
-  JTRC_SOS(103),
-  JTRC_SOS_COMPONENT(104),
-  JTRC_SOS_PARAMS(105),
-  JTRC_TFILE_CLOSE(106),
-  JTRC_TFILE_OPEN(107),
-  JTRC_THUMB_JPEG(108),
-  JTRC_THUMB_PALETTE(109),
-  JTRC_THUMB_RGB(110),
-  JTRC_UNKNOWN_IDS(111),
-  JTRC_XMS_CLOSE(112),
-  JTRC_XMS_OPEN(113),
-  JWRN_ADOBE_XFORM(114),
-  JWRN_BOGUS_PROGRESSION(115),
-  JWRN_EXTRANEOUS_DATA(116),
-  JWRN_HIT_MARKER(117),
-  JWRN_HUFF_BAD_CODE(118),
-  JWRN_JFIF_MAJOR(119),
-  JWRN_JPEG_EOF(120),
-  JWRN_MUST_RESYNC(121),
-  JWRN_NOT_SEQUENTIAL(122),
-  JWRN_TOO_MUCH_DATA(123),
-  JERR_BAD_CROP_SPEC(124),
-  JWRN_BOGUS_ICC(125),
-  JERR_BAD_DROP_SAMPLING(126),
-  JERR_BAD_RESTART(127),
-  JMSG_LASTMSGCODE(128);
-
-  final int value;
-  const J_MESSAGE_CODE(this.value);
-
-  static J_MESSAGE_CODE fromValue(int value) => switch (value) {
-        0 => JMSG_NOMESSAGE,
-        1 => JERR_ARITH_NOTIMPL,
-        2 => JERR_BAD_ALIGN_TYPE,
-        3 => JERR_BAD_ALLOC_CHUNK,
-        4 => JERR_BAD_BUFFER_MODE,
-        5 => JERR_BAD_COMPONENT_ID,
-        6 => JERR_BAD_DCT_COEF,
-        7 => JERR_BAD_DCTSIZE,
-        8 => JERR_BAD_HUFF_TABLE,
-        9 => JERR_BAD_IN_COLORSPACE,
-        10 => JERR_BAD_J_COLORSPACE,
-        11 => JERR_BAD_LENGTH,
-        12 => JERR_BAD_LIB_VERSION,
-        13 => JERR_BAD_MCU_SIZE,
-        14 => JERR_BAD_POOL_ID,
-        15 => JERR_BAD_PRECISION,
-        16 => JERR_BAD_PROGRESSION,
-        17 => JERR_BAD_PROG_SCRIPT,
-        18 => JERR_BAD_SAMPLING,
-        19 => JERR_BAD_SCAN_SCRIPT,
-        20 => JERR_BAD_STATE,
-        21 => JERR_BAD_STRUCT_SIZE,
-        22 => JERR_BAD_VIRTUAL_ACCESS,
-        23 => JERR_BUFFER_SIZE,
-        24 => JERR_CANT_SUSPEND,
-        25 => JERR_CCIR601_NOTIMPL,
-        26 => JERR_COMPONENT_COUNT,
-        27 => JERR_CONVERSION_NOTIMPL,
-        28 => JERR_DAC_INDEX,
-        29 => JERR_DAC_VALUE,
-        30 => JERR_DHT_INDEX,
-        31 => JERR_DQT_INDEX,
-        32 => JERR_EMPTY_IMAGE,
-        33 => JERR_EMS_READ,
-        34 => JERR_EMS_WRITE,
-        35 => JERR_EOI_EXPECTED,
-        36 => JERR_FILE_READ,
-        37 => JERR_FILE_WRITE,
-        38 => JERR_FRACT_SAMPLE_NOTIMPL,
-        39 => JERR_HUFF_CLEN_OVERFLOW,
-        40 => JERR_HUFF_MISSING_CODE,
-        41 => JERR_IMAGE_TOO_BIG,
-        42 => JERR_INPUT_EMPTY,
-        43 => JERR_INPUT_EOF,
-        44 => JERR_MISMATCHED_QUANT_TABLE,
-        45 => JERR_MISSING_DATA,
-        46 => JERR_MODE_CHANGE,
-        47 => JERR_NOTIMPL,
-        48 => JERR_NOT_COMPILED,
-        49 => JERR_NO_BACKING_STORE,
-        50 => JERR_NO_HUFF_TABLE,
-        51 => JERR_NO_IMAGE,
-        52 => JERR_NO_QUANT_TABLE,
-        53 => JERR_NO_SOI,
-        54 => JERR_OUT_OF_MEMORY,
-        55 => JERR_QUANT_COMPONENTS,
-        56 => JERR_QUANT_FEW_COLORS,
-        57 => JERR_QUANT_MANY_COLORS,
-        58 => JERR_SOF_DUPLICATE,
-        59 => JERR_SOF_NO_SOS,
-        60 => JERR_SOF_UNSUPPORTED,
-        61 => JERR_SOI_DUPLICATE,
-        62 => JERR_SOS_NO_SOF,
-        63 => JERR_TFILE_CREATE,
-        64 => JERR_TFILE_READ,
-        65 => JERR_TFILE_SEEK,
-        66 => JERR_TFILE_WRITE,
-        67 => JERR_TOO_LITTLE_DATA,
-        68 => JERR_UNKNOWN_MARKER,
-        69 => JERR_VIRTUAL_BUG,
-        70 => JERR_WIDTH_OVERFLOW,
-        71 => JERR_XMS_READ,
-        72 => JERR_XMS_WRITE,
-        73 => JMSG_COPYRIGHT,
-        74 => JMSG_VERSION,
-        75 => JTRC_16BIT_TABLES,
-        76 => JTRC_ADOBE,
-        77 => JTRC_APP0,
-        78 => JTRC_APP14,
-        79 => JTRC_DAC,
-        80 => JTRC_DHT,
-        81 => JTRC_DQT,
-        82 => JTRC_DRI,
-        83 => JTRC_EMS_CLOSE,
-        84 => JTRC_EMS_OPEN,
-        85 => JTRC_EOI,
-        86 => JTRC_HUFFBITS,
-        87 => JTRC_JFIF,
-        88 => JTRC_JFIF_BADTHUMBNAILSIZE,
-        89 => JTRC_JFIF_EXTENSION,
-        90 => JTRC_JFIF_THUMBNAIL,
-        91 => JTRC_MISC_MARKER,
-        92 => JTRC_PARMLESS_MARKER,
-        93 => JTRC_QUANTVALS,
-        94 => JTRC_QUANT_3_NCOLORS,
-        95 => JTRC_QUANT_NCOLORS,
-        96 => JTRC_QUANT_SELECTED,
-        97 => JTRC_RECOVERY_ACTION,
-        98 => JTRC_RST,
-        99 => JTRC_SMOOTH_NOTIMPL,
-        100 => JTRC_SOF,
-        101 => JTRC_SOF_COMPONENT,
-        102 => JTRC_SOI,
-        103 => JTRC_SOS,
-        104 => JTRC_SOS_COMPONENT,
-        105 => JTRC_SOS_PARAMS,
-        106 => JTRC_TFILE_CLOSE,
-        107 => JTRC_TFILE_OPEN,
-        108 => JTRC_THUMB_JPEG,
-        109 => JTRC_THUMB_PALETTE,
-        110 => JTRC_THUMB_RGB,
-        111 => JTRC_UNKNOWN_IDS,
-        112 => JTRC_XMS_CLOSE,
-        113 => JTRC_XMS_OPEN,
-        114 => JWRN_ADOBE_XFORM,
-        115 => JWRN_BOGUS_PROGRESSION,
-        116 => JWRN_EXTRANEOUS_DATA,
-        117 => JWRN_HIT_MARKER,
-        118 => JWRN_HUFF_BAD_CODE,
-        119 => JWRN_JFIF_MAJOR,
-        120 => JWRN_JPEG_EOF,
-        121 => JWRN_MUST_RESYNC,
-        122 => JWRN_NOT_SEQUENTIAL,
-        123 => JWRN_TOO_MUCH_DATA,
-        124 => JERR_BAD_CROP_SPEC,
-        125 => JWRN_BOGUS_ICC,
-        126 => JERR_BAD_DROP_SAMPLING,
-        127 => JERR_BAD_RESTART,
-        128 => JMSG_LASTMSGCODE,
-        _ => throw ArgumentError("Unknown value for J_MESSAGE_CODE: $value"),
-      };
-}
-
-/// Initialization options
-enum TJINIT {
-  /// Initialize the TurboJPEG instance for compression.
-  TJINIT_COMPRESS(0),
-
-  /// Initialize the TurboJPEG instance for decompression.
-  TJINIT_DECOMPRESS(1),
-
-  /// Initialize the TurboJPEG instance for lossless transformation (both
-  /// compression and decompression.)
-  TJINIT_TRANSFORM(2);
-
-  final int value;
-  const TJINIT(this.value);
-
-  static TJINIT fromValue(int value) => switch (value) {
-        0 => TJINIT_COMPRESS,
-        1 => TJINIT_DECOMPRESS,
-        2 => TJINIT_TRANSFORM,
-        _ => throw ArgumentError("Unknown value for TJINIT: $value"),
-      };
-}
-
-/// Chrominance subsampling options
-///
-/// When pixels are converted from RGB to YCbCr (see #TJCS_YCbCr) or from CMYK
-/// to YCCK (see #TJCS_YCCK) as part of the JPEG compression process, some of
-/// the Cb and Cr (chrominance) components can be discarded or averaged together
-/// to produce a smaller image with little perceptible loss of image quality.
-/// (The human eye is more sensitive to small changes in brightness than to
-/// small changes in color.)  This is called "chrominance subsampling".
-enum TJSAMP {
-  /// 4:4:4 chrominance subsampling (no chrominance subsampling)
-  ///
-  /// The JPEG or YUV image will contain one chrominance component for every
-  /// pixel in the source image.
-  TJSAMP_444(0),
-
-  /// 4:2:2 chrominance subsampling
-  ///
-  /// The JPEG or YUV image will contain one chrominance component for every 2x1
-  /// block of pixels in the source image.
-  TJSAMP_422(1),
-
-  /// 4:2:0 chrominance subsampling
-  ///
-  /// The JPEG or YUV image will contain one chrominance component for every 2x2
-  /// block of pixels in the source image.
-  TJSAMP_420(2),
-
-  /// Grayscale
-  ///
-  /// The JPEG or YUV image will contain no chrominance components.
-  TJSAMP_GRAY(3),
-
-  /// 4:4:0 chrominance subsampling
-  ///
-  /// The JPEG or YUV image will contain one chrominance component for every 1x2
-  /// block of pixels in the source image.
-  ///
-  /// @note 4:4:0 subsampling is not fully accelerated in libjpeg-turbo.
-  TJSAMP_440(4),
-
-  /// 4:1:1 chrominance subsampling
-  ///
-  /// The JPEG or YUV image will contain one chrominance component for every 4x1
-  /// block of pixels in the source image.  All else being equal, a JPEG image
-  /// with 4:1:1 subsampling is almost exactly the same size as a JPEG image
-  /// with 4:2:0 subsampling, and in the aggregate, both subsampling methods
-  /// produce approximately the same perceptual quality.  However, 4:1:1 is
-  /// better able to reproduce sharp horizontal features.
-  ///
-  /// @note 4:1:1 subsampling is not fully accelerated in libjpeg-turbo.
-  TJSAMP_411(5),
-
-  /// 4:4:1 chrominance subsampling
-  ///
-  /// The JPEG or YUV image will contain one chrominance component for every 1x4
-  /// block of pixels in the source image.  All else being equal, a JPEG image
-  /// with 4:4:1 subsampling is almost exactly the same size as a JPEG image
-  /// with 4:2:0 subsampling, and in the aggregate, both subsampling methods
-  /// produce approximately the same perceptual quality.  However, 4:4:1 is
-  /// better able to reproduce sharp vertical features.
-  ///
-  /// @note 4:4:1 subsampling is not fully accelerated in libjpeg-turbo.
-  TJSAMP_441(6),
-
-  /// Unknown subsampling
-  ///
-  /// The JPEG image uses an unusual type of chrominance subsampling.  Such
-  /// images can be decompressed into packed-pixel images, but they cannot be
-  /// - decompressed into planar YUV images,
-  /// - losslessly transformed if #TJXOPT_CROP is specified, or
-  /// - partially decompressed using a cropping region.
-  TJSAMP_UNKNOWN(-1);
-
-  final int value;
-  const TJSAMP(this.value);
-
-  static TJSAMP fromValue(int value) => switch (value) {
-        0 => TJSAMP_444,
-        1 => TJSAMP_422,
-        2 => TJSAMP_420,
-        3 => TJSAMP_GRAY,
-        4 => TJSAMP_440,
-        5 => TJSAMP_411,
-        6 => TJSAMP_441,
-        -1 => TJSAMP_UNKNOWN,
-        _ => throw ArgumentError("Unknown value for TJSAMP: $value"),
-      };
-}
-
-/// Pixel formats
-enum TJPF {
-  /// RGB pixel format
-  ///
-  /// The red, green, and blue components in the image are stored in 3-sample
-  /// pixels in the order R, G, B from lowest to highest memory address within
-  /// each pixel.
-  TJPF_RGB(0),
-
-  /// BGR pixel format
-  ///
-  /// The red, green, and blue components in the image are stored in 3-sample
-  /// pixels in the order B, G, R from lowest to highest memory address within
-  /// each pixel.
-  TJPF_BGR(1),
-
-  /// RGBX pixel format
-  ///
-  /// The red, green, and blue components in the image are stored in 4-sample
-  /// pixels in the order R, G, B from lowest to highest memory address within
-  /// each pixel.  The X component is ignored when compressing/encoding and
-  /// undefined when decompressing/decoding.
-  TJPF_RGBX(2),
-
-  /// BGRX pixel format
-  ///
-  /// The red, green, and blue components in the image are stored in 4-sample
-  /// pixels in the order B, G, R from lowest to highest memory address within
-  /// each pixel.  The X component is ignored when compressing/encoding and
-  /// undefined when decompressing/decoding.
-  TJPF_BGRX(3),
-
-  /// XBGR pixel format
-  ///
-  /// The red, green, and blue components in the image are stored in 4-sample
-  /// pixels in the order R, G, B from highest to lowest memory address within
-  /// each pixel.  The X component is ignored when compressing/encoding and
-  /// undefined when decompressing/decoding.
-  TJPF_XBGR(4),
-
-  /// XRGB pixel format
-  ///
-  /// The red, green, and blue components in the image are stored in 4-sample
-  /// pixels in the order B, G, R from highest to lowest memory address within
-  /// each pixel.  The X component is ignored when compressing/encoding and
-  /// undefined when decompressing/decoding.
-  TJPF_XRGB(5),
-
-  /// Grayscale pixel format
-  ///
-  /// Each 1-sample pixel represents a luminance (brightness) level from 0 to
-  /// the maximum sample value (255 for 8-bit samples, 4095 for 12-bit samples,
-  /// and 65535 for 16-bit samples.)
-  TJPF_GRAY(6),
-
-  /// RGBA pixel format
-  ///
-  /// This is the same as @ref TJPF_RGBX, except that when
-  /// decompressing/decoding, the X component is guaranteed to be equal to the
-  /// maximum sample value, which can be interpreted as an opaque alpha channel.
-  TJPF_RGBA(7),
-
-  /// BGRA pixel format
-  ///
-  /// This is the same as @ref TJPF_BGRX, except that when
-  /// decompressing/decoding, the X component is guaranteed to be equal to the
-  /// maximum sample value, which can be interpreted as an opaque alpha channel.
-  TJPF_BGRA(8),
-
-  /// ABGR pixel format
-  ///
-  /// This is the same as @ref TJPF_XBGR, except that when
-  /// decompressing/decoding, the X component is guaranteed to be equal to the
-  /// maximum sample value, which can be interpreted as an opaque alpha channel.
-  TJPF_ABGR(9),
-
-  /// ARGB pixel format
-  ///
-  /// This is the same as @ref TJPF_XRGB, except that when
-  /// decompressing/decoding, the X component is guaranteed to be equal to the
-  /// maximum sample value, which can be interpreted as an opaque alpha channel.
-  TJPF_ARGB(10),
-
-  /// CMYK pixel format
-  ///
-  /// Unlike RGB, which is an additive color model used primarily for display,
-  /// CMYK (Cyan/Magenta/Yellow/Key) is a subtractive color model used primarily
-  /// for printing.  In the CMYK color model, the value of each color component
-  /// typically corresponds to an amount of cyan, magenta, yellow, or black ink
-  /// that is applied to a white background.  In order to convert between CMYK
-  /// and RGB, it is necessary to use a color management system (CMS.)  A CMS
-  /// will attempt to map colors within the printer's gamut to perceptually
-  /// similar colors in the display's gamut and vice versa, but the mapping is
-  /// typically not 1:1 or reversible, nor can it be defined with a simple
-  /// formula.  Thus, such a conversion is out of scope for a codec library.
-  /// However, the TurboJPEG API allows for compressing packed-pixel CMYK images
-  /// into YCCK JPEG images (see #TJCS_YCCK) and decompressing YCCK JPEG images
-  /// into packed-pixel CMYK images.
-  TJPF_CMYK(11),
-
-  /// Unknown pixel format
-  ///
-  /// Currently this is only used by #tj3LoadImage8(), #tj3LoadImage12(), and
-  /// #tj3LoadImage16().
-  TJPF_UNKNOWN(-1);
-
-  final int value;
-  const TJPF(this.value);
-
-  static TJPF fromValue(int value) => switch (value) {
-        0 => TJPF_RGB,
-        1 => TJPF_BGR,
-        2 => TJPF_RGBX,
-        3 => TJPF_BGRX,
-        4 => TJPF_XBGR,
-        5 => TJPF_XRGB,
-        6 => TJPF_GRAY,
-        7 => TJPF_RGBA,
-        8 => TJPF_BGRA,
-        9 => TJPF_ABGR,
-        10 => TJPF_ARGB,
-        11 => TJPF_CMYK,
-        -1 => TJPF_UNKNOWN,
-        _ => throw ArgumentError("Unknown value for TJPF: $value"),
-      };
-}
-
-/// JPEG colorspaces
-enum TJCS {
-  /// RGB colorspace
-  ///
-  /// When generating the JPEG image, the R, G, and B components in the source
-  /// image are reordered into image planes, but no colorspace conversion or
-  /// subsampling is performed.  RGB JPEG images can be generated from and
-  /// decompressed to packed-pixel images with any of the extended RGB or
-  /// grayscale pixel formats, but they cannot be generated from or
-  /// decompressed to planar YUV images.
-  TJCS_RGB(0),
-
-  /// YCbCr colorspace
-  ///
-  /// YCbCr is not an absolute colorspace but rather a mathematical
-  /// transformation of RGB designed solely for storage and transmission.  YCbCr
-  /// images must be converted to RGB before they can be displayed.  In the
-  /// YCbCr colorspace, the Y (luminance) component represents the black & white
-  /// portion of the original image, and the Cb and Cr (chrominance) components
-  /// represent the color portion of the original image.  Historically, the
-  /// analog equivalent of this transformation allowed the same signal to be
-  /// displayed to both black & white and color televisions, but JPEG images use
-  /// YCbCr primarily because it allows the color data to be optionally
-  /// subsampled in order to reduce network and disk usage.  YCbCr is the most
-  /// common JPEG colorspace, and YCbCr JPEG images can be generated from and
-  /// decompressed to packed-pixel images with any of the extended RGB or
-  /// grayscale pixel formats.  YCbCr JPEG images can also be generated from
-  /// and decompressed to planar YUV images.
-  TJCS_YCbCr(1),
-
-  /// Grayscale colorspace
-  ///
-  /// The JPEG image retains only the luminance data (Y component), and any
-  /// color data from the source image is discarded.  Grayscale JPEG images can
-  /// be generated from and decompressed to packed-pixel images with any of the
-  /// extended RGB or grayscale pixel formats, or they can be generated from
-  /// and decompressed to planar YUV images.
-  TJCS_GRAY(2),
-
-  /// CMYK colorspace
-  ///
-  /// When generating the JPEG image, the C, M, Y, and K components in the
-  /// source image are reordered into image planes, but no colorspace conversion
-  /// or subsampling is performed.  CMYK JPEG images can only be generated from
-  /// and decompressed to packed-pixel images with the CMYK pixel format.
-  TJCS_CMYK(3),
-
-  /// YCCK colorspace
-  ///
-  /// YCCK (AKA "YCbCrK") is not an absolute colorspace but rather a
-  /// mathematical transformation of CMYK designed solely for storage and
-  /// transmission.  It is to CMYK as YCbCr is to RGB.  CMYK pixels can be
-  /// reversibly transformed into YCCK, and as with YCbCr, the chrominance
-  /// components in the YCCK pixels can be subsampled without incurring major
-  /// perceptual loss.  YCCK JPEG images can only be generated from and
-  /// decompressed to packed-pixel images with the CMYK pixel format.
-  TJCS_YCCK(4);
-
-  final int value;
-  const TJCS(this.value);
-
-  static TJCS fromValue(int value) => switch (value) {
-        0 => TJCS_RGB,
-        1 => TJCS_YCbCr,
-        2 => TJCS_GRAY,
-        3 => TJCS_CMYK,
-        4 => TJCS_YCCK,
-        _ => throw ArgumentError("Unknown value for TJCS: $value"),
-      };
-}
-
-/// Parameters
-enum TJPARAM {
-  /// Error handling behavior
-  ///
-  /// **Value**
-  /// - `0` *[default]* Allow the current compression/decompression/transform
-  /// operation to complete unless a fatal error is encountered.
-  /// - `1` Immediately discontinue the current
-  /// compression/decompression/transform operation if a warning (non-fatal
-  /// error) occurs.
-  TJPARAM_STOPONWARNING(0),
-
-  /// Row order in packed-pixel source/destination images
-  ///
-  /// **Value**
-  /// - `0` *[default]* top-down (X11) order
-  /// - `1` bottom-up (Windows, OpenGL) order
-  TJPARAM_BOTTOMUP(1),
-
-  /// JPEG destination buffer (re)allocation [compression, lossless
-  /// transformation]
-  ///
-  /// **Value**
-  /// - `0` *[default]* Attempt to allocate or reallocate the JPEG destination
-  /// buffer as needed.
-  /// - `1` Generate an error if the JPEG destination buffer is invalid or too
-  /// small.
-  TJPARAM_NOREALLOC(2),
-
-  /// Perceptual quality of lossy JPEG images [compression only]
-  ///
-  /// **Value**
-  /// - `1`-`100` (`1` = worst quality but best compression, `100` = best
-  /// quality but worst compression) *[no default; must be explicitly
-  /// specified]*
-  TJPARAM_QUALITY(3),
-
-  /// Chrominance subsampling level
-  ///
-  /// The JPEG or YUV image uses (decompression, decoding) or will use (lossy
-  /// compression, encoding) the specified level of chrominance subsampling.
-  ///
-  /// **Value**
-  /// - One of the @ref TJSAMP "chrominance subsampling options" *[no default;
-  /// must be explicitly specified for lossy compression, encoding, and
-  /// decoding]*
-  TJPARAM_SUBSAMP(4),
-
-  /// JPEG width (in pixels) [decompression only, read-only]
-  TJPARAM_JPEGWIDTH(5),
-
-  /// JPEG height (in pixels) [decompression only, read-only]
-  TJPARAM_JPEGHEIGHT(6),
-
-  /// JPEG data precision (bits per sample) [decompression only, read-only]
-  ///
-  /// The JPEG image uses the specified number of bits per sample.
-  ///
-  /// **Value**
-  /// - `8`, `12`, or `16`
-  ///
-  /// 12-bit data precision implies #TJPARAM_OPTIMIZE unless #TJPARAM_ARITHMETIC
-  /// is set.
-  TJPARAM_PRECISION(7),
-
-  /// JPEG colorspace
-  ///
-  /// The JPEG image uses (decompression) or will use (lossy compression) the
-  /// specified colorspace.
-  ///
-  /// **Value**
-  /// - One of the @ref TJCS "JPEG colorspaces" *[default for lossy compression:
-  /// automatically selected based on the subsampling level and pixel format]*
-  TJPARAM_COLORSPACE(8),
-
-  /// Chrominance upsampling algorithm [lossy decompression only]
-  ///
-  /// **Value**
-  /// - `0` *[default]* Use smooth upsampling when decompressing a JPEG image
-  /// that was generated using chrominance subsampling.  This creates a smooth
-  /// transition between neighboring chrominance components in order to reduce
-  /// upsampling artifacts in the decompressed image.
-  /// - `1` Use the fastest chrominance upsampling algorithm available, which
-  /// may combine upsampling with color conversion.
-  TJPARAM_FASTUPSAMPLE(9),
-
-  /// DCT/IDCT algorithm [lossy compression and decompression]
-  ///
-  /// **Value**
-  /// - `0` *[default]* Use the most accurate DCT/IDCT algorithm available.
-  /// - `1` Use the fastest DCT/IDCT algorithm available.
-  ///
-  /// This parameter is provided mainly for backward compatibility with libjpeg,
-  /// which historically implemented several different DCT/IDCT algorithms
-  /// because of performance limitations with 1990s CPUs.  In the libjpeg-turbo
-  /// implementation of the TurboJPEG API:
-  /// - The "fast" and "accurate" DCT/IDCT algorithms perform similarly on
-  /// modern x86/x86-64 CPUs that support AVX2 instructions.
-  /// - The "fast" algorithm is generally only about 5-15% faster than the
-  /// "accurate" algorithm on other types of CPUs.
-  /// - The difference in accuracy between the "fast" and "accurate" algorithms
-  /// is the most pronounced at JPEG quality levels above 90 and tends to be
-  /// more pronounced with decompression than with compression.
-  /// - For JPEG quality levels above 97, the "fast" algorithm degrades and is
-  /// not fully accelerated, so it is slower than the "accurate" algorithm.
-  TJPARAM_FASTDCT(10),
-
-  /// Huffman table optimization [lossy compression, lossless transformation]
-  ///
-  /// **Value**
-  /// - `0` *[default]* The JPEG image will use the default Huffman tables.
-  /// - `1` Optimal Huffman tables will be computed for the JPEG image.  For
-  /// lossless transformation, this can also be specified using
-  /// #TJXOPT_OPTIMIZE.
-  ///
-  /// Huffman table optimization improves compression slightly (generally 5% or
-  /// less), but it reduces compression performance considerably.
-  TJPARAM_OPTIMIZE(11),
-
-  /// Progressive JPEG
-  ///
-  /// In a progressive JPEG image, the DCT coefficients are split across
-  /// multiple "scans" of increasing quality.  Thus, a low-quality scan
-  /// containing the lowest-frequency DCT coefficients can be transmitted first
-  /// and refined with subsequent higher-quality scans containing
-  /// higher-frequency DCT coefficients.  When using Huffman entropy coding, the
-  /// progressive JPEG format also provides an "end-of-bands (EOB) run" feature
-  /// that allows large groups of zeroes, potentially spanning multiple MCU
-  /// blocks, to be represented using only a few bytes.
-  ///
-  /// **Value**
-  /// - `0` *[default for compression, lossless transformation]* The lossy JPEG
-  /// image is (decompression) or will be (compression, lossless transformation)
-  /// single-scan.
-  /// - `1` The lossy JPEG image is (decompression) or will be (compression,
-  /// lossless transformation) progressive.  For lossless transformation, this
-  /// can also be specified using #TJXOPT_PROGRESSIVE.
-  ///
-  /// Progressive JPEG images generally have better compression ratios than
-  /// single-scan JPEG images (much better if the image has large areas of solid
-  /// color), but progressive JPEG compression and decompression is considerably
-  /// slower than single-scan JPEG compression and decompression.  Can be
-  /// combined with #TJPARAM_ARITHMETIC.  Implies #TJPARAM_OPTIMIZE unless
-  /// #TJPARAM_ARITHMETIC is also set.
-  TJPARAM_PROGRESSIVE(12),
-
-  /// Progressive JPEG scan limit for lossy JPEG images [decompression, lossless
-  /// transformation]
-  ///
-  /// Setting this parameter causes the decompression and transform functions to
-  /// return an error if the number of scans in a progressive JPEG image exceeds
-  /// the specified limit.  The primary purpose of this is to allow
-  /// security-critical applications to guard against an exploit of the
-  /// progressive JPEG format described in
-  /// <a href="https://libjpeg-turbo.org/pmwiki/uploads/About/TwoIssueswiththeJPEGStandard.pdf" target="_blank">this report</a>.
-  ///
-  /// **Value**
-  /// - maximum number of progressive JPEG scans that the decompression and
-  /// transform functions will process *[default: `0` (no limit)]*
-  ///
-  /// @see #TJPARAM_PROGRESSIVE
-  TJPARAM_SCANLIMIT(13),
-
-  /// Arithmetic entropy coding
-  ///
-  /// **Value**
-  /// - `0` *[default for compression, lossless transformation]* The lossy JPEG
-  /// image uses (decompression) or will use (compression, lossless
-  /// transformation) Huffman entropy coding.
-  /// - `1` The lossy JPEG image uses (decompression) or will use (compression,
-  /// lossless transformation) arithmetic entropy coding.  For lossless
-  /// transformation, this can also be specified using #TJXOPT_ARITHMETIC.
-  ///
-  /// Arithmetic entropy coding generally improves compression relative to
-  /// Huffman entropy coding, but it reduces compression and decompression
-  /// performance considerably.  Can be combined with #TJPARAM_PROGRESSIVE.
-  TJPARAM_ARITHMETIC(14),
-
-  /// Lossless JPEG
-  ///
-  /// **Value**
-  /// - `0` *[default for compression]* The JPEG image is (decompression) or
-  /// will be (compression) lossy/DCT-based.
-  /// - `1` The JPEG image is (decompression) or will be (compression)
-  /// lossless/predictive.
-  ///
-  /// In most cases, lossless JPEG compression and decompression is considerably
-  /// slower than lossy JPEG compression and decompression, and lossless JPEG
-  /// images are much larger than lossy JPEG images.  Thus, lossless JPEG images
-  /// are typically used only for applications that require mathematically
-  /// lossless compression.  Also note that the following features are not
-  /// available with lossless JPEG images:
-  /// - Colorspace conversion (lossless JPEG images always use #TJCS_RGB,
-  /// #TJCS_GRAY, or #TJCS_CMYK, depending on the pixel format of the source
-  /// image)
-  /// - Chrominance subsampling (lossless JPEG images always use #TJSAMP_444)
-  /// - JPEG quality selection
-  /// - DCT/IDCT algorithm selection
-  /// - Progressive JPEG
-  /// - Arithmetic entropy coding
-  /// - Compression from/decompression to planar YUV images
-  /// - Decompression scaling
-  /// - Lossless transformation
-  ///
-  /// @see #TJPARAM_LOSSLESSPSV, #TJPARAM_LOSSLESSPT
-  TJPARAM_LOSSLESS(15),
-
-  /// Lossless JPEG predictor selection value (PSV)
-  ///
-  /// **Value**
-  /// - `1`-`7` *[default for compression: `1`]*
-  ///
-  /// Lossless JPEG compression shares no algorithms with lossy JPEG
-  /// compression.  Instead, it uses differential pulse-code modulation (DPCM),
-  /// an algorithm whereby each sample is encoded as the difference between the
-  /// sample's value and a "predictor", which is based on the values of
-  /// neighboring samples.  If Ra is the sample immediately to the left of the
-  /// current sample, Rb is the sample immediately above the current sample, and
-  /// Rc is the sample diagonally to the left and above the current sample, then
-  /// the relationship between the predictor selection value and the predictor
-  /// is as follows:
-  ///
-  /// PSV | Predictor
-  /// ----|----------
-  /// 1   | Ra
-  /// 2   | Rb
-  /// 3   | Rc
-  /// 4   | Ra + Rb – Rc
-  /// 5   | Ra + (Rb – Rc) / 2
-  /// 6   | Rb + (Ra – Rc) / 2
-  /// 7   | (Ra + Rb) / 2
-  ///
-  /// Predictors 1-3 are 1-dimensional predictors, whereas Predictors 4-7 are
-  /// 2-dimensional predictors.  The best predictor for a particular image
-  /// depends on the image.
-  ///
-  /// @see #TJPARAM_LOSSLESS
-  TJPARAM_LOSSLESSPSV(16),
-
-  /// Lossless JPEG point transform (Pt)
-  ///
-  /// **Value**
-  /// - `0` through ***precision*** *- 1*, where ***precision*** is the JPEG
-  /// data precision in bits *[default for compression: `0`]*
-  ///
-  /// A point transform value of `0` is necessary in order to generate a fully
-  /// lossless JPEG image.  (A non-zero point transform value right-shifts the
-  /// input samples by the specified number of bits, which is effectively a form
-  /// of lossy color quantization.)
-  ///
-  /// @see #TJPARAM_LOSSLESS, #TJPARAM_PRECISION
-  TJPARAM_LOSSLESSPT(17),
-
-  /// JPEG restart marker interval in MCU blocks [lossy compression only]
-  ///
-  /// The nature of entropy coding is such that a corrupt JPEG image cannot
-  /// be decompressed beyond the point of corruption unless it contains restart
-  /// markers.  A restart marker stops and restarts the entropy coding algorithm
-  /// so that, if a JPEG image is corrupted, decompression can resume at the
-  /// next marker.  Thus, adding more restart markers improves the fault
-  /// tolerance of the JPEG image, but adding too many restart markers can
-  /// adversely affect the compression ratio and performance.
-  ///
-  /// **Value**
-  /// - the number of MCU blocks between each restart marker *[default: `0` (no
-  /// restart markers)]*
-  ///
-  /// Setting this parameter to a non-zero value sets #TJPARAM_RESTARTROWS to 0.
-  TJPARAM_RESTARTBLOCKS(18),
-
-  /// JPEG restart marker interval in MCU rows (lossy) or sample rows (lossless)
-  /// [compression only]
-  ///
-  /// See #TJPARAM_RESTARTBLOCKS for a description of restart markers.
-  ///
-  /// **Value**
-  /// - the number of MCU rows or sample rows between each restart marker
-  /// *[default: `0` (no restart markers)]*
-  ///
-  /// Setting this parameter to a non-zero value sets #TJPARAM_RESTARTBLOCKS to
-  /// 0.
-  TJPARAM_RESTARTROWS(19),
-
-  /// JPEG horizontal pixel density
-  ///
-  /// **Value**
-  /// - The JPEG image has (decompression) or will have (compression) the
-  /// specified horizontal pixel density *[default for compression: `1`]*.
-  ///
-  /// This value is stored in or read from the JPEG header.  It does not affect
-  /// the contents of the JPEG image.  Note that this parameter is set by
-  /// #tj3LoadImage8() when loading a Windows BMP file that contains pixel
-  /// density information, and the value of this parameter is stored to a
-  /// Windows BMP file by #tj3SaveImage8() if the value of #TJPARAM_DENSITYUNITS
-  /// is `2`.
-  ///
-  /// @see TJPARAM_DENSITYUNITS
-  TJPARAM_XDENSITY(20),
-
-  /// JPEG vertical pixel density
-  ///
-  /// **Value**
-  /// - The JPEG image has (decompression) or will have (compression) the
-  /// specified vertical pixel density *[default for compression: `1`]*.
-  ///
-  /// This value is stored in or read from the JPEG header.  It does not affect
-  /// the contents of the JPEG image.  Note that this parameter is set by
-  /// #tj3LoadImage8() when loading a Windows BMP file that contains pixel
-  /// density information, and the value of this parameter is stored to a
-  /// Windows BMP file by #tj3SaveImage8() if the value of #TJPARAM_DENSITYUNITS
-  /// is `2`.
-  ///
-  /// @see TJPARAM_DENSITYUNITS
-  TJPARAM_YDENSITY(21),
-
-  /// JPEG pixel density units
-  ///
-  /// **Value**
-  /// - `0` *[default for compression]* The pixel density of the JPEG image is
-  /// expressed (decompression) or will be expressed (compression) in unknown
-  /// units.
-  /// - `1` The pixel density of the JPEG image is expressed (decompression) or
-  /// will be expressed (compression) in units of pixels/inch.
-  /// - `2` The pixel density of the JPEG image is expressed (decompression) or
-  /// will be expressed (compression) in units of pixels/cm.
-  ///
-  /// This value is stored in or read from the JPEG header.  It does not affect
-  /// the contents of the JPEG image.  Note that this parameter is set by
-  /// #tj3LoadImage8() when loading a Windows BMP file that contains pixel
-  /// density information, and the value of this parameter is stored to a
-  /// Windows BMP file by #tj3SaveImage8() if the value is `2`.
-  ///
-  /// @see TJPARAM_XDENSITY, TJPARAM_YDENSITY
-  TJPARAM_DENSITYUNITS(22),
-
-  /// Memory limit for intermediate buffers
-  ///
-  /// **Value**
-  /// - the maximum amount of memory (in megabytes) that will be allocated for
-  /// intermediate buffers, which are used with progressive JPEG compression and
-  /// decompression, Huffman table optimization, lossless JPEG compression, and
-  /// lossless transformation *[default: `0` (no limit)]*
-  TJPARAM_MAXMEMORY(23),
-
-  /// Image size limit [decompression, lossless transformation, packed-pixel
-  /// image loading]
-  ///
-  /// Setting this parameter causes the decompression, transform, and image
-  /// loading functions to return an error if the number of pixels in the source
-  /// image exceeds the specified limit.  This allows security-critical
-  /// applications to guard against excessive memory consumption.
-  ///
-  /// **Value**
-  /// - maximum number of pixels that the decompression, transform, and image
-  /// loading functions will process *[default: `0` (no limit)]*
-  TJPARAM_MAXPIXELS(24);
-
-  final int value;
-  const TJPARAM(this.value);
-
-  static TJPARAM fromValue(int value) => switch (value) {
-        0 => TJPARAM_STOPONWARNING,
-        1 => TJPARAM_BOTTOMUP,
-        2 => TJPARAM_NOREALLOC,
-        3 => TJPARAM_QUALITY,
-        4 => TJPARAM_SUBSAMP,
-        5 => TJPARAM_JPEGWIDTH,
-        6 => TJPARAM_JPEGHEIGHT,
-        7 => TJPARAM_PRECISION,
-        8 => TJPARAM_COLORSPACE,
-        9 => TJPARAM_FASTUPSAMPLE,
-        10 => TJPARAM_FASTDCT,
-        11 => TJPARAM_OPTIMIZE,
-        12 => TJPARAM_PROGRESSIVE,
-        13 => TJPARAM_SCANLIMIT,
-        14 => TJPARAM_ARITHMETIC,
-        15 => TJPARAM_LOSSLESS,
-        16 => TJPARAM_LOSSLESSPSV,
-        17 => TJPARAM_LOSSLESSPT,
-        18 => TJPARAM_RESTARTBLOCKS,
-        19 => TJPARAM_RESTARTROWS,
-        20 => TJPARAM_XDENSITY,
-        21 => TJPARAM_YDENSITY,
-        22 => TJPARAM_DENSITYUNITS,
-        23 => TJPARAM_MAXMEMORY,
-        24 => TJPARAM_MAXPIXELS,
-        _ => throw ArgumentError("Unknown value for TJPARAM: $value"),
-      };
-}
-
-/// Error codes
-enum TJERR {
-  /// The error was non-fatal and recoverable, but the destination image may
-  /// still be corrupt.
-  TJERR_WARNING(0),
-
-  /// The error was fatal and non-recoverable.
-  TJERR_FATAL(1);
-
-  final int value;
-  const TJERR(this.value);
-
-  static TJERR fromValue(int value) => switch (value) {
-        0 => TJERR_WARNING,
-        1 => TJERR_FATAL,
-        _ => throw ArgumentError("Unknown value for TJERR: $value"),
-      };
-}
-
-/// Transform operations for #tj3Transform()
-enum TJXOP {
-  /// Do not transform the position of the image pixels.
-  TJXOP_NONE(0),
-
-  /// Flip (mirror) image horizontally.  This transform is imperfect if there
-  /// are any partial MCU blocks on the right edge (see #TJXOPT_PERFECT.)
-  TJXOP_HFLIP(1),
-
-  /// Flip (mirror) image vertically.  This transform is imperfect if there are
-  /// any partial MCU blocks on the bottom edge (see #TJXOPT_PERFECT.)
-  TJXOP_VFLIP(2),
-
-  /// Transpose image (flip/mirror along upper left to lower right axis.)  This
-  /// transform is always perfect.
-  TJXOP_TRANSPOSE(3),
-
-  /// Transverse transpose image (flip/mirror along upper right to lower left
-  /// axis.)  This transform is imperfect if there are any partial MCU blocks in
-  /// the image (see #TJXOPT_PERFECT.)
-  TJXOP_TRANSVERSE(4),
-
-  /// Rotate image clockwise by 90 degrees.  This transform is imperfect if
-  /// there are any partial MCU blocks on the bottom edge (see
-  /// #TJXOPT_PERFECT.)
-  TJXOP_ROT90(5),
-
-  /// Rotate image 180 degrees.  This transform is imperfect if there are any
-  /// partial MCU blocks in the image (see #TJXOPT_PERFECT.)
-  TJXOP_ROT180(6),
-
-  /// Rotate image counter-clockwise by 90 degrees.  This transform is imperfect
-  /// if there are any partial MCU blocks on the right edge (see
-  /// #TJXOPT_PERFECT.)
-  TJXOP_ROT270(7);
-
-  final int value;
-  const TJXOP(this.value);
-
-  static TJXOP fromValue(int value) => switch (value) {
-        0 => TJXOP_NONE,
-        1 => TJXOP_HFLIP,
-        2 => TJXOP_VFLIP,
-        3 => TJXOP_TRANSPOSE,
-        4 => TJXOP_TRANSVERSE,
-        5 => TJXOP_ROT90,
-        6 => TJXOP_ROT180,
-        7 => TJXOP_ROT270,
-        _ => throw ArgumentError("Unknown value for TJXOP: $value"),
-      };
-}
-
-/// Scaling factor
-final class tjscalingfactor extends ffi.Struct {
-  /// Numerator
-  @ffi.Int()
-  external int num;
-
-  /// Denominator
-  @ffi.Int()
-  external int denom;
-}
-
-/// Cropping region
-final class tjregion extends ffi.Struct {
-  /// The left boundary of the cropping region.  This must be evenly divisible
-  /// by the MCU block width (see #tjMCUWidth.)
-  @ffi.Int()
-  external int x;
-
-  /// The upper boundary of the cropping region.  For lossless transformation,
-  /// this must be evenly divisible by the MCU block height (see #tjMCUHeight.)
-  @ffi.Int()
-  external int y;
-
-  /// The width of the cropping region.  Setting this to 0 is the equivalent of
-  /// setting it to the width of the source JPEG image - x.
-  @ffi.Int()
-  external int w;
-
-  /// The height of the cropping region.  Setting this to 0 is the equivalent of
-  /// setting it to the height of the source JPEG image - y.
-  @ffi.Int()
-  external int h;
-}
-
-/// Lossless transform
-final class tjtransform extends ffi.Struct {
-  /// Cropping region
-  external tjregion r;
-
-  /// One of the @ref TJXOP "transform operations"
-  @ffi.Int()
-  external int op;
-
-  /// The bitwise OR of one of more of the @ref TJXOPT_ARITHMETIC
-  /// "transform options"
-  @ffi.Int()
-  external int options;
-
-  /// Arbitrary data that can be accessed within the body of the callback
-  /// function
-  external ffi.Pointer<ffi.Void> data;
-
-  /// A callback function that can be used to modify the DCT coefficients after
-  /// they are losslessly transformed but before they are transcoded to a new
-  /// JPEG image.  This allows for custom filters or other transformations to be
-  /// applied in the frequency domain.
-  ///
-  /// @param coeffs pointer to an array of transformed DCT coefficients.  (NOTE:
-  /// This pointer is not guaranteed to be valid once the callback returns, so
-  /// applications wishing to hand off the DCT coefficients to another function
-  /// or library should make a copy of them within the body of the callback.)
-  ///
-  /// @param arrayRegion #tjregion structure containing the width and height of
-  /// the array pointed to by `coeffs` as well as its offset relative to the
-  /// component plane.  TurboJPEG implementations may choose to split each
-  /// component plane into multiple DCT coefficient arrays and call the callback
-  /// function once for each array.
-  ///
-  /// @param planeRegion #tjregion structure containing the width and height of
-  /// the component plane to which `coeffs` belongs
-  ///
-  /// @param componentID ID number of the component plane to which `coeffs`
-  /// belongs.  (Y, Cb, and Cr have, respectively, ID's of 0, 1, and 2 in
-  /// typical JPEG images.)
-  ///
-  /// @param transformID ID number of the transformed image to which `coeffs`
-  /// belongs.  This is the same as the index of the transform in the
-  /// `transforms` array that was passed to #tj3Transform().
-  ///
-  /// @param transform a pointer to a #tjtransform structure that specifies the
-  /// parameters and/or cropping region for this transform
-  ///
-  /// @return 0 if the callback was successful, or -1 if an error occurred.
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Short> coeffs,
-              tjregion arrayRegion,
-              tjregion planeRegion,
-              ffi.Int componentID,
-              ffi.Int transformID,
-              ffi.Pointer<tjtransform> transform)>> customFilter;
-}
-
-/// TurboJPEG instance handle
-typedef tjhandle = ffi.Pointer<ffi.Void>;
 
 /// DCT coefficient quantization tables.
 final class JQUANT_TBL extends ffi.Struct {
@@ -6280,10 +5138,11 @@ final class jpeg_decompress_struct extends ffi.Struct {
   external int actual_number_of_colors;
 
   /// The color map as a 2-D pixel array
-  /// If data_precision is 12, then this is
-  /// actually a J12SAMPARRAY, so callers must
-  /// type-cast it in order to read/write 12-bit
-  /// samples from/to the array.
+  /// If data_precision is 12 or 16, then this is
+  /// actually a J12SAMPARRAY or a J16SAMPARRAY,
+  /// so callers must type-cast it in order to
+  /// read/write 12-bit or 16-bit samples from/to
+  /// the array.
   external JSAMPARRAY colormap;
 
   /// 0 .. output_height-1
@@ -6535,149 +5394,91 @@ final class jpeg_color_deconverter extends ffi.Opaque {}
 
 final class jpeg_color_quantizer extends ffi.Opaque {}
 
-/// stdio state variables.
-///
-/// The following always hold:
-///
-/// if (_flags&(__SLBF|__SWR)) == (__SLBF|__SWR),
-/// _lbfsize is -_bf._size, else _lbfsize is 0
-/// if _flags&__SRD, _w is 0
-/// if _flags&__SWR, _r is 0
-///
-/// This ensures that the getc and putc macros (or inline functions) never
-/// try to write or read from a file that is in `read' or `write' mode.
-/// (Moreover, they can, and do, automatically switch from read mode to
-/// write mode, and back, on "r+" and "w+" files.)
-///
-/// _lbfsize is used only to make the inline line-buffered output stream
-/// code as compact as possible.
-///
-/// _ub, _up, and _ur are used when ungetc() pushes back more characters
-/// than fit in the current _bf, or when ungetc() pushes back a character
-/// that does not match the previous one in _bf.  When this happens,
-/// _ub._base becomes non-nil (i.e., a stream has ungetc() data iff
-/// _ub._base!=NULL) and _up and _ur save the current values of _p and _r.
-///
-/// NB: see WARNING above before changing the layout of this structure!
-typedef FILE = __sFILE;
+typedef FILE = _IO_FILE;
 
-/// stdio state variables.
-///
-/// The following always hold:
-///
-/// if (_flags&(__SLBF|__SWR)) == (__SLBF|__SWR),
-/// _lbfsize is -_bf._size, else _lbfsize is 0
-/// if _flags&__SRD, _w is 0
-/// if _flags&__SWR, _r is 0
-///
-/// This ensures that the getc and putc macros (or inline functions) never
-/// try to write or read from a file that is in `read' or `write' mode.
-/// (Moreover, they can, and do, automatically switch from read mode to
-/// write mode, and back, on "r+" and "w+" files.)
-///
-/// _lbfsize is used only to make the inline line-buffered output stream
-/// code as compact as possible.
-///
-/// _ub, _up, and _ur are used when ungetc() pushes back more characters
-/// than fit in the current _bf, or when ungetc() pushes back a character
-/// that does not match the previous one in _bf.  When this happens,
-/// _ub._base becomes non-nil (i.e., a stream has ungetc() data iff
-/// _ub._base!=NULL) and _up and _ur save the current values of _p and _r.
-///
-/// NB: see WARNING above before changing the layout of this structure!
-final class __sFILE extends ffi.Struct {
-  /// current position in (some) buffer
-  external ffi.Pointer<ffi.UnsignedChar> _p;
-
-  /// read space left for getc()
+final class _IO_FILE extends ffi.Struct {
   @ffi.Int()
-  external int _r;
-
-  /// write space left for putc()
-  @ffi.Int()
-  external int _w;
-
-  /// flags, below; this FILE is free if 0
-  @ffi.Short()
   external int _flags;
 
-  /// fileno, if Unix descriptor, else -1
-  @ffi.Short()
-  external int _file;
+  external ffi.Pointer<ffi.Char> _IO_read_ptr;
 
-  /// the buffer (at least 1 byte, if !NULL)
-  external __sbuf _bf;
+  external ffi.Pointer<ffi.Char> _IO_read_end;
 
-  /// 0 or -_bf._size, for inline putc
+  external ffi.Pointer<ffi.Char> _IO_read_base;
+
+  external ffi.Pointer<ffi.Char> _IO_write_base;
+
+  external ffi.Pointer<ffi.Char> _IO_write_ptr;
+
+  external ffi.Pointer<ffi.Char> _IO_write_end;
+
+  external ffi.Pointer<ffi.Char> _IO_buf_base;
+
+  external ffi.Pointer<ffi.Char> _IO_buf_end;
+
+  external ffi.Pointer<ffi.Char> _IO_save_base;
+
+  external ffi.Pointer<ffi.Char> _IO_backup_base;
+
+  external ffi.Pointer<ffi.Char> _IO_save_end;
+
+  external ffi.Pointer<_IO_marker> _markers;
+
+  external ffi.Pointer<_IO_FILE> _chain;
+
   @ffi.Int()
-  external int _lbfsize;
+  external int _fileno;
 
-  /// cookie passed to io functions
-  external ffi.Pointer<ffi.Void> _cookie;
-
-  external ffi
-      .Pointer<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>
-      _close;
-
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _read;
-
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>> _seek;
-
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _write;
-
-  /// ungetc buffer
-  external __sbuf _ub;
-
-  /// additions to FILE to not break ABI
-  external ffi.Pointer<__sFILEX> _extra;
-
-  /// saved _r when _r is counting ungetc data
   @ffi.Int()
-  external int _ur;
+  external int _flags2;
 
-  /// guarantee an ungetc() buffer
-  @ffi.Array.multi([3])
-  external ffi.Array<ffi.UnsignedChar> _ubuf;
+  @__off_t()
+  external int _old_offset;
 
-  /// guarantee a getc() buffer
+  @ffi.UnsignedShort()
+  external int _cur_column;
+
+  @ffi.SignedChar()
+  external int _vtable_offset;
+
   @ffi.Array.multi([1])
-  external ffi.Array<ffi.UnsignedChar> _nbuf;
+  external ffi.Array<ffi.Char> _shortbuf;
 
-  /// buffer for fgetln()
-  external __sbuf _lb;
+  external ffi.Pointer<_IO_lock_t> _lock;
 
-  /// stat.st_blksize (may be != _bf._size)
-  @ffi.Int()
-  external int _blksize;
-
-  /// current lseek offset (see WARNING)
-  @fpos_t()
+  @__off64_t()
   external int _offset;
-}
 
-/// stdio buffers
-final class __sbuf extends ffi.Struct {
-  external ffi.Pointer<ffi.UnsignedChar> _base;
+  external ffi.Pointer<_IO_codecvt> _codecvt;
+
+  external ffi.Pointer<_IO_wide_data> _wide_data;
+
+  external ffi.Pointer<_IO_FILE> _freeres_list;
+
+  external ffi.Pointer<ffi.Void> _freeres_buf;
+
+  @ffi.Size()
+  external int __pad5;
 
   @ffi.Int()
-  external int _size;
+  external int _mode;
+
+  @ffi.Array.multi([20])
+  external ffi.Array<ffi.Char> _unused2;
 }
 
-typedef fpos_t = __darwin_off_t;
-typedef __darwin_off_t = __int64_t;
-typedef __int64_t = ffi.LongLong;
-typedef Dart__int64_t = int;
+final class _IO_marker extends ffi.Opaque {}
 
-/// hold a buncha junk that would grow the ABI
-final class __sFILEX extends ffi.Opaque {}
+typedef __off_t = ffi.Long;
+typedef Dart__off_t = int;
+typedef _IO_lock_t = ffi.Void;
+typedef Dart_IO_lock_t = void;
+typedef __off64_t = ffi.Long;
+typedef Dart__off64_t = int;
+
+final class _IO_codecvt extends ffi.Opaque {}
+
+final class _IO_wide_data extends ffi.Opaque {}
 
 typedef J12SAMPARRAY = ffi.Pointer<J12SAMPROW>;
 typedef J12SAMPROW = ffi.Pointer<J12SAMPLE>;
@@ -6703,17 +5504,1096 @@ typedef jpeg_marker_parser_methodFunction = boolean Function(
 typedef Dartjpeg_marker_parser_methodFunction = Dartboolean Function(
     j_decompress_ptr cinfo);
 
+enum J_MESSAGE_CODE {
+  JMSG_NOMESSAGE(0),
+  JERR_ARITH_NOTIMPL(1),
+  JERR_BAD_ALIGN_TYPE(2),
+  JERR_BAD_ALLOC_CHUNK(3),
+  JERR_BAD_BUFFER_MODE(4),
+  JERR_BAD_COMPONENT_ID(5),
+  JERR_BAD_DCT_COEF(6),
+  JERR_BAD_DCTSIZE(7),
+  JERR_BAD_HUFF_TABLE(8),
+  JERR_BAD_IN_COLORSPACE(9),
+  JERR_BAD_J_COLORSPACE(10),
+  JERR_BAD_LENGTH(11),
+  JERR_BAD_LIB_VERSION(12),
+  JERR_BAD_MCU_SIZE(13),
+  JERR_BAD_POOL_ID(14),
+  JERR_BAD_PRECISION(15),
+  JERR_BAD_PROGRESSION(16),
+  JERR_BAD_PROG_SCRIPT(17),
+  JERR_BAD_SAMPLING(18),
+  JERR_BAD_SCAN_SCRIPT(19),
+  JERR_BAD_STATE(20),
+  JERR_BAD_STRUCT_SIZE(21),
+  JERR_BAD_VIRTUAL_ACCESS(22),
+  JERR_BUFFER_SIZE(23),
+  JERR_CANT_SUSPEND(24),
+  JERR_CCIR601_NOTIMPL(25),
+  JERR_COMPONENT_COUNT(26),
+  JERR_CONVERSION_NOTIMPL(27),
+  JERR_DAC_INDEX(28),
+  JERR_DAC_VALUE(29),
+  JERR_DHT_INDEX(30),
+  JERR_DQT_INDEX(31),
+  JERR_EMPTY_IMAGE(32),
+  JERR_EMS_READ(33),
+  JERR_EMS_WRITE(34),
+  JERR_EOI_EXPECTED(35),
+  JERR_FILE_READ(36),
+  JERR_FILE_WRITE(37),
+  JERR_FRACT_SAMPLE_NOTIMPL(38),
+  JERR_HUFF_CLEN_OVERFLOW(39),
+  JERR_HUFF_MISSING_CODE(40),
+  JERR_IMAGE_TOO_BIG(41),
+  JERR_INPUT_EMPTY(42),
+  JERR_INPUT_EOF(43),
+  JERR_MISMATCHED_QUANT_TABLE(44),
+  JERR_MISSING_DATA(45),
+  JERR_MODE_CHANGE(46),
+  JERR_NOTIMPL(47),
+  JERR_NOT_COMPILED(48),
+  JERR_NO_BACKING_STORE(49),
+  JERR_NO_HUFF_TABLE(50),
+  JERR_NO_IMAGE(51),
+  JERR_NO_QUANT_TABLE(52),
+  JERR_NO_SOI(53),
+  JERR_OUT_OF_MEMORY(54),
+  JERR_QUANT_COMPONENTS(55),
+  JERR_QUANT_FEW_COLORS(56),
+  JERR_QUANT_MANY_COLORS(57),
+  JERR_SOF_DUPLICATE(58),
+  JERR_SOF_NO_SOS(59),
+  JERR_SOF_UNSUPPORTED(60),
+  JERR_SOI_DUPLICATE(61),
+  JERR_SOS_NO_SOF(62),
+  JERR_TFILE_CREATE(63),
+  JERR_TFILE_READ(64),
+  JERR_TFILE_SEEK(65),
+  JERR_TFILE_WRITE(66),
+  JERR_TOO_LITTLE_DATA(67),
+  JERR_UNKNOWN_MARKER(68),
+  JERR_VIRTUAL_BUG(69),
+  JERR_WIDTH_OVERFLOW(70),
+  JERR_XMS_READ(71),
+  JERR_XMS_WRITE(72),
+  JMSG_COPYRIGHT(73),
+  JMSG_VERSION(74),
+  JTRC_16BIT_TABLES(75),
+  JTRC_ADOBE(76),
+  JTRC_APP0(77),
+  JTRC_APP14(78),
+  JTRC_DAC(79),
+  JTRC_DHT(80),
+  JTRC_DQT(81),
+  JTRC_DRI(82),
+  JTRC_EMS_CLOSE(83),
+  JTRC_EMS_OPEN(84),
+  JTRC_EOI(85),
+  JTRC_HUFFBITS(86),
+  JTRC_JFIF(87),
+  JTRC_JFIF_BADTHUMBNAILSIZE(88),
+  JTRC_JFIF_EXTENSION(89),
+  JTRC_JFIF_THUMBNAIL(90),
+  JTRC_MISC_MARKER(91),
+  JTRC_PARMLESS_MARKER(92),
+  JTRC_QUANTVALS(93),
+  JTRC_QUANT_3_NCOLORS(94),
+  JTRC_QUANT_NCOLORS(95),
+  JTRC_QUANT_SELECTED(96),
+  JTRC_RECOVERY_ACTION(97),
+  JTRC_RST(98),
+  JTRC_SMOOTH_NOTIMPL(99),
+  JTRC_SOF(100),
+  JTRC_SOF_COMPONENT(101),
+  JTRC_SOI(102),
+  JTRC_SOS(103),
+  JTRC_SOS_COMPONENT(104),
+  JTRC_SOS_PARAMS(105),
+  JTRC_TFILE_CLOSE(106),
+  JTRC_TFILE_OPEN(107),
+  JTRC_THUMB_JPEG(108),
+  JTRC_THUMB_PALETTE(109),
+  JTRC_THUMB_RGB(110),
+  JTRC_UNKNOWN_IDS(111),
+  JTRC_XMS_CLOSE(112),
+  JTRC_XMS_OPEN(113),
+  JWRN_ADOBE_XFORM(114),
+  JWRN_BOGUS_PROGRESSION(115),
+  JWRN_EXTRANEOUS_DATA(116),
+  JWRN_HIT_MARKER(117),
+  JWRN_HUFF_BAD_CODE(118),
+  JWRN_JFIF_MAJOR(119),
+  JWRN_JPEG_EOF(120),
+  JWRN_MUST_RESYNC(121),
+  JWRN_NOT_SEQUENTIAL(122),
+  JWRN_TOO_MUCH_DATA(123),
+  JERR_BAD_CROP_SPEC(124),
+  JWRN_BOGUS_ICC(125),
+  JERR_BAD_DROP_SAMPLING(126),
+  JERR_BAD_RESTART(127),
+  JMSG_LASTMSGCODE(128);
+
+  final int value;
+  const J_MESSAGE_CODE(this.value);
+
+  static J_MESSAGE_CODE fromValue(int value) => switch (value) {
+        0 => JMSG_NOMESSAGE,
+        1 => JERR_ARITH_NOTIMPL,
+        2 => JERR_BAD_ALIGN_TYPE,
+        3 => JERR_BAD_ALLOC_CHUNK,
+        4 => JERR_BAD_BUFFER_MODE,
+        5 => JERR_BAD_COMPONENT_ID,
+        6 => JERR_BAD_DCT_COEF,
+        7 => JERR_BAD_DCTSIZE,
+        8 => JERR_BAD_HUFF_TABLE,
+        9 => JERR_BAD_IN_COLORSPACE,
+        10 => JERR_BAD_J_COLORSPACE,
+        11 => JERR_BAD_LENGTH,
+        12 => JERR_BAD_LIB_VERSION,
+        13 => JERR_BAD_MCU_SIZE,
+        14 => JERR_BAD_POOL_ID,
+        15 => JERR_BAD_PRECISION,
+        16 => JERR_BAD_PROGRESSION,
+        17 => JERR_BAD_PROG_SCRIPT,
+        18 => JERR_BAD_SAMPLING,
+        19 => JERR_BAD_SCAN_SCRIPT,
+        20 => JERR_BAD_STATE,
+        21 => JERR_BAD_STRUCT_SIZE,
+        22 => JERR_BAD_VIRTUAL_ACCESS,
+        23 => JERR_BUFFER_SIZE,
+        24 => JERR_CANT_SUSPEND,
+        25 => JERR_CCIR601_NOTIMPL,
+        26 => JERR_COMPONENT_COUNT,
+        27 => JERR_CONVERSION_NOTIMPL,
+        28 => JERR_DAC_INDEX,
+        29 => JERR_DAC_VALUE,
+        30 => JERR_DHT_INDEX,
+        31 => JERR_DQT_INDEX,
+        32 => JERR_EMPTY_IMAGE,
+        33 => JERR_EMS_READ,
+        34 => JERR_EMS_WRITE,
+        35 => JERR_EOI_EXPECTED,
+        36 => JERR_FILE_READ,
+        37 => JERR_FILE_WRITE,
+        38 => JERR_FRACT_SAMPLE_NOTIMPL,
+        39 => JERR_HUFF_CLEN_OVERFLOW,
+        40 => JERR_HUFF_MISSING_CODE,
+        41 => JERR_IMAGE_TOO_BIG,
+        42 => JERR_INPUT_EMPTY,
+        43 => JERR_INPUT_EOF,
+        44 => JERR_MISMATCHED_QUANT_TABLE,
+        45 => JERR_MISSING_DATA,
+        46 => JERR_MODE_CHANGE,
+        47 => JERR_NOTIMPL,
+        48 => JERR_NOT_COMPILED,
+        49 => JERR_NO_BACKING_STORE,
+        50 => JERR_NO_HUFF_TABLE,
+        51 => JERR_NO_IMAGE,
+        52 => JERR_NO_QUANT_TABLE,
+        53 => JERR_NO_SOI,
+        54 => JERR_OUT_OF_MEMORY,
+        55 => JERR_QUANT_COMPONENTS,
+        56 => JERR_QUANT_FEW_COLORS,
+        57 => JERR_QUANT_MANY_COLORS,
+        58 => JERR_SOF_DUPLICATE,
+        59 => JERR_SOF_NO_SOS,
+        60 => JERR_SOF_UNSUPPORTED,
+        61 => JERR_SOI_DUPLICATE,
+        62 => JERR_SOS_NO_SOF,
+        63 => JERR_TFILE_CREATE,
+        64 => JERR_TFILE_READ,
+        65 => JERR_TFILE_SEEK,
+        66 => JERR_TFILE_WRITE,
+        67 => JERR_TOO_LITTLE_DATA,
+        68 => JERR_UNKNOWN_MARKER,
+        69 => JERR_VIRTUAL_BUG,
+        70 => JERR_WIDTH_OVERFLOW,
+        71 => JERR_XMS_READ,
+        72 => JERR_XMS_WRITE,
+        73 => JMSG_COPYRIGHT,
+        74 => JMSG_VERSION,
+        75 => JTRC_16BIT_TABLES,
+        76 => JTRC_ADOBE,
+        77 => JTRC_APP0,
+        78 => JTRC_APP14,
+        79 => JTRC_DAC,
+        80 => JTRC_DHT,
+        81 => JTRC_DQT,
+        82 => JTRC_DRI,
+        83 => JTRC_EMS_CLOSE,
+        84 => JTRC_EMS_OPEN,
+        85 => JTRC_EOI,
+        86 => JTRC_HUFFBITS,
+        87 => JTRC_JFIF,
+        88 => JTRC_JFIF_BADTHUMBNAILSIZE,
+        89 => JTRC_JFIF_EXTENSION,
+        90 => JTRC_JFIF_THUMBNAIL,
+        91 => JTRC_MISC_MARKER,
+        92 => JTRC_PARMLESS_MARKER,
+        93 => JTRC_QUANTVALS,
+        94 => JTRC_QUANT_3_NCOLORS,
+        95 => JTRC_QUANT_NCOLORS,
+        96 => JTRC_QUANT_SELECTED,
+        97 => JTRC_RECOVERY_ACTION,
+        98 => JTRC_RST,
+        99 => JTRC_SMOOTH_NOTIMPL,
+        100 => JTRC_SOF,
+        101 => JTRC_SOF_COMPONENT,
+        102 => JTRC_SOI,
+        103 => JTRC_SOS,
+        104 => JTRC_SOS_COMPONENT,
+        105 => JTRC_SOS_PARAMS,
+        106 => JTRC_TFILE_CLOSE,
+        107 => JTRC_TFILE_OPEN,
+        108 => JTRC_THUMB_JPEG,
+        109 => JTRC_THUMB_PALETTE,
+        110 => JTRC_THUMB_RGB,
+        111 => JTRC_UNKNOWN_IDS,
+        112 => JTRC_XMS_CLOSE,
+        113 => JTRC_XMS_OPEN,
+        114 => JWRN_ADOBE_XFORM,
+        115 => JWRN_BOGUS_PROGRESSION,
+        116 => JWRN_EXTRANEOUS_DATA,
+        117 => JWRN_HIT_MARKER,
+        118 => JWRN_HUFF_BAD_CODE,
+        119 => JWRN_JFIF_MAJOR,
+        120 => JWRN_JPEG_EOF,
+        121 => JWRN_MUST_RESYNC,
+        122 => JWRN_NOT_SEQUENTIAL,
+        123 => JWRN_TOO_MUCH_DATA,
+        124 => JERR_BAD_CROP_SPEC,
+        125 => JWRN_BOGUS_ICC,
+        126 => JERR_BAD_DROP_SAMPLING,
+        127 => JERR_BAD_RESTART,
+        128 => JMSG_LASTMSGCODE,
+        _ => throw ArgumentError("Unknown value for J_MESSAGE_CODE: $value"),
+      };
+}
+
+/// Initialization options.
+enum TJINIT {
+  /// Initialize the TurboJPEG instance for compression.
+  TJINIT_COMPRESS(0),
+
+  /// Initialize the TurboJPEG instance for decompression.
+  TJINIT_DECOMPRESS(1),
+
+  /// Initialize the TurboJPEG instance for lossless transformation (both
+  /// compression and decompression.)
+  TJINIT_TRANSFORM(2);
+
+  final int value;
+  const TJINIT(this.value);
+
+  static TJINIT fromValue(int value) => switch (value) {
+        0 => TJINIT_COMPRESS,
+        1 => TJINIT_DECOMPRESS,
+        2 => TJINIT_TRANSFORM,
+        _ => throw ArgumentError("Unknown value for TJINIT: $value"),
+      };
+}
+
+/// Chrominance subsampling options.
+/// When pixels are converted from RGB to YCbCr (see #TJCS_YCbCr) or from CMYK
+/// to YCCK (see #TJCS_YCCK) as part of the JPEG compression process, some of
+/// the Cb and Cr (chrominance) components can be discarded or averaged together
+/// to produce a smaller image with little perceptible loss of image clarity.
+/// (The human eye is more sensitive to small changes in brightness than to
+/// small changes in color.)  This is called "chrominance subsampling".
+enum TJSAMP {
+  /// 4:4:4 chrominance subsampling (no chrominance subsampling).  The JPEG or
+  /// YUV image will contain one chrominance component for every pixel in the
+  /// source image.
+  TJSAMP_444(0),
+
+  /// 4:2:2 chrominance subsampling.  The JPEG or YUV image will contain one
+  /// chrominance component for every 2x1 block of pixels in the source image.
+  TJSAMP_422(1),
+
+  /// 4:2:0 chrominance subsampling.  The JPEG or YUV image will contain one
+  /// chrominance component for every 2x2 block of pixels in the source image.
+  TJSAMP_420(2),
+
+  /// Grayscale.  The JPEG or YUV image will contain no chrominance components.
+  TJSAMP_GRAY(3),
+
+  /// 4:4:0 chrominance subsampling.  The JPEG or YUV image will contain one
+  /// chrominance component for every 1x2 block of pixels in the source image.
+  ///
+  /// @note 4:4:0 subsampling is not fully accelerated in libjpeg-turbo.
+  TJSAMP_440(4),
+
+  /// 4:1:1 chrominance subsampling.  The JPEG or YUV image will contain one
+  /// chrominance component for every 4x1 block of pixels in the source image.
+  /// JPEG images compressed with 4:1:1 subsampling will be almost exactly the
+  /// same size as those compressed with 4:2:0 subsampling, and in the
+  /// aggregate, both subsampling methods produce approximately the same
+  /// perceptual quality.  However, 4:1:1 is better able to reproduce sharp
+  /// horizontal features.
+  ///
+  /// @note 4:1:1 subsampling is not fully accelerated in libjpeg-turbo.
+  TJSAMP_411(5),
+
+  /// 4:4:1 chrominance subsampling.  The JPEG or YUV image will contain one
+  /// chrominance component for every 1x4 block of pixels in the source image.
+  /// JPEG images compressed with 4:4:1 subsampling will be almost exactly the
+  /// same size as those compressed with 4:2:0 subsampling, and in the
+  /// aggregate, both subsampling methods produce approximately the same
+  /// perceptual quality.  However, 4:4:1 is better able to reproduce sharp
+  /// vertical features.
+  ///
+  /// @note 4:4:1 subsampling is not fully accelerated in libjpeg-turbo.
+  TJSAMP_441(6),
+
+  /// Unknown subsampling.  The JPEG image uses an unusual type of chrominance
+  /// subsampling.  Such images can be decompressed into packed-pixel images,
+  /// but they cannot be
+  /// - decompressed into planar YUV images,
+  /// - losslessly transformed if #TJXOPT_CROP is specified, or
+  /// - partially decompressed using a cropping region.
+  TJSAMP_UNKNOWN(-1);
+
+  final int value;
+  const TJSAMP(this.value);
+
+  static TJSAMP fromValue(int value) => switch (value) {
+        0 => TJSAMP_444,
+        1 => TJSAMP_422,
+        2 => TJSAMP_420,
+        3 => TJSAMP_GRAY,
+        4 => TJSAMP_440,
+        5 => TJSAMP_411,
+        6 => TJSAMP_441,
+        -1 => TJSAMP_UNKNOWN,
+        _ => throw ArgumentError("Unknown value for TJSAMP: $value"),
+      };
+}
+
+/// Pixel formats
+enum TJPF {
+  /// RGB pixel format.  The red, green, and blue components in the image are
+  /// stored in 3-sample pixels in the order R, G, B from lowest to highest
+  /// memory address within each pixel.
+  TJPF_RGB(0),
+
+  /// BGR pixel format.  The red, green, and blue components in the image are
+  /// stored in 3-sample pixels in the order B, G, R from lowest to highest
+  /// memory address within each pixel.
+  TJPF_BGR(1),
+
+  /// RGBX pixel format.  The red, green, and blue components in the image are
+  /// stored in 4-sample pixels in the order R, G, B from lowest to highest
+  /// memory address within each pixel.  The X component is ignored when
+  /// compressing and undefined when decompressing.
+  TJPF_RGBX(2),
+
+  /// BGRX pixel format.  The red, green, and blue components in the image are
+  /// stored in 4-sample pixels in the order B, G, R from lowest to highest
+  /// memory address within each pixel.  The X component is ignored when
+  /// compressing and undefined when decompressing.
+  TJPF_BGRX(3),
+
+  /// XBGR pixel format.  The red, green, and blue components in the image are
+  /// stored in 4-sample pixels in the order R, G, B from highest to lowest
+  /// memory address within each pixel.  The X component is ignored when
+  /// compressing and undefined when decompressing.
+  TJPF_XBGR(4),
+
+  /// XRGB pixel format.  The red, green, and blue components in the image are
+  /// stored in 4-sample pixels in the order B, G, R from highest to lowest
+  /// memory address within each pixel.  The X component is ignored when
+  /// compressing and undefined when decompressing.
+  TJPF_XRGB(5),
+
+  /// Grayscale pixel format.  Each 1-sample pixel represents a luminance
+  /// (brightness) level from 0 to the maximum sample value (255 for 8-bit
+  /// samples, 4095 for 12-bit samples, and 65535 for 16-bit samples.)
+  TJPF_GRAY(6),
+
+  /// RGBA pixel format.  This is the same as @ref TJPF_RGBX, except that when
+  /// decompressing, the X component is guaranteed to be equal to the maximum
+  /// sample value, which can be interpreted as an opaque alpha channel.
+  TJPF_RGBA(7),
+
+  /// BGRA pixel format.  This is the same as @ref TJPF_BGRX, except that when
+  /// decompressing, the X component is guaranteed to be equal to the maximum
+  /// sample value, which can be interpreted as an opaque alpha channel.
+  TJPF_BGRA(8),
+
+  /// ABGR pixel format.  This is the same as @ref TJPF_XBGR, except that when
+  /// decompressing, the X component is guaranteed to be equal to the maximum
+  /// sample value, which can be interpreted as an opaque alpha channel.
+  TJPF_ABGR(9),
+
+  /// ARGB pixel format.  This is the same as @ref TJPF_XRGB, except that when
+  /// decompressing, the X component is guaranteed to be equal to the maximum
+  /// sample value, which can be interpreted as an opaque alpha channel.
+  TJPF_ARGB(10),
+
+  /// CMYK pixel format.  Unlike RGB, which is an additive color model used
+  /// primarily for display, CMYK (Cyan/Magenta/Yellow/Key) is a subtractive
+  /// color model used primarily for printing.  In the CMYK color model, the
+  /// value of each color component typically corresponds to an amount of cyan,
+  /// magenta, yellow, or black ink that is applied to a white background.  In
+  /// order to convert between CMYK and RGB, it is necessary to use a color
+  /// management system (CMS.)  A CMS will attempt to map colors within the
+  /// printer's gamut to perceptually similar colors in the display's gamut and
+  /// vice versa, but the mapping is typically not 1:1 or reversible, nor can it
+  /// be defined with a simple formula.  Thus, such a conversion is out of scope
+  /// for a codec library.  However, the TurboJPEG API allows for compressing
+  /// packed-pixel CMYK images into YCCK JPEG images (see #TJCS_YCCK) and
+  /// decompressing YCCK JPEG images into packed-pixel CMYK images.
+  TJPF_CMYK(11),
+
+  /// Unknown pixel format.  Currently this is only used by #tj3LoadImage8(),
+  /// #tj3LoadImage12(), and #tj3LoadImage16().
+  TJPF_UNKNOWN(-1);
+
+  final int value;
+  const TJPF(this.value);
+
+  static TJPF fromValue(int value) => switch (value) {
+        0 => TJPF_RGB,
+        1 => TJPF_BGR,
+        2 => TJPF_RGBX,
+        3 => TJPF_BGRX,
+        4 => TJPF_XBGR,
+        5 => TJPF_XRGB,
+        6 => TJPF_GRAY,
+        7 => TJPF_RGBA,
+        8 => TJPF_BGRA,
+        9 => TJPF_ABGR,
+        10 => TJPF_ARGB,
+        11 => TJPF_CMYK,
+        -1 => TJPF_UNKNOWN,
+        _ => throw ArgumentError("Unknown value for TJPF: $value"),
+      };
+}
+
+/// JPEG colorspaces
+enum TJCS {
+  /// RGB colorspace.  When compressing the JPEG image, the R, G, and B
+  /// components in the source image are reordered into image planes, but no
+  /// colorspace conversion or subsampling is performed.  RGB JPEG images can be
+  /// compressed from and decompressed to packed-pixel images with any of the
+  /// extended RGB or grayscale pixel formats, but they cannot be compressed
+  /// from or decompressed to planar YUV images.
+  TJCS_RGB(0),
+
+  /// YCbCr colorspace.  YCbCr is not an absolute colorspace but rather a
+  /// mathematical transformation of RGB designed solely for storage and
+  /// transmission.  YCbCr images must be converted to RGB before they can
+  /// actually be displayed.  In the YCbCr colorspace, the Y (luminance)
+  /// component represents the black & white portion of the original image, and
+  /// the Cb and Cr (chrominance) components represent the color portion of the
+  /// original image.  Originally, the analog equivalent of this transformation
+  /// allowed the same signal to drive both black & white and color televisions,
+  /// but JPEG images use YCbCr primarily because it allows the color data to be
+  /// optionally subsampled for the purposes of reducing network or disk usage.
+  /// YCbCr is the most common JPEG colorspace, and YCbCr JPEG images can be
+  /// compressed from and decompressed to packed-pixel images with any of the
+  /// extended RGB or grayscale pixel formats.  YCbCr JPEG images can also be
+  /// compressed from and decompressed to planar YUV images.
+  TJCS_YCbCr(1),
+
+  /// Grayscale colorspace.  The JPEG image retains only the luminance data (Y
+  /// component), and any color data from the source image is discarded.
+  /// Grayscale JPEG images can be compressed from and decompressed to
+  /// packed-pixel images with any of the extended RGB or grayscale pixel
+  /// formats, or they can be compressed from and decompressed to planar YUV
+  /// images.
+  TJCS_GRAY(2),
+
+  /// CMYK colorspace.  When compressing the JPEG image, the C, M, Y, and K
+  /// components in the source image are reordered into image planes, but no
+  /// colorspace conversion or subsampling is performed.  CMYK JPEG images can
+  /// only be compressed from and decompressed to packed-pixel images with the
+  /// CMYK pixel format.
+  TJCS_CMYK(3),
+
+  /// YCCK colorspace.  YCCK (AKA "YCbCrK") is not an absolute colorspace but
+  /// rather a mathematical transformation of CMYK designed solely for storage
+  /// and transmission.  It is to CMYK as YCbCr is to RGB.  CMYK pixels can be
+  /// reversibly transformed into YCCK, and as with YCbCr, the chrominance
+  /// components in the YCCK pixels can be subsampled without incurring major
+  /// perceptual loss.  YCCK JPEG images can only be compressed from and
+  /// decompressed to packed-pixel images with the CMYK pixel format.
+  TJCS_YCCK(4);
+
+  final int value;
+  const TJCS(this.value);
+
+  static TJCS fromValue(int value) => switch (value) {
+        0 => TJCS_RGB,
+        1 => TJCS_YCbCr,
+        2 => TJCS_GRAY,
+        3 => TJCS_CMYK,
+        4 => TJCS_YCCK,
+        _ => throw ArgumentError("Unknown value for TJCS: $value"),
+      };
+}
+
+/// Parameters
+enum TJPARAM {
+  /// Error handling behavior
+  ///
+  /// **Value**
+  /// - `0` *[default]* Allow the current compression/decompression/transform
+  /// operation to complete unless a fatal error is encountered.
+  /// - `1` Immediately discontinue the current
+  /// compression/decompression/transform operation if a warning (non-fatal
+  /// error) occurs.
+  TJPARAM_STOPONWARNING(0),
+
+  /// Row order in packed-pixel source/destination images
+  ///
+  /// **Value**
+  /// - `0` *[default]* top-down (X11) order
+  /// - `1` bottom-up (Windows, OpenGL) order
+  TJPARAM_BOTTOMUP(1),
+
+  /// JPEG destination buffer (re)allocation [compression, lossless
+  /// transformation]
+  ///
+  /// **Value**
+  /// - `0` *[default]* Attempt to allocate or reallocate the JPEG destination
+  /// buffer as needed.
+  /// - `1` Generate an error if the JPEG destination buffer is invalid or too
+  /// small.
+  TJPARAM_NOREALLOC(2),
+
+  /// Perceptual quality of lossy JPEG images [compression only]
+  ///
+  /// **Value**
+  /// - `1`-`100` (`1` = worst quality but best compression, `100` = best
+  /// quality but worst compression) *[no default; must be explicitly
+  /// specified]*
+  TJPARAM_QUALITY(3),
+
+  /// Chrominance subsampling level
+  ///
+  /// The JPEG or YUV image uses (decompression, decoding) or will use (lossy
+  /// compression, encoding) the specified level of chrominance subsampling.
+  ///
+  /// **Value**
+  /// - One of the @ref TJSAMP "chrominance subsampling options" *[no default;
+  /// must be explicitly specified for lossy compression, encoding, and
+  /// decoding]*
+  TJPARAM_SUBSAMP(4),
+
+  /// JPEG width (in pixels) [decompression only, read-only]
+  TJPARAM_JPEGWIDTH(5),
+
+  /// JPEG height (in pixels) [decompression only, read-only]
+  TJPARAM_JPEGHEIGHT(6),
+
+  /// JPEG data precision (bits per sample) [decompression only, read-only]
+  ///
+  /// The JPEG image uses the specified number of bits per sample.
+  ///
+  /// **Value**
+  /// - `8`, `12`, or `16`
+  ///
+  /// 12-bit data precision implies #TJPARAM_OPTIMIZE unless #TJPARAM_ARITHMETIC
+  /// is set.
+  TJPARAM_PRECISION(7),
+
+  /// JPEG colorspace
+  ///
+  /// The JPEG image uses (decompression) or will use (lossy compression) the
+  /// specified colorspace.
+  ///
+  /// **Value**
+  /// - One of the @ref TJCS "JPEG colorspaces" *[default for lossy compression:
+  /// automatically selected based on the subsampling level and pixel format]*
+  TJPARAM_COLORSPACE(8),
+
+  /// Chrominance upsampling algorithm [lossy decompression only]
+  ///
+  /// **Value**
+  /// - `0` *[default]* Use smooth upsampling when decompressing a JPEG image
+  /// that was compressed using chrominance subsampling.  This creates a smooth
+  /// transition between neighboring chrominance components in order to reduce
+  /// upsampling artifacts in the decompressed image.
+  /// - `1` Use the fastest chrominance upsampling algorithm available, which
+  /// may combine upsampling with color conversion.
+  TJPARAM_FASTUPSAMPLE(9),
+
+  /// DCT/IDCT algorithm [lossy compression and decompression]
+  ///
+  /// **Value**
+  /// - `0` *[default]* Use the most accurate DCT/IDCT algorithm available.
+  /// - `1` Use the fastest DCT/IDCT algorithm available.
+  ///
+  /// This parameter is provided mainly for backward compatibility with libjpeg,
+  /// which historically implemented several different DCT/IDCT algorithms
+  /// because of performance limitations with 1990s CPUs.  In the libjpeg-turbo
+  /// implementation of the TurboJPEG API:
+  /// - The "fast" and "accurate" DCT/IDCT algorithms perform similarly on
+  /// modern x86/x86-64 CPUs that support AVX2 instructions.
+  /// - The "fast" algorithm is generally only about 5-15% faster than the
+  /// "accurate" algorithm on other types of CPUs.
+  /// - The difference in accuracy between the "fast" and "accurate" algorithms
+  /// is the most pronounced at JPEG quality levels above 90 and tends to be
+  /// more pronounced with decompression than with compression.
+  /// - The "fast" algorithm degrades and is not fully accelerated for JPEG
+  /// quality levels above 97, so it will be slower than the "accurate"
+  /// algorithm.
+  TJPARAM_FASTDCT(10),
+
+  /// Optimized baseline entropy coding [lossy compression only]
+  ///
+  /// **Value**
+  /// - `0` *[default]* The JPEG image will use the default Huffman tables.
+  /// - `1` Optimal Huffman tables will be computed for the JPEG image.  For
+  /// lossless transformation, this can also be specified using
+  /// #TJXOPT_OPTIMIZE.
+  ///
+  /// Optimized baseline entropy coding will improve compression slightly
+  /// (generally 5% or less), but it will reduce compression performance
+  /// considerably.
+  TJPARAM_OPTIMIZE(11),
+
+  /// Progressive entropy coding
+  ///
+  /// **Value**
+  /// - `0` *[default for compression, lossless transformation]* The lossy JPEG
+  /// image uses (decompression) or will use (compression, lossless
+  /// transformation) baseline entropy coding.
+  /// - `1` The lossy JPEG image uses (decompression) or will use (compression,
+  /// lossless transformation) progressive entropy coding.  For lossless
+  /// transformation, this can also be specified using #TJXOPT_PROGRESSIVE.
+  ///
+  /// Progressive entropy coding will generally improve compression relative to
+  /// baseline entropy coding, but it will reduce compression and decompression
+  /// performance considerably.  Can be combined with #TJPARAM_ARITHMETIC.
+  /// Implies #TJPARAM_OPTIMIZE unless #TJPARAM_ARITHMETIC is also set.
+  TJPARAM_PROGRESSIVE(12),
+
+  /// Progressive JPEG scan limit for lossy JPEG images [decompression, lossless
+  /// transformation]
+  ///
+  /// Setting this parameter will cause the decompression and transform
+  /// functions to return an error if the number of scans in a progressive JPEG
+  /// image exceeds the specified limit.  The primary purpose of this is to
+  /// allow security-critical applications to guard against an exploit of the
+  /// progressive JPEG format described in
+  /// <a href="https://libjpeg-turbo.org/pmwiki/uploads/About/TwoIssueswiththeJPEGStandard.pdf" target="_blank">this report</a>.
+  ///
+  /// **Value**
+  /// - maximum number of progressive JPEG scans that the decompression and
+  /// transform functions will process *[default: `0` (no limit)]*
+  ///
+  /// @see #TJPARAM_PROGRESSIVE
+  TJPARAM_SCANLIMIT(13),
+
+  /// Arithmetic entropy coding
+  ///
+  /// **Value**
+  /// - `0` *[default for compression, lossless transformation]* The lossy JPEG
+  /// image uses (decompression) or will use (compression, lossless
+  /// transformation) Huffman entropy coding.
+  /// - `1` The lossy JPEG image uses (decompression) or will use (compression,
+  /// lossless transformation) arithmetic entropy coding.  For lossless
+  /// transformation, this can also be specified using #TJXOPT_ARITHMETIC.
+  ///
+  /// Arithmetic entropy coding will generally improve compression relative to
+  /// Huffman entropy coding, but it will reduce compression and decompression
+  /// performance considerably.  Can be combined with #TJPARAM_PROGRESSIVE.
+  TJPARAM_ARITHMETIC(14),
+
+  /// Lossless JPEG
+  ///
+  /// **Value**
+  /// - `0` *[default for compression]* The JPEG image is (decompression) or
+  /// will be (compression) lossy/DCT-based.
+  /// - `1` The JPEG image is (decompression) or will be (compression)
+  /// lossless/predictive.
+  ///
+  /// In most cases, compressing and decompressing lossless JPEG images is
+  /// considerably slower than compressing and decompressing lossy JPEG images,
+  /// and lossless JPEG images are much larger than lossy JPEG images.  Thus,
+  /// lossless JPEG images are typically used only for applications that require
+  /// mathematically lossless compression.  Also note that the following
+  /// features are not available with lossless JPEG images:
+  /// - Colorspace conversion (lossless JPEG images always use #TJCS_RGB,
+  /// #TJCS_GRAY, or #TJCS_CMYK, depending on the pixel format of the source
+  /// image)
+  /// - Chrominance subsampling (lossless JPEG images always use #TJSAMP_444)
+  /// - JPEG quality selection
+  /// - DCT/IDCT algorithm selection
+  /// - Progressive entropy coding
+  /// - Arithmetic entropy coding
+  /// - Compression from/decompression to planar YUV images
+  /// - Decompression scaling
+  /// - Lossless transformation
+  ///
+  /// @see #TJPARAM_LOSSLESSPSV, #TJPARAM_LOSSLESSPT
+  TJPARAM_LOSSLESS(15),
+
+  /// Lossless JPEG predictor selection value (PSV)
+  ///
+  /// **Value**
+  /// - `1`-`7` *[default for compression: `1`]*
+  ///
+  /// Lossless JPEG compression shares no algorithms with lossy JPEG
+  /// compression.  Instead, it uses differential pulse-code modulation (DPCM),
+  /// an algorithm whereby each sample is encoded as the difference between the
+  /// sample's value and a "predictor", which is based on the values of
+  /// neighboring samples.  If Ra is the sample immediately to the left of the
+  /// current sample, Rb is the sample immediately above the current sample, and
+  /// Rc is the sample diagonally to the left and above the current sample, then
+  /// the relationship between the predictor selection value and the predictor
+  /// is as follows:
+  ///
+  /// PSV | Predictor
+  /// ----|----------
+  /// 1   | Ra
+  /// 2   | Rb
+  /// 3   | Rc
+  /// 4   | Ra + Rb – Rc
+  /// 5   | Ra + (Rb – Rc) / 2
+  /// 6   | Rb + (Ra – Rc) / 2
+  /// 7   | (Ra + Rb) / 2
+  ///
+  /// Predictors 1-3 are 1-dimensional predictors, whereas Predictors 4-7 are
+  /// 2-dimensional predictors.  The best predictor for a particular image
+  /// depends on the image.
+  ///
+  /// @see #TJPARAM_LOSSLESS
+  TJPARAM_LOSSLESSPSV(16),
+
+  /// Lossless JPEG point transform (Pt)
+  ///
+  /// **Value**
+  /// - `0` through ***precision*** *- 1*, where ***precision*** is the JPEG
+  /// data precision in bits *[default for compression: `0`]*
+  ///
+  /// A point transform value of `0` is necessary in order to generate a fully
+  /// lossless JPEG image.  (A non-zero point transform value right-shifts the
+  /// input samples by the specified number of bits, which is effectively a form
+  /// of lossy color quantization.)
+  ///
+  /// @see #TJPARAM_LOSSLESS, #TJPARAM_PRECISION
+  TJPARAM_LOSSLESSPT(17),
+
+  /// JPEG restart marker interval in MCU blocks (lossy) or samples (lossless)
+  /// [compression only]
+  ///
+  /// The nature of entropy coding is such that a corrupt JPEG image cannot
+  /// be decompressed beyond the point of corruption unless it contains restart
+  /// markers.  A restart marker stops and restarts the entropy coding algorithm
+  /// so that, if a JPEG image is corrupted, decompression can resume at the
+  /// next marker.  Thus, adding more restart markers improves the fault
+  /// tolerance of the JPEG image, but adding too many restart markers can
+  /// adversely affect the compression ratio and performance.
+  ///
+  /// **Value**
+  /// - the number of MCU blocks or samples between each restart marker
+  /// *[default: `0` (no restart markers)]*
+  ///
+  /// Setting this parameter to a non-zero value sets #TJPARAM_RESTARTROWS to 0.
+  TJPARAM_RESTARTBLOCKS(18),
+
+  /// JPEG restart marker interval in MCU rows (lossy) or sample rows (lossless)
+  /// [compression only]
+  ///
+  /// See #TJPARAM_RESTARTBLOCKS for a description of restart markers.
+  ///
+  /// **Value**
+  /// - the number of MCU rows or sample rows between each restart marker
+  /// *[default: `0` (no restart markers)]*
+  ///
+  /// Setting this parameter to a non-zero value sets #TJPARAM_RESTARTBLOCKS to
+  /// 0.
+  TJPARAM_RESTARTROWS(19),
+
+  /// JPEG horizontal pixel density
+  ///
+  /// **Value**
+  /// - The JPEG image has (decompression) or will have (compression) the
+  /// specified horizontal pixel density *[default for compression: `1`]*.
+  ///
+  /// This value is stored in or read from the JPEG header.  It does not affect
+  /// the contents of the JPEG image.  Note that this parameter is set by
+  /// #tj3LoadImage8() when loading a Windows BMP file that contains pixel
+  /// density information, and the value of this parameter is stored to a
+  /// Windows BMP file by #tj3SaveImage8() if the value of #TJPARAM_DENSITYUNITS
+  /// is `2`.
+  ///
+  /// @see TJPARAM_DENSITYUNITS
+  TJPARAM_XDENSITY(20),
+
+  /// JPEG vertical pixel density
+  ///
+  /// **Value**
+  /// - The JPEG image has (decompression) or will have (compression) the
+  /// specified vertical pixel density *[default for compression: `1`]*.
+  ///
+  /// This value is stored in or read from the JPEG header.  It does not affect
+  /// the contents of the JPEG image.  Note that this parameter is set by
+  /// #tj3LoadImage8() when loading a Windows BMP file that contains pixel
+  /// density information, and the value of this parameter is stored to a
+  /// Windows BMP file by #tj3SaveImage8() if the value of #TJPARAM_DENSITYUNITS
+  /// is `2`.
+  ///
+  /// @see TJPARAM_DENSITYUNITS
+  TJPARAM_YDENSITY(21),
+
+  /// JPEG pixel density units
+  ///
+  /// **Value**
+  /// - `0` *[default for compression]* The pixel density of the JPEG image is
+  /// expressed (decompression) or will be expressed (compression) in unknown
+  /// units.
+  /// - `1` The pixel density of the JPEG image is expressed (decompression) or
+  /// will be expressed (compression) in units of pixels/inch.
+  /// - `2` The pixel density of the JPEG image is expressed (decompression) or
+  /// will be expressed (compression) in units of pixels/cm.
+  ///
+  /// This value is stored in or read from the JPEG header.  It does not affect
+  /// the contents of the JPEG image.  Note that this parameter is set by
+  /// #tj3LoadImage8() when loading a Windows BMP file that contains pixel
+  /// density information, and the value of this parameter is stored to a
+  /// Windows BMP file by #tj3SaveImage8() if the value is `2`.
+  ///
+  /// @see TJPARAM_XDENSITY, TJPARAM_YDENSITY
+  TJPARAM_DENSITYUNITS(22),
+
+  /// Memory limit for intermediate buffers
+  ///
+  /// **Value**
+  /// - the maximum amount of memory (in megabytes) that will be allocated for
+  /// intermediate buffers, which are used with progressive JPEG compression and
+  /// decompression, optimized baseline entropy coding, lossless JPEG
+  /// compression, and lossless transformation *[default: `0` (no limit)]*
+  TJPARAM_MAXMEMORY(23),
+
+  /// Image size limit [decompression, lossless transformation, packed-pixel
+  /// image loading]
+  ///
+  /// Setting this parameter will cause the decompression, transform, and image
+  /// loading functions to return an error if the number of pixels in the source
+  /// image exceeds the specified limit.  This allows security-critical
+  /// applications to guard against excessive memory consumption.
+  ///
+  /// **Value**
+  /// - maximum number of pixels that the decompression, transform, and image
+  /// loading functions will process *[default: `0` (no limit)]*
+  TJPARAM_MAXPIXELS(24);
+
+  final int value;
+  const TJPARAM(this.value);
+
+  static TJPARAM fromValue(int value) => switch (value) {
+        0 => TJPARAM_STOPONWARNING,
+        1 => TJPARAM_BOTTOMUP,
+        2 => TJPARAM_NOREALLOC,
+        3 => TJPARAM_QUALITY,
+        4 => TJPARAM_SUBSAMP,
+        5 => TJPARAM_JPEGWIDTH,
+        6 => TJPARAM_JPEGHEIGHT,
+        7 => TJPARAM_PRECISION,
+        8 => TJPARAM_COLORSPACE,
+        9 => TJPARAM_FASTUPSAMPLE,
+        10 => TJPARAM_FASTDCT,
+        11 => TJPARAM_OPTIMIZE,
+        12 => TJPARAM_PROGRESSIVE,
+        13 => TJPARAM_SCANLIMIT,
+        14 => TJPARAM_ARITHMETIC,
+        15 => TJPARAM_LOSSLESS,
+        16 => TJPARAM_LOSSLESSPSV,
+        17 => TJPARAM_LOSSLESSPT,
+        18 => TJPARAM_RESTARTBLOCKS,
+        19 => TJPARAM_RESTARTROWS,
+        20 => TJPARAM_XDENSITY,
+        21 => TJPARAM_YDENSITY,
+        22 => TJPARAM_DENSITYUNITS,
+        23 => TJPARAM_MAXMEMORY,
+        24 => TJPARAM_MAXPIXELS,
+        _ => throw ArgumentError("Unknown value for TJPARAM: $value"),
+      };
+}
+
+/// Error codes
+enum TJERR {
+  /// The error was non-fatal and recoverable, but the destination image may
+  /// still be corrupt.
+  TJERR_WARNING(0),
+
+  /// The error was fatal and non-recoverable.
+  TJERR_FATAL(1);
+
+  final int value;
+  const TJERR(this.value);
+
+  static TJERR fromValue(int value) => switch (value) {
+        0 => TJERR_WARNING,
+        1 => TJERR_FATAL,
+        _ => throw ArgumentError("Unknown value for TJERR: $value"),
+      };
+}
+
+/// Transform operations for #tj3Transform()
+enum TJXOP {
+  /// Do not transform the position of the image pixels
+  TJXOP_NONE(0),
+
+  /// Flip (mirror) image horizontally.  This transform is imperfect if there
+  /// are any partial MCU blocks on the right edge (see #TJXOPT_PERFECT.)
+  TJXOP_HFLIP(1),
+
+  /// Flip (mirror) image vertically.  This transform is imperfect if there are
+  /// any partial MCU blocks on the bottom edge (see #TJXOPT_PERFECT.)
+  TJXOP_VFLIP(2),
+
+  /// Transpose image (flip/mirror along upper left to lower right axis.)  This
+  /// transform is always perfect.
+  TJXOP_TRANSPOSE(3),
+
+  /// Transverse transpose image (flip/mirror along upper right to lower left
+  /// axis.)  This transform is imperfect if there are any partial MCU blocks in
+  /// the image (see #TJXOPT_PERFECT.)
+  TJXOP_TRANSVERSE(4),
+
+  /// Rotate image clockwise by 90 degrees.  This transform is imperfect if
+  /// there are any partial MCU blocks on the bottom edge (see
+  /// #TJXOPT_PERFECT.)
+  TJXOP_ROT90(5),
+
+  /// Rotate image 180 degrees.  This transform is imperfect if there are any
+  /// partial MCU blocks in the image (see #TJXOPT_PERFECT.)
+  TJXOP_ROT180(6),
+
+  /// Rotate image counter-clockwise by 90 degrees.  This transform is imperfect
+  /// if there are any partial MCU blocks on the right edge (see
+  /// #TJXOPT_PERFECT.)
+  TJXOP_ROT270(7);
+
+  final int value;
+  const TJXOP(this.value);
+
+  static TJXOP fromValue(int value) => switch (value) {
+        0 => TJXOP_NONE,
+        1 => TJXOP_HFLIP,
+        2 => TJXOP_VFLIP,
+        3 => TJXOP_TRANSPOSE,
+        4 => TJXOP_TRANSVERSE,
+        5 => TJXOP_ROT90,
+        6 => TJXOP_ROT180,
+        7 => TJXOP_ROT270,
+        _ => throw ArgumentError("Unknown value for TJXOP: $value"),
+      };
+}
+
+/// Scaling factor
+final class tjscalingfactor extends ffi.Struct {
+  /// Numerator
+  @ffi.Int()
+  external int num;
+
+  /// Denominator
+  @ffi.Int()
+  external int denom;
+}
+
+/// Cropping region
+final class tjregion extends ffi.Struct {
+  /// The left boundary of the cropping region.  This must be evenly divisible
+  /// by the MCU block width (see #tjMCUWidth.)
+  @ffi.Int()
+  external int x;
+
+  /// The upper boundary of the cropping region.  For lossless transformation,
+  /// this must be evenly divisible by the MCU block height (see #tjMCUHeight.)
+  @ffi.Int()
+  external int y;
+
+  /// The width of the cropping region.  Setting this to 0 is the equivalent of
+  /// setting it to the width of the source JPEG image - x.
+  @ffi.Int()
+  external int w;
+
+  /// The height of the cropping region.  Setting this to 0 is the equivalent of
+  /// setting it to the height of the source JPEG image - y.
+  @ffi.Int()
+  external int h;
+}
+
+/// Lossless transform
+final class tjtransform extends ffi.Struct {
+  /// Cropping region
+  external tjregion r;
+
+  /// One of the @ref TJXOP "transform operations"
+  @ffi.Int()
+  external int op;
+
+  /// The bitwise OR of one of more of the @ref TJXOPT_ARITHMETIC
+  /// "transform options"
+  @ffi.Int()
+  external int options;
+
+  /// Arbitrary data that can be accessed within the body of the callback
+  /// function
+  external ffi.Pointer<ffi.Void> data;
+
+  /// A callback function that can be used to modify the DCT coefficients after
+  /// they are losslessly transformed but before they are transcoded to a new
+  /// JPEG image.  This allows for custom filters or other transformations to be
+  /// applied in the frequency domain.
+  ///
+  /// @param coeffs pointer to an array of transformed DCT coefficients.  (NOTE:
+  /// this pointer is not guaranteed to be valid once the callback returns, so
+  /// applications wishing to hand off the DCT coefficients to another function
+  /// or library should make a copy of them within the body of the callback.)
+  ///
+  /// @param arrayRegion #tjregion structure containing the width and height of
+  /// the array pointed to by `coeffs` as well as its offset relative to the
+  /// component plane.  TurboJPEG implementations may choose to split each
+  /// component plane into multiple DCT coefficient arrays and call the callback
+  /// function once for each array.
+  ///
+  /// @param planeRegion #tjregion structure containing the width and height of
+  /// the component plane to which `coeffs` belongs
+  ///
+  /// @param componentID ID number of the component plane to which `coeffs`
+  /// belongs.  (Y, Cb, and Cr have, respectively, ID's of 0, 1, and 2 in
+  /// typical JPEG images.)
+  ///
+  /// @param transformID ID number of the transformed image to which `coeffs`
+  /// belongs.  This is the same as the index of the transform in the
+  /// `transforms` array that was passed to #tj3Transform().
+  ///
+  /// @param transform a pointer to a #tjtransform structure that specifies the
+  /// parameters and/or cropping region for this transform
+  ///
+  /// @return 0 if the callback was successful, or -1 if an error occurred.
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Short> coeffs,
+              tjregion arrayRegion,
+              tjregion planeRegion,
+              ffi.Int componentID,
+              ffi.Int transformID,
+              ffi.Pointer<tjtransform> transform)>> customFilter;
+}
+
+/// TurboJPEG instance handle
+typedef tjhandle = ffi.Pointer<ffi.Void>;
+
 const int JPEG_LIB_VERSION = 62;
 
-const int LIBJPEG_TURBO_VERSION_NUMBER = 3000004;
+const int LIBJPEG_TURBO_VERSION_NUMBER = 3000003;
 
 const int C_ARITH_CODING_SUPPORTED = 1;
 
 const int D_ARITH_CODING_SUPPORTED = 1;
 
 const int MEM_SRCDST_SUPPORTED = 1;
-
-const int WITH_SIMD = 1;
 
 const int BITS_IN_JSAMPLE = 8;
 
@@ -6736,6 +6616,64 @@ const int JPEG_MAX_DIMENSION = 65500;
 const int FALSE = 0;
 
 const int TRUE = 1;
+
+const int DCTSIZE = 8;
+
+const int DCTSIZE2 = 64;
+
+const int NUM_QUANT_TBLS = 4;
+
+const int NUM_HUFF_TBLS = 4;
+
+const int NUM_ARITH_TBLS = 16;
+
+const int MAX_COMPS_IN_SCAN = 4;
+
+const int MAX_SAMP_FACTOR = 4;
+
+const int C_MAX_BLOCKS_IN_MCU = 10;
+
+const int D_MAX_BLOCKS_IN_MCU = 10;
+
+const int JCS_EXTENSIONS = 1;
+
+const int JCS_ALPHA_EXTENSIONS = 1;
+
+const int JDCT_DEFAULT = 0;
+
+const int JDCT_FASTEST = 1;
+
+const int JMSG_LENGTH_MAX = 200;
+
+const int JMSG_STR_PARM_MAX = 80;
+
+const int JPOOL_PERMANENT = 0;
+
+const int JPOOL_IMAGE = 1;
+
+const int JPOOL_NUMPOOLS = 2;
+
+const int JPEG_SUSPENDED = 0;
+
+const int JPEG_HEADER_OK = 1;
+
+const int JPEG_HEADER_TABLES_ONLY = 2;
+
+const int JPEG_REACHED_SOS = 1;
+
+const int JPEG_REACHED_EOI = 2;
+
+const int JPEG_ROW_COMPLETED = 3;
+
+const int JPEG_SCAN_COMPLETED = 4;
+
+const int JPEG_RST0 = 208;
+
+const int JPEG_EOI = 217;
+
+const int JPEG_APP0 = 224;
+
+const int JPEG_COM = 254;
 
 const int TJ_NUMINIT = 3;
 
@@ -6820,61 +6758,3 @@ const int TJFLAG_STOPONWARNING = 8192;
 const int TJFLAG_PROGRESSIVE = 16384;
 
 const int TJFLAG_LIMITSCANS = 32768;
-
-const int DCTSIZE = 8;
-
-const int DCTSIZE2 = 64;
-
-const int NUM_QUANT_TBLS = 4;
-
-const int NUM_HUFF_TBLS = 4;
-
-const int NUM_ARITH_TBLS = 16;
-
-const int MAX_COMPS_IN_SCAN = 4;
-
-const int MAX_SAMP_FACTOR = 4;
-
-const int C_MAX_BLOCKS_IN_MCU = 10;
-
-const int D_MAX_BLOCKS_IN_MCU = 10;
-
-const int JCS_EXTENSIONS = 1;
-
-const int JCS_ALPHA_EXTENSIONS = 1;
-
-const int JDCT_DEFAULT = 0;
-
-const int JDCT_FASTEST = 1;
-
-const int JMSG_LENGTH_MAX = 200;
-
-const int JMSG_STR_PARM_MAX = 80;
-
-const int JPOOL_PERMANENT = 0;
-
-const int JPOOL_IMAGE = 1;
-
-const int JPOOL_NUMPOOLS = 2;
-
-const int JPEG_SUSPENDED = 0;
-
-const int JPEG_HEADER_OK = 1;
-
-const int JPEG_HEADER_TABLES_ONLY = 2;
-
-const int JPEG_REACHED_SOS = 1;
-
-const int JPEG_REACHED_EOI = 2;
-
-const int JPEG_ROW_COMPLETED = 3;
-
-const int JPEG_SCAN_COMPLETED = 4;
-
-const int JPEG_RST0 = 208;
-
-const int JPEG_EOI = 217;
-
-const int JPEG_APP0 = 224;
-
-const int JPEG_COM = 254;
