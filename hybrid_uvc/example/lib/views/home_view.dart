@@ -17,18 +17,13 @@ class HomeView extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            SizedBox.expand(
-              child: frame == null
-                  ? null
-                  : UVCView(
-                      frame: frame,
-                      fit: BoxFit.contain,
-                      fpsVisible: true,
-                      fpsStyle:
-                          Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                    ),
+            UVCView(
+              frame: frame,
+              fit: BoxFit.contain,
+              fpsVisible: true,
+              fpsStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
             ),
             // if (zoomAbsolute != null)
             //   Container(

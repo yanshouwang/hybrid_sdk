@@ -12,7 +12,7 @@ import 'uvc_jni.dart' as jni;
 import 'uvc_frame.dart';
 
 class UVCView extends StatefulWidget with TypeLogger {
-  final UVCFrame frame;
+  final UVCFrame? frame;
   final BoxFit fit;
   final bool fpsVisible;
   final TextStyle? fpsStyle;
@@ -62,19 +62,23 @@ class _UVCViewState extends State<UVCView> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _fps,
-      builder: (context, fps, child) {
-        return DecoratedBox(
-          decoration: _FPSDecoration(
-            fps: widget.fpsVisible ? fps : null,
-            style: widget.fpsStyle,
-          ),
-          position: DecorationPosition.foreground,
-          child: child,
-        );
-      },
-      child: _buildFrame(context),
+    return SizedBox.expand(
+      child: ValueListenableBuilder(
+        valueListenable: _fps,
+        builder: (context, fps, child) {
+          return DecoratedBox(
+            decoration: _FPSDecoration(
+              fps: widget.fpsVisible ? fps : null,
+              style: widget.fpsStyle,
+            ),
+            position: DecorationPosition.foreground,
+            child: child,
+          );
+        },
+        child: Platform.isAndroid
+            ? _buildPlatformView(context)
+            : _buildImageView(context),
+      ),
     );
   }
 
@@ -89,7 +93,7 @@ class _UVCViewState extends State<UVCView> {
     final frame = widget.frame;
     if (frame != oldWidget.frame) {
       if (Platform.isAndroid && id != null) {
-        _updateNativeMemory(id, frame);
+        _updateMemory(id, frame);
       } else {
         _updateImage(frame);
       }
@@ -104,10 +108,12 @@ class _UVCViewState extends State<UVCView> {
     super.dispose();
   }
 
-  Widget _buildFrame(BuildContext context) {
+  Widget _buildPlatformView(BuildContext context) {
     final frame = widget.frame;
-    final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-    if (Platform.isAndroid) {
+    if (frame == null) {
+      return const Offstage();
+    } else {
+      final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
       return FittedBox(
         fit: widget.fit,
         child: SizedBox(
@@ -131,26 +137,33 @@ class _UVCViewState extends State<UVCView> {
               )..addOnPlatformViewCreatedListener((id) {
                   params.onPlatformViewCreated(id);
                   _id = id;
-                  _updateNativeMemory(id, widget.frame);
+                  _updateMemory(id, frame);
                 });
             },
           ),
         ),
       );
-    } else {
-      // TODO: use `PlatformView` instead of `RawImage`.
-      return ValueListenableBuilder(
-        valueListenable: _image,
-        builder: (context, image, child) {
+    }
+  }
+
+  // TODO: use `PlatformView` instead of `ImageView`.
+  Widget _buildImageView(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: _image,
+      builder: (context, image, child) {
+        if (image == null) {
+          return const Offstage();
+        } else {
+          final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
           return RawImage(
             image: image,
-            width: frame.width / devicePixelRatio,
-            height: frame.height / devicePixelRatio,
+            width: image.width / devicePixelRatio,
+            height: image.height / devicePixelRatio,
             fit: widget.fit,
           );
-        },
-      );
-    }
+        }
+      },
+    );
   }
 
   AndroidViewController _initHybridAndroidView(
@@ -183,8 +196,11 @@ class _UVCViewState extends State<UVCView> {
     logger.level = logLevel;
   }
 
-  void _updateNativeMemory(int id, UVCFrame frame) async {
+  void _updateMemory(int id, UVCFrame? frame) async {
     final view = jni.UVCViewFactory.INSTANCE.retrieve(id);
+    if (frame == null) {
+      return;
+    }
     var memory = view.getMemory();
     if (!memory.isNull) {
       logger.warning('UVC frame dropped.');
@@ -195,26 +211,30 @@ class _UVCViewState extends State<UVCView> {
     _frames++;
   }
 
-  void _updateImage(UVCFrame frame) async {
-    if (_decoding) {
-      logger.warning('UVC frame dropped.');
-      return;
-    }
-    _decoding = true;
-    try {
-      final buffer = await ui.ImmutableBuffer.fromUint8List(frame.data);
-      final descriptor = await ui.ImageDescriptor.encoded(buffer);
-      final codec = await descriptor.instantiateCodec(
-        targetWidth: frame.width,
-        targetHeight: frame.height,
-      );
-      final info = await codec.getNextFrame();
-      _image.value = info.image;
-      _frames++;
-    } catch (e) {
-      logger.warning('Decode image failed, $e');
-    } finally {
-      _decoding = false;
+  void _updateImage(UVCFrame? frame) async {
+    if (frame == null) {
+      _image.value = null;
+    } else {
+      if (_decoding) {
+        logger.warning('UVC frame dropped.');
+        return;
+      }
+      _decoding = true;
+      try {
+        final buffer = await ui.ImmutableBuffer.fromUint8List(frame.data);
+        final descriptor = await ui.ImageDescriptor.encoded(buffer);
+        final codec = await descriptor.instantiateCodec(
+          targetWidth: frame.width,
+          targetHeight: frame.height,
+        );
+        final info = await codec.getNextFrame();
+        _image.value = info.image;
+        _frames++;
+      } catch (e) {
+        logger.warning('Decode image failed, $e');
+      } finally {
+        _decoding = false;
+      }
     }
   }
 }

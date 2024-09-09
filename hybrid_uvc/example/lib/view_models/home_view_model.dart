@@ -175,8 +175,8 @@ final class HomeViewModel extends ViewModel with TypeLogger {
 
   Future<UVCDevice> _findAndOpenDevice() async {
     if (Platform.isAndroid) {
-      final usbManager = USBManager();
-      final devices = await usbManager.getDevices();
+      final manager = USBManager();
+      final devices = await manager.getDevices();
       USBDevice? device;
       for (var value in devices.values) {
         final deviceClass = await value.getDeviceClass();
@@ -211,9 +211,9 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       if (!cameraAuthorized) {
         throw StateError('Camera is unauthorized.');
       }
-      var usbAuthorized = await usbManager.hasDevicePermission(device);
+      var usbAuthorized = await manager.hasDevicePermission(device);
       if (!usbAuthorized) {
-        usbAuthorized = await usbManager.requestDevicePermission(device);
+        usbAuthorized = await manager.requestDevicePermission(device);
       }
       if (!usbAuthorized) {
         throw StateError('USB is unauthorized.');
@@ -225,7 +225,7 @@ final class HomeViewModel extends ViewModel with TypeLogger {
       final product = await device.getProductName();
       logger.info(
           'device: VId $vid, PId $pid, SN $sn, Manufacturer $manufacturer, Product $product.');
-      final connection = await usbManager.openDevice(device);
+      final connection = await manager.openDevice(device);
       final fileDescriptor = await connection.getFileDescriptor();
       _connection = connection;
       return _uvc.wrap(fileDescriptor);

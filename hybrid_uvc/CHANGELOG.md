@@ -1,3 +1,7 @@
+## 0.0.1-dev.1
+
+* Simplify the usage of `UVCView`.
+
 ## 0.0.1-dev.0
 
 * Add native libraries on Android and Linux.
