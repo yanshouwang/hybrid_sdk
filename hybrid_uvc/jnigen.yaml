@@ -10,5 +10,8 @@ output:
     path: lib/src/uvc_jni/
 log_level: all
 classes:
+  - android.view.Display
+  - android.view.Surface
+  - androidx.core.content.ContextCompat
   - dev.hebei.hybrid_uvc.UVCView
   - dev.hebei.hybrid_uvc.UVCViewFactory

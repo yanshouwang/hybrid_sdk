@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:clover/clover.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 
 import 'view_models.dart';
@@ -9,6 +10,10 @@ import 'views.dart';
 
 void main() {
   Logger.root.onRecord.listen(onLogRecord);
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+  ]);
   runApp(const MyApp());
 }
 

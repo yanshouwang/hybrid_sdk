@@ -32,6 +32,7 @@ class UVCView extends StatefulWidget with TypeLogger {
 }
 
 class _UVCViewState extends State<UVCView> {
+  late final jni.Display _display;
   late final ValueNotifier<ui.Image?> _image;
   late final ValueNotifier<int> _fps;
   late final Timer _fpsTimer;
@@ -45,6 +46,7 @@ class _UVCViewState extends State<UVCView> {
   @override
   void initState() {
     super.initState();
+    _display = jni.ContextCompat.getDisplayOrDefault(jni.Env.context);
     _image = ValueNotifier(null);
     _fps = ValueNotifier(0);
     _fpsTimer = Timer.periodic(
@@ -114,11 +116,17 @@ class _UVCViewState extends State<UVCView> {
       return const Offstage();
     } else {
       final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+      final width = frame.width / devicePixelRatio;
+      final height = frame.height / devicePixelRatio;
+      final rotation = _display.getRotation();
+      final size = rotation == jni.Surface.ROTATION_90 ||
+              rotation == jni.Surface.ROTATION_270
+          ? Size(width, height)
+          : Size(height, width);
       return FittedBox(
         fit: widget.fit,
-        child: SizedBox(
-          width: frame.width / devicePixelRatio,
-          height: frame.height / devicePixelRatio,
+        child: SizedBox.fromSize(
+          size: size,
           child: PlatformViewLink(
             viewType: 'hebei.dev/UVCView',
             surfaceFactory: (context, controller) {
@@ -201,13 +209,13 @@ class _UVCViewState extends State<UVCView> {
     if (frame == null) {
       return;
     }
-    var memory = view.getMemory();
-    if (!memory.isNull) {
+    final memories = view.getMemories();
+    if (memories.length > 2) {
       logger.warning('UVC frame dropped.');
       return;
     }
     final memroy = frame.data.toJArray();
-    view.setMemory(memroy);
+    view.addMemory(memroy);
     _frames++;
   }
 

@@ -67,55 +67,6 @@ class UVCView extends jni.JObject {
         .reference);
   }
 
-  static final _id_getMemory = _class.instanceMethodId(
-    r'getMemory',
-    r'()[B',
-  );
-
-  static final _getMemory = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `public final byte[] getMemory()`
-  /// The returned object must be released after use, by calling the [release] method.
-  jni.JArray<jni.jbyte> getMemory() {
-    return _getMemory(reference.pointer, _id_getMemory as jni.JMethodIDPtr)
-        .object(const jni.JArrayType(jni.jbyteType()));
-  }
-
-  static final _id_setMemory = _class.instanceMethodId(
-    r'setMemory',
-    r'([B)V',
-  );
-
-  static final _setMemory = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
-
-  /// from: `public final void setMemory(byte[] bs)`
-  void setMemory(
-    jni.JArray<jni.jbyte> bs,
-  ) {
-    _setMemory(reference.pointer, _id_setMemory as jni.JMethodIDPtr,
-            bs.reference.pointer)
-        .check();
-  }
-
   static final _id_getView = _class.instanceMethodId(
     r'getView',
     r'()Landroid/view/View;',
@@ -138,6 +89,55 @@ class UVCView extends jni.JObject {
   jni.JObject getView() {
     return _getView(reference.pointer, _id_getView as jni.JMethodIDPtr)
         .object(const jni.JObjectType());
+  }
+
+  static final _id_getMemories = _class.instanceMethodId(
+    r'getMemories',
+    r'()Ljava/util/List;',
+  );
+
+  static final _getMemories = ProtectedJniExtensions.lookup<
+          ffi.NativeFunction<
+              jni.JniResult Function(
+                ffi.Pointer<ffi.Void>,
+                jni.JMethodIDPtr,
+              )>>('globalEnv_CallObjectMethod')
+      .asFunction<
+          jni.JniResult Function(
+            ffi.Pointer<ffi.Void>,
+            jni.JMethodIDPtr,
+          )>();
+
+  /// from: `public final java.util.List getMemories()`
+  /// The returned object must be released after use, by calling the [release] method.
+  jni.JList<jni.JArray<jni.jbyte>> getMemories() {
+    return _getMemories(reference.pointer, _id_getMemories as jni.JMethodIDPtr)
+        .object(const jni.JListType(jni.JArrayType(jni.jbyteType())));
+  }
+
+  static final _id_addMemory = _class.instanceMethodId(
+    r'addMemory',
+    r'([B)V',
+  );
+
+  static final _addMemory = ProtectedJniExtensions.lookup<
+              ffi.NativeFunction<
+                  jni.JThrowablePtr Function(
+                      ffi.Pointer<ffi.Void>,
+                      jni.JMethodIDPtr,
+                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+          'globalEnv_CallVoidMethod')
+      .asFunction<
+          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
+              ffi.Pointer<ffi.Void>)>();
+
+  /// from: `public final void addMemory(byte[] bs)`
+  void addMemory(
+    jni.JArray<jni.jbyte> bs,
+  ) {
+    _addMemory(reference.pointer, _id_addMemory as jni.JMethodIDPtr,
+            bs.reference.pointer)
+        .check();
   }
 
   static final _id_dispose = _class.instanceMethodId(
