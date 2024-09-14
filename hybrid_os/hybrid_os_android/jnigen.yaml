@@ -6,11 +6,8 @@ suspend_fun_to_async: true
 enable_experiment:
   - interface_implementation
 output:
-  c:
-    path: src/
-    library_name: hybrid_os_android
   dart:
-    structure: single_file
-    path: lib/src/jni.g.dart
+    path: lib/src/jni/
+log_level: all
 classes:
   - android.os.Build

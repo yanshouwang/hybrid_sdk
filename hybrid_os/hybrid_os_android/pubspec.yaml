@@ -1,6 +1,6 @@
 name: hybrid_os_android
 description: "Android implementation of the hybrid_os plugin."
-version: 0.0.2
+version: 0.1.0-dev.0
 repository: "https://github.com/yanshouwang/hybrid_sdk"
 
 environment:
@@ -10,14 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hybrid_os_platform_interface: ^0.0.1
-  jni: ^0.10.1
+  hybrid_os_platform_interface: ^0.1.0-dev.1
+  jni: ^0.11.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  jnigen: ^0.10.0
+  jnigen: ^0.11.0
 
 flutter:
   plugin:

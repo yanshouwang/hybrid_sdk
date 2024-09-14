@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  hybrid_os_platform_interface: ^0.0.1
+  hybrid_os_platform_interface: ^0.1.0-dev.1
   hybrid_os_android:
     # When depending on this package from a real application you should use:
     #   hybrid_os_android: ^x.y.z

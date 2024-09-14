@@ -1,5 +1,3 @@
-/// hybrid_os_android.
-library hybrid_os_android;
-
-export 'src/os.dart';
 export 'src/android.dart';
+export 'src/hybrid_os_android_plugin.dart';
+export 'src/version_codes.dart';

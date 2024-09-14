@@ -11,9 +11,8 @@ class HomeView extends StatelessWidget {
     if (os is! Android) {
       throw TypeError();
     }
-    final sdkVersion = 'Android ${os.sdkVersion}';
-    final upsideDownCakeOrLater =
-        os.sdkVersion >= AndroidSDKVersions.upsideDownCake;
+    final sdk = 'Android ${os.sdk}';
+    final upsideDownCakeOrLater = os.sdk >= VersionCodes.upsideDownCake;
     return Scaffold(
       appBar: AppBar(
         title: const Text('OS'),
@@ -29,7 +28,7 @@ class HomeView extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              sdkVersion,
+              sdk,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(

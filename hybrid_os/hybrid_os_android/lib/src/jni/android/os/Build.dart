@@ -28,7 +28,7 @@ import 'dart:isolate' show ReceivePort;
 import 'package:jni/internal_helpers_for_jnigen.dart';
 import 'package:jni/jni.dart' as jni;
 
-/// from: android.os.Build$Partition
+/// from: `android.os.Build$Partition`
 class Build_Partition extends jni.JObject {
   @override
   late final jni.JObjType<Build_Partition> $type = type;
@@ -46,7 +46,7 @@ class Build_Partition extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String PARTITION_NAME_SYSTEM
+  /// from: `static public final java.lang.String PARTITION_NAME_SYSTEM`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get PARTITION_NAME_SYSTEM =>
       _id_PARTITION_NAME_SYSTEM.get(_class, const jni.JStringType());
@@ -68,7 +68,7 @@ class Build_Partition extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public java.lang.String getName()
+  /// from: `public java.lang.String getName()`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getName() {
     return _getName(reference.pointer, _id_getName as jni.JMethodIDPtr)
@@ -92,7 +92,7 @@ class Build_Partition extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public java.lang.String getFingerprint()
+  /// from: `public java.lang.String getFingerprint()`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JString getFingerprint() {
     return _getFingerprint(
@@ -117,7 +117,7 @@ class Build_Partition extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public long getBuildTimeMillis()
+  /// from: `public long getBuildTimeMillis()`
   int getBuildTimeMillis() {
     return _getBuildTimeMillis(
             reference.pointer, _id_getBuildTimeMillis as jni.JMethodIDPtr)
@@ -140,7 +140,7 @@ class Build_Partition extends jni.JObject {
           jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
               ffi.Pointer<ffi.Void>)>();
 
-  /// from: public boolean equals(java.lang.Object object)
+  /// from: `public boolean equals(java.lang.Object object)`
   bool equals(
     jni.JObject object,
   ) {
@@ -166,7 +166,7 @@ class Build_Partition extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public int hashCode()
+  /// from: `public int hashCode()`
   int hashCode1() {
     return _hashCode1(reference.pointer, _id_hashCode1 as jni.JMethodIDPtr)
         .integer;
@@ -199,7 +199,7 @@ final class $Build_PartitionType extends jni.JObjType<Build_Partition> {
   }
 }
 
-/// from: android.os.Build$VERSION
+/// from: `android.os.Build$VERSION`
 class Build_VERSION extends jni.JObject {
   @override
   late final jni.JObjType<Build_VERSION> $type = type;
@@ -217,7 +217,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String BASE_OS
+  /// from: `static public final java.lang.String BASE_OS`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get BASE_OS =>
       _id_BASE_OS.get(_class, const jni.JStringType());
@@ -227,7 +227,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String CODENAME
+  /// from: `static public final java.lang.String CODENAME`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get CODENAME =>
       _id_CODENAME.get(_class, const jni.JStringType());
@@ -237,7 +237,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String INCREMENTAL
+  /// from: `static public final java.lang.String INCREMENTAL`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get INCREMENTAL =>
       _id_INCREMENTAL.get(_class, const jni.JStringType());
@@ -247,7 +247,7 @@ class Build_VERSION extends jni.JObject {
     r'I',
   );
 
-  /// from: static public final int MEDIA_PERFORMANCE_CLASS
+  /// from: `static public final int MEDIA_PERFORMANCE_CLASS`
   static int get MEDIA_PERFORMANCE_CLASS =>
       _id_MEDIA_PERFORMANCE_CLASS.get(_class, const jni.jintType());
 
@@ -256,7 +256,7 @@ class Build_VERSION extends jni.JObject {
     r'I',
   );
 
-  /// from: static public final int PREVIEW_SDK_INT
+  /// from: `static public final int PREVIEW_SDK_INT`
   static int get PREVIEW_SDK_INT =>
       _id_PREVIEW_SDK_INT.get(_class, const jni.jintType());
 
@@ -265,7 +265,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String RELEASE
+  /// from: `static public final java.lang.String RELEASE`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get RELEASE =>
       _id_RELEASE.get(_class, const jni.JStringType());
@@ -275,7 +275,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String RELEASE_OR_CODENAME
+  /// from: `static public final java.lang.String RELEASE_OR_CODENAME`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get RELEASE_OR_CODENAME =>
       _id_RELEASE_OR_CODENAME.get(_class, const jni.JStringType());
@@ -285,7 +285,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String RELEASE_OR_PREVIEW_DISPLAY
+  /// from: `static public final java.lang.String RELEASE_OR_PREVIEW_DISPLAY`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get RELEASE_OR_PREVIEW_DISPLAY =>
       _id_RELEASE_OR_PREVIEW_DISPLAY.get(_class, const jni.JStringType());
@@ -295,7 +295,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String SDK
+  /// from: `static public final java.lang.String SDK`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get SDK => _id_SDK.get(_class, const jni.JStringType());
 
@@ -304,7 +304,7 @@ class Build_VERSION extends jni.JObject {
     r'I',
   );
 
-  /// from: static public final int SDK_INT
+  /// from: `static public final int SDK_INT`
   static int get SDK_INT => _id_SDK_INT.get(_class, const jni.jintType());
 
   static final _id_SECURITY_PATCH = _class.staticFieldId(
@@ -312,7 +312,7 @@ class Build_VERSION extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String SECURITY_PATCH
+  /// from: `static public final java.lang.String SECURITY_PATCH`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get SECURITY_PATCH =>
       _id_SECURITY_PATCH.get(_class, const jni.JStringType());
@@ -333,7 +333,7 @@ class Build_VERSION extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public void <init>()
+  /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Build_VERSION() {
     return Build_VERSION.fromReference(
@@ -368,7 +368,7 @@ final class $Build_VERSIONType extends jni.JObjType<Build_VERSION> {
   }
 }
 
-/// from: android.os.Build$VERSION_CODES
+/// from: `android.os.Build$VERSION_CODES`
 class Build_VERSION_CODES extends jni.JObject {
   @override
   late final jni.JObjType<Build_VERSION_CODES> $type = type;
@@ -382,109 +382,109 @@ class Build_VERSION_CODES extends jni.JObject {
   /// The type which includes information such as the signature of this class.
   static const type = $Build_VERSION_CODESType();
 
-  /// from: static public final int BASE
+  /// from: `static public final int BASE`
   static const BASE = 1;
 
-  /// from: static public final int BASE_1_1
+  /// from: `static public final int BASE_1_1`
   static const BASE_1_1 = 2;
 
-  /// from: static public final int CUPCAKE
+  /// from: `static public final int CUPCAKE`
   static const CUPCAKE = 3;
 
-  /// from: static public final int CUR_DEVELOPMENT
+  /// from: `static public final int CUR_DEVELOPMENT`
   static const CUR_DEVELOPMENT = 10000;
 
-  /// from: static public final int DONUT
+  /// from: `static public final int DONUT`
   static const DONUT = 4;
 
-  /// from: static public final int ECLAIR
+  /// from: `static public final int ECLAIR`
   static const ECLAIR = 5;
 
-  /// from: static public final int ECLAIR_0_1
+  /// from: `static public final int ECLAIR_0_1`
   static const ECLAIR_0_1 = 6;
 
-  /// from: static public final int ECLAIR_MR1
+  /// from: `static public final int ECLAIR_MR1`
   static const ECLAIR_MR1 = 7;
 
-  /// from: static public final int FROYO
+  /// from: `static public final int FROYO`
   static const FROYO = 8;
 
-  /// from: static public final int GINGERBREAD
+  /// from: `static public final int GINGERBREAD`
   static const GINGERBREAD = 9;
 
-  /// from: static public final int GINGERBREAD_MR1
+  /// from: `static public final int GINGERBREAD_MR1`
   static const GINGERBREAD_MR1 = 10;
 
-  /// from: static public final int HONEYCOMB
+  /// from: `static public final int HONEYCOMB`
   static const HONEYCOMB = 11;
 
-  /// from: static public final int HONEYCOMB_MR1
+  /// from: `static public final int HONEYCOMB_MR1`
   static const HONEYCOMB_MR1 = 12;
 
-  /// from: static public final int HONEYCOMB_MR2
+  /// from: `static public final int HONEYCOMB_MR2`
   static const HONEYCOMB_MR2 = 13;
 
-  /// from: static public final int ICE_CREAM_SANDWICH
+  /// from: `static public final int ICE_CREAM_SANDWICH`
   static const ICE_CREAM_SANDWICH = 14;
 
-  /// from: static public final int ICE_CREAM_SANDWICH_MR1
+  /// from: `static public final int ICE_CREAM_SANDWICH_MR1`
   static const ICE_CREAM_SANDWICH_MR1 = 15;
 
-  /// from: static public final int JELLY_BEAN
+  /// from: `static public final int JELLY_BEAN`
   static const JELLY_BEAN = 16;
 
-  /// from: static public final int JELLY_BEAN_MR1
+  /// from: `static public final int JELLY_BEAN_MR1`
   static const JELLY_BEAN_MR1 = 17;
 
-  /// from: static public final int JELLY_BEAN_MR2
+  /// from: `static public final int JELLY_BEAN_MR2`
   static const JELLY_BEAN_MR2 = 18;
 
-  /// from: static public final int KITKAT
+  /// from: `static public final int KITKAT`
   static const KITKAT = 19;
 
-  /// from: static public final int KITKAT_WATCH
+  /// from: `static public final int KITKAT_WATCH`
   static const KITKAT_WATCH = 20;
 
-  /// from: static public final int LOLLIPOP
+  /// from: `static public final int LOLLIPOP`
   static const LOLLIPOP = 21;
 
-  /// from: static public final int LOLLIPOP_MR1
+  /// from: `static public final int LOLLIPOP_MR1`
   static const LOLLIPOP_MR1 = 22;
 
-  /// from: static public final int M
+  /// from: `static public final int M`
   static const M = 23;
 
-  /// from: static public final int N
+  /// from: `static public final int N`
   static const N = 24;
 
-  /// from: static public final int N_MR1
+  /// from: `static public final int N_MR1`
   static const N_MR1 = 25;
 
-  /// from: static public final int O
+  /// from: `static public final int O`
   static const O = 26;
 
-  /// from: static public final int O_MR1
+  /// from: `static public final int O_MR1`
   static const O_MR1 = 27;
 
-  /// from: static public final int P
+  /// from: `static public final int P`
   static const P = 28;
 
-  /// from: static public final int Q
+  /// from: `static public final int Q`
   static const Q = 29;
 
-  /// from: static public final int R
+  /// from: `static public final int R`
   static const R = 30;
 
-  /// from: static public final int S
+  /// from: `static public final int S`
   static const S = 31;
 
-  /// from: static public final int S_V2
+  /// from: `static public final int S_V2`
   static const S_V2 = 32;
 
-  /// from: static public final int TIRAMISU
+  /// from: `static public final int TIRAMISU`
   static const TIRAMISU = 33;
 
-  /// from: static public final int UPSIDE_DOWN_CAKE
+  /// from: `static public final int UPSIDE_DOWN_CAKE`
   static const UPSIDE_DOWN_CAKE = 34;
   static final _id_new0 = _class.constructorId(
     r'()V',
@@ -502,7 +502,7 @@ class Build_VERSION_CODES extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public void <init>()
+  /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Build_VERSION_CODES() {
     return Build_VERSION_CODES.fromReference(
@@ -537,7 +537,7 @@ final class $Build_VERSION_CODESType extends jni.JObjType<Build_VERSION_CODES> {
   }
 }
 
-/// from: android.os.Build
+/// from: `android.os.Build`
 class Build extends jni.JObject {
   @override
   late final jni.JObjType<Build> $type = type;
@@ -555,7 +555,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String BOARD
+  /// from: `static public final java.lang.String BOARD`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get BOARD =>
       _id_BOARD.get(_class, const jni.JStringType());
@@ -565,7 +565,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String BOOTLOADER
+  /// from: `static public final java.lang.String BOOTLOADER`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get BOOTLOADER =>
       _id_BOOTLOADER.get(_class, const jni.JStringType());
@@ -575,7 +575,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String BRAND
+  /// from: `static public final java.lang.String BRAND`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get BRAND =>
       _id_BRAND.get(_class, const jni.JStringType());
@@ -585,7 +585,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String CPU_ABI
+  /// from: `static public final java.lang.String CPU_ABI`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get CPU_ABI =>
       _id_CPU_ABI.get(_class, const jni.JStringType());
@@ -595,7 +595,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String CPU_ABI2
+  /// from: `static public final java.lang.String CPU_ABI2`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get CPU_ABI2 =>
       _id_CPU_ABI2.get(_class, const jni.JStringType());
@@ -605,7 +605,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String DEVICE
+  /// from: `static public final java.lang.String DEVICE`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get DEVICE =>
       _id_DEVICE.get(_class, const jni.JStringType());
@@ -615,7 +615,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String DISPLAY
+  /// from: `static public final java.lang.String DISPLAY`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get DISPLAY =>
       _id_DISPLAY.get(_class, const jni.JStringType());
@@ -625,7 +625,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String FINGERPRINT
+  /// from: `static public final java.lang.String FINGERPRINT`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get FINGERPRINT =>
       _id_FINGERPRINT.get(_class, const jni.JStringType());
@@ -635,7 +635,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String HARDWARE
+  /// from: `static public final java.lang.String HARDWARE`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get HARDWARE =>
       _id_HARDWARE.get(_class, const jni.JStringType());
@@ -645,7 +645,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String HOST
+  /// from: `static public final java.lang.String HOST`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get HOST => _id_HOST.get(_class, const jni.JStringType());
 
@@ -654,7 +654,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String ID
+  /// from: `static public final java.lang.String ID`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get ID => _id_ID.get(_class, const jni.JStringType());
 
@@ -663,7 +663,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String MANUFACTURER
+  /// from: `static public final java.lang.String MANUFACTURER`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get MANUFACTURER =>
       _id_MANUFACTURER.get(_class, const jni.JStringType());
@@ -673,7 +673,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String MODEL
+  /// from: `static public final java.lang.String MODEL`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get MODEL =>
       _id_MODEL.get(_class, const jni.JStringType());
@@ -683,7 +683,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String ODM_SKU
+  /// from: `static public final java.lang.String ODM_SKU`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get ODM_SKU =>
       _id_ODM_SKU.get(_class, const jni.JStringType());
@@ -693,7 +693,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String PRODUCT
+  /// from: `static public final java.lang.String PRODUCT`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get PRODUCT =>
       _id_PRODUCT.get(_class, const jni.JStringType());
@@ -703,7 +703,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String RADIO
+  /// from: `static public final java.lang.String RADIO`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get RADIO =>
       _id_RADIO.get(_class, const jni.JStringType());
@@ -713,7 +713,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String SERIAL
+  /// from: `static public final java.lang.String SERIAL`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get SERIAL =>
       _id_SERIAL.get(_class, const jni.JStringType());
@@ -723,7 +723,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String SKU
+  /// from: `static public final java.lang.String SKU`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get SKU => _id_SKU.get(_class, const jni.JStringType());
 
@@ -732,7 +732,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String SOC_MANUFACTURER
+  /// from: `static public final java.lang.String SOC_MANUFACTURER`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get SOC_MANUFACTURER =>
       _id_SOC_MANUFACTURER.get(_class, const jni.JStringType());
@@ -742,7 +742,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String SOC_MODEL
+  /// from: `static public final java.lang.String SOC_MODEL`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get SOC_MODEL =>
       _id_SOC_MODEL.get(_class, const jni.JStringType());
@@ -752,7 +752,7 @@ class Build extends jni.JObject {
     r'[Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String[] SUPPORTED_32_BIT_ABIS
+  /// from: `static public final java.lang.String[] SUPPORTED_32_BIT_ABIS`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.JString> get SUPPORTED_32_BIT_ABIS =>
       _id_SUPPORTED_32_BIT_ABIS.get(
@@ -763,7 +763,7 @@ class Build extends jni.JObject {
     r'[Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String[] SUPPORTED_64_BIT_ABIS
+  /// from: `static public final java.lang.String[] SUPPORTED_64_BIT_ABIS`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.JString> get SUPPORTED_64_BIT_ABIS =>
       _id_SUPPORTED_64_BIT_ABIS.get(
@@ -774,7 +774,7 @@ class Build extends jni.JObject {
     r'[Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String[] SUPPORTED_ABIS
+  /// from: `static public final java.lang.String[] SUPPORTED_ABIS`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JArray<jni.JString> get SUPPORTED_ABIS =>
       _id_SUPPORTED_ABIS.get(_class, const jni.JArrayType(jni.JStringType()));
@@ -784,7 +784,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String TAGS
+  /// from: `static public final java.lang.String TAGS`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get TAGS => _id_TAGS.get(_class, const jni.JStringType());
 
@@ -793,7 +793,7 @@ class Build extends jni.JObject {
     r'J',
   );
 
-  /// from: static public final long TIME
+  /// from: `static public final long TIME`
   static int get TIME => _id_TIME.get(_class, const jni.jlongType());
 
   static final _id_TYPE = _class.staticFieldId(
@@ -801,7 +801,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String TYPE
+  /// from: `static public final java.lang.String TYPE`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get TYPE => _id_TYPE.get(_class, const jni.JStringType());
 
@@ -810,7 +810,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String UNKNOWN
+  /// from: `static public final java.lang.String UNKNOWN`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get UNKNOWN =>
       _id_UNKNOWN.get(_class, const jni.JStringType());
@@ -820,7 +820,7 @@ class Build extends jni.JObject {
     r'Ljava/lang/String;',
   );
 
-  /// from: static public final java.lang.String USER
+  /// from: `static public final java.lang.String USER`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString get USER => _id_USER.get(_class, const jni.JStringType());
 
@@ -840,7 +840,7 @@ class Build extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: public void <init>()
+  /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Build() {
     return Build.fromReference(
@@ -865,7 +865,7 @@ class Build extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: static public java.lang.String getSerial()
+  /// from: `static public java.lang.String getSerial()`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString getSerial() {
     return _getSerial(
@@ -890,7 +890,7 @@ class Build extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: static public java.util.List getFingerprintedPartitions()
+  /// from: `static public java.util.List getFingerprintedPartitions()`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JList<Build_Partition> getFingerprintedPartitions() {
     return _getFingerprintedPartitions(_class.reference.pointer,
@@ -915,7 +915,7 @@ class Build extends jni.JObject {
             jni.JMethodIDPtr,
           )>();
 
-  /// from: static public java.lang.String getRadioVersion()
+  /// from: `static public java.lang.String getRadioVersion()`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString getRadioVersion() {
     return _getRadioVersion(
