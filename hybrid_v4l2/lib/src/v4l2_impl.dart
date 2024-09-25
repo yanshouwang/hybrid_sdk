@@ -1,21 +1,20 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart' as ffi;
-import 'package:hybrid_v4l2/src/v4l2_capability.dart';
-import 'package:hybrid_v4l2/src/v4l2_device.dart';
 
-import 'package:hybrid_v4l2/src/v4l2_device_capability.dart';
-
-import 'ffi.c.dart' as ffi;
-import 'ffi.v4l2.dart' as ffi;
+import 'ffi.g.dart' as ffi;
 import 'ffi.x.dart' as ffi;
 import 'v4l2.dart';
+import 'v4l2_capability.dart';
+import 'v4l2_device.dart';
+import 'v4l2_device_capability.dart';
 import 'v4l2_error.dart';
 
 final class V4L2Impl implements V4L2 {
   @override
   V4L2Device open(String deviceName) {
-    final fd = ffi.libC.open(deviceName.toNativeUtf8().cast(), ffi.O_RDWR, 0);
+    final fd =
+        ffi.libV4L2.open(deviceName.toNativeUtf8().cast(), ffi.O_RDWR, 0);
     if (fd == -1) {
       throw V4L2Error('open failed, $fd.');
     }
@@ -27,7 +26,7 @@ final class V4L2Impl implements V4L2 {
     if (device is! V4L2DeviceImpl) {
       throw TypeError();
     }
-    final status = ffi.libC.close(device.fd);
+    final status = ffi.libV4L2.close(device.fd);
     if (status == -1) {
       throw V4L2Error('close failed, $status.');
     }
@@ -40,7 +39,7 @@ final class V4L2Impl implements V4L2 {
     }
     return ffi.using((arena) {
       final cap = arena<ffi.v4l2_capability>();
-      final status = ffi.libIOCTL.ioctl(device.fd, ffi.VIDIOC_QUERYCAP, cap);
+      final status = ffi.libV4L2.ioctl(device.fd, ffi.VIDIOC_QUERYCAP, cap);
       if (status == -1) {
         throw V4L2Error('ioctl failed, $status.');
       }

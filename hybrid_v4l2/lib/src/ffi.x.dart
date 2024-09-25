@@ -1,32 +1,25 @@
-import 'dart:convert';
 import 'dart:ffi' as ffi;
 
-import 'ffi.c.dart' as ffi;
-import 'ffi.ioctl.dart' as ffi;
-import 'ffi.v4l2.dart' as ffi;
+import 'ffi.g.dart' as ffi;
 import 'v4l2_capability.dart';
 
-const _ioctl = 'ioctl';
+final _dylibV4L2 = ffi.DynamicLibrary.executable();
 
-final _dylibC = ffi.DynamicLibrary.executable();
-final _dylibIOCTL = ffi.DynamicLibrary.open('lib$_ioctl.so');
-
-final libC = ffi.LibC(_dylibC);
-final libIOCTL = ffi.LibIOCTL(_dylibIOCTL);
+final libV4L2 = ffi.LibV4L2(_dylibV4L2);
 
 extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
   String get dartValue {
-    final codeUnits = <int>[];
+    final charCodes = <int>[];
     var i = 0;
     while (true) {
-      final codeUnit = this[i];
-      if (codeUnit == 0) {
+      final charCode = this[i];
+      if (charCode == 0) {
         break;
       }
-      codeUnits.add(codeUnit);
+      charCodes.add(charCode);
       i++;
     }
-    return utf8.decode(codeUnits);
+    return String.fromCharCodes(charCodes);
   }
 }
 

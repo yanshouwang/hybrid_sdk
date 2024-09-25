@@ -1,4 +1,4 @@
-import 'ffi.v4l2.dart' as ffi;
+import 'ffi.g.dart' as ffi;
 
 /// Values for 'capabilities' field
 enum V4L2Capability {
