@@ -6,29 +6,38 @@ import 'package:logging/logging.dart';
 void main() {
   Logger.root.onRecord.listen(onLogRecord);
   final v4l2 = V4L2();
-  final device = v4l2.open('/dev/video0');
+  final fd = v4l2.open('/dev/video0');
   try {
-    final capability = v4l2.queryCapability(device);
-    final driver = capability.driver;
-    final card = capability.card;
-    final busInfo = capability.busInfo;
-    final version = capability.version;
-    final capabilities = capability.capabilities;
-    final deviceCapabilities = capability.deviceCapabilities;
-    Logger.root.info('''/dev/video0
-
-driver: $driver
+    Logger.root.info('[QUERYCAP]');
+    final cap = v4l2.querycap(fd);
+    final driver = cap.driver;
+    final card = cap.card;
+    final busInfo = cap.busInfo;
+    final version = cap.version;
+    final capabilities = cap.capabilities;
+    final deviceCaps = cap.deviceCaps;
+    Logger.root.info('''driver: $driver
 card: $card
 busInfo: $busInfo
 version: ${(version >> 16) & 0xffff}.${(version >> 8) & 0xff}.${version & 0xff}
-
 capabilities:
 ${capabilities.join('\n')}
+deviceCaps:
+${deviceCaps.join('\n')}''');
 
-deviceCapabilities:
-${deviceCapabilities.join('\n')}''');
+    Logger.root.info('[ENUM_FMT]');
+    final fmts = v4l2.enumFmt(fd);
+    for (var fmt in fmts) {
+      final description = fmt.description;
+      final pixelformat = fmt.pixelformat;
+      final flags = fmt.flags;
+      Logger.root.info('''description: $description
+pixelformat: $pixelformat
+flags:
+${flags.join('\n')}''');
+    }
   } finally {
-    v4l2.close(device);
+    v4l2.close(fd);
   }
 }
 

@@ -26,6 +26,7 @@ functions:
       - [int]
     ioctl:
       - [v4l2_capability*]
+      - [v4l2_fmtdesc*]
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types

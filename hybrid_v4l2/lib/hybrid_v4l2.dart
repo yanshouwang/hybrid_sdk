@@ -1,5 +1,9 @@
-export 'src/v4l2.dart';
+export 'src/v4l2_cap.dart';
 export 'src/v4l2_capability.dart';
-export 'src/v4l2_device.dart';
-export 'src/v4l2_device_capability.dart';
 export 'src/v4l2_error.dart';
+export 'src/v4l2_fmt_flag.dart';
+export 'src/v4l2_fmtdesc.dart';
+export 'src/v4l2_format.dart';
+export 'src/v4l2_pix_fmt.dart';
+export 'src/v4l2_pix_format.dart';
+export 'src/v4l2.dart';

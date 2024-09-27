@@ -1,14 +1,16 @@
 import 'dart:ffi' as ffi;
 
 import 'ffi.g.dart' as ffi;
-import 'v4l2_capability.dart';
+import 'v4l2_cap.dart';
+import 'v4l2_fmt_flag.dart';
+import 'v4l2_pix_fmt.dart';
 
 final _dylibV4L2 = ffi.DynamicLibrary.executable();
 
 final libV4L2 = ffi.LibV4L2(_dylibV4L2);
 
 extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
-  String get dartValue {
+  String toDart() {
     final charCodes = <int>[];
     var i = 0;
     while (true) {
@@ -25,13 +27,29 @@ extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
 
 // ignore: camel_case_extensions
 extension intX on int {
-  List<V4L2Capability> get dartCapabilities {
-    final capabilities = <V4L2Capability>[];
-    for (var capability in V4L2Capability.values) {
-      if (this & capability.value != 0) {
-        capabilities.add(capability);
+  List<V4L2Cap> toDartCaps() {
+    final caps = <V4L2Cap>[];
+    for (var cap in V4L2Cap.values) {
+      if (this & cap.value == 0) {
+        continue;
       }
+      caps.add(cap);
     }
-    return capabilities;
+    return caps;
+  }
+
+  List<V4L2FmtFlag> toDartFmtFlags() {
+    final flags = <V4L2FmtFlag>[];
+    for (var flag in V4L2FmtFlag.values) {
+      if (this & flag.value == 0) {
+        continue;
+      }
+      flags.add(flag);
+    }
+    return flags;
+  }
+
+  V4L2PixFmt toDartPixFmt() {
+    return V4L2PixFmt.values.firstWhere((fmt) => fmt.value == this);
   }
 }
