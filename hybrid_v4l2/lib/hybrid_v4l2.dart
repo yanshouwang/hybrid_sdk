@@ -1,9 +1,17 @@
+export 'src/v4l2_buf_type.dart';
 export 'src/v4l2_cap.dart';
 export 'src/v4l2_capability.dart';
 export 'src/v4l2_error.dart';
+export 'src/v4l2_field.dart';
 export 'src/v4l2_fmt_flag.dart';
 export 'src/v4l2_fmtdesc.dart';
 export 'src/v4l2_format.dart';
+export 'src/v4l2_in_st.dart';
+export 'src/v4l2_input_type.dart';
+export 'src/v4l2_input.dart';
+export 'src/v4l2_memory.dart';
 export 'src/v4l2_pix_fmt.dart';
 export 'src/v4l2_pix_format.dart';
+export 'src/v4l2_requestbuffers.dart';
+export 'src/v4l2_std.dart';
 export 'src/v4l2.dart';

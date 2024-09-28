@@ -36,13 +36,13 @@ enum V4L2Cap {
   rdsOutput(ffi.V4L2_CAP_RDS_OUTPUT),
 
   /// Is a video capture device that supports multiplanar formats
-  videoCaptureMplane(ffi.V4L2_CAP_VIDEO_CAPTURE_MPLANE),
+  videoCaptureMPlane(ffi.V4L2_CAP_VIDEO_CAPTURE_MPLANE),
 
   /// Is a video output device that supports multiplanar formats
-  videoOutputMplane(ffi.V4L2_CAP_VIDEO_OUTPUT_MPLANE),
+  videoOutputMPlane(ffi.V4L2_CAP_VIDEO_OUTPUT_MPLANE),
 
   /// Is a video mem-to-mem device that supports multiplanar formats
-  videoM2MMplane(ffi.V4L2_CAP_VIDEO_M2M_MPLANE),
+  videoM2MMPlane(ffi.V4L2_CAP_VIDEO_M2M_MPLANE),
 
   /// Is a video mem-to-mem device
   videoM2M(ffi.V4L2_CAP_VIDEO_M2M),

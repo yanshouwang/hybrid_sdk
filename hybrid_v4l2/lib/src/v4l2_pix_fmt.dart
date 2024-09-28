@@ -1,5 +1,14 @@
 import 'ffi.g.dart' as ffi;
 
+/// The V4L2 API was primarily designed for devices exchanging image data with
+/// applications. The struct v4l2_pix_format and struct v4l2_pix_format_mplane
+/// structures define the format and layout of an image in memory. The former is
+/// used with the single-planar API, while the latter is used with the multi-planar
+/// version (see Single- and multi-planar APIs). Image formats are negotiated with
+/// the VIDIOC_S_FMT ioctl. (The explanations here focus on video capturing and
+/// output, for overlay frame buffer formats see also VIDIOC_G_FBUF.)
+///
+/// https://www.kernel.org/doc/html/v4.9/media/uapi/v4l/pixfmt.html
 enum V4L2PixFmt {
   rgb332(ffi.V4L2_PIX_FMT_RGB332),
   rgb444(ffi.V4L2_PIX_FMT_RGB444),
