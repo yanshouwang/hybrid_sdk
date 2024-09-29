@@ -1,9 +1,16 @@
+import 'dart:ffi' as ffi;
+
 import 'v4l2_buf_type.dart';
+import 'v4l2_buffer.dart';
 import 'v4l2_capability.dart';
 import 'v4l2_fmtdesc.dart';
 import 'v4l2_format.dart';
 import 'v4l2_impl.dart';
 import 'v4l2_input.dart';
+import 'v4l2_map.dart';
+import 'v4l2_mapped_buffer.dart';
+import 'v4l2_memory.dart';
+import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
 
 /// Video for Linux API
@@ -43,4 +50,29 @@ abstract interface class V4L2 {
   /// VIDIOC_REQBUFS - Initiate Memory Mapping, User Pointer I/O or DMA buffer
   /// I/O
   void reqbufs(int fd, V4L2Requestbuffers req);
+
+  /// VIDIOC_QUERYBUF - Query the status of a buffer
+  V4L2Buffer querybuf(int fd, V4L2BufType type, V4L2Memory memory, int index);
+
+  /// VIDIOC_QBUF - Exchange a buffer with the driver
+  void qbuf(int fd, V4L2Buffer buf);
+
+  /// VIDIOC_DQBUF - Exchange a buffer with the driver
+  V4L2Buffer dqbuf(int fd, V4L2BufType type, V4L2Memory memory);
+
+  /// VIDIOC_STREAMON - Start streaming I/O
+  void streamon(int fd, V4L2BufType type);
+
+  /// VIDIOC_STREAMOFF - Stop streaming I/O
+  void streamoff(int fd, V4L2BufType type);
+
+  /// v4l2-mmap - Map device memory into application address space
+  V4L2MappedBuffer mmap(
+    int fd,
+    V4L2Buffer buf,
+    List<V4L2Prot> prot,
+    List<V4L2Map> flags,
+  );
+  void munmap(V4L2MappedBuffer buf);
+  void select();
 }

@@ -1,6 +1,7 @@
 import 'dart:ffi' as ffi;
 
 import 'ffi.g.dart' as ffi;
+import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
 import 'v4l2_cap.dart';
 import 'v4l2_field.dart';
@@ -11,6 +12,8 @@ import 'v4l2_input_type.dart';
 import 'v4l2_memory.dart';
 import 'v4l2_pix_fmt.dart';
 import 'v4l2_std.dart';
+import 'v4l2_tc_flag.dart';
+import 'v4l2_tc_type.dart';
 
 final _dylibV4L2 = ffi.DynamicLibrary.executable();
 
@@ -107,5 +110,31 @@ extension intX on int {
 
   V4L2Memory toDartMemory() {
     return V4L2Memory.values.firstWhere((memory) => memory.value == this);
+  }
+
+  List<V4L2BufFlag> toDartBufFlags() {
+    final flags = <V4L2BufFlag>[];
+    for (var flag in V4L2BufFlag.values) {
+      if (this & flag.value == 0) {
+        continue;
+      }
+      flags.add(flag);
+    }
+    return flags;
+  }
+
+  V4L2TCType toDartTCType() {
+    return V4L2TCType.values.firstWhere((type) => type.value == this);
+  }
+
+  List<V4L2TCFlag> toDartTCFlags() {
+    final flags = <V4L2TCFlag>[];
+    for (var flag in V4L2TCFlag.values) {
+      if (this & flag.value == 0) {
+        continue;
+      }
+      flags.add(flag);
+    }
+    return flags;
   }
 }

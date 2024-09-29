@@ -1,11 +1,14 @@
 import 'dart:ffi' as ffi;
 
 import 'package:ffi/ffi.dart' as ffi;
+import 'package:hybrid_v4l2/src/v4l2_map.dart';
 
 import 'ffi.g.dart' as ffi;
 import 'ffi.x.dart' as ffi;
 import 'v4l2.dart';
+import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
+import 'v4l2_buffer.dart';
 import 'v4l2_cap.dart';
 import 'v4l2_capability.dart';
 import 'v4l2_error.dart';
@@ -20,8 +23,13 @@ import 'v4l2_input_type.dart';
 import 'v4l2_memory.dart';
 import 'v4l2_pix_fmt.dart';
 import 'v4l2_pix_format.dart';
+import 'v4l2_plane.dart';
 import 'v4l2_requestbuffers.dart';
 import 'v4l2_std.dart';
+import 'v4l2_tc_flag.dart';
+import 'v4l2_tc_type.dart';
+import 'v4l2_time_code.dart';
+import 'v4l2_timeval.dart';
 
 final finalizer = ffi.NativeFinalizer(ffi.malloc.nativeFree);
 
@@ -166,6 +174,87 @@ final class V4L2Impl implements V4L2 {
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_REQBUFS` failed, $err.');
     }
+  }
+
+  @override
+  V4L2Buffer querybuf(int fd, V4L2BufType type, V4L2Memory memory, int index) {
+    final buf = _ManagedV4L2BufferImpl()
+      ..type = type
+      ..memory = memory
+      ..index = index;
+    final err =
+        ffi.libV4L2.ioctlV4l2_bufferPtr(fd, ffi.VIDIOC_QUERYBUF, buf.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_QUERYBUF` failed, $err.');
+    }
+    return buf;
+  }
+
+  @override
+  void qbuf(int fd, V4L2Buffer buf) {
+    if (buf is! _ManagedV4L2BufferImpl) {
+      throw TypeError();
+    }
+    final err = ffi.libV4L2.ioctlV4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_QBUF` faild, $err.');
+    }
+  }
+
+  @override
+  V4L2Buffer dqbuf(int fd, V4L2BufType type, V4L2Memory memory) {
+    final buf = _ManagedV4L2BufferImpl()
+      ..type = type
+      ..memory = memory;
+    final err = ffi.libV4L2.ioctlV4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_QBUF` faild, $err.');
+    }
+    return buf;
+  }
+
+  @override
+  void streamon(int fd, V4L2BufType type) {
+    ffi.using((arena) {
+      final typePtr = arena<ffi.Int>()..value = type.value;
+      final err = ffi.libV4L2.ioctlIntPtr(fd, ffi.VIDIOC_STREAMON, typePtr);
+      if (err != 0) {
+        throw V4L2Error('ioctl `VIDIOC_STREAMON` failed, $err.');
+      }
+    });
+  }
+
+  @override
+  void streamoff(int fd, V4L2BufType type) {
+    ffi.using((arena) {
+      final typePtr = arena<ffi.Int>()..value = type.value;
+      final err = ffi.libV4L2.ioctlIntPtr(fd, ffi.VIDIOC_STREAMOFF, typePtr);
+      if (err != 0) {
+        throw V4L2Error('ioctl `VIDIOC_STREAMOFF` failed, $err.');
+      }
+    });
+  }
+
+  @override
+  void mmap(int len, List<V4L2_PORT> prot, List<V4L2MappedBuffer> flags, int fd,
+      int offset) {
+    final err = ffi.libV4L2.mmap(ffi.nullptr, len, prot, flags, fd, offset);
+    err.cast<ffi.Uint8>().asTypedList(length);
+  }
+
+  @override
+  void munmap(int addr, int len) {
+    final err = ffi.libV4L2.munmap(addr, len);
+  }
+
+  @override
+  void select() {
+    final err = ffi.libV4L2.select(nfds, readfds, writefds, exceptfds, timeout);
+  }
+
+  @override
+  void mread(V4L2MappedBuffer map) {
+    // TODO: implement mread
   }
 }
 
@@ -409,4 +498,198 @@ final class _ManagedV4L2RequestbuffersImpl extends V4L2RequestbuffersImpl
 
   @override
   ffi.v4l2_requestbuffers get ref => ptr.ref;
+}
+
+/* V4L2Buffer */
+abstract base class V4L2BufferImpl implements V4L2Buffer {
+  V4L2BufferImpl();
+  factory V4L2BufferImpl.managed() => _ManagedV4L2BufferImpl();
+
+  ffi.v4l2_buffer get ref;
+
+  @override
+  int get index => ref.index;
+  set index(int value) => ref.index = value;
+  @override
+  V4L2BufType get type => ref.type.toDartBufType();
+  set type(V4L2BufType value) => ref.type = value.value;
+  @override
+  int get byteused => ref.bytesused;
+  @override
+  List<V4L2BufFlag> get flags => ref.flags.toDartBufFlags();
+  @override
+  V4L2Field get field => ref.field.toDartField();
+  @override
+  V4L2Timeval get timestamp => V4L2TimevalImpl.unmanaged(ref.timestamp);
+  @override
+  V4L2TimeCode get timecode => V4L2TimeCodeImpl.unmanaged(ref.timecode);
+  @override
+  int get sequence => ref.sequence;
+  @override
+  V4L2Memory get memory => ref.memory.toDartMemory();
+  set memory(V4L2Memory value) => ref.memory = value.value;
+  @override
+  int get offset => ref.m.offset;
+  @override
+  int get userptr => ref.m.userptr;
+  @override
+  List<V4L2Plane> get planes {
+    final planes = <V4L2Plane>[];
+    for (var i = 0; i < length; i++) {
+      final plane = V4L2PlaneImpl.unmanaged(ref.m.planes[i]);
+      planes.add(plane);
+    }
+    return planes;
+  }
+
+  @override
+  int get fd => ref.m.fd;
+  @override
+  int get length => ref.length;
+  @override
+  int get requestFd => ref.unnamed.request_fd;
+}
+
+final class _ManagedV4L2BufferImpl extends V4L2BufferImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_buffer> ptr;
+
+  _ManagedV4L2BufferImpl() : ptr = ffi.malloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_buffer get ref => ptr.ref;
+}
+
+/* V4L2Timeval */
+abstract base class V4L2TimevalImpl implements V4L2Timeval {
+  V4L2TimevalImpl();
+  factory V4L2TimevalImpl.unmanaged(ffi.timeval ref) =>
+      _UnmanagedV4L2TimevalImpl(ref);
+  factory V4L2TimevalImpl.managed() => _ManagedV4L2TimevalImpl();
+
+  ffi.timeval get ref;
+
+  @override
+  int get tvSec => ref.tv_sec;
+  @override
+  int get tvUsec => ref.tv_usec;
+}
+
+final class _UnmanagedV4L2TimevalImpl extends V4L2TimevalImpl {
+  @override
+  final ffi.timeval ref;
+
+  _UnmanagedV4L2TimevalImpl(this.ref);
+}
+
+final class _ManagedV4L2TimevalImpl extends V4L2TimevalImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.timeval> ptr;
+
+  _ManagedV4L2TimevalImpl() : ptr = ffi.malloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.timeval get ref => ptr.ref;
+}
+
+/* V4L2TimeCode */
+abstract base class V4L2TimeCodeImpl implements V4L2TimeCode {
+  V4L2TimeCodeImpl();
+  factory V4L2TimeCodeImpl.unmanaged(ffi.v4l2_timecode ref) =>
+      _UnmanagedV4L2TimeCodeImpl(ref);
+  factory V4L2TimeCodeImpl.managed() => _ManagedV4L2TimeCodeImpl();
+
+  ffi.v4l2_timecode get ref;
+
+  @override
+  V4L2TCType get type => ref.type.toDartTCType();
+  @override
+  List<V4L2TCFlag> get flags => ref.flags.toDartTCFlags();
+  @override
+  int get frames => ref.frames;
+  @override
+  int get seconds => ref.seconds;
+  @override
+  int get minutes => ref.minutes;
+  @override
+  int get hours => ref.hours;
+  @override
+  String get userbits => ref.userbits.toDart();
+}
+
+final class _UnmanagedV4L2TimeCodeImpl extends V4L2TimeCodeImpl {
+  @override
+  final ffi.v4l2_timecode ref;
+
+  _UnmanagedV4L2TimeCodeImpl(this.ref);
+}
+
+final class _ManagedV4L2TimeCodeImpl extends V4L2TimeCodeImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_timecode> ptr;
+
+  _ManagedV4L2TimeCodeImpl() : ptr = ffi.malloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_timecode get ref => ptr.ref;
+}
+
+/* V4L2Plane */
+abstract base class V4L2PlaneImpl implements V4L2Plane {
+  V4L2PlaneImpl();
+  factory V4L2PlaneImpl.unmanaged(ffi.v4l2_plane ref) =>
+      _UnmanagedV4L2PlaneImpl(ref);
+  factory V4L2PlaneImpl.managed() => _ManagedV4L2PlaneImpl();
+
+  ffi.v4l2_plane get ref;
+
+  @override
+  int get byteused => ref.bytesused;
+  @override
+  int get length => ref.length;
+  @override
+  int get memOffset => ref.m.mem_offset;
+  @override
+  int get userptr => ref.m.userptr;
+  @override
+  int get fd => ref.m.fd;
+  @override
+  int get dataOffset => ref.data_offset;
+}
+
+final class _UnmanagedV4L2PlaneImpl extends V4L2PlaneImpl {
+  @override
+  final ffi.v4l2_plane ref;
+
+  _UnmanagedV4L2PlaneImpl(this.ref);
+}
+
+final class _ManagedV4L2PlaneImpl extends V4L2PlaneImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_plane> ptr;
+
+  _ManagedV4L2PlaneImpl() : ptr = ffi.malloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_plane get ref => ptr.ref;
 }
