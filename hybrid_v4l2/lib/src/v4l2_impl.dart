@@ -1,7 +1,6 @@
 import 'dart:ffi' as ffi;
 
 import 'package:ffi/ffi.dart' as ffi;
-import 'package:hybrid_v4l2/src/v4l2_map.dart';
 
 import 'ffi.g.dart' as ffi;
 import 'ffi.x.dart' as ffi;
@@ -20,10 +19,13 @@ import 'v4l2_in_cap.dart';
 import 'v4l2_in_st.dart';
 import 'v4l2_input.dart';
 import 'v4l2_input_type.dart';
+import 'v4l2_map.dart';
+import 'v4l2_mapped_buffer.dart';
 import 'v4l2_memory.dart';
 import 'v4l2_pix_fmt.dart';
 import 'v4l2_pix_format.dart';
 import 'v4l2_plane.dart';
+import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
 import 'v4l2_std.dart';
 import 'v4l2_tc_flag.dart';
@@ -236,25 +238,44 @@ final class V4L2Impl implements V4L2 {
   }
 
   @override
-  void mmap(int len, List<V4L2_PORT> prot, List<V4L2MappedBuffer> flags, int fd,
-      int offset) {
-    final err = ffi.libV4L2.mmap(ffi.nullptr, len, prot, flags, fd, offset);
-    err.cast<ffi.Uint8>().asTypedList(length);
+  V4L2MappedBuffer mmap(
+    int fd,
+    int offset,
+    int len,
+    List<V4L2Prot> prot,
+    List<V4L2Map> flags,
+  ) {
+    final start = ffi.libV4L2.mmap(
+        ffi.nullptr,
+        len,
+        prot.fold(0, (total, next) => total | next.value),
+        flags.fold(0, (total, element) => total | element.value),
+        fd,
+        offset);
+    if (start == ffi.MAP_FAILED) {
+      throw V4L2Error('mmap failed.');
+    }
+    return start;
   }
 
   @override
-  void munmap(int addr, int len) {
+  void munmap(V4L2MappedBuffer buf, int len) {
     final err = ffi.libV4L2.munmap(addr, len);
+    if (err != 0) {
+      throw V4L2Error('munmap failed, $err.');
+    }
   }
 
   @override
-  void select() {
-    final err = ffi.libV4L2.select(nfds, readfds, writefds, exceptfds, timeout);
-  }
-
-  @override
-  void mread(V4L2MappedBuffer map) {
-    // TODO: implement mread
+  void select(int fd, V4L2Timeval timeout) {
+    if (timeout is! _ManagedV4L2TimevalImpl) {
+      throw TypeError();
+    }
+    final err =
+        ffi.libV4L2.select(nfds, readfds, writefds, exceptfds, timeout.ptr);
+    if (err <= 0) {
+      throw V4L2Error('select failed, $err.');
+    }
   }
 }
 
@@ -693,3 +714,5 @@ final class _ManagedV4L2PlaneImpl extends V4L2PlaneImpl
   @override
   ffi.v4l2_plane get ref => ptr.ref;
 }
+
+/* V4L2MappedBuffer */

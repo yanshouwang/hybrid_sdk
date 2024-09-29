@@ -1,5 +1,3 @@
-import 'dart:ffi' as ffi;
-
 import 'v4l2_buf_type.dart';
 import 'v4l2_buffer.dart';
 import 'v4l2_capability.dart';
@@ -12,6 +10,7 @@ import 'v4l2_mapped_buffer.dart';
 import 'v4l2_memory.dart';
 import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
+import 'v4l2_timeval.dart';
 
 /// Video for Linux API
 abstract interface class V4L2 {
@@ -69,10 +68,15 @@ abstract interface class V4L2 {
   /// v4l2-mmap - Map device memory into application address space
   V4L2MappedBuffer mmap(
     int fd,
-    V4L2Buffer buf,
+    int offset,
+    int len,
     List<V4L2Prot> prot,
     List<V4L2Map> flags,
   );
-  void munmap(V4L2MappedBuffer buf);
-  void select();
+
+  /// v4l2-munmap - Unmap device memory
+  void munmap(V4L2MappedBuffer buf, int len);
+
+  /// v4l2-select - Synchronous I/O multiplexing
+  void select(int fd, V4L2Timeval timeout);
 }

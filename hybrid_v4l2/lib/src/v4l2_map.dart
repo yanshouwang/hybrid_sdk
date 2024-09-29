@@ -1,23 +1,59 @@
 import 'ffi.g.dart' as ffi;
 
 enum V4L2Map {
+  /// Share changes
   shared(ffi.MAP_SHARED),
+
+  /// Changes are private
   private(ffi.MAP_PRIVATE),
+
+  /// share + validate extension flags
   sharedValidate(ffi.MAP_SHARED_VALIDATE),
-  hugeShift(ffi.MAP_HUGE_SHIFT),
-  hugeMask(ffi.MAP_HUGE_MASK),
-  huge64KB(ffi.MAP_HUGE_64KB),
-  huge512KB(ffi.MAP_HUGE_512KB),
-  huge1MB(ffi.MAP_HUGE_1MB),
-  huge2MB(ffi.MAP_HUGE_2MB),
-  huge8MB(ffi.MAP_HUGE_8MB),
-  huge16MB(ffi.MAP_HUGE_16MB),
-  huge32MB(ffi.MAP_HUGE_32MB),
-  huge256MB(ffi.MAP_HUGE_256MB),
-  huge512MB(ffi.MAP_HUGE_512MB),
-  huge1GB(ffi.MAP_HUGE_1GB),
-  huge2GB(ffi.MAP_HUGE_2GB),
-  huge16GB(ffi.MAP_HUGE_16GB);
+
+  /// Mask for type of mapping
+  type(ffi.MAP_TYPE),
+
+  /// Interpret addr exactly
+  fixed(ffi.MAP_FIXED),
+
+  /// don't use a file
+  anonymous(ffi.MAP_ANONYMOUS),
+
+  /// stack-like segment
+  growsdown(ffi.MAP_GROWSDOWN),
+
+  /// ETXTBSY
+  denywrite(ffi.MAP_DENYWRITE),
+
+  /// mark it as an executable
+  executable(ffi.MAP_EXECUTABLE),
+
+  /// pages are locked
+  locked(ffi.MAP_LOCKED),
+
+  /// don't check for reservations
+  noreserve(ffi.MAP_NORESERVE),
+
+  /// populate (prefault) pagetables
+  populate(ffi.MAP_POPULATE),
+
+  /// do not block on IO
+  nonblock(ffi.MAP_NONBLOCK),
+
+  /// give out an address that is best suited for process/thread stacks
+  stack(ffi.MAP_STACK),
+
+  /// create a huge page mapping
+  hugetlb(ffi.MAP_HUGETLB),
+
+  /// perform synchronous page faults for the mapping
+  sync(ffi.MAP_SYNC),
+
+  /// MAP_FIXED which doesn't unmap underlying mapping
+  fixedNoReplace(ffi.MAP_FIXED_NOREPLACE),
+
+  /// For anonymous mmap, memory could be uninitialized
+  uninitialized(ffi.MAP_UNINITIALIZED);
 
   final int value;
 
