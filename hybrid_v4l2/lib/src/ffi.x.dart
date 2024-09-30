@@ -1,8 +1,6 @@
 import 'dart:ffi' as ffi;
 
-import 'package:ffi/ffi.dart' as ffi;
-
-import 'ffi.g.dart' as ffi;
+import 'ffi.hybrid_v4l2.dart' as ffi;
 import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
 import 'v4l2_cap.dart';
@@ -17,12 +15,9 @@ import 'v4l2_std.dart';
 import 'v4l2_tc_flag.dart';
 import 'v4l2_tc_type.dart';
 
-final _dylibV4L2 = ffi.DynamicLibrary.executable();
+final _dylibHybridV4L2 = ffi.DynamicLibrary.open('libhybrid_v4l2.so');
 
-final libV4L2 = ffi.LibV4L2(_dylibV4L2);
-
-// ignore: non_constant_identifier_names
-final MAP_FAILED = (ffi.malloc<ffi.Int>()..value = -1).cast<ffi.Void>();
+final libHybridV4L2 = ffi.LibHybridV4L2(_dylibHybridV4L2);
 
 extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
   String toDart() {

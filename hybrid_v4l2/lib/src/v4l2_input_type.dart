@@ -1,4 +1,4 @@
-import 'ffi.g.dart' as ffi;
+import 'ffi.v4l2.dart' as ffi;
 
 /// Input Types
 enum V4L2InputType {

@@ -1,4 +1,4 @@
-import 'ffi.g.dart' as ffi;
+import 'ffi.v4l2.dart' as ffi;
 
 /// The V4L2 API was primarily designed for devices exchanging image data with
 /// applications. The struct v4l2_pix_format and struct v4l2_pix_format_mplane

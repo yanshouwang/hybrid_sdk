@@ -6,7 +6,10 @@ import 'package:logging/logging.dart';
 void main() {
   Logger.root.onRecord.listen(onLogRecord);
   final v4l2 = V4L2();
-  final fd = v4l2.open('/dev/video0');
+  final fd = v4l2.open(
+    '/dev/video0',
+    [V4L2O.rdwr, V4L2O.nonblock],
+  );
   try {
     final cap = v4l2.querycap(fd);
     Logger.root.info('''[QUERYCAP]

@@ -14,6 +14,7 @@ export 'src/v4l2_input.dart';
 export 'src/v4l2_map.dart';
 export 'src/v4l2_mapped_buffer.dart';
 export 'src/v4l2_memory.dart';
+export 'src/v4l2_o.dart';
 export 'src/v4l2_pix_fmt.dart';
 export 'src/v4l2_pix_format.dart';
 export 'src/v4l2_plane.dart';

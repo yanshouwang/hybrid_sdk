@@ -1,59 +1,53 @@
-import 'ffi.g.dart' as ffi;
+import 'ffi.hybrid_v4l2.dart' as ffi;
 
 enum V4L2Map {
   /// Share changes
-  shared(ffi.MAP_SHARED),
+  shared(ffi.V4L2_MAP_SHARED),
 
   /// Changes are private
-  private(ffi.MAP_PRIVATE),
+  private(ffi.V4L2_MAP_PRIVATE),
 
-  /// share + validate extension flags
-  sharedValidate(ffi.MAP_SHARED_VALIDATE),
-
-  /// Mask for type of mapping
-  type(ffi.MAP_TYPE),
-
-  /// Interpret addr exactly
-  fixed(ffi.MAP_FIXED),
+  ///
+  map32Bit(ffi.V4L2_MAP_32BIT),
 
   /// don't use a file
-  anonymous(ffi.MAP_ANONYMOUS),
-
-  /// stack-like segment
-  growsdown(ffi.MAP_GROWSDOWN),
+  anonymous(ffi.V4L2_MAP_ANONYMOUS),
 
   /// ETXTBSY
-  denywrite(ffi.MAP_DENYWRITE),
+  denywrite(ffi.V4L2_MAP_DENYWRITE),
 
   /// mark it as an executable
-  executable(ffi.MAP_EXECUTABLE),
+  executable(ffi.V4L2_MAP_EXECUTABLE),
 
-  /// pages are locked
-  locked(ffi.MAP_LOCKED),
+  ///
+  file(ffi.V4L2_MAP_FILE),
 
-  /// don't check for reservations
-  noreserve(ffi.MAP_NORESERVE),
+  /// Interpret addr exactly
+  fixed(ffi.V4L2_MAP_FIXED),
 
-  /// populate (prefault) pagetables
-  populate(ffi.MAP_POPULATE),
-
-  /// do not block on IO
-  nonblock(ffi.MAP_NONBLOCK),
-
-  /// give out an address that is best suited for process/thread stacks
-  stack(ffi.MAP_STACK),
+  /// stack-like segment
+  growsdown(ffi.V4L2_MAP_GROWSDOWN),
 
   /// create a huge page mapping
-  hugetlb(ffi.MAP_HUGETLB),
+  hugetlb(ffi.V4L2_MAP_HUGETLB),
 
-  /// perform synchronous page faults for the mapping
-  sync(ffi.MAP_SYNC),
+  /// pages are locked
+  locked(ffi.V4L2_MAP_LOCKED),
 
-  /// MAP_FIXED which doesn't unmap underlying mapping
-  fixedNoReplace(ffi.MAP_FIXED_NOREPLACE),
+  /// do not block on IO
+  nonblock(ffi.V4L2_MAP_NONBLOCK),
+
+  /// don't check for reservations
+  noreserve(ffi.V4L2_MAP_NORESERVE),
+
+  /// populate (prefault) pagetables
+  populate(ffi.V4L2_MAP_POPULATE),
+
+  /// give out an address that is best suited for process/thread stacks
+  stack(ffi.V4L2_MAP_STACK);
 
   /// For anonymous mmap, memory could be uninitialized
-  uninitialized(ffi.MAP_UNINITIALIZED);
+  // uninitialized(ffi.V4L2_MAP_UNINITIALIZED);
 
   final int value;
 

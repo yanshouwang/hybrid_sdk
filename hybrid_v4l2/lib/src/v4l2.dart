@@ -8,6 +8,7 @@ import 'v4l2_input.dart';
 import 'v4l2_map.dart';
 import 'v4l2_mapped_buffer.dart';
 import 'v4l2_memory.dart';
+import 'v4l2_o.dart';
 import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
 import 'v4l2_timeval.dart';
@@ -17,7 +18,7 @@ abstract interface class V4L2 {
   factory V4L2() => V4L2Impl();
 
   /// v4l2-open - Open a V4L2 device
-  int open(String file);
+  int open(String file, List<V4L2O> oflag);
 
   /// v4l2-close - Close a V4L2 device
   void close(int fd);
@@ -75,7 +76,7 @@ abstract interface class V4L2 {
   );
 
   /// v4l2-munmap - Unmap device memory
-  void munmap(V4L2MappedBuffer buf, int len);
+  void munmap(V4L2MappedBuffer buf);
 
   /// v4l2-select - Synchronous I/O multiplexing
   void select(int fd, V4L2Timeval timeout);

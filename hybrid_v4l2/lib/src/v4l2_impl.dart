@@ -1,8 +1,10 @@
 import 'dart:ffi' as ffi;
+import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart' as ffi;
 
-import 'ffi.g.dart' as ffi;
+import 'ffi.v4l2.dart' as ffi;
+import 'ffi.hybrid_v4l2.dart' as ffi;
 import 'ffi.x.dart' as ffi;
 import 'v4l2.dart';
 import 'v4l2_buf_flag.dart';
@@ -22,6 +24,7 @@ import 'v4l2_input_type.dart';
 import 'v4l2_map.dart';
 import 'v4l2_mapped_buffer.dart';
 import 'v4l2_memory.dart';
+import 'v4l2_o.dart';
 import 'v4l2_pix_fmt.dart';
 import 'v4l2_pix_format.dart';
 import 'v4l2_plane.dart';
@@ -37,9 +40,12 @@ final finalizer = ffi.NativeFinalizer(ffi.malloc.nativeFree);
 
 final class V4L2Impl implements V4L2 {
   @override
-  int open(String file) {
+  int open(String file, List<V4L2O> oflag) {
     final filePtr = file.toNativeUtf8().cast<ffi.Char>();
-    final fd = ffi.libV4L2.open(filePtr, ffi.O_RDWR | ffi.O_NONBLOCK, 0);
+    final fd = ffi.libHybridV4L2.v4l2_open(
+      filePtr,
+      oflag.fold(0, (total, next) => total | next.value),
+    );
     ffi.malloc.free(filePtr);
     if (fd == -1) {
       throw V4L2Error('open failed, $fd.');
@@ -49,7 +55,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void close(int fd) {
-    final status = ffi.libV4L2.close(fd);
+    final status = ffi.libHybridV4L2.v4l2_close(fd);
     if (status != 0) {
       throw V4L2Error('close failed, $status.');
     }
@@ -58,8 +64,8 @@ final class V4L2Impl implements V4L2 {
   @override
   V4L2Capability querycap(int fd) {
     final cap = _ManagedV4L2CapabilityImpl();
-    final err =
-        ffi.libV4L2.ioctlV4l2_capabilityPtr(fd, ffi.VIDIOC_QUERYCAP, cap.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_capabilityPtr(fd, ffi.VIDIOC_QUERYCAP, cap.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_QUERYCAP` failed, $err.');
     }
@@ -72,8 +78,8 @@ final class V4L2Impl implements V4L2 {
     var index = 0;
     while (true) {
       final input = _ManagedV4L2InputImpl()..index = index;
-      final err =
-          ffi.libV4L2.ioctlV4l2_inputPtr(fd, ffi.VIDIOC_ENUMINPUT, input.ptr);
+      final err = ffi.libHybridV4L2
+          .v4l2_ioctlV4l2v4l2_inputPtr(fd, ffi.VIDIOC_ENUMINPUT, input.ptr);
       if (err != 0) {
         break;
       }
@@ -87,15 +93,16 @@ final class V4L2Impl implements V4L2 {
   V4L2Input gInput(int fd) {
     final index = ffi.using((arena) {
       final indexPtr = arena<ffi.Int>();
-      final err = ffi.libV4L2.ioctlIntPtr(fd, ffi.VIDIOC_G_INPUT, indexPtr);
+      final err =
+          ffi.libHybridV4L2.v4l2_ioctlIntPtr(fd, ffi.VIDIOC_G_INPUT, indexPtr);
       if (err != 0) {
         throw V4L2Error('ioctl `VIDIOC_G_INPUT` failed, $err.');
       }
       return indexPtr.value;
     });
     final input = _ManagedV4L2InputImpl()..index = index;
-    final err =
-        ffi.libV4L2.ioctlV4l2_inputPtr(fd, ffi.VIDIOC_ENUMINPUT, input.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_inputPtr(fd, ffi.VIDIOC_ENUMINPUT, input.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_ENUMINPUT` failed, $err.');
     }
@@ -107,8 +114,8 @@ final class V4L2Impl implements V4L2 {
     if (input is! _ManagedV4L2InputImpl) {
       throw TypeError();
     }
-    final err =
-        ffi.libV4L2.ioctlV4l2_inputPtr(fd, ffi.VIDIOC_S_INPUT, input.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_inputPtr(fd, ffi.VIDIOC_S_INPUT, input.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_S_INPUT` failed, $err.');
     }
@@ -122,8 +129,8 @@ final class V4L2Impl implements V4L2 {
       final fmt = _ManagedV4L2FmtdescImpl()
         ..index = index
         ..type = type;
-      final err =
-          ffi.libV4L2.ioctlV4l2_fmtdescPtr(fd, ffi.VIDIOC_ENUM_FMT, fmt.ptr);
+      final err = ffi.libHybridV4L2
+          .v4l2_ioctlV4l2v4l2_fmtdescPtr(fd, ffi.VIDIOC_ENUM_FMT, fmt.ptr);
       if (err != 0) {
         break;
       }
@@ -136,7 +143,8 @@ final class V4L2Impl implements V4L2 {
   @override
   V4L2Format gFmt(int fd, V4L2BufType type) {
     final fmt = _ManagedV4L2FormatImpl()..type = type;
-    final err = ffi.libV4L2.ioctlV4l2_formatPtr(fd, ffi.VIDIOC_G_FMT, fmt.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_formatPtr(fd, ffi.VIDIOC_G_FMT, fmt.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_G_FMT` failed, $err.');
     }
@@ -148,7 +156,8 @@ final class V4L2Impl implements V4L2 {
     if (fmt is! _ManagedV4L2FormatImpl) {
       throw TypeError();
     }
-    final err = ffi.libV4L2.ioctlV4l2_formatPtr(fd, ffi.VIDIOC_S_FMT, fmt.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_formatPtr(fd, ffi.VIDIOC_S_FMT, fmt.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_S_FMT` failed, $err.');
     }
@@ -159,8 +168,8 @@ final class V4L2Impl implements V4L2 {
     if (fmt is! _ManagedV4L2FormatImpl) {
       throw TypeError();
     }
-    final err =
-        ffi.libV4L2.ioctlV4l2_formatPtr(fd, ffi.VIDIOC_TRY_FMT, fmt.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_formatPtr(fd, ffi.VIDIOC_TRY_FMT, fmt.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_TRY_FMT` failed, $err.');
     }
@@ -171,8 +180,8 @@ final class V4L2Impl implements V4L2 {
     if (req is! _ManagedV4L2RequestbuffersImpl) {
       throw TypeError();
     }
-    final err = ffi.libV4L2
-        .ioctlV4l2_requestbuffersPtr(fd, ffi.VIDIOC_REQBUFS, req.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_requestbuffersPtr(fd, ffi.VIDIOC_REQBUFS, req.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_REQBUFS` failed, $err.');
     }
@@ -184,8 +193,8 @@ final class V4L2Impl implements V4L2 {
       ..type = type
       ..memory = memory
       ..index = index;
-    final err =
-        ffi.libV4L2.ioctlV4l2_bufferPtr(fd, ffi.VIDIOC_QUERYBUF, buf.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_QUERYBUF, buf.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_QUERYBUF` failed, $err.');
     }
@@ -197,7 +206,8 @@ final class V4L2Impl implements V4L2 {
     if (buf is! _ManagedV4L2BufferImpl) {
       throw TypeError();
     }
-    final err = ffi.libV4L2.ioctlV4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_QBUF` faild, $err.');
     }
@@ -208,7 +218,8 @@ final class V4L2Impl implements V4L2 {
     final buf = _ManagedV4L2BufferImpl()
       ..type = type
       ..memory = memory;
-    final err = ffi.libV4L2.ioctlV4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_QBUF` faild, $err.');
     }
@@ -219,7 +230,8 @@ final class V4L2Impl implements V4L2 {
   void streamon(int fd, V4L2BufType type) {
     ffi.using((arena) {
       final typePtr = arena<ffi.Int>()..value = type.value;
-      final err = ffi.libV4L2.ioctlIntPtr(fd, ffi.VIDIOC_STREAMON, typePtr);
+      final err =
+          ffi.libHybridV4L2.v4l2_ioctlIntPtr(fd, ffi.VIDIOC_STREAMON, typePtr);
       if (err != 0) {
         throw V4L2Error('ioctl `VIDIOC_STREAMON` failed, $err.');
       }
@@ -230,7 +242,8 @@ final class V4L2Impl implements V4L2 {
   void streamoff(int fd, V4L2BufType type) {
     ffi.using((arena) {
       final typePtr = arena<ffi.Int>()..value = type.value;
-      final err = ffi.libV4L2.ioctlIntPtr(fd, ffi.VIDIOC_STREAMOFF, typePtr);
+      final err =
+          ffi.libHybridV4L2.v4l2_ioctlIntPtr(fd, ffi.VIDIOC_STREAMOFF, typePtr);
       if (err != 0) {
         throw V4L2Error('ioctl `VIDIOC_STREAMOFF` failed, $err.');
       }
@@ -245,22 +258,27 @@ final class V4L2Impl implements V4L2 {
     List<V4L2Prot> prot,
     List<V4L2Map> flags,
   ) {
-    final start = ffi.libV4L2.mmap(
-        ffi.nullptr,
-        len,
-        prot.fold(0, (total, next) => total | next.value),
-        flags.fold(0, (total, element) => total | element.value),
-        fd,
-        offset);
-    if (start == ffi.MAP_FAILED) {
+    final buf = _ManagedV4L2MappedBufferImpl();
+    final err = ffi.libHybridV4L2.v4l2_mmap(
+      fd,
+      offset,
+      len,
+      prot.fold(0, (total, next) => total | next.value),
+      flags.fold(0, (total, element) => total | element.value),
+      buf.ptr,
+    );
+    if (err != 0) {
       throw V4L2Error('mmap failed.');
     }
-    return start;
+    return buf;
   }
 
   @override
-  void munmap(V4L2MappedBuffer buf, int len) {
-    final err = ffi.libV4L2.munmap(addr, len);
+  void munmap(V4L2MappedBuffer buf) {
+    if (buf is! _ManagedV4L2MappedBufferImpl) {
+      throw TypeError();
+    }
+    final err = ffi.libHybridV4L2.v4l2_munmap(buf.ptr);
     if (err != 0) {
       throw V4L2Error('munmap failed, $err.');
     }
@@ -271,8 +289,7 @@ final class V4L2Impl implements V4L2 {
     if (timeout is! _ManagedV4L2TimevalImpl) {
       throw TypeError();
     }
-    final err =
-        ffi.libV4L2.select(nfds, readfds, writefds, exceptfds, timeout.ptr);
+    final err = ffi.libHybridV4L2.v4l2_select(fd, timeout.ptr);
     if (err <= 0) {
       throw V4L2Error('select failed, $err.');
     }
@@ -716,3 +733,30 @@ final class _ManagedV4L2PlaneImpl extends V4L2PlaneImpl
 }
 
 /* V4L2MappedBuffer */
+abstract base class V4L2MappedBufferImpl implements V4L2MappedBuffer {
+  V4L2MappedBufferImpl();
+  factory V4L2MappedBufferImpl.managed() => _ManagedV4L2MappedBufferImpl();
+
+  ffi.v4l2_mapped_buffer get ref;
+
+  ffi.Pointer<ffi.Void> get addr => ref.addr;
+  int get len => ref.len;
+
+  @override
+  Uint8List get value => addr.cast<ffi.Uint8>().asTypedList(len);
+}
+
+final class _ManagedV4L2MappedBufferImpl extends V4L2MappedBufferImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_mapped_buffer> ptr;
+
+  _ManagedV4L2MappedBufferImpl() : ptr = ffi.malloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_mapped_buffer get ref => ptr.ref;
+}

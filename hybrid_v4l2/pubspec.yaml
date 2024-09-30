@@ -1,11 +1,11 @@
 name: hybrid_v4l2
-description: "A new Flutter plugin project."
+description: 'A new Flutter plugin project.'
 version: 0.0.1
 homepage:
 
 environment:
   sdk: ^3.5.3
-  flutter: ">=3.3.0"
+  flutter: '>=3.3.0'
 
 dependencies:
   flutter:
@@ -38,6 +38,7 @@ flutter:
     platforms:
       linux:
         pluginClass: HybridV4l2Plugin
+        ffiPlugin: true
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

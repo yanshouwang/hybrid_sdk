@@ -7,6 +7,10 @@ cmake_minimum_required(VERSION 3.10)
 set(PROJECT_NAME "hybrid_v4l2")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
+# Invoke the build for native code shared with the other target platforms.
+# This can be changed to accommodate different builds.
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../src" "${CMAKE_CURRENT_BINARY_DIR}/shared")
+
 # This value is used when generating builds using this plugin, so it must
 # not be changed.
 set(PLUGIN_NAME "hybrid_v4l2_plugin")
@@ -45,7 +49,9 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
 set(hybrid_v4l2_bundled_libraries
-  ""
+  # Defined in ../src/CMakeLists.txt.
+  # This can be changed to accommodate different builds.
+  $<TARGET_FILE:hybrid_v4l2>
   PARENT_SCOPE
 )
 
