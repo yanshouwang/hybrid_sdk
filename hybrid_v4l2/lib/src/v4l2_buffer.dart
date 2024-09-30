@@ -1,6 +1,7 @@
 import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
 import 'v4l2_field.dart';
+import 'v4l2_impl.dart';
 import 'v4l2_memory.dart';
 import 'v4l2_plane.dart';
 import 'v4l2_time_code.dart';
@@ -8,16 +9,20 @@ import 'v4l2_timeval.dart';
 
 /// struct v4l2_buffer
 abstract interface class V4L2Buffer {
+  factory V4L2Buffer() => V4L2BufferImpl.managed();
+
   /// Number of the buffer, set by the application except when calling VIDIOC_DQBUF,
   /// then it is set by the driver. This field can range from zero to the number
   /// of buffers allocated with the ioctl VIDIOC_REQBUFS ioctl (struct
   /// v4l2_requestbuffers count), plus any buffers allocated with ioctl
   /// VIDIOC_CREATE_BUFS minus one.
   int get index;
+  set index(int value);
 
   /// Type of the buffer, same as struct v4l2_format type or struct v4l2_requestbuffers
   /// type, set by the application. See v4l2_buf_type
   V4L2BufType get type;
+  set type(V4L2BufType value);
 
   /// The number of bytes occupied by the data in the buffer. It depends on the
   /// negotiated data format and may change with each buffer for compressed variable
@@ -61,6 +66,7 @@ abstract interface class V4L2Buffer {
   /// This field must be set by applications and/or drivers in accordance with
   /// the selected I/O method. See v4l2_memory
   V4L2Memory get memory;
+  set memory(V4L2Memory value);
 
   /// For the single-planar API and when memory is V4L2_MEMORY_MMAP this is the
   /// offset of the buffer from the start of the device memory. The value is

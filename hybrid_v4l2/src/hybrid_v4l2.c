@@ -7,6 +7,7 @@
 #include <sys/select.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <errno.h>
 
 FFI_PLUGIN_EXPORT int v4l2_open(char *file, int oflag) {
   return open(file, oflag, 0);
@@ -41,10 +42,18 @@ FFI_PLUGIN_EXPORT int v4l2_munmap(struct v4l2_mapped_buffer *buf) {
 }
 
 FFI_PLUGIN_EXPORT int v4l2_select(int fd, struct timeval *timeout) {
-  fd_set fds;
-
-  FD_ZERO(&fds);
-  FD_SET(fd, &fds);
-
-  return select(fd + 1, &fds, NULL, NULL, timeout);
+  while (1)
+  {
+    fd_set fds;
+    
+    FD_ZERO(&fds);
+    FD_SET(fd, &fds);
+  
+    int r = select(fd + 1, &fds, NULL, NULL, timeout);
+    if (-1 == r && EINTR == errno)
+    {
+      continue;
+    }
+    return r;
+  }
 }

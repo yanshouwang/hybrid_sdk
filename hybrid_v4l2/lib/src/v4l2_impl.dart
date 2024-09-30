@@ -219,9 +219,9 @@ final class V4L2Impl implements V4L2 {
       ..type = type
       ..memory = memory;
     final err = ffi.libHybridV4L2
-        .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
+        .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_DQBUF, buf.ptr);
     if (err != 0) {
-      throw V4L2Error('ioctl `VIDIOC_QBUF` faild, $err.');
+      throw V4L2Error('ioctl `VIDIOC_DQBUF` faild, $err.');
     }
     return buf;
   }
@@ -382,6 +382,7 @@ abstract base class V4L2FmtdescImpl implements V4L2Fmtdesc {
   int get index => ref.index;
   set index(int value) => ref.index = value;
 
+  @override
   V4L2BufType get type => ref.type.toDartBufType();
   set type(V4L2BufType value) => ref.type = value.value;
 
@@ -547,9 +548,11 @@ abstract base class V4L2BufferImpl implements V4L2Buffer {
 
   @override
   int get index => ref.index;
+  @override
   set index(int value) => ref.index = value;
   @override
   V4L2BufType get type => ref.type.toDartBufType();
+  @override
   set type(V4L2BufType value) => ref.type = value.value;
   @override
   int get byteused => ref.bytesused;
@@ -565,6 +568,7 @@ abstract base class V4L2BufferImpl implements V4L2Buffer {
   int get sequence => ref.sequence;
   @override
   V4L2Memory get memory => ref.memory.toDartMemory();
+  @override
   set memory(V4L2Memory value) => ref.memory = value.value;
   @override
   int get offset => ref.m.offset;
@@ -615,7 +619,11 @@ abstract base class V4L2TimevalImpl implements V4L2Timeval {
   @override
   int get tvSec => ref.tv_sec;
   @override
+  set tvSec(int value) => ref.tv_sec = value;
+  @override
   int get tvUsec => ref.tv_usec;
+  @override
+  set tvUsec(int value) => ref.tv_usec = value;
 }
 
 final class _UnmanagedV4L2TimevalImpl extends V4L2TimevalImpl {

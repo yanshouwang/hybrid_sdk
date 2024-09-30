@@ -1,10 +1,13 @@
 import 'v4l2_buf_type.dart';
+import 'v4l2_impl.dart';
 import 'v4l2_memory.dart';
 
 /// struct v4l2_requestbuffers
 ///
 /// TODO: add capalities & flags
 abstract interface class V4L2Requestbuffers {
+  factory V4L2Requestbuffers() => V4L2RequestbuffersImpl.managed();
+
   /// The number of buffers requested or granted.
   int get count;
   set count(int value);

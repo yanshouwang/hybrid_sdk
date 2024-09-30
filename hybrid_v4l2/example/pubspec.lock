@@ -83,6 +83,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_elinux:
+    dependency: transitive
+    description:
+      path: "/home/orangepi/dev/flutter-elinux/packages/flutter_elinux"
+      relative: false
+    source: path
+    version: "0.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:

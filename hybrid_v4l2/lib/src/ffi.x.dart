@@ -16,6 +16,8 @@ import 'v4l2_tc_flag.dart';
 import 'v4l2_tc_type.dart';
 
 final _dylibHybridV4L2 = ffi.DynamicLibrary.open('libhybrid_v4l2.so');
+// final _dylibHybridV4L2 = ffi.DynamicLibrary.open(
+//     '/home/orangepi/dev/hybrid_sdk/hybrid_v4l2/example/build/elinux/arm64/debug/bundle/lib/libhybrid_v4l2.so');
 
 final libHybridV4L2 = ffi.LibHybridV4L2(_dylibHybridV4L2);
 

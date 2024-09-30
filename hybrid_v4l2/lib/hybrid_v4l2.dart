@@ -25,4 +25,5 @@ export 'src/v4l2_tc_flag.dart';
 export 'src/v4l2_tc_type.dart';
 export 'src/v4l2_time_code.dart';
 export 'src/v4l2_timeval.dart';
+export 'src/v4l2_view.dart';
 export 'src/v4l2.dart';

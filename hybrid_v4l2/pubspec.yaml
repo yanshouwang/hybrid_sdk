@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
   ffi: ^2.1.3
+  flutter_elinux:
+    path: /home/orangepi/dev/flutter-elinux/packages/flutter_elinux
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +39,9 @@ flutter:
   plugin:
     platforms:
       linux:
+        pluginClass: HybridV4l2Plugin
+        ffiPlugin: true
+      elinux:
         pluginClass: HybridV4l2Plugin
         ffiPlugin: true
 

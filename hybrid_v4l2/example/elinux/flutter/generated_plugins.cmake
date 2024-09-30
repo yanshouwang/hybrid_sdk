@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  hybrid_v4l2
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
