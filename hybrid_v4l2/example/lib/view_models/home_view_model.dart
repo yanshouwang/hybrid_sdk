@@ -1,5 +1,4 @@
 import 'dart:isolate';
-import 'dart:ui' as ui;
 
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
@@ -11,24 +10,19 @@ class HomeViewModel extends ViewModel with TypeLogger {
   final List<V4L2MappedBuffer> _mappedBufs;
   final Stopwatch _fpsWatch;
 
-  bool _decoding;
-
   int? _fd;
-  int? _width;
-  int? _height;
   Isolate? _isolate;
-  ui.Image? _image;
+  V4L2MappedBuffer? _mappedBuf;
 
   HomeViewModel()
       : v4l2 = V4L2(),
         _mappedBufs = [],
-        _fpsWatch = Stopwatch(),
-        _decoding = false {
+        _fpsWatch = Stopwatch() {
     open();
     beginStreaming();
   }
 
-  ui.Image? get image => _image;
+  V4L2MappedBuffer? get mappedBuf => _mappedBuf;
 
   @override
   void dispose() {
@@ -92,8 +86,6 @@ pix.field: ${fmt.pix.field}
 ''');
 
     _fd = fd;
-    _width = fmt.pix.width;
-    _height = fmt.pix.height;
   }
 
   void close() {
@@ -134,38 +126,11 @@ pix.field: ${fmt.pix.field}
     v4l2.streamon(fd, V4L2BufType.videoCapture);
     logger.info('STREAMON');
 
-    var fps = 0;
     final receivePort = ReceivePort()
       ..listen(
         (index) async {
-          if (_decoding) {
-            return;
-          }
-          _decoding = true;
-          try {
-            final mappedBuf = _mappedBufs[index];
-            final buffer =
-                await ui.ImmutableBuffer.fromUint8List(mappedBuf.value);
-            final descriptor = await ui.ImageDescriptor.encoded(buffer);
-            final codec = await descriptor.instantiateCodec(
-              targetWidth: _width,
-              targetHeight: _height,
-            );
-            final frame = await codec.getNextFrame();
-            _image = frame.image;
-            if (_fpsWatch.elapsed.inSeconds < 1) {
-              fps++;
-            } else {
-              logger.info('FPS $fps');
-              fps = 0;
-              _fpsWatch.reset();
-            }
-            notifyListeners();
-          } catch (e) {
-            logger.warning('Codec failed, $e.');
-          } finally {
-            _decoding = false;
-          }
+          _mappedBuf = _mappedBufs[index];
+          notifyListeners();
         },
       );
 

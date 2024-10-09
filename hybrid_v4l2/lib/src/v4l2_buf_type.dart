@@ -1,4 +1,4 @@
-import 'ffi.v4l2.dart' as ffi;
+import 'v4l2_ffi.dart' as ffi;
 
 /// enum v4l2_buf_type
 enum V4L2BufType {

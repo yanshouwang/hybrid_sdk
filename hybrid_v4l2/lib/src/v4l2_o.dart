@@ -1,4 +1,4 @@
-import 'ffi.hybrid_v4l2.dart' as ffi;
+import 'v4l2_ffi.hybrid.dart' as ffi;
 
 enum V4L2O {
   rdonly(ffi.V4L2_O_RDONLY),

@@ -18,6 +18,7 @@ set(PLUGIN_NAME "hybrid_v4l2_plugin")
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
   "hybrid_v4l2_plugin.cc"
+  "hybrid_v4l2_api.cc"
 )
 
 # Define the plugin library target. Its name must not be changed (see comment

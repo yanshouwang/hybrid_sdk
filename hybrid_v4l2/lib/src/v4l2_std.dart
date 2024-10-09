@@ -1,4 +1,4 @@
-import 'ffi.v4l2.dart' as ffi;
+import 'v4l2_ffi.dart' as ffi;
 
 /// Video devices typically support one or more different video standards or
 /// variations of standards. Each video input and output may support another set

@@ -1,6 +1,6 @@
 import 'dart:ffi' as ffi;
 
-import 'ffi.hybrid_v4l2.dart' as ffi;
+import 'v4l2_ffi.hybrid.dart' as ffi;
 import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
 import 'v4l2_cap.dart';

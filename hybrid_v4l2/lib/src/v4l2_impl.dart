@@ -3,9 +3,9 @@ import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart' as ffi;
 
-import 'ffi.v4l2.dart' as ffi;
-import 'ffi.hybrid_v4l2.dart' as ffi;
-import 'ffi.x.dart' as ffi;
+import 'v4l2_ffi.dart' as ffi;
+import 'v4l2_ffi.hybrid.dart' as ffi;
+import 'v4l2_ffi.x.dart' as ffi;
 import 'v4l2.dart';
 import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';

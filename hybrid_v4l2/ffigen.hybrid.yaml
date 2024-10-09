@@ -1,8 +1,8 @@
-# Run with `dart run ffigen --config ffigen.hybrid_v4l2.yaml`.
+# Run with `dart run ffigen --config ffigen.hybrid.yaml`.
 name: LibHybridV4L2
 description: |
   Bindings for `hybrid_v4l2`.
-output: 'lib/src/ffi.hybrid_v4l2.dart'
+output: 'lib/src/v4l2_ffi.hybrid.dart'
 compiler-opts:
   - '-I/usr/include'
 headers:
@@ -11,7 +11,7 @@ headers:
   include-directives:
     - 'src/hybrid_v4l2.h'
 library-imports:
-  v4l2: 'ffi.v4l2.dart'
+  v4l2: 'v4l2_ffi.dart'
 type-map:
   'structs':
     'timeval':

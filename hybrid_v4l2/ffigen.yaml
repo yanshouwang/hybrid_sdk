@@ -1,8 +1,8 @@
-# Run with `dart run ffigen --config ffigen.v4l2.yaml`.
+# Run with `dart run ffigen --config ffigen.yaml`.
 name: LibV4L2
 description: |
   Bindings for `v4l2`.
-output: 'lib/src/ffi.v4l2.dart'
+output: 'lib/src/v4l2_ffi.dart'
 compiler-opts:
   - '-I/usr/include'
 headers:
