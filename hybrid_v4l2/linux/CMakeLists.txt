@@ -19,6 +19,7 @@ set(PLUGIN_NAME "hybrid_v4l2_plugin")
 list(APPEND PLUGIN_SOURCES
   "hybrid_v4l2_plugin.cc"
   "hybrid_v4l2_api.cc"
+  "hybrid_v4l2_texture.cc"
 )
 
 # Define the plugin library target. Its name must not be changed (see comment
@@ -43,8 +44,14 @@ target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
 # dependencies here.
 target_include_directories(${PLUGIN_NAME} INTERFACE
   "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+set(CMAKE_CXX_STANDARD_LIBRARIES -ljpeg)
+
+pkg_check_modules(TurboJPEG REQUIRED IMPORTED_TARGET libturbojpeg)
+
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
+target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::TurboJPEG)
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an

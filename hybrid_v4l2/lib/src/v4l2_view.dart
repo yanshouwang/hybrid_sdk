@@ -33,7 +33,7 @@ class _V4L2ViewState extends State<V4L2View> {
         _updating = false;
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
     _registerTexture();
     _watch.start();
@@ -78,23 +78,22 @@ class _V4L2ViewState extends State<V4L2View> {
   }
 
   void _updateTexture() async {
-    if (_updating) {
+    final id = _textureId.value;
+    final mappedBuf = widget.mappedBuf;
+    if (id == null || mappedBuf == null || _updating) {
       return;
     }
     _updating = true;
     try {
-      final id = _textureId.value;
-      final mappedBuf = widget.mappedBuf;
-      if (id != null && mappedBuf != null) {
-        await _api.updateTexture(id, mappedBuf.value);
-        if (_watch.elapsed.inSeconds < 1) {
-          _frames++;
-        } else {
-          _fps.value = _frames;
-          _frames = 0;
-          _watch.reset();
-        }
+      await _api.updateTexture(id, mappedBuf.value);
+      if (_watch.elapsed.inSeconds < 1) {
+        _frames++;
+      } else {
+        _fps.value = _frames;
+        _frames = 0;
+        _watch.reset();
       }
+      debugPrint('Frames: $_frames');
     } finally {
       _updating = false;
     }

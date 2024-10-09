@@ -12,6 +12,8 @@ typedef struct {
   FlPixelBufferTextureClass parent_class;
 } HybridV4l2TextureClass;
 
+GType hybrid_v4l2_texture_get_type();
+
 gboolean hybrid_v4l2_texture_update(FlTextureRegistrar *registrar,
                                     FlTexture *texture, const uint8_t *buffer,
                                     size_t buffer_length);
