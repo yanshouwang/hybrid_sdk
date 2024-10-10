@@ -8,17 +8,6 @@
 
 G_BEGIN_DECLS
 
-/**
- * HybridV4l2PixelFormat:
- * HYBRID_V4L2_PIXEL_FORMAT_MJPEG:
- * HYBRID_V4L2_PIXEL_FORMAT_RGBA:
- *
- */
-typedef enum {
-  HYBRID_V4L2_PIXEL_FORMAT_MJPEG = 0,
-  HYBRID_V4L2_PIXEL_FORMAT_RGBA = 1
-} HybridV4l2PixelFormat;
-
 G_DECLARE_FINAL_TYPE(HybridV4l2ViewHostAPIRegisterTextureResponse, hybrid_v4l2_view_host_a_p_i_register_texture_response, HYBRID_V4L2, VIEW_HOST_A_P_I_REGISTER_TEXTURE_RESPONSE, GObject)
 
 /**
@@ -95,8 +84,8 @@ HybridV4l2ViewHostAPIUnregisterTextureResponse* hybrid_v4l2_view_host_a_p_i_unre
  */
 typedef struct {
   HybridV4l2ViewHostAPIRegisterTextureResponse* (*register_texture)(gpointer user_data);
-  HybridV4l2ViewHostAPIUpdateTextureResponse* (*update_texture)(int64_t id, const uint8_t* buffer, size_t buffer_length, gpointer user_data);
-  HybridV4l2ViewHostAPIUnregisterTextureResponse* (*unregister_texture)(int64_t id, gpointer user_data);
+  HybridV4l2ViewHostAPIUpdateTextureResponse* (*update_texture)(int64_t id_args, const uint8_t* buffer_args, size_t buffer_args_length, int64_t width_args, int64_t height_args, gpointer user_data);
+  HybridV4l2ViewHostAPIUnregisterTextureResponse* (*unregister_texture)(int64_t id_args, gpointer user_data);
 } HybridV4l2ViewHostAPIVTable;
 
 /**

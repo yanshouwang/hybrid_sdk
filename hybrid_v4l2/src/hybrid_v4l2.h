@@ -1,6 +1,8 @@
 
 #include <fcntl.h>
-#include <stdio.h>
+#include <stdint.h>
+#include <stdio.h> // FILE
+#include <stdlib.h>
 #include <sys/mman.h>
 #include <sys/time.h>
 
@@ -56,6 +58,12 @@ FFI_PLUGIN_EXPORT struct v4l2_mapped_buffer {
   size_t len;
 };
 
+FFI_PLUGIN_EXPORT struct v4l2_rgbx_buffer {
+  uint8_t *addr;
+  uint32_t width;
+  uint32_t height;
+};
+
 FFI_PLUGIN_EXPORT int v4l2_open(char *file, int oflag);
 FFI_PLUGIN_EXPORT int v4l2_close(int fd);
 FFI_PLUGIN_EXPORT int v4l2_ioctl(int fd, unsigned long request, ...);
@@ -63,3 +71,6 @@ FFI_PLUGIN_EXPORT int v4l2_mmap(int fd, off_t offset, size_t len, int prot,
                                 int flags, struct v4l2_mapped_buffer *buf);
 FFI_PLUGIN_EXPORT int v4l2_munmap(struct v4l2_mapped_buffer *buf);
 FFI_PLUGIN_EXPORT int v4l2_select(int fd, struct timeval *timeout);
+FFI_PLUGIN_EXPORT struct v4l2_rgbx_buffer *
+v4l2_mjpeg2rgbx(struct v4l2_mapped_buffer *buf);
+FFI_PLUGIN_EXPORT void v4l2_free_rgbx(struct v4l2_rgbx_buffer *buf);

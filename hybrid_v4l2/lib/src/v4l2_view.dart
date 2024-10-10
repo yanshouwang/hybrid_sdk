@@ -1,14 +1,15 @@
 import 'package:flutter/widgets.dart';
+import 'package:hybrid_v4l2/src/v4l2_api.dart';
 
 import 'v4l2_api.x.dart';
-import 'v4l2_mapped_buffer.dart';
+import 'v4l2_rgbx_buffer.dart';
 
 class V4L2View extends StatefulWidget {
-  final V4L2MappedBuffer? mappedBuf;
+  final V4L2RGBXBuffer? frame;
 
   const V4L2View({
     super.key,
-    this.mappedBuf,
+    this.frame,
   });
 
   @override
@@ -58,7 +59,7 @@ class _V4L2ViewState extends State<V4L2View> {
   @override
   void didUpdateWidget(covariant V4L2View oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.mappedBuf != oldWidget.mappedBuf) {
+    if (widget.frame != oldWidget.frame) {
       _updateTexture();
     }
   }
@@ -79,13 +80,13 @@ class _V4L2ViewState extends State<V4L2View> {
 
   void _updateTexture() async {
     final id = _textureId.value;
-    final mappedBuf = widget.mappedBuf;
-    if (id == null || mappedBuf == null || _updating) {
+    final frame = widget.frame;
+    if (id == null || frame == null || _updating) {
       return;
     }
     _updating = true;
     try {
-      await _api.updateTexture(id, mappedBuf.value);
+      await _api.updateTexture(id, frame.value, frame.width, frame.height);
       if (_watch.elapsed.inSeconds < 1) {
         _frames++;
       } else {

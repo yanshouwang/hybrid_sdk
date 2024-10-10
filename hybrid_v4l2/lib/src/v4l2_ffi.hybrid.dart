@@ -245,6 +245,36 @@ class LibHybridV4L2 {
           ffi.Int Function(ffi.Int, ffi.Pointer<v4l2.timeval>)>>('v4l2_select');
   late final _v4l2_select = _v4l2_selectPtr
       .asFunction<int Function(int, ffi.Pointer<v4l2.timeval>)>();
+
+  ffi.Pointer<v4l2_rgbx_buffer> v4l2_mjpeg2rgbx(
+    ffi.Pointer<v4l2_mapped_buffer> buf,
+  ) {
+    return _v4l2_mjpeg2rgbx(
+      buf,
+    );
+  }
+
+  late final _v4l2_mjpeg2rgbxPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<v4l2_rgbx_buffer> Function(
+              ffi.Pointer<v4l2_mapped_buffer>)>>('v4l2_mjpeg2rgbx');
+  late final _v4l2_mjpeg2rgbx = _v4l2_mjpeg2rgbxPtr.asFunction<
+      ffi.Pointer<v4l2_rgbx_buffer> Function(
+          ffi.Pointer<v4l2_mapped_buffer>)>();
+
+  void v4l2_free_rgbx(
+    ffi.Pointer<v4l2_rgbx_buffer> buf,
+  ) {
+    return _v4l2_free_rgbx(
+      buf,
+    );
+  }
+
+  late final _v4l2_free_rgbxPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<v4l2_rgbx_buffer>)>>(
+      'v4l2_free_rgbx');
+  late final _v4l2_free_rgbx = _v4l2_free_rgbxPtr
+      .asFunction<void Function(ffi.Pointer<v4l2_rgbx_buffer>)>();
 }
 
 final class v4l2_mapped_buffer extends ffi.Struct {
@@ -252,6 +282,16 @@ final class v4l2_mapped_buffer extends ffi.Struct {
 
   @ffi.Size()
   external int len;
+}
+
+final class v4l2_rgbx_buffer extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> addr;
+
+  @ffi.Uint32()
+  external int width;
+
+  @ffi.Uint32()
+  external int height;
 }
 
 typedef off_t = __off_t;

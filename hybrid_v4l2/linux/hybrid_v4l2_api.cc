@@ -12,31 +12,17 @@ struct _HybridV4l2MessageCodec {
 
 G_DEFINE_TYPE(HybridV4l2MessageCodec, hybrid_v4l2_message_codec, fl_standard_message_codec_get_type())
 
-static gboolean hybrid_v4l2_message_codec_write_hybrid_v4l2_pixel_format(FlStandardMessageCodec* codec, GByteArray* buffer, FlValue* value, GError** error) {
-  uint8_t type = 129;
-  g_byte_array_append(buffer, &type, sizeof(uint8_t));
-  return fl_standard_message_codec_write_value(codec, buffer, value, error);
-}
-
 static gboolean hybrid_v4l2_message_codec_write_value(FlStandardMessageCodec* codec, GByteArray* buffer, FlValue* value, GError** error) {
   if (fl_value_get_type(value) == FL_VALUE_TYPE_CUSTOM) {
     switch (fl_value_get_custom_type(value)) {
-      case 129:
-        return hybrid_v4l2_message_codec_write_hybrid_v4l2_pixel_format(codec, buffer, reinterpret_cast<FlValue*>(const_cast<gpointer>(fl_value_get_custom_value(value))), error);
     }
   }
 
   return FL_STANDARD_MESSAGE_CODEC_CLASS(hybrid_v4l2_message_codec_parent_class)->write_value(codec, buffer, value, error);
 }
 
-static FlValue* hybrid_v4l2_message_codec_read_hybrid_v4l2_pixel_format(FlStandardMessageCodec* codec, GBytes* buffer, size_t* offset, GError** error) {
-  return fl_value_new_custom(129, fl_standard_message_codec_read_value(codec, buffer, offset, error), (GDestroyNotify)fl_value_unref);
-}
-
 static FlValue* hybrid_v4l2_message_codec_read_value_of_type(FlStandardMessageCodec* codec, GBytes* buffer, size_t* offset, int type, GError** error) {
   switch (type) {
-    case 129:
-      return hybrid_v4l2_message_codec_read_hybrid_v4l2_pixel_format(codec, buffer, offset, error);
     default:
       return FL_STANDARD_MESSAGE_CODEC_CLASS(hybrid_v4l2_message_codec_parent_class)->read_value_of_type(codec, buffer, offset, type, error);
   }
@@ -229,11 +215,15 @@ static void hybrid_v4l2_view_host_a_p_i_update_texture_cb(FlBasicMessageChannel*
   }
 
   FlValue* value0 = fl_value_get_list_value(message_, 0);
-  int64_t id = fl_value_get_int(value0);
+  int64_t id_args = fl_value_get_int(value0);
   FlValue* value1 = fl_value_get_list_value(message_, 1);
-  const uint8_t* buffer = fl_value_get_uint8_list(value1);
-  size_t buffer_length = fl_value_get_length(value1);
-  g_autoptr(HybridV4l2ViewHostAPIUpdateTextureResponse) response = self->vtable->update_texture(id, buffer, buffer_length, self->user_data);
+  const uint8_t* buffer_args = fl_value_get_uint8_list(value1);
+  size_t buffer_args_length = fl_value_get_length(value1);
+  FlValue* value2 = fl_value_get_list_value(message_, 2);
+  int64_t width_args = fl_value_get_int(value2);
+  FlValue* value3 = fl_value_get_list_value(message_, 3);
+  int64_t height_args = fl_value_get_int(value3);
+  g_autoptr(HybridV4l2ViewHostAPIUpdateTextureResponse) response = self->vtable->update_texture(id_args, buffer_args, buffer_args_length, width_args, height_args, self->user_data);
   if (response == nullptr) {
     g_warning("No response returned to %s.%s", "ViewHostAPI", "updateTexture");
     return;
@@ -253,8 +243,8 @@ static void hybrid_v4l2_view_host_a_p_i_unregister_texture_cb(FlBasicMessageChan
   }
 
   FlValue* value0 = fl_value_get_list_value(message_, 0);
-  int64_t id = fl_value_get_int(value0);
-  g_autoptr(HybridV4l2ViewHostAPIUnregisterTextureResponse) response = self->vtable->unregister_texture(id, self->user_data);
+  int64_t id_args = fl_value_get_int(value0);
+  g_autoptr(HybridV4l2ViewHostAPIUnregisterTextureResponse) response = self->vtable->unregister_texture(id_args, self->user_data);
   if (response == nullptr) {
     g_warning("No response returned to %s.%s", "ViewHostAPI", "unregisterTexture");
     return;

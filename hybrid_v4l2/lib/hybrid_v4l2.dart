@@ -20,6 +20,7 @@ export 'src/v4l2_pix_format.dart';
 export 'src/v4l2_plane.dart';
 export 'src/v4l2_prot.dart';
 export 'src/v4l2_requestbuffers.dart';
+export 'src/v4l2_rgbx_buffer.dart';
 export 'src/v4l2_std.dart';
 export 'src/v4l2_tc_flag.dart';
 export 'src/v4l2_tc_type.dart';

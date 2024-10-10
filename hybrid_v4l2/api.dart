@@ -11,14 +11,10 @@ import 'package:pigeon/pigeon.dart';
     gobjectOptions: GObjectOptions(),
   ),
 )
-enum PixelFormat {
-  mjpeg,
-  rgba,
-}
-
 @HostApi()
 abstract class ViewHostAPI {
   int registerTexture();
-  void updateTexture(int id, Uint8List buffer);
-  void unregisterTexture(int id);
+  void updateTexture(
+      int idArgs, Uint8List bufferArgs, int widthArgs, int heightArgs);
+  void unregisterTexture(int idArgs);
 }

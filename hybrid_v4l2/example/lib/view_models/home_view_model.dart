@@ -12,7 +12,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
   int? _fd;
   Isolate? _isolate;
-  V4L2MappedBuffer? _mappedBuf;
+  V4L2RGBXBuffer? _frame;
 
   HomeViewModel()
       : v4l2 = V4L2(),
@@ -22,7 +22,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
     beginStreaming();
   }
 
-  V4L2MappedBuffer? get mappedBuf => _mappedBuf;
+  V4L2RGBXBuffer? get frame => _frame;
 
   @override
   void dispose() {
@@ -129,7 +129,8 @@ pix.field: ${fmt.pix.field}
     final receivePort = ReceivePort()
       ..listen(
         (index) async {
-          _mappedBuf = _mappedBufs[index];
+          final mappedBuf = _mappedBufs[index];
+          _frame = v4l2.mjpeg2RGBX(mappedBuf);
           notifyListeners();
         },
       );

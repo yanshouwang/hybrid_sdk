@@ -11,6 +11,7 @@ import 'v4l2_memory.dart';
 import 'v4l2_o.dart';
 import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
+import 'v4l2_rgbx_buffer.dart';
 import 'v4l2_timeval.dart';
 
 /// Video for Linux API
@@ -80,4 +81,6 @@ abstract interface class V4L2 {
 
   /// v4l2-select - Synchronous I/O multiplexing
   void select(int fd, V4L2Timeval timeout);
+
+  V4L2RGBXBuffer mjpeg2RGBX(V4L2MappedBuffer buf);
 }

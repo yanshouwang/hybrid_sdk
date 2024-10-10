@@ -51,13 +51,14 @@ hybrid_v4l2_plugin_register_texture(gpointer user_data) {
 }
 
 static HybridV4l2ViewHostAPIUpdateTextureResponse *
-hybrid_v4l2_plugin_update_texture(int64_t id, const uint8_t *buffer,
-                                  size_t buffer_length, gpointer user_data) {
+hybrid_v4l2_plugin_update_texture(int64_t id, const uint8_t *buffer_args,
+                                  size_t buffer_args_length, int64_t width_args,
+                                  int64_t height_args, gpointer user_data) {
   HybridV4l2Plugin *plugin = HYBRID_V4L2_PLUGIN(user_data);
   FlTextureRegistrar *registrar = plugin->registrar;
   FlTexture *texture = textures[id];
-  gboolean updated =
-      hybrid_v4l2_texture_update(registrar, texture, buffer, buffer_length);
+  gboolean updated = hybrid_v4l2_texture_update(registrar, texture, buffer_args,
+                                                width_args, height_args);
   if (updated) {
     return hybrid_v4l2_view_host_a_p_i_update_texture_response_new();
   } else {

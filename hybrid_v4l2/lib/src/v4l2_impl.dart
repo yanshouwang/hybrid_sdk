@@ -30,6 +30,7 @@ import 'v4l2_pix_format.dart';
 import 'v4l2_plane.dart';
 import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
+import 'v4l2_rgbx_buffer.dart';
 import 'v4l2_std.dart';
 import 'v4l2_tc_flag.dart';
 import 'v4l2_tc_type.dart';
@@ -293,6 +294,18 @@ final class V4L2Impl implements V4L2 {
     if (err <= 0) {
       throw V4L2Error('select failed, $err.');
     }
+  }
+
+  @override
+  V4L2RGBXBuffer mjpeg2RGBX(V4L2MappedBuffer buf) {
+    if (buf is! _ManagedV4L2MappedBufferImpl) {
+      throw TypeError();
+    }
+    final ptr = ffi.libHybridV4L2.v4l2_mjpeg2rgbx(buf.ptr);
+    if (ptr == ffi.nullptr) {
+      throw V4L2Error('mjpeg2RGBX failed.');
+    }
+    return V4L2RGBXBufferImpl.managed(ptr);
   }
 }
 
@@ -767,4 +780,35 @@ final class _ManagedV4L2MappedBufferImpl extends V4L2MappedBufferImpl
 
   @override
   ffi.v4l2_mapped_buffer get ref => ptr.ref;
+}
+
+/* V4L2RGBXBuffer */
+abstract base class V4L2RGBXBufferImpl implements V4L2RGBXBuffer {
+  V4L2RGBXBufferImpl();
+  factory V4L2RGBXBufferImpl.managed(ffi.Pointer<ffi.v4l2_rgbx_buffer> ptr) =>
+      _ManagedV4L2RGBXBufferImpl(ptr);
+
+  ffi.v4l2_rgbx_buffer get ref;
+
+  ffi.Pointer<ffi.Uint8> get addr => ref.addr;
+
+  @override
+  Uint8List get value => addr.asTypedList(width * height * 4);
+  @override
+  int get width => ref.width;
+  @override
+  int get height => ref.height;
+}
+
+final class _ManagedV4L2RGBXBufferImpl extends V4L2RGBXBufferImpl {
+  static final finalizer = Finalizer(ffi.libHybridV4L2.v4l2_free_rgbx);
+
+  final ffi.Pointer<ffi.v4l2_rgbx_buffer> ptr;
+
+  _ManagedV4L2RGBXBufferImpl(this.ptr) {
+    finalizer.attach(this, ptr);
+  }
+
+  @override
+  ffi.v4l2_rgbx_buffer get ref => ptr.ref;
 }

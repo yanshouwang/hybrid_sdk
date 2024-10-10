@@ -15,11 +15,6 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-enum PixelFormat {
-  mjpeg,
-  rgba,
-}
-
 
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
@@ -28,9 +23,6 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer.putUint8(4);
       buffer.putInt64(value);
-    }    else if (value is PixelFormat) {
-      buffer.putUint8(129);
-      writeValue(buffer, value.index);
     } else {
       super.writeValue(buffer, value);
     }
@@ -39,9 +31,6 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 129: 
-        final int? value = readValue(buffer) as int?;
-        return value == null ? null : PixelFormat.values[value];
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -88,7 +77,7 @@ class ViewHostAPI {
     }
   }
 
-  Future<void> updateTexture(int id, Uint8List buffer) async {
+  Future<void> updateTexture(int idArgs, Uint8List bufferArgs, int widthArgs, int heightArgs) async {
     final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.updateTexture$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
@@ -96,7 +85,7 @@ class ViewHostAPI {
       binaryMessenger: pigeonVar_binaryMessenger,
     );
     final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[id, buffer]) as List<Object?>?;
+        await pigeonVar_channel.send(<Object?>[idArgs, bufferArgs, widthArgs, heightArgs]) as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
@@ -110,7 +99,7 @@ class ViewHostAPI {
     }
   }
 
-  Future<void> unregisterTexture(int id) async {
+  Future<void> unregisterTexture(int idArgs) async {
     final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.unregisterTexture$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
@@ -118,7 +107,7 @@ class ViewHostAPI {
       binaryMessenger: pigeonVar_binaryMessenger,
     );
     final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[id]) as List<Object?>?;
+        await pigeonVar_channel.send(<Object?>[idArgs]) as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
