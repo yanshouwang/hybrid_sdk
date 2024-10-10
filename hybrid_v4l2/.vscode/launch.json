@@ -8,6 +8,13 @@
             "deviceId": "flutter-tester",
             "cwd": "${workspaceFolder}/example",
             "vmServiceUri": "http://127.0.0.1:34955/MTHVXwcRrEQ=/"
+        },
+        {
+            "name": "Debug native",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/example/build/linux/x64/debug/bundle/hybrid_v4l2_example",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
