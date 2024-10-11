@@ -15,6 +15,37 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
+class TextureArgs {
+  TextureArgs({
+    required this.bufferArgs,
+    required this.widthArgs,
+    required this.heightArgs,
+  });
+
+  Uint8List bufferArgs;
+
+  int widthArgs;
+
+  int heightArgs;
+
+  Object encode() {
+    return <Object?>[
+      bufferArgs,
+      widthArgs,
+      heightArgs,
+    ];
+  }
+
+  static TextureArgs decode(Object result) {
+    result as List<Object?>;
+    return TextureArgs(
+      bufferArgs: result[0]! as Uint8List,
+      widthArgs: result[1]! as int,
+      heightArgs: result[2]! as int,
+    );
+  }
+}
+
 
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
@@ -23,6 +54,9 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer.putUint8(4);
       buffer.putInt64(value);
+    }    else if (value is TextureArgs) {
+      buffer.putUint8(129);
+      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -31,6 +65,8 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
+      case 129: 
+        return TextureArgs.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }

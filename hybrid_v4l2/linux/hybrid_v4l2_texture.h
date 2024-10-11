@@ -8,15 +8,16 @@
 G_BEGIN_DECLS
 
 typedef struct _HybridV4l2Texture HybridV4l2Texture;
-typedef struct {
+typedef struct
+{
   FlPixelBufferTextureClass parent_class;
 } HybridV4l2TextureClass;
 
 GType hybrid_v4l2_texture_get_type();
 
-gboolean hybrid_v4l2_texture_update(FlTextureRegistrar *registrar,
-                                    FlTexture *texture, const uint8_t *buffer,
-                                    uint32_t width, uint32_t height);
+void hybrid_v4l2_texture_update(FlTextureRegistrar *registrar,
+                                FlTexture *texture, uint8_t *buffer,
+                                uint32_t width, uint32_t height);
 
 G_END_DECLS
 

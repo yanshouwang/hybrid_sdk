@@ -8,6 +8,8 @@ export 'src/v4l2_field.dart';
 export 'src/v4l2_fmt_flag.dart';
 export 'src/v4l2_fmtdesc.dart';
 export 'src/v4l2_format.dart';
+export 'src/v4l2_frmsize.dart';
+export 'src/v4l2_in_cap.dart';
 export 'src/v4l2_in_st.dart';
 export 'src/v4l2_input_type.dart';
 export 'src/v4l2_input.dart';

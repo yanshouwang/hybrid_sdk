@@ -487,20 +487,10 @@ final class v4l2_fmtdesc extends ffi.Struct {
 /// Frame Size and frame rate enumeration */
 /// /*
 /// F R A M E   S I Z E   E N U M E R A T I O N
-enum v4l2_frmsizetypes {
-  V4L2_FRMSIZE_TYPE_DISCRETE(1),
-  V4L2_FRMSIZE_TYPE_CONTINUOUS(2),
-  V4L2_FRMSIZE_TYPE_STEPWISE(3);
-
-  final int value;
-  const v4l2_frmsizetypes(this.value);
-
-  static v4l2_frmsizetypes fromValue(int value) => switch (value) {
-        1 => V4L2_FRMSIZE_TYPE_DISCRETE,
-        2 => V4L2_FRMSIZE_TYPE_CONTINUOUS,
-        3 => V4L2_FRMSIZE_TYPE_STEPWISE,
-        _ => throw ArgumentError("Unknown value for v4l2_frmsizetypes: $value"),
-      };
+sealed class v4l2_frmsizetypes {
+  static const V4L2_FRMSIZE_TYPE_DISCRETE = 1;
+  static const V4L2_FRMSIZE_TYPE_CONTINUOUS = 2;
+  static const V4L2_FRMSIZE_TYPE_STEPWISE = 3;
 }
 
 final class v4l2_frmsize_discrete extends ffi.Struct {
@@ -706,8 +696,11 @@ final class v4l2_requestbuffers extends ffi.Struct {
   @__u32()
   external int capabilities;
 
-  @ffi.Array.multi([1])
-  external ffi.Array<__u32> reserved;
+  @__u8()
+  external int flags;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> reserved;
 }
 
 /// struct v4l2_plane - plane info for multi-planar buffers
@@ -1397,6 +1390,10 @@ final class UnnamedUnion9 extends ffi.Union {
 
   external ffi.Pointer<__u32> p_u32;
 
+  external ffi.Pointer<__s32> p_s32;
+
+  external ffi.Pointer<__s64> p_s64;
+
   external ffi.Pointer<v4l2_area> p_area;
 
   external ffi.Pointer<v4l2_ctrl_h264_sps> p_h264_sps;
@@ -1420,6 +1417,33 @@ final class UnnamedUnion9 extends ffi.Union {
   external ffi.Pointer<v4l2_ctrl_mpeg2_picture> p_mpeg2_picture;
 
   external ffi.Pointer<v4l2_ctrl_mpeg2_quantisation> p_mpeg2_quantisation;
+
+  external ffi.Pointer<v4l2_ctrl_vp9_compressed_hdr> p_vp9_compressed_hdr_probs;
+
+  external ffi.Pointer<v4l2_ctrl_vp9_frame> p_vp9_frame;
+
+  external ffi.Pointer<v4l2_ctrl_hevc_sps> p_hevc_sps;
+
+  external ffi.Pointer<v4l2_ctrl_hevc_pps> p_hevc_pps;
+
+  external ffi.Pointer<v4l2_ctrl_hevc_slice_params> p_hevc_slice_params;
+
+  external ffi.Pointer<v4l2_ctrl_hevc_scaling_matrix> p_hevc_scaling_matrix;
+
+  external ffi.Pointer<v4l2_ctrl_hevc_decode_params> p_hevc_decode_params;
+
+  external ffi.Pointer<v4l2_ctrl_av1_sequence> p_av1_sequence;
+
+  external ffi.Pointer<v4l2_ctrl_av1_tile_group_entry> p_av1_tile_group_entry;
+
+  external ffi.Pointer<v4l2_ctrl_av1_frame> p_av1_frame;
+
+  external ffi.Pointer<v4l2_ctrl_av1_film_grain> p_av1_film_grain;
+
+  external ffi.Pointer<v4l2_ctrl_hdr10_cll_info> p_hdr10_cll_info;
+
+  external ffi.Pointer<v4l2_ctrl_hdr10_mastering_display>
+      p_hdr10_mastering_display;
 
   external ffi.Pointer<ffi.Void> ptr;
 }
@@ -1936,6 +1960,1029 @@ final class v4l2_ctrl_mpeg2_quantisation extends ffi.Struct {
   external ffi.Array<__u8> chroma_non_intra_quantiser_matrix;
 }
 
+final class v4l2_ctrl_vp9_compressed_hdr extends ffi.Struct {
+  @__u8()
+  external int tx_mode;
+
+  @ffi.Array.multi([2, 1])
+  external ffi.Array<ffi.Array<__u8>> tx8;
+
+  @ffi.Array.multi([2, 2])
+  external ffi.Array<ffi.Array<__u8>> tx16;
+
+  @ffi.Array.multi([2, 3])
+  external ffi.Array<ffi.Array<__u8>> tx32;
+
+  @ffi.Array.multi([4, 2, 2, 6, 6, 3])
+  external ffi
+      .Array<ffi.Array<ffi.Array<ffi.Array<ffi.Array<ffi.Array<__u8>>>>>> coef;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> skip;
+
+  @ffi.Array.multi([7, 3])
+  external ffi.Array<ffi.Array<__u8>> inter_mode;
+
+  @ffi.Array.multi([4, 2])
+  external ffi.Array<ffi.Array<__u8>> interp_filter;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<__u8> is_inter;
+
+  @ffi.Array.multi([5])
+  external ffi.Array<__u8> comp_mode;
+
+  @ffi.Array.multi([5, 2])
+  external ffi.Array<ffi.Array<__u8>> single_ref;
+
+  @ffi.Array.multi([5])
+  external ffi.Array<__u8> comp_ref;
+
+  @ffi.Array.multi([4, 9])
+  external ffi.Array<ffi.Array<__u8>> y_mode;
+
+  @ffi.Array.multi([10, 9])
+  external ffi.Array<ffi.Array<__u8>> uv_mode;
+
+  @ffi.Array.multi([16, 3])
+  external ffi.Array<ffi.Array<__u8>> partition;
+
+  external v4l2_vp9_mv_probs mv;
+}
+
+final class v4l2_vp9_mv_probs extends ffi.Struct {
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> joint;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> sign;
+
+  @ffi.Array.multi([2, 10])
+  external ffi.Array<ffi.Array<__u8>> classes;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> class0_bit;
+
+  @ffi.Array.multi([2, 10])
+  external ffi.Array<ffi.Array<__u8>> bits;
+
+  @ffi.Array.multi([2, 2, 3])
+  external ffi.Array<ffi.Array<ffi.Array<__u8>>> class0_fr;
+
+  @ffi.Array.multi([2, 3])
+  external ffi.Array<ffi.Array<__u8>> fr;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> class0_hp;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> hp;
+}
+
+final class v4l2_ctrl_vp9_frame extends ffi.Struct {
+  external v4l2_vp9_loop_filter lf;
+
+  external v4l2_vp9_quantization quant;
+
+  external v4l2_vp9_segmentation seg;
+
+  @__u32()
+  external int flags;
+
+  @__u16()
+  external int compressed_header_size;
+
+  @__u16()
+  external int uncompressed_header_size;
+
+  @__u16()
+  external int frame_width_minus_1;
+
+  @__u16()
+  external int frame_height_minus_1;
+
+  @__u16()
+  external int render_width_minus_1;
+
+  @__u16()
+  external int render_height_minus_1;
+
+  @__u64()
+  external int last_frame_ts;
+
+  @__u64()
+  external int golden_frame_ts;
+
+  @__u64()
+  external int alt_frame_ts;
+
+  @__u8()
+  external int ref_frame_sign_bias;
+
+  @__u8()
+  external int reset_frame_context;
+
+  @__u8()
+  external int frame_context_idx;
+
+  @__u8()
+  external int profile;
+
+  @__u8()
+  external int bit_depth;
+
+  @__u8()
+  external int interpolation_filter;
+
+  @__u8()
+  external int tile_cols_log2;
+
+  @__u8()
+  external int tile_rows_log2;
+
+  @__u8()
+  external int reference_mode;
+
+  @ffi.Array.multi([7])
+  external ffi.Array<__u8> reserved;
+}
+
+final class v4l2_vp9_loop_filter extends ffi.Struct {
+  @ffi.Array.multi([4])
+  external ffi.Array<__s8> ref_deltas;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__s8> mode_deltas;
+
+  @__u8()
+  external int level;
+
+  @__u8()
+  external int sharpness;
+
+  @__u8()
+  external int flags;
+
+  @ffi.Array.multi([7])
+  external ffi.Array<__u8> reserved;
+}
+
+final class v4l2_vp9_quantization extends ffi.Struct {
+  @__u8()
+  external int base_q_idx;
+
+  @__s8()
+  external int delta_q_y_dc;
+
+  @__s8()
+  external int delta_q_uv_dc;
+
+  @__s8()
+  external int delta_q_uv_ac;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<__u8> reserved;
+}
+
+final class v4l2_vp9_segmentation extends ffi.Struct {
+  @ffi.Array.multi([8, 4])
+  external ffi.Array<ffi.Array<__s16>> feature_data;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> feature_enabled;
+
+  @ffi.Array.multi([7])
+  external ffi.Array<__u8> tree_probs;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> pred_probs;
+
+  @__u8()
+  external int flags;
+
+  @ffi.Array.multi([5])
+  external ffi.Array<__u8> reserved;
+}
+
+final class v4l2_ctrl_hevc_sps extends ffi.Struct {
+  @__u8()
+  external int video_parameter_set_id;
+
+  @__u8()
+  external int seq_parameter_set_id;
+
+  @__u16()
+  external int pic_width_in_luma_samples;
+
+  @__u16()
+  external int pic_height_in_luma_samples;
+
+  @__u8()
+  external int bit_depth_luma_minus8;
+
+  @__u8()
+  external int bit_depth_chroma_minus8;
+
+  @__u8()
+  external int log2_max_pic_order_cnt_lsb_minus4;
+
+  @__u8()
+  external int sps_max_dec_pic_buffering_minus1;
+
+  @__u8()
+  external int sps_max_num_reorder_pics;
+
+  @__u8()
+  external int sps_max_latency_increase_plus1;
+
+  @__u8()
+  external int log2_min_luma_coding_block_size_minus3;
+
+  @__u8()
+  external int log2_diff_max_min_luma_coding_block_size;
+
+  @__u8()
+  external int log2_min_luma_transform_block_size_minus2;
+
+  @__u8()
+  external int log2_diff_max_min_luma_transform_block_size;
+
+  @__u8()
+  external int max_transform_hierarchy_depth_inter;
+
+  @__u8()
+  external int max_transform_hierarchy_depth_intra;
+
+  @__u8()
+  external int pcm_sample_bit_depth_luma_minus1;
+
+  @__u8()
+  external int pcm_sample_bit_depth_chroma_minus1;
+
+  @__u8()
+  external int log2_min_pcm_luma_coding_block_size_minus3;
+
+  @__u8()
+  external int log2_diff_max_min_pcm_luma_coding_block_size;
+
+  @__u8()
+  external int num_short_term_ref_pic_sets;
+
+  @__u8()
+  external int num_long_term_ref_pics_sps;
+
+  @__u8()
+  external int chroma_format_idc;
+
+  @__u8()
+  external int sps_max_sub_layers_minus1;
+
+  @ffi.Array.multi([6])
+  external ffi.Array<__u8> reserved;
+
+  @__u64()
+  external int flags;
+}
+
+final class v4l2_ctrl_hevc_pps extends ffi.Struct {
+  @__u8()
+  external int pic_parameter_set_id;
+
+  @__u8()
+  external int num_extra_slice_header_bits;
+
+  @__u8()
+  external int num_ref_idx_l0_default_active_minus1;
+
+  @__u8()
+  external int num_ref_idx_l1_default_active_minus1;
+
+  @__s8()
+  external int init_qp_minus26;
+
+  @__u8()
+  external int diff_cu_qp_delta_depth;
+
+  @__s8()
+  external int pps_cb_qp_offset;
+
+  @__s8()
+  external int pps_cr_qp_offset;
+
+  @__u8()
+  external int num_tile_columns_minus1;
+
+  @__u8()
+  external int num_tile_rows_minus1;
+
+  @ffi.Array.multi([20])
+  external ffi.Array<__u8> column_width_minus1;
+
+  @ffi.Array.multi([22])
+  external ffi.Array<__u8> row_height_minus1;
+
+  @__s8()
+  external int pps_beta_offset_div2;
+
+  @__s8()
+  external int pps_tc_offset_div2;
+
+  @__u8()
+  external int log2_parallel_merge_level_minus2;
+
+  @__u8()
+  external int reserved;
+
+  @__u64()
+  external int flags;
+}
+
+final class v4l2_ctrl_hevc_slice_params extends ffi.Struct {
+  @__u32()
+  external int bit_size;
+
+  @__u32()
+  external int data_byte_offset;
+
+  @__u32()
+  external int num_entry_point_offsets;
+
+  @__u8()
+  external int nal_unit_type;
+
+  @__u8()
+  external int nuh_temporal_id_plus1;
+
+  @__u8()
+  external int slice_type;
+
+  @__u8()
+  external int colour_plane_id;
+
+  @__s32()
+  external int slice_pic_order_cnt;
+
+  @__u8()
+  external int num_ref_idx_l0_active_minus1;
+
+  @__u8()
+  external int num_ref_idx_l1_active_minus1;
+
+  @__u8()
+  external int collocated_ref_idx;
+
+  @__u8()
+  external int five_minus_max_num_merge_cand;
+
+  @__s8()
+  external int slice_qp_delta;
+
+  @__s8()
+  external int slice_cb_qp_offset;
+
+  @__s8()
+  external int slice_cr_qp_offset;
+
+  @__s8()
+  external int slice_act_y_qp_offset;
+
+  @__s8()
+  external int slice_act_cb_qp_offset;
+
+  @__s8()
+  external int slice_act_cr_qp_offset;
+
+  @__s8()
+  external int slice_beta_offset_div2;
+
+  @__s8()
+  external int slice_tc_offset_div2;
+
+  @__u8()
+  external int pic_struct;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> reserved0;
+
+  @__u32()
+  external int slice_segment_addr;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> ref_idx_l0;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> ref_idx_l1;
+
+  @__u16()
+  external int short_term_ref_pic_set_size;
+
+  @__u16()
+  external int long_term_ref_pic_set_size;
+
+  external v4l2_hevc_pred_weight_table pred_weight_table;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> reserved1;
+
+  @__u64()
+  external int flags;
+}
+
+final class v4l2_hevc_pred_weight_table extends ffi.Struct {
+  @ffi.Array.multi([16])
+  external ffi.Array<__s8> delta_luma_weight_l0;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__s8> luma_offset_l0;
+
+  @ffi.Array.multi([16, 2])
+  external ffi.Array<ffi.Array<__s8>> delta_chroma_weight_l0;
+
+  @ffi.Array.multi([16, 2])
+  external ffi.Array<ffi.Array<__s8>> chroma_offset_l0;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__s8> delta_luma_weight_l1;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__s8> luma_offset_l1;
+
+  @ffi.Array.multi([16, 2])
+  external ffi.Array<ffi.Array<__s8>> delta_chroma_weight_l1;
+
+  @ffi.Array.multi([16, 2])
+  external ffi.Array<ffi.Array<__s8>> chroma_offset_l1;
+
+  @__u8()
+  external int luma_log2_weight_denom;
+
+  @__s8()
+  external int delta_chroma_log2_weight_denom;
+}
+
+final class v4l2_ctrl_hevc_scaling_matrix extends ffi.Struct {
+  @ffi.Array.multi([6, 16])
+  external ffi.Array<ffi.Array<__u8>> scaling_list_4x4;
+
+  @ffi.Array.multi([6, 64])
+  external ffi.Array<ffi.Array<__u8>> scaling_list_8x8;
+
+  @ffi.Array.multi([6, 64])
+  external ffi.Array<ffi.Array<__u8>> scaling_list_16x16;
+
+  @ffi.Array.multi([2, 64])
+  external ffi.Array<ffi.Array<__u8>> scaling_list_32x32;
+
+  @ffi.Array.multi([6])
+  external ffi.Array<__u8> scaling_list_dc_coef_16x16;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> scaling_list_dc_coef_32x32;
+}
+
+final class v4l2_ctrl_hevc_decode_params extends ffi.Struct {
+  @__s32()
+  external int pic_order_cnt_val;
+
+  @__u16()
+  external int short_term_ref_pic_set_size;
+
+  @__u16()
+  external int long_term_ref_pic_set_size;
+
+  @__u8()
+  external int num_active_dpb_entries;
+
+  @__u8()
+  external int num_poc_st_curr_before;
+
+  @__u8()
+  external int num_poc_st_curr_after;
+
+  @__u8()
+  external int num_poc_lt_curr;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> poc_st_curr_before;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> poc_st_curr_after;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> poc_lt_curr;
+
+  @__u8()
+  external int num_delta_pocs_of_ref_rps_idx;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> reserved;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<v4l2_hevc_dpb_entry> dpb;
+
+  @__u64()
+  external int flags;
+}
+
+final class v4l2_hevc_dpb_entry extends ffi.Struct {
+  @__u64()
+  external int timestamp;
+
+  @__u8()
+  external int flags;
+
+  @__u8()
+  external int field_pic;
+
+  @__u16()
+  external int reserved;
+
+  @__s32()
+  external int pic_order_cnt_val;
+}
+
+final class v4l2_ctrl_av1_sequence extends ffi.Struct {
+  @__u32()
+  external int flags;
+
+  @__u8()
+  external int seq_profile;
+
+  @__u8()
+  external int order_hint_bits;
+
+  @__u8()
+  external int bit_depth;
+
+  @__u8()
+  external int reserved;
+
+  @__u16()
+  external int max_frame_width_minus_1;
+
+  @__u16()
+  external int max_frame_height_minus_1;
+}
+
+final class v4l2_ctrl_av1_tile_group_entry extends ffi.Struct {
+  @__u32()
+  external int tile_offset;
+
+  @__u32()
+  external int tile_size;
+
+  @__u32()
+  external int tile_row;
+
+  @__u32()
+  external int tile_col;
+}
+
+final class v4l2_ctrl_av1_frame extends ffi.Struct {
+  external v4l2_av1_tile_info tile_info;
+
+  external v4l2_av1_quantization quantization;
+
+  @__u8()
+  external int superres_denom;
+
+  external v4l2_av1_segmentation segmentation;
+
+  external v4l2_av1_loop_filter loop_filter;
+
+  external v4l2_av1_cdef cdef;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__u8> skip_mode_frame;
+
+  @__u8()
+  external int primary_ref_frame;
+
+  external v4l2_av1_loop_restoration loop_restoration;
+
+  external v4l2_av1_global_motion global_motion;
+
+  @__u32()
+  external int flags;
+
+  @ffi.UnsignedInt()
+  external int frame_typeAsInt;
+
+  v4l2_av1_frame_type get frame_type =>
+      v4l2_av1_frame_type.fromValue(frame_typeAsInt);
+
+  @__u32()
+  external int order_hint;
+
+  @__u32()
+  external int upscaled_width;
+
+  @ffi.UnsignedInt()
+  external int interpolation_filterAsInt;
+
+  v4l2_av1_interpolation_filter get interpolation_filter =>
+      v4l2_av1_interpolation_filter.fromValue(interpolation_filterAsInt);
+
+  @ffi.UnsignedInt()
+  external int tx_modeAsInt;
+
+  v4l2_av1_tx_mode get tx_mode => v4l2_av1_tx_mode.fromValue(tx_modeAsInt);
+
+  @__u32()
+  external int frame_width_minus_1;
+
+  @__u32()
+  external int frame_height_minus_1;
+
+  @__u16()
+  external int render_width_minus_1;
+
+  @__u16()
+  external int render_height_minus_1;
+
+  @__u32()
+  external int current_frame_id;
+
+  @ffi.Array.multi([32])
+  external ffi.Array<__u32> buffer_removal_time;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<__u8> reserved;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u32> order_hints;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u64> reference_frame_ts;
+
+  @ffi.Array.multi([7])
+  external ffi.Array<__s8> ref_frame_idx;
+
+  @__u8()
+  external int refresh_frame_flags;
+}
+
+final class v4l2_av1_tile_info extends ffi.Struct {
+  @__u8()
+  external int flags;
+
+  @__u8()
+  external int context_update_tile_id;
+
+  @__u8()
+  external int tile_cols;
+
+  @__u8()
+  external int tile_rows;
+
+  @ffi.Array.multi([65])
+  external ffi.Array<__u32> mi_col_starts;
+
+  @ffi.Array.multi([65])
+  external ffi.Array<__u32> mi_row_starts;
+
+  @ffi.Array.multi([64])
+  external ffi.Array<__u32> width_in_sbs_minus_1;
+
+  @ffi.Array.multi([64])
+  external ffi.Array<__u32> height_in_sbs_minus_1;
+
+  @__u8()
+  external int tile_size_bytes;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> reserved;
+}
+
+final class v4l2_av1_quantization extends ffi.Struct {
+  @__u8()
+  external int flags;
+
+  @__u8()
+  external int base_q_idx;
+
+  @__s8()
+  external int delta_q_y_dc;
+
+  @__s8()
+  external int delta_q_u_dc;
+
+  @__s8()
+  external int delta_q_u_ac;
+
+  @__s8()
+  external int delta_q_v_dc;
+
+  @__s8()
+  external int delta_q_v_ac;
+
+  @__u8()
+  external int qm_y;
+
+  @__u8()
+  external int qm_u;
+
+  @__u8()
+  external int qm_v;
+
+  @__u8()
+  external int delta_q_res;
+}
+
+final class v4l2_av1_segmentation extends ffi.Struct {
+  @__u8()
+  external int flags;
+
+  @__u8()
+  external int last_active_seg_id;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> feature_enabled;
+
+  @ffi.Array.multi([8, 8])
+  external ffi.Array<ffi.Array<__s16>> feature_data;
+}
+
+final class v4l2_av1_loop_filter extends ffi.Struct {
+  @__u8()
+  external int flags;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<__u8> level;
+
+  @__u8()
+  external int sharpness;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__s8> ref_deltas;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__s8> mode_deltas;
+
+  @__u8()
+  external int delta_lf_res;
+}
+
+final class v4l2_av1_cdef extends ffi.Struct {
+  @__u8()
+  external int damping_minus_3;
+
+  @__u8()
+  external int bits;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> y_pri_strength;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> y_sec_strength;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> uv_pri_strength;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> uv_sec_strength;
+}
+
+final class v4l2_av1_loop_restoration extends ffi.Struct {
+  @__u8()
+  external int flags;
+
+  @__u8()
+  external int lr_unit_shift;
+
+  @__u8()
+  external int lr_uv_shift;
+
+  @__u8()
+  external int reserved;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedInt> frame_restoration_type;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u32> loop_restoration_size;
+}
+
+enum v4l2_av1_frame_restoration_type {
+  V4L2_AV1_FRAME_RESTORE_NONE(0),
+  V4L2_AV1_FRAME_RESTORE_WIENER(1),
+  V4L2_AV1_FRAME_RESTORE_SGRPROJ(2),
+  V4L2_AV1_FRAME_RESTORE_SWITCHABLE(3);
+
+  final int value;
+  const v4l2_av1_frame_restoration_type(this.value);
+
+  static v4l2_av1_frame_restoration_type fromValue(int value) =>
+      switch (value) {
+        0 => V4L2_AV1_FRAME_RESTORE_NONE,
+        1 => V4L2_AV1_FRAME_RESTORE_WIENER,
+        2 => V4L2_AV1_FRAME_RESTORE_SGRPROJ,
+        3 => V4L2_AV1_FRAME_RESTORE_SWITCHABLE,
+        _ => throw ArgumentError(
+            "Unknown value for v4l2_av1_frame_restoration_type: $value"),
+      };
+}
+
+final class v4l2_av1_global_motion extends ffi.Struct {
+  @ffi.Array.multi([8])
+  external ffi.Array<__u8> flags;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.UnsignedInt> type;
+
+  @ffi.Array.multi([8, 6])
+  external ffi.Array<ffi.Array<__s32>> params;
+
+  @__u8()
+  external int invalid;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u8> reserved;
+}
+
+enum v4l2_av1_warp_model {
+  V4L2_AV1_WARP_MODEL_IDENTITY(0),
+  V4L2_AV1_WARP_MODEL_TRANSLATION(1),
+  V4L2_AV1_WARP_MODEL_ROTZOOM(2),
+  V4L2_AV1_WARP_MODEL_AFFINE(3);
+
+  final int value;
+  const v4l2_av1_warp_model(this.value);
+
+  static v4l2_av1_warp_model fromValue(int value) => switch (value) {
+        0 => V4L2_AV1_WARP_MODEL_IDENTITY,
+        1 => V4L2_AV1_WARP_MODEL_TRANSLATION,
+        2 => V4L2_AV1_WARP_MODEL_ROTZOOM,
+        3 => V4L2_AV1_WARP_MODEL_AFFINE,
+        _ =>
+          throw ArgumentError("Unknown value for v4l2_av1_warp_model: $value"),
+      };
+}
+
+enum v4l2_av1_frame_type {
+  V4L2_AV1_KEY_FRAME(0),
+  V4L2_AV1_INTER_FRAME(1),
+  V4L2_AV1_INTRA_ONLY_FRAME(2),
+  V4L2_AV1_SWITCH_FRAME(3);
+
+  final int value;
+  const v4l2_av1_frame_type(this.value);
+
+  static v4l2_av1_frame_type fromValue(int value) => switch (value) {
+        0 => V4L2_AV1_KEY_FRAME,
+        1 => V4L2_AV1_INTER_FRAME,
+        2 => V4L2_AV1_INTRA_ONLY_FRAME,
+        3 => V4L2_AV1_SWITCH_FRAME,
+        _ =>
+          throw ArgumentError("Unknown value for v4l2_av1_frame_type: $value"),
+      };
+}
+
+enum v4l2_av1_interpolation_filter {
+  V4L2_AV1_INTERPOLATION_FILTER_EIGHTTAP(0),
+  V4L2_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH(1),
+  V4L2_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP(2),
+  V4L2_AV1_INTERPOLATION_FILTER_BILINEAR(3),
+  V4L2_AV1_INTERPOLATION_FILTER_SWITCHABLE(4);
+
+  final int value;
+  const v4l2_av1_interpolation_filter(this.value);
+
+  static v4l2_av1_interpolation_filter fromValue(int value) => switch (value) {
+        0 => V4L2_AV1_INTERPOLATION_FILTER_EIGHTTAP,
+        1 => V4L2_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH,
+        2 => V4L2_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP,
+        3 => V4L2_AV1_INTERPOLATION_FILTER_BILINEAR,
+        4 => V4L2_AV1_INTERPOLATION_FILTER_SWITCHABLE,
+        _ => throw ArgumentError(
+            "Unknown value for v4l2_av1_interpolation_filter: $value"),
+      };
+}
+
+enum v4l2_av1_tx_mode {
+  V4L2_AV1_TX_MODE_ONLY_4X4(0),
+  V4L2_AV1_TX_MODE_LARGEST(1),
+  V4L2_AV1_TX_MODE_SELECT(2);
+
+  final int value;
+  const v4l2_av1_tx_mode(this.value);
+
+  static v4l2_av1_tx_mode fromValue(int value) => switch (value) {
+        0 => V4L2_AV1_TX_MODE_ONLY_4X4,
+        1 => V4L2_AV1_TX_MODE_LARGEST,
+        2 => V4L2_AV1_TX_MODE_SELECT,
+        _ => throw ArgumentError("Unknown value for v4l2_av1_tx_mode: $value"),
+      };
+}
+
+final class v4l2_ctrl_av1_film_grain extends ffi.Struct {
+  @__u8()
+  external int flags;
+
+  @__u8()
+  external int cr_mult;
+
+  @__u16()
+  external int grain_seed;
+
+  @__u8()
+  external int film_grain_params_ref_idx;
+
+  @__u8()
+  external int num_y_points;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> point_y_value;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> point_y_scaling;
+
+  @__u8()
+  external int num_cb_points;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> point_cb_value;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> point_cb_scaling;
+
+  @__u8()
+  external int num_cr_points;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> point_cr_value;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<__u8> point_cr_scaling;
+
+  @__u8()
+  external int grain_scaling_minus_8;
+
+  @__u8()
+  external int ar_coeff_lag;
+
+  @ffi.Array.multi([25])
+  external ffi.Array<__u8> ar_coeffs_y_plus_128;
+
+  @ffi.Array.multi([25])
+  external ffi.Array<__u8> ar_coeffs_cb_plus_128;
+
+  @ffi.Array.multi([25])
+  external ffi.Array<__u8> ar_coeffs_cr_plus_128;
+
+  @__u8()
+  external int ar_coeff_shift_minus_6;
+
+  @__u8()
+  external int grain_scale_shift;
+
+  @__u8()
+  external int cb_mult;
+
+  @__u8()
+  external int cb_luma_mult;
+
+  @__u8()
+  external int cr_luma_mult;
+
+  @__u16()
+  external int cb_offset;
+
+  @__u16()
+  external int cr_offset;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<__u8> reserved;
+}
+
+final class v4l2_ctrl_hdr10_cll_info extends ffi.Struct {
+  @__u16()
+  external int max_content_light_level;
+
+  @__u16()
+  external int max_pic_average_light_level;
+}
+
+final class v4l2_ctrl_hdr10_mastering_display extends ffi.Struct {
+  @ffi.Array.multi([3])
+  external ffi.Array<__u16> display_primaries_x;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<__u16> display_primaries_y;
+
+  @__u16()
+  external int white_point_x;
+
+  @__u16()
+  external int white_point_y;
+
+  @__u32()
+  external int max_display_mastering_luminance;
+
+  @__u32()
+  external int min_display_mastering_luminance;
+}
+
 final class v4l2_ext_controls extends ffi.Struct {
   external UnnamedUnion10 unnamed;
 
@@ -1990,7 +3037,18 @@ enum v4l2_ctrl_type {
   V4L2_CTRL_TYPE_VP8_FRAME(576),
   V4L2_CTRL_TYPE_MPEG2_QUANTISATION(592),
   V4L2_CTRL_TYPE_MPEG2_SEQUENCE(593),
-  V4L2_CTRL_TYPE_MPEG2_PICTURE(594);
+  V4L2_CTRL_TYPE_MPEG2_PICTURE(594),
+  V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR(608),
+  V4L2_CTRL_TYPE_VP9_FRAME(609),
+  V4L2_CTRL_TYPE_HEVC_SPS(624),
+  V4L2_CTRL_TYPE_HEVC_PPS(625),
+  V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS(626),
+  V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX(627),
+  V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS(628),
+  V4L2_CTRL_TYPE_AV1_SEQUENCE(640),
+  V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY(641),
+  V4L2_CTRL_TYPE_AV1_FRAME(642),
+  V4L2_CTRL_TYPE_AV1_FILM_GRAIN(643);
 
   static const V4L2_CTRL_TYPE_U8 = V4L2_CTRL_COMPOUND_TYPES;
 
@@ -2024,6 +3082,17 @@ enum v4l2_ctrl_type {
         592 => V4L2_CTRL_TYPE_MPEG2_QUANTISATION,
         593 => V4L2_CTRL_TYPE_MPEG2_SEQUENCE,
         594 => V4L2_CTRL_TYPE_MPEG2_PICTURE,
+        608 => V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR,
+        609 => V4L2_CTRL_TYPE_VP9_FRAME,
+        624 => V4L2_CTRL_TYPE_HEVC_SPS,
+        625 => V4L2_CTRL_TYPE_HEVC_PPS,
+        626 => V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS,
+        627 => V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX,
+        628 => V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS,
+        640 => V4L2_CTRL_TYPE_AV1_SEQUENCE,
+        641 => V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY,
+        642 => V4L2_CTRL_TYPE_AV1_FRAME,
+        643 => V4L2_CTRL_TYPE_AV1_FILM_GRAIN,
         _ => throw ArgumentError("Unknown value for v4l2_ctrl_type: $value"),
       };
 
@@ -2897,6 +3966,12 @@ final class v4l2_dbg_chip_info extends ffi.Struct {
 /// @memory:	enum v4l2_memory; buffer memory type
 /// @format:	frame format, for which buffers are requested
 /// @capabilities: capabilities of this buffer type.
+/// @flags:	additional buffer management attributes (ignored unless the
+/// queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability
+/// and configured for MMAP streaming I/O).
+/// @max_num_buffers: if V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
+/// this field indicate the maximum possible number of buffers
+/// for this queue.
 /// @reserved:	future extensions
 final class v4l2_create_buffers extends ffi.Struct {
   @__u32()
@@ -2913,7 +3988,13 @@ final class v4l2_create_buffers extends ffi.Struct {
   @__u32()
   external int capabilities;
 
-  @ffi.Array.multi([7])
+  @__u32()
+  external int flags;
+
+  @__u32()
+  external int max_num_buffers;
+
+  @ffi.Array.multi([5])
   external ffi.Array<__u32> reserved;
 }
 
@@ -2974,8 +4055,6 @@ const int V4L2_CAP_SDR_OUTPUT = 4194304;
 const int V4L2_CAP_META_CAPTURE = 8388608;
 
 const int V4L2_CAP_READWRITE = 16777216;
-
-const int V4L2_CAP_ASYNCIO = 33554432;
 
 const int V4L2_CAP_STREAMING = 67108864;
 
@@ -3061,6 +4140,16 @@ const int V4L2_PIX_FMT_ARGB32 = 875708738;
 
 const int V4L2_PIX_FMT_XRGB32 = 875714626;
 
+const int V4L2_PIX_FMT_RGBX1010102 = 808671314;
+
+const int V4L2_PIX_FMT_RGBA1010102 = 808665426;
+
+const int V4L2_PIX_FMT_ARGB2101010 = 808669761;
+
+const int V4L2_PIX_FMT_BGR48_12 = 842085186;
+
+const int V4L2_PIX_FMT_ABGR64_12 = 842085442;
+
 const int V4L2_PIX_FMT_GREY = 1497715271;
 
 const int V4L2_PIX_FMT_Y4 = 540291161;
@@ -3071,6 +4160,8 @@ const int V4L2_PIX_FMT_Y10 = 540029273;
 
 const int V4L2_PIX_FMT_Y12 = 540160345;
 
+const int V4L2_PIX_FMT_Y012 = 842084441;
+
 const int V4L2_PIX_FMT_Y14 = 540291417;
 
 const int V4L2_PIX_FMT_Y16 = 540422489;
@@ -3080,6 +4171,8 @@ const int V4L2_PIX_FMT_Y16_BE = 2687906137;
 const int V4L2_PIX_FMT_Y10BPACK = 1110454617;
 
 const int V4L2_PIX_FMT_Y10P = 1345335641;
+
+const int V4L2_PIX_FMT_IPU3_Y10 = 2033414249;
 
 const int V4L2_PIX_FMT_PAL8 = 944521552;
 
@@ -3115,7 +4208,19 @@ const int V4L2_PIX_FMT_VUYA32 = 1096373590;
 
 const int V4L2_PIX_FMT_VUYX32 = 1482249558;
 
+const int V4L2_PIX_FMT_YUVA32 = 1096176985;
+
+const int V4L2_PIX_FMT_YUVX32 = 1482052953;
+
 const int V4L2_PIX_FMT_M420 = 808596557;
+
+const int V4L2_PIX_FMT_YUV48_12 = 842085209;
+
+const int V4L2_PIX_FMT_Y210 = 808530521;
+
+const int V4L2_PIX_FMT_Y212 = 842084953;
+
+const int V4L2_PIX_FMT_Y216 = 909193817;
 
 const int V4L2_PIX_FMT_NV12 = 842094158;
 
@@ -3129,7 +4234,9 @@ const int V4L2_PIX_FMT_NV24 = 875714126;
 
 const int V4L2_PIX_FMT_NV42 = 842290766;
 
-const int V4L2_PIX_FMT_HM12 = 842091848;
+const int V4L2_PIX_FMT_P010 = 808530000;
+
+const int V4L2_PIX_FMT_P012 = 842084432;
 
 const int V4L2_PIX_FMT_NV12M = 842091854;
 
@@ -3139,9 +4246,7 @@ const int V4L2_PIX_FMT_NV16M = 909200718;
 
 const int V4L2_PIX_FMT_NV61M = 825642318;
 
-const int V4L2_PIX_FMT_NV12MT = 842091860;
-
-const int V4L2_PIX_FMT_NV12MT_16X16 = 842091862;
+const int V4L2_PIX_FMT_P012M = 842091856;
 
 const int V4L2_PIX_FMT_YUV410 = 961959257;
 
@@ -3166,6 +4271,28 @@ const int V4L2_PIX_FMT_YVU422M = 825642329;
 const int V4L2_PIX_FMT_YUV444M = 875711833;
 
 const int V4L2_PIX_FMT_YVU444M = 842288473;
+
+const int V4L2_PIX_FMT_NV12_4L4 = 842093654;
+
+const int V4L2_PIX_FMT_NV12_16L16 = 842091848;
+
+const int V4L2_PIX_FMT_NV12_32L32 = 842093651;
+
+const int V4L2_PIX_FMT_NV15_4L4 = 892425302;
+
+const int V4L2_PIX_FMT_P010_4L4 = 808530004;
+
+const int V4L2_PIX_FMT_NV12_8L128 = 842093633;
+
+const int V4L2_PIX_FMT_NV12_10BE_8L128 = 2989578305;
+
+const int V4L2_PIX_FMT_NV12MT = 842091860;
+
+const int V4L2_PIX_FMT_NV12MT_16X16 = 842091862;
+
+const int V4L2_PIX_FMT_NV12M_8L128 = 842088782;
+
+const int V4L2_PIX_FMT_NV12M_10BE_8L128 = 2989577294;
 
 const int V4L2_PIX_FMT_SBGGR8 = 825770306;
 
@@ -3287,6 +4414,8 @@ const int V4L2_PIX_FMT_VP8_FRAME = 1178095702;
 
 const int V4L2_PIX_FMT_VP9 = 809062486;
 
+const int V4L2_PIX_FMT_VP9_FRAME = 1178161238;
+
 const int V4L2_PIX_FMT_HEVC = 1129727304;
 
 const int V4L2_PIX_FMT_FWHT = 1414027078;
@@ -3294,6 +4423,16 @@ const int V4L2_PIX_FMT_FWHT = 1414027078;
 const int V4L2_PIX_FMT_FWHT_STATELESS = 1213679187;
 
 const int V4L2_PIX_FMT_H264_SLICE = 875967059;
+
+const int V4L2_PIX_FMT_HEVC_SLICE = 892744275;
+
+const int V4L2_PIX_FMT_AV1_FRAME = 1177638465;
+
+const int V4L2_PIX_FMT_SPK = 810242131;
+
+const int V4L2_PIX_FMT_RV30 = 808670802;
+
+const int V4L2_PIX_FMT_RV40 = 808736338;
 
 const int V4L2_PIX_FMT_CPIA1 = 1095323715;
 
@@ -3355,13 +4494,25 @@ const int V4L2_PIX_FMT_Z16 = 540422490;
 
 const int V4L2_PIX_FMT_MT21C = 825381965;
 
-const int V4L2_PIX_FMT_INZI = 1230655049;
+const int V4L2_PIX_FMT_MM21 = 825380173;
 
-const int V4L2_PIX_FMT_SUNXI_TILED_NV12 = 842093651;
+const int V4L2_PIX_FMT_MT2110T = 1412584525;
+
+const int V4L2_PIX_FMT_MT2110R = 1379030093;
+
+const int V4L2_PIX_FMT_INZI = 1230655049;
 
 const int V4L2_PIX_FMT_CNF4 = 877022787;
 
 const int V4L2_PIX_FMT_HI240 = 875710792;
+
+const int V4L2_PIX_FMT_QC08C = 1127755857;
+
+const int V4L2_PIX_FMT_QC10C = 1127231825;
+
+const int V4L2_PIX_FMT_AJPG = 1196444225;
+
+const int V4L2_PIX_FMT_HEXTILE = 1280596040;
 
 const int V4L2_PIX_FMT_IPU3_SBGGR10 = 1647538281;
 
@@ -3465,6 +4616,8 @@ const int V4L2_JPEG_MARKER_COM = 64;
 
 const int V4L2_JPEG_MARKER_APP = 128;
 
+const int V4L2_MEMORY_FLAG_NON_COHERENT = 1;
+
 const int V4L2_BUF_CAP_SUPPORTS_MMAP = 1;
 
 const int V4L2_BUF_CAP_SUPPORTS_USERPTR = 2;
@@ -3478,6 +4631,8 @@ const int V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS = 16;
 const int V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF = 32;
 
 const int V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS = 64;
+
+const int V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS = 128;
 
 const int V4L2_BUF_FLAG_MAPPED = 1;
 
@@ -3787,6 +4942,8 @@ const int V4L2_CTRL_FLAG_EXECUTE_ON_WRITE = 512;
 
 const int V4L2_CTRL_FLAG_MODIFY_LAYOUT = 1024;
 
+const int V4L2_CTRL_FLAG_DYNAMIC_ARRAY = 2048;
+
 const int V4L2_CTRL_FLAG_NEXT_CTRL = 2147483648;
 
 const int V4L2_CTRL_FLAG_NEXT_COMPOUND = 1073741824;
@@ -3977,6 +5134,8 @@ const int V4L2_EVENT_CTRL_CH_FLAGS = 2;
 
 const int V4L2_EVENT_CTRL_CH_RANGE = 4;
 
+const int V4L2_EVENT_CTRL_CH_DIMENSIONS = 8;
+
 const int V4L2_EVENT_SRC_CH_RESOLUTION = 1;
 
 const int V4L2_EVENT_MD_FL_HAVE_FRAME_SEQ = 1;
@@ -4166,3 +5325,9 @@ const int VIDIOC_DBG_G_CHIP_INFO = 3234354790;
 const int VIDIOC_QUERY_EXT_CTRL = 3236451943;
 
 const int BASE_VIDIOC_PRIVATE = 192;
+
+const int V4L2_PIX_FMT_HM12 = 842091848;
+
+const int V4L2_PIX_FMT_SUNXI_TILED_NV12 = 842093651;
+
+const int V4L2_CAP_ASYNCIO = 33554432;

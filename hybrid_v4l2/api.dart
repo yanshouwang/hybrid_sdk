@@ -11,6 +11,18 @@ import 'package:pigeon/pigeon.dart';
     gobjectOptions: GObjectOptions(),
   ),
 )
+class TextureArgs {
+  final Uint8List bufferArgs;
+  final int widthArgs;
+  final int heightArgs;
+
+  TextureArgs(
+    this.bufferArgs,
+    this.widthArgs,
+    this.heightArgs,
+  );
+}
+
 @HostApi()
 abstract class ViewHostAPI {
   int registerTexture();

@@ -132,6 +132,27 @@ class LibHybridV4L2 {
   late final _v4l2_ioctlV4l2v4l2_fmtdescPtr = _v4l2_ioctlV4l2v4l2_fmtdescPtrPtr
       .asFunction<int Function(int, int, ffi.Pointer<v4l2.v4l2_fmtdesc>)>();
 
+  int v4l2_ioctlV4l2v4l2_frmsizeenumPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_frmsizeenum> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_frmsizeenumPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_frmsizeenumPtrPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+                  ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_frmsizeenum>,)>)>>(
+      'v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_frmsizeenumPtr =
+      _v4l2_ioctlV4l2v4l2_frmsizeenumPtrPtr.asFunction<
+          int Function(int, int, ffi.Pointer<v4l2.v4l2_frmsizeenum>)>();
+
   int v4l2_ioctlV4l2v4l2_formatPtr(
     int fd,
     int request,

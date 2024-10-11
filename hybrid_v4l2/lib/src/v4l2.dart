@@ -3,12 +3,14 @@ import 'v4l2_buffer.dart';
 import 'v4l2_capability.dart';
 import 'v4l2_fmtdesc.dart';
 import 'v4l2_format.dart';
+import 'v4l2_frmsize.dart';
 import 'v4l2_impl.dart';
 import 'v4l2_input.dart';
 import 'v4l2_map.dart';
 import 'v4l2_mapped_buffer.dart';
 import 'v4l2_memory.dart';
 import 'v4l2_o.dart';
+import 'v4l2_pix_fmt.dart';
 import 'v4l2_prot.dart';
 import 'v4l2_requestbuffers.dart';
 import 'v4l2_rgbx_buffer.dart';
@@ -38,6 +40,8 @@ abstract interface class V4L2 {
 
   /// VIDIOC_ENUM_FMT - Enumerate image formats
   List<V4L2Fmtdesc> enumFmt(int fd, V4L2BufType type);
+
+  List<V4L2Frmsize> enumFramesizes(int fd, V4L2PixFmt pixelFormat);
 
   /// VIDIOC_G_FMT - Get the data format
   V4L2Format gFmt(int fd, V4L2BufType type);

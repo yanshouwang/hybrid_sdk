@@ -1,15 +1,20 @@
 import 'package:flutter/widgets.dart';
-import 'package:hybrid_v4l2/src/v4l2_api.dart';
 
 import 'v4l2_api.x.dart';
 import 'v4l2_rgbx_buffer.dart';
 
 class V4L2View extends StatefulWidget {
   final V4L2RGBXBuffer? frame;
+  final BoxFit fit;
+  final bool fpsVisible;
+  final TextStyle? fpsStyle;
 
   const V4L2View({
     super.key,
-    this.frame,
+    required this.frame,
+    this.fit = BoxFit.contain,
+    this.fpsVisible = false,
+    this.fpsStyle,
   });
 
   @override
@@ -18,7 +23,7 @@ class V4L2View extends StatefulWidget {
 
 class _V4L2ViewState extends State<V4L2View> {
   final V4L2ViewHostAPI _api;
-  final ValueNotifier<int?> _textureId;
+  final ValueNotifier<int?> _id;
   final ValueNotifier<int> _fps;
   final Stopwatch _watch;
 
@@ -27,7 +32,7 @@ class _V4L2ViewState extends State<V4L2View> {
 
   _V4L2ViewState()
       : _api = V4L2ViewHostAPI(),
-        _textureId = ValueNotifier(null),
+        _id = ValueNotifier(null),
         _fps = ValueNotifier(0),
         _watch = Stopwatch(),
         _frames = 0,
@@ -42,17 +47,41 @@ class _V4L2ViewState extends State<V4L2View> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _textureId,
-      builder: (context, textureId, child) {
-        return SizedBox.expand(
-          child: textureId == null
-              ? null
-              : Texture(
-                  textureId: textureId,
+    return SizedBox.expand(
+      child: ValueListenableBuilder(
+        valueListenable: _id,
+        builder: (context, id, child) {
+          final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+          final frame = widget.frame;
+          return ValueListenableBuilder(
+            valueListenable: _fps,
+            builder: (context, fps, child) {
+              return DecoratedBox(
+                decoration: _FPSDecoration(
+                  fps: widget.fpsVisible ? fps : null,
+                  style: widget.fpsStyle,
                 ),
-        );
-      },
+                position: DecorationPosition.foreground,
+                child: child,
+              );
+            },
+            child: frame == null
+                ? null
+                : FittedBox(
+                    fit: widget.fit,
+                    child: SizedBox(
+                      width: frame.width / devicePixelRatio,
+                      height: frame.height / devicePixelRatio,
+                      child: id == null
+                          ? null
+                          : Texture(
+                              textureId: id,
+                            ),
+                    ),
+                  ),
+          );
+        },
+      ),
     );
   }
 
@@ -68,18 +97,18 @@ class _V4L2ViewState extends State<V4L2View> {
   void dispose() {
     _watch.stop();
     _unregisterTexture();
-    _textureId.dispose();
+    _id.dispose();
     _fps.dispose();
     super.dispose();
   }
 
   void _registerTexture() async {
-    _textureId.value = await _api.registerTexture();
+    _id.value = await _api.registerTexture();
     _updateTexture();
   }
 
   void _updateTexture() async {
-    final id = _textureId.value;
+    final id = _id.value;
     final frame = widget.frame;
     if (id == null || frame == null || _updating) {
       return;
@@ -94,18 +123,65 @@ class _V4L2ViewState extends State<V4L2View> {
         _frames = 0;
         _watch.reset();
       }
-      debugPrint('Frames: $_frames');
     } finally {
       _updating = false;
     }
   }
 
   void _unregisterTexture() async {
-    final id = _textureId.value;
+    final id = _id.value;
     if (id == null) {
       return;
     }
     await _api.unregisterTexture(id);
+  }
+}
+
+final class _FPSDecoration extends Decoration {
+  final int? fps;
+  final TextStyle? style;
+
+  const _FPSDecoration({
+    required this.fps,
+    this.style,
+  });
+
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _FPSPainter(
+      fps: fps,
+      style: style,
+    );
+  }
+}
+
+final class _FPSPainter extends BoxPainter {
+  final int? fps;
+  final TextStyle? style;
+
+  _FPSPainter({
+    required this.fps,
+    this.style,
+  });
+
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    if (fps == null) {
+      // fpsVisible is false.
+      return;
+    }
+    final size = configuration.size ?? Size.zero;
+    final textDirection = configuration.textDirection ?? TextDirection.ltr;
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: '$fps FPS',
+        style: style,
+      ),
+      textDirection: textDirection,
+    );
+    textPainter.layout();
+    offset = offset.translate(size.width - textPainter.width, 0.0);
+    textPainter.paint(canvas, offset);
   }
 }
 

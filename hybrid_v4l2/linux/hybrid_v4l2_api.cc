@@ -3,6 +3,72 @@
 
 #include "hybrid_v4l2_api.h"
 
+struct _HybridV4l2TextureArgs {
+  GObject parent_instance;
+
+  uint8_t* buffer_args;
+  size_t buffer_args_length;
+  int64_t width_args;
+  int64_t height_args;
+};
+
+G_DEFINE_TYPE(HybridV4l2TextureArgs, hybrid_v4l2_texture_args, G_TYPE_OBJECT)
+
+static void hybrid_v4l2_texture_args_dispose(GObject* object) {
+  G_OBJECT_CLASS(hybrid_v4l2_texture_args_parent_class)->dispose(object);
+}
+
+static void hybrid_v4l2_texture_args_init(HybridV4l2TextureArgs* self) {
+}
+
+static void hybrid_v4l2_texture_args_class_init(HybridV4l2TextureArgsClass* klass) {
+  G_OBJECT_CLASS(klass)->dispose = hybrid_v4l2_texture_args_dispose;
+}
+
+HybridV4l2TextureArgs* hybrid_v4l2_texture_args_new(const uint8_t* buffer_args, size_t buffer_args_length, int64_t width_args, int64_t height_args) {
+  HybridV4l2TextureArgs* self = HYBRID_V4L2_TEXTURE_ARGS(g_object_new(hybrid_v4l2_texture_args_get_type(), nullptr));
+  self->buffer_args = static_cast<uint8_t*>(memcpy(malloc(buffer_args_length), buffer_args, buffer_args_length));
+  self->buffer_args_length = buffer_args_length;
+  self->width_args = width_args;
+  self->height_args = height_args;
+  return self;
+}
+
+const uint8_t* hybrid_v4l2_texture_args_get_buffer_args(HybridV4l2TextureArgs* self, size_t* length) {
+  g_return_val_if_fail(HYBRID_V4L2_IS_TEXTURE_ARGS(self), nullptr);
+  *length = self->buffer_args_length;
+  return self->buffer_args;
+}
+
+int64_t hybrid_v4l2_texture_args_get_width_args(HybridV4l2TextureArgs* self) {
+  g_return_val_if_fail(HYBRID_V4L2_IS_TEXTURE_ARGS(self), 0);
+  return self->width_args;
+}
+
+int64_t hybrid_v4l2_texture_args_get_height_args(HybridV4l2TextureArgs* self) {
+  g_return_val_if_fail(HYBRID_V4L2_IS_TEXTURE_ARGS(self), 0);
+  return self->height_args;
+}
+
+static FlValue* hybrid_v4l2_texture_args_to_list(HybridV4l2TextureArgs* self) {
+  FlValue* values = fl_value_new_list();
+  fl_value_append_take(values, fl_value_new_uint8_list(self->buffer_args, self->buffer_args_length));
+  fl_value_append_take(values, fl_value_new_int(self->width_args));
+  fl_value_append_take(values, fl_value_new_int(self->height_args));
+  return values;
+}
+
+static HybridV4l2TextureArgs* hybrid_v4l2_texture_args_new_from_list(FlValue* values) {
+  FlValue* value0 = fl_value_get_list_value(values, 0);
+  const uint8_t* buffer_args = fl_value_get_uint8_list(value0);
+  size_t buffer_args_length = fl_value_get_length(value0);
+  FlValue* value1 = fl_value_get_list_value(values, 1);
+  int64_t width_args = fl_value_get_int(value1);
+  FlValue* value2 = fl_value_get_list_value(values, 2);
+  int64_t height_args = fl_value_get_int(value2);
+  return hybrid_v4l2_texture_args_new(buffer_args, buffer_args_length, width_args, height_args);
+}
+
 G_DECLARE_FINAL_TYPE(HybridV4l2MessageCodec, hybrid_v4l2_message_codec, HYBRID_V4L2, MESSAGE_CODEC, FlStandardMessageCodec)
 
 struct _HybridV4l2MessageCodec {
@@ -12,17 +78,43 @@ struct _HybridV4l2MessageCodec {
 
 G_DEFINE_TYPE(HybridV4l2MessageCodec, hybrid_v4l2_message_codec, fl_standard_message_codec_get_type())
 
+static gboolean hybrid_v4l2_message_codec_write_hybrid_v4l2_texture_args(FlStandardMessageCodec* codec, GByteArray* buffer, HybridV4l2TextureArgs* value, GError** error) {
+  uint8_t type = 129;
+  g_byte_array_append(buffer, &type, sizeof(uint8_t));
+  g_autoptr(FlValue) values = hybrid_v4l2_texture_args_to_list(value);
+  return fl_standard_message_codec_write_value(codec, buffer, values, error);
+}
+
 static gboolean hybrid_v4l2_message_codec_write_value(FlStandardMessageCodec* codec, GByteArray* buffer, FlValue* value, GError** error) {
   if (fl_value_get_type(value) == FL_VALUE_TYPE_CUSTOM) {
     switch (fl_value_get_custom_type(value)) {
+      case 129:
+        return hybrid_v4l2_message_codec_write_hybrid_v4l2_texture_args(codec, buffer, HYBRID_V4L2_TEXTURE_ARGS(fl_value_get_custom_value_object(value)), error);
     }
   }
 
   return FL_STANDARD_MESSAGE_CODEC_CLASS(hybrid_v4l2_message_codec_parent_class)->write_value(codec, buffer, value, error);
 }
 
+static FlValue* hybrid_v4l2_message_codec_read_hybrid_v4l2_texture_args(FlStandardMessageCodec* codec, GBytes* buffer, size_t* offset, GError** error) {
+  g_autoptr(FlValue) values = fl_standard_message_codec_read_value(codec, buffer, offset, error);
+  if (values == nullptr) {
+    return nullptr;
+  }
+
+  g_autoptr(HybridV4l2TextureArgs) value = hybrid_v4l2_texture_args_new_from_list(values);
+  if (value == nullptr) {
+    g_set_error(error, FL_MESSAGE_CODEC_ERROR, FL_MESSAGE_CODEC_ERROR_FAILED, "Invalid data received for MessageData");
+    return nullptr;
+  }
+
+  return fl_value_new_custom_object(129, G_OBJECT(value));
+}
+
 static FlValue* hybrid_v4l2_message_codec_read_value_of_type(FlStandardMessageCodec* codec, GBytes* buffer, size_t* offset, int type, GError** error) {
   switch (type) {
+    case 129:
+      return hybrid_v4l2_message_codec_read_hybrid_v4l2_texture_args(codec, buffer, offset, error);
     default:
       return FL_STANDARD_MESSAGE_CODEC_CLASS(hybrid_v4l2_message_codec_parent_class)->read_value_of_type(codec, buffer, offset, type, error);
   }

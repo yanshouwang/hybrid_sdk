@@ -15,6 +15,7 @@ enums:
     include:
       - 'v4l2_buf_type'
       - 'v4l2_field'
+      - 'v4l2_frmsizetypes'
       - 'v4l2_memory'
 preamble: |
   // ignore_for_file: always_specify_types

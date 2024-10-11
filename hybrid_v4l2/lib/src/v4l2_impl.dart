@@ -17,6 +17,7 @@ import 'v4l2_field.dart';
 import 'v4l2_fmt_flag.dart';
 import 'v4l2_fmtdesc.dart';
 import 'v4l2_format.dart';
+import 'v4l2_frmsize.dart';
 import 'v4l2_in_cap.dart';
 import 'v4l2_in_st.dart';
 import 'v4l2_input.dart';
@@ -37,7 +38,7 @@ import 'v4l2_tc_type.dart';
 import 'v4l2_time_code.dart';
 import 'v4l2_timeval.dart';
 
-final finalizer = ffi.NativeFinalizer(ffi.malloc.nativeFree);
+final finalizer = ffi.NativeFinalizer(ffi.calloc.nativeFree);
 
 final class V4L2Impl implements V4L2 {
   @override
@@ -47,7 +48,7 @@ final class V4L2Impl implements V4L2 {
       filePtr,
       oflag.fold(0, (total, next) => total | next.value),
     );
-    ffi.malloc.free(filePtr);
+    ffi.calloc.free(filePtr);
     if (fd == -1) {
       throw V4L2Error('open failed, $fd.');
     }
@@ -139,6 +140,42 @@ final class V4L2Impl implements V4L2 {
       index++;
     }
     return fmts;
+  }
+
+  @override
+  List<V4L2Frmsize> enumFramesizes(int fd, V4L2PixFmt pixelFormat) {
+    final frmsizes = <V4L2Frmsize>[];
+    var index = 0;
+    while (true) {
+      final argp = _ManagedV4L2FrmsizeenumImpl()
+        ..index = index
+        ..pixelFormat = pixelFormat;
+      final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_frmsizeenumPtr(
+          fd, ffi.VIDIOC_ENUM_FRAMESIZES, argp.ptr);
+      if (err != 0) {
+        break;
+      }
+      switch (argp.type) {
+        case ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE:
+          final frmsize = V4L2FrmsizeImpl.discrete(argp);
+          frmsizes.add(frmsize);
+          break;
+        default:
+          var steps = 0;
+          while (true) {
+            if (argp.stepwise.min_width + steps * argp.stepwise.step_width >
+                    argp.stepwise.max_width ||
+                argp.stepwise.min_height + steps * argp.stepwise.step_height >
+                    argp.stepwise.max_height) {
+              break;
+            }
+            final frmsize = V4L2FrmsizeImpl.stepwise(argp, steps);
+            frmsizes.add(frmsize);
+          }
+      }
+      index++;
+    }
+    return frmsizes;
   }
 
   @override
@@ -334,7 +371,7 @@ final class _ManagedV4L2CapabilityImpl extends V4L2CapabilityImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_capability> ptr;
 
-  _ManagedV4L2CapabilityImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2CapabilityImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -374,7 +411,7 @@ final class _ManagedV4L2InputImpl extends V4L2InputImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_input> ptr;
 
-  _ManagedV4L2InputImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2InputImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -413,7 +450,7 @@ final class _ManagedV4L2FmtdescImpl extends V4L2FmtdescImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_fmtdesc> ptr;
 
-  _ManagedV4L2FmtdescImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2FmtdescImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -422,6 +459,82 @@ final class _ManagedV4L2FmtdescImpl extends V4L2FmtdescImpl
 
   @override
   ffi.v4l2_fmtdesc get ref => ptr.ref;
+}
+
+/* V4L2Frmsizeenum */
+abstract class V4L2FrmsizeenumImpl {
+  V4L2FrmsizeenumImpl();
+  factory V4L2FrmsizeenumImpl.managed() => _ManagedV4L2FrmsizeenumImpl();
+
+  ffi.v4l2_frmsizeenum get ref;
+
+  set index(int value) => ref.index = value;
+  set pixelFormat(V4L2PixFmt value) => ref.pixel_format = value.value;
+  int get type => ref.type;
+  ffi.v4l2_frmsize_discrete get discrete => ref.unnamed.discrete;
+  ffi.v4l2_frmsize_stepwise get stepwise => ref.unnamed.stepwise;
+}
+
+final class _ManagedV4L2FrmsizeenumImpl extends V4L2FrmsizeenumImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_frmsizeenum> ptr;
+
+  _ManagedV4L2FrmsizeenumImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_frmsizeenum get ref => ptr.ref;
+}
+
+/* V4L2Frmsize */
+abstract class V4L2FrmsizeImpl implements V4L2Frmsize {
+  final V4L2FrmsizeenumImpl argp;
+
+  V4L2FrmsizeImpl(this.argp);
+
+  factory V4L2FrmsizeImpl.discrete(V4L2FrmsizeenumImpl argp) =>
+      _V4L2FrmsizeDiscreteImpl(argp);
+  factory V4L2FrmsizeImpl.stepwise(V4L2FrmsizeenumImpl argp, int index) =>
+      _V4L2FrmsizeStepwiseImpl(argp, index);
+}
+
+final class _V4L2FrmsizeDiscreteImpl extends V4L2FrmsizeImpl {
+  _V4L2FrmsizeDiscreteImpl(super.argp)
+      : assert(argp.type == ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE);
+
+  @override
+  int get width => argp.discrete.width;
+  @override
+  int get height => argp.discrete.height;
+}
+
+final class _V4L2FrmsizeStepwiseImpl extends V4L2FrmsizeImpl {
+  final int steps;
+
+  _V4L2FrmsizeStepwiseImpl(super.argp, this.steps)
+      : assert(argp.type != ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE);
+
+  @override
+  int get width {
+    final width = argp.stepwise.min_width + steps * argp.stepwise.step_width;
+    if (width > argp.stepwise.max_width) {
+      throw ArgumentError.value(steps);
+    }
+    return width;
+  }
+
+  @override
+  int get height {
+    final height = argp.stepwise.min_height + steps * argp.stepwise.step_height;
+    if (height > argp.stepwise.max_height) {
+      throw ArgumentError.value(steps);
+    }
+    return height;
+  }
 }
 
 /* V4L2Format */
@@ -451,7 +564,7 @@ final class _ManagedV4L2FormatImpl extends V4L2FormatImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_format> ptr;
 
-  _ManagedV4L2FormatImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2FormatImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -503,7 +616,7 @@ final class _ManagedV4L2PixFormatImpl extends V4L2PixFormatImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_pix_format> ptr;
 
-  _ManagedV4L2PixFormatImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2PixFormatImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -541,7 +654,7 @@ final class _ManagedV4L2RequestbuffersImpl extends V4L2RequestbuffersImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_requestbuffers> ptr;
 
-  _ManagedV4L2RequestbuffersImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2RequestbuffersImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -609,7 +722,7 @@ final class _ManagedV4L2BufferImpl extends V4L2BufferImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_buffer> ptr;
 
-  _ManagedV4L2BufferImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2BufferImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -650,7 +763,7 @@ final class _ManagedV4L2TimevalImpl extends V4L2TimevalImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.timeval> ptr;
 
-  _ManagedV4L2TimevalImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2TimevalImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -697,7 +810,7 @@ final class _ManagedV4L2TimeCodeImpl extends V4L2TimeCodeImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_timecode> ptr;
 
-  _ManagedV4L2TimeCodeImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2TimeCodeImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -742,7 +855,7 @@ final class _ManagedV4L2PlaneImpl extends V4L2PlaneImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_plane> ptr;
 
-  _ManagedV4L2PlaneImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2PlaneImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),
@@ -771,7 +884,7 @@ final class _ManagedV4L2MappedBufferImpl extends V4L2MappedBufferImpl
     implements ffi.Finalizable {
   final ffi.Pointer<ffi.v4l2_mapped_buffer> ptr;
 
-  _ManagedV4L2MappedBufferImpl() : ptr = ffi.malloc() {
+  _ManagedV4L2MappedBufferImpl() : ptr = ffi.calloc() {
     finalizer.attach(
       this,
       ptr.cast(),

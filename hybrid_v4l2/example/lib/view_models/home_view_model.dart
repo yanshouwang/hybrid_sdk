@@ -1,6 +1,7 @@
 import 'dart:isolate';
 
 import 'package:clover/clover.dart';
+import 'package:collection/collection.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
 import 'package:logging/logging.dart';
@@ -85,6 +86,21 @@ pix.pixelformat: ${fmt.pix.pixelformat}
 pix.field: ${fmt.pix.field}
 ''');
 
+    final frmsizes = v4l2.enumFramesizes(fd, V4L2PixFmt.mjpeg);
+    final frmsize = minBy(
+      frmsizes,
+      (frmsize) => frmsize.width * frmsize.height,
+    );
+    if (frmsize != null) {
+      fmt.pix.width = frmsize.width;
+      fmt.pix.height = frmsize.height;
+      v4l2.sFmt(fd, fmt);
+      logger.info('''[S_FMT]
+width: ${frmsize.width}
+height: ${frmsize.height}
+''');
+    }
+
     _fd = fd;
   }
 
@@ -129,9 +145,13 @@ pix.field: ${fmt.pix.field}
     final receivePort = ReceivePort()
       ..listen(
         (index) async {
-          final mappedBuf = _mappedBufs[index];
-          _frame = v4l2.mjpeg2RGBX(mappedBuf);
-          notifyListeners();
+          try {
+            final mappedBuf = _mappedBufs[index];
+            _frame = v4l2.mjpeg2RGBX(mappedBuf);
+            notifyListeners();
+          } catch (e) {
+            logger.warning('$e');
+          }
         },
       );
 
