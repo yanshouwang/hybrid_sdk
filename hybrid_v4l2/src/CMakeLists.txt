@@ -14,4 +14,8 @@ set_target_properties(hybrid_v4l2 PROPERTIES
   OUTPUT_NAME "hybrid_v4l2"
 )
 
+pkg_check_modules(TurboJPEG REQUIRED IMPORTED_TARGET libturbojpeg)
+target_link_libraries(hybrid_v4l2 PRIVATE PkgConfig::TurboJPEG)
+#set(CMAKE_CXX_STANDARD_LIBRARIES -ljpeg)
+
 target_compile_definitions(hybrid_v4l2 PUBLIC DART_SHARED_LIB)

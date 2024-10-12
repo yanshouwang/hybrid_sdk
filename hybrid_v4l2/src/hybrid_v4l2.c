@@ -15,21 +15,24 @@
 #include <sys/time.h>
 #include <unistd.h>
 
-#define V4L2_COPY_HUFF_TABLE(dinfo, tbl, name)                                 \
-  do {                                                                         \
-    if (dinfo->tbl == NULL)                                                    \
-      dinfo->tbl = jpeg_alloc_huff_table((j_common_ptr)dinfo);                 \
-    memcpy(dinfo->tbl->bits, name##_len, sizeof(name##_len));                  \
-    memset(dinfo->tbl->huffval, 0, sizeof(dinfo->tbl->huffval));               \
-    memcpy(dinfo->tbl->huffval, name##_val, sizeof(name##_val));               \
+#define V4L2_COPY_HUFF_TABLE(dinfo, tbl, name)                   \
+  do                                                             \
+  {                                                              \
+    if (dinfo->tbl == NULL)                                      \
+      dinfo->tbl = jpeg_alloc_huff_table((j_common_ptr)dinfo);   \
+    memcpy(dinfo->tbl->bits, name##_len, sizeof(name##_len));    \
+    memset(dinfo->tbl->huffval, 0, sizeof(dinfo->tbl->huffval)); \
+    memcpy(dinfo->tbl->huffval, name##_val, sizeof(name##_val)); \
   } while (0)
 
-struct v4l2_error_mgr {
+struct v4l2_error_mgr
+{
   struct jpeg_error_mgr super;
   jmp_buf jmp;
 };
 
-static void v4l2_error_exit(j_common_ptr dinfo) {
+static void v4l2_error_exit(j_common_ptr dinfo)
+{
   struct v4l2_error_mgr *myerr = (struct v4l2_error_mgr *)dinfo->err;
 #ifndef NDEBUG
   (*dinfo->err->output_message)(dinfo);
@@ -41,15 +44,15 @@ static void v4l2_error_exit(j_common_ptr dinfo) {
    devices which don't specify a Huffman table in the JPEG stream. */
 static const unsigned char dc_lumi_len[] = {0, 0, 1, 5, 1, 1, 1, 1, 1,
                                             1, 0, 0, 0, 0, 0, 0, 0};
-static const unsigned char dc_lumi_val[] = {0, 1, 2, 3, 4,  5,
+static const unsigned char dc_lumi_val[] = {0, 1, 2, 3, 4, 5,
                                             6, 7, 8, 9, 10, 11};
 
 static const unsigned char dc_chromi_len[] = {0, 0, 3, 1, 1, 1, 1, 1, 1,
                                               1, 1, 1, 0, 0, 0, 0, 0};
-static const unsigned char dc_chromi_val[] = {0, 1, 2, 3, 4,  5,
+static const unsigned char dc_chromi_val[] = {0, 1, 2, 3, 4, 5,
                                               6, 7, 8, 9, 10, 11};
 
-static const unsigned char ac_lumi_len[] = {0, 0, 2, 1, 3, 3, 2, 4,   3,
+static const unsigned char ac_lumi_len[] = {0, 0, 2, 1, 3, 3, 2, 4, 3,
                                             5, 5, 4, 4, 0, 0, 1, 0x7d};
 static const unsigned char ac_lumi_val[] = {
     0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12, 0x21, 0x31, 0x41, 0x06,
@@ -66,7 +69,7 @@ static const unsigned char ac_lumi_val[] = {
     0xca, 0xd2, 0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1, 0xe2,
     0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xf1, 0xf2, 0xf3, 0xf4,
     0xf5, 0xf6, 0xf7, 0xf8, 0xf9, 0xfa};
-static const unsigned char ac_chromi_len[] = {0, 0, 2, 1, 2, 4, 4, 3,   4,
+static const unsigned char ac_chromi_len[] = {0, 0, 2, 1, 2, 4, 4, 3, 4,
                                               7, 5, 4, 4, 0, 1, 2, 0x77};
 static const unsigned char ac_chromi_val[] = {
     0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21, 0x31, 0x06, 0x12, 0x41,
@@ -84,20 +87,23 @@ static const unsigned char ac_chromi_val[] = {
     0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xf2, 0xf3, 0xf4,
     0xf5, 0xf6, 0xf7, 0xf8, 0xf9, 0xfa};
 
-static inline void v4l2_insert_huff_tables(j_decompress_ptr dinfo) {
+static inline void v4l2_insert_huff_tables(j_decompress_ptr dinfo)
+{
   V4L2_COPY_HUFF_TABLE(dinfo, dc_huff_tbl_ptrs[0], dc_lumi);
   V4L2_COPY_HUFF_TABLE(dinfo, dc_huff_tbl_ptrs[1], dc_chromi);
   V4L2_COPY_HUFF_TABLE(dinfo, ac_huff_tbl_ptrs[0], ac_lumi);
   V4L2_COPY_HUFF_TABLE(dinfo, ac_huff_tbl_ptrs[1], ac_chromi);
 }
 
-FFI_PLUGIN_EXPORT int v4l2_open(char *file, int oflag) {
+FFI_PLUGIN_EXPORT int v4l2_open(char *file, int oflag)
+{
   return open(file, oflag, 0);
 }
 
 FFI_PLUGIN_EXPORT int v4l2_close(int fd) { return close(fd); }
 
-FFI_PLUGIN_EXPORT int v4l2_ioctl(int fd, unsigned long request, ...) {
+FFI_PLUGIN_EXPORT int v4l2_ioctl(int fd, unsigned long request, ...)
+{
   void *arg;
   va_list ap;
 
@@ -109,9 +115,11 @@ FFI_PLUGIN_EXPORT int v4l2_ioctl(int fd, unsigned long request, ...) {
 }
 
 FFI_PLUGIN_EXPORT int v4l2_mmap(int fd, off_t offset, size_t len, int prot,
-                                int flags, struct v4l2_mapped_buffer *buf) {
+                                int flags, struct v4l2_mapped_buffer *buf)
+{
   void *addr = mmap(NULL, len, prot, flags, fd, offset);
-  if (MAP_FAILED == addr) {
+  if (MAP_FAILED == addr)
+  {
     return -1;
   }
   buf->addr = addr;
@@ -119,19 +127,23 @@ FFI_PLUGIN_EXPORT int v4l2_mmap(int fd, off_t offset, size_t len, int prot,
   return 0;
 }
 
-FFI_PLUGIN_EXPORT int v4l2_munmap(struct v4l2_mapped_buffer *buf) {
+FFI_PLUGIN_EXPORT int v4l2_munmap(struct v4l2_mapped_buffer *buf)
+{
   return munmap(buf->addr, buf->len);
 }
 
-FFI_PLUGIN_EXPORT int v4l2_select(int fd, struct timeval *timeout) {
-  while (1) {
+FFI_PLUGIN_EXPORT int v4l2_select(int fd, struct timeval *timeout)
+{
+  while (1)
+  {
     fd_set fds;
 
     FD_ZERO(&fds);
     FD_SET(fd, &fds);
 
     int r = select(fd + 1, &fds, NULL, NULL, timeout);
-    if (-1 == r && EINTR == errno) {
+    if (-1 == r && EINTR == errno)
+    {
       continue;
     }
     return r;
@@ -139,14 +151,16 @@ FFI_PLUGIN_EXPORT int v4l2_select(int fd, struct timeval *timeout) {
 }
 
 FFI_PLUGIN_EXPORT struct v4l2_rgbx_buffer *
-v4l2_mjpeg2rgbx(struct v4l2_mapped_buffer *buf) {
+v4l2_mjpeg2rgbx(struct v4l2_mapped_buffer *buf)
+{
   struct jpeg_decompress_struct dinfo;
   struct v4l2_error_mgr jerr;
 
   dinfo.err = jpeg_std_error(&jerr.super);
   jerr.super.error_exit = v4l2_error_exit;
 
-  if (setjmp(jerr.jmp)) {
+  if (setjmp(jerr.jmp))
+  {
     jpeg_destroy_decompress(&dinfo);
     return NULL;
   }
@@ -155,12 +169,13 @@ v4l2_mjpeg2rgbx(struct v4l2_mapped_buffer *buf) {
   jpeg_mem_src(&dinfo, buf->addr, buf->len);
   jpeg_read_header(&dinfo, TRUE);
 
-  if (dinfo.dc_huff_tbl_ptrs[0] == NULL) {
+  if (dinfo.dc_huff_tbl_ptrs[0] == NULL)
+  {
     // This frame is missing the Huffman tables: fill in the standard ones
     v4l2_insert_huff_tables(&dinfo);
   }
 
-  dinfo.out_color_space = JCS_EXT_RGBA;
+  dinfo.out_color_space = JCS_EXT_RGBX;
   dinfo.dct_method = JDCT_IFAST;
 
   struct v4l2_rgbx_buffer *rgbx = malloc(sizeof(*rgbx));
@@ -170,7 +185,8 @@ v4l2_mjpeg2rgbx(struct v4l2_mapped_buffer *buf) {
 
   jpeg_start_decompress(&dinfo);
 
-  while (dinfo.output_scanline < dinfo.output_height) {
+  while (dinfo.output_scanline < dinfo.output_height)
+  {
     uint8_t *scanlines = rgbx->addr + dinfo.output_scanline * rgbx->width * 4;
     jpeg_read_scanlines(&dinfo, &scanlines, 1);
   }
@@ -181,7 +197,8 @@ v4l2_mjpeg2rgbx(struct v4l2_mapped_buffer *buf) {
   return rgbx;
 }
 
-FFI_PLUGIN_EXPORT void v4l2_free_rgbx(struct v4l2_rgbx_buffer *buf) {
+FFI_PLUGIN_EXPORT void v4l2_free_rgbx(struct v4l2_rgbx_buffer *buf)
+{
   free(buf->addr);
   free(buf);
 }

@@ -18,6 +18,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: routerConfig,
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.light().copyWith(
+        inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+          border: OutlineInputBorder(),
+        ),
+        dropdownMenuTheme: const DropdownMenuThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            border: OutlineInputBorder(),
+          ),
+        ),
+      ),
     );
   }
 }

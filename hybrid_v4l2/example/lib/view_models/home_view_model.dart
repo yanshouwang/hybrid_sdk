@@ -1,36 +1,116 @@
+import 'dart:async';
 import 'dart:isolate';
 
 import 'package:clover/clover.dart';
-import 'package:collection/collection.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
-import 'package:logging/logging.dart';
+import 'package:hybrid_v4l2_example/models.dart';
+import 'package:hybrid_v4l2_example/util.dart';
 
 class HomeViewModel extends ViewModel with TypeLogger {
   final V4L2 v4l2;
+  final List<V4L2FormatDescriptor> _descriptors;
   final List<V4L2MappedBuffer> _mappedBufs;
-  final Stopwatch _fpsWatch;
+
+  late final StreamSubscription _receivePortSubscription;
+
+  V4L2Format? _fmt;
 
   int? _fd;
-  Isolate? _isolate;
+  Token? _streamingToken;
   V4L2RGBXBuffer? _frame;
 
   HomeViewModel()
       : v4l2 = V4L2(),
-        _mappedBufs = [],
-        _fpsWatch = Stopwatch() {
+        _descriptors = [],
+        _mappedBufs = [] {
     open();
-    beginStreaming();
   }
 
+  List<V4L2PixFmt> get formats =>
+      List.unmodifiable(_descriptors.map((descriptor) => descriptor.format));
+  List<V4L2Frmsize> get sizes => List.unmodifiable(format == null
+      ? []
+      : _descriptors
+          .firstWhere((descriptor) => descriptor.format == format)
+          .sizes);
+
+  V4L2PixFmt? get format {
+    final fmt = _fmt;
+    if (fmt == null) {
+      return null;
+    }
+    return formats.firstWhere((format) => format == fmt.pix.pixelformat);
+  }
+
+  V4L2Frmsize? get size {
+    final fmt = _fmt;
+    if (fmt == null) {
+      return null;
+    }
+    final width = fmt.pix.width;
+    final height = fmt.pix.height;
+    return sizes
+        .firstWhere((size) => size.width == width && size.height == height);
+  }
+
+  bool get streaming => _streamingToken != null;
   V4L2RGBXBuffer? get frame => _frame;
 
   @override
   void dispose() {
-    endStreaming();
+    if (streaming) {
+      stopStreaming();
+    }
     close();
+    _receivePortSubscription.cancel();
     super.dispose();
   }
+
+  // void startStreaming() async {
+  //   var token = _streamingToken;
+  //   if (token != null) {
+  //     throw ArgumentError.value(token);
+  //   }
+  //   _streamingToken = token = Token();
+  //   notifyListeners();
+  //   final random = math.Random();
+  //   const width = 100;
+  //   const height = 100;
+  //   final element1 = random.nextInt(255);
+  //   final element2 = random.nextInt(255);
+  //   final elements1 = List.generate(
+  //     width * height * 4,
+  //     (i) => i % 4 == 3 ? 0xff : element1,
+  //   );
+  //   final elements2 = List.generate(
+  //     width * height * 4,
+  //     (i) => i % 4 == 3 ? 0xff : element2,
+  //   );
+  //   final value1 = Uint8List.fromList(elements1);
+  //   final value2 = Uint8List.fromList(elements2);
+  //   while (token.isNotCancelled) {
+  //     _frame = TestV4L2RGBXBuffer(
+  //       value: _frame?.value == value1 ? value2 : value1,
+  //       width: width,
+  //       height: height,
+  //     );
+  //     notifyListeners();
+  //     await Future.delayed(
+  //       const Duration(
+  //         milliseconds: 10,
+  //       ),
+  //     );
+  //   }
+  // }
+
+  // void stopStreaming() {
+  //   final token = ArgumentError.checkNotNull(_streamingToken);
+  //   token.cancel();
+  //   _streamingToken = null;
+  //   _frame = null;
+  //   notifyListeners();
+  // }
 
   void open() {
     final fd = v4l2.open(
@@ -76,6 +156,10 @@ description: ${fmt.description}
 pixelformat: ${fmt.pixelformat}
 flags: ${fmt.flags.join(',')}
 ''');
+      final frmsizes = v4l2.enumFramesizes(fd, V4L2PixFmt.mjpeg);
+      final descriptor = V4L2FormatDescriptor(fmt.pixelformat, frmsizes);
+      _descriptors.add(descriptor);
+      notifyListeners();
     }
 
     final fmt = v4l2.gFmt(fd, V4L2BufType.videoCapture);
@@ -86,22 +170,9 @@ pix.pixelformat: ${fmt.pix.pixelformat}
 pix.field: ${fmt.pix.field}
 ''');
 
-    final frmsizes = v4l2.enumFramesizes(fd, V4L2PixFmt.mjpeg);
-    final frmsize = minBy(
-      frmsizes,
-      (frmsize) => frmsize.width * frmsize.height,
-    );
-    if (frmsize != null) {
-      fmt.pix.width = frmsize.width;
-      fmt.pix.height = frmsize.height;
-      v4l2.sFmt(fd, fmt);
-      logger.info('''[S_FMT]
-width: ${frmsize.width}
-height: ${frmsize.height}
-''');
-    }
-
     _fd = fd;
+    _fmt = fmt;
+    notifyListeners();
   }
 
   void close() {
@@ -110,12 +181,38 @@ height: ${frmsize.height}
       throw ArgumentError.notNull();
     }
     v4l2.close(fd);
+    _fd = null;
+    notifyListeners();
   }
 
-  void beginStreaming() async {
+  void setFormat(V4L2PixFmt format) {
     final fd = _fd;
-    if (fd == null) {
-      return;
+    final fmt = _fmt;
+    if (fd == null || fmt == null) {
+      throw ArgumentError.notNull();
+    }
+    fmt.pix.pixelformat = format;
+    v4l2.sFmt(fd, fmt);
+    notifyListeners();
+  }
+
+  void setSize(V4L2Frmsize size) {
+    final fd = _fd;
+    final fmt = _fmt;
+    if (fd == null || fmt == null) {
+      throw ArgumentError.notNull();
+    }
+    fmt.pix.width = size.width;
+    fmt.pix.height = size.height;
+    v4l2.sFmt(fd, fmt);
+    notifyListeners();
+  }
+
+  void startStreaming() async {
+    final fd = ArgumentError.checkNotNull(_fd);
+    var token = _streamingToken;
+    if (token != null) {
+      throw ArgumentError.value(token);
     }
     final req = V4L2Requestbuffers()
       ..count = 4
@@ -142,67 +239,136 @@ height: ${frmsize.height}
     v4l2.streamon(fd, V4L2BufType.videoCapture);
     logger.info('STREAMON');
 
-    final receivePort = ReceivePort()
-      ..listen(
-        (index) async {
-          try {
-            final mappedBuf = _mappedBufs[index];
-            _frame = v4l2.mjpeg2RGBX(mappedBuf);
-            notifyListeners();
-          } catch (e) {
-            logger.warning('$e');
-          }
-        },
-      );
+    _streamingToken = token = Token();
+    notifyListeners();
 
-    _isolate = await Isolate.spawn(
-      (commandArgs) {
-        final sendPort = commandArgs.sendPort;
-        final fd = commandArgs.fd;
-        final logger = Logger('V4L2');
-        final v4l2 = V4L2();
-        while (true) {
-          try {
-            final timeout = V4L2Timeval()
-              ..tvSec = 2
-              ..tvUsec = 0;
-            v4l2.select(fd, timeout);
-            final buf =
-                v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
-            sendPort.send(buf.index);
-            v4l2.qbuf(fd, buf);
-          } catch (e) {
-            logger.warning('STREAMING failed, $e.');
-          }
-        }
-      },
-      StreamingCommandArgs(
-        receivePort.sendPort,
-        fd,
-      ),
-    );
-
-    _fpsWatch.start();
+    while (true) {
+      await _select();
+      if (token.isCancelled) {
+        break;
+      }
+      final buf = v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
+      final mappedBuf = _mappedBufs.elementAtOrNull(buf.index);
+      if (mappedBuf == null) {
+        break;
+      }
+      try {
+        _frame = v4l2.mjpeg2RGBX(mappedBuf);
+        notifyListeners();
+      } catch (e) {
+        logger.warning('MJPEG2RGBX failed, $e.');
+      } finally {
+        v4l2.qbuf(fd, buf);
+      }
+    }
   }
 
-  void endStreaming() {
-    final fd = _fd;
-    final isolate = _isolate;
-    if (fd == null || isolate == null) {
-      throw ArgumentError.notNull();
-    }
-    _fpsWatch.stop();
-    isolate.kill(priority: Isolate.immediate);
+  void stopStreaming() {
+    final fd = ArgumentError.checkNotNull(_fd);
+    final token = ArgumentError.checkNotNull(_streamingToken);
+    token.cancel();
+    v4l2.streamoff(fd, V4L2BufType.videoCapture);
+    logger.info('STREAMOFF');
+
     for (var mappedBuf in _mappedBufs) {
       v4l2.munmap(mappedBuf);
     }
-    v4l2.streamoff(fd, V4L2BufType.videoCapture);
+    _mappedBufs.clear();
+    _streamingToken = null;
+    _frame = null;
+    notifyListeners();
+  }
+
+  Future<void> _select() async {
+    final fd = _fd;
+    if (fd == null) {
+      return;
+    }
+    final sendPort = await _sendPort;
+    final id = _id++;
+    final completer = Completer<void>();
+    _selectCompleters[id] = completer;
+    final command = _SelectCommand(id, fd);
+    sendPort.send(command);
+    return completer.future;
   }
 }
 
-class StreamingCommandArgs {
-  final SendPort sendPort;
+class _SelectCommand {
+  final int id;
   final int fd;
 
-  const StreamingCommandArgs(this.sendPort, this.fd);
+  const _SelectCommand(this.id, this.fd);
 }
+
+class _SelectReply {
+  final int id;
+  final Object? error;
+
+  const _SelectReply(this.id, this.error);
+}
+
+var _id = 0;
+
+final _selectCompleters = <int, Completer<void>>{};
+
+Future<SendPort> _sendPort = () async {
+  final completer = Completer<SendPort>();
+  final outsideReceivePort = ReceivePort()
+    ..listen(
+      (message) {
+        if (message is SendPort) {
+          completer.complete(message);
+        } else if (message is _SelectReply) {
+          final id = message.id;
+          final error = message.error;
+          final completer = _selectCompleters.remove(id);
+          if (completer == null) {
+            return;
+          }
+          if (error == null) {
+            completer.complete();
+          } else {
+            completer.completeError(error);
+          }
+        } else {
+          throw UnsupportedError(
+            'Unsupported message type: ${message.runtimeType}',
+          );
+        }
+      },
+    );
+  await Isolate.spawn(
+    (outsideSendPort) {
+      final v4l2 = V4L2();
+      final insideReceivePort = ReceivePort()
+        ..listen(
+          (message) async {
+            if (message is _SelectCommand) {
+              final id = message.id;
+              final fd = message.fd;
+              try {
+                final timeout = V4L2Timeval()
+                  ..tvSec = 2
+                  ..tvUsec = 0;
+                v4l2.select(fd, timeout);
+                final reply = _SelectReply(id, null);
+                outsideSendPort.send(reply);
+              } catch (e) {
+                final reply = _SelectReply(id, e);
+                outsideSendPort.send(reply);
+              }
+            } else {
+              throw UnsupportedError(
+                'Unsupported message type: ${message.runtimeType}',
+              );
+            }
+          },
+        );
+
+      outsideSendPort.send(insideReceivePort.sendPort);
+    },
+    outsideReceivePort.sendPort,
+  );
+  return completer.future;
+}();

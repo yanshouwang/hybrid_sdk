@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -18,12 +19,25 @@ class TextureView extends StatefulWidget {
 
 class _TextureViewState extends State<TextureView> {
   late final ValueNotifier<int?> id;
+  late final ValueNotifier<int> fps;
+  late final Timer timer;
+
+  int frames = 0;
+  bool updating = false;
 
   @override
   void initState() {
     super.initState();
     id = ValueNotifier(null);
-
+    fps = ValueNotifier(0);
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        fps.value = frames;
+        frames = 0;
+        debugPrint('FPS ${fps.value}');
+      },
+    );
     _registerTexture();
   }
 
@@ -53,6 +67,7 @@ class _TextureViewState extends State<TextureView> {
 
   @override
   void dispose() {
+    timer.cancel();
     _unregisterTexture();
     id.dispose();
     super.dispose();
@@ -87,10 +102,16 @@ class _TextureViewState extends State<TextureView> {
 
   void _updateTexture() async {
     final frame = widget.frame;
-    if (frame == null) {
+    if (frame == null || updating) {
       return;
     }
-    await onRgba(hashCode, frame.value, frame.height, frame.width);
+    updating = true;
+    try {
+      await onRgba(hashCode, frame.value, frame.height, frame.width);
+      frames++;
+    } finally {
+      updating = false;
+    }
   }
 
   void _unregisterTexture() async {

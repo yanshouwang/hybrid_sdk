@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 
 import 'v4l2_api.x.dart';
@@ -25,7 +27,8 @@ class _V4L2ViewState extends State<V4L2View> {
   final V4L2ViewHostAPI _api;
   final ValueNotifier<int?> _id;
   final ValueNotifier<int> _fps;
-  final Stopwatch _watch;
+
+  late final Timer _timer;
 
   int _frames;
   bool _updating;
@@ -34,15 +37,20 @@ class _V4L2ViewState extends State<V4L2View> {
       : _api = V4L2ViewHostAPI(),
         _id = ValueNotifier(null),
         _fps = ValueNotifier(0),
-        _watch = Stopwatch(),
         _frames = 0,
         _updating = false;
 
   @override
   void initState() {
     super.initState();
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        _fps.value = _frames;
+        _frames = 0;
+      },
+    );
     _registerTexture();
-    _watch.start();
   }
 
   @override
@@ -56,12 +64,14 @@ class _V4L2ViewState extends State<V4L2View> {
           return ValueListenableBuilder(
             valueListenable: _fps,
             builder: (context, fps, child) {
-              return DecoratedBox(
-                decoration: _FPSDecoration(
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+                foregroundDecoration: _FPSDecoration(
                   fps: widget.fpsVisible ? fps : null,
                   style: widget.fpsStyle,
                 ),
-                position: DecorationPosition.foreground,
                 child: child,
               );
             },
@@ -95,7 +105,7 @@ class _V4L2ViewState extends State<V4L2View> {
 
   @override
   void dispose() {
-    _watch.stop();
+    _timer.cancel();
     _unregisterTexture();
     _id.dispose();
     _fps.dispose();
@@ -116,13 +126,7 @@ class _V4L2ViewState extends State<V4L2View> {
     _updating = true;
     try {
       await _api.updateTexture(id, frame.value, frame.width, frame.height);
-      if (_watch.elapsed.inSeconds < 1) {
-        _frames++;
-      } else {
-        _fps.value = _frames;
-        _frames = 0;
-        _watch.reset();
-      }
+      _frames++;
     } finally {
       _updating = false;
     }

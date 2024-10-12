@@ -44,14 +44,8 @@ target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
 # dependencies here.
 target_include_directories(${PLUGIN_NAME} INTERFACE
   "${CMAKE_CURRENT_SOURCE_DIR}/include")
-
-set(CMAKE_CXX_STANDARD_LIBRARIES -ljpeg)
-
-pkg_check_modules(TurboJPEG REQUIRED IMPORTED_TARGET libturbojpeg)
-
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
-target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::TurboJPEG)
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an

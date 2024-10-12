@@ -8,8 +8,7 @@
 G_BEGIN_DECLS
 
 typedef struct _HybridV4l2Texture HybridV4l2Texture;
-typedef struct
-{
+typedef struct {
   FlPixelBufferTextureClass parent_class;
 } HybridV4l2TextureClass;
 
