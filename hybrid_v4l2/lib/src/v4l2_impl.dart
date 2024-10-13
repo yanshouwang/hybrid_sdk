@@ -6,17 +6,29 @@ import 'package:ffi/ffi.dart' as ffi;
 import 'v4l2_ffi.dart' as ffi;
 import 'v4l2_ffi.hybrid.dart' as ffi;
 import 'v4l2_ffi.x.dart' as ffi;
+
 import 'v4l2.dart';
 import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
 import 'v4l2_buffer.dart';
 import 'v4l2_cap.dart';
 import 'v4l2_capability.dart';
+import 'v4l2_cid.dart';
+import 'v4l2_control.dart';
+import 'v4l2_crop.dart';
+import 'v4l2_cropcap.dart';
+import 'v4l2_ctrl_class.dart';
+import 'v4l2_ctrl_flag.dart';
+import 'v4l2_ctrl_type.dart';
+import 'v4l2_ctrl_which.dart';
 import 'v4l2_error.dart';
+import 'v4l2_ext_control.dart';
+import 'v4l2_ext_controls.dart';
 import 'v4l2_field.dart';
 import 'v4l2_fmt_flag.dart';
 import 'v4l2_fmtdesc.dart';
 import 'v4l2_format.dart';
+import 'v4l2_fract.dart';
 import 'v4l2_frmsize.dart';
 import 'v4l2_in_cap.dart';
 import 'v4l2_in_st.dart';
@@ -30,6 +42,10 @@ import 'v4l2_pix_fmt.dart';
 import 'v4l2_pix_format.dart';
 import 'v4l2_plane.dart';
 import 'v4l2_prot.dart';
+import 'v4l2_query_ext_ctrl.dart';
+import 'v4l2_queryctrl.dart';
+import 'v4l2_querymenu.dart';
+import 'v4l2_rect.dart';
 import 'v4l2_requestbuffers.dart';
 import 'v4l2_rgbx_buffer.dart';
 import 'v4l2_std.dart';
@@ -147,29 +163,31 @@ final class V4L2Impl implements V4L2 {
     final frmsizes = <V4L2Frmsize>[];
     var index = 0;
     while (true) {
-      final argp = _ManagedV4L2FrmsizeenumImpl()
+      final frmsizeenum = _ManagedV4L2FrmsizeenumImpl()
         ..index = index
         ..pixelFormat = pixelFormat;
       final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_frmsizeenumPtr(
-          fd, ffi.VIDIOC_ENUM_FRAMESIZES, argp.ptr);
+          fd, ffi.VIDIOC_ENUM_FRAMESIZES, frmsizeenum.ptr);
       if (err != 0) {
         break;
       }
-      switch (argp.type) {
+      switch (frmsizeenum.type) {
         case ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE:
-          final frmsize = V4L2FrmsizeImpl.discrete(argp);
+          final frmsize = V4L2FrmsizeImpl.discrete(frmsizeenum);
           frmsizes.add(frmsize);
           break;
         default:
           var steps = 0;
           while (true) {
-            if (argp.stepwise.min_width + steps * argp.stepwise.step_width >
-                    argp.stepwise.max_width ||
-                argp.stepwise.min_height + steps * argp.stepwise.step_height >
-                    argp.stepwise.max_height) {
+            if (frmsizeenum.stepwise.min_width +
+                        steps * frmsizeenum.stepwise.step_width >
+                    frmsizeenum.stepwise.max_width ||
+                frmsizeenum.stepwise.min_height +
+                        steps * frmsizeenum.stepwise.step_height >
+                    frmsizeenum.stepwise.max_height) {
               break;
             }
-            final frmsize = V4L2FrmsizeImpl.stepwise(argp, steps);
+            final frmsize = V4L2FrmsizeImpl.stepwise(frmsizeenum, steps);
             frmsizes.add(frmsize);
           }
       }
@@ -286,6 +304,137 @@ final class V4L2Impl implements V4L2 {
         throw V4L2Error('ioctl `VIDIOC_STREAMOFF` failed, $err.');
       }
     });
+  }
+
+  @override
+  V4L2Cropcap cropcap(int fd, V4L2BufType type) {
+    final cropcap = _ManagedV4L2CropcapImpl()..type = type;
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_cropcapPtr(fd, ffi.VIDIOC_CROPCAP, cropcap.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_CROPCAP` failed, $err.');
+    }
+    return cropcap;
+  }
+
+  @override
+  V4L2Crop gCrop(int fd, V4L2BufType type) {
+    final crop = _ManagedV4L2CropImpl()..type = type;
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_cropPtr(fd, ffi.VIDIOC_G_CROP, crop.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_G_CROP` failed, $err.');
+    }
+    return crop;
+  }
+
+  @override
+  void sCrop(int fd, V4L2Crop crop) {
+    if (crop is! _ManagedV4L2CropImpl) {
+      throw TypeError();
+    }
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_cropPtr(fd, ffi.VIDIOC_S_CROP, crop.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_S_CROP` failed, $err.');
+    }
+  }
+
+  @override
+  V4L2Queryctrl queryctrl(int fd, V4L2CId id) {
+    final ctrl = _ManagedV4L2QueryctrlImpl()..id = id;
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_queryctrlPtr(fd, ffi.VIDIOC_QUERYCTRL, ctrl.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_QUERYCTRL` failed, $err.');
+    }
+    return ctrl;
+  }
+
+  @override
+  V4L2QueryExtCtrl queryExtCtrl(int fd, V4L2CId id) {
+    final ctrl = _ManagedV4L2QueryExtCtrlImpl()..id = id;
+    final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_query_ext_ctrlPtr(
+        fd, ffi.VIDIOC_QUERY_EXT_CTRL, ctrl.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_QUERY_EXT_CTRL` failed, $err.');
+    }
+    return ctrl;
+  }
+
+  @override
+  V4L2Querymenu querymenu(int fd, V4L2CId id, int index) {
+    final menu = _ManagedV4L2QuerymenuImpl()
+      ..id = id
+      ..index = index;
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_querymenuPtr(fd, ffi.VIDIOC_QUERYMENU, menu.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_QUERYMENU` failed, $err.');
+    }
+    return menu;
+  }
+
+  @override
+  V4L2Control gCtrl(int fd, V4L2CId id) {
+    final control = _ManagedV4L2ControlImpl()..id = id;
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_controlPtr(fd, ffi.VIDIOC_G_CTRL, control.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_G_CTRL` failed, $err.');
+    }
+    return control;
+  }
+
+  @override
+  void sCtrl(int fd, V4L2Control ctrl) {
+    if (ctrl is! _ManagedV4L2ControlImpl) {
+      throw TypeError();
+    }
+    final err = ffi.libHybridV4L2
+        .v4l2_ioctlV4l2v4l2_controlPtr(fd, ffi.VIDIOC_S_CTRL, ctrl.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_S_CTRL` failed, $err.');
+    }
+  }
+
+  @override
+  V4L2ExtControls gExtCtrls(int fd, V4L2CtrlClass ctrlClass,
+      V4L2CtrlWhich which, List<V4L2ExtControl> controls) {
+    final ctrls = _ManagedV4L2ExtControlsImpl()
+      ..ctrlClass = ctrlClass
+      ..which = which
+      ..controls = controls;
+    final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_ext_controlsPtr(
+        fd, ffi.VIDIOC_G_EXT_CTRLS, ctrls.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_G_EXT_CTRLS` failed, $err.');
+    }
+    return ctrls;
+  }
+
+  @override
+  void sExtCtrls(int fd, V4L2ExtControls ctrls) {
+    if (ctrls is! _ManagedV4L2ExtControlsImpl) {
+      throw TypeError();
+    }
+    final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_ext_controlsPtr(
+        fd, ffi.VIDIOC_S_EXT_CTRLS, ctrls.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_S_EXT_CTRLS` failed, $err.');
+    }
+  }
+
+  @override
+  void tryExtCtrls(int fd, V4L2ExtControls ctrls) {
+    if (ctrls is! _ManagedV4L2ExtControlsImpl) {
+      throw TypeError();
+    }
+    final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_ext_controlsPtr(
+        fd, ffi.VIDIOC_TRY_EXT_CTRLS, ctrls.ptr);
+    if (err != 0) {
+      throw V4L2Error('ioctl `VIDIOC_TRY_EXT_CTRLS` failed, $err.');
+    }
   }
 
   @override
@@ -492,36 +641,40 @@ final class _ManagedV4L2FrmsizeenumImpl extends V4L2FrmsizeenumImpl
 
 /* V4L2Frmsize */
 abstract class V4L2FrmsizeImpl implements V4L2Frmsize {
-  final V4L2FrmsizeenumImpl argp;
+  final V4L2FrmsizeenumImpl frmsizeenum;
 
-  V4L2FrmsizeImpl(this.argp);
+  V4L2FrmsizeImpl(this.frmsizeenum);
 
-  factory V4L2FrmsizeImpl.discrete(V4L2FrmsizeenumImpl argp) =>
-      _V4L2FrmsizeDiscreteImpl(argp);
-  factory V4L2FrmsizeImpl.stepwise(V4L2FrmsizeenumImpl argp, int index) =>
-      _V4L2FrmsizeStepwiseImpl(argp, index);
+  factory V4L2FrmsizeImpl.discrete(V4L2FrmsizeenumImpl frmsizeenum) =>
+      _V4L2FrmsizeDiscreteImpl(frmsizeenum);
+  factory V4L2FrmsizeImpl.stepwise(
+          V4L2FrmsizeenumImpl frmsizeenum, int index) =>
+      _V4L2FrmsizeStepwiseImpl(frmsizeenum, index);
 }
 
 final class _V4L2FrmsizeDiscreteImpl extends V4L2FrmsizeImpl {
-  _V4L2FrmsizeDiscreteImpl(super.argp)
-      : assert(argp.type == ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE);
+  _V4L2FrmsizeDiscreteImpl(super.frmsizeenum)
+      : assert(frmsizeenum.type ==
+            ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE);
 
   @override
-  int get width => argp.discrete.width;
+  int get width => frmsizeenum.discrete.width;
   @override
-  int get height => argp.discrete.height;
+  int get height => frmsizeenum.discrete.height;
 }
 
 final class _V4L2FrmsizeStepwiseImpl extends V4L2FrmsizeImpl {
   final int steps;
 
-  _V4L2FrmsizeStepwiseImpl(super.argp, this.steps)
-      : assert(argp.type != ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE);
+  _V4L2FrmsizeStepwiseImpl(super.frmsizeenum, this.steps)
+      : assert(frmsizeenum.type !=
+            ffi.v4l2_frmsizetypes.V4L2_FRMSIZE_TYPE_DISCRETE);
 
   @override
   int get width {
-    final width = argp.stepwise.min_width + steps * argp.stepwise.step_width;
-    if (width > argp.stepwise.max_width) {
+    final width = frmsizeenum.stepwise.min_width +
+        steps * frmsizeenum.stepwise.step_width;
+    if (width > frmsizeenum.stepwise.max_width) {
       throw ArgumentError.value(steps);
     }
     return width;
@@ -529,8 +682,9 @@ final class _V4L2FrmsizeStepwiseImpl extends V4L2FrmsizeImpl {
 
   @override
   int get height {
-    final height = argp.stepwise.min_height + steps * argp.stepwise.step_height;
-    if (height > argp.stepwise.max_height) {
+    final height = frmsizeenum.stepwise.min_height +
+        steps * frmsizeenum.stepwise.step_height;
+    if (height > frmsizeenum.stepwise.max_height) {
       throw ArgumentError.value(steps);
     }
     return height;
@@ -924,4 +1078,395 @@ final class _ManagedV4L2RGBXBufferImpl extends V4L2RGBXBufferImpl {
 
   @override
   ffi.v4l2_rgbx_buffer get ref => ptr.ref;
+}
+
+/* V4L2Cropcap */
+abstract base class V4L2CropcapImpl implements V4L2Cropcap {
+  V4L2CropcapImpl();
+  factory V4L2CropcapImpl.managed() => _ManagedV4L2CropcapImpl();
+
+  ffi.v4l2_cropcap get ref;
+
+  @override
+  V4L2BufType get type => ref.type.toDartBufType();
+  set type(V4L2BufType value) => ref.type = value.value;
+  @override
+  V4L2Rect get bounds => V4L2RectImpl.unmanaged(ref.bounds);
+  @override
+  V4L2Rect get defrect => V4L2RectImpl.unmanaged(ref.defrect);
+  @override
+  V4L2Fract get pixelaspect => V4L2FractImpl.unmanaged(ref.pixelaspect);
+}
+
+final class _ManagedV4L2CropcapImpl extends V4L2CropcapImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_cropcap> ptr;
+
+  _ManagedV4L2CropcapImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_cropcap get ref => ptr.ref;
+}
+
+/* V4L2Rect */
+abstract base class V4L2RectImpl implements V4L2Rect {
+  V4L2RectImpl();
+  factory V4L2RectImpl.unmanaged(ffi.v4l2_rect ref) =>
+      _UnmanagedV4L2RectImpl(ref);
+
+  ffi.v4l2_rect get ref;
+
+  @override
+  int get left => ref.left;
+  @override
+  set left(int value) => ref.left = value;
+  @override
+  int get top => ref.top;
+  @override
+  set top(int value) => ref.top = value;
+  @override
+  int get width => ref.width;
+  @override
+  set width(int value) => ref.width = value;
+  @override
+  int get height => ref.height;
+  @override
+  set height(int value) => ref.height = value;
+}
+
+final class _UnmanagedV4L2RectImpl extends V4L2RectImpl {
+  @override
+  final ffi.v4l2_rect ref;
+
+  _UnmanagedV4L2RectImpl(this.ref);
+}
+
+/* V4L2Fract */
+abstract base class V4L2FractImpl implements V4L2Fract {
+  V4L2FractImpl();
+  factory V4L2FractImpl.unmanaged(ffi.v4l2_fract ref) =>
+      _UnmanagedV4L2FractImpl(ref);
+
+  ffi.v4l2_fract get ref;
+
+  @override
+  int get numerator => ref.numerator;
+  @override
+  int get denominator => ref.denominator;
+}
+
+final class _UnmanagedV4L2FractImpl extends V4L2FractImpl {
+  @override
+  final ffi.v4l2_fract ref;
+
+  _UnmanagedV4L2FractImpl(this.ref);
+}
+
+/* V4L2Crop */
+abstract interface class V4L2CropImpl implements V4L2Crop {
+  V4L2CropImpl();
+  factory V4L2CropImpl.managed() => _ManagedV4L2CropImpl();
+
+  ffi.v4l2_crop get ref;
+
+  @override
+  V4L2BufType get type => ref.type.toDartBufType();
+  set type(V4L2BufType value) => ref.type = value.value;
+
+  @override
+  V4L2Rect get c => V4L2RectImpl.unmanaged(ref.c);
+}
+
+final class _ManagedV4L2CropImpl extends V4L2CropImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_crop> ptr;
+
+  _ManagedV4L2CropImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_crop get ref => ptr.ref;
+}
+
+/* V4L2Queryctrl */
+abstract base class V4L2QueryctrlImpl implements V4L2Queryctrl {
+  V4L2QueryctrlImpl();
+  factory V4L2QueryctrlImpl.managed() => _ManagedV4L2QueryctrlImpl();
+
+  ffi.v4l2_queryctrl get ref;
+
+  @override
+  V4L2CId get id => ref.id.toDartCId();
+  set id(V4L2CId value) => ref.id = value.value;
+  @override
+  V4L2CtrlType get type => ref.type.toDartCtrlType();
+  @override
+  String get name => ref.name.toDart();
+  @override
+  int get minimum => ref.minimum;
+  @override
+  int get maximum => ref.maximum;
+  @override
+  int get step => ref.step;
+  @override
+  int get defaultValue => ref.default_value;
+  @override
+  List<V4L2CtrlFlag> get flags => ref.flags.toDartCtrlFlags();
+}
+
+final class _ManagedV4L2QueryctrlImpl extends V4L2QueryctrlImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_queryctrl> ptr;
+
+  _ManagedV4L2QueryctrlImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_queryctrl get ref => ptr.ref;
+}
+
+/* V4L2QueryExtCtrl */
+abstract base class V4L2QueryExtCtrlImpl implements V4L2QueryExtCtrl {
+  V4L2QueryExtCtrlImpl();
+  factory V4L2QueryExtCtrlImpl.managed() => _ManagedV4L2QueryExtCtrlImpl();
+
+  ffi.v4l2_query_ext_ctrl get ref;
+
+  @override
+  V4L2CId get id => ref.id.toDartCId();
+  set id(V4L2CId value) => ref.id = value.value;
+  @override
+  V4L2CtrlType get type => ref.type.toDartCtrlType();
+  @override
+  String get name => ref.name.toDart();
+  @override
+  int get minimum => ref.minimum;
+  @override
+  int get maximum => ref.maximum;
+  @override
+  int get step => ref.step;
+  @override
+  int get defaultValue => ref.default_value;
+  @override
+  List<V4L2CtrlFlag> get flags => ref.flags.toDartCtrlFlags();
+  @override
+  int get elemSize => ref.elem_size;
+  @override
+  int get elems => ref.elems;
+  @override
+  int get nrOfDims => ref.nr_of_dims;
+  @override
+  List<int> get dims => ref.dims.toDart(ffi.V4L2_CTRL_MAX_DIMS);
+}
+
+final class _ManagedV4L2QueryExtCtrlImpl extends V4L2QueryExtCtrlImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_query_ext_ctrl> ptr;
+
+  _ManagedV4L2QueryExtCtrlImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_query_ext_ctrl get ref => ptr.ref;
+}
+
+/* V4L2Querymenu */
+abstract base class V4L2QuerymenuImpl implements V4L2Querymenu {
+  V4L2QuerymenuImpl();
+  factory V4L2QuerymenuImpl.managed() => _ManagedV4L2QuerymenuImpl();
+
+  ffi.v4l2_querymenu get ref;
+
+  @override
+  V4L2CId get id => ref.id.toDartCId();
+  set id(V4L2CId value) => ref.id = value.value;
+  @override
+  int get index => ref.index;
+  set index(int value) => ref.index = value;
+  @override
+  String get name => ref.unnamed.name.toDart();
+  @override
+  int get value => ref.unnamed.value;
+}
+
+final class _ManagedV4L2QuerymenuImpl extends V4L2QuerymenuImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_querymenu> ptr;
+
+  _ManagedV4L2QuerymenuImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_querymenu get ref => ptr.ref;
+}
+
+/* V4L2Control */
+abstract interface class V4L2ControlImpl implements V4L2Control {
+  V4L2ControlImpl();
+  factory V4L2ControlImpl.managed() => _ManagedV4L2ControlImpl();
+
+  ffi.v4l2_control get ref;
+
+  @override
+  V4L2CId get id => ref.id.toDartCId();
+  set id(V4L2CId value) => ref.id = value.value;
+  @override
+  int get value => ref.value;
+  @override
+  set value(int value) => ref.value = value;
+}
+
+final class _ManagedV4L2ControlImpl extends V4L2ControlImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_control> ptr;
+
+  _ManagedV4L2ControlImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_control get ref => ptr.ref;
+}
+
+/* V4L2ExtControls */
+abstract base class V4L2ExtControlsImpl implements V4L2ExtControls {
+  V4L2ExtControlsImpl();
+  factory V4L2ExtControlsImpl.managed() => _ManagedV4L2ExtControlsImpl();
+
+  ffi.v4l2_ext_controls get ref;
+
+  @override
+  V4L2CtrlClass get ctrlClass => ref.unnamed.ctrl_class.toDartCtrlClass();
+  set ctrlClass(V4L2CtrlClass value) => ref.unnamed.ctrl_class = value.value;
+  @override
+  V4L2CtrlWhich get which => ref.unnamed.which.toDartCtrlWhich();
+  @override
+  set which(V4L2CtrlWhich value) => ref.unnamed.which = value.value;
+  @override
+  List<V4L2ExtControl> get controls {
+    final controls = <V4L2ExtControl>[];
+    for (var i = 0; i < ref.count; i++) {
+      final control = V4L2ExtControlImpl.unmanaged(ref.controls[i]);
+      controls.add(control);
+    }
+    return controls;
+  }
+}
+
+final class _ManagedV4L2ExtControlsImpl extends V4L2ExtControlsImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_ext_controls> ptr;
+
+  _ManagedV4L2ExtControlsImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_ext_controls get ref => ptr.ref;
+
+  set controls(List<V4L2ExtControl> value) {
+    final controls = ffi.calloc<ffi.v4l2_ext_control>(value.length);
+    finalizer.attach(
+      this,
+      controls.cast(),
+    );
+    for (var i = 0; i < value.length; i++) {
+      final control = controls[i];
+      final ref = value.cast<_ManagedV4L2ExtControlImpl>()[i].ref;
+      control.id = ref.id;
+      control.reserved2 = ref.reserved2;
+      control.unnamed = ref.unnamed;
+    }
+    ref.controls = controls;
+    ref.count = value.length;
+  }
+}
+
+/* V4L2ExtControl */
+abstract base class V4L2ExtControlImpl implements V4L2ExtControl {
+  V4L2ExtControlImpl();
+  factory V4L2ExtControlImpl.managed() => _ManagedV4L2ExtControlImpl();
+  factory V4L2ExtControlImpl.unmanaged(ffi.v4l2_ext_control ref) =>
+      _UnmanagedV4L2ExtControlImpl(ref);
+
+  ffi.v4l2_ext_control get ref;
+
+  @override
+  V4L2CId get id => ref.id.toDartCId();
+  @override
+  set id(V4L2CId value) => ref.id = value.value;
+  @override
+  int get value => ref.unnamed.value;
+  @override
+  set value(int value) => ref.unnamed.value = value;
+  @override
+  int get value64 => ref.unnamed.value64;
+  @override
+  set value64(int value) => ref.unnamed.value64 = value;
+  @override
+  String get string => ref.unnamed.string.cast<ffi.Utf8>().toDartString();
+  @override
+  set string(String value) =>
+      ref.unnamed.string = value.toNativeUtf8().cast<ffi.Char>();
+  @override
+  Uint8List get u8 => throw UnimplementedError();
+  @override
+  set u8(Uint8List value) => throw UnimplementedError();
+  @override
+  Uint16List get u16 => throw UnimplementedError();
+  @override
+  set u16(Uint16List value) => throw UnimplementedError();
+  @override
+  Uint32List get u32 => throw UnimplementedError();
+  @override
+  set u32(Uint32List value) => throw UnimplementedError();
+}
+
+final class _ManagedV4L2ExtControlImpl extends V4L2ExtControlImpl
+    implements ffi.Finalizable {
+  final ffi.Pointer<ffi.v4l2_ext_control> ptr;
+
+  _ManagedV4L2ExtControlImpl() : ptr = ffi.calloc() {
+    finalizer.attach(
+      this,
+      ptr.cast(),
+    );
+  }
+
+  @override
+  ffi.v4l2_ext_control get ref => ptr.ref;
+}
+
+final class _UnmanagedV4L2ExtControlImpl extends V4L2ExtControlImpl {
+  @override
+  final ffi.v4l2_ext_control ref;
+
+  _UnmanagedV4L2ExtControlImpl(this.ref);
 }

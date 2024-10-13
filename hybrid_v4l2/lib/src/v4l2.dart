@@ -1,6 +1,14 @@
 import 'v4l2_buf_type.dart';
 import 'v4l2_buffer.dart';
 import 'v4l2_capability.dart';
+import 'v4l2_cid.dart';
+import 'v4l2_control.dart';
+import 'v4l2_crop.dart';
+import 'v4l2_cropcap.dart';
+import 'v4l2_ctrl_class.dart';
+import 'v4l2_ctrl_which.dart';
+import 'v4l2_ext_control.dart';
+import 'v4l2_ext_controls.dart';
 import 'v4l2_fmtdesc.dart';
 import 'v4l2_format.dart';
 import 'v4l2_frmsize.dart';
@@ -12,6 +20,9 @@ import 'v4l2_memory.dart';
 import 'v4l2_o.dart';
 import 'v4l2_pix_fmt.dart';
 import 'v4l2_prot.dart';
+import 'v4l2_query_ext_ctrl.dart';
+import 'v4l2_queryctrl.dart';
+import 'v4l2_querymenu.dart';
 import 'v4l2_requestbuffers.dart';
 import 'v4l2_rgbx_buffer.dart';
 import 'v4l2_timeval.dart';
@@ -70,6 +81,44 @@ abstract interface class V4L2 {
 
   /// VIDIOC_STREAMOFF - Stop streaming I/O
   void streamoff(int fd, V4L2BufType type);
+
+  /// VIDIOC_CROPCAP - Information about the video cropping and scaling abilities
+  V4L2Cropcap cropcap(int fd, V4L2BufType type);
+
+  /// VIDIOC_G_CROP - Get the current cropping rectangle
+  V4L2Crop gCrop(int fd, V4L2BufType type);
+
+  /// VIDIOC_S_CROP - Set the current cropping rectangle
+  void sCrop(int fd, V4L2Crop crop);
+
+  /// VIDIOC_QUERYCTRL - Enumerate controls
+  V4L2Queryctrl queryctrl(int fd, V4L2CId id);
+
+  /// VIDIOC_QUERY_EXT_CTRL - Enumerate controls
+  V4L2QueryExtCtrl queryExtCtrl(int fd, V4L2CId id);
+
+  /// VIDIOC_QUERYMENU - Enumerate menu control items
+  V4L2Querymenu querymenu(int fd, V4L2CId id, int index);
+
+  /// VIDIOC_G_CTRL - Get the value of a control
+  V4L2Control gCtrl(int fd, V4L2CId id);
+
+  /// VIDIOC_S_CTRL - Set the value of a control
+  void sCtrl(int fd, V4L2Control ctrl);
+
+  /// VIDIOC_G_EXT_CTRLS - Get the value of several controls, try control values
+  V4L2ExtControls gExtCtrls(
+    int fd,
+    V4L2CtrlClass ctrlClass,
+    V4L2CtrlWhich which,
+    List<V4L2ExtControl> controls,
+  );
+
+  /// VIDIOC_S_EXT_CTRLS - Set the value of several controls, try control values
+  void sExtCtrls(int fd, V4L2ExtControls ctrls);
+
+  /// VIDIOC_TRY_EXT_CTRLS - Set the value of several controls, try control values
+  void tryExtCtrls(int fd, V4L2ExtControls ctrls);
 
   /// v4l2-mmap - Map device memory into application address space
   V4L2MappedBuffer mmap(

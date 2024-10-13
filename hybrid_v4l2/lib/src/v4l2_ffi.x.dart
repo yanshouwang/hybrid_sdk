@@ -1,6 +1,12 @@
 import 'dart:ffi' as ffi;
 
+import 'v4l2_ctrl_class.dart';
+import 'v4l2_ctrl_flag.dart';
+import 'v4l2_ctrl_type.dart';
+import 'v4l2_ctrl_which.dart';
 import 'v4l2_ffi.hybrid.dart' as ffi;
+
+import 'v4l2_cid.dart';
 import 'v4l2_buf_flag.dart';
 import 'v4l2_buf_type.dart';
 import 'v4l2_cap.dart';
@@ -34,6 +40,33 @@ extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
       i++;
     }
     return String.fromCharCodes(charCodes);
+  }
+}
+
+extension CharArrayX on ffi.Array<ffi.Char> {
+  String toDart() {
+    final charCodes = <int>[];
+    var i = 0;
+    while (true) {
+      final charCode = this[i];
+      if (charCode == 0) {
+        break;
+      }
+      charCodes.add(charCode);
+      i++;
+    }
+    return String.fromCharCodes(charCodes);
+  }
+}
+
+extension UinsignedIntArrayX on ffi.Array<ffi.UnsignedInt> {
+  List<int> toDart(int count) {
+    final values = <int>[];
+    for (var i = 0; i < count; i++) {
+      final value = this[i];
+      values.add(value);
+    }
+    return values;
   }
 }
 
@@ -138,5 +171,33 @@ extension intX on int {
       flags.add(flag);
     }
     return flags;
+  }
+
+  V4L2CId toDartCId() {
+    return V4L2CId.values.firstWhere((cid) => cid.value == this);
+  }
+
+  V4L2CtrlType toDartCtrlType() {
+    return V4L2CtrlType.values.firstWhere((type) => type.value == this);
+  }
+
+  List<V4L2CtrlFlag> toDartCtrlFlags() {
+    final flags = <V4L2CtrlFlag>[];
+    for (var flag in V4L2CtrlFlag.values) {
+      if (this & flag.value == 0) {
+        continue;
+      }
+      flags.add(flag);
+    }
+    return flags;
+  }
+
+  V4L2CtrlClass toDartCtrlClass() {
+    return V4L2CtrlClass.values
+        .firstWhere((ctrlClass) => ctrlClass.value == this);
+  }
+
+  V4L2CtrlWhich toDartCtrlWhich() {
+    return V4L2CtrlWhich.values.firstWhere((which) => which.value == this);
   }
 }

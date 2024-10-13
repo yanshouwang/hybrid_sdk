@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
 import 'package:hybrid_v4l2_example/view_models.dart';
 
-import 'texture_view.dart';
-
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -15,18 +13,16 @@ class HomeView extends StatelessWidget {
     final sizes = viewModel.sizes;
     final format = viewModel.format;
     final size = viewModel.size;
+    final zoomAbsolute = viewModel.zoomAbsolute;
     final streaming = viewModel.streaming;
     final frame = viewModel.frame;
     return Scaffold(
       extendBody: true,
       body: V4L2View(
         frame: frame,
-        fit: BoxFit.cover,
+        fit: BoxFit.contain,
         fpsVisible: true,
       ),
-      // body: TextureView(
-      //   frame: frame,
-      // ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
@@ -67,6 +63,18 @@ class HomeView extends StatelessWidget {
                   .toList(),
               initialSelection: size,
               enabled: !streaming,
+            ),
+            Slider(
+              onChanged: zoomAbsolute == null
+                  ? null
+                  : (value) {
+                      viewModel.setZoomAbsolute(value);
+                    },
+              min: zoomAbsolute?.minimum ?? 0.0,
+              max: zoomAbsolute?.maximum ?? 1.0,
+              divisions: zoomAbsolute?.divisions ?? 1,
+              value: zoomAbsolute?.value ?? 0.0,
+              label: zoomAbsolute?.value.toString(),
             ),
           ],
         ),

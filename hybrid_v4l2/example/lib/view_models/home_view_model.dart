@@ -9,12 +9,14 @@ import 'package:hybrid_v4l2_example/util.dart';
 
 class HomeViewModel extends ViewModel with TypeLogger {
   final V4L2 v4l2;
-  final List<V4L2FormatDescriptor> _descriptors;
   final List<V4L2MappedBuffer> _mappedBufs;
 
   late final StreamSubscription _receivePortSubscription;
 
+  List<FormatDescriptor> _descriptors;
   V4L2Format? _fmt;
+  V4L2QueryExtCtrl? _zoomAbsoluteQueryCtrl;
+  V4L2ExtControls? _zoomAbsoluteCtrls;
 
   int? _fd;
   Token? _streamingToken;
@@ -22,8 +24,8 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
   HomeViewModel()
       : v4l2 = V4L2(),
-        _descriptors = [],
-        _mappedBufs = [] {
+        _mappedBufs = [],
+        _descriptors = [] {
     open();
   }
 
@@ -52,6 +54,20 @@ class HomeViewModel extends ViewModel with TypeLogger {
     final height = fmt.pix.height;
     return sizes
         .firstWhere((size) => size.width == width && size.height == height);
+  }
+
+  Control? get zoomAbsolute {
+    final queryCtrl = _zoomAbsoluteQueryCtrl;
+    final ctrls = _zoomAbsoluteCtrls;
+    if (queryCtrl == null || ctrls == null) {
+      return null;
+    }
+    return Control(
+      minimum: queryCtrl.minimum.toDouble(),
+      maximum: queryCtrl.maximum.toDouble(),
+      divisions: (queryCtrl.maximum - queryCtrl.minimum) ~/ queryCtrl.step,
+      value: ctrls.controls[0].value.toDouble(),
+    );
   }
 
   bool get streaming => _streamingToken != null;
@@ -149,29 +165,29 @@ status: ${input.status.join(',')}
 capabilities: ${input.capabilities.join(',')}
 ''');
 
+    final descriptors = <FormatDescriptor>[];
     final fmts = v4l2.enumFmt(fd, V4L2BufType.videoCapture);
     for (var fmt in fmts) {
-      logger.info('''[ENUM_FMT]
-description: ${fmt.description}
-pixelformat: ${fmt.pixelformat}
-flags: ${fmt.flags.join(',')}
-''');
       final frmsizes = v4l2.enumFramesizes(fd, V4L2PixFmt.mjpeg);
-      final descriptor = V4L2FormatDescriptor(fmt.pixelformat, frmsizes);
-      _descriptors.add(descriptor);
-      notifyListeners();
+      final descriptor = FormatDescriptor(fmt.pixelformat, frmsizes);
+      descriptors.add(descriptor);
     }
-
     final fmt = v4l2.gFmt(fd, V4L2BufType.videoCapture);
-    logger.info('''[G_FMT]
-pix.width: ${fmt.pix.width}
-pix.height: ${fmt.pix.height}
-pix.pixelformat: ${fmt.pix.pixelformat}
-pix.field: ${fmt.pix.field}
-''');
+    final zoomAbsoluteQueryCtrl = v4l2.queryExtCtrl(fd, V4L2CId.zoomAbsolute);
+    final zoomAbsoluteCtrls = v4l2.gExtCtrls(
+      fd,
+      V4L2CtrlClass.camera,
+      V4L2CtrlWhich.curVal,
+      [
+        V4L2ExtControl()..id = V4L2CId.zoomAbsolute,
+      ],
+    );
 
     _fd = fd;
+    _descriptors = descriptors;
     _fmt = fmt;
+    _zoomAbsoluteQueryCtrl = zoomAbsoluteQueryCtrl;
+    _zoomAbsoluteCtrls = zoomAbsoluteCtrls;
     notifyListeners();
   }
 
@@ -181,7 +197,12 @@ pix.field: ${fmt.pix.field}
       throw ArgumentError.notNull();
     }
     v4l2.close(fd);
+
     _fd = null;
+    _descriptors = [];
+    _fmt = null;
+    _zoomAbsoluteQueryCtrl = null;
+    _zoomAbsoluteCtrls = null;
     notifyListeners();
   }
 
@@ -205,6 +226,14 @@ pix.field: ${fmt.pix.field}
     fmt.pix.width = size.width;
     fmt.pix.height = size.height;
     v4l2.sFmt(fd, fmt);
+    notifyListeners();
+  }
+
+  void setZoomAbsolute(double value) {
+    final fd = ArgumentError.checkNotNull(_fd);
+    final ctrls = ArgumentError.checkNotNull(_zoomAbsoluteCtrls)
+      ..controls[0].value = value.toInt();
+    v4l2.sExtCtrls(fd, ctrls);
     notifyListeners();
   }
 

@@ -212,6 +212,145 @@ class LibHybridV4L2 {
   late final _v4l2_ioctlV4l2v4l2_bufferPtr = _v4l2_ioctlV4l2v4l2_bufferPtrPtr
       .asFunction<int Function(int, int, ffi.Pointer<v4l2.v4l2_buffer>)>();
 
+  int v4l2_ioctlV4l2v4l2_cropcapPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_cropcap> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_cropcapPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_cropcapPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+              ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_cropcap>,)>)>>('v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_cropcapPtr = _v4l2_ioctlV4l2v4l2_cropcapPtrPtr
+      .asFunction<int Function(int, int, ffi.Pointer<v4l2.v4l2_cropcap>)>();
+
+  int v4l2_ioctlV4l2v4l2_cropPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_crop> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_cropPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_cropPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+              ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_crop>,)>)>>('v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_cropPtr = _v4l2_ioctlV4l2v4l2_cropPtrPtr
+      .asFunction<int Function(int, int, ffi.Pointer<v4l2.v4l2_crop>)>();
+
+  int v4l2_ioctlV4l2v4l2_queryctrlPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_queryctrl> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_queryctrlPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_queryctrlPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+              ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_queryctrl>,)>)>>('v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_queryctrlPtr =
+      _v4l2_ioctlV4l2v4l2_queryctrlPtrPtr.asFunction<
+          int Function(int, int, ffi.Pointer<v4l2.v4l2_queryctrl>)>();
+
+  int v4l2_ioctlV4l2v4l2_query_ext_ctrlPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_query_ext_ctrl> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_query_ext_ctrlPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_query_ext_ctrlPtrPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+                  ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_query_ext_ctrl>,)>)>>(
+      'v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_query_ext_ctrlPtr =
+      _v4l2_ioctlV4l2v4l2_query_ext_ctrlPtrPtr.asFunction<
+          int Function(int, int, ffi.Pointer<v4l2.v4l2_query_ext_ctrl>)>();
+
+  int v4l2_ioctlV4l2v4l2_querymenuPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_querymenu> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_querymenuPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_querymenuPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+              ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_querymenu>,)>)>>('v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_querymenuPtr =
+      _v4l2_ioctlV4l2v4l2_querymenuPtrPtr.asFunction<
+          int Function(int, int, ffi.Pointer<v4l2.v4l2_querymenu>)>();
+
+  int v4l2_ioctlV4l2v4l2_controlPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_control> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_controlPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_controlPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+              ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_control>,)>)>>('v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_controlPtr = _v4l2_ioctlV4l2v4l2_controlPtrPtr
+      .asFunction<int Function(int, int, ffi.Pointer<v4l2.v4l2_control>)>();
+
+  int v4l2_ioctlV4l2v4l2_ext_controlsPtr(
+    int fd,
+    int request,
+    ffi.Pointer<v4l2.v4l2_ext_controls> va,
+  ) {
+    return _v4l2_ioctlV4l2v4l2_ext_controlsPtr(
+      fd,
+      request,
+      va,
+    );
+  }
+
+  late final _v4l2_ioctlV4l2v4l2_ext_controlsPtrPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Int, ffi.UnsignedLong,
+                  ffi.VarArgs<(ffi.Pointer<v4l2.v4l2_ext_controls>,)>)>>(
+      'v4l2_ioctl');
+  late final _v4l2_ioctlV4l2v4l2_ext_controlsPtr =
+      _v4l2_ioctlV4l2v4l2_ext_controlsPtrPtr.asFunction<
+          int Function(int, int, ffi.Pointer<v4l2.v4l2_ext_controls>)>();
+
   int v4l2_mmap(
     int fd,
     int offset,

@@ -8,8 +8,12 @@ compiler-opts:
 headers:
   entry-points:
     - '/usr/include/linux/videodev2.h'
+    - '/usr/include/linux/v4l2-common.h'
+    - '/usr/include/linux/v4l2-controls.h'
   include-directives:
     - '/usr/include/linux/videodev2.h'
+    - '/usr/include/linux/v4l2-common.h'
+    - '/usr/include/linux/v4l2-controls.h'
 enums:
   as-int:
     include:
@@ -17,6 +21,7 @@ enums:
       - 'v4l2_field'
       - 'v4l2_frmsizetypes'
       - 'v4l2_memory'
+      - 'v4l2_ctrl_type'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types
