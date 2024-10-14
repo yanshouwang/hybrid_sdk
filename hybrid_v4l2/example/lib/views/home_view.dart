@@ -13,7 +13,6 @@ class HomeView extends StatelessWidget {
     final sizes = viewModel.sizes;
     final format = viewModel.format;
     final size = viewModel.size;
-    final zoomAbsolute = viewModel.zoomAbsolute;
     final streaming = viewModel.streaming;
     final frame = viewModel.frame;
     return Scaffold(
@@ -63,18 +62,6 @@ class HomeView extends StatelessWidget {
                   .toList(),
               initialSelection: size,
               enabled: !streaming,
-            ),
-            Slider(
-              onChanged: zoomAbsolute == null
-                  ? null
-                  : (value) {
-                      viewModel.setZoomAbsolute(value);
-                    },
-              min: zoomAbsolute?.minimum ?? 0.0,
-              max: zoomAbsolute?.maximum ?? 1.0,
-              divisions: zoomAbsolute?.divisions ?? 1,
-              value: zoomAbsolute?.value ?? 0.0,
-              label: zoomAbsolute?.value.toString(),
             ),
           ],
         ),
