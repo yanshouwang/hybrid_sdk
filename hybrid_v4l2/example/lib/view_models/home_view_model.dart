@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
+// import 'dart:math' as math;
+// import 'dart:typed_data';
 
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
@@ -75,8 +77,8 @@ class HomeViewModel extends ViewModel with TypeLogger {
   //   _streamingToken = token = Token();
   //   notifyListeners();
   //   final random = math.Random();
-  //   const width = 100;
-  //   const height = 100;
+  //   const width = 1900;
+  //   const height = 1080;
   //   final element1 = random.nextInt(255);
   //   final element2 = random.nextInt(255);
   //   final elements1 = List.generate(
@@ -117,38 +119,6 @@ class HomeViewModel extends ViewModel with TypeLogger {
       '/dev/video0',
       [V4L2O.rdwr, V4L2O.nonblock],
     );
-    final cap = v4l2.querycap(fd);
-    logger.info('''[QUERYCAP]
-driver: ${cap.driver}
-card: ${cap.card}
-busInfo: ${cap.busInfo}
-version: ${(cap.version >> 16) & 0xffff}.${(cap.version >> 8) & 0xff}.${cap.version & 0xff}
-capabilities: ${cap.capabilities.join(',')}
-deviceCaps: ${cap.deviceCaps.join(',')}
-''');
-
-    final inputs = v4l2.enuminput(fd);
-    for (var input in inputs) {
-      logger.info('''[ENUMINPUT]
-type: ${input.type}
-audioset: ${input.audioset}
-tuner: ${input.tuner}
-std: ${input.std.join(',')}
-status: ${input.status.join(',')}
-capabilities: ${input.capabilities.join(',')}
-''');
-    }
-
-    final input = v4l2.gInput(fd);
-    logger.info('''[G_INPUT]
-type: ${input.type}
-audioset: ${input.audioset}
-tuner: ${input.tuner}
-std: ${input.std.join(',')}
-status: ${input.status.join(',')}
-capabilities: ${input.capabilities.join(',')}
-''');
-
     final descriptors = <FormatDescriptor>[];
     final fmts = v4l2.enumFmt(fd, V4L2BufType.videoCapture);
     for (var fmt in fmts) {
@@ -162,6 +132,38 @@ capabilities: ${input.capabilities.join(',')}
     _descriptors = descriptors;
     _fmt = fmt;
     notifyListeners();
+
+//     final cap = v4l2.querycap(fd);
+//     logger.info('''[QUERYCAP]
+// driver: ${cap.driver}
+// card: ${cap.card}
+// busInfo: ${cap.busInfo}
+// version: ${(cap.version >> 16) & 0xffff}.${(cap.version >> 8) & 0xff}.${cap.version & 0xff}
+// capabilities: ${cap.capabilities.join(',')}
+// deviceCaps: ${cap.deviceCaps.join(',')}
+// ''');
+
+//     final inputs = v4l2.enuminput(fd);
+//     for (var input in inputs) {
+//       logger.info('''[ENUMINPUT]
+// type: ${input.type}
+// audioset: ${input.audioset}
+// tuner: ${input.tuner}
+// std: ${input.std.join(',')}
+// status: ${input.status.join(',')}
+// capabilities: ${input.capabilities.join(',')}
+// ''');
+//     }
+
+//     final input = v4l2.gInput(fd);
+//     logger.info('''[G_INPUT]
+// type: ${input.type}
+// audioset: ${input.audioset}
+// tuner: ${input.tuner}
+// std: ${input.std.join(',')}
+// status: ${input.status.join(',')}
+// capabilities: ${input.capabilities.join(',')}
+// ''');
   }
 
   void close() {
@@ -229,7 +231,6 @@ capabilities: ${input.capabilities.join(',')}
       v4l2.qbuf(fd, buf);
     }
     v4l2.streamon(fd, V4L2BufType.videoCapture);
-    logger.info('STREAMON');
 
     _streamingToken = token = Token();
     notifyListeners();
@@ -260,7 +261,6 @@ capabilities: ${input.capabilities.join(',')}
     final token = ArgumentError.checkNotNull(_streamingToken);
     token.cancel();
     v4l2.streamoff(fd, V4L2BufType.videoCapture);
-    logger.info('STREAMOFF');
 
     for (var mappedBuf in _mappedBufs) {
       v4l2.munmap(mappedBuf);

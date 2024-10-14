@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
@@ -35,14 +33,15 @@ class MyApp extends StatelessWidget {
 }
 
 void _onLogRecord(LogRecord record) {
-  log(
-    record.message,
-    time: record.time,
-    sequenceNumber: record.sequenceNumber,
-    level: record.level.value,
-    name: record.loggerName,
-    zone: record.zone,
-    error: record.error,
-    stackTrace: record.stackTrace,
-  );
+  print(record.message);
+  // log(
+  //   record.message,
+  //   time: record.time,
+  //   sequenceNumber: record.sequenceNumber,
+  //   level: record.level.value,
+  //   name: record.loggerName,
+  //   zone: record.zone,
+  //   error: record.error,
+  //   stackTrace: record.stackTrace,
+  // );
 }

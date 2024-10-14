@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
       extendBody: true,
       body: V4L2View(
         frame: frame,
-        fit: BoxFit.contain,
+        fit: BoxFit.cover,
         fpsVisible: true,
       ),
       bottomNavigationBar: BottomAppBar(

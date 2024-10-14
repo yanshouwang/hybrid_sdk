@@ -2,6 +2,7 @@ import 'dart:ffi' as ffi;
 import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart' as ffi;
+import 'package:hybrid_logging/hybrid_logging.dart';
 
 import 'v4l2_ffi.dart' as ffi;
 import 'v4l2_ffi.hybrid.dart' as ffi;
@@ -56,9 +57,10 @@ import 'v4l2_timeval.dart';
 
 final finalizer = ffi.NativeFinalizer(ffi.calloc.nativeFree);
 
-final class V4L2Impl implements V4L2 {
+final class V4L2Impl with TypeLogger implements V4L2 {
   @override
   int open(String file, List<V4L2O> oflag) {
+    logger.info('open');
     final filePtr = file.toNativeUtf8().cast<ffi.Char>();
     final fd = ffi.libHybridV4L2.v4l2_open(
       filePtr,
@@ -73,6 +75,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void close(int fd) {
+    logger.info('close');
     final status = ffi.libHybridV4L2.v4l2_close(fd);
     if (status != 0) {
       throw V4L2Error('close failed, $status.');
@@ -81,6 +84,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Capability querycap(int fd) {
+    logger.info('ioctl VIDIOC_QUERYCAP');
     final cap = _ManagedV4L2CapabilityImpl();
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_capabilityPtr(fd, ffi.VIDIOC_QUERYCAP, cap.ptr);
@@ -92,6 +96,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   List<V4L2Input> enuminput(int fd) {
+    logger.info('ioctl VIDIOC_ENUMINPUT');
     final inputs = <V4L2Input>[];
     var index = 0;
     while (true) {
@@ -109,6 +114,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Input gInput(int fd) {
+    logger.info('ioctl VIDIOC_G_INPUT');
     final index = ffi.using((arena) {
       final indexPtr = arena<ffi.Int>();
       final err =
@@ -129,6 +135,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void sInput(int fd, V4L2Input input) {
+    logger.info('ioctl VIDIOC_S_INPUT');
     if (input is! _ManagedV4L2InputImpl) {
       throw TypeError();
     }
@@ -141,6 +148,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   List<V4L2Fmtdesc> enumFmt(int fd, V4L2BufType type) {
+    logger.info('ioctl VIDIOC_ENUM_FMT');
     final fmts = <V4L2Fmtdesc>[];
     var index = 0;
     while (true) {
@@ -160,6 +168,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   List<V4L2Frmsize> enumFramesizes(int fd, V4L2PixFmt pixelFormat) {
+    logger.info('ioctl VIDIOC_ENUM_FRAMESIZES');
     final frmsizes = <V4L2Frmsize>[];
     var index = 0;
     while (true) {
@@ -198,6 +207,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Format gFmt(int fd, V4L2BufType type) {
+    logger.info('ioctl VIDIOC_G_FMT');
     final fmt = _ManagedV4L2FormatImpl()..type = type;
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_formatPtr(fd, ffi.VIDIOC_G_FMT, fmt.ptr);
@@ -209,6 +219,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void sFmt(int fd, V4L2Format fmt) {
+    logger.info('ioctl VIDIOC_S_FMT');
     if (fmt is! _ManagedV4L2FormatImpl) {
       throw TypeError();
     }
@@ -221,6 +232,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void tryFmt(int fd, V4L2Format fmt) {
+    logger.info('ioctl VIDIOC_TRY_FMT');
     if (fmt is! _ManagedV4L2FormatImpl) {
       throw TypeError();
     }
@@ -233,6 +245,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void reqbufs(int fd, V4L2Requestbuffers req) {
+    logger.info('ioctl VIDIOC_REQBUFS');
     if (req is! _ManagedV4L2RequestbuffersImpl) {
       throw TypeError();
     }
@@ -245,6 +258,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Buffer querybuf(int fd, V4L2BufType type, V4L2Memory memory, int index) {
+    logger.info('ioctl VIDIOC_QUERYBUF');
     final buf = _ManagedV4L2BufferImpl()
       ..type = type
       ..memory = memory
@@ -259,6 +273,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void qbuf(int fd, V4L2Buffer buf) {
+    logger.info('ioctl VIDIOC_QBUF');
     if (buf is! _ManagedV4L2BufferImpl) {
       throw TypeError();
     }
@@ -271,6 +286,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Buffer dqbuf(int fd, V4L2BufType type, V4L2Memory memory) {
+    logger.info('ioctl VIDIOC_DQBUF');
     final buf = _ManagedV4L2BufferImpl()
       ..type = type
       ..memory = memory;
@@ -284,6 +300,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void streamon(int fd, V4L2BufType type) {
+    logger.info('ioctl VIDIOC_STREAMON');
     ffi.using((arena) {
       final typePtr = arena<ffi.Int>()..value = type.value;
       final err =
@@ -296,6 +313,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void streamoff(int fd, V4L2BufType type) {
+    logger.info('ioctl VIDIOC_STREAMOFF');
     ffi.using((arena) {
       final typePtr = arena<ffi.Int>()..value = type.value;
       final err =
@@ -308,6 +326,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Cropcap cropcap(int fd, V4L2BufType type) {
+    logger.info('ioctl VIDIOC_CROPCAP');
     final cropcap = _ManagedV4L2CropcapImpl()..type = type;
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_cropcapPtr(fd, ffi.VIDIOC_CROPCAP, cropcap.ptr);
@@ -319,6 +338,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Crop gCrop(int fd, V4L2BufType type) {
+    logger.info('ioctl VIDIOC_G_CROP');
     final crop = _ManagedV4L2CropImpl()..type = type;
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_cropPtr(fd, ffi.VIDIOC_G_CROP, crop.ptr);
@@ -330,6 +350,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void sCrop(int fd, V4L2Crop crop) {
+    logger.info('ioctl VIDIOC_S_CROP');
     if (crop is! _ManagedV4L2CropImpl) {
       throw TypeError();
     }
@@ -342,6 +363,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Queryctrl queryctrl(int fd, V4L2CId id) {
+    logger.info('ioctl VIDIOC_QUERYCTRL');
     final ctrl = _ManagedV4L2QueryctrlImpl()..id = id;
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_queryctrlPtr(fd, ffi.VIDIOC_QUERYCTRL, ctrl.ptr);
@@ -353,6 +375,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2QueryExtCtrl queryExtCtrl(int fd, V4L2CId id) {
+    logger.info('ioctl VIDIOC_QUERY_EXT_CTRL');
     final ctrl = _ManagedV4L2QueryExtCtrlImpl()..id = id;
     final err = ffi.libHybridV4L2.v4l2_ioctlV4l2v4l2_query_ext_ctrlPtr(
         fd, ffi.VIDIOC_QUERY_EXT_CTRL, ctrl.ptr);
@@ -364,6 +387,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Querymenu querymenu(int fd, V4L2CId id, int index) {
+    logger.info('ioctl VIDIOC_QUERYMENU');
     final menu = _ManagedV4L2QuerymenuImpl()
       ..id = id
       ..index = index;
@@ -377,6 +401,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2Control gCtrl(int fd, V4L2CId id) {
+    logger.info('ioctl VIDIOC_G_CTRL');
     final control = _ManagedV4L2ControlImpl()..id = id;
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_controlPtr(fd, ffi.VIDIOC_G_CTRL, control.ptr);
@@ -388,6 +413,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void sCtrl(int fd, V4L2Control ctrl) {
+    logger.info('ioctl VIDIOC_S_CTRL');
     if (ctrl is! _ManagedV4L2ControlImpl) {
       throw TypeError();
     }
@@ -401,6 +427,7 @@ final class V4L2Impl implements V4L2 {
   @override
   V4L2ExtControls gExtCtrls(int fd, V4L2CtrlClass ctrlClass,
       V4L2CtrlWhich which, List<V4L2ExtControl> controls) {
+    logger.info('ioctl VIDIOC_G_EXT_CTRLS');
     final ctrls = _ManagedV4L2ExtControlsImpl()
       ..ctrlClass = ctrlClass
       ..which = which
@@ -415,6 +442,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void sExtCtrls(int fd, V4L2ExtControls ctrls) {
+    logger.info('ioctl VIDIOC_S_EXT_CTRLS');
     if (ctrls is! _ManagedV4L2ExtControlsImpl) {
       throw TypeError();
     }
@@ -427,6 +455,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void tryExtCtrls(int fd, V4L2ExtControls ctrls) {
+    logger.info('ioctl VIDIOC_TRY_EXT_CTRLS');
     if (ctrls is! _ManagedV4L2ExtControlsImpl) {
       throw TypeError();
     }
@@ -445,6 +474,7 @@ final class V4L2Impl implements V4L2 {
     List<V4L2Prot> prot,
     List<V4L2Map> flags,
   ) {
+    logger.info('mmap');
     final buf = _ManagedV4L2MappedBufferImpl();
     final err = ffi.libHybridV4L2.v4l2_mmap(
       fd,
@@ -462,6 +492,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void munmap(V4L2MappedBuffer buf) {
+    logger.info('munmap');
     if (buf is! _ManagedV4L2MappedBufferImpl) {
       throw TypeError();
     }
@@ -473,6 +504,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   void select(int fd, V4L2Timeval timeout) {
+    logger.info('select');
     if (timeout is! _ManagedV4L2TimevalImpl) {
       throw TypeError();
     }
@@ -484,6 +516,7 @@ final class V4L2Impl implements V4L2 {
 
   @override
   V4L2RGBXBuffer mjpeg2RGBX(V4L2MappedBuffer buf) {
+    logger.info('mjpeg2RGBX');
     if (buf is! _ManagedV4L2MappedBufferImpl) {
       throw TypeError();
     }
