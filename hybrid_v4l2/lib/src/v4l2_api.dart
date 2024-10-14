@@ -15,8 +15,8 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-class TextureArgs {
-  TextureArgs({
+class V4L2TextureArgs {
+  V4L2TextureArgs({
     required this.bufferArgs,
     required this.widthArgs,
     required this.heightArgs,
@@ -36,9 +36,9 @@ class TextureArgs {
     ];
   }
 
-  static TextureArgs decode(Object result) {
+  static V4L2TextureArgs decode(Object result) {
     result as List<Object?>;
-    return TextureArgs(
+    return V4L2TextureArgs(
       bufferArgs: result[0]! as Uint8List,
       widthArgs: result[1]! as int,
       heightArgs: result[2]! as int,
@@ -54,7 +54,7 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer.putUint8(4);
       buffer.putInt64(value);
-    }    else if (value is TextureArgs) {
+    }    else if (value is V4L2TextureArgs) {
       buffer.putUint8(129);
       writeValue(buffer, value.encode());
     } else {
@@ -66,18 +66,18 @@ class _PigeonCodec extends StandardMessageCodec {
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
       case 129: 
-        return TextureArgs.decode(readValue(buffer)!);
+        return V4L2TextureArgs.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
   }
 }
 
-class ViewHostAPI {
-  /// Constructor for [ViewHostAPI].  The [binaryMessenger] named argument is
+class V4L2ViewHostAPI {
+  /// Constructor for [V4L2ViewHostAPI].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  ViewHostAPI({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+  V4L2ViewHostAPI({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : pigeonVar_binaryMessenger = binaryMessenger,
         pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
@@ -87,7 +87,7 @@ class ViewHostAPI {
   final String pigeonVar_messageChannelSuffix;
 
   Future<int> registerTexture() async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.registerTexture$pigeonVar_messageChannelSuffix';
+    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.V4L2ViewHostAPI.registerTexture$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -113,15 +113,15 @@ class ViewHostAPI {
     }
   }
 
-  Future<void> updateTexture(int idArgs, Uint8List bufferArgs, int widthArgs, int heightArgs) async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.updateTexture$pigeonVar_messageChannelSuffix';
+  Future<void> updateTexture(int idArgs, V4L2TextureArgs textureArgs) async {
+    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.V4L2ViewHostAPI.updateTexture$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
     final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[idArgs, bufferArgs, widthArgs, heightArgs]) as List<Object?>?;
+        await pigeonVar_channel.send(<Object?>[idArgs, textureArgs]) as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
@@ -136,7 +136,7 @@ class ViewHostAPI {
   }
 
   Future<void> unregisterTexture(int idArgs) async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.unregisterTexture$pigeonVar_messageChannelSuffix';
+    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.V4L2ViewHostAPI.unregisterTexture$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,

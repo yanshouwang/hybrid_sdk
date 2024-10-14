@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 
-import 'v4l2_api.x.dart';
+import 'v4l2_api.dart';
 import 'v4l2_rgbx_buffer.dart';
 
 class V4L2View extends StatefulWidget {
@@ -50,7 +50,7 @@ class _V4L2ViewState extends State<V4L2View> {
         _frames = 0;
       },
     );
-    _registerTexture();
+    _initTexture();
   }
 
   @override
@@ -106,13 +106,13 @@ class _V4L2ViewState extends State<V4L2View> {
   @override
   void dispose() {
     _timer.cancel();
-    _unregisterTexture();
+    _disposeTexture();
     _id.dispose();
     _fps.dispose();
     super.dispose();
   }
 
-  void _registerTexture() async {
+  void _initTexture() async {
     _id.value = await _api.registerTexture();
     _updateTexture();
   }
@@ -125,14 +125,19 @@ class _V4L2ViewState extends State<V4L2View> {
     }
     _updating = true;
     try {
-      await _api.updateTexture(id, frame.value, frame.width, frame.height);
+      final textuerArgs = V4L2TextureArgs(
+        bufferArgs: frame.value,
+        widthArgs: frame.width,
+        heightArgs: frame.height,
+      );
+      await _api.updateTexture(id, textuerArgs);
       _frames++;
     } finally {
       _updating = false;
     }
   }
 
-  void _unregisterTexture() async {
+  void _disposeTexture() async {
     final id = _id.value;
     if (id == null) {
       return;

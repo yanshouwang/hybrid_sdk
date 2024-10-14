@@ -10,6 +10,7 @@
 
 struct _HybridV4l2Texture {
   FlPixelBufferTexture parent_instance;
+
   uint8_t *buffer;
   uint32_t width;
   uint32_t height;
