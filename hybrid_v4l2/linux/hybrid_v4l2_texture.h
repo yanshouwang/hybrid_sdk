@@ -7,6 +7,8 @@
 
 G_BEGIN_DECLS
 
+#define HYBRID_V4L2_TEXTURE_ERROR g_spawn_error_quark()
+
 typedef struct _HybridV4l2Texture HybridV4l2Texture;
 typedef struct {
   FlPixelBufferTextureClass parent_class;
@@ -14,9 +16,8 @@ typedef struct {
 
 GType hybrid_v4l2_texture_get_type();
 
-void hybrid_v4l2_texture_update(FlTextureRegistrar *registrar,
-                                FlTexture *texture, uint8_t *buffer,
-                                uint32_t width, uint32_t height);
+int hybrid_v4l2_texture_update(FlTexture *texture, const uint8_t *buffer,
+                               size_t buffer_size);
 
 G_END_DECLS
 

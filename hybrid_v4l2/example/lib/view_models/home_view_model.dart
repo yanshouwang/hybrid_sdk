@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:isolate';
 // import 'dart:math' as math;
 // import 'dart:typed_data';
@@ -8,23 +9,20 @@ import 'package:hybrid_logging/hybrid_logging.dart';
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
 import 'package:hybrid_v4l2_example/models.dart';
 import 'package:hybrid_v4l2_example/util.dart';
+import 'package:logging/logging.dart';
 
 class HomeViewModel extends ViewModel with TypeLogger {
   final V4L2 v4l2;
-  final List<V4L2MappedBuffer> _mappedBufs;
-
-  late final StreamSubscription _receivePortSubscription;
 
   List<FormatDescriptor> _descriptors;
   V4L2Format? _fmt;
 
   int? _fd;
   Token? _streamingToken;
-  V4L2RGBXBuffer? _frame;
+  V4L2MappedBuffer? _buffer;
 
   HomeViewModel()
       : v4l2 = V4L2(),
-        _mappedBufs = [],
         _descriptors = [] {
     open();
   }
@@ -57,7 +55,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
   }
 
   bool get streaming => _streamingToken != null;
-  V4L2RGBXBuffer? get frame => _frame;
+  V4L2MappedBuffer? get buffer => _buffer;
 
   @override
   void dispose() {
@@ -65,7 +63,6 @@ class HomeViewModel extends ViewModel with TypeLogger {
       stopStreaming();
     }
     close();
-    _receivePortSubscription.cancel();
     super.dispose();
   }
 
@@ -208,6 +205,8 @@ class HomeViewModel extends ViewModel with TypeLogger {
     if (token != null) {
       throw ArgumentError.value(token);
     }
+
+    final mappedBufs = <V4L2MappedBuffer>[];
     final req = V4L2Requestbuffers()
       ..count = 4
       ..type = V4L2BufType.videoCapture
@@ -227,7 +226,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
         [V4L2Prot.read, V4L2Prot.write],
         [V4L2Map.shared],
       );
-      _mappedBufs.add(mappedBuf);
+      mappedBufs.add(mappedBuf);
       v4l2.qbuf(fd, buf);
     }
     v4l2.streamon(fd, V4L2BufType.videoCapture);
@@ -235,18 +234,12 @@ class HomeViewModel extends ViewModel with TypeLogger {
     _streamingToken = token = Token();
     notifyListeners();
 
-    while (true) {
+    while (token.isNotCancelled) {
       await _select();
-      if (token.isCancelled) {
-        break;
-      }
       final buf = v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
-      final mappedBuf = _mappedBufs.elementAtOrNull(buf.index);
-      if (mappedBuf == null) {
-        break;
-      }
+
       try {
-        _frame = v4l2.mjpeg2RGBX(mappedBuf);
+        _buffer = mappedBufs[buf.index];
         notifyListeners();
       } catch (e) {
         logger.warning('MJPEG2RGBX failed, $e.');
@@ -254,20 +247,21 @@ class HomeViewModel extends ViewModel with TypeLogger {
         v4l2.qbuf(fd, buf);
       }
     }
+    v4l2.streamoff(fd, V4L2BufType.videoCapture);
+    for (var mappedBuf in mappedBufs) {
+      v4l2.munmap(mappedBuf);
+    }
+    mappedBufs.clear();
+
+    _buffer = null;
+    notifyListeners();
   }
 
   void stopStreaming() {
-    final fd = ArgumentError.checkNotNull(_fd);
     final token = ArgumentError.checkNotNull(_streamingToken);
     token.cancel();
-    v4l2.streamoff(fd, V4L2BufType.videoCapture);
 
-    for (var mappedBuf in _mappedBufs) {
-      v4l2.munmap(mappedBuf);
-    }
-    _mappedBufs.clear();
     _streamingToken = null;
-    _frame = null;
     notifyListeners();
   }
 
@@ -279,7 +273,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
     final sendPort = await _sendPort;
     final id = _id++;
     final completer = Completer<void>();
-    _selectCompleters[id] = completer;
+    _completers[id] = completer;
     final command = _SelectCommand(id, fd);
     sendPort.send(command);
     return completer.future;
@@ -302,11 +296,11 @@ class _SelectReply {
 
 var _id = 0;
 
-final _selectCompleters = <int, Completer<void>>{};
+final _completers = <int, Completer<void>>{};
 
 Future<SendPort> _sendPort = () async {
   final completer = Completer<SendPort>();
-  final outsideReceivePort = ReceivePort()
+  final receivePort = ReceivePort()
     ..listen(
       (message) {
         if (message is SendPort) {
@@ -314,7 +308,7 @@ Future<SendPort> _sendPort = () async {
         } else if (message is _SelectReply) {
           final id = message.id;
           final error = message.error;
-          final completer = _selectCompleters.remove(id);
+          final completer = _completers.remove(id);
           if (completer == null) {
             return;
           }
@@ -331,8 +325,21 @@ Future<SendPort> _sendPort = () async {
       },
     );
   await Isolate.spawn(
-    (outsideSendPort) {
+    (insideSendPort) {
+      Logger.root.onRecord.listen((record) {
+        log(
+          record.message,
+          time: record.time,
+          sequenceNumber: record.sequenceNumber,
+          level: record.level.value,
+          name: record.loggerName,
+          zone: record.zone,
+          error: record.error,
+          stackTrace: record.stackTrace,
+        );
+      });
       final v4l2 = V4L2();
+      final timeout = V4L2Timeval();
       final insideReceivePort = ReceivePort()
         ..listen(
           (message) async {
@@ -340,15 +347,15 @@ Future<SendPort> _sendPort = () async {
               final id = message.id;
               final fd = message.fd;
               try {
-                final timeout = V4L2Timeval()
+                timeout
                   ..tvSec = 2
                   ..tvUsec = 0;
                 v4l2.select(fd, timeout);
                 final reply = _SelectReply(id, null);
-                outsideSendPort.send(reply);
+                insideSendPort.send(reply);
               } catch (e) {
                 final reply = _SelectReply(id, e);
-                outsideSendPort.send(reply);
+                insideSendPort.send(reply);
               }
             } else {
               throw UnsupportedError(
@@ -358,9 +365,9 @@ Future<SendPort> _sendPort = () async {
           },
         );
 
-      outsideSendPort.send(insideReceivePort.sendPort);
+      insideSendPort.send(insideReceivePort.sendPort);
     },
-    outsideReceivePort.sendPort,
+    receivePort.sendPort,
   );
   return completer.future;
 }();

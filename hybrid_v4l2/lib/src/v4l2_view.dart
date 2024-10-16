@@ -3,17 +3,20 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 
 import 'v4l2_api.dart';
-import 'v4l2_rgbx_buffer.dart';
+import 'v4l2_frmsize.dart';
+import 'v4l2_mapped_buffer.dart';
 
 class V4L2View extends StatefulWidget {
-  final V4L2RGBXBuffer? frame;
+  final V4L2Frmsize? size;
+  final V4L2MappedBuffer? buffer;
   final BoxFit fit;
   final bool fpsVisible;
   final TextStyle? fpsStyle;
 
   const V4L2View({
     super.key,
-    required this.frame,
+    required this.size,
+    required this.buffer,
     this.fit = BoxFit.contain,
     this.fpsVisible = false,
     this.fpsStyle,
@@ -60,7 +63,8 @@ class _V4L2ViewState extends State<V4L2View> {
         valueListenable: _id,
         builder: (context, id, child) {
           final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-          final frame = widget.frame;
+          final size = widget.size;
+          final buffer = widget.buffer;
           return ValueListenableBuilder(
             valueListenable: _fps,
             builder: (context, fps, child) {
@@ -75,13 +79,13 @@ class _V4L2ViewState extends State<V4L2View> {
                 child: child,
               );
             },
-            child: frame == null
+            child: size == null || buffer == null
                 ? null
                 : FittedBox(
                     fit: widget.fit,
                     child: SizedBox(
-                      width: frame.width / devicePixelRatio,
-                      height: frame.height / devicePixelRatio,
+                      width: size.width / devicePixelRatio,
+                      height: size.height / devicePixelRatio,
                       child: id == null
                           ? null
                           : Texture(
@@ -98,7 +102,7 @@ class _V4L2ViewState extends State<V4L2View> {
   @override
   void didUpdateWidget(covariant V4L2View oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.frame != oldWidget.frame) {
+    if (widget.buffer != oldWidget.buffer) {
       _updateTexture();
     }
   }
@@ -119,18 +123,13 @@ class _V4L2ViewState extends State<V4L2View> {
 
   void _updateTexture() async {
     final id = _id.value;
-    final frame = widget.frame;
-    if (id == null || frame == null || _updating) {
+    final buffer = widget.buffer;
+    if (id == null || buffer == null || _updating) {
       return;
     }
     _updating = true;
     try {
-      final textuerArgs = V4L2TextureArgs(
-        bufferArgs: frame.value,
-        widthArgs: frame.width,
-        heightArgs: frame.height,
-      );
-      await _api.updateTexture(id, textuerArgs);
+      await _api.updateTexture(id, buffer.value);
       _frames++;
     } finally {
       _updating = false;

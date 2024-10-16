@@ -8,57 +8,6 @@
 
 G_BEGIN_DECLS
 
-/**
- * HybridV4l2V4L2TextureArgs:
- *
- */
-
-G_DECLARE_FINAL_TYPE(HybridV4l2V4L2TextureArgs, hybrid_v4l2_v4_l2_texture_args, HYBRID_V4L2, V4_L2_TEXTURE_ARGS, GObject)
-
-/**
- * hybrid_v4l2_v4_l2_texture_args_new:
- * buffer_args: field in this object.
- * buffer_args_length: length of @buffer_args.
- * width_args: field in this object.
- * height_args: field in this object.
- *
- * Creates a new #V4L2TextureArgs object.
- *
- * Returns: a new #HybridV4l2V4L2TextureArgs
- */
-HybridV4l2V4L2TextureArgs* hybrid_v4l2_v4_l2_texture_args_new(const uint8_t* buffer_args, size_t buffer_args_length, int64_t width_args, int64_t height_args);
-
-/**
- * hybrid_v4l2_v4_l2_texture_args_get_buffer_args
- * @object: a #HybridV4l2V4L2TextureArgs.
- * @length: location to write the length of this value.
- *
- * Gets the value of the bufferArgs field of @object.
- *
- * Returns: the field value.
- */
-const uint8_t* hybrid_v4l2_v4_l2_texture_args_get_buffer_args(HybridV4l2V4L2TextureArgs* object, size_t* length);
-
-/**
- * hybrid_v4l2_v4_l2_texture_args_get_width_args
- * @object: a #HybridV4l2V4L2TextureArgs.
- *
- * Gets the value of the widthArgs field of @object.
- *
- * Returns: the field value.
- */
-int64_t hybrid_v4l2_v4_l2_texture_args_get_width_args(HybridV4l2V4L2TextureArgs* object);
-
-/**
- * hybrid_v4l2_v4_l2_texture_args_get_height_args
- * @object: a #HybridV4l2V4L2TextureArgs.
- *
- * Gets the value of the heightArgs field of @object.
- *
- * Returns: the field value.
- */
-int64_t hybrid_v4l2_v4_l2_texture_args_get_height_args(HybridV4l2V4L2TextureArgs* object);
-
 G_DECLARE_FINAL_TYPE(HybridV4l2V4L2ViewHostAPIRegisterTextureResponse, hybrid_v4l2_v4_l2_view_host_a_p_i_register_texture_response, HYBRID_V4L2, V4_L2_VIEW_HOST_A_P_I_REGISTER_TEXTURE_RESPONSE, GObject)
 
 /**
@@ -135,7 +84,7 @@ HybridV4l2V4L2ViewHostAPIUnregisterTextureResponse* hybrid_v4l2_v4_l2_view_host_
  */
 typedef struct {
   HybridV4l2V4L2ViewHostAPIRegisterTextureResponse* (*register_texture)(gpointer user_data);
-  HybridV4l2V4L2ViewHostAPIUpdateTextureResponse* (*update_texture)(int64_t id_args, HybridV4l2V4L2TextureArgs* texture_args, gpointer user_data);
+  HybridV4l2V4L2ViewHostAPIUpdateTextureResponse* (*update_texture)(int64_t id_args, const uint8_t* buffer_args, size_t buffer_args_length, gpointer user_data);
   HybridV4l2V4L2ViewHostAPIUnregisterTextureResponse* (*unregister_texture)(int64_t id_args, gpointer user_data);
 } HybridV4l2V4L2ViewHostAPIVTable;
 

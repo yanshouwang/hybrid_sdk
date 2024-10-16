@@ -11,21 +11,9 @@ import 'package:pigeon/pigeon.dart';
     gobjectOptions: GObjectOptions(),
   ),
 )
-class V4L2TextureArgs {
-  final Uint8List bufferArgs;
-  final int widthArgs;
-  final int heightArgs;
-
-  V4L2TextureArgs(
-    this.bufferArgs,
-    this.widthArgs,
-    this.heightArgs,
-  );
-}
-
 @HostApi()
 abstract class V4L2ViewHostAPI {
   int registerTexture();
-  void updateTexture(int idArgs, V4L2TextureArgs textureArgs);
+  void updateTexture(int idArgs, Uint8List bufferArgs);
   void unregisterTexture(int idArgs);
 }

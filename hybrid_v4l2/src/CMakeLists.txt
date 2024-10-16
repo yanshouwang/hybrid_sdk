@@ -5,6 +5,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(hybrid_v4l2_library VERSION 0.0.1 LANGUAGES C)
 
+pkg_check_modules(JPEG REQUIRED IMPORTED_TARGET libjpeg)
+
 add_library(hybrid_v4l2 SHARED
   "hybrid_v4l2.c"
 )
@@ -16,5 +18,4 @@ set_target_properties(hybrid_v4l2 PROPERTIES
 
 target_compile_definitions(hybrid_v4l2 PUBLIC DART_SHARED_LIB)
 
-pkg_check_modules(JPEG REQUIRED IMPORTED_TARGET libjpeg)
 target_link_libraries(hybrid_v4l2 PRIVATE PkgConfig::JPEG)

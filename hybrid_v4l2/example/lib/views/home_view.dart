@@ -14,11 +14,12 @@ class HomeView extends StatelessWidget {
     final format = viewModel.format;
     final size = viewModel.size;
     final streaming = viewModel.streaming;
-    final frame = viewModel.frame;
+    final buffer = viewModel.buffer;
     return Scaffold(
       extendBody: true,
       body: V4L2View(
-        frame: frame,
+        size: size,
+        buffer: buffer,
         fit: BoxFit.cover,
         fpsVisible: true,
       ),
@@ -70,8 +71,6 @@ class HomeView extends StatelessWidget {
         onPressed: () {
           if (streaming) {
             viewModel.stopStreaming();
-            viewModel.close();
-            viewModel.open();
           } else {
             viewModel.startStreaming();
           }

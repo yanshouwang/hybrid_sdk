@@ -58,32 +58,27 @@ hybrid_v4l2_plugin_register_texture(gpointer user_data) {
 }
 
 static HybridV4l2V4L2ViewHostAPIUpdateTextureResponse *
-hybrid_v4l2_plugin_update_texture(int64_t id_args,
-                                  HybridV4l2V4L2TextureArgs *texture_args,
+hybrid_v4l2_plugin_update_texture(int64_t id_args, const uint8_t *buffer_args,
+                                  size_t buffer_args_length,
                                   gpointer user_data) {
   HybridV4l2Plugin *self = HYBRID_V4L2_PLUGIN(user_data);
   FlTextureRegistrar *registrar = self->registrar;
   FlTexture *texture = reinterpret_cast<FlTexture *>(
       g_hash_table_lookup(self->textures, GINT_TO_POINTER(id_args)));
-  size_t length;
-  const uint8_t *buffer_args =
-      hybrid_v4l2_v4_l2_texture_args_get_buffer_args(texture_args, &length);
-  int64_t width_args =
-      hybrid_v4l2_v4_l2_texture_args_get_width_args(texture_args);
-  int64_t height_args =
-      hybrid_v4l2_v4_l2_texture_args_get_height_args(texture_args);
-  uint8_t *buffer = (uint8_t *)malloc(length);
-  memcpy(buffer, buffer_args, length);
-  uint32_t width = static_cast<uint32_t>(width_args);
-  uint32_t height = static_cast<uint32_t>(height_args);
-  hybrid_v4l2_texture_update(registrar, texture, buffer, width, height);
+  int err =
+      hybrid_v4l2_texture_update(texture, buffer_args, buffer_args_length);
+  if (err) {
+    return hybrid_v4l2_v4_l2_view_host_a_p_i_update_texture_response_new_error(
+        "hybrid_v4l2_texture_update", "update texture failed", NULL);
+  }
   gboolean marked =
       fl_texture_registrar_mark_texture_frame_available(registrar, texture);
   if (marked) {
     return hybrid_v4l2_v4_l2_view_host_a_p_i_update_texture_response_new();
   } else {
     return hybrid_v4l2_v4_l2_view_host_a_p_i_update_texture_response_new_error(
-        "hybrid_v4l2_texture_update", "update texture failed", NULL);
+        "hybrid_v4l2_texture_update", "mark texture frame available failed",
+        NULL);
   }
 }
 

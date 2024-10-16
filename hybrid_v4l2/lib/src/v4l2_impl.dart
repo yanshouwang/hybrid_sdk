@@ -273,12 +273,13 @@ final class V4L2Impl with TypeLogger implements V4L2 {
 
   @override
   void qbuf(int fd, V4L2Buffer buf) {
-    logger.info('ioctl VIDIOC_QBUF');
     if (buf is! _ManagedV4L2BufferImpl) {
       throw TypeError();
     }
+    logger.info('BEGIN ioctl VIDIOC_QBUF');
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_QBUF, buf.ptr);
+    logger.info('END ioctl VIDIOC_QBUF $err');
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_QBUF` faild, $err.');
     }
@@ -286,12 +287,13 @@ final class V4L2Impl with TypeLogger implements V4L2 {
 
   @override
   V4L2Buffer dqbuf(int fd, V4L2BufType type, V4L2Memory memory) {
-    logger.info('ioctl VIDIOC_DQBUF');
     final buf = _ManagedV4L2BufferImpl()
       ..type = type
       ..memory = memory;
+    logger.info('BEGIN ioctl VIDIOC_DQBUF');
     final err = ffi.libHybridV4L2
         .v4l2_ioctlV4l2v4l2_bufferPtr(fd, ffi.VIDIOC_DQBUF, buf.ptr);
+    logger.info('END ioctl VIDIOC_DQBUF $err');
     if (err != 0) {
       throw V4L2Error('ioctl `VIDIOC_DQBUF` faild, $err.');
     }
@@ -504,11 +506,12 @@ final class V4L2Impl with TypeLogger implements V4L2 {
 
   @override
   void select(int fd, V4L2Timeval timeout) {
-    logger.info('select');
     if (timeout is! _ManagedV4L2TimevalImpl) {
       throw TypeError();
     }
+    logger.info('BEGIN select');
     final err = ffi.libHybridV4L2.v4l2_select(fd, timeout.ptr);
+    logger.info('END select $err');
     if (err <= 0) {
       throw V4L2Error('select failed, $err.');
     }
