@@ -14,10 +14,13 @@ typedef struct {
   FlPixelBufferTextureClass parent_class;
 } HybridV4l2TextureClass;
 
-GType hybrid_v4l2_texture_get_type();
+HybridV4l2Texture *hybrid_v4l2_texture_new();
 
-int hybrid_v4l2_texture_update(FlTexture *texture, const uint8_t *buffer,
-                               size_t buffer_size);
+gboolean hybrid_v4l2_texture_mark_frame_available(FlTexture *texture,
+                                                  const uint8_t *buffer,
+                                                  size_t buffer_size,
+                                                  uint32_t width,
+                                                  uint32_t height);
 
 G_END_DECLS
 

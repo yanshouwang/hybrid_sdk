@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
 
-class TestV4L2RGBXBuffer implements V4L2RGBXBuffer {
+class TestV4L2RGBXBuffer implements V4L2RGBABuffer {
   @override
   final Uint8List value;
   @override

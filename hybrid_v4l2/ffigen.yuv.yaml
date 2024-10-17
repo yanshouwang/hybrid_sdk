@@ -1,0 +1,55 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: LibYUV
+description: |
+  Bindings for `libyuv`.
+output: 'lib/src/ffi.yuv.dart'
+compiler-opts:
+  - '-I/usr/include'
+headers:
+  entry-points:
+    - '/usr/include/libyuv.h'
+    - '/usr/include/libyuv/basic_types.h'
+    - '/usr/include/libyuv/compare.h'
+    - '/usr/include/libyuv/convert.h'
+    - '/usr/include/libyuv/convert_argb.h'
+    - '/usr/include/libyuv/convert_from.h'
+    - '/usr/include/libyuv/convert_from_argb.h'
+    - '/usr/include/libyuv/cpu_id.h'
+    - '/usr/include/libyuv/mjpeg_decoder.h'
+    - '/usr/include/libyuv/planar_functions.h'
+    - '/usr/include/libyuv/rotate.h'
+    - '/usr/include/libyuv/rotate_argb.h'
+    - '/usr/include/libyuv/row.h'
+    - '/usr/include/libyuv/scale.h'
+    - '/usr/include/libyuv/scale_argb.h'
+    - '/usr/include/libyuv/scale_row.h'
+    - '/usr/include/libyuv/scale_uv.h'
+    - '/usr/include/libyuv/version.h'
+    - '/usr/include/libyuv/video_common.h'
+  include-directives:
+    - '/usr/include/libyuv.h'
+    - '/usr/include/libyuv/basic_types.h'
+    - '/usr/include/libyuv/compare.h'
+    - '/usr/include/libyuv/convert.h'
+    - '/usr/include/libyuv/convert_argb.h'
+    - '/usr/include/libyuv/convert_from.h'
+    - '/usr/include/libyuv/convert_from_argb.h'
+    - '/usr/include/libyuv/cpu_id.h'
+    - '/usr/include/libyuv/mjpeg_decoder.h'
+    - '/usr/include/libyuv/planar_functions.h'
+    - '/usr/include/libyuv/rotate.h'
+    - '/usr/include/libyuv/rotate_argb.h'
+    - '/usr/include/libyuv/row.h'
+    - '/usr/include/libyuv/scale.h'
+    - '/usr/include/libyuv/scale_argb.h'
+    - '/usr/include/libyuv/scale_row.h'
+    - '/usr/include/libyuv/scale_uv.h'
+    - '/usr/include/libyuv/version.h'
+    - '/usr/include/libyuv/video_common.h'
+preamble: |
+  // ignore_for_file: always_specify_types
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+comments:
+  style: any
+  length: full

@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:isolate';
-import 'dart:typed_data';
-// import 'dart:math' as math;
 
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
@@ -19,7 +17,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
   int? _fd;
   Token? _streamingToken;
-  Uint8List? _buffer;
+  V4L2RGBABuffer? _buffer;
 
   HomeViewModel()
       : v4l2 = V4L2(),
@@ -55,7 +53,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
   }
 
   bool get streaming => _streamingToken != null;
-  Uint8List? get buffer => _buffer;
+  V4L2RGBABuffer? get buffer => _buffer;
 
   @override
   void dispose() {
@@ -65,51 +63,6 @@ class HomeViewModel extends ViewModel with TypeLogger {
     close();
     super.dispose();
   }
-
-  // void startStreaming() async {
-  //   var token = _streamingToken;
-  //   if (token != null) {
-  //     throw ArgumentError.value(token);
-  //   }
-  //   _streamingToken = token = Token();
-  //   notifyListeners();
-  //   final random = math.Random();
-  //   const width = 1900;
-  //   const height = 1080;
-  //   final element1 = random.nextInt(255);
-  //   final element2 = random.nextInt(255);
-  //   final elements1 = List.generate(
-  //     width * height * 4,
-  //     (i) => i % 4 == 3 ? 0xff : element1,
-  //   );
-  //   final elements2 = List.generate(
-  //     width * height * 4,
-  //     (i) => i % 4 == 3 ? 0xff : element2,
-  //   );
-  //   final value1 = Uint8List.fromList(elements1);
-  //   final value2 = Uint8List.fromList(elements2);
-  //   while (token.isNotCancelled) {
-  //     _frame = TestV4L2RGBXBuffer(
-  //       value: _frame?.value == value1 ? value2 : value1,
-  //       width: width,
-  //       height: height,
-  //     );
-  //     notifyListeners();
-  //     await Future.delayed(
-  //       const Duration(
-  //         milliseconds: 10,
-  //       ),
-  //     );
-  //   }
-  // }
-
-  // void stopStreaming() {
-  //   final token = ArgumentError.checkNotNull(_streamingToken);
-  //   token.cancel();
-  //   _streamingToken = null;
-  //   _frame = null;
-  //   notifyListeners();
-  // }
 
   void open() {
     final fd = v4l2.open(
@@ -240,13 +193,14 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
       try {
         final mappedBuf = mappedBufs[buf.index];
-        _buffer = mappedBuf.value;
+        _buffer = v4l2.mjpegToRGBA(mappedBuf);
         notifyListeners();
       } catch (e) {
         logger.warning('MJPEG2RGBX failed, $e.');
       } finally {
         v4l2.qbuf(fd, buf);
       }
+      Future.delayed(const Duration(milliseconds: 10));
     }
     v4l2.streamoff(fd, V4L2BufType.videoCapture);
     for (var mappedBuf in mappedBufs) {
@@ -340,7 +294,7 @@ Future<SendPort> _sendPort = () async {
         );
       });
       final v4l2 = V4L2();
-      final timeout = V4L2Timeval();
+
       final insideReceivePort = ReceivePort()
         ..listen(
           (message) async {
@@ -348,7 +302,7 @@ Future<SendPort> _sendPort = () async {
               final id = message.id;
               final fd = message.fd;
               try {
-                timeout
+                final timeout = V4L2Timeval()
                   ..tvSec = 2
                   ..tvUsec = 0;
                 v4l2.select(fd, timeout);

@@ -1,31 +1,31 @@
-import 'v4l2_buf_type.dart';
-import 'v4l2_buffer.dart';
-import 'v4l2_capability.dart';
-import 'v4l2_cid.dart';
-import 'v4l2_control.dart';
-import 'v4l2_crop.dart';
-import 'v4l2_cropcap.dart';
-import 'v4l2_ctrl_class.dart';
-import 'v4l2_ctrl_which.dart';
-import 'v4l2_ext_control.dart';
-import 'v4l2_ext_controls.dart';
-import 'v4l2_fmtdesc.dart';
-import 'v4l2_format.dart';
-import 'v4l2_frmsize.dart';
-import 'v4l2_impl.dart';
-import 'v4l2_input.dart';
-import 'v4l2_map.dart';
-import 'v4l2_mapped_buffer.dart';
-import 'v4l2_memory.dart';
-import 'v4l2_o.dart';
-import 'v4l2_pix_fmt.dart';
-import 'v4l2_prot.dart';
-import 'v4l2_query_ext_ctrl.dart';
-import 'v4l2_queryctrl.dart';
-import 'v4l2_querymenu.dart';
-import 'v4l2_requestbuffers.dart';
-import 'v4l2_rgbx_buffer.dart';
-import 'v4l2_timeval.dart';
+import 'buf_type.dart';
+import 'buffer.dart';
+import 'capability.dart';
+import 'cid.dart';
+import 'control.dart';
+import 'crop.dart';
+import 'cropcap.dart';
+import 'ctrl_class.dart';
+import 'ctrl_which.dart';
+import 'ext_control.dart';
+import 'ext_controls.dart';
+import 'fmtdesc.dart';
+import 'format.dart';
+import 'frmsize.dart';
+import 'impl.dart';
+import 'input.dart';
+import 'map.dart';
+import 'mapped_buffer.dart';
+import 'memory.dart';
+import 'o.dart';
+import 'pix_fmt.dart';
+import 'prot.dart';
+import 'query_ext_ctrl.dart';
+import 'queryctrl.dart';
+import 'querymenu.dart';
+import 'requestbuffers.dart';
+import 'rgba_buffer.dart';
+import 'timeval.dart';
 
 /// Video for Linux API
 abstract interface class V4L2 {
@@ -135,5 +135,5 @@ abstract interface class V4L2 {
   /// v4l2-select - Synchronous I/O multiplexing
   void select(int fd, V4L2Timeval timeout);
 
-  V4L2RGBXBuffer mjpeg2RGBX(V4L2MappedBuffer buf);
+  V4L2RGBABuffer mjpegToRGBA(V4L2MappedBuffer buf);
 }

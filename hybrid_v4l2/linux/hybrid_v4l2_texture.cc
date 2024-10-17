@@ -1,7 +1,6 @@
 #include "hybrid_v4l2_texture.h"
 
 #include <flutter_linux/flutter_linux.h>
-#include <libyuv.h>
 
 #include "hybrid_v4l2_api.h"
 
@@ -12,19 +11,19 @@
 struct _HybridV4l2Texture {
   FlPixelBufferTexture parent_instance;
 
-  uint8_t *buffer;
+  const uint8_t *buffer;
   size_t buffer_size;
-  GMutex buffer_mutex;
-  uint8_t *out_buffer;
   int width;
   int height;
+  GMutex mutex;
+  uint8_t *out_buffer;
 };
 
 G_DEFINE_TYPE(HybridV4l2Texture, hybrid_v4l2_texture,
               fl_pixel_buffer_texture_get_type())
 
 static void hybrid_v4l2_texture_init(HybridV4l2Texture *self) {
-  g_mutex_init(&self->buffer_mutex);
+  g_mutex_init(&self->mutex);
 }
 
 static gboolean hybrid_v4l2_texture_copy_pixels(FlPixelBufferTexture *texture,
@@ -40,54 +39,41 @@ static gboolean hybrid_v4l2_texture_copy_pixels(FlPixelBufferTexture *texture,
   // So you may do some format conversion first if your original pixel
   // buffer is not in RGBA format.
   HybridV4l2Texture *self = HYBRID_V4L2_TEXTURE(texture);
-  g_mutex_lock(&self->buffer_mutex);
-  int code = libyuv::MJPGSize(self->buffer, self->buffer_size, &self->width,
-                              &self->height);
-  int stride = self->width * 4;
-  uint8_t *argb = new uint8_t[self->width * self->height * 4];
-  code =
-      libyuv::MJPGToARGB(self->buffer, self->buffer_size, argb, stride,
-                         self->width, self->height, self->width, self->height);
-  if (self->out_buffer != NULL) {
-    delete self->out_buffer;
-  }
-  self->out_buffer = new uint8_t[self->width * self->height * 4];
-  code = libyuv::ARGBToRGBA(argb, stride, self->out_buffer, stride, self->width,
-                            self->height);
-  delete[] argb;
-  delete[] self->buffer;
-  self->buffer = NULL;
-  g_mutex_unlock(&self->buffer_mutex);
-  if (code == 0) {
+  if (self->buffer) {
     // Directly return pointer to your pixel buffer here.
     // Flutter takes content of your pixel buffer after this function
     // is finished. So you must make the buffer live long enough until
     // next tick of Render Thread.
     // If it is hard to manage lifetime of your pixel buffer, you should
     // take look into #FlTextureGL.
+    g_mutex_lock(&self->mutex);
+    if (self->out_buffer) {
+      delete[] self->out_buffer;
+    }
+    self->out_buffer = new uint8_t[self->buffer_size];
+    memcpy(self->out_buffer, self->buffer, self->buffer_size);
     *out_buffer = self->out_buffer;
     *width = self->width;
     *height = self->height;
+    delete[] self->buffer;
+    self->buffer = NULL;
+    g_mutex_unlock(&self->mutex);
     return TRUE;
   } else {
     // set @error to report failure.
-    *error =
-        g_error_new(HYBRID_V4L2_TEXTURE_ERROR, code, "MJPEGToRGBA failed.");
     return FALSE;
   }
 }
 
 static void hybrid_v4l2_texture_dispose(GObject *object) {
   HybridV4l2Texture *self = HYBRID_V4L2_TEXTURE(object);
-  g_mutex_lock(&self->buffer_mutex);
   if (self->buffer) {
-    delete self->buffer;
+    g_mutex_lock(&self->mutex);
+    delete[] self->buffer;
+    self->buffer = NULL;
+    g_mutex_unlock(&self->mutex);
   }
-  if (self->out_buffer) {
-    delete self->out_buffer;
-  }
-  g_mutex_unlock(&self->buffer_mutex);
-  g_mutex_clear(&self->buffer_mutex);
+  g_mutex_clear(&self->mutex);
 
   G_OBJECT_CLASS(hybrid_v4l2_texture_parent_class)->dispose(object);
 }
@@ -98,19 +84,27 @@ static void hybrid_v4l2_texture_class_init(HybridV4l2TextureClass *klass) {
       hybrid_v4l2_texture_copy_pixels;
 }
 
-int hybrid_v4l2_texture_update(FlTexture *texture, const uint8_t *buffer,
-                               size_t buffer_size) {
+HybridV4l2Texture *hybrid_v4l2_texture_new() {
+  return HYBRID_V4L2_TEXTURE(
+      g_object_new(hybrid_v4l2_texture_get_type(), NULL));
+}
+
+gboolean hybrid_v4l2_texture_mark_frame_available(FlTexture *texture,
+                                                  const uint8_t *buffer,
+                                                  size_t buffer_size,
+                                                  uint32_t width,
+                                                  uint32_t height) {
   HybridV4l2Texture *self = HYBRID_V4L2_TEXTURE(texture);
-  int code;
-  g_mutex_lock(&self->buffer_mutex);
   if (self->buffer) {
-    code = 1;
+    delete[] buffer;
+    return FALSE;
   } else {
-    self->buffer = new uint8_t[buffer_size];
-    memcpy(self->buffer, buffer, buffer_size);
+    g_mutex_lock(&self->mutex);
+    self->buffer = buffer;
     self->buffer_size = buffer_size;
-    code = 0;
+    self->width = width;
+    self->height = height;
+    g_mutex_unlock(&self->mutex);
+    return TRUE;
   }
-  g_mutex_unlock(&self->buffer_mutex);
-  return code;
 }

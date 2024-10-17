@@ -6,7 +6,7 @@ import 'package:hybrid_v4l2/hybrid_v4l2.dart';
 import 'package:texture_rgba_renderer/texture_rgba_renderer_platform_interface.dart';
 
 class TextureView extends StatefulWidget {
-  final V4L2RGBXBuffer? frame;
+  final V4L2RGBABuffer? frame;
 
   const TextureView({
     super.key,
