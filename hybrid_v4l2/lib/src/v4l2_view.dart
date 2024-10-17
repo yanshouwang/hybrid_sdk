@@ -1,14 +1,14 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
 
 import 'v4l2_api.dart';
 import 'v4l2_frmsize.dart';
-import 'v4l2_mapped_buffer.dart';
 
 class V4L2View extends StatefulWidget {
   final V4L2Frmsize? size;
-  final V4L2MappedBuffer? buffer;
+  final Uint8List? buffer;
   final BoxFit fit;
   final bool fpsVisible;
   final TextStyle? fpsStyle;
@@ -129,7 +129,7 @@ class _V4L2ViewState extends State<V4L2View> {
     }
     _updating = true;
     try {
-      await _api.updateTexture(id, buffer.value);
+      await _api.updateTexture(id, buffer);
       _frames++;
     } finally {
       _updating = false;

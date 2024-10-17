@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:isolate';
+import 'dart:typed_data';
 // import 'dart:math' as math;
-// import 'dart:typed_data';
 
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
@@ -19,7 +19,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
   int? _fd;
   Token? _streamingToken;
-  V4L2MappedBuffer? _buffer;
+  Uint8List? _buffer;
 
   HomeViewModel()
       : v4l2 = V4L2(),
@@ -55,7 +55,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
   }
 
   bool get streaming => _streamingToken != null;
-  V4L2MappedBuffer? get buffer => _buffer;
+  Uint8List? get buffer => _buffer;
 
   @override
   void dispose() {
@@ -239,7 +239,8 @@ class HomeViewModel extends ViewModel with TypeLogger {
       final buf = v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
 
       try {
-        _buffer = mappedBufs[buf.index];
+        final mappedBuf = mappedBufs[buf.index];
+        _buffer = mappedBuf.value;
         notifyListeners();
       } catch (e) {
         logger.warning('MJPEG2RGBX failed, $e.');
