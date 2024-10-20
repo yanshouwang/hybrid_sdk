@@ -5,33 +5,27 @@ import 'dart:isolate';
 import 'package:clover/clover.dart';
 import 'package:hybrid_logging/hybrid_logging.dart';
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
-import 'package:hybrid_v4l2_example/models.dart';
 import 'package:hybrid_v4l2_example/util.dart';
 import 'package:logging/logging.dart';
 
 class HomeViewModel extends ViewModel with TypeLogger {
-  final V4L2 v4l2;
-
-  List<FormatDescriptor> _descriptors;
+  final V4L2 _v4l2;
+  List<V4L2PixFmt> _formats;
   V4L2Format? _fmt;
+  List<V4L2Frmsize> _sizes;
 
-  int? _fd;
-  Token? _streamingToken;
-  V4L2RGBABuffer? _buffer;
+  Token? _token;
+  V4L2Frame? _frame;
 
   HomeViewModel()
-      : v4l2 = V4L2(),
-        _descriptors = [] {
-    open();
+      : _v4l2 = V4L2(),
+        _formats = [],
+        _sizes = [] {
+    _init();
   }
 
-  List<V4L2PixFmt> get formats =>
-      List.unmodifiable(_descriptors.map((descriptor) => descriptor.format));
-  List<V4L2Frmsize> get sizes => List.unmodifiable(format == null
-      ? []
-      : _descriptors
-          .firstWhere((descriptor) => descriptor.format == format)
-          .sizes);
+  List<V4L2PixFmt> get formats => List.unmodifiable(_formats);
+  List<V4L2Frmsize> get sizes => List.unmodifiable(_sizes);
 
   V4L2PixFmt? get format {
     final fmt = _fmt;
@@ -52,35 +46,77 @@ class HomeViewModel extends ViewModel with TypeLogger {
         .firstWhere((size) => size.width == width && size.height == height);
   }
 
-  bool get streaming => _streamingToken != null;
-  V4L2RGBABuffer? get buffer => _buffer;
+  bool get streaming => _token != null;
+  V4L2Frame? get frame => _frame;
 
   @override
   void dispose() {
     if (streaming) {
       stopStreaming();
     }
-    close();
     super.dispose();
   }
 
-  void open() {
-    final fd = v4l2.open(
-      '/dev/video0',
-      [V4L2O.rdwr, V4L2O.nonblock],
-    );
-    final descriptors = <FormatDescriptor>[];
-    final fmts = v4l2.enumFmt(fd, V4L2BufType.videoCapture);
-    for (var fmt in fmts) {
-      final frmsizes = v4l2.enumFramesizes(fd, V4L2PixFmt.mjpeg);
-      final descriptor = FormatDescriptor(fmt.pixelformat, frmsizes);
-      descriptors.add(descriptor);
-    }
-    final fmt = v4l2.gFmt(fd, V4L2BufType.videoCapture);
+  void setFormat(V4L2PixFmt format) {
+    final fd = _open();
+    final fmt = ArgumentError.checkNotNull(_fmt);
+    fmt.pix.pixelformat = format;
+    _v4l2.sFmt(fd, fmt);
+    _close(fd);
+    notifyListeners();
+  }
 
-    _fd = fd;
-    _descriptors = descriptors;
+  void setSize(V4L2Frmsize size) {
+    final fd = _open();
+    final fmt = ArgumentError.checkNotNull(_fmt);
+    fmt.pix.width = size.width;
+    fmt.pix.height = size.height;
+    _v4l2.sFmt(fd, fmt);
+    _close(fd);
+    notifyListeners();
+  }
+
+  void beginStreaming() async {
+    var token = _token;
+    if (token != null) {
+      throw ArgumentError.value(token);
+    }
+
+    _token = token = Token();
+    notifyListeners();
+
+    final fd = _open();
+    await beginStreamingAsync(fd);
+
+    while (token.isNotCancelled) {
+      _frame = await readAsync(fd);
+      notifyListeners();
+    }
+
+    await endStreamingAsync(fd);
+    _close(fd);
+    _frame = null;
+    notifyListeners();
+  }
+
+  void stopStreaming() async {
+    final token = ArgumentError.checkNotNull(_token);
+    token.cancel();
+
+    _token = null;
+    notifyListeners();
+  }
+
+  void _init() {
+    final fd = _open();
+    final fmts = _v4l2.enumFmt(fd, V4L2BufType.videoCapture);
+    final fmt = _v4l2.gFmt(fd, V4L2BufType.videoCapture);
+    final frmsizes = _v4l2.enumFramesizes(fd, fmt.pix.pixelformat);
+    _close(fd);
+
+    _formats = fmts.map((fmt) => fmt.pixelformat).toList();
     _fmt = fmt;
+    _sizes = frmsizes;
     notifyListeners();
 
 //     final cap = v4l2.querycap(fd);
@@ -116,142 +152,103 @@ class HomeViewModel extends ViewModel with TypeLogger {
 // ''');
   }
 
-  void close() {
-    final fd = _fd;
-    if (fd == null) {
-      throw ArgumentError.notNull();
-    }
-    v4l2.close(fd);
-
-    _fd = null;
-    _descriptors = [];
-    _fmt = null;
-    notifyListeners();
+  int _open() {
+    return _v4l2.open(
+      '/dev/video0',
+      [V4L2O.rdwr, V4L2O.nonblock],
+    );
   }
 
-  void setFormat(V4L2PixFmt format) {
-    final fd = _fd;
-    final fmt = _fmt;
-    if (fd == null || fmt == null) {
-      throw ArgumentError.notNull();
-    }
-    fmt.pix.pixelformat = format;
-    v4l2.sFmt(fd, fmt);
-    notifyListeners();
-  }
-
-  void setSize(V4L2Frmsize size) {
-    final fd = _fd;
-    final fmt = _fmt;
-    if (fd == null || fmt == null) {
-      throw ArgumentError.notNull();
-    }
-    fmt.pix.width = size.width;
-    fmt.pix.height = size.height;
-    v4l2.sFmt(fd, fmt);
-    notifyListeners();
-  }
-
-  void startStreaming() async {
-    final fd = ArgumentError.checkNotNull(_fd);
-    var token = _streamingToken;
-    if (token != null) {
-      throw ArgumentError.value(token);
-    }
-
-    final mappedBufs = <V4L2MappedBuffer>[];
-    final req = V4L2Requestbuffers()
-      ..count = 4
-      ..type = V4L2BufType.videoCapture
-      ..memory = V4L2Memory.mmap;
-    v4l2.reqbufs(fd, req);
-    for (var i = 0; i < req.count; i++) {
-      final buf = v4l2.querybuf(
-        fd,
-        V4L2BufType.videoCapture,
-        V4L2Memory.mmap,
-        i,
-      );
-      final mappedBuf = v4l2.mmap(
-        fd,
-        buf.offset,
-        buf.length,
-        [V4L2Prot.read, V4L2Prot.write],
-        [V4L2Map.shared],
-      );
-      mappedBufs.add(mappedBuf);
-      v4l2.qbuf(fd, buf);
-    }
-    v4l2.streamon(fd, V4L2BufType.videoCapture);
-
-    _streamingToken = token = Token();
-    notifyListeners();
-
-    while (token.isNotCancelled) {
-      await _select();
-      final buf = v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
-
-      try {
-        final mappedBuf = mappedBufs[buf.index];
-        _buffer = v4l2.mjpegToRGBA(mappedBuf);
-        notifyListeners();
-      } catch (e) {
-        logger.warning('MJPEG2RGBX failed, $e.');
-      } finally {
-        v4l2.qbuf(fd, buf);
-      }
-      Future.delayed(const Duration(milliseconds: 10));
-    }
-    v4l2.streamoff(fd, V4L2BufType.videoCapture);
-    for (var mappedBuf in mappedBufs) {
-      v4l2.munmap(mappedBuf);
-    }
-    mappedBufs.clear();
-
-    _buffer = null;
-    notifyListeners();
-  }
-
-  void stopStreaming() {
-    final token = ArgumentError.checkNotNull(_streamingToken);
-    token.cancel();
-
-    _streamingToken = null;
-    notifyListeners();
-  }
-
-  Future<void> _select() async {
-    final fd = _fd;
-    if (fd == null) {
-      return;
-    }
-    final sendPort = await _sendPort;
-    final id = _id++;
-    final completer = Completer<void>();
-    _completers[id] = completer;
-    final command = _SelectCommand(id, fd);
-    sendPort.send(command);
-    return completer.future;
+  void _close(int fd) {
+    _v4l2.close(fd);
   }
 }
 
-class _SelectCommand {
+Future<void> beginStreamingAsync(int fd) async {
+  final sendPort = await _sendPort;
+  final id = _id++;
+  final completer = Completer<void>();
+  _completers[id] = completer;
+  final command = _BeginStreamingCommand(id, fd);
+  sendPort.send(command);
+  return completer.future;
+}
+
+Future<V4L2Frame> readAsync(int fd) async {
+  final sendPort = await _sendPort;
+  final id = _id++;
+  final completer = Completer<V4L2Frame>();
+  _completers[id] = completer;
+  final command = _ReadCommand(id, fd);
+  sendPort.send(command);
+  return completer.future;
+}
+
+Future<void> endStreamingAsync(int fd) async {
+  final sendPort = await _sendPort;
+  final id = _id++;
+  final completer = Completer<void>();
+  _completers[id] = completer;
+  final command = _EndStreamingCommand(id, fd);
+  sendPort.send(command);
+  return completer.future;
+}
+
+abstract base class _Command {
   final int id;
-  final int fd;
 
-  const _SelectCommand(this.id, this.fd);
+  const _Command(this.id);
 }
 
-class _SelectReply {
+abstract base class _Reply {
   final int id;
   final Object? error;
 
-  const _SelectReply(this.id, this.error);
+  const _Reply(
+    this.id,
+    this.error,
+  );
+}
+
+final class _BeginStreamingCommand extends _Command {
+  final int fd;
+
+  const _BeginStreamingCommand(super.id, this.fd);
+}
+
+final class _BeginStreamingReply extends _Reply {
+  const _BeginStreamingReply(super.id, super.error);
+}
+
+final class _ReadCommand extends _Command {
+  final int fd;
+
+  const _ReadCommand(super.id, this.fd);
+}
+
+final class _ReadReply extends _Reply {
+  final V4L2Frame? frame;
+
+  const _ReadReply(
+    super.id,
+    this.frame,
+    super.error,
+  );
+}
+
+final class _EndStreamingCommand extends _Command {
+  final int fd;
+
+  const _EndStreamingCommand(super.id, this.fd);
+}
+
+final class _EndStreamingReply extends _Reply {
+  const _EndStreamingReply(super.id, super.error);
 }
 
 var _id = 0;
 
-final _completers = <int, Completer<void>>{};
+final _completers = <int, Completer>{};
 
 Future<SendPort> _sendPort = () async {
   final completer = Completer<SendPort>();
@@ -260,7 +257,32 @@ Future<SendPort> _sendPort = () async {
       (message) {
         if (message is SendPort) {
           completer.complete(message);
-        } else if (message is _SelectReply) {
+        } else if (message is _BeginStreamingReply) {
+          final id = message.id;
+          final error = message.error;
+          final completer = _completers.remove(id);
+          if (completer == null) {
+            return;
+          }
+          if (error == null) {
+            completer.complete();
+          } else {
+            completer.completeError(error);
+          }
+        } else if (message is _ReadReply) {
+          final id = message.id;
+          final frame = message.frame;
+          final error = message.error;
+          final completer = _completers.remove(id);
+          if (completer == null) {
+            return;
+          }
+          if (error == null) {
+            completer.complete(frame);
+          } else {
+            completer.completeError(error);
+          }
+        } else if (message is _EndStreamingReply) {
           final id = message.id;
           final error = message.error;
           final completer = _completers.remove(id);
@@ -294,11 +316,45 @@ Future<SendPort> _sendPort = () async {
         );
       });
       final v4l2 = V4L2();
+      final mappedBufs = <V4L2MappedBuffer>[];
 
       final insideReceivePort = ReceivePort()
         ..listen(
           (message) async {
-            if (message is _SelectCommand) {
+            if (message is _BeginStreamingCommand) {
+              final id = message.id;
+              final fd = message.fd;
+              try {
+                final req = V4L2Requestbuffers()
+                  ..count = 4
+                  ..type = V4L2BufType.videoCapture
+                  ..memory = V4L2Memory.mmap;
+                v4l2.reqbufs(fd, req);
+                for (var i = 0; i < req.count; i++) {
+                  final buf = v4l2.querybuf(
+                    fd,
+                    V4L2BufType.videoCapture,
+                    V4L2Memory.mmap,
+                    i,
+                  );
+                  final mappedBuf = v4l2.mmap(
+                    fd,
+                    buf.offset,
+                    buf.length,
+                    [V4L2Prot.read, V4L2Prot.write],
+                    [V4L2Map.shared],
+                  );
+                  mappedBufs.add(mappedBuf);
+                  v4l2.qbuf(fd, buf);
+                }
+                v4l2.streamon(fd, V4L2BufType.videoCapture);
+                final reply = _BeginStreamingReply(id, null);
+                insideSendPort.send(reply);
+              } catch (e) {
+                final reply = _BeginStreamingReply(id, e);
+                insideSendPort.send(reply);
+              }
+            } else if (message is _ReadCommand) {
               final id = message.id;
               final fd = message.fd;
               try {
@@ -306,10 +362,38 @@ Future<SendPort> _sendPort = () async {
                   ..tvSec = 2
                   ..tvUsec = 0;
                 v4l2.select(fd, timeout);
-                final reply = _SelectReply(id, null);
+                final buf =
+                    v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
+                try {
+                  final mappedBuf = mappedBufs[buf.index];
+                  final rgbaBuf = v4l2.mjpegToRGBA(mappedBuf);
+                  final frame = V4L2Frame(
+                    rgbaBuf.value,
+                    rgbaBuf.width,
+                    rgbaBuf.height,
+                  );
+                  final reply = _ReadReply(id, frame, null);
+                  insideSendPort.send(reply);
+                } finally {
+                  v4l2.qbuf(fd, buf);
+                }
+              } catch (e) {
+                final reply = _ReadReply(id, null, e);
+                insideSendPort.send(reply);
+              }
+            } else if (message is _EndStreamingCommand) {
+              final id = message.id;
+              final fd = message.fd;
+              try {
+                v4l2.streamoff(fd, V4L2BufType.videoCapture);
+                for (var mappedBuf in mappedBufs) {
+                  v4l2.munmap(mappedBuf);
+                }
+                mappedBufs.clear();
+                final reply = _EndStreamingReply(id, null);
                 insideSendPort.send(reply);
               } catch (e) {
-                final reply = _SelectReply(id, e);
+                final reply = _EndStreamingReply(id, e);
                 insideSendPort.send(reply);
               }
             } else {

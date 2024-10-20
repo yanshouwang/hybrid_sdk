@@ -5,4 +5,6 @@ abstract interface class V4L2RGBABuffer implements ffi.Finalizable {
   Uint8List get value;
   int get width;
   int get height;
+
+  void free();
 }

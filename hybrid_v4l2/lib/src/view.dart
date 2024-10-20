@@ -4,17 +4,17 @@ import 'package:flutter/widgets.dart';
 import 'package:hybrid_v4l2/src/api.dart';
 
 import 'api.x.dart';
-import 'rgba_buffer.dart';
+import 'frame.dart';
 
 class V4L2View extends StatefulWidget {
-  final V4L2RGBABuffer? buffer;
+  final V4L2Frame? frame;
   final BoxFit fit;
   final bool fpsVisible;
   final TextStyle? fpsStyle;
 
   const V4L2View({
     super.key,
-    required this.buffer,
+    required this.frame,
     this.fit = BoxFit.contain,
     this.fpsVisible = false,
     this.fpsStyle,
@@ -61,7 +61,7 @@ class _V4L2ViewState extends State<V4L2View> {
         valueListenable: _id,
         builder: (context, id, child) {
           final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-          final buffer = widget.buffer;
+          final frame = widget.frame;
           return ValueListenableBuilder(
             valueListenable: _fps,
             builder: (context, fps, child) {
@@ -76,13 +76,13 @@ class _V4L2ViewState extends State<V4L2View> {
                 child: child,
               );
             },
-            child: buffer == null
+            child: frame == null
                 ? null
                 : FittedBox(
                     fit: widget.fit,
                     child: SizedBox(
-                      width: buffer.width / devicePixelRatio,
-                      height: buffer.height / devicePixelRatio,
+                      width: frame.width / devicePixelRatio,
+                      height: frame.height / devicePixelRatio,
                       child: id == null
                           ? null
                           : Texture(
@@ -99,7 +99,7 @@ class _V4L2ViewState extends State<V4L2View> {
   @override
   void didUpdateWidget(covariant V4L2View oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.buffer != oldWidget.buffer) {
+    if (widget.frame != oldWidget.frame) {
       _updateTexture();
     }
   }
@@ -120,16 +120,16 @@ class _V4L2ViewState extends State<V4L2View> {
 
   void _updateTexture() async {
     final id = _id.value;
-    final buffer = widget.buffer;
-    if (id == null || buffer == null || _updating) {
+    final frame = widget.frame;
+    if (id == null || frame == null || _updating) {
       return;
     }
     _updating = true;
     try {
       final textureArgs = TextureArgs(
-        bufferArgs: buffer.value,
-        widthArgs: buffer.width,
-        heightArgs: buffer.height,
+        bufferArgs: frame.buffer,
+        widthArgs: frame.width,
+        heightArgs: frame.height,
       );
       await _api.markTextureFrameAvailable(id, textureArgs);
       _frames++;

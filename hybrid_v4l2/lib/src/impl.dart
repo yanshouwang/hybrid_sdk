@@ -1143,11 +1143,18 @@ final class _ManagedV4L2RGBABufferImpl extends V4L2RGBABufferImpl {
     finalizer.attach(
       this,
       ptr.cast(),
+      detach: this,
     );
   }
 
   @override
   Uint8List get value => ptr.asTypedList(width * height * 4);
+
+  @override
+  void free() {
+    ffi.calloc.free(ptr);
+    finalizer.detach(this);
+  }
 }
 
 /* V4L2Cropcap */
