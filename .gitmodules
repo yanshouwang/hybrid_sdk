@@ -10,3 +10,6 @@
 [submodule "third_party/libcamera"]
 	path = third_party/libcamera
 	url = https://git.libcamera.org/libcamera/libcamera.git
+[submodule "hybrid_yuv/src"]
+	path = hybrid_yuv/src
+	url = https://chromium.googlesource.com/libyuv/libyuv
