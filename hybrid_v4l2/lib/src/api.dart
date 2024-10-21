@@ -15,37 +15,6 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-class TextureArgs {
-  TextureArgs({
-    required this.bufferArgs,
-    required this.widthArgs,
-    required this.heightArgs,
-  });
-
-  Uint8List bufferArgs;
-
-  int widthArgs;
-
-  int heightArgs;
-
-  Object encode() {
-    return <Object?>[
-      bufferArgs,
-      widthArgs,
-      heightArgs,
-    ];
-  }
-
-  static TextureArgs decode(Object result) {
-    result as List<Object?>;
-    return TextureArgs(
-      bufferArgs: result[0]! as Uint8List,
-      widthArgs: result[1]! as int,
-      heightArgs: result[2]! as int,
-    );
-  }
-}
-
 
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
@@ -54,9 +23,6 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer.putUint8(4);
       buffer.putInt64(value);
-    }    else if (value is TextureArgs) {
-      buffer.putUint8(129);
-      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -65,8 +31,6 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 129: 
-        return TextureArgs.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -113,15 +77,15 @@ class ViewHostAPI {
     }
   }
 
-  Future<void> markTextureFrameAvailable(int idArgs, TextureArgs textureArgs) async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.markTextureFrameAvailable$pigeonVar_messageChannelSuffix';
+  Future<void> updateTexture(int idArgs, Uint8List bufferArgs, int widthArgs, int heightArgs) async {
+    final String pigeonVar_channelName = 'dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.updateTexture$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
     final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[idArgs, textureArgs]) as List<Object?>?;
+        await pigeonVar_channel.send(<Object?>[idArgs, bufferArgs, widthArgs, heightArgs]) as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {

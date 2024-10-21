@@ -7,6 +7,7 @@ import 'package:hybrid_logging/hybrid_logging.dart';
 import 'ffi.v4l2.dart' as ffi;
 import 'ffi.hybrid_v4l2.dart' as ffi;
 import 'ffi.x.dart' as ffi;
+import 'ffi.yuv.dart' as ffi;
 
 import 'v4l2.dart';
 import 'buf_flag.dart';
@@ -518,7 +519,7 @@ final class V4L2Impl with TypeLogger implements V4L2 {
   }
 
   @override
-  V4L2RGBABuffer mjpegToRGBA(V4L2MappedBuffer buf) {
+  V4L2RGBABuffer mjpegToRGBA(V4L2MappedBuffer buf, double ratio) {
     logger.info('mjpegToRGBA');
     if (buf is! _ManagedV4L2MappedBufferImpl) {
       throw TypeError();
@@ -539,13 +540,12 @@ final class V4L2Impl with TypeLogger implements V4L2 {
       }
       final width = widthPtr.value;
       final height = heightPtr.value;
-      final stride = width * 4;
       final argbPtr = arena<ffi.Uint8>(width * height * 4);
       err = ffi.libYUV.MJPGToARGB(
         samplePtr,
         sampleSize,
         argbPtr,
-        stride,
+        width * 4,
         width,
         height,
         width,
@@ -554,12 +554,48 @@ final class V4L2Impl with TypeLogger implements V4L2 {
       if (err != 0) {
         throw V4L2Error('MJPGToARGB err $err.');
       }
+      final cropWidth = width ~/ ratio;
+      final cropHeight = height ~/ ratio;
+      final cropX = (width - cropWidth) ~/ 2;
+      final cropY = (height - cropHeight) ~/ 2;
+      final cropPtr = arena<ffi.Uint8>(cropWidth * cropHeight * 4);
+      err = ffi.libYUV.ConvertToARGB(
+        argbPtr,
+        width * height * 4,
+        cropPtr,
+        cropWidth * 4,
+        cropX,
+        cropY,
+        width,
+        height,
+        cropWidth,
+        cropHeight,
+        ffi.RotationMode.kRotate0,
+        ffi.FourCC.FOURCC_ARGB.value,
+      );
+      if (err != 0) {
+        throw V4L2Error('ConvertToARGB err $err.');
+      }
+      err = ffi.libYUV.ARGBScale(
+        cropPtr,
+        cropWidth * 4,
+        cropWidth,
+        cropHeight,
+        argbPtr,
+        width * 4,
+        width,
+        height,
+        ffi.FilterMode.kFilterBox,
+      );
+      if (err != 0) {
+        throw V4L2Error('ARGBScale err $err.');
+      }
       final rgba = _ManagedV4L2RGBABufferImpl(width, height);
       err = ffi.libYUV.ARGBToABGR(
         argbPtr,
-        stride,
+        width * 4,
         rgba.ptr,
-        stride,
+        width * 4,
         width,
         height,
       );

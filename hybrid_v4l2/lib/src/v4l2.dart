@@ -135,5 +135,5 @@ abstract interface class V4L2 {
   /// v4l2-select - Synchronous I/O multiplexing
   void select(int fd, V4L2Timeval timeout);
 
-  V4L2RGBABuffer mjpegToRGBA(V4L2MappedBuffer buf);
+  V4L2RGBABuffer mjpegToRGBA(V4L2MappedBuffer buf, double ratio);
 }

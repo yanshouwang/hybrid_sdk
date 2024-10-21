@@ -3,72 +3,6 @@
 
 #include "hybrid_v4l2_api.h"
 
-struct _HybridV4l2TextureArgs {
-  GObject parent_instance;
-
-  uint8_t* buffer_args;
-  size_t buffer_args_length;
-  int64_t width_args;
-  int64_t height_args;
-};
-
-G_DEFINE_TYPE(HybridV4l2TextureArgs, hybrid_v4l2_texture_args, G_TYPE_OBJECT)
-
-static void hybrid_v4l2_texture_args_dispose(GObject* object) {
-  G_OBJECT_CLASS(hybrid_v4l2_texture_args_parent_class)->dispose(object);
-}
-
-static void hybrid_v4l2_texture_args_init(HybridV4l2TextureArgs* self) {
-}
-
-static void hybrid_v4l2_texture_args_class_init(HybridV4l2TextureArgsClass* klass) {
-  G_OBJECT_CLASS(klass)->dispose = hybrid_v4l2_texture_args_dispose;
-}
-
-HybridV4l2TextureArgs* hybrid_v4l2_texture_args_new(const uint8_t* buffer_args, size_t buffer_args_length, int64_t width_args, int64_t height_args) {
-  HybridV4l2TextureArgs* self = HYBRID_V4L2_TEXTURE_ARGS(g_object_new(hybrid_v4l2_texture_args_get_type(), nullptr));
-  self->buffer_args = static_cast<uint8_t*>(memcpy(malloc(buffer_args_length), buffer_args, buffer_args_length));
-  self->buffer_args_length = buffer_args_length;
-  self->width_args = width_args;
-  self->height_args = height_args;
-  return self;
-}
-
-const uint8_t* hybrid_v4l2_texture_args_get_buffer_args(HybridV4l2TextureArgs* self, size_t* length) {
-  g_return_val_if_fail(HYBRID_V4L2_IS_TEXTURE_ARGS(self), nullptr);
-  *length = self->buffer_args_length;
-  return self->buffer_args;
-}
-
-int64_t hybrid_v4l2_texture_args_get_width_args(HybridV4l2TextureArgs* self) {
-  g_return_val_if_fail(HYBRID_V4L2_IS_TEXTURE_ARGS(self), 0);
-  return self->width_args;
-}
-
-int64_t hybrid_v4l2_texture_args_get_height_args(HybridV4l2TextureArgs* self) {
-  g_return_val_if_fail(HYBRID_V4L2_IS_TEXTURE_ARGS(self), 0);
-  return self->height_args;
-}
-
-static FlValue* hybrid_v4l2_texture_args_to_list(HybridV4l2TextureArgs* self) {
-  FlValue* values = fl_value_new_list();
-  fl_value_append_take(values, fl_value_new_uint8_list(self->buffer_args, self->buffer_args_length));
-  fl_value_append_take(values, fl_value_new_int(self->width_args));
-  fl_value_append_take(values, fl_value_new_int(self->height_args));
-  return values;
-}
-
-static HybridV4l2TextureArgs* hybrid_v4l2_texture_args_new_from_list(FlValue* values) {
-  FlValue* value0 = fl_value_get_list_value(values, 0);
-  const uint8_t* buffer_args = fl_value_get_uint8_list(value0);
-  size_t buffer_args_length = fl_value_get_length(value0);
-  FlValue* value1 = fl_value_get_list_value(values, 1);
-  int64_t width_args = fl_value_get_int(value1);
-  FlValue* value2 = fl_value_get_list_value(values, 2);
-  int64_t height_args = fl_value_get_int(value2);
-  return hybrid_v4l2_texture_args_new(buffer_args, buffer_args_length, width_args, height_args);
-}
-
 G_DECLARE_FINAL_TYPE(HybridV4l2MessageCodec, hybrid_v4l2_message_codec, HYBRID_V4L2, MESSAGE_CODEC, FlStandardMessageCodec)
 
 struct _HybridV4l2MessageCodec {
@@ -78,43 +12,17 @@ struct _HybridV4l2MessageCodec {
 
 G_DEFINE_TYPE(HybridV4l2MessageCodec, hybrid_v4l2_message_codec, fl_standard_message_codec_get_type())
 
-static gboolean hybrid_v4l2_message_codec_write_hybrid_v4l2_texture_args(FlStandardMessageCodec* codec, GByteArray* buffer, HybridV4l2TextureArgs* value, GError** error) {
-  uint8_t type = 129;
-  g_byte_array_append(buffer, &type, sizeof(uint8_t));
-  g_autoptr(FlValue) values = hybrid_v4l2_texture_args_to_list(value);
-  return fl_standard_message_codec_write_value(codec, buffer, values, error);
-}
-
 static gboolean hybrid_v4l2_message_codec_write_value(FlStandardMessageCodec* codec, GByteArray* buffer, FlValue* value, GError** error) {
   if (fl_value_get_type(value) == FL_VALUE_TYPE_CUSTOM) {
     switch (fl_value_get_custom_type(value)) {
-      case 129:
-        return hybrid_v4l2_message_codec_write_hybrid_v4l2_texture_args(codec, buffer, HYBRID_V4L2_TEXTURE_ARGS(fl_value_get_custom_value_object(value)), error);
     }
   }
 
   return FL_STANDARD_MESSAGE_CODEC_CLASS(hybrid_v4l2_message_codec_parent_class)->write_value(codec, buffer, value, error);
 }
 
-static FlValue* hybrid_v4l2_message_codec_read_hybrid_v4l2_texture_args(FlStandardMessageCodec* codec, GBytes* buffer, size_t* offset, GError** error) {
-  g_autoptr(FlValue) values = fl_standard_message_codec_read_value(codec, buffer, offset, error);
-  if (values == nullptr) {
-    return nullptr;
-  }
-
-  g_autoptr(HybridV4l2TextureArgs) value = hybrid_v4l2_texture_args_new_from_list(values);
-  if (value == nullptr) {
-    g_set_error(error, FL_MESSAGE_CODEC_ERROR, FL_MESSAGE_CODEC_ERROR_FAILED, "Invalid data received for MessageData");
-    return nullptr;
-  }
-
-  return fl_value_new_custom_object(129, G_OBJECT(value));
-}
-
 static FlValue* hybrid_v4l2_message_codec_read_value_of_type(FlStandardMessageCodec* codec, GBytes* buffer, size_t* offset, int type, GError** error) {
   switch (type) {
-    case 129:
-      return hybrid_v4l2_message_codec_read_hybrid_v4l2_texture_args(codec, buffer, offset, error);
     default:
       return FL_STANDARD_MESSAGE_CODEC_CLASS(hybrid_v4l2_message_codec_parent_class)->read_value_of_type(codec, buffer, offset, type, error);
   }
@@ -170,36 +78,36 @@ HybridV4l2ViewHostAPIRegisterTextureResponse* hybrid_v4l2_view_host_a_p_i_regist
   return self;
 }
 
-struct _HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse {
+struct _HybridV4l2ViewHostAPIUpdateTextureResponse {
   GObject parent_instance;
 
   FlValue* value;
 };
 
-G_DEFINE_TYPE(HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse, hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response, G_TYPE_OBJECT)
+G_DEFINE_TYPE(HybridV4l2ViewHostAPIUpdateTextureResponse, hybrid_v4l2_view_host_a_p_i_update_texture_response, G_TYPE_OBJECT)
 
-static void hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_dispose(GObject* object) {
-  HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* self = HYBRID_V4L2_VIEW_HOST_A_P_I_MARK_TEXTURE_FRAME_AVAILABLE_RESPONSE(object);
+static void hybrid_v4l2_view_host_a_p_i_update_texture_response_dispose(GObject* object) {
+  HybridV4l2ViewHostAPIUpdateTextureResponse* self = HYBRID_V4L2_VIEW_HOST_A_P_I_UPDATE_TEXTURE_RESPONSE(object);
   g_clear_pointer(&self->value, fl_value_unref);
-  G_OBJECT_CLASS(hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_parent_class)->dispose(object);
+  G_OBJECT_CLASS(hybrid_v4l2_view_host_a_p_i_update_texture_response_parent_class)->dispose(object);
 }
 
-static void hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_init(HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* self) {
+static void hybrid_v4l2_view_host_a_p_i_update_texture_response_init(HybridV4l2ViewHostAPIUpdateTextureResponse* self) {
 }
 
-static void hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_class_init(HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponseClass* klass) {
-  G_OBJECT_CLASS(klass)->dispose = hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_dispose;
+static void hybrid_v4l2_view_host_a_p_i_update_texture_response_class_init(HybridV4l2ViewHostAPIUpdateTextureResponseClass* klass) {
+  G_OBJECT_CLASS(klass)->dispose = hybrid_v4l2_view_host_a_p_i_update_texture_response_dispose;
 }
 
-HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new() {
-  HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* self = HYBRID_V4L2_VIEW_HOST_A_P_I_MARK_TEXTURE_FRAME_AVAILABLE_RESPONSE(g_object_new(hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_get_type(), nullptr));
+HybridV4l2ViewHostAPIUpdateTextureResponse* hybrid_v4l2_view_host_a_p_i_update_texture_response_new() {
+  HybridV4l2ViewHostAPIUpdateTextureResponse* self = HYBRID_V4L2_VIEW_HOST_A_P_I_UPDATE_TEXTURE_RESPONSE(g_object_new(hybrid_v4l2_view_host_a_p_i_update_texture_response_get_type(), nullptr));
   self->value = fl_value_new_list();
   fl_value_append_take(self->value, fl_value_new_null());
   return self;
 }
 
-HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new_error(const gchar* code, const gchar* message, FlValue* details) {
-  HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* self = HYBRID_V4L2_VIEW_HOST_A_P_I_MARK_TEXTURE_FRAME_AVAILABLE_RESPONSE(g_object_new(hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_get_type(), nullptr));
+HybridV4l2ViewHostAPIUpdateTextureResponse* hybrid_v4l2_view_host_a_p_i_update_texture_response_new_error(const gchar* code, const gchar* message, FlValue* details) {
+  HybridV4l2ViewHostAPIUpdateTextureResponse* self = HYBRID_V4L2_VIEW_HOST_A_P_I_UPDATE_TEXTURE_RESPONSE(g_object_new(hybrid_v4l2_view_host_a_p_i_update_texture_response_get_type(), nullptr));
   self->value = fl_value_new_list();
   fl_value_append_take(self->value, fl_value_new_string(code));
   fl_value_append_take(self->value, fl_value_new_string(message != nullptr ? message : ""));
@@ -299,26 +207,31 @@ static void hybrid_v4l2_view_host_a_p_i_register_texture_cb(FlBasicMessageChanne
   }
 }
 
-static void hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_cb(FlBasicMessageChannel* channel, FlValue* message_, FlBasicMessageChannelResponseHandle* response_handle, gpointer user_data) {
+static void hybrid_v4l2_view_host_a_p_i_update_texture_cb(FlBasicMessageChannel* channel, FlValue* message_, FlBasicMessageChannelResponseHandle* response_handle, gpointer user_data) {
   HybridV4l2ViewHostAPI* self = HYBRID_V4L2_VIEW_HOST_A_P_I(user_data);
 
-  if (self->vtable == nullptr || self->vtable->mark_texture_frame_available == nullptr) {
+  if (self->vtable == nullptr || self->vtable->update_texture == nullptr) {
     return;
   }
 
   FlValue* value0 = fl_value_get_list_value(message_, 0);
   int64_t id_args = fl_value_get_int(value0);
   FlValue* value1 = fl_value_get_list_value(message_, 1);
-  HybridV4l2TextureArgs* texture_args = HYBRID_V4L2_TEXTURE_ARGS(fl_value_get_custom_value_object(value1));
-  g_autoptr(HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse) response = self->vtable->mark_texture_frame_available(id_args, texture_args, self->user_data);
+  const uint8_t* buffer_args = fl_value_get_uint8_list(value1);
+  size_t buffer_args_length = fl_value_get_length(value1);
+  FlValue* value2 = fl_value_get_list_value(message_, 2);
+  int64_t width_args = fl_value_get_int(value2);
+  FlValue* value3 = fl_value_get_list_value(message_, 3);
+  int64_t height_args = fl_value_get_int(value3);
+  g_autoptr(HybridV4l2ViewHostAPIUpdateTextureResponse) response = self->vtable->update_texture(id_args, buffer_args, buffer_args_length, width_args, height_args, self->user_data);
   if (response == nullptr) {
-    g_warning("No response returned to %s.%s", "ViewHostAPI", "markTextureFrameAvailable");
+    g_warning("No response returned to %s.%s", "ViewHostAPI", "updateTexture");
     return;
   }
 
   g_autoptr(GError) error = NULL;
   if (!fl_basic_message_channel_respond(channel, response_handle, response->value, &error)) {
-    g_warning("Failed to send response to %s.%s: %s", "ViewHostAPI", "markTextureFrameAvailable", error->message);
+    g_warning("Failed to send response to %s.%s: %s", "ViewHostAPI", "updateTexture", error->message);
   }
 }
 
@@ -351,9 +264,9 @@ void hybrid_v4l2_view_host_a_p_i_set_method_handlers(FlBinaryMessenger* messenge
   g_autofree gchar* register_texture_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.registerTexture%s", dot_suffix);
   g_autoptr(FlBasicMessageChannel) register_texture_channel = fl_basic_message_channel_new(messenger, register_texture_channel_name, FL_MESSAGE_CODEC(codec));
   fl_basic_message_channel_set_message_handler(register_texture_channel, hybrid_v4l2_view_host_a_p_i_register_texture_cb, g_object_ref(api_data), g_object_unref);
-  g_autofree gchar* mark_texture_frame_available_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.markTextureFrameAvailable%s", dot_suffix);
-  g_autoptr(FlBasicMessageChannel) mark_texture_frame_available_channel = fl_basic_message_channel_new(messenger, mark_texture_frame_available_channel_name, FL_MESSAGE_CODEC(codec));
-  fl_basic_message_channel_set_message_handler(mark_texture_frame_available_channel, hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_cb, g_object_ref(api_data), g_object_unref);
+  g_autofree gchar* update_texture_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.updateTexture%s", dot_suffix);
+  g_autoptr(FlBasicMessageChannel) update_texture_channel = fl_basic_message_channel_new(messenger, update_texture_channel_name, FL_MESSAGE_CODEC(codec));
+  fl_basic_message_channel_set_message_handler(update_texture_channel, hybrid_v4l2_view_host_a_p_i_update_texture_cb, g_object_ref(api_data), g_object_unref);
   g_autofree gchar* unregister_texture_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.unregisterTexture%s", dot_suffix);
   g_autoptr(FlBasicMessageChannel) unregister_texture_channel = fl_basic_message_channel_new(messenger, unregister_texture_channel_name, FL_MESSAGE_CODEC(codec));
   fl_basic_message_channel_set_message_handler(unregister_texture_channel, hybrid_v4l2_view_host_a_p_i_unregister_texture_cb, g_object_ref(api_data), g_object_unref);
@@ -366,9 +279,9 @@ void hybrid_v4l2_view_host_a_p_i_clear_method_handlers(FlBinaryMessenger* messen
   g_autofree gchar* register_texture_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.registerTexture%s", dot_suffix);
   g_autoptr(FlBasicMessageChannel) register_texture_channel = fl_basic_message_channel_new(messenger, register_texture_channel_name, FL_MESSAGE_CODEC(codec));
   fl_basic_message_channel_set_message_handler(register_texture_channel, nullptr, nullptr, nullptr);
-  g_autofree gchar* mark_texture_frame_available_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.markTextureFrameAvailable%s", dot_suffix);
-  g_autoptr(FlBasicMessageChannel) mark_texture_frame_available_channel = fl_basic_message_channel_new(messenger, mark_texture_frame_available_channel_name, FL_MESSAGE_CODEC(codec));
-  fl_basic_message_channel_set_message_handler(mark_texture_frame_available_channel, nullptr, nullptr, nullptr);
+  g_autofree gchar* update_texture_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.updateTexture%s", dot_suffix);
+  g_autoptr(FlBasicMessageChannel) update_texture_channel = fl_basic_message_channel_new(messenger, update_texture_channel_name, FL_MESSAGE_CODEC(codec));
+  fl_basic_message_channel_set_message_handler(update_texture_channel, nullptr, nullptr, nullptr);
   g_autofree gchar* unregister_texture_channel_name = g_strdup_printf("dev.flutter.pigeon.hybrid_v4l2.ViewHostAPI.unregisterTexture%s", dot_suffix);
   g_autoptr(FlBasicMessageChannel) unregister_texture_channel = fl_basic_message_channel_new(messenger, unregister_texture_channel_name, FL_MESSAGE_CODEC(codec));
   fl_basic_message_channel_set_message_handler(unregister_texture_channel, nullptr, nullptr, nullptr);

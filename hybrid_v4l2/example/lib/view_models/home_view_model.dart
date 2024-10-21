@@ -14,13 +14,15 @@ class HomeViewModel extends ViewModel with TypeLogger {
   V4L2Format? _fmt;
   List<V4L2Frmsize> _sizes;
 
+  double _ratio;
   Token? _token;
   V4L2Frame? _frame;
 
   HomeViewModel()
       : _v4l2 = V4L2(),
         _formats = [],
-        _sizes = [] {
+        _sizes = [],
+        _ratio = 1.0 {
     _init();
   }
 
@@ -46,6 +48,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
         .firstWhere((size) => size.width == width && size.height == height);
   }
 
+  double get ratio => _ratio;
   bool get streaming => _token != null;
   V4L2Frame? get frame => _frame;
 
@@ -76,6 +79,11 @@ class HomeViewModel extends ViewModel with TypeLogger {
     notifyListeners();
   }
 
+  void setRatio(double ratio) {
+    _ratio = ratio;
+    notifyListeners();
+  }
+
   void beginStreaming() async {
     var token = _token;
     if (token != null) {
@@ -89,8 +97,12 @@ class HomeViewModel extends ViewModel with TypeLogger {
     await beginStreamingAsync(fd);
 
     while (token.isNotCancelled) {
-      _frame = await readAsync(fd);
-      notifyListeners();
+      try {
+        _frame = await readAsync(fd, ratio);
+        notifyListeners();
+      } catch (e) {
+        logger.info('read failed, $e');
+      }
     }
 
     await endStreamingAsync(fd);
@@ -174,12 +186,12 @@ Future<void> beginStreamingAsync(int fd) async {
   return completer.future;
 }
 
-Future<V4L2Frame> readAsync(int fd) async {
+Future<V4L2Frame> readAsync(int fd, double ratio) async {
   final sendPort = await _sendPort;
   final id = _id++;
   final completer = Completer<V4L2Frame>();
   _completers[id] = completer;
-  final command = _ReadCommand(id, fd);
+  final command = _ReadCommand(id, fd, ratio);
   sendPort.send(command);
   return completer.future;
 }
@@ -222,8 +234,9 @@ final class _BeginStreamingReply extends _Reply {
 
 final class _ReadCommand extends _Command {
   final int fd;
+  final double ratio;
 
-  const _ReadCommand(super.id, this.fd);
+  const _ReadCommand(super.id, this.fd, this.ratio);
 }
 
 final class _ReadReply extends _Reply {
@@ -357,6 +370,7 @@ Future<SendPort> _sendPort = () async {
             } else if (message is _ReadCommand) {
               final id = message.id;
               final fd = message.fd;
+              final ratio = message.ratio;
               try {
                 final timeout = V4L2Timeval()
                   ..tvSec = 2
@@ -366,7 +380,7 @@ Future<SendPort> _sendPort = () async {
                     v4l2.dqbuf(fd, V4L2BufType.videoCapture, V4L2Memory.mmap);
                 try {
                   final mappedBuf = mappedBufs[buf.index];
-                  final rgbaBuf = v4l2.mjpegToRGBA(mappedBuf);
+                  final rgbaBuf = v4l2.mjpegToRGBA(mappedBuf, ratio);
                   final frame = V4L2Frame(
                     rgbaBuf.value,
                     rgbaBuf.width,

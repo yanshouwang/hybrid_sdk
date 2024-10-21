@@ -8,57 +8,6 @@
 
 G_BEGIN_DECLS
 
-/**
- * HybridV4l2TextureArgs:
- *
- */
-
-G_DECLARE_FINAL_TYPE(HybridV4l2TextureArgs, hybrid_v4l2_texture_args, HYBRID_V4L2, TEXTURE_ARGS, GObject)
-
-/**
- * hybrid_v4l2_texture_args_new:
- * buffer_args: field in this object.
- * buffer_args_length: length of @buffer_args.
- * width_args: field in this object.
- * height_args: field in this object.
- *
- * Creates a new #TextureArgs object.
- *
- * Returns: a new #HybridV4l2TextureArgs
- */
-HybridV4l2TextureArgs* hybrid_v4l2_texture_args_new(const uint8_t* buffer_args, size_t buffer_args_length, int64_t width_args, int64_t height_args);
-
-/**
- * hybrid_v4l2_texture_args_get_buffer_args
- * @object: a #HybridV4l2TextureArgs.
- * @length: location to write the length of this value.
- *
- * Gets the value of the bufferArgs field of @object.
- *
- * Returns: the field value.
- */
-const uint8_t* hybrid_v4l2_texture_args_get_buffer_args(HybridV4l2TextureArgs* object, size_t* length);
-
-/**
- * hybrid_v4l2_texture_args_get_width_args
- * @object: a #HybridV4l2TextureArgs.
- *
- * Gets the value of the widthArgs field of @object.
- *
- * Returns: the field value.
- */
-int64_t hybrid_v4l2_texture_args_get_width_args(HybridV4l2TextureArgs* object);
-
-/**
- * hybrid_v4l2_texture_args_get_height_args
- * @object: a #HybridV4l2TextureArgs.
- *
- * Gets the value of the heightArgs field of @object.
- *
- * Returns: the field value.
- */
-int64_t hybrid_v4l2_texture_args_get_height_args(HybridV4l2TextureArgs* object);
-
 G_DECLARE_FINAL_TYPE(HybridV4l2ViewHostAPIRegisterTextureResponse, hybrid_v4l2_view_host_a_p_i_register_texture_response, HYBRID_V4L2, VIEW_HOST_A_P_I_REGISTER_TEXTURE_RESPONSE, GObject)
 
 /**
@@ -82,28 +31,28 @@ HybridV4l2ViewHostAPIRegisterTextureResponse* hybrid_v4l2_view_host_a_p_i_regist
  */
 HybridV4l2ViewHostAPIRegisterTextureResponse* hybrid_v4l2_view_host_a_p_i_register_texture_response_new_error(const gchar* code, const gchar* message, FlValue* details);
 
-G_DECLARE_FINAL_TYPE(HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse, hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response, HYBRID_V4L2, VIEW_HOST_A_P_I_MARK_TEXTURE_FRAME_AVAILABLE_RESPONSE, GObject)
+G_DECLARE_FINAL_TYPE(HybridV4l2ViewHostAPIUpdateTextureResponse, hybrid_v4l2_view_host_a_p_i_update_texture_response, HYBRID_V4L2, VIEW_HOST_A_P_I_UPDATE_TEXTURE_RESPONSE, GObject)
 
 /**
- * hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new:
+ * hybrid_v4l2_view_host_a_p_i_update_texture_response_new:
  *
- * Creates a new response to ViewHostAPI.markTextureFrameAvailable.
+ * Creates a new response to ViewHostAPI.updateTexture.
  *
- * Returns: a new #HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse
+ * Returns: a new #HybridV4l2ViewHostAPIUpdateTextureResponse
  */
-HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new();
+HybridV4l2ViewHostAPIUpdateTextureResponse* hybrid_v4l2_view_host_a_p_i_update_texture_response_new();
 
 /**
- * hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new_error:
+ * hybrid_v4l2_view_host_a_p_i_update_texture_response_new_error:
  * @code: error code.
  * @message: error message.
  * @details: (allow-none): error details or %NULL.
  *
- * Creates a new error response to ViewHostAPI.markTextureFrameAvailable.
+ * Creates a new error response to ViewHostAPI.updateTexture.
  *
- * Returns: a new #HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse
+ * Returns: a new #HybridV4l2ViewHostAPIUpdateTextureResponse
  */
-HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new_error(const gchar* code, const gchar* message, FlValue* details);
+HybridV4l2ViewHostAPIUpdateTextureResponse* hybrid_v4l2_view_host_a_p_i_update_texture_response_new_error(const gchar* code, const gchar* message, FlValue* details);
 
 G_DECLARE_FINAL_TYPE(HybridV4l2ViewHostAPIUnregisterTextureResponse, hybrid_v4l2_view_host_a_p_i_unregister_texture_response, HYBRID_V4L2, VIEW_HOST_A_P_I_UNREGISTER_TEXTURE_RESPONSE, GObject)
 
@@ -135,7 +84,7 @@ HybridV4l2ViewHostAPIUnregisterTextureResponse* hybrid_v4l2_view_host_a_p_i_unre
  */
 typedef struct {
   HybridV4l2ViewHostAPIRegisterTextureResponse* (*register_texture)(gpointer user_data);
-  HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse* (*mark_texture_frame_available)(int64_t id_args, HybridV4l2TextureArgs* texture_args, gpointer user_data);
+  HybridV4l2ViewHostAPIUpdateTextureResponse* (*update_texture)(int64_t id_args, const uint8_t* buffer_args, size_t buffer_args_length, int64_t width_args, int64_t height_args, gpointer user_data);
   HybridV4l2ViewHostAPIUnregisterTextureResponse* (*unregister_texture)(int64_t id_args, gpointer user_data);
 } HybridV4l2ViewHostAPIVTable;
 

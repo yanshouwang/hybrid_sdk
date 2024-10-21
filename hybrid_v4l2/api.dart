@@ -9,19 +9,15 @@ import 'package:pigeon/pigeon.dart';
     gobjectHeaderOut: 'linux/hybrid_v4l2_api.h',
     gobjectSourceOut: 'linux/hybrid_v4l2_api.cc',
     gobjectOptions: GObjectOptions(),
+    cppHeaderOut: 'elinux/hybrid_v4l2_api.h',
+    cppSourceOut: 'elinux/hybrid_v4l2_api.cc',
+    cppOptions: CppOptions(),
   ),
 )
-class TextureArgs {
-  final Uint8List bufferArgs;
-  final int widthArgs;
-  final int heightArgs;
-
-  TextureArgs(this.bufferArgs, this.widthArgs, this.heightArgs);
-}
-
 @HostApi()
 abstract class ViewHostAPI {
   int registerTexture();
-  void markTextureFrameAvailable(int idArgs, TextureArgs textureArgs);
+  void updateTexture(
+      int idArgs, Uint8List bufferArgs, int widthArgs, int heightArgs);
   void unregisterTexture(int idArgs);
 }

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hybrid_v4l2/hybrid_v4l2.dart';
 import 'package:hybrid_v4l2_example/view_models.dart';
 
-import 'texture_view.dart';
-
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -15,6 +13,7 @@ class HomeView extends StatelessWidget {
     final sizes = viewModel.sizes;
     final format = viewModel.format;
     final size = viewModel.size;
+    final ratio = viewModel.ratio;
     final streaming = viewModel.streaming;
     final frame = viewModel.frame;
     return Scaffold(
@@ -67,6 +66,16 @@ class HomeView extends StatelessWidget {
                   .toList(),
               initialSelection: size,
               enabled: !streaming,
+            ),
+            Slider(
+              min: 1.0,
+              max: 3.0,
+              divisions: 10,
+              label: '${ratio}X',
+              value: ratio,
+              onChanged: (value) {
+                viewModel.setRatio(value);
+              },
             ),
           ],
         ),

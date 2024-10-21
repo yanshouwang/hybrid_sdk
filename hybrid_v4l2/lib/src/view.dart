@@ -126,13 +126,10 @@ class _V4L2ViewState extends State<V4L2View> {
     }
     _updating = true;
     try {
-      final textureArgs = TextureArgs(
-        bufferArgs: frame.buffer,
-        widthArgs: frame.width,
-        heightArgs: frame.height,
-      );
-      await _api.markTextureFrameAvailable(id, textureArgs);
+      await _api.updateTexture(id, frame.buffer, frame.width, frame.height);
       _frames++;
+    } catch (e) {
+      debugPrint('updateTexture failed, $e.');
     } finally {
       _updating = false;
     }
