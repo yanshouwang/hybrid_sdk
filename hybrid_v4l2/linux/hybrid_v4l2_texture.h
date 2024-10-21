@@ -16,11 +16,9 @@ typedef struct {
 
 HybridV4l2Texture *hybrid_v4l2_texture_new();
 
-gboolean hybrid_v4l2_texture_mark_frame_available(FlTexture *texture,
-                                                  const uint8_t *buffer,
-                                                  size_t buffer_size,
-                                                  uint32_t width,
-                                                  uint32_t height);
+gboolean hybrid_v4l2_texture_update(FlTexture *texture, const uint8_t *buffer,
+                                    size_t buffer_size, uint32_t width,
+                                    uint32_t height);
 
 G_END_DECLS
 

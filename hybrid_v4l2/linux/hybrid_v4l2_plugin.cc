@@ -56,31 +56,28 @@ hybrid_v4l2_plugin_register_texture(gpointer user_data) {
   }
 }
 
-static HybridV4l2ViewHostAPIMarkTextureFrameAvailableResponse *
-hybrid_v4l2_plugin_mark_texture_frame_available(
-    int64_t id_args, HybridV4l2TextureArgs *texture_args, gpointer user_data) {
+static HybridV4l2ViewHostAPIUpdateTextureResponse *
+hybrid_v4l2_plugin_update_texture(int64_t id_args, const uint8_t *buffer_args,
+                                  size_t buffer_args_length, int64_t width_args,
+                                  int64_t height_args, gpointer user_data) {
   HybridV4l2Plugin *self = HYBRID_V4L2_PLUGIN(user_data);
   FlTextureRegistrar *registrar = self->registrar;
   FlTexture *texture = reinterpret_cast<FlTexture *>(
       g_hash_table_lookup(self->textures, GINT_TO_POINTER(id_args)));
-  size_t buffer_size;
-  const uint8_t *buffer =
-      hybrid_v4l2_texture_args_get_buffer_args(texture_args, &buffer_size);
-  uint32_t width = hybrid_v4l2_texture_args_get_width_args(texture_args);
-  uint32_t height = hybrid_v4l2_texture_args_get_height_args(texture_args);
-  gboolean marked = hybrid_v4l2_texture_mark_frame_available(
-      texture, buffer, buffer_size, width, height);
-  if (!marked) {
-    return hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new();
+  gboolean updated = hybrid_v4l2_texture_update(
+      texture, buffer_args, buffer_args_length, width_args, height_args);
+  if (!updated) {
+    return hybrid_v4l2_view_host_a_p_i_update_texture_response_new_error(
+        "hybrid_v4l2_plugin_update_texture", "update failed", NULL);
   }
-  marked =
+  gboolean marked =
       fl_texture_registrar_mark_texture_frame_available(registrar, texture);
   if (!marked) {
-    return hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new_error(
-        "hybrid_v4l2_texture_mark_frame_available",
+    return hybrid_v4l2_view_host_a_p_i_update_texture_response_new_error(
+        "hybrid_v4l2_plugin_update_texture",
         "mark texture frame available failed", NULL);
   }
-  return hybrid_v4l2_view_host_a_p_i_mark_texture_frame_available_response_new();
+  return hybrid_v4l2_view_host_a_p_i_update_texture_response_new();
 }
 
 static HybridV4l2ViewHostAPIUnregisterTextureResponse *
@@ -103,8 +100,7 @@ hybrid_v4l2_plugin_unregister_texture(int64_t id_args, gpointer user_data) {
 
 static HybridV4l2ViewHostAPIVTable view_host_api_vtable = {
     .register_texture = hybrid_v4l2_plugin_register_texture,
-    .mark_texture_frame_available =
-        hybrid_v4l2_plugin_mark_texture_frame_available,
+    .update_texture = hybrid_v4l2_plugin_update_texture,
     .unregister_texture = hybrid_v4l2_plugin_unregister_texture,
 };
 

@@ -1,6 +1,7 @@
 #include "hybrid_v4l2_texture.h"
 
 #include <flutter_linux/flutter_linux.h>
+#include <map>
 
 #include "hybrid_v4l2_api.h"
 
@@ -12,11 +13,10 @@ struct _HybridV4l2Texture {
   FlPixelBufferTexture parent_instance;
 
   const uint8_t *buffer;
-  size_t buffer_size;
+  const uint8_t *out_buffer;
   int width;
   int height;
   GMutex mutex;
-  uint8_t *out_buffer;
 };
 
 G_DEFINE_TYPE(HybridV4l2Texture, hybrid_v4l2_texture,
@@ -39,6 +39,7 @@ static gboolean hybrid_v4l2_texture_copy_pixels(FlPixelBufferTexture *texture,
   // So you may do some format conversion first if your original pixel
   // buffer is not in RGBA format.
   HybridV4l2Texture *self = HYBRID_V4L2_TEXTURE(texture);
+  g_mutex_lock(&self->mutex);
   if (self->buffer) {
     // Directly return pointer to your pixel buffer here.
     // Flutter takes content of your pixel buffer after this function
@@ -46,33 +47,38 @@ static gboolean hybrid_v4l2_texture_copy_pixels(FlPixelBufferTexture *texture,
     // next tick of Render Thread.
     // If it is hard to manage lifetime of your pixel buffer, you should
     // take look into #FlTextureGL.
-    g_mutex_lock(&self->mutex);
     if (self->out_buffer) {
       delete[] self->out_buffer;
     }
-    self->out_buffer = new uint8_t[self->buffer_size];
-    memcpy(self->out_buffer, self->buffer, self->buffer_size);
+    self->out_buffer = self->buffer;
+    self->buffer = NULL;
+
     *out_buffer = self->out_buffer;
     *width = self->width;
     *height = self->height;
-    delete[] self->buffer;
-    self->buffer = NULL;
+
     g_mutex_unlock(&self->mutex);
     return TRUE;
   } else {
     // set @error to report failure.
+    g_mutex_unlock(&self->mutex);
+    *error = g_error_new(HYBRID_V4L2_TEXTURE_ERROR, -1, "buffer is NULL.");
     return FALSE;
   }
 }
 
 static void hybrid_v4l2_texture_dispose(GObject *object) {
   HybridV4l2Texture *self = HYBRID_V4L2_TEXTURE(object);
+  g_mutex_lock(&self->mutex);
   if (self->buffer) {
-    g_mutex_lock(&self->mutex);
     delete[] self->buffer;
     self->buffer = NULL;
-    g_mutex_unlock(&self->mutex);
   }
+  if (self->out_buffer) {
+    delete[] self->out_buffer;
+    self->out_buffer = NULL;
+  }
+  g_mutex_unlock(&self->mutex);
   g_mutex_clear(&self->mutex);
 
   G_OBJECT_CLASS(hybrid_v4l2_texture_parent_class)->dispose(object);
@@ -89,21 +95,22 @@ HybridV4l2Texture *hybrid_v4l2_texture_new() {
       g_object_new(hybrid_v4l2_texture_get_type(), NULL));
 }
 
-gboolean hybrid_v4l2_texture_mark_frame_available(FlTexture *texture,
-                                                  const uint8_t *buffer,
-                                                  size_t buffer_size,
-                                                  uint32_t width,
-                                                  uint32_t height) {
+gboolean hybrid_v4l2_texture_update(FlTexture *texture, const uint8_t *buffer,
+                                    size_t buffer_size, uint32_t width,
+                                    uint32_t height) {
   HybridV4l2Texture *self = HYBRID_V4L2_TEXTURE(texture);
+  g_mutex_lock(&self->mutex);
   if (self->buffer) {
-    delete[] buffer;
+    g_mutex_unlock(&self->mutex);
     return FALSE;
   } else {
-    g_mutex_lock(&self->mutex);
-    self->buffer = buffer;
-    self->buffer_size = buffer_size;
+    uint8_t *buffer_copy = new uint8_t[buffer_size];
+    std::copy(buffer, buffer + buffer_size, buffer_copy);
+
+    self->buffer = buffer_copy;
     self->width = width;
     self->height = height;
+
     g_mutex_unlock(&self->mutex);
     return TRUE;
   }
