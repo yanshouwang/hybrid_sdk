@@ -32,8 +32,6 @@ dependencies:
   hybrid_logging: ^1.0.0
   go_router: ^14.3.0
   clover: ^3.0.0
-  texture_rgba_renderer: ^0.0.16
-  collection: ^1.18.0
 
 dev_dependencies:
   integration_test:

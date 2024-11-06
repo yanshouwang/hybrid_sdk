@@ -15,17 +15,14 @@ class HomeView extends StatelessWidget {
     final size = viewModel.size;
     final ratio = viewModel.ratio;
     final streaming = viewModel.streaming;
-    final frame = viewModel.frame;
+    final textureArgs = viewModel.textureArgs;
     return Scaffold(
       extendBody: true,
-      body: V4L2View(
-        frame: frame,
+      body: V4L2TextureView(
+        args: textureArgs,
         fit: BoxFit.cover,
         fpsVisible: true,
       ),
-      // body: TextureView(
-      //   frame: buffer,
-      // ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(

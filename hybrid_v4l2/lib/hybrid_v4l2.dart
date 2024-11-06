@@ -18,7 +18,6 @@ export 'src/field.dart';
 export 'src/fmt_flag.dart';
 export 'src/fmtdesc.dart';
 export 'src/format.dart';
-export 'src/frame.dart';
 export 'src/frmsize.dart';
 export 'src/in_cap.dart';
 export 'src/in_st.dart';
@@ -43,5 +42,13 @@ export 'src/tc_flag.dart';
 export 'src/tc_type.dart';
 export 'src/time_code.dart';
 export 'src/timeval.dart';
-export 'src/view.dart';
+export 'src/texture_view.dart';
 export 'src/v4l2.dart';
+
+export 'src/ffi.hybrid_v4l2.dart';
+export 'src/ffi.v4l2.dart';
+export 'src/ffi.x.dart';
+export 'src/ffi.yuv.dart';
+
+export 'src/api.dart';
+export 'src/api.x.dart';

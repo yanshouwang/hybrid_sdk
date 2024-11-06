@@ -1,30 +1,41 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
-import 'package:hybrid_v4l2/src/api.dart';
 
 import 'api.x.dart';
-import 'frame.dart';
 
-class V4L2View extends StatefulWidget {
-  final V4L2Frame? frame;
+class V4L2TextureArgs {
+  final Uint8List buffer;
+  final int width;
+  final int height;
+
+  V4L2TextureArgs({
+    required this.buffer,
+    required this.width,
+    required this.height,
+  });
+}
+
+class V4L2TextureView extends StatefulWidget {
+  final V4L2TextureArgs? args;
   final BoxFit fit;
   final bool fpsVisible;
   final TextStyle? fpsStyle;
 
-  const V4L2View({
+  const V4L2TextureView({
     super.key,
-    required this.frame,
+    required this.args,
     this.fit = BoxFit.contain,
     this.fpsVisible = false,
     this.fpsStyle,
   });
 
   @override
-  State<V4L2View> createState() => _V4L2ViewState();
+  State<V4L2TextureView> createState() => _V4L2TextureViewState();
 }
 
-class _V4L2ViewState extends State<V4L2View> {
+class _V4L2TextureViewState extends State<V4L2TextureView> {
   final V4L2ViewHostAPI _api;
   final ValueNotifier<int?> _id;
   final ValueNotifier<int> _fps;
@@ -34,7 +45,7 @@ class _V4L2ViewState extends State<V4L2View> {
   int _frames;
   bool _updating;
 
-  _V4L2ViewState()
+  _V4L2TextureViewState()
       : _api = V4L2ViewHostAPI(),
         _id = ValueNotifier(null),
         _fps = ValueNotifier(0),
@@ -61,7 +72,7 @@ class _V4L2ViewState extends State<V4L2View> {
         valueListenable: _id,
         builder: (context, id, child) {
           final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-          final frame = widget.frame;
+          final args = widget.args;
           return ValueListenableBuilder(
             valueListenable: _fps,
             builder: (context, fps, child) {
@@ -76,13 +87,13 @@ class _V4L2ViewState extends State<V4L2View> {
                 child: child,
               );
             },
-            child: frame == null
+            child: args == null
                 ? null
                 : FittedBox(
                     fit: widget.fit,
                     child: SizedBox(
-                      width: frame.width / devicePixelRatio,
-                      height: frame.height / devicePixelRatio,
+                      width: args.width / devicePixelRatio,
+                      height: args.height / devicePixelRatio,
                       child: id == null
                           ? null
                           : Texture(
@@ -97,9 +108,9 @@ class _V4L2ViewState extends State<V4L2View> {
   }
 
   @override
-  void didUpdateWidget(covariant V4L2View oldWidget) {
+  void didUpdateWidget(covariant V4L2TextureView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.frame != oldWidget.frame) {
+    if (widget.args != oldWidget.args) {
       _updateTexture();
     }
   }
@@ -120,13 +131,13 @@ class _V4L2ViewState extends State<V4L2View> {
 
   void _updateTexture() async {
     final id = _id.value;
-    final frame = widget.frame;
-    if (id == null || frame == null || _updating) {
+    final args = widget.args;
+    if (id == null || args == null || _updating) {
       return;
     }
     _updating = true;
     try {
-      await _api.updateTexture(id, frame.buffer, frame.width, frame.height);
+      await _api.updateTexture(id, args.buffer, args.width, args.height);
       _frames++;
     } catch (e) {
       debugPrint('updateTexture failed, $e.');
@@ -191,39 +202,3 @@ final class _FPSPainter extends BoxPainter {
     textPainter.paint(canvas, offset);
   }
 }
-
-// import 'package:flutter/rendering.dart';
-// import 'package:flutter/services.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:flutter_elinux/widgets.dart';
-
-// class V4L2View extends StatelessWidget {
-//   const V4L2View({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     const viewType = 'hebei.dev/v4l2_view';
-//     return PlatformViewLink(
-//       surfaceFactory: (context, controller) {
-//         return ELinuxViewSurface(
-//           controller: controller as ELinuxViewController,
-//           hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-//           gestureRecognizers: const {},
-//         );
-//       },
-//       onCreatePlatformView: (params) {
-//         return PlatformViewsServiceELinux.initELinuxView(
-//           id: params.id,
-//           viewType: viewType,
-//           layoutDirection: TextDirection.ltr,
-//           creationParams: params,
-//           creationParamsCodec: const StandardMessageCodec(),
-//           onFocus: () => params.onFocusChanged(true),
-//         )
-//           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-//           ..create();
-//       },
-//       viewType: viewType,
-//     );
-//   }
-// }

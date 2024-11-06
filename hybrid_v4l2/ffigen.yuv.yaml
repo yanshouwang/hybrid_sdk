@@ -1,4 +1,4 @@
-# Run with `dart run ffigen --config ffigen.yaml`.
+# Run with `dart run ffigen --config ffigen.yuv.yaml`.
 name: LibYUV
 description: |
   Bindings for `libyuv`.

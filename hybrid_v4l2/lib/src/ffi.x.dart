@@ -1,7 +1,7 @@
-import 'dart:ffi' as ffi;
+import 'dart:ffi';
 
-import 'ffi.hybrid_v4l2.dart' as ffi;
-import 'ffi.yuv.dart' as ffi;
+import 'ffi.hybrid_v4l2.dart';
+import 'ffi.yuv.dart';
 
 import 'cid.dart';
 import 'ctrl_class.dart';
@@ -22,15 +22,13 @@ import 'std.dart';
 import 'tc_flag.dart';
 import 'tc_type.dart';
 
-final _dylibHybridV4L2 = ffi.DynamicLibrary.open('libhybrid_v4l2.so');
-final _dylibYUV = ffi.DynamicLibrary.open('libyuv.so');
-// final _dylibHybridV4L2 = ffi.DynamicLibrary.open(
-//     '/home/orangepi/dev/hybrid_sdk/hybrid_v4l2/example/build/elinux/arm64/debug/bundle/lib/libhybrid_v4l2.so');
+final _dylibHybridV4L2 = DynamicLibrary.open('libhybrid_v4l2.so');
+final _dylibYUV = DynamicLibrary.open('libyuv.so');
 
-final libHybridV4L2 = ffi.LibHybridV4L2(_dylibHybridV4L2);
-final libYUV = ffi.LibYUV(_dylibYUV);
+final libHybridV4L2 = LibHybridV4L2(_dylibHybridV4L2);
+final libYUV = LibYUV(_dylibYUV);
 
-extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
+extension UnsignedCharArrayX on Array<UnsignedChar> {
   String toDart() {
     final charCodes = <int>[];
     var i = 0;
@@ -46,7 +44,7 @@ extension UnsignedCharArrayX on ffi.Array<ffi.UnsignedChar> {
   }
 }
 
-extension CharArrayX on ffi.Array<ffi.Char> {
+extension CharArrayX on Array<Char> {
   String toDart() {
     final charCodes = <int>[];
     var i = 0;
@@ -62,7 +60,7 @@ extension CharArrayX on ffi.Array<ffi.Char> {
   }
 }
 
-extension UinsignedIntArrayX on ffi.Array<ffi.UnsignedInt> {
+extension UinsignedIntArrayX on Array<UnsignedInt> {
   List<int> toDart(int count) {
     final values = <int>[];
     for (var i = 0; i < count; i++) {

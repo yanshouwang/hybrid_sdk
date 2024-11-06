@@ -16,7 +16,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
   double _ratio;
   Token? _token;
-  V4L2Frame? _frame;
+  V4L2TextureArgs? _textureArgs;
 
   HomeViewModel()
       : _v4l2 = V4L2(),
@@ -50,7 +50,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
   double get ratio => _ratio;
   bool get streaming => _token != null;
-  V4L2Frame? get frame => _frame;
+  V4L2TextureArgs? get textureArgs => _textureArgs;
 
   @override
   void dispose() {
@@ -98,7 +98,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
     while (token.isNotCancelled) {
       try {
-        _frame = await readAsync(fd, ratio);
+        _textureArgs = await readAsync(fd, ratio);
         notifyListeners();
       } catch (e) {
         logger.info('read failed, $e');
@@ -107,7 +107,7 @@ class HomeViewModel extends ViewModel with TypeLogger {
 
     await endStreamingAsync(fd);
     _close(fd);
-    _frame = null;
+    _textureArgs = null;
     notifyListeners();
   }
 
@@ -186,10 +186,10 @@ Future<void> beginStreamingAsync(int fd) async {
   return completer.future;
 }
 
-Future<V4L2Frame> readAsync(int fd, double ratio) async {
+Future<V4L2TextureArgs> readAsync(int fd, double ratio) async {
   final sendPort = await _sendPort;
   final id = _id++;
-  final completer = Completer<V4L2Frame>();
+  final completer = Completer<V4L2TextureArgs>();
   _completers[id] = completer;
   final command = _ReadCommand(id, fd, ratio);
   sendPort.send(command);
@@ -240,11 +240,11 @@ final class _ReadCommand extends _Command {
 }
 
 final class _ReadReply extends _Reply {
-  final V4L2Frame? frame;
+  final V4L2TextureArgs? textureArgs;
 
   const _ReadReply(
     super.id,
-    this.frame,
+    this.textureArgs,
     super.error,
   );
 }
@@ -284,14 +284,14 @@ Future<SendPort> _sendPort = () async {
           }
         } else if (message is _ReadReply) {
           final id = message.id;
-          final frame = message.frame;
+          final textureArgs = message.textureArgs;
           final error = message.error;
           final completer = _completers.remove(id);
           if (completer == null) {
             return;
           }
           if (error == null) {
-            completer.complete(frame);
+            completer.complete(textureArgs);
           } else {
             completer.completeError(error);
           }
@@ -381,12 +381,12 @@ Future<SendPort> _sendPort = () async {
                 try {
                   final mappedBuf = mappedBufs[buf.index];
                   final rgbaBuf = v4l2.mjpegToRGBA(mappedBuf, ratio);
-                  final frame = V4L2Frame(
-                    rgbaBuf.value,
-                    rgbaBuf.width,
-                    rgbaBuf.height,
+                  final textureArgs = V4L2TextureArgs(
+                    buffer: rgbaBuf.value,
+                    width: rgbaBuf.width,
+                    height: rgbaBuf.height,
                   );
-                  final reply = _ReadReply(id, frame, null);
+                  final reply = _ReadReply(id, textureArgs, null);
                   insideSendPort.send(reply);
                 } finally {
                   v4l2.qbuf(fd, buf);

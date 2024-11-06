@@ -1,4 +1,4 @@
-# Run with `dart run ffigen --config ffigen.yaml`.
+# Run with `dart run ffigen --config ffigen.v4l2.yaml`.
 name: LibV4L2
 description: |
   Bindings for `v4l2`.

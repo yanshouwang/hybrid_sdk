@@ -1,4 +1,4 @@
-# Run with `dart run ffigen --config ffigen.hybrid.yaml`.
+# Run with `dart run ffigen --config ffigen.hybrid_v4l2.yaml`.
 name: LibHybridV4L2
 description: |
   Bindings for `hybrid_v4l2`.

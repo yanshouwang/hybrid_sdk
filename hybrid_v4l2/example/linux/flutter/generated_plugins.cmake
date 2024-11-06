@@ -4,7 +4,6 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   hybrid_v4l2
-  texture_rgba_renderer
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
