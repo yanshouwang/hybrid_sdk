@@ -4,7 +4,7 @@ import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
-import 'package:hybrid_core/hybrid_core.dart';
+import 'package:hybrid_os/hybrid_os.dart';
 import 'package:hybrid_vision_platform_interface/hybrid_vision_platform_interface.dart';
 
 import 'ffi.dart';
@@ -419,19 +419,19 @@ final atLeastmacOS12_0 = atLeastmacOSVersion(12.0);
 final atLeastmacOS14_0 = atLeastmacOSVersion(14.0);
 
 bool atLeastiOSVersion(double number) {
-  final os = OS.instance;
+  final os = OS();
   if (os is iOS) {
-    final version = DarwinVersion.number(number);
-    return os.atLeastVersion(version);
+    final version = DarwinVersion.fromNumber(number);
+    return os.isAtLeastVersion(version);
   }
   return false;
 }
 
 bool atLeastmacOSVersion(double number) {
-  final os = OS.instance;
+  final os = OS();
   if (os is macOS) {
-    final version = DarwinVersion.number(number);
-    return os.atLeastVersion(version);
+    final version = DarwinVersion.fromNumber(number);
+    return os.isAtLeastVersion(version);
   }
   return false;
 }

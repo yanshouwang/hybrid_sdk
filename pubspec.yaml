@@ -1,0 +1,24 @@
+name: hybrid_sdk
+version: 0.0.1
+
+environment:
+  sdk: ^3.5.0
+
+workspace:
+  - hybrid_jpeg
+  - hybrid_logging
+  - hybrid_os/hybrid_os
+  - hybrid_os/hybrid_os_android
+  - hybrid_os/hybrid_os_darwin
+  - hybrid_os/hybrid_os_linux
+  - hybrid_os/hybrid_os_platform_interface
+  - hybrid_os/hybrid_os_windows
+  - hybrid_ui
+  - hybrid_usb
+  - hybrid_uvc
+  - hybrid_v4l2
+  - hybrid_vision/hybrid_vision
+  - hybrid_vision/hybrid_vision_android
+  - hybrid_vision/hybrid_vision_darwin
+  - hybrid_vision/hybrid_vision_platform_interface
+  - hybrid_yuv
