@@ -6,8 +6,6 @@ environment:
   sdk: ^3.5.0
 
 workspace:
-  - hybrid_ffi
-  - hybrid_ffi/example
   - hybrid_logging
   - hybrid_os/hybrid_os_platform_interface
   - hybrid_os/hybrid_os_android
@@ -24,6 +22,8 @@ workspace:
   - hybrid_ui/example
   - hybrid_usb
   - hybrid_usb/example
+  # - hybrid_v4l2
+  # - hybrid_v4l2/example
   - hybrid_vision/hybrid_vision_platform_interface
   - hybrid_vision/hybrid_vision_android
   - hybrid_vision/hybrid_vision_android/example
@@ -31,3 +31,5 @@ workspace:
   - hybrid_vision/hybrid_vision_darwin/example
   - hybrid_vision/hybrid_vision
   - hybrid_vision/hybrid_vision/example
+  # - hybrid_yuv
+  # - hybrid_yuv/example

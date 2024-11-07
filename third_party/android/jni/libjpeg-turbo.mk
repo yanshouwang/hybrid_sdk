@@ -7,3 +7,11 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/libjpeg-turbo/libs/$(TARGET_ARCH_ABI)/libjpeg.s
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/libjpeg-turbo/include
 
 include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := turbojpeg
+LOCAL_SRC_FILES := $(LOCAL_PATH)/libjpeg-turbo/libs/$(TARGET_ARCH_ABI)/libturbojpeg.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/libjpeg-turbo/include
+
+include $(PREBUILT_SHARED_LIBRARY)

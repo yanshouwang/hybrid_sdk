@@ -28,6 +28,15 @@ cmake \
   $PROJECT/libjpeg-turbo
 make && make install
 
+# LibYUV
+mkdir $BUILD/libyuv
+mkdir $OUT/libyuv
+cd $BUILD/libyuv
+cmake \
+  -DCMAKE_INSTALL_PREFIX="$OUT/libyuv" \
+  $PROJECT/libyuv
+make && make install
+
 # LibUSB
 mkdir $OUT/libusb
 cd $PROJECT/libusb

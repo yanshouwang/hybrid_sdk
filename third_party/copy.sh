@@ -5,19 +5,20 @@ set -e
 OUT=$PWD/out
 HYBRID_SDK=$(dirname $PWD)
 
-# LibJPEG
-if [ ! -d "$HYBRID_SDK/hybrid_jpeg/src" ]; then
-mkdir $HYBRID_SDK/hybrid_jpeg/src
+# hybrid_yuv
+if [ ! -d "$HYBRID_SDK/hybrid_yuv/src" ]; then
+mkdir $HYBRID_SDK/hybrid_yuv/src
 fi
 
-if [ ! -d "$HYBRID_SDK/hybrid_jpeg/linux/lib" ]; then
-mkdir $HYBRID_SDK/hybrid_jpeg/linux/lib
+if [ ! -d "$HYBRID_SDK/hybrid_yuv/linux/lib" ]; then
+mkdir $HYBRID_SDK/hybrid_yuv/linux/lib
 fi
 
-cp -r $OUT/libjpeg-turbo/include $HYBRID_SDK/hybrid_jpeg/src
-cp $OUT/libjpeg-turbo/lib/*.so $HYBRID_SDK/hybrid_jpeg/linux/lib
+cp -r $OUT/libyuv/include $HYBRID_SDK/hybrid_yuv/src
+cp $OUT/libjpeg-turbo/lib/*.so $HYBRID_SDK/hybrid_yuv/linux/lib
+cp $OUT/libyuv/lib/*.so $HYBRID_SDK/hybrid_yuv/linux/lib
 
-# LibUSB
+# hybrid_usb
 if [ ! -d "$HYBRID_SDK/hybrid_usb/src" ]; then
 mkdir $HYBRID_SDK/hybrid_usb/src
 fi
@@ -29,14 +30,14 @@ fi
 cp -r $OUT/libusb/include $HYBRID_SDK/hybrid_usb/src
 cp $OUT/libusb/lib/*.so $HYBRID_SDK/hybrid_usb/linux/lib
 
-# LibUVC
-if [ ! -d "$HYBRID_SDK/hybrid_uvc/src" ]; then
-mkdir $HYBRID_SDK/hybrid_uvc/src
-fi
+# hybrid_uvc
+# if [ ! -d "$HYBRID_SDK/hybrid_uvc/src" ]; then
+# mkdir $HYBRID_SDK/hybrid_uvc/src
+# fi
 
-if [ ! -d "$HYBRID_SDK/hybrid_uvc/linux/lib" ]; then
-mkdir $HYBRID_SDK/hybrid_uvc/linux/lib
-fi
+# if [ ! -d "$HYBRID_SDK/hybrid_uvc/linux/lib" ]; then
+# mkdir $HYBRID_SDK/hybrid_uvc/linux/lib
+# fi
 
-cp -r $OUT/libuvc/include $HYBRID_SDK/hybrid_uvc/src
-cp $OUT/libuvc/lib/*.so $HYBRID_SDK/hybrid_uvc/linux/lib
+# cp -r $OUT/libuvc/include $HYBRID_SDK/hybrid_uvc/src
+# cp $OUT/libuvc/lib/*.so $HYBRID_SDK/hybrid_uvc/linux/lib
