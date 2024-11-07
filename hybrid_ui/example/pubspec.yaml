@@ -1,11 +1,13 @@
 name: hybrid_ui_example
-description: "Demonstrates how to use the hybrid_ui package."
+description: 'Demonstrates how to use the hybrid_ui package.'
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ^3.5.0
+
+resolution: workspace
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -27,8 +29,8 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
-  share_plus: ^9.0.0
+  cupertino_icons: ^1.0.8
+  share_plus: ^10.1.1
 
 dev_dependencies:
   integration_test:
@@ -48,7 +50,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
