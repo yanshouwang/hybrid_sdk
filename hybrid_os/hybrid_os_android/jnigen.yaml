@@ -10,4 +10,6 @@ output:
     path: lib/src/jni/
 log_level: all
 classes:
+  - android.content.Context
   - android.os.Build
+  - android.provider.Settings

@@ -1,3 +1,5 @@
+import 'package:hybrid_os_android/src/screen_brightness_mode.dart';
+
 import 'android.dart';
 import 'jni.dart' as jni;
 
@@ -45,4 +47,33 @@ final class AndroidImpl implements Android {
 
   @override
   String get securityPatch => jni.Build_VERSION.SECURITY_PATCH.toDartString();
+
+  @override
+  int get screenBrightness {
+    final contentResolver = jni.Env.context.getContentResolver();
+    return jni.Settings_System.getInt1(
+        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS);
+  }
+
+  @override
+  set screenBrightness(int value) {
+    final contentResolver = jni.Env.context.getContentResolver();
+    jni.Settings_System.putInt(
+        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS, value);
+  }
+
+  @override
+  ScreenBrightnessMode get screenBrightnessMode {
+    final contentResolver = jni.Env.context.getContentResolver();
+    final value = jni.Settings_System.getInt1(
+        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS_MODE);
+    return ScreenBrightnessMode.fromValue(value);
+  }
+
+  @override
+  set screenBrightnessMode(ScreenBrightnessMode value) {
+    final contentResolver = jni.Env.context.getContentResolver();
+    jni.Settings_System.putInt(contentResolver,
+        jni.Settings_System.SCREEN_BRIGHTNESS_MODE, value.value);
+  }
 }

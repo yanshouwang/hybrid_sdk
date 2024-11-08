@@ -1,5 +1,7 @@
 import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
 
+import 'screen_brightness_mode.dart';
+
 /// Android.
 abstract interface class Android implements OS {
   /// The base OS build the product is based on.
@@ -86,4 +88,10 @@ abstract interface class Android implements OS {
   ///
   /// Added in API level 23
   String get securityPatch;
+
+  ScreenBrightnessMode get screenBrightnessMode;
+  set screenBrightnessMode(ScreenBrightnessMode value);
+
+  int get screenBrightness;
+  set screenBrightness(int value);
 }
