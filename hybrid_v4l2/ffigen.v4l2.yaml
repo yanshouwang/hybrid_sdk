@@ -7,6 +7,7 @@ description: |
 output: 'lib/src/ffi.v4l2.dart'
 compiler-opts:
   - '-I/usr/include'
+silence-enum-warning: true
 headers:
   entry-points:
     - '/usr/include/linux/videodev2.h'
@@ -16,7 +17,6 @@ headers:
     - '/usr/include/linux/videodev2.h'
     - '/usr/include/linux/v4l2-common.h'
     - '/usr/include/linux/v4l2-controls.h'
-silence-enum-warning: true
 # enums:
 #   as-int:
 #     include:

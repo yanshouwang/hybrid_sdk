@@ -3473,6 +3473,7 @@ class LibYUV {
           int,
           int)>();
 
+  /// Copy ARGB to ARGB.
   int ARGBCopy(
     ffi.Pointer<ffi.Uint8> src_argb,
     int src_stride_argb,
@@ -30597,6 +30598,8 @@ class LibYUV {
           void Function(ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int32>, int)>();
 
+  /// Row function for copying pixels from a source with a slope to a row
+  /// of destination. Useful for scaling, rotation, mirror, texture mapping.
   void ARGBAffineRow_C(
     ffi.Pointer<ffi.Uint8> src_argb,
     int src_argb_stride,
@@ -30625,6 +30628,7 @@ class LibYUV {
       void Function(ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Uint8>,
           ffi.Pointer<ffi.Float>, int)>();
 
+  /// TODO(fbarchard): Move ARGBAffineRow_SSE2 to row.h
   void ARGBAffineRow_SSE2(
     ffi.Pointer<ffi.Uint8> src_argb,
     int src_argb_stride,
@@ -33441,6 +33445,699 @@ class LibYUV {
           ffi.Pointer<ffi.Float>,
           ffi.Pointer<ffi.Float>,
           ffi.Pointer<ffi.Float>,
+          int)>();
+
+  /// Scale a YUV plane.
+  void ScalePlane(
+    ffi.Pointer<ffi.Uint8> src,
+    int src_stride,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint8> dst,
+    int dst_stride,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _ScalePlane(
+      src,
+      src_stride,
+      src_width,
+      src_height,
+      dst,
+      dst_stride,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _ScalePlanePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('ScalePlane');
+  late final _ScalePlane = _ScalePlanePtr.asFunction<
+      void Function(ffi.Pointer<ffi.Uint8>, int, int, int,
+          ffi.Pointer<ffi.Uint8>, int, int, int, int)>();
+
+  void ScalePlane_16(
+    ffi.Pointer<ffi.Uint16> src,
+    int src_stride,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint16> dst,
+    int dst_stride,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _ScalePlane_16(
+      src,
+      src_stride,
+      src_width,
+      src_height,
+      dst,
+      dst_stride,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _ScalePlane_16Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('ScalePlane_16');
+  late final _ScalePlane_16 = _ScalePlane_16Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Uint16>, int, int, int,
+          ffi.Pointer<ffi.Uint16>, int, int, int, int)>();
+
+  /// Sample is expected to be in the low 12 bits.
+  void ScalePlane_12(
+    ffi.Pointer<ffi.Uint16> src,
+    int src_stride,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint16> dst,
+    int dst_stride,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _ScalePlane_12(
+      src,
+      src_stride,
+      src_width,
+      src_height,
+      dst,
+      dst_stride,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _ScalePlane_12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('ScalePlane_12');
+  late final _ScalePlane_12 = _ScalePlane_12Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Uint16>, int, int, int,
+          ffi.Pointer<ffi.Uint16>, int, int, int, int)>();
+
+  /// Scales a YUV 4:2:0 image from the src width and height to the
+  /// dst width and height.
+  /// If filtering is kFilterNone, a simple nearest-neighbor algorithm is
+  /// used. This produces basic (blocky) quality at the fastest speed.
+  /// If filtering is kFilterBilinear, interpolation is used to produce a better
+  /// quality image, at the expense of speed.
+  /// If filtering is kFilterBox, averaging is used to produce ever better
+  /// quality image, at further expense of speed.
+  /// Returns 0 if successful.
+  int I420Scale(
+    ffi.Pointer<ffi.Uint8> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint8> src_u,
+    int src_stride_u,
+    ffi.Pointer<ffi.Uint8> src_v,
+    int src_stride_v,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint8> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint8> dst_u,
+    int dst_stride_u,
+    ffi.Pointer<ffi.Uint8> dst_v,
+    int dst_stride_v,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _I420Scale(
+      src_y,
+      src_stride_y,
+      src_u,
+      src_stride_u,
+      src_v,
+      src_stride_v,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_u,
+      dst_stride_u,
+      dst_v,
+      dst_stride_v,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _I420ScalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('I420Scale');
+  late final _I420Scale = _I420ScalePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          int,
+          int,
+          int)>();
+
+  int I420Scale_16(
+    ffi.Pointer<ffi.Uint16> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint16> src_u,
+    int src_stride_u,
+    ffi.Pointer<ffi.Uint16> src_v,
+    int src_stride_v,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint16> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint16> dst_u,
+    int dst_stride_u,
+    ffi.Pointer<ffi.Uint16> dst_v,
+    int dst_stride_v,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _I420Scale_16(
+      src_y,
+      src_stride_y,
+      src_u,
+      src_stride_u,
+      src_v,
+      src_stride_v,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_u,
+      dst_stride_u,
+      dst_v,
+      dst_stride_v,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _I420Scale_16Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('I420Scale_16');
+  late final _I420Scale_16 = _I420Scale_16Ptr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          int)>();
+
+  int I420Scale_12(
+    ffi.Pointer<ffi.Uint16> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint16> src_u,
+    int src_stride_u,
+    ffi.Pointer<ffi.Uint16> src_v,
+    int src_stride_v,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint16> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint16> dst_u,
+    int dst_stride_u,
+    ffi.Pointer<ffi.Uint16> dst_v,
+    int dst_stride_v,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _I420Scale_12(
+      src_y,
+      src_stride_y,
+      src_u,
+      src_stride_u,
+      src_v,
+      src_stride_v,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_u,
+      dst_stride_u,
+      dst_v,
+      dst_stride_v,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _I420Scale_12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('I420Scale_12');
+  late final _I420Scale_12 = _I420Scale_12Ptr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          int)>();
+
+  /// Scales a YUV 4:4:4 image from the src width and height to the
+  /// dst width and height.
+  /// If filtering is kFilterNone, a simple nearest-neighbor algorithm is
+  /// used. This produces basic (blocky) quality at the fastest speed.
+  /// If filtering is kFilterBilinear, interpolation is used to produce a better
+  /// quality image, at the expense of speed.
+  /// If filtering is kFilterBox, averaging is used to produce ever better
+  /// quality image, at further expense of speed.
+  /// Returns 0 if successful.
+  int I444Scale(
+    ffi.Pointer<ffi.Uint8> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint8> src_u,
+    int src_stride_u,
+    ffi.Pointer<ffi.Uint8> src_v,
+    int src_stride_v,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint8> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint8> dst_u,
+    int dst_stride_u,
+    ffi.Pointer<ffi.Uint8> dst_v,
+    int dst_stride_v,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _I444Scale(
+      src_y,
+      src_stride_y,
+      src_u,
+      src_stride_u,
+      src_v,
+      src_stride_v,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_u,
+      dst_stride_u,
+      dst_v,
+      dst_stride_v,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _I444ScalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('I444Scale');
+  late final _I444Scale = _I444ScalePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          int,
+          int,
+          int)>();
+
+  int I444Scale_16(
+    ffi.Pointer<ffi.Uint16> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint16> src_u,
+    int src_stride_u,
+    ffi.Pointer<ffi.Uint16> src_v,
+    int src_stride_v,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint16> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint16> dst_u,
+    int dst_stride_u,
+    ffi.Pointer<ffi.Uint16> dst_v,
+    int dst_stride_v,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _I444Scale_16(
+      src_y,
+      src_stride_y,
+      src_u,
+      src_stride_u,
+      src_v,
+      src_stride_v,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_u,
+      dst_stride_u,
+      dst_v,
+      dst_stride_v,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _I444Scale_16Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('I444Scale_16');
+  late final _I444Scale_16 = _I444Scale_16Ptr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          int)>();
+
+  int I444Scale_12(
+    ffi.Pointer<ffi.Uint16> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint16> src_u,
+    int src_stride_u,
+    ffi.Pointer<ffi.Uint16> src_v,
+    int src_stride_v,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint16> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint16> dst_u,
+    int dst_stride_u,
+    ffi.Pointer<ffi.Uint16> dst_v,
+    int dst_stride_v,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _I444Scale_12(
+      src_y,
+      src_stride_y,
+      src_u,
+      src_stride_u,
+      src_v,
+      src_stride_v,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_u,
+      dst_stride_u,
+      dst_v,
+      dst_stride_v,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _I444Scale_12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint16>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('I444Scale_12');
+  late final _I444Scale_12 = _I444Scale_12Ptr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          ffi.Pointer<ffi.Uint16>,
+          int,
+          int,
+          int,
+          int)>();
+
+  /// Scales an NV12 image from the src width and height to the
+  /// dst width and height.
+  /// If filtering is kFilterNone, a simple nearest-neighbor algorithm is
+  /// used. This produces basic (blocky) quality at the fastest speed.
+  /// If filtering is kFilterBilinear, interpolation is used to produce a better
+  /// quality image, at the expense of speed.
+  /// kFilterBox is not supported for the UV channel and will be treated as
+  /// bilinear.
+  /// Returns 0 if successful.
+  int NV12Scale(
+    ffi.Pointer<ffi.Uint8> src_y,
+    int src_stride_y,
+    ffi.Pointer<ffi.Uint8> src_uv,
+    int src_stride_uv,
+    int src_width,
+    int src_height,
+    ffi.Pointer<ffi.Uint8> dst_y,
+    int dst_stride_y,
+    ffi.Pointer<ffi.Uint8> dst_uv,
+    int dst_stride_uv,
+    int dst_width,
+    int dst_height,
+    int filtering,
+  ) {
+    return _NV12Scale(
+      src_y,
+      src_stride_y,
+      src_uv,
+      src_stride_uv,
+      src_width,
+      src_height,
+      dst_y,
+      dst_stride_y,
+      dst_uv,
+      dst_stride_uv,
+      dst_width,
+      dst_height,
+      filtering,
+    );
+  }
+
+  late final _NV12ScalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int32)>>('NV12Scale');
+  late final _NV12Scale = _NV12ScalePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          int,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          int,
+          int,
           int)>();
 
   int ARGBScale(
@@ -53686,706 +54383,23 @@ class LibYUV {
   late final _TransposeUV = _TransposeUVPtr.asFunction<
       void Function(ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Uint8>, int,
           ffi.Pointer<ffi.Uint8>, int, int, int)>();
-
-  /// Scale a YUV plane.
-  void ScalePlane(
-    ffi.Pointer<ffi.Uint8> src,
-    int src_stride,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint8> dst,
-    int dst_stride,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _ScalePlane(
-      src,
-      src_stride,
-      src_width,
-      src_height,
-      dst,
-      dst_stride,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _ScalePlanePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('ScalePlane');
-  late final _ScalePlane = _ScalePlanePtr.asFunction<
-      void Function(ffi.Pointer<ffi.Uint8>, int, int, int,
-          ffi.Pointer<ffi.Uint8>, int, int, int, int)>();
-
-  void ScalePlane_16(
-    ffi.Pointer<ffi.Uint16> src,
-    int src_stride,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint16> dst,
-    int dst_stride,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _ScalePlane_16(
-      src,
-      src_stride,
-      src_width,
-      src_height,
-      dst,
-      dst_stride,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _ScalePlane_16Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('ScalePlane_16');
-  late final _ScalePlane_16 = _ScalePlane_16Ptr.asFunction<
-      void Function(ffi.Pointer<ffi.Uint16>, int, int, int,
-          ffi.Pointer<ffi.Uint16>, int, int, int, int)>();
-
-  /// Sample is expected to be in the low 12 bits.
-  void ScalePlane_12(
-    ffi.Pointer<ffi.Uint16> src,
-    int src_stride,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint16> dst,
-    int dst_stride,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _ScalePlane_12(
-      src,
-      src_stride,
-      src_width,
-      src_height,
-      dst,
-      dst_stride,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _ScalePlane_12Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('ScalePlane_12');
-  late final _ScalePlane_12 = _ScalePlane_12Ptr.asFunction<
-      void Function(ffi.Pointer<ffi.Uint16>, int, int, int,
-          ffi.Pointer<ffi.Uint16>, int, int, int, int)>();
-
-  /// Scales a YUV 4:2:0 image from the src width and height to the
-  /// dst width and height.
-  /// If filtering is kFilterNone, a simple nearest-neighbor algorithm is
-  /// used. This produces basic (blocky) quality at the fastest speed.
-  /// If filtering is kFilterBilinear, interpolation is used to produce a better
-  /// quality image, at the expense of speed.
-  /// If filtering is kFilterBox, averaging is used to produce ever better
-  /// quality image, at further expense of speed.
-  /// Returns 0 if successful.
-  int I420Scale(
-    ffi.Pointer<ffi.Uint8> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint8> src_u,
-    int src_stride_u,
-    ffi.Pointer<ffi.Uint8> src_v,
-    int src_stride_v,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint8> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint8> dst_u,
-    int dst_stride_u,
-    ffi.Pointer<ffi.Uint8> dst_v,
-    int dst_stride_v,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _I420Scale(
-      src_y,
-      src_stride_y,
-      src_u,
-      src_stride_u,
-      src_v,
-      src_stride_v,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_u,
-      dst_stride_u,
-      dst_v,
-      dst_stride_v,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _I420ScalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('I420Scale');
-  late final _I420Scale = _I420ScalePtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          int,
-          int,
-          int)>();
-
-  int I420Scale_16(
-    ffi.Pointer<ffi.Uint16> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint16> src_u,
-    int src_stride_u,
-    ffi.Pointer<ffi.Uint16> src_v,
-    int src_stride_v,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint16> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint16> dst_u,
-    int dst_stride_u,
-    ffi.Pointer<ffi.Uint16> dst_v,
-    int dst_stride_v,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _I420Scale_16(
-      src_y,
-      src_stride_y,
-      src_u,
-      src_stride_u,
-      src_v,
-      src_stride_v,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_u,
-      dst_stride_u,
-      dst_v,
-      dst_stride_v,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _I420Scale_16Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('I420Scale_16');
-  late final _I420Scale_16 = _I420Scale_16Ptr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          int)>();
-
-  int I420Scale_12(
-    ffi.Pointer<ffi.Uint16> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint16> src_u,
-    int src_stride_u,
-    ffi.Pointer<ffi.Uint16> src_v,
-    int src_stride_v,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint16> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint16> dst_u,
-    int dst_stride_u,
-    ffi.Pointer<ffi.Uint16> dst_v,
-    int dst_stride_v,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _I420Scale_12(
-      src_y,
-      src_stride_y,
-      src_u,
-      src_stride_u,
-      src_v,
-      src_stride_v,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_u,
-      dst_stride_u,
-      dst_v,
-      dst_stride_v,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _I420Scale_12Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('I420Scale_12');
-  late final _I420Scale_12 = _I420Scale_12Ptr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          int)>();
-
-  /// Scales a YUV 4:4:4 image from the src width and height to the
-  /// dst width and height.
-  /// If filtering is kFilterNone, a simple nearest-neighbor algorithm is
-  /// used. This produces basic (blocky) quality at the fastest speed.
-  /// If filtering is kFilterBilinear, interpolation is used to produce a better
-  /// quality image, at the expense of speed.
-  /// If filtering is kFilterBox, averaging is used to produce ever better
-  /// quality image, at further expense of speed.
-  /// Returns 0 if successful.
-  int I444Scale(
-    ffi.Pointer<ffi.Uint8> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint8> src_u,
-    int src_stride_u,
-    ffi.Pointer<ffi.Uint8> src_v,
-    int src_stride_v,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint8> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint8> dst_u,
-    int dst_stride_u,
-    ffi.Pointer<ffi.Uint8> dst_v,
-    int dst_stride_v,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _I444Scale(
-      src_y,
-      src_stride_y,
-      src_u,
-      src_stride_u,
-      src_v,
-      src_stride_v,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_u,
-      dst_stride_u,
-      dst_v,
-      dst_stride_v,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _I444ScalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('I444Scale');
-  late final _I444Scale = _I444ScalePtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          int,
-          int,
-          int)>();
-
-  int I444Scale_16(
-    ffi.Pointer<ffi.Uint16> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint16> src_u,
-    int src_stride_u,
-    ffi.Pointer<ffi.Uint16> src_v,
-    int src_stride_v,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint16> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint16> dst_u,
-    int dst_stride_u,
-    ffi.Pointer<ffi.Uint16> dst_v,
-    int dst_stride_v,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _I444Scale_16(
-      src_y,
-      src_stride_y,
-      src_u,
-      src_stride_u,
-      src_v,
-      src_stride_v,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_u,
-      dst_stride_u,
-      dst_v,
-      dst_stride_v,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _I444Scale_16Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('I444Scale_16');
-  late final _I444Scale_16 = _I444Scale_16Ptr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          int)>();
-
-  int I444Scale_12(
-    ffi.Pointer<ffi.Uint16> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint16> src_u,
-    int src_stride_u,
-    ffi.Pointer<ffi.Uint16> src_v,
-    int src_stride_v,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint16> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint16> dst_u,
-    int dst_stride_u,
-    ffi.Pointer<ffi.Uint16> dst_v,
-    int dst_stride_v,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _I444Scale_12(
-      src_y,
-      src_stride_y,
-      src_u,
-      src_stride_u,
-      src_v,
-      src_stride_v,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_u,
-      dst_stride_u,
-      dst_v,
-      dst_stride_v,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _I444Scale_12Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint16>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('I444Scale_12');
-  late final _I444Scale_12 = _I444Scale_12Ptr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          ffi.Pointer<ffi.Uint16>,
-          int,
-          int,
-          int,
-          int)>();
-
-  /// Scales an NV12 image from the src width and height to the
-  /// dst width and height.
-  /// If filtering is kFilterNone, a simple nearest-neighbor algorithm is
-  /// used. This produces basic (blocky) quality at the fastest speed.
-  /// If filtering is kFilterBilinear, interpolation is used to produce a better
-  /// quality image, at the expense of speed.
-  /// kFilterBox is not supported for the UV channel and will be treated as
-  /// bilinear.
-  /// Returns 0 if successful.
-  int NV12Scale(
-    ffi.Pointer<ffi.Uint8> src_y,
-    int src_stride_y,
-    ffi.Pointer<ffi.Uint8> src_uv,
-    int src_stride_uv,
-    int src_width,
-    int src_height,
-    ffi.Pointer<ffi.Uint8> dst_y,
-    int dst_stride_y,
-    ffi.Pointer<ffi.Uint8> dst_uv,
-    int dst_stride_uv,
-    int dst_width,
-    int dst_height,
-    int filtering,
-  ) {
-    return _NV12Scale(
-      src_y,
-      src_stride_y,
-      src_uv,
-      src_stride_uv,
-      src_width,
-      src_height,
-      dst_y,
-      dst_stride_y,
-      dst_uv,
-      dst_stride_uv,
-      dst_width,
-      dst_height,
-      filtering,
-    );
-  }
-
-  late final _NV12ScalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int,
-              ffi.Int32)>>('NV12Scale');
-  late final _NV12Scale = _NV12ScalePtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          int,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          ffi.Pointer<ffi.Uint8>,
-          int,
-          int,
-          int,
-          int)>();
 }
 
+/// Supported rotation.
 abstract class RotationMode {
+  /// No rotation.
   static const int kRotate0 = 0;
+
+  /// Rotate 90 degrees clockwise.
   static const int kRotate90 = 90;
+
+  /// Rotate 180 degrees.
   static const int kRotate180 = 180;
+
+  /// Rotate 270 degrees clockwise.
   static const int kRotate270 = 270;
+
+  /// Deprecated.
   static const int kRotateNone = 0;
   static const int kRotateClockwise = 90;
   static const int kRotateCounterClockwise = 270;
@@ -54412,10 +54426,18 @@ final class YuvConstants extends ffi.Struct {
 typedef ptrdiff_t = ffi.Long;
 typedef Dartptrdiff_t = int;
 
+/// Supported filtering.
 abstract class FilterMode {
+  /// Point sample; Fastest.
   static const int kFilterNone = 0;
+
+  /// Filter horizontally only.
   static const int kFilterLinear = 1;
+
+  /// Faster than box, but lower quality scaling down.
   static const int kFilterBilinear = 2;
+
+  /// Highest quality.
   static const int kFilterBox = 3;
 }
 
