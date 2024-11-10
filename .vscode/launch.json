@@ -4,202 +4,248 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        // hybrid_os
         {
-            "name": "hybrid_os_example",
+            "name": "hybrid_os",
             "cwd": "hybrid_os/hybrid_os/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_os_example (profile mode)",
+            "name": "hybrid_os (profile mode)",
             "cwd": "hybrid_os/hybrid_os/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_os_example (release mode)",
+            "name": "hybrid_os (release mode)",
             "cwd": "hybrid_os/hybrid_os/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
-            "name": "hybrid_os_android_example",
+            "name": "hybrid_os_android",
             "cwd": "hybrid_os/hybrid_os_android/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_os_android_example (profile mode)",
+            "name": "hybrid_os_android (profile mode)",
             "cwd": "hybrid_os/hybrid_os_android/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_os_android_example (release mode)",
+            "name": "hybrid_os_android (release mode)",
             "cwd": "hybrid_os/hybrid_os_android/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
-            "name": "hybrid_os_darwin_example",
+            "name": "hybrid_os_darwin",
             "cwd": "hybrid_os/hybrid_os_darwin/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_os_darwin_example (profile mode)",
+            "name": "hybrid_os_darwin (profile mode)",
             "cwd": "hybrid_os/hybrid_os_darwin/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_os_darwin_example (release mode)",
+            "name": "hybrid_os_darwin (release mode)",
             "cwd": "hybrid_os/hybrid_os_darwin/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
-            "name": "hybrid_os_linux_example",
+            "name": "hybrid_os_linux",
             "cwd": "hybrid_os/hybrid_os_linux/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_os_linux_example (profile mode)",
+            "name": "hybrid_os_linux (profile mode)",
             "cwd": "hybrid_os/hybrid_os_linux/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_os_linux_example (release mode)",
+            "name": "hybrid_os_linux (release mode)",
             "cwd": "hybrid_os/hybrid_os_linux/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
-            "name": "hybrid_os_windows_example",
+            "name": "hybrid_os_windows",
             "cwd": "hybrid_os/hybrid_os_windows/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_os_windows_example (profile mode)",
+            "name": "hybrid_os_windows (profile mode)",
             "cwd": "hybrid_os/hybrid_os_windows/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_os_windows_example (release mode)",
+            "name": "hybrid_os_windows (release mode)",
             "cwd": "hybrid_os/hybrid_os_windows/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
+        // hybrid_ui
         {
-            "name": "hybrid_ui_example",
+            "name": "hybrid_ui",
             "cwd": "hybrid_ui/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_ui_example (profile mode)",
+            "name": "hybrid_ui (profile mode)",
             "cwd": "hybrid_ui/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_ui_example (release mode)",
+            "name": "hybrid_ui (release mode)",
             "cwd": "hybrid_ui/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
+        // hybrid_usb
         {
-            "name": "hybrid_vision_example",
+            "name": "hybrid_usb",
+            "cwd": "hybrid_usb/example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hybrid_usb (profile mode)",
+            "cwd": "hybrid_usb/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hybrid_usb (release mode)",
+            "cwd": "hybrid_usb/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        // hybrid_v4l2
+        {
+            "name": "hybrid_v4l2",
+            "cwd": "hybrid_v4l2/example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hybrid_v4l2 (profile mode)",
+            "cwd": "hybrid_v4l2/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hybrid_v4l2 (release mode)",
+            "cwd": "hybrid_v4l2/example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        // hybrid_vision
+        {
+            "name": "hybrid_vision",
             "cwd": "hybrid_vision/hybrid_vision/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_vision_example (profile mode)",
+            "name": "hybrid_vision (profile mode)",
             "cwd": "hybrid_vision/hybrid_vision/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_vision_example (release mode)",
+            "name": "hybrid_vision (release mode)",
             "cwd": "hybrid_vision/hybrid_vision/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
-            "name": "hybrid_vision_android_example",
+            "name": "hybrid_vision_android",
             "cwd": "hybrid_vision/hybrid_vision_android/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_vision_android_example (profile mode)",
+            "name": "hybrid_vision_android (profile mode)",
             "cwd": "hybrid_vision/hybrid_vision_android/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_vision_android_example (release mode)",
+            "name": "hybrid_vision_android (release mode)",
             "cwd": "hybrid_vision/hybrid_vision_android/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
-            "name": "hybrid_vision_darwin_example",
+            "name": "hybrid_vision_darwin",
             "cwd": "hybrid_vision/hybrid_vision_darwin/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_vision_darwin_example (profile mode)",
+            "name": "hybrid_vision_darwin (profile mode)",
             "cwd": "hybrid_vision/hybrid_vision_darwin/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_vision_darwin_example (release mode)",
+            "name": "hybrid_vision_darwin (release mode)",
             "cwd": "hybrid_vision/hybrid_vision_darwin/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
+        // hybrid_yuv
         {
-            "name": "hybrid_uvc_example",
-            "cwd": "hybrid_uvc/example",
+            "name": "hybrid_yuv",
+            "cwd": "hybrid_yuv/example",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hybrid_uvc_example (profile mode)",
-            "cwd": "hybrid_uvc/example",
+            "name": "hybrid_yuv (profile mode)",
+            "cwd": "hybrid_yuv/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hybrid_uvc_example (release mode)",
-            "cwd": "hybrid_uvc/example",
+            "name": "hybrid_yuv (release mode)",
+            "cwd": "hybrid_yuv/example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
