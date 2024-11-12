@@ -1,6 +1,6 @@
 import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
 
-import 'android_impl.dart';
+import 'android.dart';
 
 /// HybridOSAndroidPlugin.
 final class HybridOSAndroidPlugin extends HybridOSPlugin {
@@ -10,7 +10,5 @@ final class HybridOSAndroidPlugin extends HybridOSPlugin {
   }
 
   @override
-  OS createOS() {
-    return AndroidImpl();
-  }
+  OS createOS() => Android();
 }

@@ -10,6 +10,18 @@ output:
     path: lib/src/jni/
 log_level: all
 classes:
+  - android.app.Activity
+  - android.content.ContentResolver
   - android.content.Context
+  - android.content.Intent
+  - android.database.ContentObserver
+  - android.net.Uri
   - android.os.Build
+  - android.os.Handler
+  - android.os.Looper
+  - android.os.Message
   - android.provider.Settings
+  - android.view.Window
+  - android.view.WindowManager
+  - dev.hebei.hybrid_os_android.AndroidImpl
+  - dev.hebei.hybrid_os_android.ContentObserverImpl

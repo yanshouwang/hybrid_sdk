@@ -28,7 +28,11 @@ import 'dart:isolate' show ReceivePort;
 import 'package:jni/internal_helpers_for_jnigen.dart';
 import 'package:jni/jni.dart' as jni;
 
+import '../content/ContentResolver.dart' as contentresolver_;
+
 import '../content/Context.dart' as context_;
+
+import '../net/Uri.dart' as uri_;
 
 /// from: `android.provider.Settings$Global`
 class Settings_Global extends Settings_NameValueTable {
@@ -160,8 +164,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final android.net.Uri CONTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get CONTENT_URI =>
-      _id_CONTENT_URI.get(_class, const jni.JObjectType());
+  static uri_.Uri get CONTENT_URI =>
+      _id_CONTENT_URI.get(_class, const uri_.$UriType());
 
   static final _id_DATA_ROAMING = _class.staticFieldId(
     r'DATA_ROAMING',
@@ -523,7 +527,7 @@ class Settings_Global extends Settings_NameValueTable {
   /// from: `static public java.lang.String getString(android.content.ContentResolver contentResolver, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString getString(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getString(
@@ -560,7 +564,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public boolean putString(android.content.ContentResolver contentResolver, java.lang.String string, java.lang.String string1)`
   static bool putString1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     jni.JString string1,
   ) {
@@ -591,12 +595,12 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public android.net.Uri getUriFor(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject getUriFor1(
+  static uri_.Uri getUriFor1(
     jni.JString string,
   ) {
     return _getUriFor1(_class.reference.pointer,
             _id_getUriFor1 as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const uri_.$UriType());
   }
 
   static final _id_getInt = _class.staticMethodId(
@@ -621,7 +625,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static int getInt(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int i,
   ) {
@@ -651,7 +655,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string)`
   static int getInt1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getInt1(_class.reference.pointer, _id_getInt1 as jni.JMethodIDPtr,
@@ -681,7 +685,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public boolean putInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static bool putInt(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int i,
   ) {
@@ -712,7 +716,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static int getLong(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int j,
   ) {
@@ -742,7 +746,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string)`
   static int getLong1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getLong1(_class.reference.pointer, _id_getLong1 as jni.JMethodIDPtr,
@@ -772,7 +776,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public boolean putLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static bool putLong(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int j,
   ) {
@@ -803,7 +807,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static double getFloat(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     double f,
   ) {
@@ -833,7 +837,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string)`
   static double getFloat1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getFloat1(
@@ -866,7 +870,7 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public boolean putFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static bool putFloat(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     double f,
   ) {
@@ -987,8 +991,8 @@ class Settings_NameValueTable extends jni.JObject {
 
   /// from: `static protected boolean putString(android.content.ContentResolver contentResolver, android.net.Uri uri, java.lang.String string, java.lang.String string1)`
   static bool putString(
-    jni.JObject contentResolver,
-    jni.JObject uri,
+    contentresolver_.ContentResolver contentResolver,
+    uri_.Uri uri,
     jni.JString string,
     jni.JString string1,
   ) {
@@ -1023,8 +1027,8 @@ class Settings_NameValueTable extends jni.JObject {
 
   /// from: `static public android.net.Uri getUriFor(android.net.Uri uri, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject getUriFor(
-    jni.JObject uri,
+  static uri_.Uri getUriFor(
+    uri_.Uri uri,
     jni.JString string,
   ) {
     return _getUriFor(
@@ -1032,7 +1036,7 @@ class Settings_NameValueTable extends jni.JObject {
             _id_getUriFor as jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const uri_.$UriType());
   }
 }
 
@@ -1255,8 +1259,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final android.net.Uri CONTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get CONTENT_URI =>
-      _id_CONTENT_URI.get(_class, const jni.JObjectType());
+  static uri_.Uri get CONTENT_URI =>
+      _id_CONTENT_URI.get(_class, const uri_.$UriType());
 
   static final _id_DATA_ROAMING = _class.staticFieldId(
     r'DATA_ROAMING',
@@ -1861,7 +1865,7 @@ class Settings_Secure extends Settings_NameValueTable {
   /// from: `static public java.lang.String getString(android.content.ContentResolver contentResolver, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString getString(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getString(
@@ -1898,7 +1902,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public boolean putString(android.content.ContentResolver contentResolver, java.lang.String string, java.lang.String string1)`
   static bool putString1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     jni.JString string1,
   ) {
@@ -1929,12 +1933,12 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public android.net.Uri getUriFor(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject getUriFor1(
+  static uri_.Uri getUriFor1(
     jni.JString string,
   ) {
     return _getUriFor1(_class.reference.pointer,
             _id_getUriFor1 as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const uri_.$UriType());
   }
 
   static final _id_getInt = _class.staticMethodId(
@@ -1959,7 +1963,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static int getInt(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int i,
   ) {
@@ -1989,7 +1993,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string)`
   static int getInt1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getInt1(_class.reference.pointer, _id_getInt1 as jni.JMethodIDPtr,
@@ -2019,7 +2023,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public boolean putInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static bool putInt(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int i,
   ) {
@@ -2050,7 +2054,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static int getLong(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int j,
   ) {
@@ -2080,7 +2084,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string)`
   static int getLong1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getLong1(_class.reference.pointer, _id_getLong1 as jni.JMethodIDPtr,
@@ -2110,7 +2114,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public boolean putLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static bool putLong(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int j,
   ) {
@@ -2141,7 +2145,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static double getFloat(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     double f,
   ) {
@@ -2171,7 +2175,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string)`
   static double getFloat1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getFloat1(
@@ -2204,7 +2208,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public boolean putFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static bool putFloat(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     double f,
   ) {
@@ -2234,7 +2238,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public boolean isLocationProviderEnabled(android.content.ContentResolver contentResolver, java.lang.String string)`
   static bool isLocationProviderEnabled(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _isLocationProviderEnabled(
@@ -2267,7 +2271,7 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public void setLocationProviderEnabled(android.content.ContentResolver contentResolver, java.lang.String string, boolean z)`
   static void setLocationProviderEnabled(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     bool z,
   ) {
@@ -2528,8 +2532,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final android.net.Uri CONTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get CONTENT_URI =>
-      _id_CONTENT_URI.get(_class, const jni.JObjectType());
+  static uri_.Uri get CONTENT_URI =>
+      _id_CONTENT_URI.get(_class, const uri_.$UriType());
 
   static final _id_DATA_ROAMING = _class.staticFieldId(
     r'DATA_ROAMING',
@@ -2568,8 +2572,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final android.net.Uri DEFAULT_ALARM_ALERT_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get DEFAULT_ALARM_ALERT_URI =>
-      _id_DEFAULT_ALARM_ALERT_URI.get(_class, const jni.JObjectType());
+  static uri_.Uri get DEFAULT_ALARM_ALERT_URI =>
+      _id_DEFAULT_ALARM_ALERT_URI.get(_class, const uri_.$UriType());
 
   static final _id_DEFAULT_NOTIFICATION_URI = _class.staticFieldId(
     r'DEFAULT_NOTIFICATION_URI',
@@ -2578,8 +2582,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final android.net.Uri DEFAULT_NOTIFICATION_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get DEFAULT_NOTIFICATION_URI =>
-      _id_DEFAULT_NOTIFICATION_URI.get(_class, const jni.JObjectType());
+  static uri_.Uri get DEFAULT_NOTIFICATION_URI =>
+      _id_DEFAULT_NOTIFICATION_URI.get(_class, const uri_.$UriType());
 
   static final _id_DEFAULT_RINGTONE_URI = _class.staticFieldId(
     r'DEFAULT_RINGTONE_URI',
@@ -2588,8 +2592,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final android.net.Uri DEFAULT_RINGTONE_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get DEFAULT_RINGTONE_URI =>
-      _id_DEFAULT_RINGTONE_URI.get(_class, const jni.JObjectType());
+  static uri_.Uri get DEFAULT_RINGTONE_URI =>
+      _id_DEFAULT_RINGTONE_URI.get(_class, const uri_.$UriType());
 
   static final _id_DEVICE_PROVISIONED = _class.staticFieldId(
     r'DEVICE_PROVISIONED',
@@ -3426,7 +3430,7 @@ class Settings_System extends Settings_NameValueTable {
   /// from: `static public java.lang.String getString(android.content.ContentResolver contentResolver, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
   static jni.JString getString(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getString(
@@ -3463,7 +3467,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public boolean putString(android.content.ContentResolver contentResolver, java.lang.String string, java.lang.String string1)`
   static bool putString1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     jni.JString string1,
   ) {
@@ -3494,12 +3498,12 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public android.net.Uri getUriFor(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject getUriFor1(
+  static uri_.Uri getUriFor1(
     jni.JString string,
   ) {
     return _getUriFor1(_class.reference.pointer,
             _id_getUriFor1 as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const uri_.$UriType());
   }
 
   static final _id_getInt = _class.staticMethodId(
@@ -3524,7 +3528,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static int getInt(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int i,
   ) {
@@ -3554,7 +3558,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string)`
   static int getInt1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getInt1(_class.reference.pointer, _id_getInt1 as jni.JMethodIDPtr,
@@ -3584,7 +3588,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public boolean putInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static bool putInt(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int i,
   ) {
@@ -3615,7 +3619,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static int getLong(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int j,
   ) {
@@ -3645,7 +3649,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string)`
   static int getLong1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getLong1(_class.reference.pointer, _id_getLong1 as jni.JMethodIDPtr,
@@ -3675,7 +3679,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public boolean putLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static bool putLong(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     int j,
   ) {
@@ -3706,7 +3710,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static double getFloat(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     double f,
   ) {
@@ -3736,7 +3740,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string)`
   static double getFloat1(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
   ) {
     return _getFloat1(
@@ -3769,7 +3773,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public boolean putFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static bool putFloat(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JString string,
     double f,
   ) {
@@ -3799,7 +3803,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public void getConfiguration(android.content.ContentResolver contentResolver, android.content.res.Configuration configuration)`
   static void getConfiguration(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JObject configuration,
   ) {
     _getConfiguration(
@@ -3831,7 +3835,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public boolean putConfiguration(android.content.ContentResolver contentResolver, android.content.res.Configuration configuration)`
   static bool putConfiguration(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     jni.JObject configuration,
   ) {
     return _putConfiguration(
@@ -3860,7 +3864,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public boolean getShowGTalkServiceStatus(android.content.ContentResolver contentResolver)`
   static bool getShowGTalkServiceStatus(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
   ) {
     return _getShowGTalkServiceStatus(
             _class.reference.pointer,
@@ -3887,7 +3891,7 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public void setShowGTalkServiceStatus(android.content.ContentResolver contentResolver, boolean z)`
   static void setShowGTalkServiceStatus(
-    jni.JObject contentResolver,
+    contentresolver_.ContentResolver contentResolver,
     bool z,
   ) {
     _setShowGTalkServiceStatus(

@@ -1,6 +1,6 @@
 name: hybrid_os_android
 description: 'Android implementation of the hybrid_os plugin.'
-version: 0.1.0-dev.0
+version: 0.1.0-dev.1
 repository: 'https://github.com/yanshouwang/hybrid_sdk'
 
 environment:
@@ -24,5 +24,7 @@ flutter:
     implements: hybrid_os
     platforms:
       android:
+        package: dev.hebei.hybrid_os_android
+        pluginClass: HybridOSAndroidPlugin
         ffiPlugin: true
         dartPluginClass: HybridOSAndroidPlugin

@@ -1,4 +1,9 @@
+export 'jni/android/app/_package.dart';
 export 'jni/android/content/_package.dart';
+export 'jni/android/database/_package.dart';
+export 'jni/android/net/_package.dart';
 export 'jni/android/os/_package.dart';
 export 'jni/android/provider/_package.dart';
+export 'jni/android/view/_package.dart';
+export 'jni/dev/hebei/hybrid_os_android/_package.dart';
 export 'jni/jni.x.dart';

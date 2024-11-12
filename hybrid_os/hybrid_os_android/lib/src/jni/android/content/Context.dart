@@ -28,6 +28,16 @@ import 'dart:isolate' show ReceivePort;
 import 'package:jni/internal_helpers_for_jnigen.dart';
 import 'package:jni/jni.dart' as jni;
 
+import '../net/Uri.dart' as uri_;
+
+import '../os/Handler.dart' as handler_;
+
+import '../os/Looper.dart' as looper_;
+
+import 'ContentResolver.dart' as contentresolver_;
+
+import 'Intent.dart' as intent_;
+
 /// from: `android.content.Context$BindServiceFlags`
 class Context_BindServiceFlags extends jni.JObject {
   @override
@@ -1225,10 +1235,10 @@ class Context extends jni.JObject {
 
   /// from: `public abstract android.content.ContentResolver getContentResolver()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getContentResolver() {
+  contentresolver_.ContentResolver getContentResolver() {
     return _getContentResolver(
             reference.pointer, _id_getContentResolver as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+        .object(const contentresolver_.$ContentResolverType());
   }
 
   static final _id_getMainLooper = _class.instanceMethodId(
@@ -1250,10 +1260,10 @@ class Context extends jni.JObject {
 
   /// from: `public abstract android.os.Looper getMainLooper()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getMainLooper() {
+  looper_.Looper getMainLooper() {
     return _getMainLooper(
             reference.pointer, _id_getMainLooper as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+        .object(const looper_.$LooperType());
   }
 
   static final _id_getMainExecutor = _class.instanceMethodId(
@@ -2821,7 +2831,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void startActivity(android.content.Intent intent)`
   void startActivity(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     _startActivity(reference.pointer, _id_startActivity as jni.JMethodIDPtr,
             intent.reference.pointer)
@@ -2849,7 +2859,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void startActivity(android.content.Intent intent, android.os.Bundle bundle)`
   void startActivity1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject bundle,
   ) {
     _startActivity1(reference.pointer, _id_startActivity1 as jni.JMethodIDPtr,
@@ -2875,7 +2885,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void startActivities(android.content.Intent[] intents)`
   void startActivities(
-    jni.JArray<jni.JObject> intents,
+    jni.JArray<intent_.Intent> intents,
   ) {
     _startActivities(reference.pointer, _id_startActivities as jni.JMethodIDPtr,
             intents.reference.pointer)
@@ -2903,7 +2913,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void startActivities(android.content.Intent[] intents, android.os.Bundle bundle)`
   void startActivities1(
-    jni.JArray<jni.JObject> intents,
+    jni.JArray<intent_.Intent> intents,
     jni.JObject bundle,
   ) {
     _startActivities1(
@@ -2939,7 +2949,7 @@ class Context extends jni.JObject {
   /// from: `public abstract void startIntentSender(android.content.IntentSender intentSender, android.content.Intent intent, int i, int i1, int i2)`
   void startIntentSender(
     jni.JObject intentSender,
-    jni.JObject intent,
+    intent_.Intent intent,
     int i,
     int i1,
     int i2,
@@ -2988,7 +2998,7 @@ class Context extends jni.JObject {
   /// from: `public abstract void startIntentSender(android.content.IntentSender intentSender, android.content.Intent intent, int i, int i1, int i2, android.os.Bundle bundle)`
   void startIntentSender1(
     jni.JObject intentSender,
-    jni.JObject intent,
+    intent_.Intent intent,
     int i,
     int i1,
     int i2,
@@ -3024,7 +3034,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendBroadcast(android.content.Intent intent)`
   void sendBroadcast(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     _sendBroadcast(reference.pointer, _id_sendBroadcast as jni.JMethodIDPtr,
             intent.reference.pointer)
@@ -3052,7 +3062,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendBroadcast(android.content.Intent intent, java.lang.String string)`
   void sendBroadcast1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
   ) {
     _sendBroadcast1(reference.pointer, _id_sendBroadcast1 as jni.JMethodIDPtr,
@@ -3086,7 +3096,7 @@ class Context extends jni.JObject {
 
   /// from: `public void sendBroadcastWithMultiplePermissions(android.content.Intent intent, java.lang.String[] strings)`
   void sendBroadcastWithMultiplePermissions(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JArray<jni.JString> strings,
   ) {
     _sendBroadcastWithMultiplePermissions(
@@ -3123,7 +3133,7 @@ class Context extends jni.JObject {
 
   /// from: `public void sendBroadcast(android.content.Intent intent, java.lang.String string, android.os.Bundle bundle)`
   void sendBroadcast2(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
     jni.JObject bundle,
   ) {
@@ -3157,7 +3167,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendOrderedBroadcast(android.content.Intent intent, java.lang.String string)`
   void sendOrderedBroadcast(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
   ) {
     _sendOrderedBroadcast(
@@ -3194,7 +3204,7 @@ class Context extends jni.JObject {
 
   /// from: `public void sendOrderedBroadcast(android.content.Intent intent, java.lang.String string, android.os.Bundle bundle)`
   void sendOrderedBroadcast1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
     jni.JObject bundle,
   ) {
@@ -3241,10 +3251,10 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendOrderedBroadcast(android.content.Intent intent, java.lang.String string, android.content.BroadcastReceiver broadcastReceiver, android.os.Handler handler, int i, java.lang.String string1, android.os.Bundle bundle)`
   void sendOrderedBroadcast2(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
     jni.JObject broadcastReceiver,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
     jni.JString string1,
     jni.JObject bundle,
@@ -3298,11 +3308,11 @@ class Context extends jni.JObject {
 
   /// from: `public void sendOrderedBroadcast(android.content.Intent intent, java.lang.String string, android.os.Bundle bundle, android.content.BroadcastReceiver broadcastReceiver, android.os.Handler handler, int i, java.lang.String string1, android.os.Bundle bundle1)`
   void sendOrderedBroadcast3(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
     jni.JObject bundle,
     jni.JObject broadcastReceiver,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
     jni.JString string1,
     jni.JObject bundle1,
@@ -3342,7 +3352,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendBroadcastAsUser(android.content.Intent intent, android.os.UserHandle userHandle)`
   void sendBroadcastAsUser(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject userHandle,
   ) {
     _sendBroadcastAsUser(
@@ -3379,7 +3389,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendBroadcastAsUser(android.content.Intent intent, android.os.UserHandle userHandle, java.lang.String string)`
   void sendBroadcastAsUser1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject userHandle,
     jni.JString string,
   ) {
@@ -3428,11 +3438,11 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendOrderedBroadcastAsUser(android.content.Intent intent, android.os.UserHandle userHandle, java.lang.String string, android.content.BroadcastReceiver broadcastReceiver, android.os.Handler handler, int i, java.lang.String string1, android.os.Bundle bundle)`
   void sendOrderedBroadcastAsUser(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject userHandle,
     jni.JString string,
     jni.JObject broadcastReceiver,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
     jni.JString string1,
     jni.JObject bundle,
@@ -3487,11 +3497,11 @@ class Context extends jni.JObject {
 
   /// from: `public void sendOrderedBroadcast(android.content.Intent intent, java.lang.String string, java.lang.String string1, android.content.BroadcastReceiver broadcastReceiver, android.os.Handler handler, int i, java.lang.String string2, android.os.Bundle bundle)`
   void sendOrderedBroadcast4(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JString string,
     jni.JString string1,
     jni.JObject broadcastReceiver,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
     jni.JString string2,
     jni.JObject bundle,
@@ -3528,7 +3538,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendStickyBroadcast(android.content.Intent intent)`
   void sendStickyBroadcast(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     _sendStickyBroadcast(
             reference.pointer,
@@ -3558,7 +3568,7 @@ class Context extends jni.JObject {
 
   /// from: `public void sendStickyBroadcast(android.content.Intent intent, android.os.Bundle bundle)`
   void sendStickyBroadcast1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject bundle,
   ) {
     _sendStickyBroadcast1(
@@ -3601,9 +3611,9 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendStickyOrderedBroadcast(android.content.Intent intent, android.content.BroadcastReceiver broadcastReceiver, android.os.Handler handler, int i, java.lang.String string, android.os.Bundle bundle)`
   void sendStickyOrderedBroadcast(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject broadcastReceiver,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
     jni.JString string,
     jni.JObject bundle,
@@ -3638,7 +3648,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void removeStickyBroadcast(android.content.Intent intent)`
   void removeStickyBroadcast(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     _removeStickyBroadcast(
             reference.pointer,
@@ -3668,7 +3678,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendStickyBroadcastAsUser(android.content.Intent intent, android.os.UserHandle userHandle)`
   void sendStickyBroadcastAsUser(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject userHandle,
   ) {
     _sendStickyBroadcastAsUser(
@@ -3714,10 +3724,10 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void sendStickyOrderedBroadcastAsUser(android.content.Intent intent, android.os.UserHandle userHandle, android.content.BroadcastReceiver broadcastReceiver, android.os.Handler handler, int i, java.lang.String string, android.os.Bundle bundle)`
   void sendStickyOrderedBroadcastAsUser(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject userHandle,
     jni.JObject broadcastReceiver,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
     jni.JString string,
     jni.JObject bundle,
@@ -3756,7 +3766,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void removeStickyBroadcastAsUser(android.content.Intent intent, android.os.UserHandle userHandle)`
   void removeStickyBroadcastAsUser(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject userHandle,
   ) {
     _removeStickyBroadcastAsUser(
@@ -3788,7 +3798,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract android.content.Intent registerReceiver(android.content.BroadcastReceiver broadcastReceiver, android.content.IntentFilter intentFilter)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject registerReceiver(
+  intent_.Intent registerReceiver(
     jni.JObject broadcastReceiver,
     jni.JObject intentFilter,
   ) {
@@ -3797,7 +3807,7 @@ class Context extends jni.JObject {
             _id_registerReceiver as jni.JMethodIDPtr,
             broadcastReceiver.reference.pointer,
             intentFilter.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const intent_.$IntentType());
   }
 
   static final _id_registerReceiver1 = _class.instanceMethodId(
@@ -3822,7 +3832,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract android.content.Intent registerReceiver(android.content.BroadcastReceiver broadcastReceiver, android.content.IntentFilter intentFilter, int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject registerReceiver1(
+  intent_.Intent registerReceiver1(
     jni.JObject broadcastReceiver,
     jni.JObject intentFilter,
     int i,
@@ -3833,7 +3843,7 @@ class Context extends jni.JObject {
             broadcastReceiver.reference.pointer,
             intentFilter.reference.pointer,
             i)
-        .object(const jni.JObjectType());
+        .object(const intent_.$IntentType());
   }
 
   static final _id_registerReceiver2 = _class.instanceMethodId(
@@ -3864,11 +3874,11 @@ class Context extends jni.JObject {
 
   /// from: `public abstract android.content.Intent registerReceiver(android.content.BroadcastReceiver broadcastReceiver, android.content.IntentFilter intentFilter, java.lang.String string, android.os.Handler handler)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject registerReceiver2(
+  intent_.Intent registerReceiver2(
     jni.JObject broadcastReceiver,
     jni.JObject intentFilter,
     jni.JString string,
-    jni.JObject handler,
+    handler_.Handler handler,
   ) {
     return _registerReceiver2(
             reference.pointer,
@@ -3877,7 +3887,7 @@ class Context extends jni.JObject {
             intentFilter.reference.pointer,
             string.reference.pointer,
             handler.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const intent_.$IntentType());
   }
 
   static final _id_registerReceiver3 = _class.instanceMethodId(
@@ -3910,11 +3920,11 @@ class Context extends jni.JObject {
 
   /// from: `public abstract android.content.Intent registerReceiver(android.content.BroadcastReceiver broadcastReceiver, android.content.IntentFilter intentFilter, java.lang.String string, android.os.Handler handler, int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject registerReceiver3(
+  intent_.Intent registerReceiver3(
     jni.JObject broadcastReceiver,
     jni.JObject intentFilter,
     jni.JString string,
-    jni.JObject handler,
+    handler_.Handler handler,
     int i,
   ) {
     return _registerReceiver3(
@@ -3925,7 +3935,7 @@ class Context extends jni.JObject {
             string.reference.pointer,
             handler.reference.pointer,
             i)
-        .object(const jni.JObjectType());
+        .object(const intent_.$IntentType());
   }
 
   static final _id_unregisterReceiver = _class.instanceMethodId(
@@ -3974,7 +3984,7 @@ class Context extends jni.JObject {
   /// from: `public abstract android.content.ComponentName startService(android.content.Intent intent)`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject startService(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     return _startService(reference.pointer,
             _id_startService as jni.JMethodIDPtr, intent.reference.pointer)
@@ -4000,7 +4010,7 @@ class Context extends jni.JObject {
   /// from: `public abstract android.content.ComponentName startForegroundService(android.content.Intent intent)`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JObject startForegroundService(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     return _startForegroundService(
             reference.pointer,
@@ -4027,7 +4037,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract boolean stopService(android.content.Intent intent)`
   bool stopService(
-    jni.JObject intent,
+    intent_.Intent intent,
   ) {
     return _stopService(reference.pointer, _id_stopService as jni.JMethodIDPtr,
             intent.reference.pointer)
@@ -4056,7 +4066,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract boolean bindService(android.content.Intent intent, android.content.ServiceConnection serviceConnection, int i)`
   bool bindService(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject serviceConnection,
     int i,
   ) {
@@ -4091,7 +4101,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindService(android.content.Intent intent, android.content.ServiceConnection serviceConnection, android.content.Context$BindServiceFlags bindServiceFlags)`
   bool bindService1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject serviceConnection,
     Context_BindServiceFlags bindServiceFlags,
   ) {
@@ -4132,7 +4142,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindService(android.content.Intent intent, int i, java.util.concurrent.Executor executor, android.content.ServiceConnection serviceConnection)`
   bool bindService2(
-    jni.JObject intent,
+    intent_.Intent intent,
     int i,
     jni.JObject executor,
     jni.JObject serviceConnection,
@@ -4175,7 +4185,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindService(android.content.Intent intent, android.content.Context$BindServiceFlags bindServiceFlags, java.util.concurrent.Executor executor, android.content.ServiceConnection serviceConnection)`
   bool bindService3(
-    jni.JObject intent,
+    intent_.Intent intent,
     Context_BindServiceFlags bindServiceFlags,
     jni.JObject executor,
     jni.JObject serviceConnection,
@@ -4220,7 +4230,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindIsolatedService(android.content.Intent intent, int i, java.lang.String string, java.util.concurrent.Executor executor, android.content.ServiceConnection serviceConnection)`
   bool bindIsolatedService(
-    jni.JObject intent,
+    intent_.Intent intent,
     int i,
     jni.JString string,
     jni.JObject executor,
@@ -4267,7 +4277,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindIsolatedService(android.content.Intent intent, android.content.Context$BindServiceFlags bindServiceFlags, java.lang.String string, java.util.concurrent.Executor executor, android.content.ServiceConnection serviceConnection)`
   bool bindIsolatedService1(
-    jni.JObject intent,
+    intent_.Intent intent,
     Context_BindServiceFlags bindServiceFlags,
     jni.JString string,
     jni.JObject executor,
@@ -4312,7 +4322,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindServiceAsUser(android.content.Intent intent, android.content.ServiceConnection serviceConnection, int i, android.os.UserHandle userHandle)`
   bool bindServiceAsUser(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject serviceConnection,
     int i,
     jni.JObject userHandle,
@@ -4355,7 +4365,7 @@ class Context extends jni.JObject {
 
   /// from: `public boolean bindServiceAsUser(android.content.Intent intent, android.content.ServiceConnection serviceConnection, android.content.Context$BindServiceFlags bindServiceFlags, android.os.UserHandle userHandle)`
   bool bindServiceAsUser1(
-    jni.JObject intent,
+    intent_.Intent intent,
     jni.JObject serviceConnection,
     Context_BindServiceFlags bindServiceFlags,
     jni.JObject userHandle,
@@ -4783,7 +4793,7 @@ class Context extends jni.JObject {
   /// from: `public abstract void grantUriPermission(java.lang.String string, android.net.Uri uri, int i)`
   void grantUriPermission(
     jni.JString string,
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
   ) {
     _grantUriPermission(
@@ -4813,7 +4823,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void revokeUriPermission(android.net.Uri uri, int i)`
   void revokeUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
   ) {
     _revokeUriPermission(
@@ -4847,7 +4857,7 @@ class Context extends jni.JObject {
   /// from: `public abstract void revokeUriPermission(java.lang.String string, android.net.Uri uri, int i)`
   void revokeUriPermission1(
     jni.JString string,
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
   ) {
     _revokeUriPermission1(
@@ -4882,7 +4892,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract int checkUriPermission(android.net.Uri uri, int i, int i1, int i2)`
   int checkUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
     int i1,
     int i2,
@@ -4921,7 +4931,7 @@ class Context extends jni.JObject {
   /// from: `public java.lang.Object[] checkUriPermissions(java.util.List list, int i, int i1, int i2)`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jint> checkUriPermissions(
-    jni.JList<jni.JObject> list,
+    jni.JList<uri_.Uri> list,
     int i,
     int i1,
     int i2,
@@ -4954,7 +4964,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract int checkCallingUriPermission(android.net.Uri uri, int i)`
   int checkCallingUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
   ) {
     return _checkCallingUriPermission(
@@ -4984,7 +4994,7 @@ class Context extends jni.JObject {
   /// from: `public java.lang.Object[] checkCallingUriPermissions(java.util.List list, int i)`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jint> checkCallingUriPermissions(
-    jni.JList<jni.JObject> list,
+    jni.JList<uri_.Uri> list,
     int i,
   ) {
     return _checkCallingUriPermissions(
@@ -5013,7 +5023,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract int checkCallingOrSelfUriPermission(android.net.Uri uri, int i)`
   int checkCallingOrSelfUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
   ) {
     return _checkCallingOrSelfUriPermission(
@@ -5044,7 +5054,7 @@ class Context extends jni.JObject {
   /// from: `public java.lang.Object[] checkCallingOrSelfUriPermissions(java.util.List list, int i)`
   /// The returned object must be released after use, by calling the [release] method.
   jni.JArray<jni.jint> checkCallingOrSelfUriPermissions(
-    jni.JList<jni.JObject> list,
+    jni.JList<uri_.Uri> list,
     int i,
   ) {
     return _checkCallingOrSelfUriPermissions(
@@ -5087,7 +5097,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract int checkUriPermission(android.net.Uri uri, java.lang.String string, java.lang.String string1, int i, int i1, int i2)`
   int checkUriPermission1(
-    jni.JObject uri,
+    uri_.Uri uri,
     jni.JString string,
     jni.JString string1,
     int i,
@@ -5130,7 +5140,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void enforceUriPermission(android.net.Uri uri, int i, int i1, int i2, java.lang.String string)`
   void enforceUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
     int i1,
     int i2,
@@ -5169,7 +5179,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void enforceCallingUriPermission(android.net.Uri uri, int i, java.lang.String string)`
   void enforceCallingUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
     jni.JString string,
   ) {
@@ -5209,7 +5219,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void enforceCallingOrSelfUriPermission(android.net.Uri uri, int i, java.lang.String string)`
   void enforceCallingOrSelfUriPermission(
-    jni.JObject uri,
+    uri_.Uri uri,
     int i,
     jni.JString string,
   ) {
@@ -5256,7 +5266,7 @@ class Context extends jni.JObject {
 
   /// from: `public abstract void enforceUriPermission(android.net.Uri uri, java.lang.String string, java.lang.String string1, int i, int i1, int i2, java.lang.String string2)`
   void enforceUriPermission1(
-    jni.JObject uri,
+    uri_.Uri uri,
     jni.JString string,
     jni.JString string1,
     int i,

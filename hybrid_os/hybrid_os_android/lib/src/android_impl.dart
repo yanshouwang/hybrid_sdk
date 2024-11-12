@@ -1,20 +1,18 @@
-import 'package:hybrid_os_android/src/screen_brightness_mode.dart';
+import 'dart:async';
+import 'dart:ui';
+
+import 'package:jni/jni.dart' as jni;
 
 import 'android.dart';
 import 'jni.dart' as jni;
+import 'screen_brightness_mode.dart';
+import 'settings.dart';
+import 'window.dart';
+import 'window_attributes.dart';
 
 final class AndroidImpl implements Android {
-  static AndroidImpl? _instance;
-
-  factory AndroidImpl() {
-    var instance = _instance;
-    if (instance == null) {
-      _instance = instance = AndroidImpl._();
-    }
-    return instance;
-  }
-
-  AndroidImpl._();
+  Settings? _settings;
+  Window? _window;
 
   @override
   String get baseOS => jni.Build_VERSION.BASE_OS.toDartString();
@@ -49,21 +47,70 @@ final class AndroidImpl implements Android {
   String get securityPatch => jni.Build_VERSION.SECURITY_PATCH.toDartString();
 
   @override
-  int get screenBrightness {
-    final contentResolver = jni.Env.context.getContentResolver();
-    return jni.Settings_System.getInt1(
-        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS);
+  Settings get settings {
+    var settings = _settings;
+    if (settings == null) {
+      _settings = settings = SettingsImpl();
+    }
+    return settings;
   }
 
   @override
-  set screenBrightness(int value) {
-    final contentResolver = jni.Env.context.getContentResolver();
-    jni.Settings_System.putInt(
-        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS, value);
+  Window get window {
+    var window = _window;
+    if (window == null) {
+      final jWindow = jni.Env.activity.getWindow();
+      _window = window = WindowImpl(jWindow);
+    }
+    return window;
   }
 
   @override
-  ScreenBrightnessMode get screenBrightnessMode {
+  Future<void> startManageWriteSettingsActivity() {
+    final packageName = jni.Env.context.getPackageName().toDartString(
+          releaseOriginal: true,
+        );
+    final uriString = jni.JString.fromString("package:$packageName");
+    final uri = jni.Uri.parse(uriString);
+    final intent =
+        jni.Intent.new2(jni.Settings.ACTION_MANAGE_WRITE_SETTINGS).setData(uri);
+    final completer = Completer<void>();
+    final callback = jni.AndroidImpl_StartActivityCallback.implement(
+      jni.$AndroidImpl_StartActivityCallbackImpl(
+        onActivityResult: () => completer.complete(),
+      ),
+    );
+    jni.AndroidImpl.INSTANCE.startActivity(intent, callback);
+    return completer.future;
+  }
+}
+
+final class SettingsImpl implements Settings {
+  final jni.ContentResolver contentResolver;
+
+  late final StreamController<ScreenBrightnessMode>
+      brightnessModeChangedController;
+  late final StreamController<int> brightnessChangedController;
+
+  jni.ContentObserver? brightnessModeObserver;
+  jni.ContentObserver? brightnessObserver;
+
+  SettingsImpl() : contentResolver = jni.Env.context.getContentResolver() {
+    brightnessModeChangedController = StreamController.broadcast(
+      onListen: onListenBrightnessModeChanged,
+      onCancel: onCancelBrightnessModeChanged,
+    );
+    brightnessChangedController = StreamController.broadcast(
+      onListen: onListenBrightnessChanged,
+      onCancel: onCancelBrightnessChanged,
+    );
+  }
+
+  @override
+  bool get canWrite => jni.Settings_System.canWrite(jni.Env.context);
+
+  @override
+  ScreenBrightnessMode get brightnessMode {
     final contentResolver = jni.Env.context.getContentResolver();
     final value = jni.Settings_System.getInt1(
         contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS_MODE);
@@ -71,9 +118,166 @@ final class AndroidImpl implements Android {
   }
 
   @override
-  set screenBrightnessMode(ScreenBrightnessMode value) {
+  set brightnessMode(ScreenBrightnessMode value) {
     final contentResolver = jni.Env.context.getContentResolver();
     jni.Settings_System.putInt(contentResolver,
         jni.Settings_System.SCREEN_BRIGHTNESS_MODE, value.value);
+  }
+
+  @override
+  int get brightness {
+    final contentResolver = jni.Env.context.getContentResolver();
+    return jni.Settings_System.getInt1(
+        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS);
+  }
+
+  @override
+  set brightness(int value) {
+    final contentResolver = jni.Env.context.getContentResolver();
+    jni.Settings_System.putInt(
+        contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS, value);
+  }
+
+  @override
+  Stream<ScreenBrightnessMode> get brightnessModeChanged =>
+      brightnessModeChangedController.stream;
+  @override
+  Stream<int> get brightnessChanged => brightnessChangedController.stream;
+
+  void onListenBrightnessModeChanged() {
+    final uri = jni.Settings_System.getUriFor1(
+        jni.Settings_System.SCREEN_BRIGHTNESS_MODE);
+    final looper = jni.Looper.getMainLooper();
+    final handler = jni.Handler.new2(looper);
+    final callback = jni.ContentObserverImpl_ChangeCallback.implement(
+      jni.$ContentObserverImpl_ChangeCallbackImpl(
+        onChange: () => brightnessModeChangedController.add(brightnessMode),
+      ),
+    );
+    final observer = jni.ContentObserverImpl.new1(handler, callback);
+    contentResolver.registerContentObserver(uri, false, observer);
+    brightnessModeObserver = observer;
+  }
+
+  void onCancelBrightnessModeChanged() {
+    final observer = ArgumentError.checkNotNull(brightnessModeObserver);
+    contentResolver.unregisterContentObserver(observer);
+  }
+
+  void onListenBrightnessChanged() {
+    final uri =
+        jni.Settings_System.getUriFor1(jni.Settings_System.SCREEN_BRIGHTNESS);
+    final looper = jni.Looper.getMainLooper();
+    final handler = jni.Handler.new2(looper);
+    final callback = jni.ContentObserverImpl_ChangeCallback.implement(
+      jni.$ContentObserverImpl_ChangeCallbackImpl(
+        onChange: () => brightnessChangedController.add(brightness),
+      ),
+    );
+    final observer = jni.ContentObserverImpl.new1(handler, callback);
+    contentResolver.registerContentObserver(uri, false, observer);
+    brightnessObserver = observer;
+  }
+
+  void onCancelBrightnessChanged() {
+    final observer = ArgumentError.checkNotNull(brightnessObserver);
+    contentResolver.unregisterContentObserver(observer);
+  }
+}
+
+final class WindowImpl implements Window {
+  final jni.Window jWindow;
+
+  late final StreamController<WindowAttributes> attrsChangedController;
+
+  WindowImpl(this.jWindow) {
+    attrsChangedController = StreamController.broadcast(
+      onListen: onListenAttrsChanged,
+      onCancel: onCancelAttrsChanged,
+    );
+  }
+
+  @override
+  WindowAttributes get attrs {
+    final jAttributes = jWindow.getAttributes();
+    return WindowAttributesImpl(jAttributes);
+  }
+
+  @override
+  set attrs(WindowAttributes value) {
+    if (value is! WindowAttributesImpl) {
+      throw TypeError();
+    }
+    runOnPlatformThread(() {
+      jWindow.setAttributes(value.jParams);
+    });
+  }
+
+  @override
+  Stream<WindowAttributes> get attrsChanged => attrsChangedController.stream;
+
+  void onListenAttrsChanged() {
+    final callback1 = jni.Window_Callback.implement(
+      jni.$Window_CallbackImpl(
+        dispatchKeyEvent: (event) => false,
+        dispatchKeyShortcutEvent: (event) => false,
+        dispatchTouchEvent: (event) => false,
+        dispatchTrackballEvent: (event) => false,
+        dispatchGenericMotionEvent: (event) => false,
+        dispatchPopulateAccessibilityEvent: (event) => false,
+        onCreatePanelView: (id) =>
+            jni.JObject.fromReference(jni.jNullReference),
+        onCreatePanelMenu: (id, menu) => false,
+        onPreparePanel: (id, view, menu) => false,
+        onMenuOpened: (id, menu) => false,
+        onMenuItemSelected: (id, item) => false,
+        onWindowAttributesChanged: (jAttrs) {
+          final attrs = WindowAttributesImpl(jAttrs);
+          attrsChangedController.add(attrs);
+        },
+        onContentChanged: () {},
+        onWindowFocusChanged: (hasFocus) {},
+        onAttachedToWindow: () {},
+        onDetachedFromWindow: () {},
+        onPanelClosed: (id, menu) {},
+        onSearchRequested: () => false,
+        onSearchRequested1: (event) => false,
+        onWindowStartingActionMode: (callback) =>
+            jni.JObject.fromReference(jni.jNullReference),
+        onWindowStartingActionMode1: (callback, type) =>
+            jni.JObject.fromReference(jni.jNullReference),
+        onActionModeStarted: (actionMode) {},
+        onActionModeFinished: (actionMode) {},
+        onProvideKeyboardShortcuts: (data, menu, id) {},
+        onPointerCaptureChanged: (hasCapture) {},
+      ),
+    );
+    jWindow.setCallback(callback1);
+  }
+
+  void onCancelAttrsChanged() {
+    final callback = jni.Window_Callback.fromReference(jni.jNullReference);
+    jWindow.setCallback(callback);
+  }
+}
+
+final class WindowAttributesImpl implements WindowAttributes {
+  final jni.WindowManager_LayoutParams jParams;
+
+  WindowAttributesImpl(this.jParams);
+
+  @override
+  double? get brightness {
+    final brightness = jParams.screenBrightness;
+    if (brightness == jni.WindowManager_LayoutParams.BRIGHTNESS_OVERRIDE_NONE) {
+      return null;
+    }
+    return brightness;
+  }
+
+  @override
+  set brightness(double? value) {
+    jParams.screenBrightness =
+        value ?? jni.WindowManager_LayoutParams.BRIGHTNESS_OVERRIDE_NONE;
   }
 }

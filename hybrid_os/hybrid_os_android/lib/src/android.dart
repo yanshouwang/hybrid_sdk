@@ -1,9 +1,21 @@
 import 'package:hybrid_os_platform_interface/hybrid_os_platform_interface.dart';
 
-import 'screen_brightness_mode.dart';
+import 'android_impl.dart';
+import 'settings.dart';
+import 'window.dart';
 
 /// Android.
 abstract interface class Android implements OS {
+  static Android? _instance;
+
+  factory Android() {
+    var instance = _instance;
+    if (instance == null) {
+      _instance = instance = AndroidImpl();
+    }
+    return instance;
+  }
+
   /// The base OS build the product is based on.
   ///
   /// Added in API level 23
@@ -89,9 +101,14 @@ abstract interface class Android implements OS {
   /// Added in API level 23
   String get securityPatch;
 
-  ScreenBrightnessMode get screenBrightnessMode;
-  set screenBrightnessMode(ScreenBrightnessMode value);
+  /// System settings, containing miscellaneous system preferences. This table
+  /// holds simple name/value pairs. There are convenience functions for accessing
+  /// individual settings entries.
+  Settings get settings;
 
-  int get screenBrightness;
-  set screenBrightness(int value);
+  /// Retrieve the current Window for the activity. This can be used to directly
+  /// access parts of the Window API that are not available through Activity/Screen.
+  Window get window;
+
+  Future<void> startManageWriteSettingsActivity();
 }
