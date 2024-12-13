@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,250 +28,221 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 /// from: `android.media.AudioManager$AudioPlaybackCallback`
-class AudioManager_AudioPlaybackCallback extends jni.JObject {
-  @override
-  late final jni.JObjType<AudioManager_AudioPlaybackCallback> $type = type;
+class AudioManager_AudioPlaybackCallback extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager_AudioPlaybackCallback> $type;
 
+  @_$jni.internal
   AudioManager_AudioPlaybackCallback.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/media/AudioManager$AudioPlaybackCallback');
+      _$jni.JClass.forName(r'android/media/AudioManager$AudioPlaybackCallback');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AudioManager_AudioPlaybackCallbackType();
-  static final _id_new0 = _class.constructorId(
-    r'()V',
-  );
-
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_NewObject')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `public void <init>()`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory AudioManager_AudioPlaybackCallback() {
-    return AudioManager_AudioPlaybackCallback.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
-            .reference);
-  }
-
+  static const type = $AudioManager_AudioPlaybackCallback$Type();
   static final _id_onPlaybackConfigChanged = _class.instanceMethodId(
     r'onPlaybackConfigChanged',
     r'(Ljava/util/List;)V',
   );
 
-  static final _onPlaybackConfigChanged = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onPlaybackConfigChanged = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void onPlaybackConfigChanged(java.util.List list)`
   void onPlaybackConfigChanged(
-    jni.JList<jni.JObject> list,
+    _$jni.JList<_$jni.JObject> list,
   ) {
     _onPlaybackConfigChanged(
             reference.pointer,
-            _id_onPlaybackConfigChanged as jni.JMethodIDPtr,
+            _id_onPlaybackConfigChanged as _$jni.JMethodIDPtr,
             list.reference.pointer)
         .check();
   }
 }
 
-final class $AudioManager_AudioPlaybackCallbackType
-    extends jni.JObjType<AudioManager_AudioPlaybackCallback> {
-  const $AudioManager_AudioPlaybackCallbackType();
+final class $AudioManager_AudioPlaybackCallback$Type
+    extends _$jni.JObjType<AudioManager_AudioPlaybackCallback> {
+  @_$jni.internal
+  const $AudioManager_AudioPlaybackCallback$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/media/AudioManager$AudioPlaybackCallback;';
 
-  @override
-  AudioManager_AudioPlaybackCallback fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  AudioManager_AudioPlaybackCallback fromReference(
+          _$jni.JReference reference) =>
       AudioManager_AudioPlaybackCallback.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AudioManager_AudioPlaybackCallbackType).hashCode;
+  @_$core.override
+  int get hashCode => ($AudioManager_AudioPlaybackCallback$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AudioManager_AudioPlaybackCallbackType) &&
-        other is $AudioManager_AudioPlaybackCallbackType;
+    return other.runtimeType == ($AudioManager_AudioPlaybackCallback$Type) &&
+        other is $AudioManager_AudioPlaybackCallback$Type;
   }
 }
 
 /// from: `android.media.AudioManager$AudioRecordingCallback`
-class AudioManager_AudioRecordingCallback extends jni.JObject {
-  @override
-  late final jni.JObjType<AudioManager_AudioRecordingCallback> $type = type;
+class AudioManager_AudioRecordingCallback extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager_AudioRecordingCallback> $type;
 
+  @_$jni.internal
   AudioManager_AudioRecordingCallback.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class =
-      jni.JClass.forName(r'android/media/AudioManager$AudioRecordingCallback');
+  static final _class = _$jni.JClass.forName(
+      r'android/media/AudioManager$AudioRecordingCallback');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AudioManager_AudioRecordingCallbackType();
-  static final _id_new0 = _class.constructorId(
-    r'()V',
-  );
-
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_NewObject')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `public void <init>()`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory AudioManager_AudioRecordingCallback() {
-    return AudioManager_AudioRecordingCallback.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
-            .reference);
-  }
-
+  static const type = $AudioManager_AudioRecordingCallback$Type();
   static final _id_onRecordingConfigChanged = _class.instanceMethodId(
     r'onRecordingConfigChanged',
     r'(Ljava/util/List;)V',
   );
 
-  static final _onRecordingConfigChanged = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onRecordingConfigChanged = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void onRecordingConfigChanged(java.util.List list)`
   void onRecordingConfigChanged(
-    jni.JList<jni.JObject> list,
+    _$jni.JList<_$jni.JObject> list,
   ) {
     _onRecordingConfigChanged(
             reference.pointer,
-            _id_onRecordingConfigChanged as jni.JMethodIDPtr,
+            _id_onRecordingConfigChanged as _$jni.JMethodIDPtr,
             list.reference.pointer)
         .check();
   }
 }
 
-final class $AudioManager_AudioRecordingCallbackType
-    extends jni.JObjType<AudioManager_AudioRecordingCallback> {
-  const $AudioManager_AudioRecordingCallbackType();
+final class $AudioManager_AudioRecordingCallback$Type
+    extends _$jni.JObjType<AudioManager_AudioRecordingCallback> {
+  @_$jni.internal
+  const $AudioManager_AudioRecordingCallback$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/media/AudioManager$AudioRecordingCallback;';
 
-  @override
-  AudioManager_AudioRecordingCallback fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  AudioManager_AudioRecordingCallback fromReference(
+          _$jni.JReference reference) =>
       AudioManager_AudioRecordingCallback.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AudioManager_AudioRecordingCallbackType).hashCode;
+  @_$core.override
+  int get hashCode => ($AudioManager_AudioRecordingCallback$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AudioManager_AudioRecordingCallbackType) &&
-        other is $AudioManager_AudioRecordingCallbackType;
+    return other.runtimeType == ($AudioManager_AudioRecordingCallback$Type) &&
+        other is $AudioManager_AudioRecordingCallback$Type;
   }
 }
 
 /// from: `android.media.AudioManager$OnAudioFocusChangeListener`
-class AudioManager_OnAudioFocusChangeListener extends jni.JObject {
-  @override
-  late final jni.JObjType<AudioManager_OnAudioFocusChangeListener> $type = type;
+class AudioManager_OnAudioFocusChangeListener extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager_OnAudioFocusChangeListener> $type;
 
+  @_$jni.internal
   AudioManager_OnAudioFocusChangeListener.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'android/media/AudioManager$OnAudioFocusChangeListener');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AudioManager_OnAudioFocusChangeListenerType();
+  static const type = $AudioManager_OnAudioFocusChangeListener$Type();
   static final _id_onAudioFocusChange = _class.instanceMethodId(
     r'onAudioFocusChange',
     r'(I)V',
   );
 
-  static final _onAudioFocusChange = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _onAudioFocusChange = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void onAudioFocusChange(int i)`
   void onAudioFocusChange(
     int i,
   ) {
     _onAudioFocusChange(
-            reference.pointer, _id_onAudioFocusChange as jni.JMethodIDPtr, i)
+            reference.pointer, _id_onAudioFocusChange as _$jni.JMethodIDPtr, i)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $AudioManager_OnAudioFocusChangeListenerImpl> _$impls =
-      {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $AudioManager_OnAudioFocusChangeListener>
+      _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -273,15 +250,15 @@ class AudioManager_OnAudioFocusChangeListener extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
@@ -289,150 +266,172 @@ class AudioManager_OnAudioFocusChangeListener extends jni.JObject {
       if ($d == r'onAudioFocusChange(I)V') {
         _$impls[$p]!.onAudioFocusChange(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory AudioManager_OnAudioFocusChangeListener.implement(
-    $AudioManager_OnAudioFocusChangeListenerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $AudioManager_OnAudioFocusChangeListener $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = AudioManager_OnAudioFocusChangeListener.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.media.AudioManager$OnAudioFocusChangeListener',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.media.AudioManager$OnAudioFocusChangeListener',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onAudioFocusChange$async) r'onAudioFocusChange(I)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory AudioManager_OnAudioFocusChangeListener.implement(
+    $AudioManager_OnAudioFocusChangeListener $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return AudioManager_OnAudioFocusChangeListener.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $AudioManager_OnAudioFocusChangeListenerImpl {
-  factory $AudioManager_OnAudioFocusChangeListenerImpl({
+abstract base mixin class $AudioManager_OnAudioFocusChangeListener {
+  factory $AudioManager_OnAudioFocusChangeListener({
     required void Function(int i) onAudioFocusChange,
-  }) = _$AudioManager_OnAudioFocusChangeListenerImpl;
+    bool onAudioFocusChange$async,
+  }) = _$AudioManager_OnAudioFocusChangeListener;
 
   void onAudioFocusChange(int i);
+  bool get onAudioFocusChange$async => false;
 }
 
-class _$AudioManager_OnAudioFocusChangeListenerImpl
-    implements $AudioManager_OnAudioFocusChangeListenerImpl {
-  _$AudioManager_OnAudioFocusChangeListenerImpl({
+final class _$AudioManager_OnAudioFocusChangeListener
+    with $AudioManager_OnAudioFocusChangeListener {
+  _$AudioManager_OnAudioFocusChangeListener({
     required void Function(int i) onAudioFocusChange,
+    this.onAudioFocusChange$async = false,
   }) : _onAudioFocusChange = onAudioFocusChange;
 
   final void Function(int i) _onAudioFocusChange;
+  final bool onAudioFocusChange$async;
 
   void onAudioFocusChange(int i) {
     return _onAudioFocusChange(i);
   }
 }
 
-final class $AudioManager_OnAudioFocusChangeListenerType
-    extends jni.JObjType<AudioManager_OnAudioFocusChangeListener> {
-  const $AudioManager_OnAudioFocusChangeListenerType();
+final class $AudioManager_OnAudioFocusChangeListener$Type
+    extends _$jni.JObjType<AudioManager_OnAudioFocusChangeListener> {
+  @_$jni.internal
+  const $AudioManager_OnAudioFocusChangeListener$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/media/AudioManager$OnAudioFocusChangeListener;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   AudioManager_OnAudioFocusChangeListener fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       AudioManager_OnAudioFocusChangeListener.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AudioManager_OnAudioFocusChangeListenerType).hashCode;
+  @_$core.override
+  int get hashCode => ($AudioManager_OnAudioFocusChangeListener$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
     return other.runtimeType ==
-            ($AudioManager_OnAudioFocusChangeListenerType) &&
-        other is $AudioManager_OnAudioFocusChangeListenerType;
+            ($AudioManager_OnAudioFocusChangeListener$Type) &&
+        other is $AudioManager_OnAudioFocusChangeListener$Type;
   }
 }
 
 /// from: `android.media.AudioManager$OnCommunicationDeviceChangedListener`
-class AudioManager_OnCommunicationDeviceChangedListener extends jni.JObject {
-  @override
-  late final jni.JObjType<AudioManager_OnCommunicationDeviceChangedListener>
-      $type = type;
+class AudioManager_OnCommunicationDeviceChangedListener extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager_OnCommunicationDeviceChangedListener> $type;
 
+  @_$jni.internal
   AudioManager_OnCommunicationDeviceChangedListener.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'android/media/AudioManager$OnCommunicationDeviceChangedListener');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AudioManager_OnCommunicationDeviceChangedListenerType();
+  static const type = $AudioManager_OnCommunicationDeviceChangedListener$Type();
   static final _id_onCommunicationDeviceChanged = _class.instanceMethodId(
     r'onCommunicationDeviceChanged',
     r'(Landroid/media/AudioDeviceInfo;)V',
   );
 
-  static final _onCommunicationDeviceChanged = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _onCommunicationDeviceChanged =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onCommunicationDeviceChanged(android.media.AudioDeviceInfo audioDeviceInfo)`
   void onCommunicationDeviceChanged(
-    jni.JObject audioDeviceInfo,
+    _$jni.JObject audioDeviceInfo,
   ) {
     _onCommunicationDeviceChanged(
             reference.pointer,
-            _id_onCommunicationDeviceChanged as jni.JMethodIDPtr,
+            _id_onCommunicationDeviceChanged as _$jni.JMethodIDPtr,
             audioDeviceInfo.reference.pointer)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $AudioManager_OnCommunicationDeviceChangedListenerImpl>
+  static final _$core
+      .Map<int, $AudioManager_OnCommunicationDeviceChangedListener>
       _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -440,15 +439,15 @@ class AudioManager_OnCommunicationDeviceChangedListener extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
@@ -456,148 +455,172 @@ class AudioManager_OnCommunicationDeviceChangedListener extends jni.JObject {
       if ($d ==
           r'onCommunicationDeviceChanged(Landroid/media/AudioDeviceInfo;)V') {
         _$impls[$p]!.onCommunicationDeviceChanged(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory AudioManager_OnCommunicationDeviceChangedListener.implement(
-    $AudioManager_OnCommunicationDeviceChangedListenerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $AudioManager_OnCommunicationDeviceChangedListener $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = AudioManager_OnCommunicationDeviceChangedListener.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.media.AudioManager$OnCommunicationDeviceChangedListener',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.media.AudioManager$OnCommunicationDeviceChangedListener',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onCommunicationDeviceChanged$async)
+          r'onCommunicationDeviceChanged(Landroid/media/AudioDeviceInfo;)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory AudioManager_OnCommunicationDeviceChangedListener.implement(
+    $AudioManager_OnCommunicationDeviceChangedListener $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return AudioManager_OnCommunicationDeviceChangedListener.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $AudioManager_OnCommunicationDeviceChangedListenerImpl {
-  factory $AudioManager_OnCommunicationDeviceChangedListenerImpl({
-    required void Function(jni.JObject audioDeviceInfo)
+abstract base mixin class $AudioManager_OnCommunicationDeviceChangedListener {
+  factory $AudioManager_OnCommunicationDeviceChangedListener({
+    required void Function(_$jni.JObject audioDeviceInfo)
         onCommunicationDeviceChanged,
-  }) = _$AudioManager_OnCommunicationDeviceChangedListenerImpl;
+    bool onCommunicationDeviceChanged$async,
+  }) = _$AudioManager_OnCommunicationDeviceChangedListener;
 
-  void onCommunicationDeviceChanged(jni.JObject audioDeviceInfo);
+  void onCommunicationDeviceChanged(_$jni.JObject audioDeviceInfo);
+  bool get onCommunicationDeviceChanged$async => false;
 }
 
-class _$AudioManager_OnCommunicationDeviceChangedListenerImpl
-    implements $AudioManager_OnCommunicationDeviceChangedListenerImpl {
-  _$AudioManager_OnCommunicationDeviceChangedListenerImpl({
-    required void Function(jni.JObject audioDeviceInfo)
+final class _$AudioManager_OnCommunicationDeviceChangedListener
+    with $AudioManager_OnCommunicationDeviceChangedListener {
+  _$AudioManager_OnCommunicationDeviceChangedListener({
+    required void Function(_$jni.JObject audioDeviceInfo)
         onCommunicationDeviceChanged,
+    this.onCommunicationDeviceChanged$async = false,
   }) : _onCommunicationDeviceChanged = onCommunicationDeviceChanged;
 
-  final void Function(jni.JObject audioDeviceInfo)
+  final void Function(_$jni.JObject audioDeviceInfo)
       _onCommunicationDeviceChanged;
+  final bool onCommunicationDeviceChanged$async;
 
-  void onCommunicationDeviceChanged(jni.JObject audioDeviceInfo) {
+  void onCommunicationDeviceChanged(_$jni.JObject audioDeviceInfo) {
     return _onCommunicationDeviceChanged(audioDeviceInfo);
   }
 }
 
-final class $AudioManager_OnCommunicationDeviceChangedListenerType
-    extends jni.JObjType<AudioManager_OnCommunicationDeviceChangedListener> {
-  const $AudioManager_OnCommunicationDeviceChangedListenerType();
+final class $AudioManager_OnCommunicationDeviceChangedListener$Type
+    extends _$jni.JObjType<AudioManager_OnCommunicationDeviceChangedListener> {
+  @_$jni.internal
+  const $AudioManager_OnCommunicationDeviceChangedListener$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/media/AudioManager$OnCommunicationDeviceChangedListener;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   AudioManager_OnCommunicationDeviceChangedListener fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       AudioManager_OnCommunicationDeviceChangedListener.fromReference(
           reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
+  @_$core.override
   int get hashCode =>
-      ($AudioManager_OnCommunicationDeviceChangedListenerType).hashCode;
+      ($AudioManager_OnCommunicationDeviceChangedListener$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
     return other.runtimeType ==
-            ($AudioManager_OnCommunicationDeviceChangedListenerType) &&
-        other is $AudioManager_OnCommunicationDeviceChangedListenerType;
+            ($AudioManager_OnCommunicationDeviceChangedListener$Type) &&
+        other is $AudioManager_OnCommunicationDeviceChangedListener$Type;
   }
 }
 
 /// from: `android.media.AudioManager$OnModeChangedListener`
-class AudioManager_OnModeChangedListener extends jni.JObject {
-  @override
-  late final jni.JObjType<AudioManager_OnModeChangedListener> $type = type;
+class AudioManager_OnModeChangedListener extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager_OnModeChangedListener> $type;
 
+  @_$jni.internal
   AudioManager_OnModeChangedListener.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/media/AudioManager$OnModeChangedListener');
+      _$jni.JClass.forName(r'android/media/AudioManager$OnModeChangedListener');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AudioManager_OnModeChangedListenerType();
+  static const type = $AudioManager_OnModeChangedListener$Type();
   static final _id_onModeChanged = _class.instanceMethodId(
     r'onModeChanged',
     r'(I)V',
   );
 
-  static final _onModeChanged = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _onModeChanged = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void onModeChanged(int i)`
   void onModeChanged(
     int i,
   ) {
-    _onModeChanged(reference.pointer, _id_onModeChanged as jni.JMethodIDPtr, i)
+    _onModeChanged(
+            reference.pointer, _id_onModeChanged as _$jni.JMethodIDPtr, i)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $AudioManager_OnModeChangedListenerImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $AudioManager_OnModeChangedListener> _$impls =
+      {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -605,15 +628,15 @@ class AudioManager_OnModeChangedListener extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
@@ -621,144 +644,167 @@ class AudioManager_OnModeChangedListener extends jni.JObject {
       if ($d == r'onModeChanged(I)V') {
         _$impls[$p]!.onModeChanged(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory AudioManager_OnModeChangedListener.implement(
-    $AudioManager_OnModeChangedListenerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $AudioManager_OnModeChangedListener $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = AudioManager_OnModeChangedListener.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.media.AudioManager$OnModeChangedListener',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.media.AudioManager$OnModeChangedListener',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onModeChanged$async) r'onModeChanged(I)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory AudioManager_OnModeChangedListener.implement(
+    $AudioManager_OnModeChangedListener $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return AudioManager_OnModeChangedListener.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $AudioManager_OnModeChangedListenerImpl {
-  factory $AudioManager_OnModeChangedListenerImpl({
+abstract base mixin class $AudioManager_OnModeChangedListener {
+  factory $AudioManager_OnModeChangedListener({
     required void Function(int i) onModeChanged,
-  }) = _$AudioManager_OnModeChangedListenerImpl;
+    bool onModeChanged$async,
+  }) = _$AudioManager_OnModeChangedListener;
 
   void onModeChanged(int i);
+  bool get onModeChanged$async => false;
 }
 
-class _$AudioManager_OnModeChangedListenerImpl
-    implements $AudioManager_OnModeChangedListenerImpl {
-  _$AudioManager_OnModeChangedListenerImpl({
+final class _$AudioManager_OnModeChangedListener
+    with $AudioManager_OnModeChangedListener {
+  _$AudioManager_OnModeChangedListener({
     required void Function(int i) onModeChanged,
+    this.onModeChanged$async = false,
   }) : _onModeChanged = onModeChanged;
 
   final void Function(int i) _onModeChanged;
+  final bool onModeChanged$async;
 
   void onModeChanged(int i) {
     return _onModeChanged(i);
   }
 }
 
-final class $AudioManager_OnModeChangedListenerType
-    extends jni.JObjType<AudioManager_OnModeChangedListener> {
-  const $AudioManager_OnModeChangedListenerType();
+final class $AudioManager_OnModeChangedListener$Type
+    extends _$jni.JObjType<AudioManager_OnModeChangedListener> {
+  @_$jni.internal
+  const $AudioManager_OnModeChangedListener$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/media/AudioManager$OnModeChangedListener;';
 
-  @override
-  AudioManager_OnModeChangedListener fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  AudioManager_OnModeChangedListener fromReference(
+          _$jni.JReference reference) =>
       AudioManager_OnModeChangedListener.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AudioManager_OnModeChangedListenerType).hashCode;
+  @_$core.override
+  int get hashCode => ($AudioManager_OnModeChangedListener$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AudioManager_OnModeChangedListenerType) &&
-        other is $AudioManager_OnModeChangedListenerType;
+    return other.runtimeType == ($AudioManager_OnModeChangedListener$Type) &&
+        other is $AudioManager_OnModeChangedListener$Type;
   }
 }
 
 /// from: `android.media.AudioManager$OnPreferredMixerAttributesChangedListener`
 class AudioManager_OnPreferredMixerAttributesChangedListener
-    extends jni.JObject {
-  @override
-  late final jni
-      .JObjType<AudioManager_OnPreferredMixerAttributesChangedListener> $type =
-      type;
+    extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager_OnPreferredMixerAttributesChangedListener>
+      $type;
 
+  @_$jni.internal
   AudioManager_OnPreferredMixerAttributesChangedListener.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'android/media/AudioManager$OnPreferredMixerAttributesChangedListener');
 
   /// The type which includes information such as the signature of this class.
   static const type =
-      $AudioManager_OnPreferredMixerAttributesChangedListenerType();
+      $AudioManager_OnPreferredMixerAttributesChangedListener$Type();
   static final _id_onPreferredMixerAttributesChanged = _class.instanceMethodId(
     r'onPreferredMixerAttributesChanged',
     r'(Landroid/media/AudioAttributes;Landroid/media/AudioDeviceInfo;Landroid/media/AudioMixerAttributes;)V',
   );
 
   static final _onPreferredMixerAttributesChanged =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
                           (
-                            ffi.Pointer<ffi.Void>,
-                            ffi.Pointer<ffi.Void>,
-                            ffi.Pointer<ffi.Void>
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
                           )>)>>('globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onPreferredMixerAttributesChanged(android.media.AudioAttributes audioAttributes, android.media.AudioDeviceInfo audioDeviceInfo, android.media.AudioMixerAttributes audioMixerAttributes)`
   void onPreferredMixerAttributesChanged(
-    jni.JObject audioAttributes,
-    jni.JObject audioDeviceInfo,
-    jni.JObject audioMixerAttributes,
+    _$jni.JObject audioAttributes,
+    _$jni.JObject audioDeviceInfo,
+    _$jni.JObject audioMixerAttributes,
   ) {
     _onPreferredMixerAttributesChanged(
             reference.pointer,
-            _id_onPreferredMixerAttributesChanged as jni.JMethodIDPtr,
+            _id_onPreferredMixerAttributesChanged as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer,
             audioDeviceInfo.reference.pointer,
             audioMixerAttributes.reference.pointer)
@@ -766,18 +812,17 @@ class AudioManager_OnPreferredMixerAttributesChangedListener
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int,
-      $AudioManager_OnPreferredMixerAttributesChangedListenerImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core
+      .Map<int, $AudioManager_OnPreferredMixerAttributesChangedListener>
+      _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -785,15 +830,15 @@ class AudioManager_OnPreferredMixerAttributesChangedListener
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
@@ -801,121 +846,146 @@ class AudioManager_OnPreferredMixerAttributesChangedListener
       if ($d ==
           r'onPreferredMixerAttributesChanged(Landroid/media/AudioAttributes;Landroid/media/AudioDeviceInfo;Landroid/media/AudioMixerAttributes;)V') {
         _$impls[$p]!.onPreferredMixerAttributesChanged(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
-          $a[2].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
+          $a[2].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory AudioManager_OnPreferredMixerAttributesChangedListener.implement(
-    $AudioManager_OnPreferredMixerAttributesChangedListenerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $AudioManager_OnPreferredMixerAttributesChangedListener $impl,
   ) {
-    final $p = ReceivePort();
-    final $x =
-        AudioManager_OnPreferredMixerAttributesChangedListener.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.media.AudioManager$OnPreferredMixerAttributesChangedListener',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.media.AudioManager$OnPreferredMixerAttributesChangedListener',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onPreferredMixerAttributesChanged$async)
+          r'onPreferredMixerAttributesChanged(Landroid/media/AudioAttributes;Landroid/media/AudioDeviceInfo;Landroid/media/AudioMixerAttributes;)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory AudioManager_OnPreferredMixerAttributesChangedListener.implement(
+    $AudioManager_OnPreferredMixerAttributesChangedListener $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return AudioManager_OnPreferredMixerAttributesChangedListener.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $AudioManager_OnPreferredMixerAttributesChangedListenerImpl {
-  factory $AudioManager_OnPreferredMixerAttributesChangedListenerImpl({
-    required void Function(jni.JObject audioAttributes,
-            jni.JObject audioDeviceInfo, jni.JObject audioMixerAttributes)
+abstract base mixin class $AudioManager_OnPreferredMixerAttributesChangedListener {
+  factory $AudioManager_OnPreferredMixerAttributesChangedListener({
+    required void Function(_$jni.JObject audioAttributes,
+            _$jni.JObject audioDeviceInfo, _$jni.JObject audioMixerAttributes)
         onPreferredMixerAttributesChanged,
-  }) = _$AudioManager_OnPreferredMixerAttributesChangedListenerImpl;
+    bool onPreferredMixerAttributesChanged$async,
+  }) = _$AudioManager_OnPreferredMixerAttributesChangedListener;
 
-  void onPreferredMixerAttributesChanged(jni.JObject audioAttributes,
-      jni.JObject audioDeviceInfo, jni.JObject audioMixerAttributes);
+  void onPreferredMixerAttributesChanged(_$jni.JObject audioAttributes,
+      _$jni.JObject audioDeviceInfo, _$jni.JObject audioMixerAttributes);
+  bool get onPreferredMixerAttributesChanged$async => false;
 }
 
-class _$AudioManager_OnPreferredMixerAttributesChangedListenerImpl
-    implements $AudioManager_OnPreferredMixerAttributesChangedListenerImpl {
-  _$AudioManager_OnPreferredMixerAttributesChangedListenerImpl({
-    required void Function(jni.JObject audioAttributes,
-            jni.JObject audioDeviceInfo, jni.JObject audioMixerAttributes)
+final class _$AudioManager_OnPreferredMixerAttributesChangedListener
+    with $AudioManager_OnPreferredMixerAttributesChangedListener {
+  _$AudioManager_OnPreferredMixerAttributesChangedListener({
+    required void Function(_$jni.JObject audioAttributes,
+            _$jni.JObject audioDeviceInfo, _$jni.JObject audioMixerAttributes)
         onPreferredMixerAttributesChanged,
+    this.onPreferredMixerAttributesChanged$async = false,
   }) : _onPreferredMixerAttributesChanged = onPreferredMixerAttributesChanged;
 
-  final void Function(jni.JObject audioAttributes, jni.JObject audioDeviceInfo,
-      jni.JObject audioMixerAttributes) _onPreferredMixerAttributesChanged;
+  final void Function(
+      _$jni.JObject audioAttributes,
+      _$jni.JObject audioDeviceInfo,
+      _$jni.JObject audioMixerAttributes) _onPreferredMixerAttributesChanged;
+  final bool onPreferredMixerAttributesChanged$async;
 
-  void onPreferredMixerAttributesChanged(jni.JObject audioAttributes,
-      jni.JObject audioDeviceInfo, jni.JObject audioMixerAttributes) {
+  void onPreferredMixerAttributesChanged(_$jni.JObject audioAttributes,
+      _$jni.JObject audioDeviceInfo, _$jni.JObject audioMixerAttributes) {
     return _onPreferredMixerAttributesChanged(
         audioAttributes, audioDeviceInfo, audioMixerAttributes);
   }
 }
 
-final class $AudioManager_OnPreferredMixerAttributesChangedListenerType
-    extends jni
+final class $AudioManager_OnPreferredMixerAttributesChangedListener$Type
+    extends _$jni
     .JObjType<AudioManager_OnPreferredMixerAttributesChangedListener> {
-  const $AudioManager_OnPreferredMixerAttributesChangedListenerType();
+  @_$jni.internal
+  const $AudioManager_OnPreferredMixerAttributesChangedListener$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/media/AudioManager$OnPreferredMixerAttributesChangedListener;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   AudioManager_OnPreferredMixerAttributesChangedListener fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       AudioManager_OnPreferredMixerAttributesChangedListener.fromReference(
           reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
+  @_$core.override
   int get hashCode =>
-      ($AudioManager_OnPreferredMixerAttributesChangedListenerType).hashCode;
+      ($AudioManager_OnPreferredMixerAttributesChangedListener$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
     return other.runtimeType ==
-            ($AudioManager_OnPreferredMixerAttributesChangedListenerType) &&
-        other is $AudioManager_OnPreferredMixerAttributesChangedListenerType;
+            ($AudioManager_OnPreferredMixerAttributesChangedListener$Type) &&
+        other is $AudioManager_OnPreferredMixerAttributesChangedListener$Type;
   }
 }
 
 /// from: `android.media.AudioManager`
-class AudioManager extends jni.JObject {
-  @override
-  late final jni.JObjType<AudioManager> $type = type;
+class AudioManager extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AudioManager> $type;
 
+  @_$jni.internal
   AudioManager.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/media/AudioManager');
+  static final _class = _$jni.JClass.forName(r'android/media/AudioManager');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AudioManagerType();
+  static const type = $AudioManager$Type();
   static final _id_ACTION_AUDIO_BECOMING_NOISY = _class.staticFieldId(
     r'ACTION_AUDIO_BECOMING_NOISY',
     r'Ljava/lang/String;',
@@ -923,8 +993,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_AUDIO_BECOMING_NOISY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_AUDIO_BECOMING_NOISY =>
-      _id_ACTION_AUDIO_BECOMING_NOISY.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_AUDIO_BECOMING_NOISY =>
+      _id_ACTION_AUDIO_BECOMING_NOISY.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_HDMI_AUDIO_PLUG = _class.staticFieldId(
     r'ACTION_HDMI_AUDIO_PLUG',
@@ -933,8 +1003,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_HDMI_AUDIO_PLUG`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_HDMI_AUDIO_PLUG =>
-      _id_ACTION_HDMI_AUDIO_PLUG.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_HDMI_AUDIO_PLUG =>
+      _id_ACTION_HDMI_AUDIO_PLUG.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_HEADSET_PLUG = _class.staticFieldId(
     r'ACTION_HEADSET_PLUG',
@@ -943,8 +1013,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_HEADSET_PLUG`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_HEADSET_PLUG =>
-      _id_ACTION_HEADSET_PLUG.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_HEADSET_PLUG =>
+      _id_ACTION_HEADSET_PLUG.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_MICROPHONE_MUTE_CHANGED = _class.staticFieldId(
     r'ACTION_MICROPHONE_MUTE_CHANGED',
@@ -953,8 +1023,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MICROPHONE_MUTE_CHANGED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MICROPHONE_MUTE_CHANGED =>
-      _id_ACTION_MICROPHONE_MUTE_CHANGED.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_MICROPHONE_MUTE_CHANGED =>
+      _id_ACTION_MICROPHONE_MUTE_CHANGED.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SCO_AUDIO_STATE_CHANGED = _class.staticFieldId(
     r'ACTION_SCO_AUDIO_STATE_CHANGED',
@@ -963,8 +1033,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SCO_AUDIO_STATE_CHANGED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SCO_AUDIO_STATE_CHANGED =>
-      _id_ACTION_SCO_AUDIO_STATE_CHANGED.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SCO_AUDIO_STATE_CHANGED =>
+      _id_ACTION_SCO_AUDIO_STATE_CHANGED.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SCO_AUDIO_STATE_UPDATED = _class.staticFieldId(
     r'ACTION_SCO_AUDIO_STATE_UPDATED',
@@ -973,8 +1043,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SCO_AUDIO_STATE_UPDATED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SCO_AUDIO_STATE_UPDATED =>
-      _id_ACTION_SCO_AUDIO_STATE_UPDATED.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SCO_AUDIO_STATE_UPDATED =>
+      _id_ACTION_SCO_AUDIO_STATE_UPDATED.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SPEAKERPHONE_STATE_CHANGED = _class.staticFieldId(
     r'ACTION_SPEAKERPHONE_STATE_CHANGED',
@@ -983,9 +1053,9 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SPEAKERPHONE_STATE_CHANGED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SPEAKERPHONE_STATE_CHANGED =>
+  static _$jni.JString get ACTION_SPEAKERPHONE_STATE_CHANGED =>
       _id_ACTION_SPEAKERPHONE_STATE_CHANGED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   /// from: `static public final int ADJUST_LOWER`
   static const ADJUST_LOWER = -1;
@@ -1080,8 +1150,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_AUDIO_PLUG_STATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_AUDIO_PLUG_STATE =>
-      _id_EXTRA_AUDIO_PLUG_STATE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_AUDIO_PLUG_STATE =>
+      _id_EXTRA_AUDIO_PLUG_STATE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_ENCODINGS = _class.staticFieldId(
     r'EXTRA_ENCODINGS',
@@ -1090,8 +1160,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_ENCODINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_ENCODINGS =>
-      _id_EXTRA_ENCODINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_ENCODINGS =>
+      _id_EXTRA_ENCODINGS.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_MAX_CHANNEL_COUNT = _class.staticFieldId(
     r'EXTRA_MAX_CHANNEL_COUNT',
@@ -1100,8 +1170,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_MAX_CHANNEL_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_MAX_CHANNEL_COUNT =>
-      _id_EXTRA_MAX_CHANNEL_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_MAX_CHANNEL_COUNT =>
+      _id_EXTRA_MAX_CHANNEL_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_RINGER_MODE = _class.staticFieldId(
     r'EXTRA_RINGER_MODE',
@@ -1110,8 +1180,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_RINGER_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_RINGER_MODE =>
-      _id_EXTRA_RINGER_MODE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_RINGER_MODE =>
+      _id_EXTRA_RINGER_MODE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_SCO_AUDIO_PREVIOUS_STATE = _class.staticFieldId(
     r'EXTRA_SCO_AUDIO_PREVIOUS_STATE',
@@ -1120,8 +1190,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SCO_AUDIO_PREVIOUS_STATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SCO_AUDIO_PREVIOUS_STATE =>
-      _id_EXTRA_SCO_AUDIO_PREVIOUS_STATE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_SCO_AUDIO_PREVIOUS_STATE =>
+      _id_EXTRA_SCO_AUDIO_PREVIOUS_STATE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_SCO_AUDIO_STATE = _class.staticFieldId(
     r'EXTRA_SCO_AUDIO_STATE',
@@ -1130,8 +1200,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SCO_AUDIO_STATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SCO_AUDIO_STATE =>
-      _id_EXTRA_SCO_AUDIO_STATE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_SCO_AUDIO_STATE =>
+      _id_EXTRA_SCO_AUDIO_STATE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_VIBRATE_SETTING = _class.staticFieldId(
     r'EXTRA_VIBRATE_SETTING',
@@ -1140,8 +1210,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_VIBRATE_SETTING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_VIBRATE_SETTING =>
-      _id_EXTRA_VIBRATE_SETTING.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_VIBRATE_SETTING =>
+      _id_EXTRA_VIBRATE_SETTING.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_VIBRATE_TYPE = _class.staticFieldId(
     r'EXTRA_VIBRATE_TYPE',
@@ -1150,8 +1220,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_VIBRATE_TYPE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_VIBRATE_TYPE =>
-      _id_EXTRA_VIBRATE_TYPE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_VIBRATE_TYPE =>
+      _id_EXTRA_VIBRATE_TYPE.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int FLAG_ALLOW_RINGER_MODES`
   static const FLAG_ALLOW_RINGER_MODES = 2;
@@ -1255,9 +1325,9 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_OUTPUT_FRAMES_PER_BUFFER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_OUTPUT_FRAMES_PER_BUFFER =>
+  static _$jni.JString get PROPERTY_OUTPUT_FRAMES_PER_BUFFER =>
       _id_PROPERTY_OUTPUT_FRAMES_PER_BUFFER.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_OUTPUT_SAMPLE_RATE = _class.staticFieldId(
     r'PROPERTY_OUTPUT_SAMPLE_RATE',
@@ -1266,8 +1336,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_OUTPUT_SAMPLE_RATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_OUTPUT_SAMPLE_RATE =>
-      _id_PROPERTY_OUTPUT_SAMPLE_RATE.get(_class, const jni.JStringType());
+  static _$jni.JString get PROPERTY_OUTPUT_SAMPLE_RATE =>
+      _id_PROPERTY_OUTPUT_SAMPLE_RATE.get(_class, const _$jni.JStringType());
 
   static final _id_PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED =
       _class.staticFieldId(
@@ -1277,9 +1347,9 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED =>
+  static _$jni.JString get PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED =>
       _id_PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_SUPPORT_MIC_NEAR_ULTRASOUND = _class.staticFieldId(
     r'PROPERTY_SUPPORT_MIC_NEAR_ULTRASOUND',
@@ -1288,9 +1358,9 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_SUPPORT_MIC_NEAR_ULTRASOUND`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_SUPPORT_MIC_NEAR_ULTRASOUND =>
+  static _$jni.JString get PROPERTY_SUPPORT_MIC_NEAR_ULTRASOUND =>
       _id_PROPERTY_SUPPORT_MIC_NEAR_ULTRASOUND.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_SUPPORT_SPEAKER_NEAR_ULTRASOUND =
       _class.staticFieldId(
@@ -1300,9 +1370,9 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_SUPPORT_SPEAKER_NEAR_ULTRASOUND`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_SUPPORT_SPEAKER_NEAR_ULTRASOUND =>
+  static _$jni.JString get PROPERTY_SUPPORT_SPEAKER_NEAR_ULTRASOUND =>
       _id_PROPERTY_SUPPORT_SPEAKER_NEAR_ULTRASOUND.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_RINGER_MODE_CHANGED_ACTION = _class.staticFieldId(
     r'RINGER_MODE_CHANGED_ACTION',
@@ -1311,8 +1381,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String RINGER_MODE_CHANGED_ACTION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RINGER_MODE_CHANGED_ACTION =>
-      _id_RINGER_MODE_CHANGED_ACTION.get(_class, const jni.JStringType());
+  static _$jni.JString get RINGER_MODE_CHANGED_ACTION =>
+      _id_RINGER_MODE_CHANGED_ACTION.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int RINGER_MODE_NORMAL`
   static const RINGER_MODE_NORMAL = 2;
@@ -1389,8 +1459,8 @@ class AudioManager extends jni.JObject {
 
   /// from: `static public final java.lang.String VIBRATE_SETTING_CHANGED_ACTION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get VIBRATE_SETTING_CHANGED_ACTION =>
-      _id_VIBRATE_SETTING_CHANGED_ACTION.get(_class, const jni.JStringType());
+  static _$jni.JString get VIBRATE_SETTING_CHANGED_ACTION =>
+      _id_VIBRATE_SETTING_CHANGED_ACTION.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int VIBRATE_SETTING_OFF`
   static const VIBRATE_SETTING_OFF = 0;
@@ -1411,24 +1481,24 @@ class AudioManager extends jni.JObject {
     r'(Landroid/view/KeyEvent;)V',
   );
 
-  static final _dispatchMediaKeyEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _dispatchMediaKeyEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void dispatchMediaKeyEvent(android.view.KeyEvent keyEvent)`
   void dispatchMediaKeyEvent(
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
     _dispatchMediaKeyEvent(
             reference.pointer,
-            _id_dispatchMediaKeyEvent as jni.JMethodIDPtr,
+            _id_dispatchMediaKeyEvent as _$jni.JMethodIDPtr,
             keyEvent.reference.pointer)
         .check();
   }
@@ -1438,22 +1508,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isVolumeFixed = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isVolumeFixed = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isVolumeFixed()`
   bool isVolumeFixed() {
     return _isVolumeFixed(
-            reference.pointer, _id_isVolumeFixed as jni.JMethodIDPtr)
+            reference.pointer, _id_isVolumeFixed as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1462,16 +1532,16 @@ class AudioManager extends jni.JObject {
     r'(III)V',
   );
 
-  static final _adjustStreamVolume = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
+  static final _adjustStreamVolume = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public void adjustStreamVolume(int i, int i1, int i2)`
   void adjustStreamVolume(
@@ -1480,7 +1550,7 @@ class AudioManager extends jni.JObject {
     int i2,
   ) {
     _adjustStreamVolume(reference.pointer,
-            _id_adjustStreamVolume as jni.JMethodIDPtr, i, i1, i2)
+            _id_adjustStreamVolume as _$jni.JMethodIDPtr, i, i1, i2)
         .check();
   }
 
@@ -1489,15 +1559,16 @@ class AudioManager extends jni.JObject {
     r'(II)V',
   );
 
-  static final _adjustVolume = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _adjustVolume = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void adjustVolume(int i, int i1)`
   void adjustVolume(
@@ -1505,7 +1576,7 @@ class AudioManager extends jni.JObject {
     int i1,
   ) {
     _adjustVolume(
-            reference.pointer, _id_adjustVolume as jni.JMethodIDPtr, i, i1)
+            reference.pointer, _id_adjustVolume as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -1514,16 +1585,21 @@ class AudioManager extends jni.JObject {
     r'(III)V',
   );
 
-  static final _adjustSuggestedStreamVolume = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+  static final _adjustSuggestedStreamVolume =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Int32,
+                            _$jni.Int32,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public void adjustSuggestedStreamVolume(int i, int i1, int i2)`
   void adjustSuggestedStreamVolume(
@@ -1532,7 +1608,7 @@ class AudioManager extends jni.JObject {
     int i2,
   ) {
     _adjustSuggestedStreamVolume(reference.pointer,
-            _id_adjustSuggestedStreamVolume as jni.JMethodIDPtr, i, i1, i2)
+            _id_adjustSuggestedStreamVolume as _$jni.JMethodIDPtr, i, i1, i2)
         .check();
   }
 
@@ -1541,22 +1617,22 @@ class AudioManager extends jni.JObject {
     r'()I',
   );
 
-  static final _getRingerMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getRingerMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getRingerMode()`
   int getRingerMode() {
     return _getRingerMode(
-            reference.pointer, _id_getRingerMode as jni.JMethodIDPtr)
+            reference.pointer, _id_getRingerMode as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1565,22 +1641,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isRampingRingerEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isRampingRingerEnabled = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isRampingRingerEnabled()`
   bool isRampingRingerEnabled() {
     return _isRampingRingerEnabled(
-            reference.pointer, _id_isRampingRingerEnabled as jni.JMethodIDPtr)
+            reference.pointer, _id_isRampingRingerEnabled as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1589,20 +1665,22 @@ class AudioManager extends jni.JObject {
     r'(I)I',
   );
 
-  static final _getStreamMaxVolume = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallIntMethod')
+  static final _getStreamMaxVolume = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public int getStreamMaxVolume(int i)`
   int getStreamMaxVolume(
     int i,
   ) {
     return _getStreamMaxVolume(
-            reference.pointer, _id_getStreamMaxVolume as jni.JMethodIDPtr, i)
+            reference.pointer, _id_getStreamMaxVolume as _$jni.JMethodIDPtr, i)
         .integer;
   }
 
@@ -1611,20 +1689,22 @@ class AudioManager extends jni.JObject {
     r'(I)I',
   );
 
-  static final _getStreamMinVolume = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallIntMethod')
+  static final _getStreamMinVolume = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public int getStreamMinVolume(int i)`
   int getStreamMinVolume(
     int i,
   ) {
     return _getStreamMinVolume(
-            reference.pointer, _id_getStreamMinVolume as jni.JMethodIDPtr, i)
+            reference.pointer, _id_getStreamMinVolume as _$jni.JMethodIDPtr, i)
         .integer;
   }
 
@@ -1633,20 +1713,22 @@ class AudioManager extends jni.JObject {
     r'(I)I',
   );
 
-  static final _getStreamVolume = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallIntMethod')
+  static final _getStreamVolume = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public int getStreamVolume(int i)`
   int getStreamVolume(
     int i,
   ) {
     return _getStreamVolume(
-            reference.pointer, _id_getStreamVolume as jni.JMethodIDPtr, i)
+            reference.pointer, _id_getStreamVolume as _$jni.JMethodIDPtr, i)
         .integer;
   }
 
@@ -1655,16 +1737,16 @@ class AudioManager extends jni.JObject {
     r'(III)F',
   );
 
-  static final _getStreamVolumeDb = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
+  static final _getStreamVolumeDb = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_CallFloatMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public float getStreamVolumeDb(int i, int i1, int i2)`
   double getStreamVolumeDb(
@@ -1673,7 +1755,7 @@ class AudioManager extends jni.JObject {
     int i2,
   ) {
     return _getStreamVolumeDb(reference.pointer,
-            _id_getStreamVolumeDb as jni.JMethodIDPtr, i, i1, i2)
+            _id_getStreamVolumeDb as _$jni.JMethodIDPtr, i, i1, i2)
         .float;
   }
 
@@ -1682,21 +1764,22 @@ class AudioManager extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setRingerMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setRingerMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setRingerMode(int i)`
   void setRingerMode(
     int i,
   ) {
-    _setRingerMode(reference.pointer, _id_setRingerMode as jni.JMethodIDPtr, i)
+    _setRingerMode(
+            reference.pointer, _id_setRingerMode as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -1705,16 +1788,16 @@ class AudioManager extends jni.JObject {
     r'(III)V',
   );
 
-  static final _setStreamVolume = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
+  static final _setStreamVolume = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public void setStreamVolume(int i, int i1, int i2)`
   void setStreamVolume(
@@ -1722,8 +1805,8 @@ class AudioManager extends jni.JObject {
     int i1,
     int i2,
   ) {
-    _setStreamVolume(reference.pointer, _id_setStreamVolume as jni.JMethodIDPtr,
-            i, i1, i2)
+    _setStreamVolume(reference.pointer,
+            _id_setStreamVolume as _$jni.JMethodIDPtr, i, i1, i2)
         .check();
   }
 
@@ -1732,24 +1815,25 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioAttributes;)I',
   );
 
-  static final _getVolumeGroupIdForAttributes = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallIntMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _getVolumeGroupIdForAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallIntMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public int getVolumeGroupIdForAttributes(android.media.AudioAttributes audioAttributes)`
   int getVolumeGroupIdForAttributes(
-    jni.JObject audioAttributes,
+    _$jni.JObject audioAttributes,
   ) {
     return _getVolumeGroupIdForAttributes(
             reference.pointer,
-            _id_getVolumeGroupIdForAttributes as jni.JMethodIDPtr,
+            _id_getVolumeGroupIdForAttributes as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer)
         .integer;
   }
@@ -1759,16 +1843,16 @@ class AudioManager extends jni.JObject {
     r'(III)V',
   );
 
-  static final _adjustVolumeGroupVolume = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
+  static final _adjustVolumeGroupVolume = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public void adjustVolumeGroupVolume(int i, int i1, int i2)`
   void adjustVolumeGroupVolume(
@@ -1777,7 +1861,7 @@ class AudioManager extends jni.JObject {
     int i2,
   ) {
     _adjustVolumeGroupVolume(reference.pointer,
-            _id_adjustVolumeGroupVolume as jni.JMethodIDPtr, i, i1, i2)
+            _id_adjustVolumeGroupVolume as _$jni.JMethodIDPtr, i, i1, i2)
         .check();
   }
 
@@ -1786,20 +1870,23 @@ class AudioManager extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _isVolumeGroupMuted = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _isVolumeGroupMuted = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean isVolumeGroupMuted(int i)`
   bool isVolumeGroupMuted(
     int i,
   ) {
     return _isVolumeGroupMuted(
-            reference.pointer, _id_isVolumeGroupMuted as jni.JMethodIDPtr, i)
+            reference.pointer, _id_isVolumeGroupMuted as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -1808,23 +1895,24 @@ class AudioManager extends jni.JObject {
     r'(IZ)V',
   );
 
-  static final _setStreamSolo = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setStreamSolo = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setStreamSolo(int i, boolean z)`
   void setStreamSolo(
     int i,
     bool z,
   ) {
-    _setStreamSolo(reference.pointer, _id_setStreamSolo as jni.JMethodIDPtr, i,
-            z ? 1 : 0)
+    _setStreamSolo(reference.pointer, _id_setStreamSolo as _$jni.JMethodIDPtr,
+            i, z ? 1 : 0)
         .check();
   }
 
@@ -1833,23 +1921,24 @@ class AudioManager extends jni.JObject {
     r'(IZ)V',
   );
 
-  static final _setStreamMute = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setStreamMute = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setStreamMute(int i, boolean z)`
   void setStreamMute(
     int i,
     bool z,
   ) {
-    _setStreamMute(reference.pointer, _id_setStreamMute as jni.JMethodIDPtr, i,
-            z ? 1 : 0)
+    _setStreamMute(reference.pointer, _id_setStreamMute as _$jni.JMethodIDPtr,
+            i, z ? 1 : 0)
         .check();
   }
 
@@ -1858,20 +1947,23 @@ class AudioManager extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _isStreamMute = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _isStreamMute = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean isStreamMute(int i)`
   bool isStreamMute(
     int i,
   ) {
     return _isStreamMute(
-            reference.pointer, _id_isStreamMute as jni.JMethodIDPtr, i)
+            reference.pointer, _id_isStreamMute as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -1880,20 +1972,23 @@ class AudioManager extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _shouldVibrate = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _shouldVibrate = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean shouldVibrate(int i)`
   bool shouldVibrate(
     int i,
   ) {
     return _shouldVibrate(
-            reference.pointer, _id_shouldVibrate as jni.JMethodIDPtr, i)
+            reference.pointer, _id_shouldVibrate as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -1902,20 +1997,22 @@ class AudioManager extends jni.JObject {
     r'(I)I',
   );
 
-  static final _getVibrateSetting = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallIntMethod')
+  static final _getVibrateSetting = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public int getVibrateSetting(int i)`
   int getVibrateSetting(
     int i,
   ) {
     return _getVibrateSetting(
-            reference.pointer, _id_getVibrateSetting as jni.JMethodIDPtr, i)
+            reference.pointer, _id_getVibrateSetting as _$jni.JMethodIDPtr, i)
         .integer;
   }
 
@@ -1924,23 +2021,24 @@ class AudioManager extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setVibrateSetting = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setVibrateSetting = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setVibrateSetting(int i, int i1)`
   void setVibrateSetting(
     int i,
     int i1,
   ) {
-    _setVibrateSetting(
-            reference.pointer, _id_setVibrateSetting as jni.JMethodIDPtr, i, i1)
+    _setVibrateSetting(reference.pointer,
+            _id_setVibrateSetting as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -1949,22 +2047,22 @@ class AudioManager extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setSpeakerphoneOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setSpeakerphoneOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setSpeakerphoneOn(boolean z)`
   void setSpeakerphoneOn(
     bool z,
   ) {
     _setSpeakerphoneOn(reference.pointer,
-            _id_setSpeakerphoneOn as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setSpeakerphoneOn as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -1973,22 +2071,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isSpeakerphoneOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isSpeakerphoneOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isSpeakerphoneOn()`
   bool isSpeakerphoneOn() {
     return _isSpeakerphoneOn(
-            reference.pointer, _id_isSpeakerphoneOn as jni.JMethodIDPtr)
+            reference.pointer, _id_isSpeakerphoneOn as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1997,22 +2095,22 @@ class AudioManager extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setAllowedCapturePolicy = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setAllowedCapturePolicy = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setAllowedCapturePolicy(int i)`
   void setAllowedCapturePolicy(
     int i,
   ) {
     _setAllowedCapturePolicy(reference.pointer,
-            _id_setAllowedCapturePolicy as jni.JMethodIDPtr, i)
+            _id_setAllowedCapturePolicy as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -2021,22 +2119,22 @@ class AudioManager extends jni.JObject {
     r'()I',
   );
 
-  static final _getAllowedCapturePolicy = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getAllowedCapturePolicy = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getAllowedCapturePolicy()`
   int getAllowedCapturePolicy() {
-    return _getAllowedCapturePolicy(
-            reference.pointer, _id_getAllowedCapturePolicy as jni.JMethodIDPtr)
+    return _getAllowedCapturePolicy(reference.pointer,
+            _id_getAllowedCapturePolicy as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -2045,28 +2143,31 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioFormat;Landroid/media/AudioAttributes;)I',
   );
 
-  static final _getDirectPlaybackSupport = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getDirectPlaybackSupport = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getDirectPlaybackSupport(android.media.AudioFormat audioFormat, android.media.AudioAttributes audioAttributes)`
   static int getDirectPlaybackSupport(
-    jni.JObject audioFormat,
-    jni.JObject audioAttributes,
+    _$jni.JObject audioFormat,
+    _$jni.JObject audioAttributes,
   ) {
     return _getDirectPlaybackSupport(
             _class.reference.pointer,
-            _id_getDirectPlaybackSupport as jni.JMethodIDPtr,
+            _id_getDirectPlaybackSupport as _$jni.JMethodIDPtr,
             audioFormat.reference.pointer,
             audioAttributes.reference.pointer)
         .integer;
@@ -2077,28 +2178,32 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioFormat;Landroid/media/AudioAttributes;)Z',
   );
 
-  static final _isOffloadedPlaybackSupported = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallStaticBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _isOffloadedPlaybackSupported =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallStaticBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean isOffloadedPlaybackSupported(android.media.AudioFormat audioFormat, android.media.AudioAttributes audioAttributes)`
   static bool isOffloadedPlaybackSupported(
-    jni.JObject audioFormat,
-    jni.JObject audioAttributes,
+    _$jni.JObject audioFormat,
+    _$jni.JObject audioAttributes,
   ) {
     return _isOffloadedPlaybackSupported(
             _class.reference.pointer,
-            _id_isOffloadedPlaybackSupported as jni.JMethodIDPtr,
+            _id_isOffloadedPlaybackSupported as _$jni.JMethodIDPtr,
             audioFormat.reference.pointer,
             audioAttributes.reference.pointer)
         .boolean;
@@ -2109,28 +2214,31 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioFormat;Landroid/media/AudioAttributes;)I',
   );
 
-  static final _getPlaybackOffloadSupport = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getPlaybackOffloadSupport = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getPlaybackOffloadSupport(android.media.AudioFormat audioFormat, android.media.AudioAttributes audioAttributes)`
   static int getPlaybackOffloadSupport(
-    jni.JObject audioFormat,
-    jni.JObject audioAttributes,
+    _$jni.JObject audioFormat,
+    _$jni.JObject audioAttributes,
   ) {
     return _getPlaybackOffloadSupport(
             _class.reference.pointer,
-            _id_getPlaybackOffloadSupport as jni.JMethodIDPtr,
+            _id_getPlaybackOffloadSupport as _$jni.JMethodIDPtr,
             audioFormat.reference.pointer,
             audioAttributes.reference.pointer)
         .integer;
@@ -2141,24 +2249,24 @@ class AudioManager extends jni.JObject {
     r'()Landroid/media/Spatializer;',
   );
 
-  static final _getSpatializer = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getSpatializer = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.media.Spatializer getSpatializer()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getSpatializer() {
+  _$jni.JObject getSpatializer() {
     return _getSpatializer(
-            reference.pointer, _id_getSpatializer as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getSpatializer as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_isBluetoothScoAvailableOffCall = _class.instanceMethodId(
@@ -2166,22 +2274,23 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isBluetoothScoAvailableOffCall = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _isBluetoothScoAvailableOffCall =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean isBluetoothScoAvailableOffCall()`
   bool isBluetoothScoAvailableOffCall() {
     return _isBluetoothScoAvailableOffCall(reference.pointer,
-            _id_isBluetoothScoAvailableOffCall as jni.JMethodIDPtr)
+            _id_isBluetoothScoAvailableOffCall as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2190,22 +2299,22 @@ class AudioManager extends jni.JObject {
     r'()V',
   );
 
-  static final _startBluetoothSco = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _startBluetoothSco = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void startBluetoothSco()`
   void startBluetoothSco() {
     _startBluetoothSco(
-            reference.pointer, _id_startBluetoothSco as jni.JMethodIDPtr)
+            reference.pointer, _id_startBluetoothSco as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -2214,22 +2323,22 @@ class AudioManager extends jni.JObject {
     r'()V',
   );
 
-  static final _stopBluetoothSco = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _stopBluetoothSco = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void stopBluetoothSco()`
   void stopBluetoothSco() {
     _stopBluetoothSco(
-            reference.pointer, _id_stopBluetoothSco as jni.JMethodIDPtr)
+            reference.pointer, _id_stopBluetoothSco as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -2238,22 +2347,22 @@ class AudioManager extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setBluetoothScoOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setBluetoothScoOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setBluetoothScoOn(boolean z)`
   void setBluetoothScoOn(
     bool z,
   ) {
     _setBluetoothScoOn(reference.pointer,
-            _id_setBluetoothScoOn as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setBluetoothScoOn as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2262,22 +2371,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isBluetoothScoOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isBluetoothScoOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isBluetoothScoOn()`
   bool isBluetoothScoOn() {
     return _isBluetoothScoOn(
-            reference.pointer, _id_isBluetoothScoOn as jni.JMethodIDPtr)
+            reference.pointer, _id_isBluetoothScoOn as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2286,22 +2395,22 @@ class AudioManager extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setBluetoothA2dpOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setBluetoothA2dpOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setBluetoothA2dpOn(boolean z)`
   void setBluetoothA2dpOn(
     bool z,
   ) {
     _setBluetoothA2dpOn(reference.pointer,
-            _id_setBluetoothA2dpOn as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setBluetoothA2dpOn as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2310,22 +2419,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isBluetoothA2dpOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isBluetoothA2dpOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isBluetoothA2dpOn()`
   bool isBluetoothA2dpOn() {
     return _isBluetoothA2dpOn(
-            reference.pointer, _id_isBluetoothA2dpOn as jni.JMethodIDPtr)
+            reference.pointer, _id_isBluetoothA2dpOn as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2334,22 +2443,22 @@ class AudioManager extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setWiredHeadsetOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setWiredHeadsetOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setWiredHeadsetOn(boolean z)`
   void setWiredHeadsetOn(
     bool z,
   ) {
     _setWiredHeadsetOn(reference.pointer,
-            _id_setWiredHeadsetOn as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setWiredHeadsetOn as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2358,22 +2467,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isWiredHeadsetOn = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isWiredHeadsetOn = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isWiredHeadsetOn()`
   bool isWiredHeadsetOn() {
     return _isWiredHeadsetOn(
-            reference.pointer, _id_isWiredHeadsetOn as jni.JMethodIDPtr)
+            reference.pointer, _id_isWiredHeadsetOn as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2382,22 +2491,22 @@ class AudioManager extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setMicrophoneMute = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setMicrophoneMute = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setMicrophoneMute(boolean z)`
   void setMicrophoneMute(
     bool z,
   ) {
     _setMicrophoneMute(reference.pointer,
-            _id_setMicrophoneMute as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setMicrophoneMute as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2406,22 +2515,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isMicrophoneMute = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isMicrophoneMute = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isMicrophoneMute()`
   bool isMicrophoneMute() {
     return _isMicrophoneMute(
-            reference.pointer, _id_isMicrophoneMute as jni.JMethodIDPtr)
+            reference.pointer, _id_isMicrophoneMute as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2430,21 +2539,21 @@ class AudioManager extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setMode(int i)`
   void setMode(
     int i,
   ) {
-    _setMode(reference.pointer, _id_setMode as jni.JMethodIDPtr, i).check();
+    _setMode(reference.pointer, _id_setMode as _$jni.JMethodIDPtr, i).check();
   }
 
   static final _id_getMode = _class.instanceMethodId(
@@ -2452,21 +2561,22 @@ class AudioManager extends jni.JObject {
     r'()I',
   );
 
-  static final _getMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getMode()`
   int getMode() {
-    return _getMode(reference.pointer, _id_getMode as jni.JMethodIDPtr).integer;
+    return _getMode(reference.pointer, _id_getMode as _$jni.JMethodIDPtr)
+        .integer;
   }
 
   static final _id_addOnModeChangedListener = _class.instanceMethodId(
@@ -2474,28 +2584,31 @@ class AudioManager extends jni.JObject {
     r'(Ljava/util/concurrent/Executor;Landroid/media/AudioManager$OnModeChangedListener;)V',
   );
 
-  static final _addOnModeChangedListener = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _addOnModeChangedListener = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void addOnModeChangedListener(java.util.concurrent.Executor executor, android.media.AudioManager$OnModeChangedListener onModeChangedListener)`
   void addOnModeChangedListener(
-    jni.JObject executor,
+    _$jni.JObject executor,
     AudioManager_OnModeChangedListener onModeChangedListener,
   ) {
     _addOnModeChangedListener(
             reference.pointer,
-            _id_addOnModeChangedListener as jni.JMethodIDPtr,
+            _id_addOnModeChangedListener as _$jni.JMethodIDPtr,
             executor.reference.pointer,
             onModeChangedListener.reference.pointer)
         .check();
@@ -2506,16 +2619,17 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioManager$OnModeChangedListener;)V',
   );
 
-  static final _removeOnModeChangedListener = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _removeOnModeChangedListener =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void removeOnModeChangedListener(android.media.AudioManager$OnModeChangedListener onModeChangedListener)`
   void removeOnModeChangedListener(
@@ -2523,7 +2637,7 @@ class AudioManager extends jni.JObject {
   ) {
     _removeOnModeChangedListener(
             reference.pointer,
-            _id_removeOnModeChangedListener as jni.JMethodIDPtr,
+            _id_removeOnModeChangedListener as _$jni.JMethodIDPtr,
             onModeChangedListener.reference.pointer)
         .check();
   }
@@ -2533,22 +2647,23 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isCallScreeningModeSupported = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _isCallScreeningModeSupported =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean isCallScreeningModeSupported()`
   bool isCallScreeningModeSupported() {
     return _isCallScreeningModeSupported(reference.pointer,
-            _id_isCallScreeningModeSupported as jni.JMethodIDPtr)
+            _id_isCallScreeningModeSupported as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2557,16 +2672,16 @@ class AudioManager extends jni.JObject {
     r'(III)V',
   );
 
-  static final _setRouting = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
+  static final _setRouting = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public void setRouting(int i, int i1, int i2)`
   void setRouting(
@@ -2575,7 +2690,7 @@ class AudioManager extends jni.JObject {
     int i2,
   ) {
     _setRouting(
-            reference.pointer, _id_setRouting as jni.JMethodIDPtr, i, i1, i2)
+            reference.pointer, _id_setRouting as _$jni.JMethodIDPtr, i, i1, i2)
         .check();
   }
 
@@ -2584,19 +2699,22 @@ class AudioManager extends jni.JObject {
     r'(I)I',
   );
 
-  static final _getRouting = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallIntMethod')
+  static final _getRouting = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public int getRouting(int i)`
   int getRouting(
     int i,
   ) {
-    return _getRouting(reference.pointer, _id_getRouting as jni.JMethodIDPtr, i)
+    return _getRouting(
+            reference.pointer, _id_getRouting as _$jni.JMethodIDPtr, i)
         .integer;
   }
 
@@ -2605,22 +2723,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isMusicActive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isMusicActive = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isMusicActive()`
   bool isMusicActive() {
     return _isMusicActive(
-            reference.pointer, _id_isMusicActive as jni.JMethodIDPtr)
+            reference.pointer, _id_isMusicActive as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2629,22 +2747,22 @@ class AudioManager extends jni.JObject {
     r'()I',
   );
 
-  static final _generateAudioSessionId = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _generateAudioSessionId = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int generateAudioSessionId()`
   int generateAudioSessionId() {
     return _generateAudioSessionId(
-            reference.pointer, _id_generateAudioSessionId as jni.JMethodIDPtr)
+            reference.pointer, _id_generateAudioSessionId as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -2653,22 +2771,22 @@ class AudioManager extends jni.JObject {
     r'(Ljava/lang/String;)V',
   );
 
-  static final _setParameters = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setParameters = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setParameters(java.lang.String string)`
   void setParameters(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    _setParameters(reference.pointer, _id_setParameters as jni.JMethodIDPtr,
+    _setParameters(reference.pointer, _id_setParameters as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .check();
   }
@@ -2678,25 +2796,25 @@ class AudioManager extends jni.JObject {
     r'(Ljava/lang/String;)Ljava/lang/String;',
   );
 
-  static final _getParameters = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getParameters = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.lang.String getParameters(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getParameters(
-    jni.JString string,
+  _$jni.JString getParameters(
+    _$jni.JString string,
   ) {
     return _getParameters(reference.pointer,
-            _id_getParameters as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const jni.JStringType());
+            _id_getParameters as _$jni.JMethodIDPtr, string.reference.pointer)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_playSoundEffect = _class.instanceMethodId(
@@ -2704,46 +2822,48 @@ class AudioManager extends jni.JObject {
     r'(I)V',
   );
 
-  static final _playSoundEffect = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _playSoundEffect = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void playSoundEffect(int i)`
   void playSoundEffect(
     int i,
   ) {
     _playSoundEffect(
-            reference.pointer, _id_playSoundEffect as jni.JMethodIDPtr, i)
+            reference.pointer, _id_playSoundEffect as _$jni.JMethodIDPtr, i)
         .check();
   }
 
-  static final _id_playSoundEffect1 = _class.instanceMethodId(
+  static final _id_playSoundEffect$1 = _class.instanceMethodId(
     r'playSoundEffect',
     r'(IF)V',
   );
 
-  static final _playSoundEffect1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr, ffi.VarArgs<($Int32, ffi.Double)>)>>(
+  static final _playSoundEffect$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Double)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, double)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, double)>();
 
   /// from: `public void playSoundEffect(int i, float f)`
-  void playSoundEffect1(
+  void playSoundEffect$1(
     int i,
     double f,
   ) {
-    _playSoundEffect1(
-            reference.pointer, _id_playSoundEffect1 as jni.JMethodIDPtr, i, f)
+    _playSoundEffect$1(reference.pointer,
+            _id_playSoundEffect$1 as _$jni.JMethodIDPtr, i, f)
         .check();
   }
 
@@ -2752,22 +2872,22 @@ class AudioManager extends jni.JObject {
     r'()V',
   );
 
-  static final _loadSoundEffects = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _loadSoundEffects = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void loadSoundEffects()`
   void loadSoundEffects() {
     _loadSoundEffects(
-            reference.pointer, _id_loadSoundEffects as jni.JMethodIDPtr)
+            reference.pointer, _id_loadSoundEffects as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -2776,22 +2896,22 @@ class AudioManager extends jni.JObject {
     r'()V',
   );
 
-  static final _unloadSoundEffects = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _unloadSoundEffects = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void unloadSoundEffects()`
   void unloadSoundEffects() {
     _unloadSoundEffects(
-            reference.pointer, _id_unloadSoundEffects as jni.JMethodIDPtr)
+            reference.pointer, _id_unloadSoundEffects as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -2800,16 +2920,20 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioManager$OnAudioFocusChangeListener;II)I',
   );
 
-  static final _requestAudioFocus = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32, $Int32)>)>>(
-          'globalEnv_CallIntMethod')
+  static final _requestAudioFocus = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
+                      (
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32,
+                        _$jni.Int32
+                      )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int, int)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int, int)>();
 
   /// from: `public int requestAudioFocus(android.media.AudioManager$OnAudioFocusChangeListener onAudioFocusChangeListener, int i, int i1)`
   int requestAudioFocus(
@@ -2819,36 +2943,36 @@ class AudioManager extends jni.JObject {
   ) {
     return _requestAudioFocus(
             reference.pointer,
-            _id_requestAudioFocus as jni.JMethodIDPtr,
+            _id_requestAudioFocus as _$jni.JMethodIDPtr,
             onAudioFocusChangeListener.reference.pointer,
             i,
             i1)
         .integer;
   }
 
-  static final _id_requestAudioFocus1 = _class.instanceMethodId(
+  static final _id_requestAudioFocus$1 = _class.instanceMethodId(
     r'requestAudioFocus',
     r'(Landroid/media/AudioFocusRequest;)I',
   );
 
-  static final _requestAudioFocus1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _requestAudioFocus$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public int requestAudioFocus(android.media.AudioFocusRequest audioFocusRequest)`
-  int requestAudioFocus1(
-    jni.JObject audioFocusRequest,
+  int requestAudioFocus$1(
+    _$jni.JObject audioFocusRequest,
   ) {
-    return _requestAudioFocus1(
+    return _requestAudioFocus$1(
             reference.pointer,
-            _id_requestAudioFocus1 as jni.JMethodIDPtr,
+            _id_requestAudioFocus$1 as _$jni.JMethodIDPtr,
             audioFocusRequest.reference.pointer)
         .integer;
   }
@@ -2858,24 +2982,24 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioFocusRequest;)I',
   );
 
-  static final _abandonAudioFocusRequest = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _abandonAudioFocusRequest = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public int abandonAudioFocusRequest(android.media.AudioFocusRequest audioFocusRequest)`
   int abandonAudioFocusRequest(
-    jni.JObject audioFocusRequest,
+    _$jni.JObject audioFocusRequest,
   ) {
     return _abandonAudioFocusRequest(
             reference.pointer,
-            _id_abandonAudioFocusRequest as jni.JMethodIDPtr,
+            _id_abandonAudioFocusRequest as _$jni.JMethodIDPtr,
             audioFocusRequest.reference.pointer)
         .integer;
   }
@@ -2885,16 +3009,16 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioManager$OnAudioFocusChangeListener;)I',
   );
 
-  static final _abandonAudioFocus = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _abandonAudioFocus = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public int abandonAudioFocus(android.media.AudioManager$OnAudioFocusChangeListener onAudioFocusChangeListener)`
   int abandonAudioFocus(
@@ -2902,7 +3026,7 @@ class AudioManager extends jni.JObject {
   ) {
     return _abandonAudioFocus(
             reference.pointer,
-            _id_abandonAudioFocus as jni.JMethodIDPtr,
+            _id_abandonAudioFocus as _$jni.JMethodIDPtr,
             onAudioFocusChangeListener.reference.pointer)
         .integer;
   }
@@ -2913,52 +3037,52 @@ class AudioManager extends jni.JObject {
   );
 
   static final _registerMediaButtonEventReceiver =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerMediaButtonEventReceiver(android.content.ComponentName componentName)`
   void registerMediaButtonEventReceiver(
-    jni.JObject componentName,
+    _$jni.JObject componentName,
   ) {
     _registerMediaButtonEventReceiver(
             reference.pointer,
-            _id_registerMediaButtonEventReceiver as jni.JMethodIDPtr,
+            _id_registerMediaButtonEventReceiver as _$jni.JMethodIDPtr,
             componentName.reference.pointer)
         .check();
   }
 
-  static final _id_registerMediaButtonEventReceiver1 = _class.instanceMethodId(
+  static final _id_registerMediaButtonEventReceiver$1 = _class.instanceMethodId(
     r'registerMediaButtonEventReceiver',
     r'(Landroid/app/PendingIntent;)V',
   );
 
-  static final _registerMediaButtonEventReceiver1 =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _registerMediaButtonEventReceiver$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerMediaButtonEventReceiver(android.app.PendingIntent pendingIntent)`
-  void registerMediaButtonEventReceiver1(
-    jni.JObject pendingIntent,
+  void registerMediaButtonEventReceiver$1(
+    _$jni.JObject pendingIntent,
   ) {
-    _registerMediaButtonEventReceiver1(
+    _registerMediaButtonEventReceiver$1(
             reference.pointer,
-            _id_registerMediaButtonEventReceiver1 as jni.JMethodIDPtr,
+            _id_registerMediaButtonEventReceiver$1 as _$jni.JMethodIDPtr,
             pendingIntent.reference.pointer)
         .check();
   }
@@ -2969,53 +3093,53 @@ class AudioManager extends jni.JObject {
   );
 
   static final _unregisterMediaButtonEventReceiver =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterMediaButtonEventReceiver(android.content.ComponentName componentName)`
   void unregisterMediaButtonEventReceiver(
-    jni.JObject componentName,
+    _$jni.JObject componentName,
   ) {
     _unregisterMediaButtonEventReceiver(
             reference.pointer,
-            _id_unregisterMediaButtonEventReceiver as jni.JMethodIDPtr,
+            _id_unregisterMediaButtonEventReceiver as _$jni.JMethodIDPtr,
             componentName.reference.pointer)
         .check();
   }
 
-  static final _id_unregisterMediaButtonEventReceiver1 =
+  static final _id_unregisterMediaButtonEventReceiver$1 =
       _class.instanceMethodId(
     r'unregisterMediaButtonEventReceiver',
     r'(Landroid/app/PendingIntent;)V',
   );
 
-  static final _unregisterMediaButtonEventReceiver1 =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _unregisterMediaButtonEventReceiver$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterMediaButtonEventReceiver(android.app.PendingIntent pendingIntent)`
-  void unregisterMediaButtonEventReceiver1(
-    jni.JObject pendingIntent,
+  void unregisterMediaButtonEventReceiver$1(
+    _$jni.JObject pendingIntent,
   ) {
-    _unregisterMediaButtonEventReceiver1(
+    _unregisterMediaButtonEventReceiver$1(
             reference.pointer,
-            _id_unregisterMediaButtonEventReceiver1 as jni.JMethodIDPtr,
+            _id_unregisterMediaButtonEventReceiver$1 as _$jni.JMethodIDPtr,
             pendingIntent.reference.pointer)
         .check();
   }
@@ -3025,24 +3149,25 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/RemoteControlClient;)V',
   );
 
-  static final _registerRemoteControlClient = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _registerRemoteControlClient =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerRemoteControlClient(android.media.RemoteControlClient remoteControlClient)`
   void registerRemoteControlClient(
-    jni.JObject remoteControlClient,
+    _$jni.JObject remoteControlClient,
   ) {
     _registerRemoteControlClient(
             reference.pointer,
-            _id_registerRemoteControlClient as jni.JMethodIDPtr,
+            _id_registerRemoteControlClient as _$jni.JMethodIDPtr,
             remoteControlClient.reference.pointer)
         .check();
   }
@@ -3052,24 +3177,25 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/RemoteControlClient;)V',
   );
 
-  static final _unregisterRemoteControlClient = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _unregisterRemoteControlClient =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterRemoteControlClient(android.media.RemoteControlClient remoteControlClient)`
   void unregisterRemoteControlClient(
-    jni.JObject remoteControlClient,
+    _$jni.JObject remoteControlClient,
   ) {
     _unregisterRemoteControlClient(
             reference.pointer,
-            _id_unregisterRemoteControlClient as jni.JMethodIDPtr,
+            _id_unregisterRemoteControlClient as _$jni.JMethodIDPtr,
             remoteControlClient.reference.pointer)
         .check();
   }
@@ -3079,24 +3205,24 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/RemoteController;)Z',
   );
 
-  static final _registerRemoteController = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _registerRemoteController = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public boolean registerRemoteController(android.media.RemoteController remoteController)`
   bool registerRemoteController(
-    jni.JObject remoteController,
+    _$jni.JObject remoteController,
   ) {
     return _registerRemoteController(
             reference.pointer,
-            _id_registerRemoteController as jni.JMethodIDPtr,
+            _id_registerRemoteController as _$jni.JMethodIDPtr,
             remoteController.reference.pointer)
         .boolean;
   }
@@ -3106,24 +3232,25 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/RemoteController;)V',
   );
 
-  static final _unregisterRemoteController = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _unregisterRemoteController =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterRemoteController(android.media.RemoteController remoteController)`
   void unregisterRemoteController(
-    jni.JObject remoteController,
+    _$jni.JObject remoteController,
   ) {
     _unregisterRemoteController(
             reference.pointer,
-            _id_unregisterRemoteController as jni.JMethodIDPtr,
+            _id_unregisterRemoteController as _$jni.JMethodIDPtr,
             remoteController.reference.pointer)
         .check();
   }
@@ -3133,28 +3260,32 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioManager$AudioPlaybackCallback;Landroid/os/Handler;)V',
   );
 
-  static final _registerAudioPlaybackCallback = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _registerAudioPlaybackCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerAudioPlaybackCallback(android.media.AudioManager$AudioPlaybackCallback audioPlaybackCallback, android.os.Handler handler)`
   void registerAudioPlaybackCallback(
     AudioManager_AudioPlaybackCallback audioPlaybackCallback,
-    jni.JObject handler,
+    _$jni.JObject handler,
   ) {
     _registerAudioPlaybackCallback(
             reference.pointer,
-            _id_registerAudioPlaybackCallback as jni.JMethodIDPtr,
+            _id_registerAudioPlaybackCallback as _$jni.JMethodIDPtr,
             audioPlaybackCallback.reference.pointer,
             handler.reference.pointer)
         .check();
@@ -3165,16 +3296,17 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioManager$AudioPlaybackCallback;)V',
   );
 
-  static final _unregisterAudioPlaybackCallback = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _unregisterAudioPlaybackCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterAudioPlaybackCallback(android.media.AudioManager$AudioPlaybackCallback audioPlaybackCallback)`
   void unregisterAudioPlaybackCallback(
@@ -3182,7 +3314,7 @@ class AudioManager extends jni.JObject {
   ) {
     _unregisterAudioPlaybackCallback(
             reference.pointer,
-            _id_unregisterAudioPlaybackCallback as jni.JMethodIDPtr,
+            _id_unregisterAudioPlaybackCallback as _$jni.JMethodIDPtr,
             audioPlaybackCallback.reference.pointer)
         .check();
   }
@@ -3192,24 +3324,25 @@ class AudioManager extends jni.JObject {
     r'()Ljava/util/List;',
   );
 
-  static final _getActivePlaybackConfigurations = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getActivePlaybackConfigurations =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public java.util.List getActivePlaybackConfigurations()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getActivePlaybackConfigurations() {
+  _$jni.JList<_$jni.JObject> getActivePlaybackConfigurations() {
     return _getActivePlaybackConfigurations(reference.pointer,
-            _id_getActivePlaybackConfigurations as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _id_getActivePlaybackConfigurations as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_registerAudioRecordingCallback = _class.instanceMethodId(
@@ -3217,28 +3350,32 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioManager$AudioRecordingCallback;Landroid/os/Handler;)V',
   );
 
-  static final _registerAudioRecordingCallback = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _registerAudioRecordingCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerAudioRecordingCallback(android.media.AudioManager$AudioRecordingCallback audioRecordingCallback, android.os.Handler handler)`
   void registerAudioRecordingCallback(
     AudioManager_AudioRecordingCallback audioRecordingCallback,
-    jni.JObject handler,
+    _$jni.JObject handler,
   ) {
     _registerAudioRecordingCallback(
             reference.pointer,
-            _id_registerAudioRecordingCallback as jni.JMethodIDPtr,
+            _id_registerAudioRecordingCallback as _$jni.JMethodIDPtr,
             audioRecordingCallback.reference.pointer,
             handler.reference.pointer)
         .check();
@@ -3250,16 +3387,16 @@ class AudioManager extends jni.JObject {
   );
 
   static final _unregisterAudioRecordingCallback =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterAudioRecordingCallback(android.media.AudioManager$AudioRecordingCallback audioRecordingCallback)`
   void unregisterAudioRecordingCallback(
@@ -3267,7 +3404,7 @@ class AudioManager extends jni.JObject {
   ) {
     _unregisterAudioRecordingCallback(
             reference.pointer,
-            _id_unregisterAudioRecordingCallback as jni.JMethodIDPtr,
+            _id_unregisterAudioRecordingCallback as _$jni.JMethodIDPtr,
             audioRecordingCallback.reference.pointer)
         .check();
   }
@@ -3278,24 +3415,24 @@ class AudioManager extends jni.JObject {
   );
 
   static final _getActiveRecordingConfigurations =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                    ffi.Pointer<ffi.Void>,
-                    jni.JMethodIDPtr,
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
                   )>>('globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>();
 
   /// from: `public java.util.List getActiveRecordingConfigurations()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getActiveRecordingConfigurations() {
+  _$jni.JList<_$jni.JObject> getActiveRecordingConfigurations() {
     return _getActiveRecordingConfigurations(reference.pointer,
-            _id_getActiveRecordingConfigurations as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _id_getActiveRecordingConfigurations as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_getAudioDevicesForAttributes = _class.instanceMethodId(
@@ -3303,27 +3440,28 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioAttributes;)Ljava/util/List;',
   );
 
-  static final _getAudioDevicesForAttributes = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _getAudioDevicesForAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.util.List getAudioDevicesForAttributes(android.media.AudioAttributes audioAttributes)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getAudioDevicesForAttributes(
-    jni.JObject audioAttributes,
+  _$jni.JList<_$jni.JObject> getAudioDevicesForAttributes(
+    _$jni.JObject audioAttributes,
   ) {
     return _getAudioDevicesForAttributes(
             reference.pointer,
-            _id_getAudioDevicesForAttributes as jni.JMethodIDPtr,
+            _id_getAudioDevicesForAttributes as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer)
-        .object(const jni.JListType(jni.JObjectType()));
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_getProperty = _class.instanceMethodId(
@@ -3331,25 +3469,25 @@ class AudioManager extends jni.JObject {
     r'(Ljava/lang/String;)Ljava/lang/String;',
   );
 
-  static final _getProperty = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getProperty = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.lang.String getProperty(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getProperty(
-    jni.JString string,
+  _$jni.JString getProperty(
+    _$jni.JString string,
   ) {
-    return _getProperty(reference.pointer, _id_getProperty as jni.JMethodIDPtr,
-            string.reference.pointer)
-        .object(const jni.JStringType());
+    return _getProperty(reference.pointer,
+            _id_getProperty as _$jni.JMethodIDPtr, string.reference.pointer)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_getDevices = _class.instanceMethodId(
@@ -3357,21 +3495,24 @@ class AudioManager extends jni.JObject {
     r'(I)[Landroid/media/AudioDeviceInfo;',
   );
 
-  static final _getDevices = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getDevices = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public android.media.AudioDeviceInfo[] getDevices(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JArray<jni.JObject> getDevices(
+  _$jni.JArray<_$jni.JObject> getDevices(
     int i,
   ) {
-    return _getDevices(reference.pointer, _id_getDevices as jni.JMethodIDPtr, i)
-        .object(const jni.JArrayType(jni.JObjectType()));
+    return _getDevices(
+            reference.pointer, _id_getDevices as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JArrayType(_$jni.JObjectType()));
   }
 
   static final _id_registerAudioDeviceCallback = _class.instanceMethodId(
@@ -3379,28 +3520,32 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioDeviceCallback;Landroid/os/Handler;)V',
   );
 
-  static final _registerAudioDeviceCallback = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _registerAudioDeviceCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerAudioDeviceCallback(android.media.AudioDeviceCallback audioDeviceCallback, android.os.Handler handler)`
   void registerAudioDeviceCallback(
-    jni.JObject audioDeviceCallback,
-    jni.JObject handler,
+    _$jni.JObject audioDeviceCallback,
+    _$jni.JObject handler,
   ) {
     _registerAudioDeviceCallback(
             reference.pointer,
-            _id_registerAudioDeviceCallback as jni.JMethodIDPtr,
+            _id_registerAudioDeviceCallback as _$jni.JMethodIDPtr,
             audioDeviceCallback.reference.pointer,
             handler.reference.pointer)
         .check();
@@ -3411,24 +3556,25 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioDeviceCallback;)V',
   );
 
-  static final _unregisterAudioDeviceCallback = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _unregisterAudioDeviceCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterAudioDeviceCallback(android.media.AudioDeviceCallback audioDeviceCallback)`
   void unregisterAudioDeviceCallback(
-    jni.JObject audioDeviceCallback,
+    _$jni.JObject audioDeviceCallback,
   ) {
     _unregisterAudioDeviceCallback(
             reference.pointer,
-            _id_unregisterAudioDeviceCallback as jni.JMethodIDPtr,
+            _id_unregisterAudioDeviceCallback as _$jni.JMethodIDPtr,
             audioDeviceCallback.reference.pointer)
         .check();
   }
@@ -3438,24 +3584,24 @@ class AudioManager extends jni.JObject {
     r'()Ljava/util/List;',
   );
 
-  static final _getMicrophones = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getMicrophones = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.util.List getMicrophones()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getMicrophones() {
+  _$jni.JList<_$jni.JObject> getMicrophones() {
     return _getMicrophones(
-            reference.pointer, _id_getMicrophones as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            reference.pointer, _id_getMicrophones as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_setEncodedSurroundMode = _class.instanceMethodId(
@@ -3463,20 +3609,23 @@ class AudioManager extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _setEncodedSurroundMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _setEncodedSurroundMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean setEncodedSurroundMode(int i)`
   bool setEncodedSurroundMode(
     int i,
   ) {
     return _setEncodedSurroundMode(reference.pointer,
-            _id_setEncodedSurroundMode as jni.JMethodIDPtr, i)
+            _id_setEncodedSurroundMode as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -3485,22 +3634,22 @@ class AudioManager extends jni.JObject {
     r'()I',
   );
 
-  static final _getEncodedSurroundMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getEncodedSurroundMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getEncodedSurroundMode()`
   int getEncodedSurroundMode() {
     return _getEncodedSurroundMode(
-            reference.pointer, _id_getEncodedSurroundMode as jni.JMethodIDPtr)
+            reference.pointer, _id_getEncodedSurroundMode as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -3509,14 +3658,16 @@ class AudioManager extends jni.JObject {
     r'(IZ)Z',
   );
 
-  static final _setSurroundFormatEnabled = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr, ffi.VarArgs<($Int32, $Int32)>)>>(
+  static final _setSurroundFormatEnabled = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public boolean setSurroundFormatEnabled(int i, boolean z)`
   bool setSurroundFormatEnabled(
@@ -3524,7 +3675,7 @@ class AudioManager extends jni.JObject {
     bool z,
   ) {
     return _setSurroundFormatEnabled(reference.pointer,
-            _id_setSurroundFormatEnabled as jni.JMethodIDPtr, i, z ? 1 : 0)
+            _id_setSurroundFormatEnabled as _$jni.JMethodIDPtr, i, z ? 1 : 0)
         .boolean;
   }
 
@@ -3533,20 +3684,23 @@ class AudioManager extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _isSurroundFormatEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _isSurroundFormatEnabled = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean isSurroundFormatEnabled(int i)`
   bool isSurroundFormatEnabled(
     int i,
   ) {
     return _isSurroundFormatEnabled(reference.pointer,
-            _id_isSurroundFormatEnabled as jni.JMethodIDPtr, i)
+            _id_isSurroundFormatEnabled as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -3555,22 +3709,22 @@ class AudioManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isHapticPlaybackSupported = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isHapticPlaybackSupported = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public boolean isHapticPlaybackSupported()`
   static bool isHapticPlaybackSupported() {
     return _isHapticPlaybackSupported(_class.reference.pointer,
-            _id_isHapticPlaybackSupported as jni.JMethodIDPtr)
+            _id_isHapticPlaybackSupported as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -3579,20 +3733,22 @@ class AudioManager extends jni.JObject {
     r'(I)I',
   );
 
-  static final _getAudioHwSyncForSession = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallIntMethod')
+  static final _getAudioHwSyncForSession = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public int getAudioHwSyncForSession(int i)`
   int getAudioHwSyncForSession(
     int i,
   ) {
     return _getAudioHwSyncForSession(reference.pointer,
-            _id_getAudioHwSyncForSession as jni.JMethodIDPtr, i)
+            _id_getAudioHwSyncForSession as _$jni.JMethodIDPtr, i)
         .integer;
   }
 
@@ -3601,24 +3757,24 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioDeviceInfo;)Z',
   );
 
-  static final _setCommunicationDevice = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setCommunicationDevice = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public boolean setCommunicationDevice(android.media.AudioDeviceInfo audioDeviceInfo)`
   bool setCommunicationDevice(
-    jni.JObject audioDeviceInfo,
+    _$jni.JObject audioDeviceInfo,
   ) {
     return _setCommunicationDevice(
             reference.pointer,
-            _id_setCommunicationDevice as jni.JMethodIDPtr,
+            _id_setCommunicationDevice as _$jni.JMethodIDPtr,
             audioDeviceInfo.reference.pointer)
         .boolean;
   }
@@ -3628,22 +3784,22 @@ class AudioManager extends jni.JObject {
     r'()V',
   );
 
-  static final _clearCommunicationDevice = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _clearCommunicationDevice = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void clearCommunicationDevice()`
   void clearCommunicationDevice() {
-    _clearCommunicationDevice(
-            reference.pointer, _id_clearCommunicationDevice as jni.JMethodIDPtr)
+    _clearCommunicationDevice(reference.pointer,
+            _id_clearCommunicationDevice as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -3652,24 +3808,24 @@ class AudioManager extends jni.JObject {
     r'()Landroid/media/AudioDeviceInfo;',
   );
 
-  static final _getCommunicationDevice = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getCommunicationDevice = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.media.AudioDeviceInfo getCommunicationDevice()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getCommunicationDevice() {
+  _$jni.JObject getCommunicationDevice() {
     return _getCommunicationDevice(
-            reference.pointer, _id_getCommunicationDevice as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getCommunicationDevice as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getAvailableCommunicationDevices = _class.instanceMethodId(
@@ -3678,24 +3834,24 @@ class AudioManager extends jni.JObject {
   );
 
   static final _getAvailableCommunicationDevices =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                    ffi.Pointer<ffi.Void>,
-                    jni.JMethodIDPtr,
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
                   )>>('globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>();
 
   /// from: `public java.util.List getAvailableCommunicationDevices()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getAvailableCommunicationDevices() {
+  _$jni.JList<_$jni.JObject> getAvailableCommunicationDevices() {
     return _getAvailableCommunicationDevices(reference.pointer,
-            _id_getAvailableCommunicationDevices as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _id_getAvailableCommunicationDevices as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_getDirectProfilesForAttributes = _class.instanceMethodId(
@@ -3703,27 +3859,28 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioAttributes;)Ljava/util/List;',
   );
 
-  static final _getDirectProfilesForAttributes = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _getDirectProfilesForAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.util.List getDirectProfilesForAttributes(android.media.AudioAttributes audioAttributes)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getDirectProfilesForAttributes(
-    jni.JObject audioAttributes,
+  _$jni.JList<_$jni.JObject> getDirectProfilesForAttributes(
+    _$jni.JObject audioAttributes,
   ) {
     return _getDirectProfilesForAttributes(
             reference.pointer,
-            _id_getDirectProfilesForAttributes as jni.JMethodIDPtr,
+            _id_getDirectProfilesForAttributes as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer)
-        .object(const jni.JListType(jni.JObjectType()));
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_addOnCommunicationDeviceChangedListener =
@@ -3733,32 +3890,32 @@ class AudioManager extends jni.JObject {
   );
 
   static final _addOnCommunicationDeviceChangedListener =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
                           (
-                            ffi.Pointer<ffi.Void>,
-                            ffi.Pointer<ffi.Void>
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
                           )>)>>('globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void addOnCommunicationDeviceChangedListener(java.util.concurrent.Executor executor, android.media.AudioManager$OnCommunicationDeviceChangedListener onCommunicationDeviceChangedListener)`
   void addOnCommunicationDeviceChangedListener(
-    jni.JObject executor,
+    _$jni.JObject executor,
     AudioManager_OnCommunicationDeviceChangedListener
         onCommunicationDeviceChangedListener,
   ) {
     _addOnCommunicationDeviceChangedListener(
             reference.pointer,
-            _id_addOnCommunicationDeviceChangedListener as jni.JMethodIDPtr,
+            _id_addOnCommunicationDeviceChangedListener as _$jni.JMethodIDPtr,
             executor.reference.pointer,
             onCommunicationDeviceChangedListener.reference.pointer)
         .check();
@@ -3771,16 +3928,16 @@ class AudioManager extends jni.JObject {
   );
 
   static final _removeOnCommunicationDeviceChangedListener =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void removeOnCommunicationDeviceChangedListener(android.media.AudioManager$OnCommunicationDeviceChangedListener onCommunicationDeviceChangedListener)`
   void removeOnCommunicationDeviceChangedListener(
@@ -3789,7 +3946,8 @@ class AudioManager extends jni.JObject {
   ) {
     _removeOnCommunicationDeviceChangedListener(
             reference.pointer,
-            _id_removeOnCommunicationDeviceChangedListener as jni.JMethodIDPtr,
+            _id_removeOnCommunicationDeviceChangedListener
+                as _$jni.JMethodIDPtr,
             onCommunicationDeviceChangedListener.reference.pointer)
         .check();
   }
@@ -3799,27 +3957,28 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioDeviceInfo;)Ljava/util/List;',
   );
 
-  static final _getSupportedMixerAttributes = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _getSupportedMixerAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.util.List getSupportedMixerAttributes(android.media.AudioDeviceInfo audioDeviceInfo)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getSupportedMixerAttributes(
-    jni.JObject audioDeviceInfo,
+  _$jni.JList<_$jni.JObject> getSupportedMixerAttributes(
+    _$jni.JObject audioDeviceInfo,
   ) {
     return _getSupportedMixerAttributes(
             reference.pointer,
-            _id_getSupportedMixerAttributes as jni.JMethodIDPtr,
+            _id_getSupportedMixerAttributes as _$jni.JMethodIDPtr,
             audioDeviceInfo.reference.pointer)
-        .object(const jni.JListType(jni.JObjectType()));
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_setPreferredMixerAttributes = _class.instanceMethodId(
@@ -3827,34 +3986,35 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioAttributes;Landroid/media/AudioDeviceInfo;Landroid/media/AudioMixerAttributes;)Z',
   );
 
-  static final _setPreferredMixerAttributes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+  static final _setPreferredMixerAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public boolean setPreferredMixerAttributes(android.media.AudioAttributes audioAttributes, android.media.AudioDeviceInfo audioDeviceInfo, android.media.AudioMixerAttributes audioMixerAttributes)`
   bool setPreferredMixerAttributes(
-    jni.JObject audioAttributes,
-    jni.JObject audioDeviceInfo,
-    jni.JObject audioMixerAttributes,
+    _$jni.JObject audioAttributes,
+    _$jni.JObject audioDeviceInfo,
+    _$jni.JObject audioMixerAttributes,
   ) {
     return _setPreferredMixerAttributes(
             reference.pointer,
-            _id_setPreferredMixerAttributes as jni.JMethodIDPtr,
+            _id_setPreferredMixerAttributes as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer,
             audioDeviceInfo.reference.pointer,
             audioMixerAttributes.reference.pointer)
@@ -3866,32 +4026,36 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioAttributes;Landroid/media/AudioDeviceInfo;)Landroid/media/AudioMixerAttributes;',
   );
 
-  static final _getPreferredMixerAttributes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _getPreferredMixerAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public android.media.AudioMixerAttributes getPreferredMixerAttributes(android.media.AudioAttributes audioAttributes, android.media.AudioDeviceInfo audioDeviceInfo)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getPreferredMixerAttributes(
-    jni.JObject audioAttributes,
-    jni.JObject audioDeviceInfo,
+  _$jni.JObject getPreferredMixerAttributes(
+    _$jni.JObject audioAttributes,
+    _$jni.JObject audioDeviceInfo,
   ) {
     return _getPreferredMixerAttributes(
             reference.pointer,
-            _id_getPreferredMixerAttributes as jni.JMethodIDPtr,
+            _id_getPreferredMixerAttributes as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer,
             audioDeviceInfo.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_clearPreferredMixerAttributes = _class.instanceMethodId(
@@ -3899,28 +4063,32 @@ class AudioManager extends jni.JObject {
     r'(Landroid/media/AudioAttributes;Landroid/media/AudioDeviceInfo;)Z',
   );
 
-  static final _clearPreferredMixerAttributes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _clearPreferredMixerAttributes =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public boolean clearPreferredMixerAttributes(android.media.AudioAttributes audioAttributes, android.media.AudioDeviceInfo audioDeviceInfo)`
   bool clearPreferredMixerAttributes(
-    jni.JObject audioAttributes,
-    jni.JObject audioDeviceInfo,
+    _$jni.JObject audioAttributes,
+    _$jni.JObject audioDeviceInfo,
   ) {
     return _clearPreferredMixerAttributes(
             reference.pointer,
-            _id_clearPreferredMixerAttributes as jni.JMethodIDPtr,
+            _id_clearPreferredMixerAttributes as _$jni.JMethodIDPtr,
             audioAttributes.reference.pointer,
             audioDeviceInfo.reference.pointer)
         .boolean;
@@ -3933,33 +4101,33 @@ class AudioManager extends jni.JObject {
   );
 
   static final _addOnPreferredMixerAttributesChangedListener =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
                           (
-                            ffi.Pointer<ffi.Void>,
-                            ffi.Pointer<ffi.Void>
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
                           )>)>>('globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void addOnPreferredMixerAttributesChangedListener(java.util.concurrent.Executor executor, android.media.AudioManager$OnPreferredMixerAttributesChangedListener onPreferredMixerAttributesChangedListener)`
   void addOnPreferredMixerAttributesChangedListener(
-    jni.JObject executor,
+    _$jni.JObject executor,
     AudioManager_OnPreferredMixerAttributesChangedListener
         onPreferredMixerAttributesChangedListener,
   ) {
     _addOnPreferredMixerAttributesChangedListener(
             reference.pointer,
             _id_addOnPreferredMixerAttributesChangedListener
-                as jni.JMethodIDPtr,
+                as _$jni.JMethodIDPtr,
             executor.reference.pointer,
             onPreferredMixerAttributesChangedListener.reference.pointer)
         .check();
@@ -3972,16 +4140,16 @@ class AudioManager extends jni.JObject {
   );
 
   static final _removeOnPreferredMixerAttributesChangedListener =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void removeOnPreferredMixerAttributesChangedListener(android.media.AudioManager$OnPreferredMixerAttributesChangedListener onPreferredMixerAttributesChangedListener)`
   void removeOnPreferredMixerAttributesChangedListener(
@@ -3991,34 +4159,39 @@ class AudioManager extends jni.JObject {
     _removeOnPreferredMixerAttributesChangedListener(
             reference.pointer,
             _id_removeOnPreferredMixerAttributesChangedListener
-                as jni.JMethodIDPtr,
+                as _$jni.JMethodIDPtr,
             onPreferredMixerAttributesChangedListener.reference.pointer)
         .check();
   }
 }
 
-final class $AudioManagerType extends jni.JObjType<AudioManager> {
-  const $AudioManagerType();
+final class $AudioManager$Type extends _$jni.JObjType<AudioManager> {
+  @_$jni.internal
+  const $AudioManager$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/media/AudioManager;';
 
-  @override
-  AudioManager fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  AudioManager fromReference(_$jni.JReference reference) =>
       AudioManager.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AudioManagerType).hashCode;
+  @_$core.override
+  int get hashCode => ($AudioManager$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AudioManagerType) &&
-        other is $AudioManagerType;
+    return other.runtimeType == ($AudioManager$Type) &&
+        other is $AudioManager$Type;
   }
 }

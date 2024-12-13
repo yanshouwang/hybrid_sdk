@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,55 +28,61 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import 'Intent.dart' as intent_;
 
 /// from: `android.content.IntentFilter$AuthorityEntry`
-class IntentFilter_AuthorityEntry extends jni.JObject {
-  @override
-  late final jni.JObjType<IntentFilter_AuthorityEntry> $type = type;
+class IntentFilter_AuthorityEntry extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<IntentFilter_AuthorityEntry> $type;
 
+  @_$jni.internal
   IntentFilter_AuthorityEntry.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/content/IntentFilter$AuthorityEntry');
+      _$jni.JClass.forName(r'android/content/IntentFilter$AuthorityEntry');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $IntentFilter_AuthorityEntryType();
-  static final _id_new0 = _class.constructorId(
+  static const type = $IntentFilter_AuthorityEntry$Type();
+  static final _id_new$ = _class.constructorId(
     r'(Ljava/lang/String;Ljava/lang/String;)V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
   factory IntentFilter_AuthorityEntry(
-    jni.JString string,
-    jni.JString string1,
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
-    return IntentFilter_AuthorityEntry.fromReference(_new0(
+    return IntentFilter_AuthorityEntry.fromReference(_new$(
             _class.reference.pointer,
-            _id_new0 as jni.JMethodIDPtr,
+            _id_new$ as _$jni.JMethodIDPtr,
             string.reference.pointer,
             string1.reference.pointer)
         .reference);
@@ -81,23 +93,23 @@ class IntentFilter_AuthorityEntry extends jni.JObject {
     r'()Ljava/lang/String;',
   );
 
-  static final _getHost = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getHost = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.String getHost()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getHost() {
-    return _getHost(reference.pointer, _id_getHost as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+  _$jni.JString getHost() {
+    return _getHost(reference.pointer, _id_getHost as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_getPort = _class.instanceMethodId(
@@ -105,21 +117,22 @@ class IntentFilter_AuthorityEntry extends jni.JObject {
     r'()I',
   );
 
-  static final _getPort = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getPort = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getPort()`
   int getPort() {
-    return _getPort(reference.pointer, _id_getPort as jni.JMethodIDPtr).integer;
+    return _getPort(reference.pointer, _id_getPort as _$jni.JMethodIDPtr)
+        .integer;
   }
 
   static final _id_equals = _class.instanceMethodId(
@@ -127,22 +140,22 @@ class IntentFilter_AuthorityEntry extends jni.JObject {
     r'(Ljava/lang/Object;)Z',
   );
 
-  static final _equals = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _equals = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public boolean equals(java.lang.Object object)`
   bool equals(
-    jni.JObject object,
+    _$jni.JObject object,
   ) {
-    return _equals(reference.pointer, _id_equals as jni.JMethodIDPtr,
+    return _equals(reference.pointer, _id_equals as _$jni.JMethodIDPtr,
             object.reference.pointer)
         .boolean;
   }
@@ -152,163 +165,179 @@ class IntentFilter_AuthorityEntry extends jni.JObject {
     r'(Landroid/net/Uri;)I',
   );
 
-  static final _match = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _match = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public int match(android.net.Uri uri)`
   int match(
-    jni.JObject uri,
+    _$jni.JObject uri,
   ) {
-    return _match(reference.pointer, _id_match as jni.JMethodIDPtr,
+    return _match(reference.pointer, _id_match as _$jni.JMethodIDPtr,
             uri.reference.pointer)
         .integer;
   }
 }
 
-final class $IntentFilter_AuthorityEntryType
-    extends jni.JObjType<IntentFilter_AuthorityEntry> {
-  const $IntentFilter_AuthorityEntryType();
+final class $IntentFilter_AuthorityEntry$Type
+    extends _$jni.JObjType<IntentFilter_AuthorityEntry> {
+  @_$jni.internal
+  const $IntentFilter_AuthorityEntry$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/content/IntentFilter$AuthorityEntry;';
 
-  @override
-  IntentFilter_AuthorityEntry fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  IntentFilter_AuthorityEntry fromReference(_$jni.JReference reference) =>
       IntentFilter_AuthorityEntry.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($IntentFilter_AuthorityEntryType).hashCode;
+  @_$core.override
+  int get hashCode => ($IntentFilter_AuthorityEntry$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($IntentFilter_AuthorityEntryType) &&
-        other is $IntentFilter_AuthorityEntryType;
+    return other.runtimeType == ($IntentFilter_AuthorityEntry$Type) &&
+        other is $IntentFilter_AuthorityEntry$Type;
   }
 }
 
 /// from: `android.content.IntentFilter$MalformedMimeTypeException`
-class IntentFilter_MalformedMimeTypeException extends jni.JObject {
-  @override
-  late final jni.JObjType<IntentFilter_MalformedMimeTypeException> $type = type;
+class IntentFilter_MalformedMimeTypeException extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<IntentFilter_MalformedMimeTypeException> $type;
 
+  @_$jni.internal
   IntentFilter_MalformedMimeTypeException.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'android/content/IntentFilter$MalformedMimeTypeException');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $IntentFilter_MalformedMimeTypeExceptionType();
-  static final _id_new0 = _class.constructorId(
+  static const type = $IntentFilter_MalformedMimeTypeException$Type();
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory IntentFilter_MalformedMimeTypeException() {
     return IntentFilter_MalformedMimeTypeException.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
-  static final _id_new1 = _class.constructorId(
+  static final _id_new$1 = _class.constructorId(
     r'(Ljava/lang/String;)V',
   );
 
-  static final _new1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory IntentFilter_MalformedMimeTypeException.new1(
-    jni.JString string,
+  factory IntentFilter_MalformedMimeTypeException.new$1(
+    _$jni.JString string,
   ) {
-    return IntentFilter_MalformedMimeTypeException.fromReference(_new1(
+    return IntentFilter_MalformedMimeTypeException.fromReference(_new$1(
             _class.reference.pointer,
-            _id_new1 as jni.JMethodIDPtr,
+            _id_new$1 as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .reference);
   }
 }
 
-final class $IntentFilter_MalformedMimeTypeExceptionType
-    extends jni.JObjType<IntentFilter_MalformedMimeTypeException> {
-  const $IntentFilter_MalformedMimeTypeExceptionType();
+final class $IntentFilter_MalformedMimeTypeException$Type
+    extends _$jni.JObjType<IntentFilter_MalformedMimeTypeException> {
+  @_$jni.internal
+  const $IntentFilter_MalformedMimeTypeException$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/content/IntentFilter$MalformedMimeTypeException;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   IntentFilter_MalformedMimeTypeException fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       IntentFilter_MalformedMimeTypeException.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($IntentFilter_MalformedMimeTypeExceptionType).hashCode;
+  @_$core.override
+  int get hashCode => ($IntentFilter_MalformedMimeTypeException$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
     return other.runtimeType ==
-            ($IntentFilter_MalformedMimeTypeExceptionType) &&
-        other is $IntentFilter_MalformedMimeTypeExceptionType;
+            ($IntentFilter_MalformedMimeTypeException$Type) &&
+        other is $IntentFilter_MalformedMimeTypeException$Type;
   }
 }
 
 /// from: `android.content.IntentFilter`
-class IntentFilter extends jni.JObject {
-  @override
-  late final jni.JObjType<IntentFilter> $type = type;
+class IntentFilter extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<IntentFilter> $type;
 
+  @_$jni.internal
   IntentFilter.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/content/IntentFilter');
+  static final _class = _$jni.JClass.forName(r'android/content/IntentFilter');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $IntentFilterType();
+  static const type = $IntentFilter$Type();
   static final _id_CREATOR = _class.staticFieldId(
     r'CREATOR',
     r'Landroid/os/Parcelable$Creator;',
@@ -316,8 +345,8 @@ class IntentFilter extends jni.JObject {
 
   /// from: `static public final android.os.Parcelable$Creator CREATOR`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get CREATOR =>
-      _id_CREATOR.get(_class, const jni.JObjectType());
+  static _$jni.JObject get CREATOR =>
+      _id_CREATOR.get(_class, const _$jni.JObjectType());
 
   /// from: `static public final int MATCH_ADJUSTMENT_MASK`
   static const MATCH_ADJUSTMENT_MASK = 65535;
@@ -366,109 +395,112 @@ class IntentFilter extends jni.JObject {
 
   /// from: `static public final int SYSTEM_LOW_PRIORITY`
   static const SYSTEM_LOW_PRIORITY = -1000;
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory IntentFilter() {
     return IntentFilter.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
-  static final _id_new1 = _class.constructorId(
+  static final _id_new$1 = _class.constructorId(
     r'(Ljava/lang/String;)V',
   );
 
-  static final _new1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory IntentFilter.new1(
-    jni.JString string,
+  factory IntentFilter.new$1(
+    _$jni.JString string,
   ) {
-    return IntentFilter.fromReference(_new1(_class.reference.pointer,
-            _id_new1 as jni.JMethodIDPtr, string.reference.pointer)
+    return IntentFilter.fromReference(_new$1(_class.reference.pointer,
+            _id_new$1 as _$jni.JMethodIDPtr, string.reference.pointer)
         .reference);
   }
 
-  static final _id_new2 = _class.constructorId(
+  static final _id_new$2 = _class.constructorId(
     r'(Ljava/lang/String;Ljava/lang/String;)V',
   );
 
-  static final _new2 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _new$2 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory IntentFilter.new2(
-    jni.JString string,
-    jni.JString string1,
+  factory IntentFilter.new$2(
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
-    return IntentFilter.fromReference(_new2(
+    return IntentFilter.fromReference(_new$2(
             _class.reference.pointer,
-            _id_new2 as jni.JMethodIDPtr,
+            _id_new$2 as _$jni.JMethodIDPtr,
             string.reference.pointer,
             string1.reference.pointer)
         .reference);
   }
 
-  static final _id_new3 = _class.constructorId(
+  static final _id_new$3 = _class.constructorId(
     r'(Landroid/content/IntentFilter;)V',
   );
 
-  static final _new3 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$3 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(android.content.IntentFilter intentFilter)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory IntentFilter.new3(
+  factory IntentFilter.new$3(
     IntentFilter intentFilter,
   ) {
-    return IntentFilter.fromReference(_new3(_class.reference.pointer,
-            _id_new3 as jni.JMethodIDPtr, intentFilter.reference.pointer)
+    return IntentFilter.fromReference(_new$3(_class.reference.pointer,
+            _id_new$3 as _$jni.JMethodIDPtr, intentFilter.reference.pointer)
         .reference);
   }
 
@@ -477,29 +509,32 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;Ljava/lang/String;)Landroid/content/IntentFilter;',
   );
 
-  static final _create = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _create = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.content.IntentFilter create(java.lang.String string, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
   static IntentFilter create(
-    jni.JString string,
-    jni.JString string1,
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
-    return _create(_class.reference.pointer, _id_create as jni.JMethodIDPtr,
+    return _create(_class.reference.pointer, _id_create as _$jni.JMethodIDPtr,
             string.reference.pointer, string1.reference.pointer)
-        .object(const $IntentFilterType());
+        .object(const $IntentFilter$Type());
   }
 
   static final _id_setPriority = _class.instanceMethodId(
@@ -507,21 +542,21 @@ class IntentFilter extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setPriority = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setPriority = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final void setPriority(int i)`
   void setPriority(
     int i,
   ) {
-    _setPriority(reference.pointer, _id_setPriority as jni.JMethodIDPtr, i)
+    _setPriority(reference.pointer, _id_setPriority as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -530,21 +565,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _getPriority = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getPriority = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int getPriority()`
   int getPriority() {
-    return _getPriority(reference.pointer, _id_getPriority as jni.JMethodIDPtr)
+    return _getPriority(
+            reference.pointer, _id_getPriority as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -553,22 +589,22 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)V',
   );
 
-  static final _addAction = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _addAction = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void addAction(java.lang.String string)`
   void addAction(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    _addAction(reference.pointer, _id_addAction as jni.JMethodIDPtr,
+    _addAction(reference.pointer, _id_addAction as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .check();
   }
@@ -578,22 +614,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countActions = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _countActions = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int countActions()`
   int countActions() {
     return _countActions(
-            reference.pointer, _id_countActions as jni.JMethodIDPtr)
+            reference.pointer, _id_countActions as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -602,21 +638,23 @@ class IntentFilter extends jni.JObject {
     r'(I)Ljava/lang/String;',
   );
 
-  static final _getAction = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getAction = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final java.lang.String getAction(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getAction(
+  _$jni.JString getAction(
     int i,
   ) {
-    return _getAction(reference.pointer, _id_getAction as jni.JMethodIDPtr, i)
-        .object(const jni.JStringType());
+    return _getAction(reference.pointer, _id_getAction as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_hasAction = _class.instanceMethodId(
@@ -624,22 +662,22 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _hasAction = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasAction = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasAction(java.lang.String string)`
   bool hasAction(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _hasAction(reference.pointer, _id_hasAction as jni.JMethodIDPtr,
+    return _hasAction(reference.pointer, _id_hasAction as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .boolean;
   }
@@ -649,23 +687,23 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _matchAction = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _matchAction = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean matchAction(java.lang.String string)`
   bool matchAction(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _matchAction(reference.pointer, _id_matchAction as jni.JMethodIDPtr,
-            string.reference.pointer)
+    return _matchAction(reference.pointer,
+            _id_matchAction as _$jni.JMethodIDPtr, string.reference.pointer)
         .boolean;
   }
 
@@ -674,24 +712,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _actionsIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _actionsIterator = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.util.Iterator actionsIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<jni.JString> actionsIterator() {
+  _$jni.JIterator<_$jni.JString> actionsIterator() {
     return _actionsIterator(
-            reference.pointer, _id_actionsIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType(jni.JStringType()));
+            reference.pointer, _id_actionsIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType(_$jni.JStringType()));
   }
 
   static final _id_addDataType = _class.instanceMethodId(
@@ -699,22 +737,22 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)V',
   );
 
-  static final _addDataType = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _addDataType = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void addDataType(java.lang.String string)`
   void addDataType(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    _addDataType(reference.pointer, _id_addDataType as jni.JMethodIDPtr,
+    _addDataType(reference.pointer, _id_addDataType as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .check();
   }
@@ -724,23 +762,23 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _hasDataType = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasDataType = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasDataType(java.lang.String string)`
   bool hasDataType(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _hasDataType(reference.pointer, _id_hasDataType as jni.JMethodIDPtr,
-            string.reference.pointer)
+    return _hasDataType(reference.pointer,
+            _id_hasDataType as _$jni.JMethodIDPtr, string.reference.pointer)
         .boolean;
   }
 
@@ -749,22 +787,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countDataTypes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _countDataTypes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int countDataTypes()`
   int countDataTypes() {
     return _countDataTypes(
-            reference.pointer, _id_countDataTypes as jni.JMethodIDPtr)
+            reference.pointer, _id_countDataTypes as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -773,22 +811,24 @@ class IntentFilter extends jni.JObject {
     r'(I)Ljava/lang/String;',
   );
 
-  static final _getDataType = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getDataType = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final java.lang.String getDataType(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getDataType(
+  _$jni.JString getDataType(
     int i,
   ) {
     return _getDataType(
-            reference.pointer, _id_getDataType as jni.JMethodIDPtr, i)
-        .object(const jni.JStringType());
+            reference.pointer, _id_getDataType as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_typesIterator = _class.instanceMethodId(
@@ -796,24 +836,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _typesIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _typesIterator = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.util.Iterator typesIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<jni.JString> typesIterator() {
+  _$jni.JIterator<_$jni.JString> typesIterator() {
     return _typesIterator(
-            reference.pointer, _id_typesIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType(jni.JStringType()));
+            reference.pointer, _id_typesIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType(_$jni.JStringType()));
   }
 
   static final _id_addDataScheme = _class.instanceMethodId(
@@ -821,22 +861,22 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)V',
   );
 
-  static final _addDataScheme = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _addDataScheme = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void addDataScheme(java.lang.String string)`
   void addDataScheme(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    _addDataScheme(reference.pointer, _id_addDataScheme as jni.JMethodIDPtr,
+    _addDataScheme(reference.pointer, _id_addDataScheme as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .check();
   }
@@ -846,22 +886,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countDataSchemes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _countDataSchemes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int countDataSchemes()`
   int countDataSchemes() {
     return _countDataSchemes(
-            reference.pointer, _id_countDataSchemes as jni.JMethodIDPtr)
+            reference.pointer, _id_countDataSchemes as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -870,22 +910,24 @@ class IntentFilter extends jni.JObject {
     r'(I)Ljava/lang/String;',
   );
 
-  static final _getDataScheme = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getDataScheme = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final java.lang.String getDataScheme(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getDataScheme(
+  _$jni.JString getDataScheme(
     int i,
   ) {
     return _getDataScheme(
-            reference.pointer, _id_getDataScheme as jni.JMethodIDPtr, i)
-        .object(const jni.JStringType());
+            reference.pointer, _id_getDataScheme as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_hasDataScheme = _class.instanceMethodId(
@@ -893,23 +935,23 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _hasDataScheme = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasDataScheme = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasDataScheme(java.lang.String string)`
   bool hasDataScheme(
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _hasDataScheme(reference.pointer,
-            _id_hasDataScheme as jni.JMethodIDPtr, string.reference.pointer)
+            _id_hasDataScheme as _$jni.JMethodIDPtr, string.reference.pointer)
         .boolean;
   }
 
@@ -918,24 +960,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _schemesIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _schemesIterator = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.util.Iterator schemesIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<jni.JString> schemesIterator() {
+  _$jni.JIterator<_$jni.JString> schemesIterator() {
     return _schemesIterator(
-            reference.pointer, _id_schemesIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType(jni.JStringType()));
+            reference.pointer, _id_schemesIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType(_$jni.JStringType()));
   }
 
   static final _id_addDataSchemeSpecificPart = _class.instanceMethodId(
@@ -943,25 +985,26 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;I)V',
   );
 
-  static final _addDataSchemeSpecificPart = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
+  static final _addDataSchemeSpecificPart = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Pointer<_$jni.Void>, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public final void addDataSchemeSpecificPart(java.lang.String string, int i)`
   void addDataSchemeSpecificPart(
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
     _addDataSchemeSpecificPart(
             reference.pointer,
-            _id_addDataSchemeSpecificPart as jni.JMethodIDPtr,
+            _id_addDataSchemeSpecificPart as _$jni.JMethodIDPtr,
             string.reference.pointer,
             i)
         .check();
@@ -972,22 +1015,23 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countDataSchemeSpecificParts = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _countDataSchemeSpecificParts =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallIntMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public final int countDataSchemeSpecificParts()`
   int countDataSchemeSpecificParts() {
     return _countDataSchemeSpecificParts(reference.pointer,
-            _id_countDataSchemeSpecificParts as jni.JMethodIDPtr)
+            _id_countDataSchemeSpecificParts as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -996,22 +1040,24 @@ class IntentFilter extends jni.JObject {
     r'(I)Landroid/os/PatternMatcher;',
   );
 
-  static final _getDataSchemeSpecificPart = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getDataSchemeSpecificPart = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final android.os.PatternMatcher getDataSchemeSpecificPart(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getDataSchemeSpecificPart(
+  _$jni.JObject getDataSchemeSpecificPart(
     int i,
   ) {
     return _getDataSchemeSpecificPart(reference.pointer,
-            _id_getDataSchemeSpecificPart as jni.JMethodIDPtr, i)
-        .object(const jni.JObjectType());
+            _id_getDataSchemeSpecificPart as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_hasDataSchemeSpecificPart = _class.instanceMethodId(
@@ -1019,24 +1065,24 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _hasDataSchemeSpecificPart = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasDataSchemeSpecificPart = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasDataSchemeSpecificPart(java.lang.String string)`
   bool hasDataSchemeSpecificPart(
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _hasDataSchemeSpecificPart(
             reference.pointer,
-            _id_hasDataSchemeSpecificPart as jni.JMethodIDPtr,
+            _id_hasDataSchemeSpecificPart as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .boolean;
   }
@@ -1046,24 +1092,25 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _schemeSpecificPartsIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _schemeSpecificPartsIterator =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public final java.util.Iterator schemeSpecificPartsIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<jni.JObject> schemeSpecificPartsIterator() {
+  _$jni.JIterator<_$jni.JObject> schemeSpecificPartsIterator() {
     return _schemeSpecificPartsIterator(reference.pointer,
-            _id_schemeSpecificPartsIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType(jni.JObjectType()));
+            _id_schemeSpecificPartsIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType(_$jni.JObjectType()));
   }
 
   static final _id_addDataAuthority = _class.instanceMethodId(
@@ -1071,28 +1118,31 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;Ljava/lang/String;)V',
   );
 
-  static final _addDataAuthority = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _addDataAuthority = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void addDataAuthority(java.lang.String string, java.lang.String string1)`
   void addDataAuthority(
-    jni.JString string,
-    jni.JString string1,
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
     _addDataAuthority(
             reference.pointer,
-            _id_addDataAuthority as jni.JMethodIDPtr,
+            _id_addDataAuthority as _$jni.JMethodIDPtr,
             string.reference.pointer,
             string1.reference.pointer)
         .check();
@@ -1103,22 +1153,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countDataAuthorities = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _countDataAuthorities = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int countDataAuthorities()`
   int countDataAuthorities() {
     return _countDataAuthorities(
-            reference.pointer, _id_countDataAuthorities as jni.JMethodIDPtr)
+            reference.pointer, _id_countDataAuthorities as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1127,13 +1177,15 @@ class IntentFilter extends jni.JObject {
     r'(I)Landroid/content/IntentFilter$AuthorityEntry;',
   );
 
-  static final _getDataAuthority = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getDataAuthority = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final android.content.IntentFilter$AuthorityEntry getDataAuthority(int i)`
   /// The returned object must be released after use, by calling the [release] method.
@@ -1141,8 +1193,8 @@ class IntentFilter extends jni.JObject {
     int i,
   ) {
     return _getDataAuthority(
-            reference.pointer, _id_getDataAuthority as jni.JMethodIDPtr, i)
-        .object(const $IntentFilter_AuthorityEntryType());
+            reference.pointer, _id_getDataAuthority as _$jni.JMethodIDPtr, i)
+        .object(const $IntentFilter_AuthorityEntry$Type());
   }
 
   static final _id_hasDataAuthority = _class.instanceMethodId(
@@ -1150,23 +1202,23 @@ class IntentFilter extends jni.JObject {
     r'(Landroid/net/Uri;)Z',
   );
 
-  static final _hasDataAuthority = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasDataAuthority = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasDataAuthority(android.net.Uri uri)`
   bool hasDataAuthority(
-    jni.JObject uri,
+    _$jni.JObject uri,
   ) {
     return _hasDataAuthority(reference.pointer,
-            _id_hasDataAuthority as jni.JMethodIDPtr, uri.reference.pointer)
+            _id_hasDataAuthority as _$jni.JMethodIDPtr, uri.reference.pointer)
         .boolean;
   }
 
@@ -1175,24 +1227,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _authoritiesIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _authoritiesIterator = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.util.Iterator authoritiesIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<IntentFilter_AuthorityEntry> authoritiesIterator() {
+  _$jni.JIterator<IntentFilter_AuthorityEntry> authoritiesIterator() {
     return _authoritiesIterator(
-            reference.pointer, _id_authoritiesIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType($IntentFilter_AuthorityEntryType()));
+            reference.pointer, _id_authoritiesIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType($IntentFilter_AuthorityEntry$Type()));
   }
 
   static final _id_addDataPath = _class.instanceMethodId(
@@ -1200,23 +1252,24 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;I)V',
   );
 
-  static final _addDataPath = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
+  static final _addDataPath = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Pointer<_$jni.Void>, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public final void addDataPath(java.lang.String string, int i)`
   void addDataPath(
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    _addDataPath(reference.pointer, _id_addDataPath as jni.JMethodIDPtr,
+    _addDataPath(reference.pointer, _id_addDataPath as _$jni.JMethodIDPtr,
             string.reference.pointer, i)
         .check();
   }
@@ -1226,22 +1279,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countDataPaths = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _countDataPaths = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int countDataPaths()`
   int countDataPaths() {
     return _countDataPaths(
-            reference.pointer, _id_countDataPaths as jni.JMethodIDPtr)
+            reference.pointer, _id_countDataPaths as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1250,22 +1303,24 @@ class IntentFilter extends jni.JObject {
     r'(I)Landroid/os/PatternMatcher;',
   );
 
-  static final _getDataPath = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getDataPath = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final android.os.PatternMatcher getDataPath(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getDataPath(
+  _$jni.JObject getDataPath(
     int i,
   ) {
     return _getDataPath(
-            reference.pointer, _id_getDataPath as jni.JMethodIDPtr, i)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getDataPath as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_hasDataPath = _class.instanceMethodId(
@@ -1273,23 +1328,23 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _hasDataPath = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasDataPath = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasDataPath(java.lang.String string)`
   bool hasDataPath(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _hasDataPath(reference.pointer, _id_hasDataPath as jni.JMethodIDPtr,
-            string.reference.pointer)
+    return _hasDataPath(reference.pointer,
+            _id_hasDataPath as _$jni.JMethodIDPtr, string.reference.pointer)
         .boolean;
   }
 
@@ -1298,24 +1353,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _pathsIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _pathsIterator = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.util.Iterator pathsIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<jni.JObject> pathsIterator() {
+  _$jni.JIterator<_$jni.JObject> pathsIterator() {
     return _pathsIterator(
-            reference.pointer, _id_pathsIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType(jni.JObjectType()));
+            reference.pointer, _id_pathsIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType(_$jni.JObjectType()));
   }
 
   static final _id_matchDataAuthority = _class.instanceMethodId(
@@ -1323,23 +1378,23 @@ class IntentFilter extends jni.JObject {
     r'(Landroid/net/Uri;)I',
   );
 
-  static final _matchDataAuthority = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _matchDataAuthority = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int matchDataAuthority(android.net.Uri uri)`
   int matchDataAuthority(
-    jni.JObject uri,
+    _$jni.JObject uri,
   ) {
     return _matchDataAuthority(reference.pointer,
-            _id_matchDataAuthority as jni.JMethodIDPtr, uri.reference.pointer)
+            _id_matchDataAuthority as _$jni.JMethodIDPtr, uri.reference.pointer)
         .integer;
   }
 
@@ -1348,34 +1403,34 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;Ljava/lang/String;Landroid/net/Uri;)I',
   );
 
-  static final _matchData = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _matchData = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int matchData(java.lang.String string, java.lang.String string1, android.net.Uri uri)`
   int matchData(
-    jni.JString string,
-    jni.JString string1,
-    jni.JObject uri,
+    _$jni.JString string,
+    _$jni.JString string1,
+    _$jni.JObject uri,
   ) {
     return _matchData(
             reference.pointer,
-            _id_matchData as jni.JMethodIDPtr,
+            _id_matchData as _$jni.JMethodIDPtr,
             string.reference.pointer,
             string1.reference.pointer,
             uri.reference.pointer)
@@ -1387,22 +1442,22 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)V',
   );
 
-  static final _addCategory = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _addCategory = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void addCategory(java.lang.String string)`
   void addCategory(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    _addCategory(reference.pointer, _id_addCategory as jni.JMethodIDPtr,
+    _addCategory(reference.pointer, _id_addCategory as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .check();
   }
@@ -1412,22 +1467,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _countCategories = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _countCategories = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int countCategories()`
   int countCategories() {
     return _countCategories(
-            reference.pointer, _id_countCategories as jni.JMethodIDPtr)
+            reference.pointer, _id_countCategories as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1436,22 +1491,24 @@ class IntentFilter extends jni.JObject {
     r'(I)Ljava/lang/String;',
   );
 
-  static final _getCategory = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _getCategory = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final java.lang.String getCategory(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getCategory(
+  _$jni.JString getCategory(
     int i,
   ) {
     return _getCategory(
-            reference.pointer, _id_getCategory as jni.JMethodIDPtr, i)
-        .object(const jni.JStringType());
+            reference.pointer, _id_getCategory as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_hasCategory = _class.instanceMethodId(
@@ -1459,23 +1516,23 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/lang/String;)Z',
   );
 
-  static final _hasCategory = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _hasCategory = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean hasCategory(java.lang.String string)`
   bool hasCategory(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _hasCategory(reference.pointer, _id_hasCategory as jni.JMethodIDPtr,
-            string.reference.pointer)
+    return _hasCategory(reference.pointer,
+            _id_hasCategory as _$jni.JMethodIDPtr, string.reference.pointer)
         .boolean;
   }
 
@@ -1484,24 +1541,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/Iterator;',
   );
 
-  static final _categoriesIterator = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _categoriesIterator = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.util.Iterator categoriesIterator()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JIterator<jni.JString> categoriesIterator() {
+  _$jni.JIterator<_$jni.JString> categoriesIterator() {
     return _categoriesIterator(
-            reference.pointer, _id_categoriesIterator as jni.JMethodIDPtr)
-        .object(const jni.JIteratorType(jni.JStringType()));
+            reference.pointer, _id_categoriesIterator as _$jni.JMethodIDPtr)
+        .object(const _$jni.JIteratorType(_$jni.JStringType()));
   }
 
   static final _id_matchCategories = _class.instanceMethodId(
@@ -1509,25 +1566,25 @@ class IntentFilter extends jni.JObject {
     r'(Ljava/util/Set;)Ljava/lang/String;',
   );
 
-  static final _matchCategories = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _matchCategories = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final java.lang.String matchCategories(java.util.Set set)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString matchCategories(
-    jni.JSet<jni.JString> set0,
+  _$jni.JString matchCategories(
+    _$jni.JSet<_$jni.JString> set,
   ) {
     return _matchCategories(reference.pointer,
-            _id_matchCategories as jni.JMethodIDPtr, set0.reference.pointer)
-        .object(const jni.JStringType());
+            _id_matchCategories as _$jni.JMethodIDPtr, set.reference.pointer)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_asPredicate = _class.instanceMethodId(
@@ -1535,23 +1592,24 @@ class IntentFilter extends jni.JObject {
     r'()Ljava/util/function/Predicate;',
   );
 
-  static final _asPredicate = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _asPredicate = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.util.function.Predicate asPredicate()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject asPredicate() {
-    return _asPredicate(reference.pointer, _id_asPredicate as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject asPredicate() {
+    return _asPredicate(
+            reference.pointer, _id_asPredicate as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_asPredicateWithTypeResolution = _class.instanceMethodId(
@@ -1559,27 +1617,28 @@ class IntentFilter extends jni.JObject {
     r'(Landroid/content/ContentResolver;)Ljava/util/function/Predicate;',
   );
 
-  static final _asPredicateWithTypeResolution = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _asPredicateWithTypeResolution =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.util.function.Predicate asPredicateWithTypeResolution(android.content.ContentResolver contentResolver)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject asPredicateWithTypeResolution(
-    jni.JObject contentResolver,
+  _$jni.JObject asPredicateWithTypeResolution(
+    _$jni.JObject contentResolver,
   ) {
     return _asPredicateWithTypeResolution(
             reference.pointer,
-            _id_asPredicateWithTypeResolution as jni.JMethodIDPtr,
+            _id_asPredicateWithTypeResolution as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_match = _class.instanceMethodId(
@@ -1587,37 +1646,37 @@ class IntentFilter extends jni.JObject {
     r'(Landroid/content/ContentResolver;Landroid/content/Intent;ZLjava/lang/String;)I',
   );
 
-  static final _match = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _match = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
               int,
-              ffi.Pointer<ffi.Void>)>();
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int match(android.content.ContentResolver contentResolver, android.content.Intent intent, boolean z, java.lang.String string)`
   int match(
-    jni.JObject contentResolver,
+    _$jni.JObject contentResolver,
     intent_.Intent intent,
     bool z,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _match(
             reference.pointer,
-            _id_match as jni.JMethodIDPtr,
+            _id_match as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             intent.reference.pointer,
             z ? 1 : 0,
@@ -1625,53 +1684,53 @@ class IntentFilter extends jni.JObject {
         .integer;
   }
 
-  static final _id_match1 = _class.instanceMethodId(
+  static final _id_match$1 = _class.instanceMethodId(
     r'match',
     r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/net/Uri;Ljava/util/Set;Ljava/lang/String;)I',
   );
 
-  static final _match1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _match$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int match(java.lang.String string, java.lang.String string1, java.lang.String string2, android.net.Uri uri, java.util.Set set, java.lang.String string3)`
-  int match1(
-    jni.JString string,
-    jni.JString string1,
-    jni.JString string2,
-    jni.JObject uri,
-    jni.JSet<jni.JString> set0,
-    jni.JString string3,
+  int match$1(
+    _$jni.JString string,
+    _$jni.JString string1,
+    _$jni.JString string2,
+    _$jni.JObject uri,
+    _$jni.JSet<_$jni.JString> set,
+    _$jni.JString string3,
   ) {
-    return _match1(
+    return _match$1(
             reference.pointer,
-            _id_match1 as jni.JMethodIDPtr,
+            _id_match$1 as _$jni.JMethodIDPtr,
             string.reference.pointer,
             string1.reference.pointer,
             string2.reference.pointer,
             uri.reference.pointer,
-            set0.reference.pointer,
+            set.reference.pointer,
             string3.reference.pointer)
         .integer;
   }
@@ -1681,22 +1740,22 @@ class IntentFilter extends jni.JObject {
     r'(Lorg/xmlpull/v1/XmlSerializer;)V',
   );
 
-  static final _writeToXml = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _writeToXml = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void writeToXml(org.xmlpull.v1.XmlSerializer xmlSerializer)`
   void writeToXml(
-    jni.JObject xmlSerializer,
+    _$jni.JObject xmlSerializer,
   ) {
-    _writeToXml(reference.pointer, _id_writeToXml as jni.JMethodIDPtr,
+    _writeToXml(reference.pointer, _id_writeToXml as _$jni.JMethodIDPtr,
             xmlSerializer.reference.pointer)
         .check();
   }
@@ -1706,22 +1765,22 @@ class IntentFilter extends jni.JObject {
     r'(Lorg/xmlpull/v1/XmlPullParser;)V',
   );
 
-  static final _readFromXml = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _readFromXml = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void readFromXml(org.xmlpull.v1.XmlPullParser xmlPullParser)`
   void readFromXml(
-    jni.JObject xmlPullParser,
+    _$jni.JObject xmlPullParser,
   ) {
-    _readFromXml(reference.pointer, _id_readFromXml as jni.JMethodIDPtr,
+    _readFromXml(reference.pointer, _id_readFromXml as _$jni.JMethodIDPtr,
             xmlPullParser.reference.pointer)
         .check();
   }
@@ -1731,26 +1790,29 @@ class IntentFilter extends jni.JObject {
     r'(Landroid/util/Printer;Ljava/lang/String;)V',
   );
 
-  static final _dump = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _dump = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void dump(android.util.Printer printer, java.lang.String string)`
   void dump(
-    jni.JObject printer,
-    jni.JString string,
+    _$jni.JObject printer,
+    _$jni.JString string,
   ) {
-    _dump(reference.pointer, _id_dump as jni.JMethodIDPtr,
+    _dump(reference.pointer, _id_dump as _$jni.JMethodIDPtr,
             printer.reference.pointer, string.reference.pointer)
         .check();
   }
@@ -1760,22 +1822,22 @@ class IntentFilter extends jni.JObject {
     r'()I',
   );
 
-  static final _describeContents = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _describeContents = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final int describeContents()`
   int describeContents() {
     return _describeContents(
-            reference.pointer, _id_describeContents as jni.JMethodIDPtr)
+            reference.pointer, _id_describeContents as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1784,50 +1846,56 @@ class IntentFilter extends jni.JObject {
     r'(Landroid/os/Parcel;I)V',
   );
 
-  static final _writeToParcel = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
+  static final _writeToParcel = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Pointer<_$jni.Void>, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public final void writeToParcel(android.os.Parcel parcel, int i)`
   void writeToParcel(
-    jni.JObject parcel,
+    _$jni.JObject parcel,
     int i,
   ) {
-    _writeToParcel(reference.pointer, _id_writeToParcel as jni.JMethodIDPtr,
+    _writeToParcel(reference.pointer, _id_writeToParcel as _$jni.JMethodIDPtr,
             parcel.reference.pointer, i)
         .check();
   }
 }
 
-final class $IntentFilterType extends jni.JObjType<IntentFilter> {
-  const $IntentFilterType();
+final class $IntentFilter$Type extends _$jni.JObjType<IntentFilter> {
+  @_$jni.internal
+  const $IntentFilter$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/content/IntentFilter;';
 
-  @override
-  IntentFilter fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  IntentFilter fromReference(_$jni.JReference reference) =>
       IntentFilter.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($IntentFilterType).hashCode;
+  @_$core.override
+  int get hashCode => ($IntentFilter$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($IntentFilterType) &&
-        other is $IntentFilterType;
+    return other.runtimeType == ($IntentFilter$Type) &&
+        other is $IntentFilter$Type;
   }
 }

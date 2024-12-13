@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,72 +28,76 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../../../android/content/Context.dart' as context_;
 
 import '../../../android/content/Intent.dart' as intent_;
 
 /// from: `dev.hebei.hybrid_media_android.BroadcastReceiverImpl$BroadcastCallback`
-class BroadcastReceiverImpl_BroadcastCallback extends jni.JObject {
-  @override
-  late final jni.JObjType<BroadcastReceiverImpl_BroadcastCallback> $type = type;
+class BroadcastReceiverImpl_BroadcastCallback extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<BroadcastReceiverImpl_BroadcastCallback> $type;
 
+  @_$jni.internal
   BroadcastReceiverImpl_BroadcastCallback.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'dev/hebei/hybrid_media_android/BroadcastReceiverImpl$BroadcastCallback');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $BroadcastReceiverImpl_BroadcastCallbackType();
+  static const type = $BroadcastReceiverImpl_BroadcastCallback$Type();
   static final _id_onReceive = _class.instanceMethodId(
     r'onReceive',
     r'(Landroid/content/Context;Landroid/content/Intent;)V',
   );
 
-  static final _onReceive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _onReceive = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onReceive(android.content.Context context, android.content.Intent intent)`
   void onReceive(
     context_.Context context,
     intent_.Intent intent,
   ) {
-    _onReceive(reference.pointer, _id_onReceive as jni.JMethodIDPtr,
+    _onReceive(reference.pointer, _id_onReceive as _$jni.JMethodIDPtr,
             context.reference.pointer, intent.reference.pointer)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $BroadcastReceiverImpl_BroadcastCallbackImpl> _$impls =
-      {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $BroadcastReceiverImpl_BroadcastCallback>
+      _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -95,15 +105,15 @@ class BroadcastReceiverImpl_BroadcastCallback extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
@@ -111,134 +121,158 @@ class BroadcastReceiverImpl_BroadcastCallback extends jni.JObject {
       if ($d ==
           r'onReceive(Landroid/content/Context;Landroid/content/Intent;)V') {
         _$impls[$p]!.onReceive(
-          $a[0].castTo(const context_.$ContextType(), releaseOriginal: true),
-          $a[1].castTo(const intent_.$IntentType(), releaseOriginal: true),
+          $a[0].as(const context_.$Context$Type(), releaseOriginal: true),
+          $a[1].as(const intent_.$Intent$Type(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory BroadcastReceiverImpl_BroadcastCallback.implement(
-    $BroadcastReceiverImpl_BroadcastCallbackImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $BroadcastReceiverImpl_BroadcastCallback $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = BroadcastReceiverImpl_BroadcastCallback.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'dev.hebei.hybrid_media_android.BroadcastReceiverImpl$BroadcastCallback',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'dev.hebei.hybrid_media_android.BroadcastReceiverImpl$BroadcastCallback',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onReceive$async)
+          r'onReceive(Landroid/content/Context;Landroid/content/Intent;)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory BroadcastReceiverImpl_BroadcastCallback.implement(
+    $BroadcastReceiverImpl_BroadcastCallback $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return BroadcastReceiverImpl_BroadcastCallback.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $BroadcastReceiverImpl_BroadcastCallbackImpl {
-  factory $BroadcastReceiverImpl_BroadcastCallbackImpl({
+abstract base mixin class $BroadcastReceiverImpl_BroadcastCallback {
+  factory $BroadcastReceiverImpl_BroadcastCallback({
     required void Function(context_.Context context, intent_.Intent intent)
         onReceive,
-  }) = _$BroadcastReceiverImpl_BroadcastCallbackImpl;
+    bool onReceive$async,
+  }) = _$BroadcastReceiverImpl_BroadcastCallback;
 
   void onReceive(context_.Context context, intent_.Intent intent);
+  bool get onReceive$async => false;
 }
 
-class _$BroadcastReceiverImpl_BroadcastCallbackImpl
-    implements $BroadcastReceiverImpl_BroadcastCallbackImpl {
-  _$BroadcastReceiverImpl_BroadcastCallbackImpl({
+final class _$BroadcastReceiverImpl_BroadcastCallback
+    with $BroadcastReceiverImpl_BroadcastCallback {
+  _$BroadcastReceiverImpl_BroadcastCallback({
     required void Function(context_.Context context, intent_.Intent intent)
         onReceive,
+    this.onReceive$async = false,
   }) : _onReceive = onReceive;
 
   final void Function(context_.Context context, intent_.Intent intent)
       _onReceive;
+  final bool onReceive$async;
 
   void onReceive(context_.Context context, intent_.Intent intent) {
     return _onReceive(context, intent);
   }
 }
 
-final class $BroadcastReceiverImpl_BroadcastCallbackType
-    extends jni.JObjType<BroadcastReceiverImpl_BroadcastCallback> {
-  const $BroadcastReceiverImpl_BroadcastCallbackType();
+final class $BroadcastReceiverImpl_BroadcastCallback$Type
+    extends _$jni.JObjType<BroadcastReceiverImpl_BroadcastCallback> {
+  @_$jni.internal
+  const $BroadcastReceiverImpl_BroadcastCallback$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Ldev/hebei/hybrid_media_android/BroadcastReceiverImpl$BroadcastCallback;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   BroadcastReceiverImpl_BroadcastCallback fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       BroadcastReceiverImpl_BroadcastCallback.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($BroadcastReceiverImpl_BroadcastCallbackType).hashCode;
+  @_$core.override
+  int get hashCode => ($BroadcastReceiverImpl_BroadcastCallback$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
     return other.runtimeType ==
-            ($BroadcastReceiverImpl_BroadcastCallbackType) &&
-        other is $BroadcastReceiverImpl_BroadcastCallbackType;
+            ($BroadcastReceiverImpl_BroadcastCallback$Type) &&
+        other is $BroadcastReceiverImpl_BroadcastCallback$Type;
   }
 }
 
 /// from: `dev.hebei.hybrid_media_android.BroadcastReceiverImpl`
-class BroadcastReceiverImpl extends jni.JObject {
-  @override
-  late final jni.JObjType<BroadcastReceiverImpl> $type = type;
+class BroadcastReceiverImpl extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<BroadcastReceiverImpl> $type;
 
+  @_$jni.internal
   BroadcastReceiverImpl.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'dev/hebei/hybrid_media_android/BroadcastReceiverImpl');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $BroadcastReceiverImplType();
-  static final _id_new0 = _class.constructorId(
+  static const type = $BroadcastReceiverImpl$Type();
+  static final _id_new$ = _class.constructorId(
     r'(Ldev/hebei/hybrid_media_android/BroadcastReceiverImpl$BroadcastCallback;)V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(dev.hebei.hybrid_media_android.BroadcastReceiverImpl$BroadcastCallback broadcastCallback)`
   /// The returned object must be released after use, by calling the [release] method.
   factory BroadcastReceiverImpl(
     BroadcastReceiverImpl_BroadcastCallback broadcastCallback,
   ) {
-    return BroadcastReceiverImpl.fromReference(_new0(_class.reference.pointer,
-            _id_new0 as jni.JMethodIDPtr, broadcastCallback.reference.pointer)
+    return BroadcastReceiverImpl.fromReference(_new$(_class.reference.pointer,
+            _id_new$ as _$jni.JMethodIDPtr, broadcastCallback.reference.pointer)
         .reference);
   }
 
@@ -247,55 +281,63 @@ class BroadcastReceiverImpl extends jni.JObject {
     r'(Landroid/content/Context;Landroid/content/Intent;)V',
   );
 
-  static final _onReceive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _onReceive = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void onReceive(android.content.Context context, android.content.Intent intent)`
   void onReceive(
     context_.Context context,
     intent_.Intent intent,
   ) {
-    _onReceive(reference.pointer, _id_onReceive as jni.JMethodIDPtr,
+    _onReceive(reference.pointer, _id_onReceive as _$jni.JMethodIDPtr,
             context.reference.pointer, intent.reference.pointer)
         .check();
   }
 }
 
-final class $BroadcastReceiverImplType
-    extends jni.JObjType<BroadcastReceiverImpl> {
-  const $BroadcastReceiverImplType();
+final class $BroadcastReceiverImpl$Type
+    extends _$jni.JObjType<BroadcastReceiverImpl> {
+  @_$jni.internal
+  const $BroadcastReceiverImpl$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Ldev/hebei/hybrid_media_android/BroadcastReceiverImpl;';
 
-  @override
-  BroadcastReceiverImpl fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  BroadcastReceiverImpl fromReference(_$jni.JReference reference) =>
       BroadcastReceiverImpl.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($BroadcastReceiverImplType).hashCode;
+  @_$core.override
+  int get hashCode => ($BroadcastReceiverImpl$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($BroadcastReceiverImplType) &&
-        other is $BroadcastReceiverImplType;
+    return other.runtimeType == ($BroadcastReceiverImpl$Type) &&
+        other is $BroadcastReceiverImpl$Type;
   }
 }

@@ -1,4 +1,4 @@
-## 0.0.1-dev.0
+## 0.0.1-dev.1
 
 * Implement `AudioManager#ringerModeChanged` event.
 * Implement `AudioManager#volumeChanged` event.

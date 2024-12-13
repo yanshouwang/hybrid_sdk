@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:hybrid_logging/hybrid_logging.dart';
 import 'package:hybrid_media_platform_interface/hybrid_media_platform_interface.dart';
+import 'package:jni/jni.dart' as jni;
 
 import 'jni.dart' as jni;
 
@@ -18,20 +19,20 @@ final class AudioManagerImpl with TypeLogger implements AudioManager {
 
   AudioManagerImpl()
       : jValue = jni.ContextCompat.getSystemService(
-          jni.JNI.applicationContext,
+          jni.context,
           jni.AudioManager.type.jClass,
           T: jni.AudioManager.type,
         ),
         _ringerModeChangedController = StreamController.broadcast(),
         _volumeChangedController = StreamController.broadcast() {
     final callback = jni.BroadcastReceiverImpl_BroadcastCallback.implement(
-      jni.$BroadcastReceiverImpl_BroadcastCallbackImpl(
+      jni.$BroadcastReceiverImpl_BroadcastCallback(
         onReceive: (context, intent) {
           final action = '${intent.getAction()}';
           if (action == '${jni.AudioManager.RINGER_MODE_CHANGED_ACTION}') {
             final mode = intent
                 .getIntExtra(jni.AudioManager.EXTRA_RINGER_MODE, -1)
-                .ringerModeOrNull;
+                .toRingerModeOrNull();
             if (mode == null) {
               logger.warning(
                   '${jni.AudioManager.RINGER_MODE_CHANGED_ACTION} is ignored: mode $mode.');
@@ -41,10 +42,10 @@ final class AudioManagerImpl with TypeLogger implements AudioManager {
             _ringerModeChangedController.add(eventArgs);
           } else if (action == _kVolumeChangedAction) {
             final type = intent
-                .getIntExtra(_kExtraVolumeStreamType.jValue, -1)
-                .streamTypeOrNull;
+                .getIntExtra(_kExtraVolumeStreamType.toJString(), -1)
+                .toStreamTypeOrNull();
             final volume =
-                intent.getIntExtra(_kExtraVolumeStreamValue.jValue, -1);
+                intent.getIntExtra(_kExtraVolumeStreamValue.toJString(), -1);
             if (type == null || volume == -1) {
               logger.warning(
                   '$_kVolumeChangedAction is ignored: type $type, value $volume.');
@@ -64,9 +65,9 @@ final class AudioManagerImpl with TypeLogger implements AudioManager {
     final receiver = jni.BroadcastReceiverImpl(callback);
     final filter = jni.IntentFilter();
     filter.addAction(jni.AudioManager.RINGER_MODE_CHANGED_ACTION);
-    filter.addAction(_kVolumeChangedAction.jValue);
+    filter.addAction(_kVolumeChangedAction.toJString());
     jni.ContextCompat.registerReceiver(
-      jni.JNI.applicationContext,
+      jni.context,
       receiver,
       filter,
       jni.ContextCompat.RECEIVER_NOT_EXPORTED,
@@ -85,27 +86,27 @@ final class AudioManagerImpl with TypeLogger implements AudioManager {
   bool get isVolumeFixed => jValue.isVolumeFixed();
 
   @override
-  RingerMode get ringerMode => jValue.getRingerMode().ringerMode;
+  RingerMode get ringerMode => jValue.getRingerMode().toRingerMode();
   @override
   set ringerMode(RingerMode value) {
-    jValue.setRingerMode(value.jValue);
+    jValue.setRingerMode(value.toJRingerMode());
   }
 
   @override
   int getStreamMinVolume(StreamType type) {
-    final value = jValue.getStreamMinVolume(type.jValue);
+    final value = jValue.getStreamMinVolume(type.toJStreamType());
     return value;
   }
 
   @override
   int getStreamMaxVolume(StreamType type) {
-    final value = jValue.getStreamMaxVolume(type.jValue);
+    final value = jValue.getStreamMaxVolume(type.toJStreamType());
     return value;
   }
 
   @override
   int getStreamVolume(StreamType type) {
-    final value = jValue.getStreamVolume(type.jValue);
+    final value = jValue.getStreamVolume(type.toJStreamType());
     return value;
   }
 
@@ -135,7 +136,7 @@ final class AudioManagerImpl with TypeLogger implements AudioManager {
     if (vibrate == true) {
       flags |= jni.AudioManager.FLAG_VIBRATE;
     }
-    jValue.setStreamVolume(type.jValue, volume, flags);
+    jValue.setStreamVolume(type.toJStreamType(), volume, flags);
   }
 
   @override
@@ -165,6 +166,113 @@ final class AudioManagerImpl with TypeLogger implements AudioManager {
       flags |= jni.AudioManager.FLAG_VIBRATE;
     }
     // TODO: mute, unmute and toggleMute are only available after API level 23.
-    jValue.adjustStreamVolume(type.jValue, direction.jValue, flags);
+    jValue.adjustStreamVolume(
+        type.toJStreamType(), direction.toJAdjust(), flags);
+  }
+}
+
+extension on int {
+  RingerMode toRingerMode() {
+    switch (this) {
+      case jni.AudioManager.RINGER_MODE_SILENT:
+        return RingerMode.silent;
+      case jni.AudioManager.RINGER_MODE_VIBRATE:
+        return RingerMode.vibrate;
+      case jni.AudioManager.RINGER_MODE_NORMAL:
+        return RingerMode.normal;
+      default:
+        throw ArgumentError.value(this);
+    }
+  }
+
+  RingerMode? toRingerModeOrNull() {
+    switch (this) {
+      case jni.AudioManager.RINGER_MODE_SILENT:
+        return RingerMode.silent;
+      case jni.AudioManager.RINGER_MODE_VIBRATE:
+        return RingerMode.vibrate;
+      case jni.AudioManager.RINGER_MODE_NORMAL:
+        return RingerMode.normal;
+      default:
+        return null;
+    }
+  }
+
+  StreamType? toStreamTypeOrNull() {
+    switch (this) {
+      case jni.AudioManager.STREAM_VOICE_CALL:
+        return StreamType.voiceCall;
+      case jni.AudioManager.STREAM_SYSTEM:
+        return StreamType.system;
+      case jni.AudioManager.STREAM_RING:
+        return StreamType.ring;
+      case jni.AudioManager.STREAM_MUSIC:
+        return StreamType.music;
+      case jni.AudioManager.STREAM_ALARM:
+        return StreamType.alarm;
+      case jni.AudioManager.STREAM_NOTIFICATION:
+        return StreamType.notification;
+      case jni.AudioManager.STREAM_DTMF:
+        return StreamType.dtmf;
+      case jni.AudioManager.STREAM_ACCESSIBILITY:
+        return StreamType.accessibility;
+      default:
+        return null;
+    }
+  }
+}
+
+extension on RingerMode {
+  int toJRingerMode() {
+    switch (this) {
+      case RingerMode.silent:
+        return jni.AudioManager.RINGER_MODE_SILENT;
+      case RingerMode.vibrate:
+        return jni.AudioManager.RINGER_MODE_VIBRATE;
+      case RingerMode.normal:
+        return jni.AudioManager.RINGER_MODE_NORMAL;
+    }
+  }
+}
+
+extension on StreamType {
+  int toJStreamType() {
+    switch (this) {
+      case StreamType.voiceCall:
+        return jni.AudioManager.STREAM_VOICE_CALL;
+      case StreamType.system:
+        return jni.AudioManager.STREAM_SYSTEM;
+      case StreamType.ring:
+        return jni.AudioManager.STREAM_RING;
+      case StreamType.music:
+        return jni.AudioManager.STREAM_MUSIC;
+      case StreamType.alarm:
+        return jni.AudioManager.STREAM_ALARM;
+      case StreamType.notification:
+        return jni.AudioManager.STREAM_NOTIFICATION;
+      case StreamType.dtmf:
+        return jni.AudioManager.STREAM_DTMF;
+      case StreamType.accessibility:
+        return jni.AudioManager.STREAM_ACCESSIBILITY;
+    }
+  }
+}
+
+extension AdjustDirectionX on AdjustDirection {
+  int toJAdjust() {
+    switch (this) {
+      case AdjustDirection.lower:
+        return jni.AudioManager.ADJUST_LOWER;
+      case AdjustDirection.same:
+        return jni.AudioManager.ADJUST_SAME;
+      case AdjustDirection.raise:
+        return jni.AudioManager.ADJUST_RAISE;
+      case AdjustDirection.mute:
+        return jni.AudioManager.ADJUST_MUTE;
+      case AdjustDirection.unmute:
+        return jni.AudioManager.ADJUST_UNMUTE;
+      case AdjustDirection.toggleMute:
+        return jni.AudioManager.ADJUST_TOGGLE_MUTE;
+    }
   }
 }
