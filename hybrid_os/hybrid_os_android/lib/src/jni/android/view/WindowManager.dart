@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,214 +28,233 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 /// from: `android.view.WindowManager$BadTokenException`
-class WindowManager_BadTokenException extends jni.JObject {
-  @override
-  late final jni.JObjType<WindowManager_BadTokenException> $type = type;
+class WindowManager_BadTokenException extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<WindowManager_BadTokenException> $type;
 
+  @_$jni.internal
   WindowManager_BadTokenException.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/view/WindowManager$BadTokenException');
+      _$jni.JClass.forName(r'android/view/WindowManager$BadTokenException');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $WindowManager_BadTokenExceptionType();
-  static final _id_new0 = _class.constructorId(
+  static const type = $WindowManager_BadTokenException$Type();
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory WindowManager_BadTokenException() {
     return WindowManager_BadTokenException.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
-  static final _id_new1 = _class.constructorId(
+  static final _id_new$1 = _class.constructorId(
     r'(Ljava/lang/String;)V',
   );
 
-  static final _new1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_BadTokenException.new1(
-    jni.JString string,
+  factory WindowManager_BadTokenException.new$1(
+    _$jni.JString string,
   ) {
-    return WindowManager_BadTokenException.fromReference(_new1(
+    return WindowManager_BadTokenException.fromReference(_new$1(
             _class.reference.pointer,
-            _id_new1 as jni.JMethodIDPtr,
+            _id_new$1 as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .reference);
   }
 }
 
-final class $WindowManager_BadTokenExceptionType
-    extends jni.JObjType<WindowManager_BadTokenException> {
-  const $WindowManager_BadTokenExceptionType();
+final class $WindowManager_BadTokenException$Type
+    extends _$jni.JObjType<WindowManager_BadTokenException> {
+  @_$jni.internal
+  const $WindowManager_BadTokenException$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/view/WindowManager$BadTokenException;';
 
-  @override
-  WindowManager_BadTokenException fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  WindowManager_BadTokenException fromReference(_$jni.JReference reference) =>
       WindowManager_BadTokenException.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($WindowManager_BadTokenExceptionType).hashCode;
+  @_$core.override
+  int get hashCode => ($WindowManager_BadTokenException$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($WindowManager_BadTokenExceptionType) &&
-        other is $WindowManager_BadTokenExceptionType;
+    return other.runtimeType == ($WindowManager_BadTokenException$Type) &&
+        other is $WindowManager_BadTokenException$Type;
   }
 }
 
 /// from: `android.view.WindowManager$InvalidDisplayException`
-class WindowManager_InvalidDisplayException extends jni.JObject {
-  @override
-  late final jni.JObjType<WindowManager_InvalidDisplayException> $type = type;
+class WindowManager_InvalidDisplayException extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<WindowManager_InvalidDisplayException> $type;
 
+  @_$jni.internal
   WindowManager_InvalidDisplayException.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class =
-      jni.JClass.forName(r'android/view/WindowManager$InvalidDisplayException');
+  static final _class = _$jni.JClass.forName(
+      r'android/view/WindowManager$InvalidDisplayException');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $WindowManager_InvalidDisplayExceptionType();
-  static final _id_new0 = _class.constructorId(
+  static const type = $WindowManager_InvalidDisplayException$Type();
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory WindowManager_InvalidDisplayException() {
     return WindowManager_InvalidDisplayException.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
-  static final _id_new1 = _class.constructorId(
+  static final _id_new$1 = _class.constructorId(
     r'(Ljava/lang/String;)V',
   );
 
-  static final _new1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_InvalidDisplayException.new1(
-    jni.JString string,
+  factory WindowManager_InvalidDisplayException.new$1(
+    _$jni.JString string,
   ) {
-    return WindowManager_InvalidDisplayException.fromReference(_new1(
+    return WindowManager_InvalidDisplayException.fromReference(_new$1(
             _class.reference.pointer,
-            _id_new1 as jni.JMethodIDPtr,
+            _id_new$1 as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .reference);
   }
 }
 
-final class $WindowManager_InvalidDisplayExceptionType
-    extends jni.JObjType<WindowManager_InvalidDisplayException> {
-  const $WindowManager_InvalidDisplayExceptionType();
+final class $WindowManager_InvalidDisplayException$Type
+    extends _$jni.JObjType<WindowManager_InvalidDisplayException> {
+  @_$jni.internal
+  const $WindowManager_InvalidDisplayException$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/view/WindowManager$InvalidDisplayException;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   WindowManager_InvalidDisplayException fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       WindowManager_InvalidDisplayException.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($WindowManager_InvalidDisplayExceptionType).hashCode;
+  @_$core.override
+  int get hashCode => ($WindowManager_InvalidDisplayException$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($WindowManager_InvalidDisplayExceptionType) &&
-        other is $WindowManager_InvalidDisplayExceptionType;
+    return other.runtimeType == ($WindowManager_InvalidDisplayException$Type) &&
+        other is $WindowManager_InvalidDisplayException$Type;
   }
 }
 
 /// from: `android.view.WindowManager$LayoutParams`
-class WindowManager_LayoutParams extends jni.JObject {
-  @override
-  late final jni.JObjType<WindowManager_LayoutParams> $type = type;
+class WindowManager_LayoutParams extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<WindowManager_LayoutParams> $type;
 
+  @_$jni.internal
   WindowManager_LayoutParams.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/view/WindowManager$LayoutParams');
+      _$jni.JClass.forName(r'android/view/WindowManager$LayoutParams');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $WindowManager_LayoutParamsType();
+  static const type = $WindowManager_LayoutParams$Type();
 
   /// from: `static public final int ALPHA_CHANGED`
   static const ALPHA_CHANGED = 128;
@@ -252,8 +277,8 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `static public final android.os.Parcelable$Creator CREATOR`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject get CREATOR =>
-      _id_CREATOR.get(_class, const jni.JObjectType());
+  static _$jni.JObject get CREATOR =>
+      _id_CREATOR.get(_class, const _$jni.JObjectType());
 
   /// from: `static public final int DIM_AMOUNT_CHANGED`
   static const DIM_AMOUNT_CHANGED = 32;
@@ -554,10 +579,11 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public float alpha`
-  double get alpha => _id_alpha.get(this, const jni.jfloatType());
+  double get alpha => _id_alpha.get(this, const _$jni.jfloatType());
 
   /// from: `public float alpha`
-  set alpha(double value) => _id_alpha.set(this, const jni.jfloatType(), value);
+  set alpha(double value) =>
+      _id_alpha.set(this, const _$jni.jfloatType(), value);
 
   static final _id_buttonBrightness = _class.instanceFieldId(
     r'buttonBrightness',
@@ -566,11 +592,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float buttonBrightness`
   double get buttonBrightness =>
-      _id_buttonBrightness.get(this, const jni.jfloatType());
+      _id_buttonBrightness.get(this, const _$jni.jfloatType());
 
   /// from: `public float buttonBrightness`
   set buttonBrightness(double value) =>
-      _id_buttonBrightness.set(this, const jni.jfloatType(), value);
+      _id_buttonBrightness.set(this, const _$jni.jfloatType(), value);
 
   static final _id_dimAmount = _class.instanceFieldId(
     r'dimAmount',
@@ -578,11 +604,11 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public float dimAmount`
-  double get dimAmount => _id_dimAmount.get(this, const jni.jfloatType());
+  double get dimAmount => _id_dimAmount.get(this, const _$jni.jfloatType());
 
   /// from: `public float dimAmount`
   set dimAmount(double value) =>
-      _id_dimAmount.set(this, const jni.jfloatType(), value);
+      _id_dimAmount.set(this, const _$jni.jfloatType(), value);
 
   static final _id_flags = _class.instanceFieldId(
     r'flags',
@@ -590,10 +616,10 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int flags`
-  int get flags => _id_flags.get(this, const jni.jintType());
+  int get flags => _id_flags.get(this, const _$jni.jintType());
 
   /// from: `public int flags`
-  set flags(int value) => _id_flags.set(this, const jni.jintType(), value);
+  set flags(int value) => _id_flags.set(this, const _$jni.jintType(), value);
 
   static final _id_format = _class.instanceFieldId(
     r'format',
@@ -601,10 +627,10 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int format`
-  int get format => _id_format.get(this, const jni.jintType());
+  int get format => _id_format.get(this, const _$jni.jintType());
 
   /// from: `public int format`
-  set format(int value) => _id_format.set(this, const jni.jintType(), value);
+  set format(int value) => _id_format.set(this, const _$jni.jintType(), value);
 
   static final _id_gravity = _class.instanceFieldId(
     r'gravity',
@@ -612,10 +638,11 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int gravity`
-  int get gravity => _id_gravity.get(this, const jni.jintType());
+  int get gravity => _id_gravity.get(this, const _$jni.jintType());
 
   /// from: `public int gravity`
-  set gravity(int value) => _id_gravity.set(this, const jni.jintType(), value);
+  set gravity(int value) =>
+      _id_gravity.set(this, const _$jni.jintType(), value);
 
   static final _id_horizontalMargin = _class.instanceFieldId(
     r'horizontalMargin',
@@ -624,11 +651,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float horizontalMargin`
   double get horizontalMargin =>
-      _id_horizontalMargin.get(this, const jni.jfloatType());
+      _id_horizontalMargin.get(this, const _$jni.jfloatType());
 
   /// from: `public float horizontalMargin`
   set horizontalMargin(double value) =>
-      _id_horizontalMargin.set(this, const jni.jfloatType(), value);
+      _id_horizontalMargin.set(this, const _$jni.jfloatType(), value);
 
   static final _id_horizontalWeight = _class.instanceFieldId(
     r'horizontalWeight',
@@ -637,11 +664,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float horizontalWeight`
   double get horizontalWeight =>
-      _id_horizontalWeight.get(this, const jni.jfloatType());
+      _id_horizontalWeight.get(this, const _$jni.jfloatType());
 
   /// from: `public float horizontalWeight`
   set horizontalWeight(double value) =>
-      _id_horizontalWeight.set(this, const jni.jfloatType(), value);
+      _id_horizontalWeight.set(this, const _$jni.jfloatType(), value);
 
   static final _id_layoutInDisplayCutoutMode = _class.instanceFieldId(
     r'layoutInDisplayCutoutMode',
@@ -650,11 +677,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public int layoutInDisplayCutoutMode`
   int get layoutInDisplayCutoutMode =>
-      _id_layoutInDisplayCutoutMode.get(this, const jni.jintType());
+      _id_layoutInDisplayCutoutMode.get(this, const _$jni.jintType());
 
   /// from: `public int layoutInDisplayCutoutMode`
   set layoutInDisplayCutoutMode(int value) =>
-      _id_layoutInDisplayCutoutMode.set(this, const jni.jintType(), value);
+      _id_layoutInDisplayCutoutMode.set(this, const _$jni.jintType(), value);
 
   static final _id_memoryType = _class.instanceFieldId(
     r'memoryType',
@@ -662,11 +689,11 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int memoryType`
-  int get memoryType => _id_memoryType.get(this, const jni.jintType());
+  int get memoryType => _id_memoryType.get(this, const _$jni.jintType());
 
   /// from: `public int memoryType`
   set memoryType(int value) =>
-      _id_memoryType.set(this, const jni.jintType(), value);
+      _id_memoryType.set(this, const _$jni.jintType(), value);
 
   static final _id_packageName = _class.instanceFieldId(
     r'packageName',
@@ -675,13 +702,13 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public java.lang.String packageName`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString get packageName =>
-      _id_packageName.get(this, const jni.JStringType());
+  _$jni.JString get packageName =>
+      _id_packageName.get(this, const _$jni.JStringType());
 
   /// from: `public java.lang.String packageName`
   /// The returned object must be released after use, by calling the [release] method.
-  set packageName(jni.JString value) =>
-      _id_packageName.set(this, const jni.JStringType(), value);
+  set packageName(_$jni.JString value) =>
+      _id_packageName.set(this, const _$jni.JStringType(), value);
 
   static final _id_preferMinimalPostProcessing = _class.instanceFieldId(
     r'preferMinimalPostProcessing',
@@ -690,11 +717,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public boolean preferMinimalPostProcessing`
   bool get preferMinimalPostProcessing =>
-      _id_preferMinimalPostProcessing.get(this, const jni.jbooleanType());
+      _id_preferMinimalPostProcessing.get(this, const _$jni.jbooleanType());
 
   /// from: `public boolean preferMinimalPostProcessing`
   set preferMinimalPostProcessing(bool value) => _id_preferMinimalPostProcessing
-      .set(this, const jni.jbooleanType(), value);
+      .set(this, const _$jni.jbooleanType(), value);
 
   static final _id_preferredDisplayModeId = _class.instanceFieldId(
     r'preferredDisplayModeId',
@@ -703,11 +730,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public int preferredDisplayModeId`
   int get preferredDisplayModeId =>
-      _id_preferredDisplayModeId.get(this, const jni.jintType());
+      _id_preferredDisplayModeId.get(this, const _$jni.jintType());
 
   /// from: `public int preferredDisplayModeId`
   set preferredDisplayModeId(int value) =>
-      _id_preferredDisplayModeId.set(this, const jni.jintType(), value);
+      _id_preferredDisplayModeId.set(this, const _$jni.jintType(), value);
 
   static final _id_preferredRefreshRate = _class.instanceFieldId(
     r'preferredRefreshRate',
@@ -716,11 +743,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float preferredRefreshRate`
   double get preferredRefreshRate =>
-      _id_preferredRefreshRate.get(this, const jni.jfloatType());
+      _id_preferredRefreshRate.get(this, const _$jni.jfloatType());
 
   /// from: `public float preferredRefreshRate`
   set preferredRefreshRate(double value) =>
-      _id_preferredRefreshRate.set(this, const jni.jfloatType(), value);
+      _id_preferredRefreshRate.set(this, const _$jni.jfloatType(), value);
 
   static final _id_rotationAnimation = _class.instanceFieldId(
     r'rotationAnimation',
@@ -729,11 +756,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public int rotationAnimation`
   int get rotationAnimation =>
-      _id_rotationAnimation.get(this, const jni.jintType());
+      _id_rotationAnimation.get(this, const _$jni.jintType());
 
   /// from: `public int rotationAnimation`
   set rotationAnimation(int value) =>
-      _id_rotationAnimation.set(this, const jni.jintType(), value);
+      _id_rotationAnimation.set(this, const _$jni.jintType(), value);
 
   static final _id_screenBrightness = _class.instanceFieldId(
     r'screenBrightness',
@@ -742,11 +769,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float screenBrightness`
   double get screenBrightness =>
-      _id_screenBrightness.get(this, const jni.jfloatType());
+      _id_screenBrightness.get(this, const _$jni.jfloatType());
 
   /// from: `public float screenBrightness`
   set screenBrightness(double value) =>
-      _id_screenBrightness.set(this, const jni.jfloatType(), value);
+      _id_screenBrightness.set(this, const _$jni.jfloatType(), value);
 
   static final _id_screenOrientation = _class.instanceFieldId(
     r'screenOrientation',
@@ -755,11 +782,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public int screenOrientation`
   int get screenOrientation =>
-      _id_screenOrientation.get(this, const jni.jintType());
+      _id_screenOrientation.get(this, const _$jni.jintType());
 
   /// from: `public int screenOrientation`
   set screenOrientation(int value) =>
-      _id_screenOrientation.set(this, const jni.jintType(), value);
+      _id_screenOrientation.set(this, const _$jni.jintType(), value);
 
   static final _id_softInputMode = _class.instanceFieldId(
     r'softInputMode',
@@ -767,11 +794,11 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int softInputMode`
-  int get softInputMode => _id_softInputMode.get(this, const jni.jintType());
+  int get softInputMode => _id_softInputMode.get(this, const _$jni.jintType());
 
   /// from: `public int softInputMode`
   set softInputMode(int value) =>
-      _id_softInputMode.set(this, const jni.jintType(), value);
+      _id_softInputMode.set(this, const _$jni.jintType(), value);
 
   static final _id_systemUiVisibility = _class.instanceFieldId(
     r'systemUiVisibility',
@@ -780,11 +807,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public int systemUiVisibility`
   int get systemUiVisibility =>
-      _id_systemUiVisibility.get(this, const jni.jintType());
+      _id_systemUiVisibility.get(this, const _$jni.jintType());
 
   /// from: `public int systemUiVisibility`
   set systemUiVisibility(int value) =>
-      _id_systemUiVisibility.set(this, const jni.jintType(), value);
+      _id_systemUiVisibility.set(this, const _$jni.jintType(), value);
 
   static final _id_token = _class.instanceFieldId(
     r'token',
@@ -793,23 +820,23 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public android.os.IBinder token`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject get token => _id_token.get(this, const jni.JObjectType());
+  _$jni.JObject get token => _id_token.get(this, const _$jni.JObjectType());
 
   /// from: `public android.os.IBinder token`
   /// The returned object must be released after use, by calling the [release] method.
-  set token(jni.JObject value) =>
-      _id_token.set(this, const jni.JObjectType(), value);
+  set token(_$jni.JObject value) =>
+      _id_token.set(this, const _$jni.JObjectType(), value);
 
-  static final _id_type0 = _class.instanceFieldId(
+  static final _id_type$1 = _class.instanceFieldId(
     r'type',
     r'I',
   );
 
   /// from: `public int type`
-  int get type0 => _id_type0.get(this, const jni.jintType());
+  int get type$1 => _id_type$1.get(this, const _$jni.jintType());
 
   /// from: `public int type`
-  set type0(int value) => _id_type0.set(this, const jni.jintType(), value);
+  set type$1(int value) => _id_type$1.set(this, const _$jni.jintType(), value);
 
   static final _id_verticalMargin = _class.instanceFieldId(
     r'verticalMargin',
@@ -818,11 +845,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float verticalMargin`
   double get verticalMargin =>
-      _id_verticalMargin.get(this, const jni.jfloatType());
+      _id_verticalMargin.get(this, const _$jni.jfloatType());
 
   /// from: `public float verticalMargin`
   set verticalMargin(double value) =>
-      _id_verticalMargin.set(this, const jni.jfloatType(), value);
+      _id_verticalMargin.set(this, const _$jni.jfloatType(), value);
 
   static final _id_verticalWeight = _class.instanceFieldId(
     r'verticalWeight',
@@ -831,11 +858,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public float verticalWeight`
   double get verticalWeight =>
-      _id_verticalWeight.get(this, const jni.jfloatType());
+      _id_verticalWeight.get(this, const _$jni.jfloatType());
 
   /// from: `public float verticalWeight`
   set verticalWeight(double value) =>
-      _id_verticalWeight.set(this, const jni.jfloatType(), value);
+      _id_verticalWeight.set(this, const _$jni.jfloatType(), value);
 
   static final _id_windowAnimations = _class.instanceFieldId(
     r'windowAnimations',
@@ -844,11 +871,11 @@ class WindowManager_LayoutParams extends jni.JObject {
 
   /// from: `public int windowAnimations`
   int get windowAnimations =>
-      _id_windowAnimations.get(this, const jni.jintType());
+      _id_windowAnimations.get(this, const _$jni.jintType());
 
   /// from: `public int windowAnimations`
   set windowAnimations(int value) =>
-      _id_windowAnimations.set(this, const jni.jintType(), value);
+      _id_windowAnimations.set(this, const _$jni.jintType(), value);
 
   static final _id_x = _class.instanceFieldId(
     r'x',
@@ -856,10 +883,10 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int x`
-  int get x => _id_x.get(this, const jni.jintType());
+  int get x => _id_x.get(this, const _$jni.jintType());
 
   /// from: `public int x`
-  set x(int value) => _id_x.set(this, const jni.jintType(), value);
+  set x(int value) => _id_x.set(this, const _$jni.jintType(), value);
 
   static final _id_y = _class.instanceFieldId(
     r'y',
@@ -867,134 +894,149 @@ class WindowManager_LayoutParams extends jni.JObject {
   );
 
   /// from: `public int y`
-  int get y => _id_y.get(this, const jni.jintType());
+  int get y => _id_y.get(this, const _$jni.jintType());
 
   /// from: `public int y`
-  set y(int value) => _id_y.set(this, const jni.jintType(), value);
+  set y(int value) => _id_y.set(this, const _$jni.jintType(), value);
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory WindowManager_LayoutParams() {
     return WindowManager_LayoutParams.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
-  static final _id_new1 = _class.constructorId(
+  static final _id_new$1 = _class.constructorId(
     r'(I)V',
   );
 
-  static final _new1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_NewObject')
+  static final _new$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void <init>(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_LayoutParams.new1(
+  factory WindowManager_LayoutParams.new$1(
     int i,
   ) {
     return WindowManager_LayoutParams.fromReference(
-        _new1(_class.reference.pointer, _id_new1 as jni.JMethodIDPtr, i)
+        _new$1(_class.reference.pointer, _id_new$1 as _$jni.JMethodIDPtr, i)
             .reference);
   }
 
-  static final _id_new2 = _class.constructorId(
+  static final _id_new$2 = _class.constructorId(
     r'(II)V',
   );
 
-  static final _new2 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_NewObject')
+  static final _new$2 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void <init>(int i, int i1)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_LayoutParams.new2(
+  factory WindowManager_LayoutParams.new$2(
     int i,
     int i1,
   ) {
     return WindowManager_LayoutParams.fromReference(
-        _new2(_class.reference.pointer, _id_new2 as jni.JMethodIDPtr, i, i1)
+        _new$2(_class.reference.pointer, _id_new$2 as _$jni.JMethodIDPtr, i, i1)
             .reference);
   }
 
-  static final _id_new3 = _class.constructorId(
+  static final _id_new$3 = _class.constructorId(
     r'(III)V',
   );
 
-  static final _new3 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
+  static final _new$3 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32, _$jni.Int32)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public void <init>(int i, int i1, int i2)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_LayoutParams.new3(
+  factory WindowManager_LayoutParams.new$3(
     int i,
     int i1,
     int i2,
   ) {
-    return WindowManager_LayoutParams.fromReference(
-        _new3(_class.reference.pointer, _id_new3 as jni.JMethodIDPtr, i, i1, i2)
-            .reference);
+    return WindowManager_LayoutParams.fromReference(_new$3(
+            _class.reference.pointer,
+            _id_new$3 as _$jni.JMethodIDPtr,
+            i,
+            i1,
+            i2)
+        .reference);
   }
 
-  static final _id_new4 = _class.constructorId(
+  static final _id_new$4 = _class.constructorId(
     r'(IIIII)V',
   );
 
-  static final _new4 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32, $Int32, $Int32)>)>>(
-          'globalEnv_NewObject')
+  static final _new$4 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
+                      (
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32
+                      )>)>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              int, int, int, int)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, int, int, int, int)>();
 
   /// from: `public void <init>(int i, int i1, int i2, int i3, int i4)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_LayoutParams.new4(
+  factory WindowManager_LayoutParams.new$4(
     int i,
     int i1,
     int i2,
     int i3,
     int i4,
   ) {
-    return WindowManager_LayoutParams.fromReference(_new4(
+    return WindowManager_LayoutParams.fromReference(_new$4(
             _class.reference.pointer,
-            _id_new4 as jni.JMethodIDPtr,
+            _id_new$4 as _$jni.JMethodIDPtr,
             i,
             i1,
             i2,
@@ -1003,32 +1045,32 @@ class WindowManager_LayoutParams extends jni.JObject {
         .reference);
   }
 
-  static final _id_new5 = _class.constructorId(
+  static final _id_new$5 = _class.constructorId(
     r'(IIIIIII)V',
   );
 
-  static final _new5 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _new$5 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        $Int32,
-                        $Int32,
-                        $Int32,
-                        $Int32,
-                        $Int32,
-                        $Int32,
-                        $Int32
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Int32
                       )>)>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              int, int, int, int, int, int)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, int, int, int, int, int, int)>();
 
   /// from: `public void <init>(int i, int i1, int i2, int i3, int i4, int i5, int i6)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_LayoutParams.new5(
+  factory WindowManager_LayoutParams.new$5(
     int i,
     int i1,
     int i2,
@@ -1037,9 +1079,9 @@ class WindowManager_LayoutParams extends jni.JObject {
     int i5,
     int i6,
   ) {
-    return WindowManager_LayoutParams.fromReference(_new5(
+    return WindowManager_LayoutParams.fromReference(_new$5(
             _class.reference.pointer,
-            _id_new5 as jni.JMethodIDPtr,
+            _id_new$5 as _$jni.JMethodIDPtr,
             i,
             i1,
             i2,
@@ -1050,29 +1092,29 @@ class WindowManager_LayoutParams extends jni.JObject {
         .reference);
   }
 
-  static final _id_new6 = _class.constructorId(
+  static final _id_new$6 = _class.constructorId(
     r'(Landroid/os/Parcel;)V',
   );
 
-  static final _new6 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$6 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(android.os.Parcel parcel)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory WindowManager_LayoutParams.new6(
-    jni.JObject parcel,
+  factory WindowManager_LayoutParams.new$6(
+    _$jni.JObject parcel,
   ) {
-    return WindowManager_LayoutParams.fromReference(_new6(
+    return WindowManager_LayoutParams.fromReference(_new$6(
             _class.reference.pointer,
-            _id_new6 as jni.JMethodIDPtr,
+            _id_new$6 as _$jni.JMethodIDPtr,
             parcel.reference.pointer)
         .reference);
   }
@@ -1082,20 +1124,21 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _mayUseInputMethod = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallStaticBooleanMethod')
+  static final _mayUseInputMethod = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+          'globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `static public boolean mayUseInputMethod(int i)`
   static bool mayUseInputMethod(
     int i,
   ) {
     return _mayUseInputMethod(_class.reference.pointer,
-            _id_mayUseInputMethod as jni.JMethodIDPtr, i)
+            _id_mayUseInputMethod as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -1104,22 +1147,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setFitInsetsTypes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setFitInsetsTypes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setFitInsetsTypes(int i)`
   void setFitInsetsTypes(
     int i,
   ) {
     _setFitInsetsTypes(
-            reference.pointer, _id_setFitInsetsTypes as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setFitInsetsTypes as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -1128,22 +1171,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setFitInsetsSides = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setFitInsetsSides = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setFitInsetsSides(int i)`
   void setFitInsetsSides(
     int i,
   ) {
     _setFitInsetsSides(
-            reference.pointer, _id_setFitInsetsSides as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setFitInsetsSides as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -1152,22 +1195,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setFitInsetsIgnoringVisibility = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setFitInsetsIgnoringVisibility =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setFitInsetsIgnoringVisibility(boolean z)`
   void setFitInsetsIgnoringVisibility(
     bool z,
   ) {
     _setFitInsetsIgnoringVisibility(reference.pointer,
-            _id_setFitInsetsIgnoringVisibility as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setFitInsetsIgnoringVisibility as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -1176,22 +1219,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setWallpaperTouchEventsEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setWallpaperTouchEventsEnabled =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setWallpaperTouchEventsEnabled(boolean z)`
   void setWallpaperTouchEventsEnabled(
     bool z,
   ) {
     _setWallpaperTouchEventsEnabled(reference.pointer,
-            _id_setWallpaperTouchEventsEnabled as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setWallpaperTouchEventsEnabled as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -1200,22 +1243,23 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()Z',
   );
 
-  static final _areWallpaperTouchEventsEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _areWallpaperTouchEventsEnabled =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean areWallpaperTouchEventsEnabled()`
   bool areWallpaperTouchEventsEnabled() {
     return _areWallpaperTouchEventsEnabled(reference.pointer,
-            _id_areWallpaperTouchEventsEnabled as jni.JMethodIDPtr)
+            _id_areWallpaperTouchEventsEnabled as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1224,22 +1268,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setCanPlayMoveAnimation = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setCanPlayMoveAnimation = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setCanPlayMoveAnimation(boolean z)`
   void setCanPlayMoveAnimation(
     bool z,
   ) {
     _setCanPlayMoveAnimation(reference.pointer,
-            _id_setCanPlayMoveAnimation as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setCanPlayMoveAnimation as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -1248,22 +1292,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()Z',
   );
 
-  static final _canPlayMoveAnimation = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _canPlayMoveAnimation = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean canPlayMoveAnimation()`
   bool canPlayMoveAnimation() {
     return _canPlayMoveAnimation(
-            reference.pointer, _id_canPlayMoveAnimation as jni.JMethodIDPtr)
+            reference.pointer, _id_canPlayMoveAnimation as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1272,22 +1316,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()I',
   );
 
-  static final _getFitInsetsTypes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getFitInsetsTypes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getFitInsetsTypes()`
   int getFitInsetsTypes() {
     return _getFitInsetsTypes(
-            reference.pointer, _id_getFitInsetsTypes as jni.JMethodIDPtr)
+            reference.pointer, _id_getFitInsetsTypes as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1296,22 +1340,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()I',
   );
 
-  static final _getFitInsetsSides = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getFitInsetsSides = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getFitInsetsSides()`
   int getFitInsetsSides() {
     return _getFitInsetsSides(
-            reference.pointer, _id_getFitInsetsSides as jni.JMethodIDPtr)
+            reference.pointer, _id_getFitInsetsSides as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1320,22 +1364,23 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()Z',
   );
 
-  static final _isFitInsetsIgnoringVisibility = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _isFitInsetsIgnoringVisibility =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean isFitInsetsIgnoringVisibility()`
   bool isFitInsetsIgnoringVisibility() {
     return _isFitInsetsIgnoringVisibility(reference.pointer,
-            _id_isFitInsetsIgnoringVisibility as jni.JMethodIDPtr)
+            _id_isFitInsetsIgnoringVisibility as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1344,22 +1389,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Ljava/lang/CharSequence;)V',
   );
 
-  static final _setTitle = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setTitle = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void setTitle(java.lang.CharSequence charSequence)`
   void setTitle(
-    jni.JObject charSequence,
+    _$jni.JObject charSequence,
   ) {
-    _setTitle(reference.pointer, _id_setTitle as jni.JMethodIDPtr,
+    _setTitle(reference.pointer, _id_setTitle as _$jni.JMethodIDPtr,
             charSequence.reference.pointer)
         .check();
   }
@@ -1369,23 +1414,23 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()Ljava/lang/CharSequence;',
   );
 
-  static final _getTitle = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getTitle = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final java.lang.CharSequence getTitle()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getTitle() {
-    return _getTitle(reference.pointer, _id_getTitle as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getTitle() {
+    return _getTitle(reference.pointer, _id_getTitle as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_isHdrConversionEnabled = _class.instanceMethodId(
@@ -1393,22 +1438,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()Z',
   );
 
-  static final _isHdrConversionEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isHdrConversionEnabled = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isHdrConversionEnabled()`
   bool isHdrConversionEnabled() {
     return _isHdrConversionEnabled(
-            reference.pointer, _id_isHdrConversionEnabled as jni.JMethodIDPtr)
+            reference.pointer, _id_isHdrConversionEnabled as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1417,22 +1462,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setHdrConversionEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setHdrConversionEnabled = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setHdrConversionEnabled(boolean z)`
   void setHdrConversionEnabled(
     bool z,
   ) {
     _setHdrConversionEnabled(reference.pointer,
-            _id_setHdrConversionEnabled as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setHdrConversionEnabled as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -1441,21 +1486,21 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setColorMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setColorMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setColorMode(int i)`
   void setColorMode(
     int i,
   ) {
-    _setColorMode(reference.pointer, _id_setColorMode as jni.JMethodIDPtr, i)
+    _setColorMode(reference.pointer, _id_setColorMode as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -1464,22 +1509,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()I',
   );
 
-  static final _getColorMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getColorMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getColorMode()`
   int getColorMode() {
     return _getColorMode(
-            reference.pointer, _id_getColorMode as jni.JMethodIDPtr)
+            reference.pointer, _id_getColorMode as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1488,22 +1533,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setBlurBehindRadius = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setBlurBehindRadius = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setBlurBehindRadius(int i)`
   void setBlurBehindRadius(
     int i,
   ) {
     _setBlurBehindRadius(
-            reference.pointer, _id_setBlurBehindRadius as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setBlurBehindRadius as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -1512,22 +1557,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()I',
   );
 
-  static final _getBlurBehindRadius = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getBlurBehindRadius = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getBlurBehindRadius()`
   int getBlurBehindRadius() {
     return _getBlurBehindRadius(
-            reference.pointer, _id_getBlurBehindRadius as jni.JMethodIDPtr)
+            reference.pointer, _id_getBlurBehindRadius as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1536,22 +1581,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'()I',
   );
 
-  static final _describeContents = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _describeContents = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int describeContents()`
   int describeContents() {
     return _describeContents(
-            reference.pointer, _id_describeContents as jni.JMethodIDPtr)
+            reference.pointer, _id_describeContents as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -1560,23 +1605,24 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Landroid/os/Parcel;I)V',
   );
 
-  static final _writeToParcel = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
+  static final _writeToParcel = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Pointer<_$jni.Void>, _$jni.Int32)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public void writeToParcel(android.os.Parcel parcel, int i)`
   void writeToParcel(
-    jni.JObject parcel,
+    _$jni.JObject parcel,
     int i,
   ) {
-    _writeToParcel(reference.pointer, _id_writeToParcel as jni.JMethodIDPtr,
+    _writeToParcel(reference.pointer, _id_writeToParcel as _$jni.JMethodIDPtr,
             parcel.reference.pointer, i)
         .check();
   }
@@ -1586,22 +1632,22 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Landroid/view/WindowManager$LayoutParams;)I',
   );
 
-  static final _copyFrom = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _copyFrom = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int copyFrom(android.view.WindowManager$LayoutParams layoutParams)`
   int copyFrom(
     WindowManager_LayoutParams layoutParams,
   ) {
-    return _copyFrom(reference.pointer, _id_copyFrom as jni.JMethodIDPtr,
+    return _copyFrom(reference.pointer, _id_copyFrom as _$jni.JMethodIDPtr,
             layoutParams.reference.pointer)
         .integer;
   }
@@ -1611,92 +1657,100 @@ class WindowManager_LayoutParams extends jni.JObject {
     r'(Ljava/lang/String;)Ljava/lang/String;',
   );
 
-  static final _debug = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _debug = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.lang.String debug(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString debug(
-    jni.JString string,
+  _$jni.JString debug(
+    _$jni.JString string,
   ) {
-    return _debug(reference.pointer, _id_debug as jni.JMethodIDPtr,
+    return _debug(reference.pointer, _id_debug as _$jni.JMethodIDPtr,
             string.reference.pointer)
-        .object(const jni.JStringType());
+        .object(const _$jni.JStringType());
   }
 
-  static final _id_toString1 = _class.instanceMethodId(
+  static final _id_toString$1 = _class.instanceMethodId(
     r'toString',
     r'()Ljava/lang/String;',
   );
 
-  static final _toString1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _toString$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.String toString()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString toString1() {
-    return _toString1(reference.pointer, _id_toString1 as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+  _$jni.JString toString$1() {
+    return _toString$1(reference.pointer, _id_toString$1 as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 }
 
-final class $WindowManager_LayoutParamsType
-    extends jni.JObjType<WindowManager_LayoutParams> {
-  const $WindowManager_LayoutParamsType();
+final class $WindowManager_LayoutParams$Type
+    extends _$jni.JObjType<WindowManager_LayoutParams> {
+  @_$jni.internal
+  const $WindowManager_LayoutParams$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/view/WindowManager$LayoutParams;';
 
-  @override
-  WindowManager_LayoutParams fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  WindowManager_LayoutParams fromReference(_$jni.JReference reference) =>
       WindowManager_LayoutParams.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($WindowManager_LayoutParamsType).hashCode;
+  @_$core.override
+  int get hashCode => ($WindowManager_LayoutParams$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($WindowManager_LayoutParamsType) &&
-        other is $WindowManager_LayoutParamsType;
+    return other.runtimeType == ($WindowManager_LayoutParams$Type) &&
+        other is $WindowManager_LayoutParams$Type;
   }
 }
 
 /// from: `android.view.WindowManager`
-class WindowManager extends jni.JObject {
-  @override
-  late final jni.JObjType<WindowManager> $type = type;
+class WindowManager extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<WindowManager> $type;
 
+  @_$jni.internal
   WindowManager.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/view/WindowManager');
+  static final _class = _$jni.JClass.forName(r'android/view/WindowManager');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $WindowManagerType();
+  static const type = $WindowManager$Type();
   static final _id_PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE =
       _class.staticFieldId(
     r'PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE',
@@ -1705,9 +1759,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE =>
+  static _$jni.JString get PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE =>
       _id_PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED =
       _class.staticFieldId(
@@ -1717,9 +1771,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED =>
+  static _$jni.JString get PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED =>
       _id_PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_CAMERA_COMPAT_ALLOW_FORCE_ROTATION =
       _class.staticFieldId(
@@ -1729,9 +1783,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_CAMERA_COMPAT_ALLOW_FORCE_ROTATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_CAMERA_COMPAT_ALLOW_FORCE_ROTATION =>
+  static _$jni.JString get PROPERTY_CAMERA_COMPAT_ALLOW_FORCE_ROTATION =>
       _id_PROPERTY_CAMERA_COMPAT_ALLOW_FORCE_ROTATION.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_CAMERA_COMPAT_ALLOW_REFRESH = _class.staticFieldId(
     r'PROPERTY_CAMERA_COMPAT_ALLOW_REFRESH',
@@ -1740,9 +1794,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_CAMERA_COMPAT_ALLOW_REFRESH`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_CAMERA_COMPAT_ALLOW_REFRESH =>
+  static _$jni.JString get PROPERTY_CAMERA_COMPAT_ALLOW_REFRESH =>
       _id_PROPERTY_CAMERA_COMPAT_ALLOW_REFRESH.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_CAMERA_COMPAT_ENABLE_REFRESH_VIA_PAUSE =
       _class.staticFieldId(
@@ -1752,9 +1806,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_CAMERA_COMPAT_ENABLE_REFRESH_VIA_PAUSE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_CAMERA_COMPAT_ENABLE_REFRESH_VIA_PAUSE =>
+  static _$jni.JString get PROPERTY_CAMERA_COMPAT_ENABLE_REFRESH_VIA_PAUSE =>
       _id_PROPERTY_CAMERA_COMPAT_ENABLE_REFRESH_VIA_PAUSE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_COMPAT_ALLOW_DISPLAY_ORIENTATION_OVERRIDE =
       _class.staticFieldId(
@@ -1764,9 +1818,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_COMPAT_ALLOW_DISPLAY_ORIENTATION_OVERRIDE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_COMPAT_ALLOW_DISPLAY_ORIENTATION_OVERRIDE =>
+  static _$jni.JString get PROPERTY_COMPAT_ALLOW_DISPLAY_ORIENTATION_OVERRIDE =>
       _id_PROPERTY_COMPAT_ALLOW_DISPLAY_ORIENTATION_OVERRIDE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE =
       _class.staticFieldId(
@@ -1776,9 +1830,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE =>
+  static _$jni.JString get PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE =>
       _id_PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_COMPAT_ALLOW_SANDBOXING_VIEW_BOUNDS_APIS =
       _class.staticFieldId(
@@ -1788,9 +1842,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_COMPAT_ALLOW_SANDBOXING_VIEW_BOUNDS_APIS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_COMPAT_ALLOW_SANDBOXING_VIEW_BOUNDS_APIS =>
+  static _$jni.JString get PROPERTY_COMPAT_ALLOW_SANDBOXING_VIEW_BOUNDS_APIS =>
       _id_PROPERTY_COMPAT_ALLOW_SANDBOXING_VIEW_BOUNDS_APIS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_COMPAT_ENABLE_FAKE_FOCUS = _class.staticFieldId(
     r'PROPERTY_COMPAT_ENABLE_FAKE_FOCUS',
@@ -1799,9 +1853,9 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_COMPAT_ENABLE_FAKE_FOCUS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_COMPAT_ENABLE_FAKE_FOCUS =>
+  static _$jni.JString get PROPERTY_COMPAT_ENABLE_FAKE_FOCUS =>
       _id_PROPERTY_COMPAT_ENABLE_FAKE_FOCUS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_PROPERTY_COMPAT_IGNORE_REQUESTED_ORIENTATION =
       _class.staticFieldId(
@@ -1811,33 +1865,33 @@ class WindowManager extends jni.JObject {
 
   /// from: `static public final java.lang.String PROPERTY_COMPAT_IGNORE_REQUESTED_ORIENTATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PROPERTY_COMPAT_IGNORE_REQUESTED_ORIENTATION =>
+  static _$jni.JString get PROPERTY_COMPAT_IGNORE_REQUESTED_ORIENTATION =>
       _id_PROPERTY_COMPAT_IGNORE_REQUESTED_ORIENTATION.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_getDefaultDisplay = _class.instanceMethodId(
     r'getDefaultDisplay',
     r'()Landroid/view/Display;',
   );
 
-  static final _getDefaultDisplay = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getDefaultDisplay = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract android.view.Display getDefaultDisplay()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getDefaultDisplay() {
+  _$jni.JObject getDefaultDisplay() {
     return _getDefaultDisplay(
-            reference.pointer, _id_getDefaultDisplay as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getDefaultDisplay as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_removeViewImmediate = _class.instanceMethodId(
@@ -1845,23 +1899,25 @@ class WindowManager extends jni.JObject {
     r'(Landroid/view/View;)V',
   );
 
-  static final _removeViewImmediate = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _removeViewImmediate = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void removeViewImmediate(android.view.View view)`
   void removeViewImmediate(
-    jni.JObject view,
+    _$jni.JObject view,
   ) {
-    _removeViewImmediate(reference.pointer,
-            _id_removeViewImmediate as jni.JMethodIDPtr, view.reference.pointer)
+    _removeViewImmediate(
+            reference.pointer,
+            _id_removeViewImmediate as _$jni.JMethodIDPtr,
+            view.reference.pointer)
         .check();
   }
 
@@ -1870,24 +1926,24 @@ class WindowManager extends jni.JObject {
     r'()Landroid/view/WindowMetrics;',
   );
 
-  static final _getCurrentWindowMetrics = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getCurrentWindowMetrics = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.view.WindowMetrics getCurrentWindowMetrics()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getCurrentWindowMetrics() {
-    return _getCurrentWindowMetrics(
-            reference.pointer, _id_getCurrentWindowMetrics as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getCurrentWindowMetrics() {
+    return _getCurrentWindowMetrics(reference.pointer,
+            _id_getCurrentWindowMetrics as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getMaximumWindowMetrics = _class.instanceMethodId(
@@ -1895,24 +1951,24 @@ class WindowManager extends jni.JObject {
     r'()Landroid/view/WindowMetrics;',
   );
 
-  static final _getMaximumWindowMetrics = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getMaximumWindowMetrics = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.view.WindowMetrics getMaximumWindowMetrics()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getMaximumWindowMetrics() {
-    return _getMaximumWindowMetrics(
-            reference.pointer, _id_getMaximumWindowMetrics as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getMaximumWindowMetrics() {
+    return _getMaximumWindowMetrics(reference.pointer,
+            _id_getMaximumWindowMetrics as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_isCrossWindowBlurEnabled = _class.instanceMethodId(
@@ -1920,22 +1976,22 @@ class WindowManager extends jni.JObject {
     r'()Z',
   );
 
-  static final _isCrossWindowBlurEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isCrossWindowBlurEnabled = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isCrossWindowBlurEnabled()`
   bool isCrossWindowBlurEnabled() {
-    return _isCrossWindowBlurEnabled(
-            reference.pointer, _id_isCrossWindowBlurEnabled as jni.JMethodIDPtr)
+    return _isCrossWindowBlurEnabled(reference.pointer,
+            _id_isCrossWindowBlurEnabled as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1945,59 +2001,60 @@ class WindowManager extends jni.JObject {
   );
 
   static final _addCrossWindowBlurEnabledListener =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void addCrossWindowBlurEnabledListener(java.util.function.Consumer consumer)`
   void addCrossWindowBlurEnabledListener(
-    jni.JObject consumer,
+    _$jni.JObject consumer,
   ) {
     _addCrossWindowBlurEnabledListener(
             reference.pointer,
-            _id_addCrossWindowBlurEnabledListener as jni.JMethodIDPtr,
+            _id_addCrossWindowBlurEnabledListener as _$jni.JMethodIDPtr,
             consumer.reference.pointer)
         .check();
   }
 
-  static final _id_addCrossWindowBlurEnabledListener1 = _class.instanceMethodId(
+  static final _id_addCrossWindowBlurEnabledListener$1 =
+      _class.instanceMethodId(
     r'addCrossWindowBlurEnabledListener',
     r'(Ljava/util/concurrent/Executor;Ljava/util/function/Consumer;)V',
   );
 
-  static final _addCrossWindowBlurEnabledListener1 =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<
+  static final _addCrossWindowBlurEnabledListener$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
                           (
-                            ffi.Pointer<ffi.Void>,
-                            ffi.Pointer<ffi.Void>
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
                           )>)>>('globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void addCrossWindowBlurEnabledListener(java.util.concurrent.Executor executor, java.util.function.Consumer consumer)`
-  void addCrossWindowBlurEnabledListener1(
-    jni.JObject executor,
-    jni.JObject consumer,
+  void addCrossWindowBlurEnabledListener$1(
+    _$jni.JObject executor,
+    _$jni.JObject consumer,
   ) {
-    _addCrossWindowBlurEnabledListener1(
+    _addCrossWindowBlurEnabledListener$1(
             reference.pointer,
-            _id_addCrossWindowBlurEnabledListener1 as jni.JMethodIDPtr,
+            _id_addCrossWindowBlurEnabledListener$1 as _$jni.JMethodIDPtr,
             executor.reference.pointer,
             consumer.reference.pointer)
         .check();
@@ -2010,24 +2067,24 @@ class WindowManager extends jni.JObject {
   );
 
   static final _removeCrossWindowBlurEnabledListener =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void removeCrossWindowBlurEnabledListener(java.util.function.Consumer consumer)`
   void removeCrossWindowBlurEnabledListener(
-    jni.JObject consumer,
+    _$jni.JObject consumer,
   ) {
     _removeCrossWindowBlurEnabledListener(
             reference.pointer,
-            _id_removeCrossWindowBlurEnabledListener as jni.JMethodIDPtr,
+            _id_removeCrossWindowBlurEnabledListener as _$jni.JMethodIDPtr,
             consumer.reference.pointer)
         .check();
   }
@@ -2037,28 +2094,32 @@ class WindowManager extends jni.JObject {
     r'(Ljava/util/concurrent/Executor;Ljava/util/function/IntConsumer;)V',
   );
 
-  static final _addProposedRotationListener = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+  static final _addProposedRotationListener =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void addProposedRotationListener(java.util.concurrent.Executor executor, java.util.function.IntConsumer intConsumer)`
   void addProposedRotationListener(
-    jni.JObject executor,
-    jni.JObject intConsumer,
+    _$jni.JObject executor,
+    _$jni.JObject intConsumer,
   ) {
     _addProposedRotationListener(
             reference.pointer,
-            _id_addProposedRotationListener as jni.JMethodIDPtr,
+            _id_addProposedRotationListener as _$jni.JMethodIDPtr,
             executor.reference.pointer,
             intConsumer.reference.pointer)
         .check();
@@ -2069,40 +2130,39 @@ class WindowManager extends jni.JObject {
     r'(Ljava/util/function/IntConsumer;)V',
   );
 
-  static final _removeProposedRotationListener = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _removeProposedRotationListener =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void removeProposedRotationListener(java.util.function.IntConsumer intConsumer)`
   void removeProposedRotationListener(
-    jni.JObject intConsumer,
+    _$jni.JObject intConsumer,
   ) {
     _removeProposedRotationListener(
             reference.pointer,
-            _id_removeProposedRotationListener as jni.JMethodIDPtr,
+            _id_removeProposedRotationListener as _$jni.JMethodIDPtr,
             intConsumer.reference.pointer)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $WindowManagerImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $WindowManager> _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -2110,210 +2170,258 @@ class WindowManager extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
       final $a = $i.args;
       if ($d == r'getDefaultDisplay()Landroid/view/Display;') {
         final $r = _$impls[$p]!.getDefaultDisplay();
-        return ($r as jni.JObject)
-            .castTo(const jni.JObjectType())
+        return ($r as _$jni.JObject)
+            .as(const _$jni.JObjectType())
             .reference
             .toPointer();
       }
       if ($d == r'removeViewImmediate(Landroid/view/View;)V') {
         _$impls[$p]!.removeViewImmediate(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'getCurrentWindowMetrics()Landroid/view/WindowMetrics;') {
         final $r = _$impls[$p]!.getCurrentWindowMetrics();
-        return ($r as jni.JObject)
-            .castTo(const jni.JObjectType())
+        return ($r as _$jni.JObject)
+            .as(const _$jni.JObjectType())
             .reference
             .toPointer();
       }
       if ($d == r'getMaximumWindowMetrics()Landroid/view/WindowMetrics;') {
         final $r = _$impls[$p]!.getMaximumWindowMetrics();
-        return ($r as jni.JObject)
-            .castTo(const jni.JObjectType())
+        return ($r as _$jni.JObject)
+            .as(const _$jni.JObjectType())
             .reference
             .toPointer();
       }
       if ($d == r'isCrossWindowBlurEnabled()Z') {
         final $r = _$impls[$p]!.isCrossWindowBlurEnabled();
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d ==
           r'addCrossWindowBlurEnabledListener(Ljava/util/function/Consumer;)V') {
         _$impls[$p]!.addCrossWindowBlurEnabledListener(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d ==
           r'addCrossWindowBlurEnabledListener(Ljava/util/concurrent/Executor;Ljava/util/function/Consumer;)V') {
-        _$impls[$p]!.addCrossWindowBlurEnabledListener1(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+        _$impls[$p]!.addCrossWindowBlurEnabledListener$1(
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d ==
           r'removeCrossWindowBlurEnabledListener(Ljava/util/function/Consumer;)V') {
         _$impls[$p]!.removeCrossWindowBlurEnabledListener(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d ==
           r'addProposedRotationListener(Ljava/util/concurrent/Executor;Ljava/util/function/IntConsumer;)V') {
         _$impls[$p]!.addProposedRotationListener(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d ==
           r'removeProposedRotationListener(Ljava/util/function/IntConsumer;)V') {
         _$impls[$p]!.removeProposedRotationListener(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory WindowManager.implement(
-    $WindowManagerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $WindowManager $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = WindowManager.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.view.WindowManager',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.view.WindowManager',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.removeViewImmediate$async)
+          r'removeViewImmediate(Landroid/view/View;)V',
+        if ($impl.addCrossWindowBlurEnabledListener$async)
+          r'addCrossWindowBlurEnabledListener(Ljava/util/function/Consumer;)V',
+        if ($impl.addCrossWindowBlurEnabledListener$1$async)
+          r'addCrossWindowBlurEnabledListener(Ljava/util/concurrent/Executor;Ljava/util/function/Consumer;)V',
+        if ($impl.removeCrossWindowBlurEnabledListener$async)
+          r'removeCrossWindowBlurEnabledListener(Ljava/util/function/Consumer;)V',
+        if ($impl.addProposedRotationListener$async)
+          r'addProposedRotationListener(Ljava/util/concurrent/Executor;Ljava/util/function/IntConsumer;)V',
+        if ($impl.removeProposedRotationListener$async)
+          r'removeProposedRotationListener(Ljava/util/function/IntConsumer;)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory WindowManager.implement(
+    $WindowManager $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return WindowManager.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $WindowManagerImpl {
-  factory $WindowManagerImpl({
-    required jni.JObject Function() getDefaultDisplay,
-    required void Function(jni.JObject view) removeViewImmediate,
-    required jni.JObject Function() getCurrentWindowMetrics,
-    required jni.JObject Function() getMaximumWindowMetrics,
+abstract base mixin class $WindowManager {
+  factory $WindowManager({
+    required _$jni.JObject Function() getDefaultDisplay,
+    required void Function(_$jni.JObject view) removeViewImmediate,
+    bool removeViewImmediate$async,
+    required _$jni.JObject Function() getCurrentWindowMetrics,
+    required _$jni.JObject Function() getMaximumWindowMetrics,
     required bool Function() isCrossWindowBlurEnabled,
-    required void Function(jni.JObject consumer)
+    required void Function(_$jni.JObject consumer)
         addCrossWindowBlurEnabledListener,
-    required void Function(jni.JObject executor, jni.JObject consumer)
-        addCrossWindowBlurEnabledListener1,
-    required void Function(jni.JObject consumer)
+    bool addCrossWindowBlurEnabledListener$async,
+    required void Function(_$jni.JObject executor, _$jni.JObject consumer)
+        addCrossWindowBlurEnabledListener$1,
+    bool addCrossWindowBlurEnabledListener$1$async,
+    required void Function(_$jni.JObject consumer)
         removeCrossWindowBlurEnabledListener,
-    required void Function(jni.JObject executor, jni.JObject intConsumer)
+    bool removeCrossWindowBlurEnabledListener$async,
+    required void Function(_$jni.JObject executor, _$jni.JObject intConsumer)
         addProposedRotationListener,
-    required void Function(jni.JObject intConsumer)
+    bool addProposedRotationListener$async,
+    required void Function(_$jni.JObject intConsumer)
         removeProposedRotationListener,
-  }) = _$WindowManagerImpl;
+    bool removeProposedRotationListener$async,
+  }) = _$WindowManager;
 
-  jni.JObject getDefaultDisplay();
-  void removeViewImmediate(jni.JObject view);
-  jni.JObject getCurrentWindowMetrics();
-  jni.JObject getMaximumWindowMetrics();
+  _$jni.JObject getDefaultDisplay();
+  void removeViewImmediate(_$jni.JObject view);
+  bool get removeViewImmediate$async => false;
+  _$jni.JObject getCurrentWindowMetrics();
+  _$jni.JObject getMaximumWindowMetrics();
   bool isCrossWindowBlurEnabled();
-  void addCrossWindowBlurEnabledListener(jni.JObject consumer);
-  void addCrossWindowBlurEnabledListener1(
-      jni.JObject executor, jni.JObject consumer);
-  void removeCrossWindowBlurEnabledListener(jni.JObject consumer);
+  void addCrossWindowBlurEnabledListener(_$jni.JObject consumer);
+  bool get addCrossWindowBlurEnabledListener$async => false;
+  void addCrossWindowBlurEnabledListener$1(
+      _$jni.JObject executor, _$jni.JObject consumer);
+  bool get addCrossWindowBlurEnabledListener$1$async => false;
+  void removeCrossWindowBlurEnabledListener(_$jni.JObject consumer);
+  bool get removeCrossWindowBlurEnabledListener$async => false;
   void addProposedRotationListener(
-      jni.JObject executor, jni.JObject intConsumer);
-  void removeProposedRotationListener(jni.JObject intConsumer);
+      _$jni.JObject executor, _$jni.JObject intConsumer);
+  bool get addProposedRotationListener$async => false;
+  void removeProposedRotationListener(_$jni.JObject intConsumer);
+  bool get removeProposedRotationListener$async => false;
 }
 
-class _$WindowManagerImpl implements $WindowManagerImpl {
-  _$WindowManagerImpl({
-    required jni.JObject Function() getDefaultDisplay,
-    required void Function(jni.JObject view) removeViewImmediate,
-    required jni.JObject Function() getCurrentWindowMetrics,
-    required jni.JObject Function() getMaximumWindowMetrics,
+final class _$WindowManager with $WindowManager {
+  _$WindowManager({
+    required _$jni.JObject Function() getDefaultDisplay,
+    required void Function(_$jni.JObject view) removeViewImmediate,
+    this.removeViewImmediate$async = false,
+    required _$jni.JObject Function() getCurrentWindowMetrics,
+    required _$jni.JObject Function() getMaximumWindowMetrics,
     required bool Function() isCrossWindowBlurEnabled,
-    required void Function(jni.JObject consumer)
+    required void Function(_$jni.JObject consumer)
         addCrossWindowBlurEnabledListener,
-    required void Function(jni.JObject executor, jni.JObject consumer)
-        addCrossWindowBlurEnabledListener1,
-    required void Function(jni.JObject consumer)
+    this.addCrossWindowBlurEnabledListener$async = false,
+    required void Function(_$jni.JObject executor, _$jni.JObject consumer)
+        addCrossWindowBlurEnabledListener$1,
+    this.addCrossWindowBlurEnabledListener$1$async = false,
+    required void Function(_$jni.JObject consumer)
         removeCrossWindowBlurEnabledListener,
-    required void Function(jni.JObject executor, jni.JObject intConsumer)
+    this.removeCrossWindowBlurEnabledListener$async = false,
+    required void Function(_$jni.JObject executor, _$jni.JObject intConsumer)
         addProposedRotationListener,
-    required void Function(jni.JObject intConsumer)
+    this.addProposedRotationListener$async = false,
+    required void Function(_$jni.JObject intConsumer)
         removeProposedRotationListener,
+    this.removeProposedRotationListener$async = false,
   })  : _getDefaultDisplay = getDefaultDisplay,
         _removeViewImmediate = removeViewImmediate,
         _getCurrentWindowMetrics = getCurrentWindowMetrics,
         _getMaximumWindowMetrics = getMaximumWindowMetrics,
         _isCrossWindowBlurEnabled = isCrossWindowBlurEnabled,
         _addCrossWindowBlurEnabledListener = addCrossWindowBlurEnabledListener,
-        _addCrossWindowBlurEnabledListener1 =
-            addCrossWindowBlurEnabledListener1,
+        _addCrossWindowBlurEnabledListener$1 =
+            addCrossWindowBlurEnabledListener$1,
         _removeCrossWindowBlurEnabledListener =
             removeCrossWindowBlurEnabledListener,
         _addProposedRotationListener = addProposedRotationListener,
         _removeProposedRotationListener = removeProposedRotationListener;
 
-  final jni.JObject Function() _getDefaultDisplay;
-  final void Function(jni.JObject view) _removeViewImmediate;
-  final jni.JObject Function() _getCurrentWindowMetrics;
-  final jni.JObject Function() _getMaximumWindowMetrics;
+  final _$jni.JObject Function() _getDefaultDisplay;
+  final void Function(_$jni.JObject view) _removeViewImmediate;
+  final bool removeViewImmediate$async;
+  final _$jni.JObject Function() _getCurrentWindowMetrics;
+  final _$jni.JObject Function() _getMaximumWindowMetrics;
   final bool Function() _isCrossWindowBlurEnabled;
-  final void Function(jni.JObject consumer) _addCrossWindowBlurEnabledListener;
-  final void Function(jni.JObject executor, jni.JObject consumer)
-      _addCrossWindowBlurEnabledListener1;
-  final void Function(jni.JObject consumer)
+  final void Function(_$jni.JObject consumer)
+      _addCrossWindowBlurEnabledListener;
+  final bool addCrossWindowBlurEnabledListener$async;
+  final void Function(_$jni.JObject executor, _$jni.JObject consumer)
+      _addCrossWindowBlurEnabledListener$1;
+  final bool addCrossWindowBlurEnabledListener$1$async;
+  final void Function(_$jni.JObject consumer)
       _removeCrossWindowBlurEnabledListener;
-  final void Function(jni.JObject executor, jni.JObject intConsumer)
+  final bool removeCrossWindowBlurEnabledListener$async;
+  final void Function(_$jni.JObject executor, _$jni.JObject intConsumer)
       _addProposedRotationListener;
-  final void Function(jni.JObject intConsumer) _removeProposedRotationListener;
+  final bool addProposedRotationListener$async;
+  final void Function(_$jni.JObject intConsumer)
+      _removeProposedRotationListener;
+  final bool removeProposedRotationListener$async;
 
-  jni.JObject getDefaultDisplay() {
+  _$jni.JObject getDefaultDisplay() {
     return _getDefaultDisplay();
   }
 
-  void removeViewImmediate(jni.JObject view) {
+  void removeViewImmediate(_$jni.JObject view) {
     return _removeViewImmediate(view);
   }
 
-  jni.JObject getCurrentWindowMetrics() {
+  _$jni.JObject getCurrentWindowMetrics() {
     return _getCurrentWindowMetrics();
   }
 
-  jni.JObject getMaximumWindowMetrics() {
+  _$jni.JObject getMaximumWindowMetrics() {
     return _getMaximumWindowMetrics();
   }
 
@@ -2321,51 +2429,56 @@ class _$WindowManagerImpl implements $WindowManagerImpl {
     return _isCrossWindowBlurEnabled();
   }
 
-  void addCrossWindowBlurEnabledListener(jni.JObject consumer) {
+  void addCrossWindowBlurEnabledListener(_$jni.JObject consumer) {
     return _addCrossWindowBlurEnabledListener(consumer);
   }
 
-  void addCrossWindowBlurEnabledListener1(
-      jni.JObject executor, jni.JObject consumer) {
-    return _addCrossWindowBlurEnabledListener1(executor, consumer);
+  void addCrossWindowBlurEnabledListener$1(
+      _$jni.JObject executor, _$jni.JObject consumer) {
+    return _addCrossWindowBlurEnabledListener$1(executor, consumer);
   }
 
-  void removeCrossWindowBlurEnabledListener(jni.JObject consumer) {
+  void removeCrossWindowBlurEnabledListener(_$jni.JObject consumer) {
     return _removeCrossWindowBlurEnabledListener(consumer);
   }
 
   void addProposedRotationListener(
-      jni.JObject executor, jni.JObject intConsumer) {
+      _$jni.JObject executor, _$jni.JObject intConsumer) {
     return _addProposedRotationListener(executor, intConsumer);
   }
 
-  void removeProposedRotationListener(jni.JObject intConsumer) {
+  void removeProposedRotationListener(_$jni.JObject intConsumer) {
     return _removeProposedRotationListener(intConsumer);
   }
 }
 
-final class $WindowManagerType extends jni.JObjType<WindowManager> {
-  const $WindowManagerType();
+final class $WindowManager$Type extends _$jni.JObjType<WindowManager> {
+  @_$jni.internal
+  const $WindowManager$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/view/WindowManager;';
 
-  @override
-  WindowManager fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  WindowManager fromReference(_$jni.JReference reference) =>
       WindowManager.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($WindowManagerType).hashCode;
+  @_$core.override
+  int get hashCode => ($WindowManager$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($WindowManagerType) &&
-        other is $WindowManagerType;
+    return other.runtimeType == ($WindowManager$Type) &&
+        other is $WindowManager$Type;
   }
 }

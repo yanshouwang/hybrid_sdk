@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,11 +28,11 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../content/ContentResolver.dart' as contentresolver_;
 
@@ -36,17 +42,21 @@ import '../net/Uri.dart' as uri_;
 
 /// from: `android.provider.Settings$Global`
 class Settings_Global extends Settings_NameValueTable {
-  @override
-  late final jni.JObjType<Settings_Global> $type = type;
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings_Global> $type;
 
+  @_$jni.internal
   Settings_Global.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/provider/Settings$Global');
+  static final _class =
+      _$jni.JClass.forName(r'android/provider/Settings$Global');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Settings_GlobalType();
+  static const type = $Settings_Global$Type();
   static final _id_ADB_ENABLED = _class.staticFieldId(
     r'ADB_ENABLED',
     r'Ljava/lang/String;',
@@ -54,8 +64,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ADB_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ADB_ENABLED =>
-      _id_ADB_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get ADB_ENABLED =>
+      _id_ADB_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_AIRPLANE_MODE_ON = _class.staticFieldId(
     r'AIRPLANE_MODE_ON',
@@ -64,8 +74,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AIRPLANE_MODE_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AIRPLANE_MODE_ON =>
-      _id_AIRPLANE_MODE_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get AIRPLANE_MODE_ON =>
+      _id_AIRPLANE_MODE_ON.get(_class, const _$jni.JStringType());
 
   static final _id_AIRPLANE_MODE_RADIOS = _class.staticFieldId(
     r'AIRPLANE_MODE_RADIOS',
@@ -74,8 +84,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AIRPLANE_MODE_RADIOS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AIRPLANE_MODE_RADIOS =>
-      _id_AIRPLANE_MODE_RADIOS.get(_class, const jni.JStringType());
+  static _$jni.JString get AIRPLANE_MODE_RADIOS =>
+      _id_AIRPLANE_MODE_RADIOS.get(_class, const _$jni.JStringType());
 
   static final _id_ALWAYS_FINISH_ACTIVITIES = _class.staticFieldId(
     r'ALWAYS_FINISH_ACTIVITIES',
@@ -84,8 +94,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ALWAYS_FINISH_ACTIVITIES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ALWAYS_FINISH_ACTIVITIES =>
-      _id_ALWAYS_FINISH_ACTIVITIES.get(_class, const jni.JStringType());
+  static _$jni.JString get ALWAYS_FINISH_ACTIVITIES =>
+      _id_ALWAYS_FINISH_ACTIVITIES.get(_class, const _$jni.JStringType());
 
   static final _id_ANIMATOR_DURATION_SCALE = _class.staticFieldId(
     r'ANIMATOR_DURATION_SCALE',
@@ -94,8 +104,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ANIMATOR_DURATION_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ANIMATOR_DURATION_SCALE =>
-      _id_ANIMATOR_DURATION_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get ANIMATOR_DURATION_SCALE =>
+      _id_ANIMATOR_DURATION_SCALE.get(_class, const _$jni.JStringType());
 
   static final _id_APPLY_RAMPING_RINGER = _class.staticFieldId(
     r'APPLY_RAMPING_RINGER',
@@ -104,8 +114,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String APPLY_RAMPING_RINGER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get APPLY_RAMPING_RINGER =>
-      _id_APPLY_RAMPING_RINGER.get(_class, const jni.JStringType());
+  static _$jni.JString get APPLY_RAMPING_RINGER =>
+      _id_APPLY_RAMPING_RINGER.get(_class, const _$jni.JStringType());
 
   static final _id_AUTO_TIME = _class.staticFieldId(
     r'AUTO_TIME',
@@ -114,8 +124,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AUTO_TIME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AUTO_TIME =>
-      _id_AUTO_TIME.get(_class, const jni.JStringType());
+  static _$jni.JString get AUTO_TIME =>
+      _id_AUTO_TIME.get(_class, const _$jni.JStringType());
 
   static final _id_AUTO_TIME_ZONE = _class.staticFieldId(
     r'AUTO_TIME_ZONE',
@@ -124,8 +134,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AUTO_TIME_ZONE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AUTO_TIME_ZONE =>
-      _id_AUTO_TIME_ZONE.get(_class, const jni.JStringType());
+  static _$jni.JString get AUTO_TIME_ZONE =>
+      _id_AUTO_TIME_ZONE.get(_class, const _$jni.JStringType());
 
   static final _id_BLUETOOTH_ON = _class.staticFieldId(
     r'BLUETOOTH_ON',
@@ -134,8 +144,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BLUETOOTH_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BLUETOOTH_ON =>
-      _id_BLUETOOTH_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get BLUETOOTH_ON =>
+      _id_BLUETOOTH_ON.get(_class, const _$jni.JStringType());
 
   static final _id_BOOT_COUNT = _class.staticFieldId(
     r'BOOT_COUNT',
@@ -144,8 +154,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BOOT_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BOOT_COUNT =>
-      _id_BOOT_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get BOOT_COUNT =>
+      _id_BOOT_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_CONTACT_METADATA_SYNC_ENABLED = _class.staticFieldId(
     r'CONTACT_METADATA_SYNC_ENABLED',
@@ -154,8 +164,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String CONTACT_METADATA_SYNC_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get CONTACT_METADATA_SYNC_ENABLED =>
-      _id_CONTACT_METADATA_SYNC_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get CONTACT_METADATA_SYNC_ENABLED =>
+      _id_CONTACT_METADATA_SYNC_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_CONTENT_URI = _class.staticFieldId(
     r'CONTENT_URI',
@@ -165,7 +175,7 @@ class Settings_Global extends Settings_NameValueTable {
   /// from: `static public final android.net.Uri CONTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri get CONTENT_URI =>
-      _id_CONTENT_URI.get(_class, const uri_.$UriType());
+      _id_CONTENT_URI.get(_class, const uri_.$Uri$Type());
 
   static final _id_DATA_ROAMING = _class.staticFieldId(
     r'DATA_ROAMING',
@@ -174,8 +184,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DATA_ROAMING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DATA_ROAMING =>
-      _id_DATA_ROAMING.get(_class, const jni.JStringType());
+  static _$jni.JString get DATA_ROAMING =>
+      _id_DATA_ROAMING.get(_class, const _$jni.JStringType());
 
   static final _id_DEBUG_APP = _class.staticFieldId(
     r'DEBUG_APP',
@@ -184,8 +194,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEBUG_APP`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEBUG_APP =>
-      _id_DEBUG_APP.get(_class, const jni.JStringType());
+  static _$jni.JString get DEBUG_APP =>
+      _id_DEBUG_APP.get(_class, const _$jni.JStringType());
 
   static final _id_DEVELOPMENT_SETTINGS_ENABLED = _class.staticFieldId(
     r'DEVELOPMENT_SETTINGS_ENABLED',
@@ -194,8 +204,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEVELOPMENT_SETTINGS_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVELOPMENT_SETTINGS_ENABLED =>
-      _id_DEVELOPMENT_SETTINGS_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVELOPMENT_SETTINGS_ENABLED =>
+      _id_DEVELOPMENT_SETTINGS_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_DEVICE_NAME = _class.staticFieldId(
     r'DEVICE_NAME',
@@ -204,8 +214,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEVICE_NAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVICE_NAME =>
-      _id_DEVICE_NAME.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVICE_NAME =>
+      _id_DEVICE_NAME.get(_class, const _$jni.JStringType());
 
   static final _id_DEVICE_PROVISIONED = _class.staticFieldId(
     r'DEVICE_PROVISIONED',
@@ -214,8 +224,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEVICE_PROVISIONED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVICE_PROVISIONED =>
-      _id_DEVICE_PROVISIONED.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVICE_PROVISIONED =>
+      _id_DEVICE_PROVISIONED.get(_class, const _$jni.JStringType());
 
   static final _id_HTTP_PROXY = _class.staticFieldId(
     r'HTTP_PROXY',
@@ -224,8 +234,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String HTTP_PROXY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get HTTP_PROXY =>
-      _id_HTTP_PROXY.get(_class, const jni.JStringType());
+  static _$jni.JString get HTTP_PROXY =>
+      _id_HTTP_PROXY.get(_class, const _$jni.JStringType());
 
   static final _id_INSTALL_NON_MARKET_APPS = _class.staticFieldId(
     r'INSTALL_NON_MARKET_APPS',
@@ -234,8 +244,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String INSTALL_NON_MARKET_APPS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get INSTALL_NON_MARKET_APPS =>
-      _id_INSTALL_NON_MARKET_APPS.get(_class, const jni.JStringType());
+  static _$jni.JString get INSTALL_NON_MARKET_APPS =>
+      _id_INSTALL_NON_MARKET_APPS.get(_class, const _$jni.JStringType());
 
   static final _id_MODE_RINGER = _class.staticFieldId(
     r'MODE_RINGER',
@@ -244,8 +254,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String MODE_RINGER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get MODE_RINGER =>
-      _id_MODE_RINGER.get(_class, const jni.JStringType());
+  static _$jni.JString get MODE_RINGER =>
+      _id_MODE_RINGER.get(_class, const _$jni.JStringType());
 
   static final _id_NETWORK_PREFERENCE = _class.staticFieldId(
     r'NETWORK_PREFERENCE',
@@ -254,8 +264,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String NETWORK_PREFERENCE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NETWORK_PREFERENCE =>
-      _id_NETWORK_PREFERENCE.get(_class, const jni.JStringType());
+  static _$jni.JString get NETWORK_PREFERENCE =>
+      _id_NETWORK_PREFERENCE.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_BLUETOOTH = _class.staticFieldId(
     r'RADIO_BLUETOOTH',
@@ -264,8 +274,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_BLUETOOTH`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_BLUETOOTH =>
-      _id_RADIO_BLUETOOTH.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_BLUETOOTH =>
+      _id_RADIO_BLUETOOTH.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_CELL = _class.staticFieldId(
     r'RADIO_CELL',
@@ -274,8 +284,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_CELL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_CELL =>
-      _id_RADIO_CELL.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_CELL =>
+      _id_RADIO_CELL.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_NFC = _class.staticFieldId(
     r'RADIO_NFC',
@@ -284,8 +294,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_NFC`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_NFC =>
-      _id_RADIO_NFC.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_NFC =>
+      _id_RADIO_NFC.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_WIFI = _class.staticFieldId(
     r'RADIO_WIFI',
@@ -294,8 +304,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_WIFI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_WIFI =>
-      _id_RADIO_WIFI.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_WIFI =>
+      _id_RADIO_WIFI.get(_class, const _$jni.JStringType());
 
   static final _id_SECURE_FRP_MODE = _class.staticFieldId(
     r'SECURE_FRP_MODE',
@@ -304,8 +314,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SECURE_FRP_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SECURE_FRP_MODE =>
-      _id_SECURE_FRP_MODE.get(_class, const jni.JStringType());
+  static _$jni.JString get SECURE_FRP_MODE =>
+      _id_SECURE_FRP_MODE.get(_class, const _$jni.JStringType());
 
   static final _id_SHOW_PROCESSES = _class.staticFieldId(
     r'SHOW_PROCESSES',
@@ -314,8 +324,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SHOW_PROCESSES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SHOW_PROCESSES =>
-      _id_SHOW_PROCESSES.get(_class, const jni.JStringType());
+  static _$jni.JString get SHOW_PROCESSES =>
+      _id_SHOW_PROCESSES.get(_class, const _$jni.JStringType());
 
   static final _id_STAY_ON_WHILE_PLUGGED_IN = _class.staticFieldId(
     r'STAY_ON_WHILE_PLUGGED_IN',
@@ -324,8 +334,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String STAY_ON_WHILE_PLUGGED_IN`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get STAY_ON_WHILE_PLUGGED_IN =>
-      _id_STAY_ON_WHILE_PLUGGED_IN.get(_class, const jni.JStringType());
+  static _$jni.JString get STAY_ON_WHILE_PLUGGED_IN =>
+      _id_STAY_ON_WHILE_PLUGGED_IN.get(_class, const _$jni.JStringType());
 
   static final _id_TRANSITION_ANIMATION_SCALE = _class.staticFieldId(
     r'TRANSITION_ANIMATION_SCALE',
@@ -334,8 +344,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TRANSITION_ANIMATION_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TRANSITION_ANIMATION_SCALE =>
-      _id_TRANSITION_ANIMATION_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get TRANSITION_ANIMATION_SCALE =>
+      _id_TRANSITION_ANIMATION_SCALE.get(_class, const _$jni.JStringType());
 
   static final _id_USB_MASS_STORAGE_ENABLED = _class.staticFieldId(
     r'USB_MASS_STORAGE_ENABLED',
@@ -344,8 +354,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USB_MASS_STORAGE_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USB_MASS_STORAGE_ENABLED =>
-      _id_USB_MASS_STORAGE_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get USB_MASS_STORAGE_ENABLED =>
+      _id_USB_MASS_STORAGE_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_USE_GOOGLE_MAIL = _class.staticFieldId(
     r'USE_GOOGLE_MAIL',
@@ -354,8 +364,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USE_GOOGLE_MAIL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USE_GOOGLE_MAIL =>
-      _id_USE_GOOGLE_MAIL.get(_class, const jni.JStringType());
+  static _$jni.JString get USE_GOOGLE_MAIL =>
+      _id_USE_GOOGLE_MAIL.get(_class, const _$jni.JStringType());
 
   static final _id_WAIT_FOR_DEBUGGER = _class.staticFieldId(
     r'WAIT_FOR_DEBUGGER',
@@ -364,8 +374,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WAIT_FOR_DEBUGGER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WAIT_FOR_DEBUGGER =>
-      _id_WAIT_FOR_DEBUGGER.get(_class, const jni.JStringType());
+  static _$jni.JString get WAIT_FOR_DEBUGGER =>
+      _id_WAIT_FOR_DEBUGGER.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN = _class.staticFieldId(
     r'WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN',
@@ -374,9 +384,9 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN =>
+  static _$jni.JString get WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN =>
       _id_WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_MAX_DHCP_RETRY_COUNT = _class.staticFieldId(
     r'WIFI_MAX_DHCP_RETRY_COUNT',
@@ -385,8 +395,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_MAX_DHCP_RETRY_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_MAX_DHCP_RETRY_COUNT =>
-      _id_WIFI_MAX_DHCP_RETRY_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_MAX_DHCP_RETRY_COUNT =>
+      _id_WIFI_MAX_DHCP_RETRY_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =
       _class.staticFieldId(
@@ -396,9 +406,9 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =>
+  static _$jni.JString get WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =>
       _id_WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =
       _class.staticFieldId(
@@ -408,9 +418,9 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =>
+  static _$jni.JString get WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =>
       _id_WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY = _class.staticFieldId(
     r'WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY',
@@ -419,9 +429,9 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY =>
+  static _$jni.JString get WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY =>
       _id_WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NUM_OPEN_NETWORKS_KEPT = _class.staticFieldId(
     r'WIFI_NUM_OPEN_NETWORKS_KEPT',
@@ -430,8 +440,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NUM_OPEN_NETWORKS_KEPT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NUM_OPEN_NETWORKS_KEPT =>
-      _id_WIFI_NUM_OPEN_NETWORKS_KEPT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_NUM_OPEN_NETWORKS_KEPT =>
+      _id_WIFI_NUM_OPEN_NETWORKS_KEPT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_ON = _class.staticFieldId(
     r'WIFI_ON',
@@ -440,8 +450,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_ON =>
-      _id_WIFI_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_ON =>
+      _id_WIFI_ON.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_SLEEP_POLICY = _class.staticFieldId(
     r'WIFI_SLEEP_POLICY',
@@ -450,8 +460,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_SLEEP_POLICY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_SLEEP_POLICY =>
-      _id_WIFI_SLEEP_POLICY.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_SLEEP_POLICY =>
+      _id_WIFI_SLEEP_POLICY.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int WIFI_SLEEP_POLICY_DEFAULT`
   static const WIFI_SLEEP_POLICY_DEFAULT = 0;
@@ -468,8 +478,8 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_ON =>
-      _id_WIFI_WATCHDOG_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_ON =>
+      _id_WIFI_WATCHDOG_ON.get(_class, const _$jni.JStringType());
 
   static final _id_WINDOW_ANIMATION_SCALE = _class.staticFieldId(
     r'WINDOW_ANIMATION_SCALE',
@@ -478,30 +488,30 @@ class Settings_Global extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WINDOW_ANIMATION_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WINDOW_ANIMATION_SCALE =>
-      _id_WINDOW_ANIMATION_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get WINDOW_ANIMATION_SCALE =>
+      _id_WINDOW_ANIMATION_SCALE.get(_class, const _$jni.JStringType());
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Settings_Global() {
     return Settings_Global.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
@@ -510,97 +520,100 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;',
   );
 
-  static final _getString = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getString = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public java.lang.String getString(android.content.ContentResolver contentResolver, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString getString(
+  static _$jni.JString getString(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _getString(
             _class.reference.pointer,
-            _id_getString as jni.JMethodIDPtr,
+            _id_getString as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JStringType());
+        .object(const _$jni.JStringType());
   }
 
-  static final _id_putString1 = _class.staticMethodId(
+  static final _id_putString = _class.staticMethodId(
     r'putString',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z',
   );
 
-  static final _putString1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putString = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean putString(android.content.ContentResolver contentResolver, java.lang.String string, java.lang.String string1)`
-  static bool putString1(
+  static bool putString(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
-    jni.JString string1,
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
-    return _putString1(
+    return _putString(
             _class.reference.pointer,
-            _id_putString1 as jni.JMethodIDPtr,
+            _id_putString as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer,
             string1.reference.pointer)
         .boolean;
   }
 
-  static final _id_getUriFor1 = _class.staticMethodId(
+  static final _id_getUriFor$1 = _class.staticMethodId(
     r'getUriFor',
     r'(Ljava/lang/String;)Landroid/net/Uri;',
   );
 
-  static final _getUriFor1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getUriFor$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.net.Uri getUriFor(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static uri_.Uri getUriFor1(
-    jni.JString string,
+  static uri_.Uri getUriFor$1(
+    _$jni.JString string,
   ) {
-    return _getUriFor1(_class.reference.pointer,
-            _id_getUriFor1 as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const uri_.$UriType());
+    return _getUriFor$1(_class.reference.pointer,
+            _id_getUriFor$1 as _$jni.JMethodIDPtr, string.reference.pointer)
+        .object(const uri_.$Uri$Type());
   }
 
   static final _id_getInt = _class.staticMethodId(
@@ -608,58 +621,68 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;I)I',
   );
 
-  static final _getInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getInt = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static int getInt(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    return _getInt(_class.reference.pointer, _id_getInt as jni.JMethodIDPtr,
+    return _getInt(_class.reference.pointer, _id_getInt as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, i)
         .integer;
   }
 
-  static final _id_getInt1 = _class.staticMethodId(
+  static final _id_getInt$1 = _class.staticMethodId(
     r'getInt',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)I',
   );
 
-  static final _getInt1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getInt$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static int getInt1(
+  static int getInt$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getInt1(_class.reference.pointer, _id_getInt1 as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer)
+    return _getInt$1(
+            _class.reference.pointer,
+            _id_getInt$1 as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer)
         .integer;
   }
 
@@ -668,28 +691,32 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;I)Z',
   );
 
-  static final _putInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putInt = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public boolean putInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static bool putInt(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    return _putInt(_class.reference.pointer, _id_putInt as jni.JMethodIDPtr,
+    return _putInt(_class.reference.pointer, _id_putInt as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, i)
         .boolean;
   }
@@ -699,58 +726,68 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;J)J',
   );
 
-  static final _getLong = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getLong = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticLongMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static int getLong(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int j,
   ) {
-    return _getLong(_class.reference.pointer, _id_getLong as jni.JMethodIDPtr,
+    return _getLong(_class.reference.pointer, _id_getLong as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, j)
         .long;
   }
 
-  static final _id_getLong1 = _class.staticMethodId(
+  static final _id_getLong$1 = _class.staticMethodId(
     r'getLong',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)J',
   );
 
-  static final _getLong1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getLong$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticLongMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static int getLong1(
+  static int getLong$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getLong1(_class.reference.pointer, _id_getLong1 as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer)
+    return _getLong$1(
+            _class.reference.pointer,
+            _id_getLong$1 as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer)
         .long;
   }
 
@@ -759,28 +796,32 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;J)Z',
   );
 
-  static final _putLong = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putLong = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public boolean putLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static bool putLong(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int j,
   ) {
-    return _putLong(_class.reference.pointer, _id_putLong as jni.JMethodIDPtr,
+    return _putLong(_class.reference.pointer, _id_putLong as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, j)
         .boolean;
   }
@@ -790,59 +831,70 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;F)F',
   );
 
-  static final _getFloat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getFloat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Double
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Double
                       )>)>>('globalEnv_CallStaticFloatMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, double)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              double)>();
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static double getFloat(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     double f,
   ) {
-    return _getFloat(_class.reference.pointer, _id_getFloat as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer, f)
+    return _getFloat(
+            _class.reference.pointer,
+            _id_getFloat as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer,
+            f)
         .float;
   }
 
-  static final _id_getFloat1 = _class.staticMethodId(
+  static final _id_getFloat$1 = _class.staticMethodId(
     r'getFloat',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)F',
   );
 
-  static final _getFloat1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getFloat$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticFloatMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static double getFloat1(
+  static double getFloat$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getFloat1(
+    return _getFloat$1(
             _class.reference.pointer,
-            _id_getFloat1 as jni.JMethodIDPtr,
+            _id_getFloat$1 as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
         .float;
@@ -853,73 +905,89 @@ class Settings_Global extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;F)Z',
   );
 
-  static final _putFloat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putFloat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Double
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Double
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, double)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              double)>();
 
   /// from: `static public boolean putFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static bool putFloat(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     double f,
   ) {
-    return _putFloat(_class.reference.pointer, _id_putFloat as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer, f)
+    return _putFloat(
+            _class.reference.pointer,
+            _id_putFloat as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer,
+            f)
         .boolean;
   }
 }
 
-final class $Settings_GlobalType extends jni.JObjType<Settings_Global> {
-  const $Settings_GlobalType();
+final class $Settings_Global$Type extends _$jni.JObjType<Settings_Global> {
+  @_$jni.internal
+  const $Settings_Global$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/provider/Settings$Global;';
 
-  @override
-  Settings_Global fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings_Global fromReference(_$jni.JReference reference) =>
       Settings_Global.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const $Settings_NameValueTableType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const $Settings_NameValueTable$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 2;
 
-  @override
-  int get hashCode => ($Settings_GlobalType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings_Global$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Settings_GlobalType) &&
-        other is $Settings_GlobalType;
+    return other.runtimeType == ($Settings_Global$Type) &&
+        other is $Settings_Global$Type;
   }
 }
 
 /// from: `android.provider.Settings$NameValueTable`
-class Settings_NameValueTable extends jni.JObject {
-  @override
-  late final jni.JObjType<Settings_NameValueTable> $type = type;
+class Settings_NameValueTable extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings_NameValueTable> $type;
 
+  @_$jni.internal
   Settings_NameValueTable.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/provider/Settings$NameValueTable');
+      _$jni.JClass.forName(r'android/provider/Settings$NameValueTable');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Settings_NameValueTableType();
+  static const type = $Settings_NameValueTable$Type();
   static final _id_NAME = _class.staticFieldId(
     r'NAME',
     r'Ljava/lang/String;',
@@ -927,7 +995,8 @@ class Settings_NameValueTable extends jni.JObject {
 
   /// from: `static public final java.lang.String NAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NAME => _id_NAME.get(_class, const jni.JStringType());
+  static _$jni.JString get NAME =>
+      _id_NAME.get(_class, const _$jni.JStringType());
 
   static final _id_VALUE = _class.staticFieldId(
     r'VALUE',
@@ -936,74 +1005,31 @@ class Settings_NameValueTable extends jni.JObject {
 
   /// from: `static public final java.lang.String VALUE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get VALUE =>
-      _id_VALUE.get(_class, const jni.JStringType());
+  static _$jni.JString get VALUE =>
+      _id_VALUE.get(_class, const _$jni.JStringType());
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Settings_NameValueTable() {
     return Settings_NameValueTable.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
-  }
-
-  static final _id_putString = _class.staticMethodId(
-    r'putString',
-    r'(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;)Z',
-  );
-
-  static final _putString = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallStaticBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
-
-  /// from: `static protected boolean putString(android.content.ContentResolver contentResolver, android.net.Uri uri, java.lang.String string, java.lang.String string1)`
-  static bool putString(
-    contentresolver_.ContentResolver contentResolver,
-    uri_.Uri uri,
-    jni.JString string,
-    jni.JString string1,
-  ) {
-    return _putString(
-            _class.reference.pointer,
-            _id_putString as jni.JMethodIDPtr,
-            contentResolver.reference.pointer,
-            uri.reference.pointer,
-            string.reference.pointer,
-            string1.reference.pointer)
-        .boolean;
   }
 
   static final _id_getUriFor = _class.staticMethodId(
@@ -1011,75 +1037,87 @@ class Settings_NameValueTable extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;',
   );
 
-  static final _getUriFor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getUriFor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.net.Uri getUriFor(android.net.Uri uri, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri getUriFor(
     uri_.Uri uri,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _getUriFor(
             _class.reference.pointer,
-            _id_getUriFor as jni.JMethodIDPtr,
+            _id_getUriFor as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer)
-        .object(const uri_.$UriType());
+        .object(const uri_.$Uri$Type());
   }
 }
 
-final class $Settings_NameValueTableType
-    extends jni.JObjType<Settings_NameValueTable> {
-  const $Settings_NameValueTableType();
+final class $Settings_NameValueTable$Type
+    extends _$jni.JObjType<Settings_NameValueTable> {
+  @_$jni.internal
+  const $Settings_NameValueTable$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/provider/Settings$NameValueTable;';
 
-  @override
-  Settings_NameValueTable fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings_NameValueTable fromReference(_$jni.JReference reference) =>
       Settings_NameValueTable.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Settings_NameValueTableType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings_NameValueTable$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Settings_NameValueTableType) &&
-        other is $Settings_NameValueTableType;
+    return other.runtimeType == ($Settings_NameValueTable$Type) &&
+        other is $Settings_NameValueTable$Type;
   }
 }
 
 /// from: `android.provider.Settings$Panel`
-class Settings_Panel extends jni.JObject {
-  @override
-  late final jni.JObjType<Settings_Panel> $type = type;
+class Settings_Panel extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings_Panel> $type;
 
+  @_$jni.internal
   Settings_Panel.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/provider/Settings$Panel');
+  static final _class =
+      _$jni.JClass.forName(r'android/provider/Settings$Panel');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Settings_PanelType();
+  static const type = $Settings_Panel$Type();
   static final _id_ACTION_INTERNET_CONNECTIVITY = _class.staticFieldId(
     r'ACTION_INTERNET_CONNECTIVITY',
     r'Ljava/lang/String;',
@@ -1087,8 +1125,8 @@ class Settings_Panel extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_INTERNET_CONNECTIVITY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_INTERNET_CONNECTIVITY =>
-      _id_ACTION_INTERNET_CONNECTIVITY.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_INTERNET_CONNECTIVITY =>
+      _id_ACTION_INTERNET_CONNECTIVITY.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_NFC = _class.staticFieldId(
     r'ACTION_NFC',
@@ -1097,8 +1135,8 @@ class Settings_Panel extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NFC`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NFC =>
-      _id_ACTION_NFC.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_NFC =>
+      _id_ACTION_NFC.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_VOLUME = _class.staticFieldId(
     r'ACTION_VOLUME',
@@ -1107,8 +1145,8 @@ class Settings_Panel extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VOLUME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VOLUME =>
-      _id_ACTION_VOLUME.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_VOLUME =>
+      _id_ACTION_VOLUME.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_WIFI = _class.staticFieldId(
     r'ACTION_WIFI',
@@ -1117,49 +1155,58 @@ class Settings_Panel extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_WIFI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_WIFI =>
-      _id_ACTION_WIFI.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_WIFI =>
+      _id_ACTION_WIFI.get(_class, const _$jni.JStringType());
 }
 
-final class $Settings_PanelType extends jni.JObjType<Settings_Panel> {
-  const $Settings_PanelType();
+final class $Settings_Panel$Type extends _$jni.JObjType<Settings_Panel> {
+  @_$jni.internal
+  const $Settings_Panel$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/provider/Settings$Panel;';
 
-  @override
-  Settings_Panel fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings_Panel fromReference(_$jni.JReference reference) =>
       Settings_Panel.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Settings_PanelType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings_Panel$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Settings_PanelType) &&
-        other is $Settings_PanelType;
+    return other.runtimeType == ($Settings_Panel$Type) &&
+        other is $Settings_Panel$Type;
   }
 }
 
 /// from: `android.provider.Settings$Secure`
 class Settings_Secure extends Settings_NameValueTable {
-  @override
-  late final jni.JObjType<Settings_Secure> $type = type;
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings_Secure> $type;
 
+  @_$jni.internal
   Settings_Secure.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/provider/Settings$Secure');
+  static final _class =
+      _$jni.JClass.forName(r'android/provider/Settings$Secure');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Settings_SecureType();
+  static const type = $Settings_Secure$Type();
   static final _id_ACCESSIBILITY_DISPLAY_INVERSION_ENABLED =
       _class.staticFieldId(
     r'ACCESSIBILITY_DISPLAY_INVERSION_ENABLED',
@@ -1168,9 +1215,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ACCESSIBILITY_DISPLAY_INVERSION_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACCESSIBILITY_DISPLAY_INVERSION_ENABLED =>
+  static _$jni.JString get ACCESSIBILITY_DISPLAY_INVERSION_ENABLED =>
       _id_ACCESSIBILITY_DISPLAY_INVERSION_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACCESSIBILITY_ENABLED = _class.staticFieldId(
     r'ACCESSIBILITY_ENABLED',
@@ -1179,8 +1226,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ACCESSIBILITY_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACCESSIBILITY_ENABLED =>
-      _id_ACCESSIBILITY_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get ACCESSIBILITY_ENABLED =>
+      _id_ACCESSIBILITY_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_ACCESSIBILITY_SPEAK_PASSWORD = _class.staticFieldId(
     r'ACCESSIBILITY_SPEAK_PASSWORD',
@@ -1189,8 +1236,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ACCESSIBILITY_SPEAK_PASSWORD`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACCESSIBILITY_SPEAK_PASSWORD =>
-      _id_ACCESSIBILITY_SPEAK_PASSWORD.get(_class, const jni.JStringType());
+  static _$jni.JString get ACCESSIBILITY_SPEAK_PASSWORD =>
+      _id_ACCESSIBILITY_SPEAK_PASSWORD.get(_class, const _$jni.JStringType());
 
   static final _id_ADB_ENABLED = _class.staticFieldId(
     r'ADB_ENABLED',
@@ -1199,8 +1246,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ADB_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ADB_ENABLED =>
-      _id_ADB_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get ADB_ENABLED =>
+      _id_ADB_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_ALLOWED_GEOLOCATION_ORIGINS = _class.staticFieldId(
     r'ALLOWED_GEOLOCATION_ORIGINS',
@@ -1209,8 +1256,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ALLOWED_GEOLOCATION_ORIGINS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ALLOWED_GEOLOCATION_ORIGINS =>
-      _id_ALLOWED_GEOLOCATION_ORIGINS.get(_class, const jni.JStringType());
+  static _$jni.JString get ALLOWED_GEOLOCATION_ORIGINS =>
+      _id_ALLOWED_GEOLOCATION_ORIGINS.get(_class, const _$jni.JStringType());
 
   static final _id_ALLOW_MOCK_LOCATION = _class.staticFieldId(
     r'ALLOW_MOCK_LOCATION',
@@ -1219,8 +1266,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ALLOW_MOCK_LOCATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ALLOW_MOCK_LOCATION =>
-      _id_ALLOW_MOCK_LOCATION.get(_class, const jni.JStringType());
+  static _$jni.JString get ALLOW_MOCK_LOCATION =>
+      _id_ALLOW_MOCK_LOCATION.get(_class, const _$jni.JStringType());
 
   static final _id_ANDROID_ID = _class.staticFieldId(
     r'ANDROID_ID',
@@ -1229,8 +1276,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ANDROID_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ANDROID_ID =>
-      _id_ANDROID_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get ANDROID_ID =>
+      _id_ANDROID_ID.get(_class, const _$jni.JStringType());
 
   static final _id_BACKGROUND_DATA = _class.staticFieldId(
     r'BACKGROUND_DATA',
@@ -1239,8 +1286,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BACKGROUND_DATA`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BACKGROUND_DATA =>
-      _id_BACKGROUND_DATA.get(_class, const jni.JStringType());
+  static _$jni.JString get BACKGROUND_DATA =>
+      _id_BACKGROUND_DATA.get(_class, const _$jni.JStringType());
 
   static final _id_BLUETOOTH_ON = _class.staticFieldId(
     r'BLUETOOTH_ON',
@@ -1249,8 +1296,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BLUETOOTH_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BLUETOOTH_ON =>
-      _id_BLUETOOTH_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get BLUETOOTH_ON =>
+      _id_BLUETOOTH_ON.get(_class, const _$jni.JStringType());
 
   static final _id_CONTENT_URI = _class.staticFieldId(
     r'CONTENT_URI',
@@ -1260,7 +1307,7 @@ class Settings_Secure extends Settings_NameValueTable {
   /// from: `static public final android.net.Uri CONTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri get CONTENT_URI =>
-      _id_CONTENT_URI.get(_class, const uri_.$UriType());
+      _id_CONTENT_URI.get(_class, const uri_.$Uri$Type());
 
   static final _id_DATA_ROAMING = _class.staticFieldId(
     r'DATA_ROAMING',
@@ -1269,8 +1316,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DATA_ROAMING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DATA_ROAMING =>
-      _id_DATA_ROAMING.get(_class, const jni.JStringType());
+  static _$jni.JString get DATA_ROAMING =>
+      _id_DATA_ROAMING.get(_class, const _$jni.JStringType());
 
   static final _id_DEFAULT_INPUT_METHOD = _class.staticFieldId(
     r'DEFAULT_INPUT_METHOD',
@@ -1279,8 +1326,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEFAULT_INPUT_METHOD`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEFAULT_INPUT_METHOD =>
-      _id_DEFAULT_INPUT_METHOD.get(_class, const jni.JStringType());
+  static _$jni.JString get DEFAULT_INPUT_METHOD =>
+      _id_DEFAULT_INPUT_METHOD.get(_class, const _$jni.JStringType());
 
   static final _id_DEVELOPMENT_SETTINGS_ENABLED = _class.staticFieldId(
     r'DEVELOPMENT_SETTINGS_ENABLED',
@@ -1289,8 +1336,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEVELOPMENT_SETTINGS_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVELOPMENT_SETTINGS_ENABLED =>
-      _id_DEVELOPMENT_SETTINGS_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVELOPMENT_SETTINGS_ENABLED =>
+      _id_DEVELOPMENT_SETTINGS_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_DEVICE_PROVISIONED = _class.staticFieldId(
     r'DEVICE_PROVISIONED',
@@ -1299,8 +1346,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEVICE_PROVISIONED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVICE_PROVISIONED =>
-      _id_DEVICE_PROVISIONED.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVICE_PROVISIONED =>
+      _id_DEVICE_PROVISIONED.get(_class, const _$jni.JStringType());
 
   static final _id_ENABLED_ACCESSIBILITY_SERVICES = _class.staticFieldId(
     r'ENABLED_ACCESSIBILITY_SERVICES',
@@ -1309,8 +1356,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ENABLED_ACCESSIBILITY_SERVICES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ENABLED_ACCESSIBILITY_SERVICES =>
-      _id_ENABLED_ACCESSIBILITY_SERVICES.get(_class, const jni.JStringType());
+  static _$jni.JString get ENABLED_ACCESSIBILITY_SERVICES =>
+      _id_ENABLED_ACCESSIBILITY_SERVICES.get(_class, const _$jni.JStringType());
 
   static final _id_ENABLED_INPUT_METHODS = _class.staticFieldId(
     r'ENABLED_INPUT_METHODS',
@@ -1319,8 +1366,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ENABLED_INPUT_METHODS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ENABLED_INPUT_METHODS =>
-      _id_ENABLED_INPUT_METHODS.get(_class, const jni.JStringType());
+  static _$jni.JString get ENABLED_INPUT_METHODS =>
+      _id_ENABLED_INPUT_METHODS.get(_class, const _$jni.JStringType());
 
   static final _id_HTTP_PROXY = _class.staticFieldId(
     r'HTTP_PROXY',
@@ -1329,8 +1376,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String HTTP_PROXY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get HTTP_PROXY =>
-      _id_HTTP_PROXY.get(_class, const jni.JStringType());
+  static _$jni.JString get HTTP_PROXY =>
+      _id_HTTP_PROXY.get(_class, const _$jni.JStringType());
 
   static final _id_INPUT_METHOD_SELECTOR_VISIBILITY = _class.staticFieldId(
     r'INPUT_METHOD_SELECTOR_VISIBILITY',
@@ -1339,8 +1386,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String INPUT_METHOD_SELECTOR_VISIBILITY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get INPUT_METHOD_SELECTOR_VISIBILITY =>
-      _id_INPUT_METHOD_SELECTOR_VISIBILITY.get(_class, const jni.JStringType());
+  static _$jni.JString get INPUT_METHOD_SELECTOR_VISIBILITY =>
+      _id_INPUT_METHOD_SELECTOR_VISIBILITY.get(
+          _class, const _$jni.JStringType());
 
   static final _id_INSTALL_NON_MARKET_APPS = _class.staticFieldId(
     r'INSTALL_NON_MARKET_APPS',
@@ -1349,8 +1397,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String INSTALL_NON_MARKET_APPS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get INSTALL_NON_MARKET_APPS =>
-      _id_INSTALL_NON_MARKET_APPS.get(_class, const jni.JStringType());
+  static _$jni.JString get INSTALL_NON_MARKET_APPS =>
+      _id_INSTALL_NON_MARKET_APPS.get(_class, const _$jni.JStringType());
 
   static final _id_LOCATION_MODE = _class.staticFieldId(
     r'LOCATION_MODE',
@@ -1359,8 +1407,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCATION_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCATION_MODE =>
-      _id_LOCATION_MODE.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCATION_MODE =>
+      _id_LOCATION_MODE.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int LOCATION_MODE_BATTERY_SAVING`
   static const LOCATION_MODE_BATTERY_SAVING = 2;
@@ -1380,8 +1428,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCATION_PROVIDERS_ALLOWED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCATION_PROVIDERS_ALLOWED =>
-      _id_LOCATION_PROVIDERS_ALLOWED.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCATION_PROVIDERS_ALLOWED =>
+      _id_LOCATION_PROVIDERS_ALLOWED.get(_class, const _$jni.JStringType());
 
   static final _id_LOCK_PATTERN_ENABLED = _class.staticFieldId(
     r'LOCK_PATTERN_ENABLED',
@@ -1390,8 +1438,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCK_PATTERN_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCK_PATTERN_ENABLED =>
-      _id_LOCK_PATTERN_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCK_PATTERN_ENABLED =>
+      _id_LOCK_PATTERN_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED = _class.staticFieldId(
     r'LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED',
@@ -1400,9 +1448,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED =>
+  static _$jni.JString get LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED =>
       _id_LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_LOCK_PATTERN_VISIBLE = _class.staticFieldId(
     r'LOCK_PATTERN_VISIBLE',
@@ -1411,8 +1459,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCK_PATTERN_VISIBLE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCK_PATTERN_VISIBLE =>
-      _id_LOCK_PATTERN_VISIBLE.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCK_PATTERN_VISIBLE =>
+      _id_LOCK_PATTERN_VISIBLE.get(_class, const _$jni.JStringType());
 
   static final _id_LOGGING_ID = _class.staticFieldId(
     r'LOGGING_ID',
@@ -1421,8 +1469,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOGGING_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOGGING_ID =>
-      _id_LOGGING_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get LOGGING_ID =>
+      _id_LOGGING_ID.get(_class, const _$jni.JStringType());
 
   static final _id_NETWORK_PREFERENCE = _class.staticFieldId(
     r'NETWORK_PREFERENCE',
@@ -1431,8 +1479,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String NETWORK_PREFERENCE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NETWORK_PREFERENCE =>
-      _id_NETWORK_PREFERENCE.get(_class, const jni.JStringType());
+  static _$jni.JString get NETWORK_PREFERENCE =>
+      _id_NETWORK_PREFERENCE.get(_class, const _$jni.JStringType());
 
   static final _id_PARENTAL_CONTROL_ENABLED = _class.staticFieldId(
     r'PARENTAL_CONTROL_ENABLED',
@@ -1441,8 +1489,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String PARENTAL_CONTROL_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARENTAL_CONTROL_ENABLED =>
-      _id_PARENTAL_CONTROL_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get PARENTAL_CONTROL_ENABLED =>
+      _id_PARENTAL_CONTROL_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_PARENTAL_CONTROL_LAST_UPDATE = _class.staticFieldId(
     r'PARENTAL_CONTROL_LAST_UPDATE',
@@ -1451,8 +1499,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String PARENTAL_CONTROL_LAST_UPDATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARENTAL_CONTROL_LAST_UPDATE =>
-      _id_PARENTAL_CONTROL_LAST_UPDATE.get(_class, const jni.JStringType());
+  static _$jni.JString get PARENTAL_CONTROL_LAST_UPDATE =>
+      _id_PARENTAL_CONTROL_LAST_UPDATE.get(_class, const _$jni.JStringType());
 
   static final _id_PARENTAL_CONTROL_REDIRECT_URL = _class.staticFieldId(
     r'PARENTAL_CONTROL_REDIRECT_URL',
@@ -1461,8 +1509,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String PARENTAL_CONTROL_REDIRECT_URL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARENTAL_CONTROL_REDIRECT_URL =>
-      _id_PARENTAL_CONTROL_REDIRECT_URL.get(_class, const jni.JStringType());
+  static _$jni.JString get PARENTAL_CONTROL_REDIRECT_URL =>
+      _id_PARENTAL_CONTROL_REDIRECT_URL.get(_class, const _$jni.JStringType());
 
   static final _id_RTT_CALLING_MODE = _class.staticFieldId(
     r'RTT_CALLING_MODE',
@@ -1471,8 +1519,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RTT_CALLING_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RTT_CALLING_MODE =>
-      _id_RTT_CALLING_MODE.get(_class, const jni.JStringType());
+  static _$jni.JString get RTT_CALLING_MODE =>
+      _id_RTT_CALLING_MODE.get(_class, const _$jni.JStringType());
 
   static final _id_SECURE_FRP_MODE = _class.staticFieldId(
     r'SECURE_FRP_MODE',
@@ -1481,8 +1529,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SECURE_FRP_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SECURE_FRP_MODE =>
-      _id_SECURE_FRP_MODE.get(_class, const jni.JStringType());
+  static _$jni.JString get SECURE_FRP_MODE =>
+      _id_SECURE_FRP_MODE.get(_class, const _$jni.JStringType());
 
   static final _id_SELECTED_INPUT_METHOD_SUBTYPE = _class.staticFieldId(
     r'SELECTED_INPUT_METHOD_SUBTYPE',
@@ -1491,8 +1539,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SELECTED_INPUT_METHOD_SUBTYPE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SELECTED_INPUT_METHOD_SUBTYPE =>
-      _id_SELECTED_INPUT_METHOD_SUBTYPE.get(_class, const jni.JStringType());
+  static _$jni.JString get SELECTED_INPUT_METHOD_SUBTYPE =>
+      _id_SELECTED_INPUT_METHOD_SUBTYPE.get(_class, const _$jni.JStringType());
 
   static final _id_SETTINGS_CLASSNAME = _class.staticFieldId(
     r'SETTINGS_CLASSNAME',
@@ -1501,8 +1549,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SETTINGS_CLASSNAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SETTINGS_CLASSNAME =>
-      _id_SETTINGS_CLASSNAME.get(_class, const jni.JStringType());
+  static _$jni.JString get SETTINGS_CLASSNAME =>
+      _id_SETTINGS_CLASSNAME.get(_class, const _$jni.JStringType());
 
   static final _id_SKIP_FIRST_USE_HINTS = _class.staticFieldId(
     r'SKIP_FIRST_USE_HINTS',
@@ -1511,8 +1559,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SKIP_FIRST_USE_HINTS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SKIP_FIRST_USE_HINTS =>
-      _id_SKIP_FIRST_USE_HINTS.get(_class, const jni.JStringType());
+  static _$jni.JString get SKIP_FIRST_USE_HINTS =>
+      _id_SKIP_FIRST_USE_HINTS.get(_class, const _$jni.JStringType());
 
   static final _id_TOUCH_EXPLORATION_ENABLED = _class.staticFieldId(
     r'TOUCH_EXPLORATION_ENABLED',
@@ -1521,8 +1569,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TOUCH_EXPLORATION_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TOUCH_EXPLORATION_ENABLED =>
-      _id_TOUCH_EXPLORATION_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get TOUCH_EXPLORATION_ENABLED =>
+      _id_TOUCH_EXPLORATION_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_DEFAULT_COUNTRY = _class.staticFieldId(
     r'TTS_DEFAULT_COUNTRY',
@@ -1531,8 +1579,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_DEFAULT_COUNTRY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_DEFAULT_COUNTRY =>
-      _id_TTS_DEFAULT_COUNTRY.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_DEFAULT_COUNTRY =>
+      _id_TTS_DEFAULT_COUNTRY.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_DEFAULT_LANG = _class.staticFieldId(
     r'TTS_DEFAULT_LANG',
@@ -1541,8 +1589,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_DEFAULT_LANG`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_DEFAULT_LANG =>
-      _id_TTS_DEFAULT_LANG.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_DEFAULT_LANG =>
+      _id_TTS_DEFAULT_LANG.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_DEFAULT_PITCH = _class.staticFieldId(
     r'TTS_DEFAULT_PITCH',
@@ -1551,8 +1599,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_DEFAULT_PITCH`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_DEFAULT_PITCH =>
-      _id_TTS_DEFAULT_PITCH.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_DEFAULT_PITCH =>
+      _id_TTS_DEFAULT_PITCH.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_DEFAULT_RATE = _class.staticFieldId(
     r'TTS_DEFAULT_RATE',
@@ -1561,8 +1609,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_DEFAULT_RATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_DEFAULT_RATE =>
-      _id_TTS_DEFAULT_RATE.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_DEFAULT_RATE =>
+      _id_TTS_DEFAULT_RATE.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_DEFAULT_SYNTH = _class.staticFieldId(
     r'TTS_DEFAULT_SYNTH',
@@ -1571,8 +1619,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_DEFAULT_SYNTH`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_DEFAULT_SYNTH =>
-      _id_TTS_DEFAULT_SYNTH.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_DEFAULT_SYNTH =>
+      _id_TTS_DEFAULT_SYNTH.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_DEFAULT_VARIANT = _class.staticFieldId(
     r'TTS_DEFAULT_VARIANT',
@@ -1581,8 +1629,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_DEFAULT_VARIANT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_DEFAULT_VARIANT =>
-      _id_TTS_DEFAULT_VARIANT.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_DEFAULT_VARIANT =>
+      _id_TTS_DEFAULT_VARIANT.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_ENABLED_PLUGINS = _class.staticFieldId(
     r'TTS_ENABLED_PLUGINS',
@@ -1591,8 +1639,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_ENABLED_PLUGINS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_ENABLED_PLUGINS =>
-      _id_TTS_ENABLED_PLUGINS.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_ENABLED_PLUGINS =>
+      _id_TTS_ENABLED_PLUGINS.get(_class, const _$jni.JStringType());
 
   static final _id_TTS_USE_DEFAULTS = _class.staticFieldId(
     r'TTS_USE_DEFAULTS',
@@ -1601,8 +1649,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TTS_USE_DEFAULTS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TTS_USE_DEFAULTS =>
-      _id_TTS_USE_DEFAULTS.get(_class, const jni.JStringType());
+  static _$jni.JString get TTS_USE_DEFAULTS =>
+      _id_TTS_USE_DEFAULTS.get(_class, const _$jni.JStringType());
 
   static final _id_USB_MASS_STORAGE_ENABLED = _class.staticFieldId(
     r'USB_MASS_STORAGE_ENABLED',
@@ -1611,8 +1659,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USB_MASS_STORAGE_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USB_MASS_STORAGE_ENABLED =>
-      _id_USB_MASS_STORAGE_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get USB_MASS_STORAGE_ENABLED =>
+      _id_USB_MASS_STORAGE_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_USE_GOOGLE_MAIL = _class.staticFieldId(
     r'USE_GOOGLE_MAIL',
@@ -1621,8 +1669,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USE_GOOGLE_MAIL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USE_GOOGLE_MAIL =>
-      _id_USE_GOOGLE_MAIL.get(_class, const jni.JStringType());
+  static _$jni.JString get USE_GOOGLE_MAIL =>
+      _id_USE_GOOGLE_MAIL.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_MAX_DHCP_RETRY_COUNT = _class.staticFieldId(
     r'WIFI_MAX_DHCP_RETRY_COUNT',
@@ -1631,8 +1679,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_MAX_DHCP_RETRY_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_MAX_DHCP_RETRY_COUNT =>
-      _id_WIFI_MAX_DHCP_RETRY_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_MAX_DHCP_RETRY_COUNT =>
+      _id_WIFI_MAX_DHCP_RETRY_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =
       _class.staticFieldId(
@@ -1642,9 +1690,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =>
+  static _$jni.JString get WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =>
       _id_WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =
       _class.staticFieldId(
@@ -1654,9 +1702,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =>
+  static _$jni.JString get WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =>
       _id_WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY = _class.staticFieldId(
     r'WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY',
@@ -1665,9 +1713,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY =>
+  static _$jni.JString get WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY =>
       _id_WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NUM_OPEN_NETWORKS_KEPT = _class.staticFieldId(
     r'WIFI_NUM_OPEN_NETWORKS_KEPT',
@@ -1676,8 +1724,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NUM_OPEN_NETWORKS_KEPT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NUM_OPEN_NETWORKS_KEPT =>
-      _id_WIFI_NUM_OPEN_NETWORKS_KEPT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_NUM_OPEN_NETWORKS_KEPT =>
+      _id_WIFI_NUM_OPEN_NETWORKS_KEPT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_ON = _class.staticFieldId(
     r'WIFI_ON',
@@ -1686,8 +1734,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_ON =>
-      _id_WIFI_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_ON =>
+      _id_WIFI_ON.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE =
       _class.staticFieldId(
@@ -1697,9 +1745,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE =>
+  static _$jni.JString get WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE =>
       _id_WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_AP_COUNT = _class.staticFieldId(
     r'WIFI_WATCHDOG_AP_COUNT',
@@ -1708,8 +1756,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_AP_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_AP_COUNT =>
-      _id_WIFI_WATCHDOG_AP_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_AP_COUNT =>
+      _id_WIFI_WATCHDOG_AP_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS =
       _class.staticFieldId(
@@ -1719,9 +1767,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS =>
+  static _$jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS =>
       _id_WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED =
       _class.staticFieldId(
@@ -1731,9 +1779,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED =>
+  static _$jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED =>
       _id_WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS =
       _class.staticFieldId(
@@ -1743,9 +1791,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS =>
+  static _$jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS =>
       _id_WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT =
       _class.staticFieldId(
@@ -1755,9 +1803,9 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT =>
+  static _$jni.JString get WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT =>
       _id_WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_MAX_AP_CHECKS = _class.staticFieldId(
     r'WIFI_WATCHDOG_MAX_AP_CHECKS',
@@ -1766,8 +1814,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_MAX_AP_CHECKS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_MAX_AP_CHECKS =>
-      _id_WIFI_WATCHDOG_MAX_AP_CHECKS.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_MAX_AP_CHECKS =>
+      _id_WIFI_WATCHDOG_MAX_AP_CHECKS.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_ON = _class.staticFieldId(
     r'WIFI_WATCHDOG_ON',
@@ -1776,8 +1824,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_ON =>
-      _id_WIFI_WATCHDOG_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_ON =>
+      _id_WIFI_WATCHDOG_ON.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_PING_COUNT = _class.staticFieldId(
     r'WIFI_WATCHDOG_PING_COUNT',
@@ -1786,8 +1834,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_PING_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_PING_COUNT =>
-      _id_WIFI_WATCHDOG_PING_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_PING_COUNT =>
+      _id_WIFI_WATCHDOG_PING_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_PING_DELAY_MS = _class.staticFieldId(
     r'WIFI_WATCHDOG_PING_DELAY_MS',
@@ -1796,8 +1844,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_PING_DELAY_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_PING_DELAY_MS =>
-      _id_WIFI_WATCHDOG_PING_DELAY_MS.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_PING_DELAY_MS =>
+      _id_WIFI_WATCHDOG_PING_DELAY_MS.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_PING_TIMEOUT_MS = _class.staticFieldId(
     r'WIFI_WATCHDOG_PING_TIMEOUT_MS',
@@ -1806,8 +1854,8 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_PING_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_PING_TIMEOUT_MS =>
-      _id_WIFI_WATCHDOG_PING_TIMEOUT_MS.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_PING_TIMEOUT_MS =>
+      _id_WIFI_WATCHDOG_PING_TIMEOUT_MS.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_WATCH_LIST = _class.staticFieldId(
     r'WIFI_WATCHDOG_WATCH_LIST',
@@ -1816,30 +1864,30 @@ class Settings_Secure extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_WATCH_LIST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_WATCH_LIST =>
-      _id_WIFI_WATCHDOG_WATCH_LIST.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_WATCH_LIST =>
+      _id_WIFI_WATCHDOG_WATCH_LIST.get(_class, const _$jni.JStringType());
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Settings_Secure() {
     return Settings_Secure.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
@@ -1848,97 +1896,100 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;',
   );
 
-  static final _getString = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getString = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public java.lang.String getString(android.content.ContentResolver contentResolver, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString getString(
+  static _$jni.JString getString(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _getString(
             _class.reference.pointer,
-            _id_getString as jni.JMethodIDPtr,
+            _id_getString as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JStringType());
+        .object(const _$jni.JStringType());
   }
 
-  static final _id_putString1 = _class.staticMethodId(
+  static final _id_putString = _class.staticMethodId(
     r'putString',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z',
   );
 
-  static final _putString1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putString = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean putString(android.content.ContentResolver contentResolver, java.lang.String string, java.lang.String string1)`
-  static bool putString1(
+  static bool putString(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
-    jni.JString string1,
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
-    return _putString1(
+    return _putString(
             _class.reference.pointer,
-            _id_putString1 as jni.JMethodIDPtr,
+            _id_putString as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer,
             string1.reference.pointer)
         .boolean;
   }
 
-  static final _id_getUriFor1 = _class.staticMethodId(
+  static final _id_getUriFor$1 = _class.staticMethodId(
     r'getUriFor',
     r'(Ljava/lang/String;)Landroid/net/Uri;',
   );
 
-  static final _getUriFor1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getUriFor$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.net.Uri getUriFor(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static uri_.Uri getUriFor1(
-    jni.JString string,
+  static uri_.Uri getUriFor$1(
+    _$jni.JString string,
   ) {
-    return _getUriFor1(_class.reference.pointer,
-            _id_getUriFor1 as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const uri_.$UriType());
+    return _getUriFor$1(_class.reference.pointer,
+            _id_getUriFor$1 as _$jni.JMethodIDPtr, string.reference.pointer)
+        .object(const uri_.$Uri$Type());
   }
 
   static final _id_getInt = _class.staticMethodId(
@@ -1946,58 +1997,68 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;I)I',
   );
 
-  static final _getInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getInt = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static int getInt(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    return _getInt(_class.reference.pointer, _id_getInt as jni.JMethodIDPtr,
+    return _getInt(_class.reference.pointer, _id_getInt as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, i)
         .integer;
   }
 
-  static final _id_getInt1 = _class.staticMethodId(
+  static final _id_getInt$1 = _class.staticMethodId(
     r'getInt',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)I',
   );
 
-  static final _getInt1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getInt$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static int getInt1(
+  static int getInt$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getInt1(_class.reference.pointer, _id_getInt1 as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer)
+    return _getInt$1(
+            _class.reference.pointer,
+            _id_getInt$1 as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer)
         .integer;
   }
 
@@ -2006,28 +2067,32 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;I)Z',
   );
 
-  static final _putInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putInt = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public boolean putInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static bool putInt(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    return _putInt(_class.reference.pointer, _id_putInt as jni.JMethodIDPtr,
+    return _putInt(_class.reference.pointer, _id_putInt as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, i)
         .boolean;
   }
@@ -2037,58 +2102,68 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;J)J',
   );
 
-  static final _getLong = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getLong = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticLongMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static int getLong(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int j,
   ) {
-    return _getLong(_class.reference.pointer, _id_getLong as jni.JMethodIDPtr,
+    return _getLong(_class.reference.pointer, _id_getLong as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, j)
         .long;
   }
 
-  static final _id_getLong1 = _class.staticMethodId(
+  static final _id_getLong$1 = _class.staticMethodId(
     r'getLong',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)J',
   );
 
-  static final _getLong1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getLong$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticLongMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static int getLong1(
+  static int getLong$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getLong1(_class.reference.pointer, _id_getLong1 as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer)
+    return _getLong$1(
+            _class.reference.pointer,
+            _id_getLong$1 as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer)
         .long;
   }
 
@@ -2097,28 +2172,32 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;J)Z',
   );
 
-  static final _putLong = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putLong = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public boolean putLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static bool putLong(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int j,
   ) {
-    return _putLong(_class.reference.pointer, _id_putLong as jni.JMethodIDPtr,
+    return _putLong(_class.reference.pointer, _id_putLong as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, j)
         .boolean;
   }
@@ -2128,59 +2207,70 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;F)F',
   );
 
-  static final _getFloat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getFloat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Double
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Double
                       )>)>>('globalEnv_CallStaticFloatMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, double)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              double)>();
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static double getFloat(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     double f,
   ) {
-    return _getFloat(_class.reference.pointer, _id_getFloat as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer, f)
+    return _getFloat(
+            _class.reference.pointer,
+            _id_getFloat as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer,
+            f)
         .float;
   }
 
-  static final _id_getFloat1 = _class.staticMethodId(
+  static final _id_getFloat$1 = _class.staticMethodId(
     r'getFloat',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)F',
   );
 
-  static final _getFloat1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getFloat$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticFloatMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static double getFloat1(
+  static double getFloat$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getFloat1(
+    return _getFloat$1(
             _class.reference.pointer,
-            _id_getFloat1 as jni.JMethodIDPtr,
+            _id_getFloat$1 as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
         .float;
@@ -2191,29 +2281,37 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;F)Z',
   );
 
-  static final _putFloat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putFloat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Double
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Double
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, double)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              double)>();
 
   /// from: `static public boolean putFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static bool putFloat(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     double f,
   ) {
-    return _putFloat(_class.reference.pointer, _id_putFloat as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer, f)
+    return _putFloat(
+            _class.reference.pointer,
+            _id_putFloat as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer,
+            f)
         .boolean;
   }
 
@@ -2222,28 +2320,31 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)Z',
   );
 
-  static final _isLocationProviderEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _isLocationProviderEnabled = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean isLocationProviderEnabled(android.content.ContentResolver contentResolver, java.lang.String string)`
   static bool isLocationProviderEnabled(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _isLocationProviderEnabled(
             _class.reference.pointer,
-            _id_isLocationProviderEnabled as jni.JMethodIDPtr,
+            _id_isLocationProviderEnabled as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
         .boolean;
@@ -2254,30 +2355,35 @@ class Settings_Secure extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;Z)V',
   );
 
-  static final _setLocationProviderEnabled = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
-                      )>)>>('globalEnv_CallStaticVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+  static final _setLocationProviderEnabled =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallStaticVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  int)>();
 
   /// from: `static public void setLocationProviderEnabled(android.content.ContentResolver contentResolver, java.lang.String string, boolean z)`
   static void setLocationProviderEnabled(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     bool z,
   ) {
     _setLocationProviderEnabled(
             _class.reference.pointer,
-            _id_setLocationProviderEnabled as jni.JMethodIDPtr,
+            _id_setLocationProviderEnabled as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer,
             z ? 1 : 0)
@@ -2285,115 +2391,132 @@ class Settings_Secure extends Settings_NameValueTable {
   }
 }
 
-final class $Settings_SecureType extends jni.JObjType<Settings_Secure> {
-  const $Settings_SecureType();
+final class $Settings_Secure$Type extends _$jni.JObjType<Settings_Secure> {
+  @_$jni.internal
+  const $Settings_Secure$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/provider/Settings$Secure;';
 
-  @override
-  Settings_Secure fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings_Secure fromReference(_$jni.JReference reference) =>
       Settings_Secure.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const $Settings_NameValueTableType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const $Settings_NameValueTable$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 2;
 
-  @override
-  int get hashCode => ($Settings_SecureType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings_Secure$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Settings_SecureType) &&
-        other is $Settings_SecureType;
+    return other.runtimeType == ($Settings_Secure$Type) &&
+        other is $Settings_Secure$Type;
   }
 }
 
 /// from: `android.provider.Settings$SettingNotFoundException`
-class Settings_SettingNotFoundException extends jni.JObject {
-  @override
-  late final jni.JObjType<Settings_SettingNotFoundException> $type = type;
+class Settings_SettingNotFoundException extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings_SettingNotFoundException> $type;
 
+  @_$jni.internal
   Settings_SettingNotFoundException.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class =
-      jni.JClass.forName(r'android/provider/Settings$SettingNotFoundException');
+  static final _class = _$jni.JClass.forName(
+      r'android/provider/Settings$SettingNotFoundException');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Settings_SettingNotFoundExceptionType();
-  static final _id_new0 = _class.constructorId(
+  static const type = $Settings_SettingNotFoundException$Type();
+  static final _id_new$ = _class.constructorId(
     r'(Ljava/lang/String;)V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
   factory Settings_SettingNotFoundException(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return Settings_SettingNotFoundException.fromReference(_new0(
+    return Settings_SettingNotFoundException.fromReference(_new$(
             _class.reference.pointer,
-            _id_new0 as jni.JMethodIDPtr,
+            _id_new$ as _$jni.JMethodIDPtr,
             string.reference.pointer)
         .reference);
   }
 }
 
-final class $Settings_SettingNotFoundExceptionType
-    extends jni.JObjType<Settings_SettingNotFoundException> {
-  const $Settings_SettingNotFoundExceptionType();
+final class $Settings_SettingNotFoundException$Type
+    extends _$jni.JObjType<Settings_SettingNotFoundException> {
+  @_$jni.internal
+  const $Settings_SettingNotFoundException$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/provider/Settings$SettingNotFoundException;';
 
-  @override
-  Settings_SettingNotFoundException fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings_SettingNotFoundException fromReference(_$jni.JReference reference) =>
       Settings_SettingNotFoundException.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Settings_SettingNotFoundExceptionType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings_SettingNotFoundException$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Settings_SettingNotFoundExceptionType) &&
-        other is $Settings_SettingNotFoundExceptionType;
+    return other.runtimeType == ($Settings_SettingNotFoundException$Type) &&
+        other is $Settings_SettingNotFoundException$Type;
   }
 }
 
 /// from: `android.provider.Settings$System`
 class Settings_System extends Settings_NameValueTable {
-  @override
-  late final jni.JObjType<Settings_System> $type = type;
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings_System> $type;
 
+  @_$jni.internal
   Settings_System.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/provider/Settings$System');
+  static final _class =
+      _$jni.JClass.forName(r'android/provider/Settings$System');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Settings_SystemType();
+  static const type = $Settings_System$Type();
   static final _id_ACCELEROMETER_ROTATION = _class.staticFieldId(
     r'ACCELEROMETER_ROTATION',
     r'Ljava/lang/String;',
@@ -2401,8 +2524,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ACCELEROMETER_ROTATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACCELEROMETER_ROTATION =>
-      _id_ACCELEROMETER_ROTATION.get(_class, const jni.JStringType());
+  static _$jni.JString get ACCELEROMETER_ROTATION =>
+      _id_ACCELEROMETER_ROTATION.get(_class, const _$jni.JStringType());
 
   static final _id_ADB_ENABLED = _class.staticFieldId(
     r'ADB_ENABLED',
@@ -2411,8 +2534,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ADB_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ADB_ENABLED =>
-      _id_ADB_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get ADB_ENABLED =>
+      _id_ADB_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_AIRPLANE_MODE_ON = _class.staticFieldId(
     r'AIRPLANE_MODE_ON',
@@ -2421,8 +2544,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AIRPLANE_MODE_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AIRPLANE_MODE_ON =>
-      _id_AIRPLANE_MODE_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get AIRPLANE_MODE_ON =>
+      _id_AIRPLANE_MODE_ON.get(_class, const _$jni.JStringType());
 
   static final _id_AIRPLANE_MODE_RADIOS = _class.staticFieldId(
     r'AIRPLANE_MODE_RADIOS',
@@ -2431,8 +2554,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AIRPLANE_MODE_RADIOS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AIRPLANE_MODE_RADIOS =>
-      _id_AIRPLANE_MODE_RADIOS.get(_class, const jni.JStringType());
+  static _$jni.JString get AIRPLANE_MODE_RADIOS =>
+      _id_AIRPLANE_MODE_RADIOS.get(_class, const _$jni.JStringType());
 
   static final _id_ALARM_ALERT = _class.staticFieldId(
     r'ALARM_ALERT',
@@ -2441,8 +2564,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ALARM_ALERT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ALARM_ALERT =>
-      _id_ALARM_ALERT.get(_class, const jni.JStringType());
+  static _$jni.JString get ALARM_ALERT =>
+      _id_ALARM_ALERT.get(_class, const _$jni.JStringType());
 
   static final _id_ALWAYS_FINISH_ACTIVITIES = _class.staticFieldId(
     r'ALWAYS_FINISH_ACTIVITIES',
@@ -2451,8 +2574,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ALWAYS_FINISH_ACTIVITIES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ALWAYS_FINISH_ACTIVITIES =>
-      _id_ALWAYS_FINISH_ACTIVITIES.get(_class, const jni.JStringType());
+  static _$jni.JString get ALWAYS_FINISH_ACTIVITIES =>
+      _id_ALWAYS_FINISH_ACTIVITIES.get(_class, const _$jni.JStringType());
 
   static final _id_ANDROID_ID = _class.staticFieldId(
     r'ANDROID_ID',
@@ -2461,8 +2584,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ANDROID_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ANDROID_ID =>
-      _id_ANDROID_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get ANDROID_ID =>
+      _id_ANDROID_ID.get(_class, const _$jni.JStringType());
 
   static final _id_ANIMATOR_DURATION_SCALE = _class.staticFieldId(
     r'ANIMATOR_DURATION_SCALE',
@@ -2471,8 +2594,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String ANIMATOR_DURATION_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ANIMATOR_DURATION_SCALE =>
-      _id_ANIMATOR_DURATION_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get ANIMATOR_DURATION_SCALE =>
+      _id_ANIMATOR_DURATION_SCALE.get(_class, const _$jni.JStringType());
 
   static final _id_AUTO_TIME = _class.staticFieldId(
     r'AUTO_TIME',
@@ -2481,8 +2604,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AUTO_TIME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AUTO_TIME =>
-      _id_AUTO_TIME.get(_class, const jni.JStringType());
+  static _$jni.JString get AUTO_TIME =>
+      _id_AUTO_TIME.get(_class, const _$jni.JStringType());
 
   static final _id_AUTO_TIME_ZONE = _class.staticFieldId(
     r'AUTO_TIME_ZONE',
@@ -2491,8 +2614,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String AUTO_TIME_ZONE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AUTO_TIME_ZONE =>
-      _id_AUTO_TIME_ZONE.get(_class, const jni.JStringType());
+  static _$jni.JString get AUTO_TIME_ZONE =>
+      _id_AUTO_TIME_ZONE.get(_class, const _$jni.JStringType());
 
   static final _id_BLUETOOTH_DISCOVERABILITY = _class.staticFieldId(
     r'BLUETOOTH_DISCOVERABILITY',
@@ -2501,8 +2624,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BLUETOOTH_DISCOVERABILITY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BLUETOOTH_DISCOVERABILITY =>
-      _id_BLUETOOTH_DISCOVERABILITY.get(_class, const jni.JStringType());
+  static _$jni.JString get BLUETOOTH_DISCOVERABILITY =>
+      _id_BLUETOOTH_DISCOVERABILITY.get(_class, const _$jni.JStringType());
 
   static final _id_BLUETOOTH_DISCOVERABILITY_TIMEOUT = _class.staticFieldId(
     r'BLUETOOTH_DISCOVERABILITY_TIMEOUT',
@@ -2511,9 +2634,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BLUETOOTH_DISCOVERABILITY_TIMEOUT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BLUETOOTH_DISCOVERABILITY_TIMEOUT =>
+  static _$jni.JString get BLUETOOTH_DISCOVERABILITY_TIMEOUT =>
       _id_BLUETOOTH_DISCOVERABILITY_TIMEOUT.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_BLUETOOTH_ON = _class.staticFieldId(
     r'BLUETOOTH_ON',
@@ -2522,8 +2645,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String BLUETOOTH_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BLUETOOTH_ON =>
-      _id_BLUETOOTH_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get BLUETOOTH_ON =>
+      _id_BLUETOOTH_ON.get(_class, const _$jni.JStringType());
 
   static final _id_CONTENT_URI = _class.staticFieldId(
     r'CONTENT_URI',
@@ -2533,7 +2656,7 @@ class Settings_System extends Settings_NameValueTable {
   /// from: `static public final android.net.Uri CONTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri get CONTENT_URI =>
-      _id_CONTENT_URI.get(_class, const uri_.$UriType());
+      _id_CONTENT_URI.get(_class, const uri_.$Uri$Type());
 
   static final _id_DATA_ROAMING = _class.staticFieldId(
     r'DATA_ROAMING',
@@ -2542,8 +2665,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DATA_ROAMING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DATA_ROAMING =>
-      _id_DATA_ROAMING.get(_class, const jni.JStringType());
+  static _$jni.JString get DATA_ROAMING =>
+      _id_DATA_ROAMING.get(_class, const _$jni.JStringType());
 
   static final _id_DATE_FORMAT = _class.staticFieldId(
     r'DATE_FORMAT',
@@ -2552,8 +2675,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DATE_FORMAT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DATE_FORMAT =>
-      _id_DATE_FORMAT.get(_class, const jni.JStringType());
+  static _$jni.JString get DATE_FORMAT =>
+      _id_DATE_FORMAT.get(_class, const _$jni.JStringType());
 
   static final _id_DEBUG_APP = _class.staticFieldId(
     r'DEBUG_APP',
@@ -2562,8 +2685,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEBUG_APP`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEBUG_APP =>
-      _id_DEBUG_APP.get(_class, const jni.JStringType());
+  static _$jni.JString get DEBUG_APP =>
+      _id_DEBUG_APP.get(_class, const _$jni.JStringType());
 
   static final _id_DEFAULT_ALARM_ALERT_URI = _class.staticFieldId(
     r'DEFAULT_ALARM_ALERT_URI',
@@ -2573,7 +2696,7 @@ class Settings_System extends Settings_NameValueTable {
   /// from: `static public final android.net.Uri DEFAULT_ALARM_ALERT_URI`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri get DEFAULT_ALARM_ALERT_URI =>
-      _id_DEFAULT_ALARM_ALERT_URI.get(_class, const uri_.$UriType());
+      _id_DEFAULT_ALARM_ALERT_URI.get(_class, const uri_.$Uri$Type());
 
   static final _id_DEFAULT_NOTIFICATION_URI = _class.staticFieldId(
     r'DEFAULT_NOTIFICATION_URI',
@@ -2583,7 +2706,7 @@ class Settings_System extends Settings_NameValueTable {
   /// from: `static public final android.net.Uri DEFAULT_NOTIFICATION_URI`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri get DEFAULT_NOTIFICATION_URI =>
-      _id_DEFAULT_NOTIFICATION_URI.get(_class, const uri_.$UriType());
+      _id_DEFAULT_NOTIFICATION_URI.get(_class, const uri_.$Uri$Type());
 
   static final _id_DEFAULT_RINGTONE_URI = _class.staticFieldId(
     r'DEFAULT_RINGTONE_URI',
@@ -2593,7 +2716,7 @@ class Settings_System extends Settings_NameValueTable {
   /// from: `static public final android.net.Uri DEFAULT_RINGTONE_URI`
   /// The returned object must be released after use, by calling the [release] method.
   static uri_.Uri get DEFAULT_RINGTONE_URI =>
-      _id_DEFAULT_RINGTONE_URI.get(_class, const uri_.$UriType());
+      _id_DEFAULT_RINGTONE_URI.get(_class, const uri_.$Uri$Type());
 
   static final _id_DEVICE_PROVISIONED = _class.staticFieldId(
     r'DEVICE_PROVISIONED',
@@ -2602,8 +2725,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DEVICE_PROVISIONED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVICE_PROVISIONED =>
-      _id_DEVICE_PROVISIONED.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVICE_PROVISIONED =>
+      _id_DEVICE_PROVISIONED.get(_class, const _$jni.JStringType());
 
   static final _id_DIM_SCREEN = _class.staticFieldId(
     r'DIM_SCREEN',
@@ -2612,8 +2735,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DIM_SCREEN`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DIM_SCREEN =>
-      _id_DIM_SCREEN.get(_class, const jni.JStringType());
+  static _$jni.JString get DIM_SCREEN =>
+      _id_DIM_SCREEN.get(_class, const _$jni.JStringType());
 
   static final _id_DTMF_TONE_TYPE_WHEN_DIALING = _class.staticFieldId(
     r'DTMF_TONE_TYPE_WHEN_DIALING',
@@ -2622,8 +2745,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DTMF_TONE_TYPE_WHEN_DIALING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DTMF_TONE_TYPE_WHEN_DIALING =>
-      _id_DTMF_TONE_TYPE_WHEN_DIALING.get(_class, const jni.JStringType());
+  static _$jni.JString get DTMF_TONE_TYPE_WHEN_DIALING =>
+      _id_DTMF_TONE_TYPE_WHEN_DIALING.get(_class, const _$jni.JStringType());
 
   static final _id_DTMF_TONE_WHEN_DIALING = _class.staticFieldId(
     r'DTMF_TONE_WHEN_DIALING',
@@ -2632,8 +2755,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String DTMF_TONE_WHEN_DIALING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DTMF_TONE_WHEN_DIALING =>
-      _id_DTMF_TONE_WHEN_DIALING.get(_class, const jni.JStringType());
+  static _$jni.JString get DTMF_TONE_WHEN_DIALING =>
+      _id_DTMF_TONE_WHEN_DIALING.get(_class, const _$jni.JStringType());
 
   static final _id_END_BUTTON_BEHAVIOR = _class.staticFieldId(
     r'END_BUTTON_BEHAVIOR',
@@ -2642,8 +2765,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String END_BUTTON_BEHAVIOR`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get END_BUTTON_BEHAVIOR =>
-      _id_END_BUTTON_BEHAVIOR.get(_class, const jni.JStringType());
+  static _$jni.JString get END_BUTTON_BEHAVIOR =>
+      _id_END_BUTTON_BEHAVIOR.get(_class, const _$jni.JStringType());
 
   static final _id_FONT_SCALE = _class.staticFieldId(
     r'FONT_SCALE',
@@ -2652,8 +2775,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String FONT_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get FONT_SCALE =>
-      _id_FONT_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get FONT_SCALE =>
+      _id_FONT_SCALE.get(_class, const _$jni.JStringType());
 
   static final _id_HAPTIC_FEEDBACK_ENABLED = _class.staticFieldId(
     r'HAPTIC_FEEDBACK_ENABLED',
@@ -2662,8 +2785,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String HAPTIC_FEEDBACK_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get HAPTIC_FEEDBACK_ENABLED =>
-      _id_HAPTIC_FEEDBACK_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get HAPTIC_FEEDBACK_ENABLED =>
+      _id_HAPTIC_FEEDBACK_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_HTTP_PROXY = _class.staticFieldId(
     r'HTTP_PROXY',
@@ -2672,8 +2795,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String HTTP_PROXY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get HTTP_PROXY =>
-      _id_HTTP_PROXY.get(_class, const jni.JStringType());
+  static _$jni.JString get HTTP_PROXY =>
+      _id_HTTP_PROXY.get(_class, const _$jni.JStringType());
 
   static final _id_INSTALL_NON_MARKET_APPS = _class.staticFieldId(
     r'INSTALL_NON_MARKET_APPS',
@@ -2682,8 +2805,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String INSTALL_NON_MARKET_APPS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get INSTALL_NON_MARKET_APPS =>
-      _id_INSTALL_NON_MARKET_APPS.get(_class, const jni.JStringType());
+  static _$jni.JString get INSTALL_NON_MARKET_APPS =>
+      _id_INSTALL_NON_MARKET_APPS.get(_class, const _$jni.JStringType());
 
   static final _id_LOCATION_PROVIDERS_ALLOWED = _class.staticFieldId(
     r'LOCATION_PROVIDERS_ALLOWED',
@@ -2692,8 +2815,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCATION_PROVIDERS_ALLOWED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCATION_PROVIDERS_ALLOWED =>
-      _id_LOCATION_PROVIDERS_ALLOWED.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCATION_PROVIDERS_ALLOWED =>
+      _id_LOCATION_PROVIDERS_ALLOWED.get(_class, const _$jni.JStringType());
 
   static final _id_LOCK_PATTERN_ENABLED = _class.staticFieldId(
     r'LOCK_PATTERN_ENABLED',
@@ -2702,8 +2825,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCK_PATTERN_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCK_PATTERN_ENABLED =>
-      _id_LOCK_PATTERN_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCK_PATTERN_ENABLED =>
+      _id_LOCK_PATTERN_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED = _class.staticFieldId(
     r'LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED',
@@ -2712,9 +2835,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED =>
+  static _$jni.JString get LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED =>
       _id_LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_LOCK_PATTERN_VISIBLE = _class.staticFieldId(
     r'LOCK_PATTERN_VISIBLE',
@@ -2723,8 +2846,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOCK_PATTERN_VISIBLE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOCK_PATTERN_VISIBLE =>
-      _id_LOCK_PATTERN_VISIBLE.get(_class, const jni.JStringType());
+  static _$jni.JString get LOCK_PATTERN_VISIBLE =>
+      _id_LOCK_PATTERN_VISIBLE.get(_class, const _$jni.JStringType());
 
   static final _id_LOGGING_ID = _class.staticFieldId(
     r'LOGGING_ID',
@@ -2733,8 +2856,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String LOGGING_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get LOGGING_ID =>
-      _id_LOGGING_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get LOGGING_ID =>
+      _id_LOGGING_ID.get(_class, const _$jni.JStringType());
 
   static final _id_MODE_RINGER = _class.staticFieldId(
     r'MODE_RINGER',
@@ -2743,8 +2866,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String MODE_RINGER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get MODE_RINGER =>
-      _id_MODE_RINGER.get(_class, const jni.JStringType());
+  static _$jni.JString get MODE_RINGER =>
+      _id_MODE_RINGER.get(_class, const _$jni.JStringType());
 
   static final _id_MODE_RINGER_STREAMS_AFFECTED = _class.staticFieldId(
     r'MODE_RINGER_STREAMS_AFFECTED',
@@ -2753,8 +2876,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String MODE_RINGER_STREAMS_AFFECTED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get MODE_RINGER_STREAMS_AFFECTED =>
-      _id_MODE_RINGER_STREAMS_AFFECTED.get(_class, const jni.JStringType());
+  static _$jni.JString get MODE_RINGER_STREAMS_AFFECTED =>
+      _id_MODE_RINGER_STREAMS_AFFECTED.get(_class, const _$jni.JStringType());
 
   static final _id_MUTE_STREAMS_AFFECTED = _class.staticFieldId(
     r'MUTE_STREAMS_AFFECTED',
@@ -2763,8 +2886,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String MUTE_STREAMS_AFFECTED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get MUTE_STREAMS_AFFECTED =>
-      _id_MUTE_STREAMS_AFFECTED.get(_class, const jni.JStringType());
+  static _$jni.JString get MUTE_STREAMS_AFFECTED =>
+      _id_MUTE_STREAMS_AFFECTED.get(_class, const _$jni.JStringType());
 
   static final _id_NETWORK_PREFERENCE = _class.staticFieldId(
     r'NETWORK_PREFERENCE',
@@ -2773,8 +2896,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String NETWORK_PREFERENCE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NETWORK_PREFERENCE =>
-      _id_NETWORK_PREFERENCE.get(_class, const jni.JStringType());
+  static _$jni.JString get NETWORK_PREFERENCE =>
+      _id_NETWORK_PREFERENCE.get(_class, const _$jni.JStringType());
 
   static final _id_NEXT_ALARM_FORMATTED = _class.staticFieldId(
     r'NEXT_ALARM_FORMATTED',
@@ -2783,8 +2906,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String NEXT_ALARM_FORMATTED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NEXT_ALARM_FORMATTED =>
-      _id_NEXT_ALARM_FORMATTED.get(_class, const jni.JStringType());
+  static _$jni.JString get NEXT_ALARM_FORMATTED =>
+      _id_NEXT_ALARM_FORMATTED.get(_class, const _$jni.JStringType());
 
   static final _id_NOTIFICATION_SOUND = _class.staticFieldId(
     r'NOTIFICATION_SOUND',
@@ -2793,8 +2916,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String NOTIFICATION_SOUND`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NOTIFICATION_SOUND =>
-      _id_NOTIFICATION_SOUND.get(_class, const jni.JStringType());
+  static _$jni.JString get NOTIFICATION_SOUND =>
+      _id_NOTIFICATION_SOUND.get(_class, const _$jni.JStringType());
 
   static final _id_PARENTAL_CONTROL_ENABLED = _class.staticFieldId(
     r'PARENTAL_CONTROL_ENABLED',
@@ -2803,8 +2926,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String PARENTAL_CONTROL_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARENTAL_CONTROL_ENABLED =>
-      _id_PARENTAL_CONTROL_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get PARENTAL_CONTROL_ENABLED =>
+      _id_PARENTAL_CONTROL_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_PARENTAL_CONTROL_LAST_UPDATE = _class.staticFieldId(
     r'PARENTAL_CONTROL_LAST_UPDATE',
@@ -2813,8 +2936,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String PARENTAL_CONTROL_LAST_UPDATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARENTAL_CONTROL_LAST_UPDATE =>
-      _id_PARENTAL_CONTROL_LAST_UPDATE.get(_class, const jni.JStringType());
+  static _$jni.JString get PARENTAL_CONTROL_LAST_UPDATE =>
+      _id_PARENTAL_CONTROL_LAST_UPDATE.get(_class, const _$jni.JStringType());
 
   static final _id_PARENTAL_CONTROL_REDIRECT_URL = _class.staticFieldId(
     r'PARENTAL_CONTROL_REDIRECT_URL',
@@ -2823,8 +2946,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String PARENTAL_CONTROL_REDIRECT_URL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARENTAL_CONTROL_REDIRECT_URL =>
-      _id_PARENTAL_CONTROL_REDIRECT_URL.get(_class, const jni.JStringType());
+  static _$jni.JString get PARENTAL_CONTROL_REDIRECT_URL =>
+      _id_PARENTAL_CONTROL_REDIRECT_URL.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_BLUETOOTH = _class.staticFieldId(
     r'RADIO_BLUETOOTH',
@@ -2833,8 +2956,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_BLUETOOTH`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_BLUETOOTH =>
-      _id_RADIO_BLUETOOTH.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_BLUETOOTH =>
+      _id_RADIO_BLUETOOTH.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_CELL = _class.staticFieldId(
     r'RADIO_CELL',
@@ -2843,8 +2966,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_CELL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_CELL =>
-      _id_RADIO_CELL.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_CELL =>
+      _id_RADIO_CELL.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_NFC = _class.staticFieldId(
     r'RADIO_NFC',
@@ -2853,8 +2976,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_NFC`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_NFC =>
-      _id_RADIO_NFC.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_NFC =>
+      _id_RADIO_NFC.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO_WIFI = _class.staticFieldId(
     r'RADIO_WIFI',
@@ -2863,8 +2986,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RADIO_WIFI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO_WIFI =>
-      _id_RADIO_WIFI.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO_WIFI =>
+      _id_RADIO_WIFI.get(_class, const _$jni.JStringType());
 
   static final _id_RINGTONE = _class.staticFieldId(
     r'RINGTONE',
@@ -2873,8 +2996,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String RINGTONE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RINGTONE =>
-      _id_RINGTONE.get(_class, const jni.JStringType());
+  static _$jni.JString get RINGTONE =>
+      _id_RINGTONE.get(_class, const _$jni.JStringType());
 
   static final _id_SCREEN_BRIGHTNESS = _class.staticFieldId(
     r'SCREEN_BRIGHTNESS',
@@ -2883,8 +3006,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SCREEN_BRIGHTNESS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SCREEN_BRIGHTNESS =>
-      _id_SCREEN_BRIGHTNESS.get(_class, const jni.JStringType());
+  static _$jni.JString get SCREEN_BRIGHTNESS =>
+      _id_SCREEN_BRIGHTNESS.get(_class, const _$jni.JStringType());
 
   static final _id_SCREEN_BRIGHTNESS_MODE = _class.staticFieldId(
     r'SCREEN_BRIGHTNESS_MODE',
@@ -2893,8 +3016,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SCREEN_BRIGHTNESS_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SCREEN_BRIGHTNESS_MODE =>
-      _id_SCREEN_BRIGHTNESS_MODE.get(_class, const jni.JStringType());
+  static _$jni.JString get SCREEN_BRIGHTNESS_MODE =>
+      _id_SCREEN_BRIGHTNESS_MODE.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int SCREEN_BRIGHTNESS_MODE_AUTOMATIC`
   static const SCREEN_BRIGHTNESS_MODE_AUTOMATIC = 1;
@@ -2908,8 +3031,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SCREEN_OFF_TIMEOUT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SCREEN_OFF_TIMEOUT =>
-      _id_SCREEN_OFF_TIMEOUT.get(_class, const jni.JStringType());
+  static _$jni.JString get SCREEN_OFF_TIMEOUT =>
+      _id_SCREEN_OFF_TIMEOUT.get(_class, const _$jni.JStringType());
 
   static final _id_SETTINGS_CLASSNAME = _class.staticFieldId(
     r'SETTINGS_CLASSNAME',
@@ -2918,8 +3041,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SETTINGS_CLASSNAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SETTINGS_CLASSNAME =>
-      _id_SETTINGS_CLASSNAME.get(_class, const jni.JStringType());
+  static _$jni.JString get SETTINGS_CLASSNAME =>
+      _id_SETTINGS_CLASSNAME.get(_class, const _$jni.JStringType());
 
   static final _id_SETUP_WIZARD_HAS_RUN = _class.staticFieldId(
     r'SETUP_WIZARD_HAS_RUN',
@@ -2928,8 +3051,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SETUP_WIZARD_HAS_RUN`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SETUP_WIZARD_HAS_RUN =>
-      _id_SETUP_WIZARD_HAS_RUN.get(_class, const jni.JStringType());
+  static _$jni.JString get SETUP_WIZARD_HAS_RUN =>
+      _id_SETUP_WIZARD_HAS_RUN.get(_class, const _$jni.JStringType());
 
   static final _id_SHOW_GTALK_SERVICE_STATUS = _class.staticFieldId(
     r'SHOW_GTALK_SERVICE_STATUS',
@@ -2938,8 +3061,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SHOW_GTALK_SERVICE_STATUS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SHOW_GTALK_SERVICE_STATUS =>
-      _id_SHOW_GTALK_SERVICE_STATUS.get(_class, const jni.JStringType());
+  static _$jni.JString get SHOW_GTALK_SERVICE_STATUS =>
+      _id_SHOW_GTALK_SERVICE_STATUS.get(_class, const _$jni.JStringType());
 
   static final _id_SHOW_PROCESSES = _class.staticFieldId(
     r'SHOW_PROCESSES',
@@ -2948,8 +3071,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SHOW_PROCESSES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SHOW_PROCESSES =>
-      _id_SHOW_PROCESSES.get(_class, const jni.JStringType());
+  static _$jni.JString get SHOW_PROCESSES =>
+      _id_SHOW_PROCESSES.get(_class, const _$jni.JStringType());
 
   static final _id_SHOW_WEB_SUGGESTIONS = _class.staticFieldId(
     r'SHOW_WEB_SUGGESTIONS',
@@ -2958,8 +3081,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SHOW_WEB_SUGGESTIONS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SHOW_WEB_SUGGESTIONS =>
-      _id_SHOW_WEB_SUGGESTIONS.get(_class, const jni.JStringType());
+  static _$jni.JString get SHOW_WEB_SUGGESTIONS =>
+      _id_SHOW_WEB_SUGGESTIONS.get(_class, const _$jni.JStringType());
 
   static final _id_SOUND_EFFECTS_ENABLED = _class.staticFieldId(
     r'SOUND_EFFECTS_ENABLED',
@@ -2968,8 +3091,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String SOUND_EFFECTS_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SOUND_EFFECTS_ENABLED =>
-      _id_SOUND_EFFECTS_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get SOUND_EFFECTS_ENABLED =>
+      _id_SOUND_EFFECTS_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_STAY_ON_WHILE_PLUGGED_IN = _class.staticFieldId(
     r'STAY_ON_WHILE_PLUGGED_IN',
@@ -2978,8 +3101,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String STAY_ON_WHILE_PLUGGED_IN`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get STAY_ON_WHILE_PLUGGED_IN =>
-      _id_STAY_ON_WHILE_PLUGGED_IN.get(_class, const jni.JStringType());
+  static _$jni.JString get STAY_ON_WHILE_PLUGGED_IN =>
+      _id_STAY_ON_WHILE_PLUGGED_IN.get(_class, const _$jni.JStringType());
 
   static final _id_TEXT_AUTO_CAPS = _class.staticFieldId(
     r'TEXT_AUTO_CAPS',
@@ -2988,8 +3111,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TEXT_AUTO_CAPS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TEXT_AUTO_CAPS =>
-      _id_TEXT_AUTO_CAPS.get(_class, const jni.JStringType());
+  static _$jni.JString get TEXT_AUTO_CAPS =>
+      _id_TEXT_AUTO_CAPS.get(_class, const _$jni.JStringType());
 
   static final _id_TEXT_AUTO_PUNCTUATE = _class.staticFieldId(
     r'TEXT_AUTO_PUNCTUATE',
@@ -2998,8 +3121,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TEXT_AUTO_PUNCTUATE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TEXT_AUTO_PUNCTUATE =>
-      _id_TEXT_AUTO_PUNCTUATE.get(_class, const jni.JStringType());
+  static _$jni.JString get TEXT_AUTO_PUNCTUATE =>
+      _id_TEXT_AUTO_PUNCTUATE.get(_class, const _$jni.JStringType());
 
   static final _id_TEXT_AUTO_REPLACE = _class.staticFieldId(
     r'TEXT_AUTO_REPLACE',
@@ -3008,8 +3131,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TEXT_AUTO_REPLACE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TEXT_AUTO_REPLACE =>
-      _id_TEXT_AUTO_REPLACE.get(_class, const jni.JStringType());
+  static _$jni.JString get TEXT_AUTO_REPLACE =>
+      _id_TEXT_AUTO_REPLACE.get(_class, const _$jni.JStringType());
 
   static final _id_TEXT_SHOW_PASSWORD = _class.staticFieldId(
     r'TEXT_SHOW_PASSWORD',
@@ -3018,8 +3141,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TEXT_SHOW_PASSWORD`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TEXT_SHOW_PASSWORD =>
-      _id_TEXT_SHOW_PASSWORD.get(_class, const jni.JStringType());
+  static _$jni.JString get TEXT_SHOW_PASSWORD =>
+      _id_TEXT_SHOW_PASSWORD.get(_class, const _$jni.JStringType());
 
   static final _id_TIME_12_24 = _class.staticFieldId(
     r'TIME_12_24',
@@ -3028,8 +3151,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TIME_12_24`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TIME_12_24 =>
-      _id_TIME_12_24.get(_class, const jni.JStringType());
+  static _$jni.JString get TIME_12_24 =>
+      _id_TIME_12_24.get(_class, const _$jni.JStringType());
 
   static final _id_TRANSITION_ANIMATION_SCALE = _class.staticFieldId(
     r'TRANSITION_ANIMATION_SCALE',
@@ -3038,8 +3161,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String TRANSITION_ANIMATION_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TRANSITION_ANIMATION_SCALE =>
-      _id_TRANSITION_ANIMATION_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get TRANSITION_ANIMATION_SCALE =>
+      _id_TRANSITION_ANIMATION_SCALE.get(_class, const _$jni.JStringType());
 
   static final _id_USB_MASS_STORAGE_ENABLED = _class.staticFieldId(
     r'USB_MASS_STORAGE_ENABLED',
@@ -3048,8 +3171,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USB_MASS_STORAGE_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USB_MASS_STORAGE_ENABLED =>
-      _id_USB_MASS_STORAGE_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get USB_MASS_STORAGE_ENABLED =>
+      _id_USB_MASS_STORAGE_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_USER_ROTATION = _class.staticFieldId(
     r'USER_ROTATION',
@@ -3058,8 +3181,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USER_ROTATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USER_ROTATION =>
-      _id_USER_ROTATION.get(_class, const jni.JStringType());
+  static _$jni.JString get USER_ROTATION =>
+      _id_USER_ROTATION.get(_class, const _$jni.JStringType());
 
   static final _id_USE_GOOGLE_MAIL = _class.staticFieldId(
     r'USE_GOOGLE_MAIL',
@@ -3068,8 +3191,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String USE_GOOGLE_MAIL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USE_GOOGLE_MAIL =>
-      _id_USE_GOOGLE_MAIL.get(_class, const jni.JStringType());
+  static _$jni.JString get USE_GOOGLE_MAIL =>
+      _id_USE_GOOGLE_MAIL.get(_class, const _$jni.JStringType());
 
   static final _id_VIBRATE_ON = _class.staticFieldId(
     r'VIBRATE_ON',
@@ -3078,8 +3201,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String VIBRATE_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get VIBRATE_ON =>
-      _id_VIBRATE_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get VIBRATE_ON =>
+      _id_VIBRATE_ON.get(_class, const _$jni.JStringType());
 
   static final _id_VIBRATE_WHEN_RINGING = _class.staticFieldId(
     r'VIBRATE_WHEN_RINGING',
@@ -3088,8 +3211,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String VIBRATE_WHEN_RINGING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get VIBRATE_WHEN_RINGING =>
-      _id_VIBRATE_WHEN_RINGING.get(_class, const jni.JStringType());
+  static _$jni.JString get VIBRATE_WHEN_RINGING =>
+      _id_VIBRATE_WHEN_RINGING.get(_class, const _$jni.JStringType());
 
   static final _id_WAIT_FOR_DEBUGGER = _class.staticFieldId(
     r'WAIT_FOR_DEBUGGER',
@@ -3098,8 +3221,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WAIT_FOR_DEBUGGER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WAIT_FOR_DEBUGGER =>
-      _id_WAIT_FOR_DEBUGGER.get(_class, const jni.JStringType());
+  static _$jni.JString get WAIT_FOR_DEBUGGER =>
+      _id_WAIT_FOR_DEBUGGER.get(_class, const _$jni.JStringType());
 
   static final _id_WALLPAPER_ACTIVITY = _class.staticFieldId(
     r'WALLPAPER_ACTIVITY',
@@ -3108,8 +3231,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WALLPAPER_ACTIVITY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WALLPAPER_ACTIVITY =>
-      _id_WALLPAPER_ACTIVITY.get(_class, const jni.JStringType());
+  static _$jni.JString get WALLPAPER_ACTIVITY =>
+      _id_WALLPAPER_ACTIVITY.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_MAX_DHCP_RETRY_COUNT = _class.staticFieldId(
     r'WIFI_MAX_DHCP_RETRY_COUNT',
@@ -3118,8 +3241,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_MAX_DHCP_RETRY_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_MAX_DHCP_RETRY_COUNT =>
-      _id_WIFI_MAX_DHCP_RETRY_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_MAX_DHCP_RETRY_COUNT =>
+      _id_WIFI_MAX_DHCP_RETRY_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =
       _class.staticFieldId(
@@ -3129,9 +3252,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =>
+  static _$jni.JString get WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS =>
       _id_WIFI_MOBILE_DATA_TRANSITION_WAKELOCK_TIMEOUT_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =
       _class.staticFieldId(
@@ -3141,9 +3264,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =>
+  static _$jni.JString get WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON =>
       _id_WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY = _class.staticFieldId(
     r'WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY',
@@ -3152,9 +3275,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY =>
+  static _$jni.JString get WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY =>
       _id_WIFI_NETWORKS_AVAILABLE_REPEAT_DELAY.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_NUM_OPEN_NETWORKS_KEPT = _class.staticFieldId(
     r'WIFI_NUM_OPEN_NETWORKS_KEPT',
@@ -3163,8 +3286,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_NUM_OPEN_NETWORKS_KEPT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_NUM_OPEN_NETWORKS_KEPT =>
-      _id_WIFI_NUM_OPEN_NETWORKS_KEPT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_NUM_OPEN_NETWORKS_KEPT =>
+      _id_WIFI_NUM_OPEN_NETWORKS_KEPT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_ON = _class.staticFieldId(
     r'WIFI_ON',
@@ -3173,8 +3296,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_ON =>
-      _id_WIFI_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_ON =>
+      _id_WIFI_ON.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_SLEEP_POLICY = _class.staticFieldId(
     r'WIFI_SLEEP_POLICY',
@@ -3183,8 +3306,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_SLEEP_POLICY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_SLEEP_POLICY =>
-      _id_WIFI_SLEEP_POLICY.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_SLEEP_POLICY =>
+      _id_WIFI_SLEEP_POLICY.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int WIFI_SLEEP_POLICY_DEFAULT`
   static const WIFI_SLEEP_POLICY_DEFAULT = 0;
@@ -3201,8 +3324,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_STATIC_DNS1`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_STATIC_DNS1 =>
-      _id_WIFI_STATIC_DNS1.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_STATIC_DNS1 =>
+      _id_WIFI_STATIC_DNS1.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_STATIC_DNS2 = _class.staticFieldId(
     r'WIFI_STATIC_DNS2',
@@ -3211,8 +3334,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_STATIC_DNS2`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_STATIC_DNS2 =>
-      _id_WIFI_STATIC_DNS2.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_STATIC_DNS2 =>
+      _id_WIFI_STATIC_DNS2.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_STATIC_GATEWAY = _class.staticFieldId(
     r'WIFI_STATIC_GATEWAY',
@@ -3221,8 +3344,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_STATIC_GATEWAY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_STATIC_GATEWAY =>
-      _id_WIFI_STATIC_GATEWAY.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_STATIC_GATEWAY =>
+      _id_WIFI_STATIC_GATEWAY.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_STATIC_IP = _class.staticFieldId(
     r'WIFI_STATIC_IP',
@@ -3231,8 +3354,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_STATIC_IP`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_STATIC_IP =>
-      _id_WIFI_STATIC_IP.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_STATIC_IP =>
+      _id_WIFI_STATIC_IP.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_STATIC_NETMASK = _class.staticFieldId(
     r'WIFI_STATIC_NETMASK',
@@ -3241,8 +3364,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_STATIC_NETMASK`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_STATIC_NETMASK =>
-      _id_WIFI_STATIC_NETMASK.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_STATIC_NETMASK =>
+      _id_WIFI_STATIC_NETMASK.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_USE_STATIC_IP = _class.staticFieldId(
     r'WIFI_USE_STATIC_IP',
@@ -3251,8 +3374,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_USE_STATIC_IP`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_USE_STATIC_IP =>
-      _id_WIFI_USE_STATIC_IP.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_USE_STATIC_IP =>
+      _id_WIFI_USE_STATIC_IP.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE =
       _class.staticFieldId(
@@ -3262,9 +3385,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE =>
+  static _$jni.JString get WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE =>
       _id_WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_AP_COUNT = _class.staticFieldId(
     r'WIFI_WATCHDOG_AP_COUNT',
@@ -3273,8 +3396,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_AP_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_AP_COUNT =>
-      _id_WIFI_WATCHDOG_AP_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_AP_COUNT =>
+      _id_WIFI_WATCHDOG_AP_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS =
       _class.staticFieldId(
@@ -3284,9 +3407,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS =>
+  static _$jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS =>
       _id_WIFI_WATCHDOG_BACKGROUND_CHECK_DELAY_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED =
       _class.staticFieldId(
@@ -3296,9 +3419,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED =>
+  static _$jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED =>
       _id_WIFI_WATCHDOG_BACKGROUND_CHECK_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS =
       _class.staticFieldId(
@@ -3308,9 +3431,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS =>
+  static _$jni.JString get WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS =>
       _id_WIFI_WATCHDOG_BACKGROUND_CHECK_TIMEOUT_MS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT =
       _class.staticFieldId(
@@ -3320,9 +3443,9 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT =>
+  static _$jni.JString get WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT =>
       _id_WIFI_WATCHDOG_INITIAL_IGNORED_PING_COUNT.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_MAX_AP_CHECKS = _class.staticFieldId(
     r'WIFI_WATCHDOG_MAX_AP_CHECKS',
@@ -3331,8 +3454,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_MAX_AP_CHECKS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_MAX_AP_CHECKS =>
-      _id_WIFI_WATCHDOG_MAX_AP_CHECKS.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_MAX_AP_CHECKS =>
+      _id_WIFI_WATCHDOG_MAX_AP_CHECKS.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_ON = _class.staticFieldId(
     r'WIFI_WATCHDOG_ON',
@@ -3341,8 +3464,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_ON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_ON =>
-      _id_WIFI_WATCHDOG_ON.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_ON =>
+      _id_WIFI_WATCHDOG_ON.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_PING_COUNT = _class.staticFieldId(
     r'WIFI_WATCHDOG_PING_COUNT',
@@ -3351,8 +3474,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_PING_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_PING_COUNT =>
-      _id_WIFI_WATCHDOG_PING_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_PING_COUNT =>
+      _id_WIFI_WATCHDOG_PING_COUNT.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_PING_DELAY_MS = _class.staticFieldId(
     r'WIFI_WATCHDOG_PING_DELAY_MS',
@@ -3361,8 +3484,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_PING_DELAY_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_PING_DELAY_MS =>
-      _id_WIFI_WATCHDOG_PING_DELAY_MS.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_PING_DELAY_MS =>
+      _id_WIFI_WATCHDOG_PING_DELAY_MS.get(_class, const _$jni.JStringType());
 
   static final _id_WIFI_WATCHDOG_PING_TIMEOUT_MS = _class.staticFieldId(
     r'WIFI_WATCHDOG_PING_TIMEOUT_MS',
@@ -3371,8 +3494,8 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WIFI_WATCHDOG_PING_TIMEOUT_MS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WIFI_WATCHDOG_PING_TIMEOUT_MS =>
-      _id_WIFI_WATCHDOG_PING_TIMEOUT_MS.get(_class, const jni.JStringType());
+  static _$jni.JString get WIFI_WATCHDOG_PING_TIMEOUT_MS =>
+      _id_WIFI_WATCHDOG_PING_TIMEOUT_MS.get(_class, const _$jni.JStringType());
 
   static final _id_WINDOW_ANIMATION_SCALE = _class.staticFieldId(
     r'WINDOW_ANIMATION_SCALE',
@@ -3381,30 +3504,30 @@ class Settings_System extends Settings_NameValueTable {
 
   /// from: `static public final java.lang.String WINDOW_ANIMATION_SCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get WINDOW_ANIMATION_SCALE =>
-      _id_WINDOW_ANIMATION_SCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get WINDOW_ANIMATION_SCALE =>
+      _id_WINDOW_ANIMATION_SCALE.get(_class, const _$jni.JStringType());
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Settings_System() {
     return Settings_System.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
@@ -3413,97 +3536,100 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;',
   );
 
-  static final _getString = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getString = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public java.lang.String getString(android.content.ContentResolver contentResolver, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString getString(
+  static _$jni.JString getString(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _getString(
             _class.reference.pointer,
-            _id_getString as jni.JMethodIDPtr,
+            _id_getString as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JStringType());
+        .object(const _$jni.JStringType());
   }
 
-  static final _id_putString1 = _class.staticMethodId(
+  static final _id_putString = _class.staticMethodId(
     r'putString',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z',
   );
 
-  static final _putString1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putString = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean putString(android.content.ContentResolver contentResolver, java.lang.String string, java.lang.String string1)`
-  static bool putString1(
+  static bool putString(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
-    jni.JString string1,
+    _$jni.JString string,
+    _$jni.JString string1,
   ) {
-    return _putString1(
+    return _putString(
             _class.reference.pointer,
-            _id_putString1 as jni.JMethodIDPtr,
+            _id_putString as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer,
             string1.reference.pointer)
         .boolean;
   }
 
-  static final _id_getUriFor1 = _class.staticMethodId(
+  static final _id_getUriFor$1 = _class.staticMethodId(
     r'getUriFor',
     r'(Ljava/lang/String;)Landroid/net/Uri;',
   );
 
-  static final _getUriFor1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getUriFor$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.net.Uri getUriFor(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static uri_.Uri getUriFor1(
-    jni.JString string,
+  static uri_.Uri getUriFor$1(
+    _$jni.JString string,
   ) {
-    return _getUriFor1(_class.reference.pointer,
-            _id_getUriFor1 as jni.JMethodIDPtr, string.reference.pointer)
-        .object(const uri_.$UriType());
+    return _getUriFor$1(_class.reference.pointer,
+            _id_getUriFor$1 as _$jni.JMethodIDPtr, string.reference.pointer)
+        .object(const uri_.$Uri$Type());
   }
 
   static final _id_getInt = _class.staticMethodId(
@@ -3511,58 +3637,68 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;I)I',
   );
 
-  static final _getInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getInt = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static int getInt(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    return _getInt(_class.reference.pointer, _id_getInt as jni.JMethodIDPtr,
+    return _getInt(_class.reference.pointer, _id_getInt as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, i)
         .integer;
   }
 
-  static final _id_getInt1 = _class.staticMethodId(
+  static final _id_getInt$1 = _class.staticMethodId(
     r'getInt',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)I',
   );
 
-  static final _getInt1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getInt$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getInt(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static int getInt1(
+  static int getInt$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getInt1(_class.reference.pointer, _id_getInt1 as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer)
+    return _getInt$1(
+            _class.reference.pointer,
+            _id_getInt$1 as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer)
         .integer;
   }
 
@@ -3571,28 +3707,32 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;I)Z',
   );
 
-  static final _putInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putInt = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public boolean putInt(android.content.ContentResolver contentResolver, java.lang.String string, int i)`
   static bool putInt(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int i,
   ) {
-    return _putInt(_class.reference.pointer, _id_putInt as jni.JMethodIDPtr,
+    return _putInt(_class.reference.pointer, _id_putInt as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, i)
         .boolean;
   }
@@ -3602,58 +3742,68 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;J)J',
   );
 
-  static final _getLong = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getLong = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticLongMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static int getLong(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int j,
   ) {
-    return _getLong(_class.reference.pointer, _id_getLong as jni.JMethodIDPtr,
+    return _getLong(_class.reference.pointer, _id_getLong as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, j)
         .long;
   }
 
-  static final _id_getLong1 = _class.staticMethodId(
+  static final _id_getLong$1 = _class.staticMethodId(
     r'getLong',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)J',
   );
 
-  static final _getLong1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getLong$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticLongMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public long getLong(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static int getLong1(
+  static int getLong$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getLong1(_class.reference.pointer, _id_getLong1 as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer)
+    return _getLong$1(
+            _class.reference.pointer,
+            _id_getLong$1 as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer)
         .long;
   }
 
@@ -3662,28 +3812,32 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;J)Z',
   );
 
-  static final _putLong = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putLong = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public boolean putLong(android.content.ContentResolver contentResolver, java.lang.String string, long j)`
   static bool putLong(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     int j,
   ) {
-    return _putLong(_class.reference.pointer, _id_putLong as jni.JMethodIDPtr,
+    return _putLong(_class.reference.pointer, _id_putLong as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer, string.reference.pointer, j)
         .boolean;
   }
@@ -3693,59 +3847,70 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;F)F',
   );
 
-  static final _getFloat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getFloat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Double
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Double
                       )>)>>('globalEnv_CallStaticFloatMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, double)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              double)>();
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static double getFloat(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     double f,
   ) {
-    return _getFloat(_class.reference.pointer, _id_getFloat as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer, f)
+    return _getFloat(
+            _class.reference.pointer,
+            _id_getFloat as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer,
+            f)
         .float;
   }
 
-  static final _id_getFloat1 = _class.staticMethodId(
+  static final _id_getFloat$1 = _class.staticMethodId(
     r'getFloat',
     r'(Landroid/content/ContentResolver;Ljava/lang/String;)F',
   );
 
-  static final _getFloat1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getFloat$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticFloatMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public float getFloat(android.content.ContentResolver contentResolver, java.lang.String string)`
-  static double getFloat1(
+  static double getFloat$1(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getFloat1(
+    return _getFloat$1(
             _class.reference.pointer,
-            _id_getFloat1 as jni.JMethodIDPtr,
+            _id_getFloat$1 as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             string.reference.pointer)
         .float;
@@ -3756,29 +3921,37 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Ljava/lang/String;F)Z',
   );
 
-  static final _putFloat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putFloat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Double
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Double
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, double)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              double)>();
 
   /// from: `static public boolean putFloat(android.content.ContentResolver contentResolver, java.lang.String string, float f)`
   static bool putFloat(
     contentresolver_.ContentResolver contentResolver,
-    jni.JString string,
+    _$jni.JString string,
     double f,
   ) {
-    return _putFloat(_class.reference.pointer, _id_putFloat as jni.JMethodIDPtr,
-            contentResolver.reference.pointer, string.reference.pointer, f)
+    return _putFloat(
+            _class.reference.pointer,
+            _id_putFloat as _$jni.JMethodIDPtr,
+            contentResolver.reference.pointer,
+            string.reference.pointer,
+            f)
         .boolean;
   }
 
@@ -3787,28 +3960,31 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Landroid/content/res/Configuration;)V',
   );
 
-  static final _getConfiguration = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getConfiguration = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void getConfiguration(android.content.ContentResolver contentResolver, android.content.res.Configuration configuration)`
   static void getConfiguration(
     contentresolver_.ContentResolver contentResolver,
-    jni.JObject configuration,
+    _$jni.JObject configuration,
   ) {
     _getConfiguration(
             _class.reference.pointer,
-            _id_getConfiguration as jni.JMethodIDPtr,
+            _id_getConfiguration as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             configuration.reference.pointer)
         .check();
@@ -3819,28 +3995,31 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Landroid/content/res/Configuration;)Z',
   );
 
-  static final _putConfiguration = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _putConfiguration = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean putConfiguration(android.content.ContentResolver contentResolver, android.content.res.Configuration configuration)`
   static bool putConfiguration(
     contentresolver_.ContentResolver contentResolver,
-    jni.JObject configuration,
+    _$jni.JObject configuration,
   ) {
     return _putConfiguration(
             _class.reference.pointer,
-            _id_putConfiguration as jni.JMethodIDPtr,
+            _id_putConfiguration as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             configuration.reference.pointer)
         .boolean;
@@ -3851,16 +4030,16 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;)Z',
   );
 
-  static final _getShowGTalkServiceStatus = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getShowGTalkServiceStatus = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean getShowGTalkServiceStatus(android.content.ContentResolver contentResolver)`
   static bool getShowGTalkServiceStatus(
@@ -3868,7 +4047,7 @@ class Settings_System extends Settings_NameValueTable {
   ) {
     return _getShowGTalkServiceStatus(
             _class.reference.pointer,
-            _id_getShowGTalkServiceStatus as jni.JMethodIDPtr,
+            _id_getShowGTalkServiceStatus as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer)
         .boolean;
   }
@@ -3878,16 +4057,17 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/ContentResolver;Z)V',
   );
 
-  static final _setShowGTalkServiceStatus = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
+  static final _setShowGTalkServiceStatus = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Pointer<_$jni.Void>, _$jni.Int32)>)>>(
           'globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `static public void setShowGTalkServiceStatus(android.content.ContentResolver contentResolver, boolean z)`
   static void setShowGTalkServiceStatus(
@@ -3896,7 +4076,7 @@ class Settings_System extends Settings_NameValueTable {
   ) {
     _setShowGTalkServiceStatus(
             _class.reference.pointer,
-            _id_setShowGTalkServiceStatus as jni.JMethodIDPtr,
+            _id_setShowGTalkServiceStatus as _$jni.JMethodIDPtr,
             contentResolver.reference.pointer,
             z ? 1 : 0)
         .check();
@@ -3907,66 +4087,74 @@ class Settings_System extends Settings_NameValueTable {
     r'(Landroid/content/Context;)Z',
   );
 
-  static final _canWrite = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _canWrite = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean canWrite(android.content.Context context)`
   static bool canWrite(
     context_.Context context,
   ) {
-    return _canWrite(_class.reference.pointer, _id_canWrite as jni.JMethodIDPtr,
-            context.reference.pointer)
+    return _canWrite(_class.reference.pointer,
+            _id_canWrite as _$jni.JMethodIDPtr, context.reference.pointer)
         .boolean;
   }
 }
 
-final class $Settings_SystemType extends jni.JObjType<Settings_System> {
-  const $Settings_SystemType();
+final class $Settings_System$Type extends _$jni.JObjType<Settings_System> {
+  @_$jni.internal
+  const $Settings_System$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/provider/Settings$System;';
 
-  @override
-  Settings_System fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings_System fromReference(_$jni.JReference reference) =>
       Settings_System.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const $Settings_NameValueTableType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const $Settings_NameValueTable$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 2;
 
-  @override
-  int get hashCode => ($Settings_SystemType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings_System$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Settings_SystemType) &&
-        other is $Settings_SystemType;
+    return other.runtimeType == ($Settings_System$Type) &&
+        other is $Settings_System$Type;
   }
 }
 
 /// from: `android.provider.Settings`
-class Settings extends jni.JObject {
-  @override
-  late final jni.JObjType<Settings> $type = type;
+class Settings extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Settings> $type;
 
+  @_$jni.internal
   Settings.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/provider/Settings');
+  static final _class = _$jni.JClass.forName(r'android/provider/Settings');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $SettingsType();
+  static const type = $Settings$Type();
   static final _id_ACTION_ACCESSIBILITY_SETTINGS = _class.staticFieldId(
     r'ACTION_ACCESSIBILITY_SETTINGS',
     r'Ljava/lang/String;',
@@ -3974,8 +4162,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_ACCESSIBILITY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_ACCESSIBILITY_SETTINGS =>
-      _id_ACTION_ACCESSIBILITY_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_ACCESSIBILITY_SETTINGS =>
+      _id_ACTION_ACCESSIBILITY_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_ADD_ACCOUNT = _class.staticFieldId(
     r'ACTION_ADD_ACCOUNT',
@@ -3984,8 +4172,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_ADD_ACCOUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_ADD_ACCOUNT =>
-      _id_ACTION_ADD_ACCOUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_ADD_ACCOUNT =>
+      _id_ACTION_ADD_ACCOUNT.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_ADVANCED_MEMORY_PROTECTION_SETTINGS =
       _class.staticFieldId(
@@ -3995,9 +4183,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_ADVANCED_MEMORY_PROTECTION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_ADVANCED_MEMORY_PROTECTION_SETTINGS =>
+  static _$jni.JString get ACTION_ADVANCED_MEMORY_PROTECTION_SETTINGS =>
       _id_ACTION_ADVANCED_MEMORY_PROTECTION_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_AIRPLANE_MODE_SETTINGS = _class.staticFieldId(
     r'ACTION_AIRPLANE_MODE_SETTINGS',
@@ -4006,8 +4194,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_AIRPLANE_MODE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_AIRPLANE_MODE_SETTINGS =>
-      _id_ACTION_AIRPLANE_MODE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_AIRPLANE_MODE_SETTINGS =>
+      _id_ACTION_AIRPLANE_MODE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_ALL_APPS_NOTIFICATION_SETTINGS = _class.staticFieldId(
     r'ACTION_ALL_APPS_NOTIFICATION_SETTINGS',
@@ -4016,9 +4204,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_ALL_APPS_NOTIFICATION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_ALL_APPS_NOTIFICATION_SETTINGS =>
+  static _$jni.JString get ACTION_ALL_APPS_NOTIFICATION_SETTINGS =>
       _id_ACTION_ALL_APPS_NOTIFICATION_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_APN_SETTINGS = _class.staticFieldId(
     r'ACTION_APN_SETTINGS',
@@ -4027,8 +4215,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APN_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APN_SETTINGS =>
-      _id_ACTION_APN_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_APN_SETTINGS =>
+      _id_ACTION_APN_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_APPLICATION_DETAILS_SETTINGS = _class.staticFieldId(
     r'ACTION_APPLICATION_DETAILS_SETTINGS',
@@ -4037,9 +4225,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APPLICATION_DETAILS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APPLICATION_DETAILS_SETTINGS =>
+  static _$jni.JString get ACTION_APPLICATION_DETAILS_SETTINGS =>
       _id_ACTION_APPLICATION_DETAILS_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_APPLICATION_DEVELOPMENT_SETTINGS =
       _class.staticFieldId(
@@ -4049,9 +4237,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APPLICATION_DEVELOPMENT_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APPLICATION_DEVELOPMENT_SETTINGS =>
+  static _$jni.JString get ACTION_APPLICATION_DEVELOPMENT_SETTINGS =>
       _id_ACTION_APPLICATION_DEVELOPMENT_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_APPLICATION_SETTINGS = _class.staticFieldId(
     r'ACTION_APPLICATION_SETTINGS',
@@ -4060,8 +4248,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APPLICATION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APPLICATION_SETTINGS =>
-      _id_ACTION_APPLICATION_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_APPLICATION_SETTINGS =>
+      _id_ACTION_APPLICATION_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_APP_LOCALE_SETTINGS = _class.staticFieldId(
     r'ACTION_APP_LOCALE_SETTINGS',
@@ -4070,8 +4258,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APP_LOCALE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APP_LOCALE_SETTINGS =>
-      _id_ACTION_APP_LOCALE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_APP_LOCALE_SETTINGS =>
+      _id_ACTION_APP_LOCALE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_APP_NOTIFICATION_BUBBLE_SETTINGS =
       _class.staticFieldId(
@@ -4081,9 +4269,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APP_NOTIFICATION_BUBBLE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APP_NOTIFICATION_BUBBLE_SETTINGS =>
+  static _$jni.JString get ACTION_APP_NOTIFICATION_BUBBLE_SETTINGS =>
       _id_ACTION_APP_NOTIFICATION_BUBBLE_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_APP_NOTIFICATION_SETTINGS = _class.staticFieldId(
     r'ACTION_APP_NOTIFICATION_SETTINGS',
@@ -4092,8 +4280,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APP_NOTIFICATION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APP_NOTIFICATION_SETTINGS =>
-      _id_ACTION_APP_NOTIFICATION_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_APP_NOTIFICATION_SETTINGS =>
+      _id_ACTION_APP_NOTIFICATION_SETTINGS.get(
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_APP_OPEN_BY_DEFAULT_SETTINGS = _class.staticFieldId(
     r'ACTION_APP_OPEN_BY_DEFAULT_SETTINGS',
@@ -4102,9 +4291,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APP_OPEN_BY_DEFAULT_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APP_OPEN_BY_DEFAULT_SETTINGS =>
+  static _$jni.JString get ACTION_APP_OPEN_BY_DEFAULT_SETTINGS =>
       _id_ACTION_APP_OPEN_BY_DEFAULT_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_APP_SEARCH_SETTINGS = _class.staticFieldId(
     r'ACTION_APP_SEARCH_SETTINGS',
@@ -4113,8 +4302,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APP_SEARCH_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APP_SEARCH_SETTINGS =>
-      _id_ACTION_APP_SEARCH_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_APP_SEARCH_SETTINGS =>
+      _id_ACTION_APP_SEARCH_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_APP_USAGE_SETTINGS = _class.staticFieldId(
     r'ACTION_APP_USAGE_SETTINGS',
@@ -4123,8 +4312,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_APP_USAGE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_APP_USAGE_SETTINGS =>
-      _id_ACTION_APP_USAGE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_APP_USAGE_SETTINGS =>
+      _id_ACTION_APP_USAGE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_AUTO_ROTATE_SETTINGS = _class.staticFieldId(
     r'ACTION_AUTO_ROTATE_SETTINGS',
@@ -4133,8 +4322,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_AUTO_ROTATE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_AUTO_ROTATE_SETTINGS =>
-      _id_ACTION_AUTO_ROTATE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_AUTO_ROTATE_SETTINGS =>
+      _id_ACTION_AUTO_ROTATE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_BATTERY_SAVER_SETTINGS = _class.staticFieldId(
     r'ACTION_BATTERY_SAVER_SETTINGS',
@@ -4143,8 +4332,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_BATTERY_SAVER_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_BATTERY_SAVER_SETTINGS =>
-      _id_ACTION_BATTERY_SAVER_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_BATTERY_SAVER_SETTINGS =>
+      _id_ACTION_BATTERY_SAVER_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_BIOMETRIC_ENROLL = _class.staticFieldId(
     r'ACTION_BIOMETRIC_ENROLL',
@@ -4153,8 +4342,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_BIOMETRIC_ENROLL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_BIOMETRIC_ENROLL =>
-      _id_ACTION_BIOMETRIC_ENROLL.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_BIOMETRIC_ENROLL =>
+      _id_ACTION_BIOMETRIC_ENROLL.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_BLUETOOTH_SETTINGS = _class.staticFieldId(
     r'ACTION_BLUETOOTH_SETTINGS',
@@ -4163,8 +4352,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_BLUETOOTH_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_BLUETOOTH_SETTINGS =>
-      _id_ACTION_BLUETOOTH_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_BLUETOOTH_SETTINGS =>
+      _id_ACTION_BLUETOOTH_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_CAPTIONING_SETTINGS = _class.staticFieldId(
     r'ACTION_CAPTIONING_SETTINGS',
@@ -4173,8 +4362,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_CAPTIONING_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_CAPTIONING_SETTINGS =>
-      _id_ACTION_CAPTIONING_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_CAPTIONING_SETTINGS =>
+      _id_ACTION_CAPTIONING_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_CAST_SETTINGS = _class.staticFieldId(
     r'ACTION_CAST_SETTINGS',
@@ -4183,8 +4372,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_CAST_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_CAST_SETTINGS =>
-      _id_ACTION_CAST_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_CAST_SETTINGS =>
+      _id_ACTION_CAST_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_CHANNEL_NOTIFICATION_SETTINGS = _class.staticFieldId(
     r'ACTION_CHANNEL_NOTIFICATION_SETTINGS',
@@ -4193,9 +4382,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_CHANNEL_NOTIFICATION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_CHANNEL_NOTIFICATION_SETTINGS =>
+  static _$jni.JString get ACTION_CHANNEL_NOTIFICATION_SETTINGS =>
       _id_ACTION_CHANNEL_NOTIFICATION_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_CONDITION_PROVIDER_SETTINGS = _class.staticFieldId(
     r'ACTION_CONDITION_PROVIDER_SETTINGS',
@@ -4204,9 +4393,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_CONDITION_PROVIDER_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_CONDITION_PROVIDER_SETTINGS =>
+  static _$jni.JString get ACTION_CONDITION_PROVIDER_SETTINGS =>
       _id_ACTION_CONDITION_PROVIDER_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_DATA_ROAMING_SETTINGS = _class.staticFieldId(
     r'ACTION_DATA_ROAMING_SETTINGS',
@@ -4215,8 +4404,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_DATA_ROAMING_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_DATA_ROAMING_SETTINGS =>
-      _id_ACTION_DATA_ROAMING_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_DATA_ROAMING_SETTINGS =>
+      _id_ACTION_DATA_ROAMING_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_DATA_USAGE_SETTINGS = _class.staticFieldId(
     r'ACTION_DATA_USAGE_SETTINGS',
@@ -4225,8 +4414,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_DATA_USAGE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_DATA_USAGE_SETTINGS =>
-      _id_ACTION_DATA_USAGE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_DATA_USAGE_SETTINGS =>
+      _id_ACTION_DATA_USAGE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_DATE_SETTINGS = _class.staticFieldId(
     r'ACTION_DATE_SETTINGS',
@@ -4235,8 +4424,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_DATE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_DATE_SETTINGS =>
-      _id_ACTION_DATE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_DATE_SETTINGS =>
+      _id_ACTION_DATE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_DEVICE_INFO_SETTINGS = _class.staticFieldId(
     r'ACTION_DEVICE_INFO_SETTINGS',
@@ -4245,8 +4434,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_DEVICE_INFO_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_DEVICE_INFO_SETTINGS =>
-      _id_ACTION_DEVICE_INFO_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_DEVICE_INFO_SETTINGS =>
+      _id_ACTION_DEVICE_INFO_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_DISPLAY_SETTINGS = _class.staticFieldId(
     r'ACTION_DISPLAY_SETTINGS',
@@ -4255,8 +4444,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_DISPLAY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_DISPLAY_SETTINGS =>
-      _id_ACTION_DISPLAY_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_DISPLAY_SETTINGS =>
+      _id_ACTION_DISPLAY_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_DREAM_SETTINGS = _class.staticFieldId(
     r'ACTION_DREAM_SETTINGS',
@@ -4265,8 +4454,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_DREAM_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_DREAM_SETTINGS =>
-      _id_ACTION_DREAM_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_DREAM_SETTINGS =>
+      _id_ACTION_DREAM_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_FINGERPRINT_ENROLL = _class.staticFieldId(
     r'ACTION_FINGERPRINT_ENROLL',
@@ -4275,8 +4464,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_FINGERPRINT_ENROLL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_FINGERPRINT_ENROLL =>
-      _id_ACTION_FINGERPRINT_ENROLL.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_FINGERPRINT_ENROLL =>
+      _id_ACTION_FINGERPRINT_ENROLL.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_HARD_KEYBOARD_SETTINGS = _class.staticFieldId(
     r'ACTION_HARD_KEYBOARD_SETTINGS',
@@ -4285,8 +4474,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_HARD_KEYBOARD_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_HARD_KEYBOARD_SETTINGS =>
-      _id_ACTION_HARD_KEYBOARD_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_HARD_KEYBOARD_SETTINGS =>
+      _id_ACTION_HARD_KEYBOARD_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_HOME_SETTINGS = _class.staticFieldId(
     r'ACTION_HOME_SETTINGS',
@@ -4295,8 +4484,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_HOME_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_HOME_SETTINGS =>
-      _id_ACTION_HOME_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_HOME_SETTINGS =>
+      _id_ACTION_HOME_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS =
       _class.staticFieldId(
@@ -4306,9 +4495,10 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS =>
-      _id_ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS.get(
-          _class, const jni.JStringType());
+  static _$jni.JString
+      get ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS =>
+          _id_ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS.get(
+              _class, const _$jni.JStringType());
 
   static final _id_ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS =
       _class.staticFieldId(
@@ -4318,9 +4508,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS =>
+  static _$jni.JString get ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS =>
       _id_ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_INPUT_METHOD_SETTINGS = _class.staticFieldId(
     r'ACTION_INPUT_METHOD_SETTINGS',
@@ -4329,8 +4519,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_INPUT_METHOD_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_INPUT_METHOD_SETTINGS =>
-      _id_ACTION_INPUT_METHOD_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_INPUT_METHOD_SETTINGS =>
+      _id_ACTION_INPUT_METHOD_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_INPUT_METHOD_SUBTYPE_SETTINGS = _class.staticFieldId(
     r'ACTION_INPUT_METHOD_SUBTYPE_SETTINGS',
@@ -4339,9 +4529,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_INPUT_METHOD_SUBTYPE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_INPUT_METHOD_SUBTYPE_SETTINGS =>
+  static _$jni.JString get ACTION_INPUT_METHOD_SUBTYPE_SETTINGS =>
       _id_ACTION_INPUT_METHOD_SUBTYPE_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_INTERNAL_STORAGE_SETTINGS = _class.staticFieldId(
     r'ACTION_INTERNAL_STORAGE_SETTINGS',
@@ -4350,8 +4540,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_INTERNAL_STORAGE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_INTERNAL_STORAGE_SETTINGS =>
-      _id_ACTION_INTERNAL_STORAGE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_INTERNAL_STORAGE_SETTINGS =>
+      _id_ACTION_INTERNAL_STORAGE_SETTINGS.get(
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_LOCALE_SETTINGS = _class.staticFieldId(
     r'ACTION_LOCALE_SETTINGS',
@@ -4360,8 +4551,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_LOCALE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_LOCALE_SETTINGS =>
-      _id_ACTION_LOCALE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_LOCALE_SETTINGS =>
+      _id_ACTION_LOCALE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_LOCATION_SOURCE_SETTINGS = _class.staticFieldId(
     r'ACTION_LOCATION_SOURCE_SETTINGS',
@@ -4370,8 +4561,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_LOCATION_SOURCE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_LOCATION_SOURCE_SETTINGS =>
-      _id_ACTION_LOCATION_SOURCE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_LOCATION_SOURCE_SETTINGS =>
+      _id_ACTION_LOCATION_SOURCE_SETTINGS.get(
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS =
       _class.staticFieldId(
@@ -4381,9 +4573,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS =>
+  static _$jni.JString get ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS =>
       _id_ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION =
       _class.staticFieldId(
@@ -4393,9 +4585,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION =>
+  static _$jni.JString get ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION =>
       _id_ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_ALL_SIM_PROFILES_SETTINGS =
       _class.staticFieldId(
@@ -4405,9 +4597,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_ALL_SIM_PROFILES_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_ALL_SIM_PROFILES_SETTINGS =>
+  static _$jni.JString get ACTION_MANAGE_ALL_SIM_PROFILES_SETTINGS =>
       _id_ACTION_MANAGE_ALL_SIM_PROFILES_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_APPLICATIONS_SETTINGS = _class.staticFieldId(
     r'ACTION_MANAGE_APPLICATIONS_SETTINGS',
@@ -4416,9 +4608,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_APPLICATIONS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_APPLICATIONS_SETTINGS =>
+  static _$jni.JString get ACTION_MANAGE_APPLICATIONS_SETTINGS =>
       _id_ACTION_MANAGE_APPLICATIONS_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION =
       _class.staticFieldId(
@@ -4428,9 +4620,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION =>
+  static _$jni.JString get ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION =>
       _id_ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT =
       _class.staticFieldId(
@@ -4440,9 +4632,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT =>
+  static _$jni.JString get ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT =>
       _id_ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_DEFAULT_APPS_SETTINGS = _class.staticFieldId(
     r'ACTION_MANAGE_DEFAULT_APPS_SETTINGS',
@@ -4451,9 +4643,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_DEFAULT_APPS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_DEFAULT_APPS_SETTINGS =>
+  static _$jni.JString get ACTION_MANAGE_DEFAULT_APPS_SETTINGS =>
       _id_ACTION_MANAGE_DEFAULT_APPS_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_OVERLAY_PERMISSION = _class.staticFieldId(
     r'ACTION_MANAGE_OVERLAY_PERMISSION',
@@ -4462,8 +4654,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_OVERLAY_PERMISSION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_OVERLAY_PERMISSION =>
-      _id_ACTION_MANAGE_OVERLAY_PERMISSION.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_MANAGE_OVERLAY_PERMISSION =>
+      _id_ACTION_MANAGE_OVERLAY_PERMISSION.get(
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_SUPERVISOR_RESTRICTED_SETTING =
       _class.staticFieldId(
@@ -4473,9 +4666,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_SUPERVISOR_RESTRICTED_SETTING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_SUPERVISOR_RESTRICTED_SETTING =>
+  static _$jni.JString get ACTION_MANAGE_SUPERVISOR_RESTRICTED_SETTING =>
       _id_ACTION_MANAGE_SUPERVISOR_RESTRICTED_SETTING.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_UNKNOWN_APP_SOURCES = _class.staticFieldId(
     r'ACTION_MANAGE_UNKNOWN_APP_SOURCES',
@@ -4484,9 +4677,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_UNKNOWN_APP_SOURCES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_UNKNOWN_APP_SOURCES =>
+  static _$jni.JString get ACTION_MANAGE_UNKNOWN_APP_SOURCES =>
       _id_ACTION_MANAGE_UNKNOWN_APP_SOURCES.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_MANAGE_WRITE_SETTINGS = _class.staticFieldId(
     r'ACTION_MANAGE_WRITE_SETTINGS',
@@ -4495,8 +4688,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MANAGE_WRITE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MANAGE_WRITE_SETTINGS =>
-      _id_ACTION_MANAGE_WRITE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_MANAGE_WRITE_SETTINGS =>
+      _id_ACTION_MANAGE_WRITE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_MEMORY_CARD_SETTINGS = _class.staticFieldId(
     r'ACTION_MEMORY_CARD_SETTINGS',
@@ -4505,8 +4698,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_MEMORY_CARD_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_MEMORY_CARD_SETTINGS =>
-      _id_ACTION_MEMORY_CARD_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_MEMORY_CARD_SETTINGS =>
+      _id_ACTION_MEMORY_CARD_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_NETWORK_OPERATOR_SETTINGS = _class.staticFieldId(
     r'ACTION_NETWORK_OPERATOR_SETTINGS',
@@ -4515,8 +4708,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NETWORK_OPERATOR_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NETWORK_OPERATOR_SETTINGS =>
-      _id_ACTION_NETWORK_OPERATOR_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_NETWORK_OPERATOR_SETTINGS =>
+      _id_ACTION_NETWORK_OPERATOR_SETTINGS.get(
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_NFCSHARING_SETTINGS = _class.staticFieldId(
     r'ACTION_NFCSHARING_SETTINGS',
@@ -4525,8 +4719,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NFCSHARING_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NFCSHARING_SETTINGS =>
-      _id_ACTION_NFCSHARING_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_NFCSHARING_SETTINGS =>
+      _id_ACTION_NFCSHARING_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_NFC_PAYMENT_SETTINGS = _class.staticFieldId(
     r'ACTION_NFC_PAYMENT_SETTINGS',
@@ -4535,8 +4729,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NFC_PAYMENT_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NFC_PAYMENT_SETTINGS =>
-      _id_ACTION_NFC_PAYMENT_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_NFC_PAYMENT_SETTINGS =>
+      _id_ACTION_NFC_PAYMENT_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_NFC_SETTINGS = _class.staticFieldId(
     r'ACTION_NFC_SETTINGS',
@@ -4545,8 +4739,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NFC_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NFC_SETTINGS =>
-      _id_ACTION_NFC_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_NFC_SETTINGS =>
+      _id_ACTION_NFC_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_NIGHT_DISPLAY_SETTINGS = _class.staticFieldId(
     r'ACTION_NIGHT_DISPLAY_SETTINGS',
@@ -4555,8 +4749,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NIGHT_DISPLAY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NIGHT_DISPLAY_SETTINGS =>
-      _id_ACTION_NIGHT_DISPLAY_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_NIGHT_DISPLAY_SETTINGS =>
+      _id_ACTION_NIGHT_DISPLAY_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_NOTIFICATION_ASSISTANT_SETTINGS =
       _class.staticFieldId(
@@ -4566,9 +4760,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NOTIFICATION_ASSISTANT_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NOTIFICATION_ASSISTANT_SETTINGS =>
+  static _$jni.JString get ACTION_NOTIFICATION_ASSISTANT_SETTINGS =>
       _id_ACTION_NOTIFICATION_ASSISTANT_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS =
       _class.staticFieldId(
@@ -4578,9 +4772,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS =>
+  static _$jni.JString get ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS =>
       _id_ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_NOTIFICATION_LISTENER_SETTINGS = _class.staticFieldId(
     r'ACTION_NOTIFICATION_LISTENER_SETTINGS',
@@ -4589,9 +4783,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NOTIFICATION_LISTENER_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NOTIFICATION_LISTENER_SETTINGS =>
+  static _$jni.JString get ACTION_NOTIFICATION_LISTENER_SETTINGS =>
       _id_ACTION_NOTIFICATION_LISTENER_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS =
       _class.staticFieldId(
@@ -4601,9 +4795,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS =>
+  static _$jni.JString get ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS =>
       _id_ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_PRINT_SETTINGS = _class.staticFieldId(
     r'ACTION_PRINT_SETTINGS',
@@ -4612,8 +4806,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_PRINT_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_PRINT_SETTINGS =>
-      _id_ACTION_PRINT_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_PRINT_SETTINGS =>
+      _id_ACTION_PRINT_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_PRIVACY_SETTINGS = _class.staticFieldId(
     r'ACTION_PRIVACY_SETTINGS',
@@ -4622,8 +4816,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_PRIVACY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_PRIVACY_SETTINGS =>
-      _id_ACTION_PRIVACY_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_PRIVACY_SETTINGS =>
+      _id_ACTION_PRIVACY_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_PROCESS_WIFI_EASY_CONNECT_URI = _class.staticFieldId(
     r'ACTION_PROCESS_WIFI_EASY_CONNECT_URI',
@@ -4632,9 +4826,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_PROCESS_WIFI_EASY_CONNECT_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_PROCESS_WIFI_EASY_CONNECT_URI =>
+  static _$jni.JString get ACTION_PROCESS_WIFI_EASY_CONNECT_URI =>
       _id_ACTION_PROCESS_WIFI_EASY_CONNECT_URI.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_QUICK_ACCESS_WALLET_SETTINGS = _class.staticFieldId(
     r'ACTION_QUICK_ACCESS_WALLET_SETTINGS',
@@ -4643,9 +4837,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_QUICK_ACCESS_WALLET_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_QUICK_ACCESS_WALLET_SETTINGS =>
+  static _$jni.JString get ACTION_QUICK_ACCESS_WALLET_SETTINGS =>
       _id_ACTION_QUICK_ACCESS_WALLET_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_QUICK_LAUNCH_SETTINGS = _class.staticFieldId(
     r'ACTION_QUICK_LAUNCH_SETTINGS',
@@ -4654,8 +4848,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_QUICK_LAUNCH_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_QUICK_LAUNCH_SETTINGS =>
-      _id_ACTION_QUICK_LAUNCH_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_QUICK_LAUNCH_SETTINGS =>
+      _id_ACTION_QUICK_LAUNCH_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_REGIONAL_PREFERENCES_SETTINGS = _class.staticFieldId(
     r'ACTION_REGIONAL_PREFERENCES_SETTINGS',
@@ -4664,9 +4858,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_REGIONAL_PREFERENCES_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_REGIONAL_PREFERENCES_SETTINGS =>
+  static _$jni.JString get ACTION_REGIONAL_PREFERENCES_SETTINGS =>
       _id_ACTION_REGIONAL_PREFERENCES_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS =
       _class.staticFieldId(
@@ -4676,9 +4870,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS =>
+  static _$jni.JString get ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS =>
       _id_ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_REQUEST_MANAGE_MEDIA = _class.staticFieldId(
     r'ACTION_REQUEST_MANAGE_MEDIA',
@@ -4687,8 +4881,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_REQUEST_MANAGE_MEDIA`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_REQUEST_MANAGE_MEDIA =>
-      _id_ACTION_REQUEST_MANAGE_MEDIA.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_REQUEST_MANAGE_MEDIA =>
+      _id_ACTION_REQUEST_MANAGE_MEDIA.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_REQUEST_SCHEDULE_EXACT_ALARM = _class.staticFieldId(
     r'ACTION_REQUEST_SCHEDULE_EXACT_ALARM',
@@ -4697,9 +4891,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_REQUEST_SCHEDULE_EXACT_ALARM`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_REQUEST_SCHEDULE_EXACT_ALARM =>
+  static _$jni.JString get ACTION_REQUEST_SCHEDULE_EXACT_ALARM =>
       _id_ACTION_REQUEST_SCHEDULE_EXACT_ALARM.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_REQUEST_SET_AUTOFILL_SERVICE = _class.staticFieldId(
     r'ACTION_REQUEST_SET_AUTOFILL_SERVICE',
@@ -4708,9 +4902,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_REQUEST_SET_AUTOFILL_SERVICE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_REQUEST_SET_AUTOFILL_SERVICE =>
+  static _$jni.JString get ACTION_REQUEST_SET_AUTOFILL_SERVICE =>
       _id_ACTION_REQUEST_SET_AUTOFILL_SERVICE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_SEARCH_SETTINGS = _class.staticFieldId(
     r'ACTION_SEARCH_SETTINGS',
@@ -4719,8 +4913,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SEARCH_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SEARCH_SETTINGS =>
-      _id_ACTION_SEARCH_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SEARCH_SETTINGS =>
+      _id_ACTION_SEARCH_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SECURITY_SETTINGS = _class.staticFieldId(
     r'ACTION_SECURITY_SETTINGS',
@@ -4729,8 +4923,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SECURITY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SECURITY_SETTINGS =>
-      _id_ACTION_SECURITY_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SECURITY_SETTINGS =>
+      _id_ACTION_SECURITY_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SETTINGS = _class.staticFieldId(
     r'ACTION_SETTINGS',
@@ -4739,8 +4933,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SETTINGS =>
-      _id_ACTION_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SETTINGS =>
+      _id_ACTION_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SETTINGS_EMBED_DEEP_LINK_ACTIVITY =
       _class.staticFieldId(
@@ -4750,9 +4944,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SETTINGS_EMBED_DEEP_LINK_ACTIVITY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SETTINGS_EMBED_DEEP_LINK_ACTIVITY =>
+  static _$jni.JString get ACTION_SETTINGS_EMBED_DEEP_LINK_ACTIVITY =>
       _id_ACTION_SETTINGS_EMBED_DEEP_LINK_ACTIVITY.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_SHOW_REGULATORY_INFO = _class.staticFieldId(
     r'ACTION_SHOW_REGULATORY_INFO',
@@ -4761,8 +4955,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SHOW_REGULATORY_INFO`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SHOW_REGULATORY_INFO =>
-      _id_ACTION_SHOW_REGULATORY_INFO.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SHOW_REGULATORY_INFO =>
+      _id_ACTION_SHOW_REGULATORY_INFO.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SHOW_WORK_POLICY_INFO = _class.staticFieldId(
     r'ACTION_SHOW_WORK_POLICY_INFO',
@@ -4771,8 +4965,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SHOW_WORK_POLICY_INFO`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SHOW_WORK_POLICY_INFO =>
-      _id_ACTION_SHOW_WORK_POLICY_INFO.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SHOW_WORK_POLICY_INFO =>
+      _id_ACTION_SHOW_WORK_POLICY_INFO.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_SOUND_SETTINGS = _class.staticFieldId(
     r'ACTION_SOUND_SETTINGS',
@@ -4781,8 +4975,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SOUND_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SOUND_SETTINGS =>
-      _id_ACTION_SOUND_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SOUND_SETTINGS =>
+      _id_ACTION_SOUND_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_STORAGE_VOLUME_ACCESS_SETTINGS = _class.staticFieldId(
     r'ACTION_STORAGE_VOLUME_ACCESS_SETTINGS',
@@ -4791,9 +4985,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_STORAGE_VOLUME_ACCESS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_STORAGE_VOLUME_ACCESS_SETTINGS =>
+  static _$jni.JString get ACTION_STORAGE_VOLUME_ACCESS_SETTINGS =>
       _id_ACTION_STORAGE_VOLUME_ACCESS_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_SYNC_SETTINGS = _class.staticFieldId(
     r'ACTION_SYNC_SETTINGS',
@@ -4802,8 +4996,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_SYNC_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_SYNC_SETTINGS =>
-      _id_ACTION_SYNC_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_SYNC_SETTINGS =>
+      _id_ACTION_SYNC_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_USAGE_ACCESS_SETTINGS = _class.staticFieldId(
     r'ACTION_USAGE_ACCESS_SETTINGS',
@@ -4812,8 +5006,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_USAGE_ACCESS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_USAGE_ACCESS_SETTINGS =>
-      _id_ACTION_USAGE_ACCESS_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_USAGE_ACCESS_SETTINGS =>
+      _id_ACTION_USAGE_ACCESS_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_USER_DICTIONARY_SETTINGS = _class.staticFieldId(
     r'ACTION_USER_DICTIONARY_SETTINGS',
@@ -4822,8 +5016,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_USER_DICTIONARY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_USER_DICTIONARY_SETTINGS =>
-      _id_ACTION_USER_DICTIONARY_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_USER_DICTIONARY_SETTINGS =>
+      _id_ACTION_USER_DICTIONARY_SETTINGS.get(
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_VOICE_CONTROL_AIRPLANE_MODE = _class.staticFieldId(
     r'ACTION_VOICE_CONTROL_AIRPLANE_MODE',
@@ -4832,9 +5027,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VOICE_CONTROL_AIRPLANE_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VOICE_CONTROL_AIRPLANE_MODE =>
+  static _$jni.JString get ACTION_VOICE_CONTROL_AIRPLANE_MODE =>
       _id_ACTION_VOICE_CONTROL_AIRPLANE_MODE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_VOICE_CONTROL_BATTERY_SAVER_MODE =
       _class.staticFieldId(
@@ -4844,9 +5039,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VOICE_CONTROL_BATTERY_SAVER_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VOICE_CONTROL_BATTERY_SAVER_MODE =>
+  static _$jni.JString get ACTION_VOICE_CONTROL_BATTERY_SAVER_MODE =>
       _id_ACTION_VOICE_CONTROL_BATTERY_SAVER_MODE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_VOICE_CONTROL_DO_NOT_DISTURB_MODE =
       _class.staticFieldId(
@@ -4856,9 +5051,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VOICE_CONTROL_DO_NOT_DISTURB_MODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VOICE_CONTROL_DO_NOT_DISTURB_MODE =>
+  static _$jni.JString get ACTION_VOICE_CONTROL_DO_NOT_DISTURB_MODE =>
       _id_ACTION_VOICE_CONTROL_DO_NOT_DISTURB_MODE.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_ACTION_VOICE_INPUT_SETTINGS = _class.staticFieldId(
     r'ACTION_VOICE_INPUT_SETTINGS',
@@ -4867,8 +5062,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VOICE_INPUT_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VOICE_INPUT_SETTINGS =>
-      _id_ACTION_VOICE_INPUT_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_VOICE_INPUT_SETTINGS =>
+      _id_ACTION_VOICE_INPUT_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_VPN_SETTINGS = _class.staticFieldId(
     r'ACTION_VPN_SETTINGS',
@@ -4877,8 +5072,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VPN_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VPN_SETTINGS =>
-      _id_ACTION_VPN_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_VPN_SETTINGS =>
+      _id_ACTION_VPN_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_VR_LISTENER_SETTINGS = _class.staticFieldId(
     r'ACTION_VR_LISTENER_SETTINGS',
@@ -4887,8 +5082,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_VR_LISTENER_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_VR_LISTENER_SETTINGS =>
-      _id_ACTION_VR_LISTENER_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_VR_LISTENER_SETTINGS =>
+      _id_ACTION_VR_LISTENER_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_WEBVIEW_SETTINGS = _class.staticFieldId(
     r'ACTION_WEBVIEW_SETTINGS',
@@ -4897,8 +5092,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_WEBVIEW_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_WEBVIEW_SETTINGS =>
-      _id_ACTION_WEBVIEW_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_WEBVIEW_SETTINGS =>
+      _id_ACTION_WEBVIEW_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_WIFI_ADD_NETWORKS = _class.staticFieldId(
     r'ACTION_WIFI_ADD_NETWORKS',
@@ -4907,8 +5102,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_WIFI_ADD_NETWORKS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_WIFI_ADD_NETWORKS =>
-      _id_ACTION_WIFI_ADD_NETWORKS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_WIFI_ADD_NETWORKS =>
+      _id_ACTION_WIFI_ADD_NETWORKS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_WIFI_IP_SETTINGS = _class.staticFieldId(
     r'ACTION_WIFI_IP_SETTINGS',
@@ -4917,8 +5112,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_WIFI_IP_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_WIFI_IP_SETTINGS =>
-      _id_ACTION_WIFI_IP_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_WIFI_IP_SETTINGS =>
+      _id_ACTION_WIFI_IP_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_WIFI_SETTINGS = _class.staticFieldId(
     r'ACTION_WIFI_SETTINGS',
@@ -4927,8 +5122,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_WIFI_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_WIFI_SETTINGS =>
-      _id_ACTION_WIFI_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_WIFI_SETTINGS =>
+      _id_ACTION_WIFI_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_WIRELESS_SETTINGS = _class.staticFieldId(
     r'ACTION_WIRELESS_SETTINGS',
@@ -4937,8 +5132,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_WIRELESS_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_WIRELESS_SETTINGS =>
-      _id_ACTION_WIRELESS_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get ACTION_WIRELESS_SETTINGS =>
+      _id_ACTION_WIRELESS_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_ACTION_ZEN_MODE_PRIORITY_SETTINGS = _class.staticFieldId(
     r'ACTION_ZEN_MODE_PRIORITY_SETTINGS',
@@ -4947,9 +5142,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String ACTION_ZEN_MODE_PRIORITY_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ACTION_ZEN_MODE_PRIORITY_SETTINGS =>
+  static _$jni.JString get ACTION_ZEN_MODE_PRIORITY_SETTINGS =>
       _id_ACTION_ZEN_MODE_PRIORITY_SETTINGS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   /// from: `static public final int ADD_WIFI_RESULT_ADD_OR_UPDATE_FAILED`
   static const ADD_WIFI_RESULT_ADD_OR_UPDATE_FAILED = 1;
@@ -4966,8 +5161,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String AUTHORITY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get AUTHORITY =>
-      _id_AUTHORITY.get(_class, const jni.JStringType());
+  static _$jni.JString get AUTHORITY =>
+      _id_AUTHORITY.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_ACCOUNT_TYPES = _class.staticFieldId(
     r'EXTRA_ACCOUNT_TYPES',
@@ -4976,8 +5171,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_ACCOUNT_TYPES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_ACCOUNT_TYPES =>
-      _id_EXTRA_ACCOUNT_TYPES.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_ACCOUNT_TYPES =>
+      _id_EXTRA_ACCOUNT_TYPES.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_AIRPLANE_MODE_ENABLED = _class.staticFieldId(
     r'EXTRA_AIRPLANE_MODE_ENABLED',
@@ -4986,8 +5181,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_AIRPLANE_MODE_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_AIRPLANE_MODE_ENABLED =>
-      _id_EXTRA_AIRPLANE_MODE_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_AIRPLANE_MODE_ENABLED =>
+      _id_EXTRA_AIRPLANE_MODE_ENABLED.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_APP_PACKAGE = _class.staticFieldId(
     r'EXTRA_APP_PACKAGE',
@@ -4996,8 +5191,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_APP_PACKAGE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_APP_PACKAGE =>
-      _id_EXTRA_APP_PACKAGE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_APP_PACKAGE =>
+      _id_EXTRA_APP_PACKAGE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_AUTHORITIES = _class.staticFieldId(
     r'EXTRA_AUTHORITIES',
@@ -5006,8 +5201,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_AUTHORITIES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_AUTHORITIES =>
-      _id_EXTRA_AUTHORITIES.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_AUTHORITIES =>
+      _id_EXTRA_AUTHORITIES.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_BATTERY_SAVER_MODE_ENABLED = _class.staticFieldId(
     r'EXTRA_BATTERY_SAVER_MODE_ENABLED',
@@ -5016,8 +5211,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_BATTERY_SAVER_MODE_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_BATTERY_SAVER_MODE_ENABLED =>
-      _id_EXTRA_BATTERY_SAVER_MODE_ENABLED.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_BATTERY_SAVER_MODE_ENABLED =>
+      _id_EXTRA_BATTERY_SAVER_MODE_ENABLED.get(
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED =
       _class.staticFieldId(
@@ -5027,9 +5223,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED =>
+  static _$jni.JString get EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED =>
       _id_EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_CHANNEL_FILTER_LIST = _class.staticFieldId(
     r'EXTRA_CHANNEL_FILTER_LIST',
@@ -5038,8 +5234,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_CHANNEL_FILTER_LIST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_CHANNEL_FILTER_LIST =>
-      _id_EXTRA_CHANNEL_FILTER_LIST.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_CHANNEL_FILTER_LIST =>
+      _id_EXTRA_CHANNEL_FILTER_LIST.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_CHANNEL_ID = _class.staticFieldId(
     r'EXTRA_CHANNEL_ID',
@@ -5048,8 +5244,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_CHANNEL_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_CHANNEL_ID =>
-      _id_EXTRA_CHANNEL_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_CHANNEL_ID =>
+      _id_EXTRA_CHANNEL_ID.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_CONVERSATION_ID = _class.staticFieldId(
     r'EXTRA_CONVERSATION_ID',
@@ -5058,8 +5254,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_CONVERSATION_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_CONVERSATION_ID =>
-      _id_EXTRA_CONVERSATION_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_CONVERSATION_ID =>
+      _id_EXTRA_CONVERSATION_ID.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_DO_NOT_DISTURB_MODE_ENABLED = _class.staticFieldId(
     r'EXTRA_DO_NOT_DISTURB_MODE_ENABLED',
@@ -5068,9 +5264,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_DO_NOT_DISTURB_MODE_ENABLED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_DO_NOT_DISTURB_MODE_ENABLED =>
+  static _$jni.JString get EXTRA_DO_NOT_DISTURB_MODE_ENABLED =>
       _id_EXTRA_DO_NOT_DISTURB_MODE_ENABLED.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_DO_NOT_DISTURB_MODE_MINUTES = _class.staticFieldId(
     r'EXTRA_DO_NOT_DISTURB_MODE_MINUTES',
@@ -5079,9 +5275,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_DO_NOT_DISTURB_MODE_MINUTES`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_DO_NOT_DISTURB_MODE_MINUTES =>
+  static _$jni.JString get EXTRA_DO_NOT_DISTURB_MODE_MINUTES =>
       _id_EXTRA_DO_NOT_DISTURB_MODE_MINUTES.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_EASY_CONNECT_ATTEMPTED_SSID = _class.staticFieldId(
     r'EXTRA_EASY_CONNECT_ATTEMPTED_SSID',
@@ -5090,9 +5286,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_EASY_CONNECT_ATTEMPTED_SSID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_EASY_CONNECT_ATTEMPTED_SSID =>
+  static _$jni.JString get EXTRA_EASY_CONNECT_ATTEMPTED_SSID =>
       _id_EXTRA_EASY_CONNECT_ATTEMPTED_SSID.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_EASY_CONNECT_BAND_LIST = _class.staticFieldId(
     r'EXTRA_EASY_CONNECT_BAND_LIST',
@@ -5101,8 +5297,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_EASY_CONNECT_BAND_LIST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_EASY_CONNECT_BAND_LIST =>
-      _id_EXTRA_EASY_CONNECT_BAND_LIST.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_EASY_CONNECT_BAND_LIST =>
+      _id_EXTRA_EASY_CONNECT_BAND_LIST.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_EASY_CONNECT_CHANNEL_LIST = _class.staticFieldId(
     r'EXTRA_EASY_CONNECT_CHANNEL_LIST',
@@ -5111,8 +5307,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_EASY_CONNECT_CHANNEL_LIST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_EASY_CONNECT_CHANNEL_LIST =>
-      _id_EXTRA_EASY_CONNECT_CHANNEL_LIST.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_EASY_CONNECT_CHANNEL_LIST =>
+      _id_EXTRA_EASY_CONNECT_CHANNEL_LIST.get(
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_EASY_CONNECT_ERROR_CODE = _class.staticFieldId(
     r'EXTRA_EASY_CONNECT_ERROR_CODE',
@@ -5121,8 +5318,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_EASY_CONNECT_ERROR_CODE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_EASY_CONNECT_ERROR_CODE =>
-      _id_EXTRA_EASY_CONNECT_ERROR_CODE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_EASY_CONNECT_ERROR_CODE =>
+      _id_EXTRA_EASY_CONNECT_ERROR_CODE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_INPUT_METHOD_ID = _class.staticFieldId(
     r'EXTRA_INPUT_METHOD_ID',
@@ -5131,8 +5328,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_INPUT_METHOD_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_INPUT_METHOD_ID =>
-      _id_EXTRA_INPUT_METHOD_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_INPUT_METHOD_ID =>
+      _id_EXTRA_INPUT_METHOD_ID.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME =
       _class.staticFieldId(
@@ -5142,9 +5339,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME =>
+  static _$jni.JString get EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME =>
       _id_EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =
       _class.staticFieldId(
@@ -5154,9 +5351,10 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =>
-      _id_EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY.get(
-          _class, const jni.JStringType());
+  static _$jni.JString
+      get EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =>
+          _id_EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY.get(
+              _class, const _$jni.JStringType());
 
   static final _id_EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI =
       _class.staticFieldId(
@@ -5166,9 +5364,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI =>
+  static _$jni.JString get EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI =>
       _id_EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_SUB_ID = _class.staticFieldId(
     r'EXTRA_SUB_ID',
@@ -5177,8 +5375,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SUB_ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SUB_ID =>
-      _id_EXTRA_SUB_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_SUB_ID =>
+      _id_EXTRA_SUB_ID.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_SUPERVISOR_RESTRICTED_SETTING_KEY =
       _class.staticFieldId(
@@ -5188,9 +5386,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SUPERVISOR_RESTRICTED_SETTING_KEY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SUPERVISOR_RESTRICTED_SETTING_KEY =>
+  static _$jni.JString get EXTRA_SUPERVISOR_RESTRICTED_SETTING_KEY =>
       _id_EXTRA_SUPERVISOR_RESTRICTED_SETTING_KEY.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_EXTRA_WIFI_NETWORK_LIST = _class.staticFieldId(
     r'EXTRA_WIFI_NETWORK_LIST',
@@ -5199,8 +5397,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_WIFI_NETWORK_LIST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_WIFI_NETWORK_LIST =>
-      _id_EXTRA_WIFI_NETWORK_LIST.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_WIFI_NETWORK_LIST =>
+      _id_EXTRA_WIFI_NETWORK_LIST.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_WIFI_NETWORK_RESULT_LIST = _class.staticFieldId(
     r'EXTRA_WIFI_NETWORK_RESULT_LIST',
@@ -5209,8 +5407,8 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_WIFI_NETWORK_RESULT_LIST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_WIFI_NETWORK_RESULT_LIST =>
-      _id_EXTRA_WIFI_NETWORK_RESULT_LIST.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_WIFI_NETWORK_RESULT_LIST =>
+      _id_EXTRA_WIFI_NETWORK_RESULT_LIST.get(_class, const _$jni.JStringType());
 
   static final _id_INTENT_CATEGORY_USAGE_ACCESS_CONFIG = _class.staticFieldId(
     r'INTENT_CATEGORY_USAGE_ACCESS_CONFIG',
@@ -5219,9 +5417,9 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String INTENT_CATEGORY_USAGE_ACCESS_CONFIG`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get INTENT_CATEGORY_USAGE_ACCESS_CONFIG =>
+  static _$jni.JString get INTENT_CATEGORY_USAGE_ACCESS_CONFIG =>
       _id_INTENT_CATEGORY_USAGE_ACCESS_CONFIG.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_METADATA_USAGE_ACCESS_REASON = _class.staticFieldId(
     r'METADATA_USAGE_ACCESS_REASON',
@@ -5230,35 +5428,35 @@ class Settings extends jni.JObject {
 
   /// from: `static public final java.lang.String METADATA_USAGE_ACCESS_REASON`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get METADATA_USAGE_ACCESS_REASON =>
-      _id_METADATA_USAGE_ACCESS_REASON.get(_class, const jni.JStringType());
+  static _$jni.JString get METADATA_USAGE_ACCESS_REASON =>
+      _id_METADATA_USAGE_ACCESS_REASON.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int SUPERVISOR_VERIFICATION_SETTING_BIOMETRICS`
   static const SUPERVISOR_VERIFICATION_SETTING_BIOMETRICS = 1;
 
   /// from: `static public final int SUPERVISOR_VERIFICATION_SETTING_UNKNOWN`
   static const SUPERVISOR_VERIFICATION_SETTING_UNKNOWN = 0;
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Settings() {
     return Settings.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
@@ -5267,48 +5465,55 @@ class Settings extends jni.JObject {
     r'(Landroid/content/Context;)Z',
   );
 
-  static final _canDrawOverlays = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _canDrawOverlays = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean canDrawOverlays(android.content.Context context)`
   static bool canDrawOverlays(
     context_.Context context,
   ) {
-    return _canDrawOverlays(_class.reference.pointer,
-            _id_canDrawOverlays as jni.JMethodIDPtr, context.reference.pointer)
+    return _canDrawOverlays(
+            _class.reference.pointer,
+            _id_canDrawOverlays as _$jni.JMethodIDPtr,
+            context.reference.pointer)
         .boolean;
   }
 }
 
-final class $SettingsType extends jni.JObjType<Settings> {
-  const $SettingsType();
+final class $Settings$Type extends _$jni.JObjType<Settings> {
+  @_$jni.internal
+  const $Settings$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/provider/Settings;';
 
-  @override
-  Settings fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Settings fromReference(_$jni.JReference reference) =>
       Settings.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($SettingsType).hashCode;
+  @_$core.override
+  int get hashCode => ($Settings$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($SettingsType) && other is $SettingsType;
+    return other.runtimeType == ($Settings$Type) && other is $Settings$Type;
   }
 }

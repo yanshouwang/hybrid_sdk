@@ -3,8 +3,6 @@ android_sdk_config:
   add_gradle_deps: true
   android_example: example/
 suspend_fun_to_async: true
-enable_experiment:
-  - interface_implementation
 output:
   dart:
     path: lib/src/jni/

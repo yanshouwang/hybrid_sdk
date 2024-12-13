@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,75 +28,52 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../net/Uri.dart' as uri_;
 
-import '../os/Handler.dart' as handler_;
-
 /// from: `android.database.ContentObserver`
-class ContentObserver extends jni.JObject {
-  @override
-  late final jni.JObjType<ContentObserver> $type = type;
+class ContentObserver extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<ContentObserver> $type;
 
+  @_$jni.internal
   ContentObserver.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/database/ContentObserver');
+  static final _class =
+      _$jni.JClass.forName(r'android/database/ContentObserver');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $ContentObserverType();
-  static final _id_new0 = _class.constructorId(
-    r'(Landroid/os/Handler;)V',
-  );
-
-  static final _new0 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
-
-  /// from: `public void <init>(android.os.Handler handler)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory ContentObserver(
-    handler_.Handler handler,
-  ) {
-    return ContentObserver.fromReference(_new0(_class.reference.pointer,
-            _id_new0 as jni.JMethodIDPtr, handler.reference.pointer)
-        .reference);
-  }
-
+  static const type = $ContentObserver$Type();
   static final _id_deliverSelfNotifications = _class.instanceMethodId(
     r'deliverSelfNotifications',
     r'()Z',
   );
 
-  static final _deliverSelfNotifications = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _deliverSelfNotifications = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean deliverSelfNotifications()`
   bool deliverSelfNotifications() {
-    return _deliverSelfNotifications(
-            reference.pointer, _id_deliverSelfNotifications as jni.JMethodIDPtr)
+    return _deliverSelfNotifications(reference.pointer,
+            _id_deliverSelfNotifications as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -99,101 +82,110 @@ class ContentObserver extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _onChange = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _onChange = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void onChange(boolean z)`
   void onChange(
     bool z,
   ) {
-    _onChange(reference.pointer, _id_onChange as jni.JMethodIDPtr, z ? 1 : 0)
+    _onChange(reference.pointer, _id_onChange as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
-  static final _id_onChange1 = _class.instanceMethodId(
+  static final _id_onChange$1 = _class.instanceMethodId(
     r'onChange',
     r'(ZLandroid/net/Uri;)V',
   );
 
-  static final _onChange1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _onChange$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void onChange(boolean z, android.net.Uri uri)`
-  void onChange1(
+  void onChange$1(
     bool z,
     uri_.Uri uri,
   ) {
-    _onChange1(reference.pointer, _id_onChange1 as jni.JMethodIDPtr, z ? 1 : 0,
-            uri.reference.pointer)
+    _onChange$1(reference.pointer, _id_onChange$1 as _$jni.JMethodIDPtr,
+            z ? 1 : 0, uri.reference.pointer)
         .check();
   }
 
-  static final _id_onChange2 = _class.instanceMethodId(
+  static final _id_onChange$2 = _class.instanceMethodId(
     r'onChange',
     r'(ZLandroid/net/Uri;I)V',
   );
 
-  static final _onChange2 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
+  static final _onChange$2 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
+                      (
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
+                      )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public void onChange(boolean z, android.net.Uri uri, int i)`
-  void onChange2(
+  void onChange$2(
     bool z,
     uri_.Uri uri,
     int i,
   ) {
-    _onChange2(reference.pointer, _id_onChange2 as jni.JMethodIDPtr, z ? 1 : 0,
-            uri.reference.pointer, i)
+    _onChange$2(reference.pointer, _id_onChange$2 as _$jni.JMethodIDPtr,
+            z ? 1 : 0, uri.reference.pointer, i)
         .check();
   }
 
-  static final _id_onChange3 = _class.instanceMethodId(
+  static final _id_onChange$3 = _class.instanceMethodId(
     r'onChange',
     r'(ZLjava/util/Collection;I)V',
   );
 
-  static final _onChange3 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
+  static final _onChange$3 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
+                      (
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
+                      )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public void onChange(boolean z, java.util.Collection collection, int i)`
-  void onChange3(
+  void onChange$3(
     bool z,
-    jni.JObject collection,
+    _$jni.JObject collection,
     int i,
   ) {
-    _onChange3(reference.pointer, _id_onChange3 as jni.JMethodIDPtr, z ? 1 : 0,
-            collection.reference.pointer, i)
+    _onChange$3(reference.pointer, _id_onChange$3 as _$jni.JMethodIDPtr,
+            z ? 1 : 0, collection.reference.pointer, i)
         .check();
   }
 
@@ -202,128 +194,153 @@ class ContentObserver extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _dispatchChange = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _dispatchChange = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final void dispatchChange(boolean z)`
   void dispatchChange(
     bool z,
   ) {
-    _dispatchChange(reference.pointer, _id_dispatchChange as jni.JMethodIDPtr,
+    _dispatchChange(reference.pointer, _id_dispatchChange as _$jni.JMethodIDPtr,
             z ? 1 : 0)
         .check();
   }
 
-  static final _id_dispatchChange1 = _class.instanceMethodId(
+  static final _id_dispatchChange$1 = _class.instanceMethodId(
     r'dispatchChange',
     r'(ZLandroid/net/Uri;)V',
   );
 
-  static final _dispatchChange1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _dispatchChange$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void dispatchChange(boolean z, android.net.Uri uri)`
-  void dispatchChange1(
+  void dispatchChange$1(
     bool z,
     uri_.Uri uri,
   ) {
-    _dispatchChange1(reference.pointer, _id_dispatchChange1 as jni.JMethodIDPtr,
-            z ? 1 : 0, uri.reference.pointer)
+    _dispatchChange$1(
+            reference.pointer,
+            _id_dispatchChange$1 as _$jni.JMethodIDPtr,
+            z ? 1 : 0,
+            uri.reference.pointer)
         .check();
   }
 
-  static final _id_dispatchChange2 = _class.instanceMethodId(
+  static final _id_dispatchChange$2 = _class.instanceMethodId(
     r'dispatchChange',
     r'(ZLandroid/net/Uri;I)V',
   );
 
-  static final _dispatchChange2 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
+  static final _dispatchChange$2 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
+                      (
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
+                      )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public final void dispatchChange(boolean z, android.net.Uri uri, int i)`
-  void dispatchChange2(
+  void dispatchChange$2(
     bool z,
     uri_.Uri uri,
     int i,
   ) {
-    _dispatchChange2(reference.pointer, _id_dispatchChange2 as jni.JMethodIDPtr,
-            z ? 1 : 0, uri.reference.pointer, i)
+    _dispatchChange$2(
+            reference.pointer,
+            _id_dispatchChange$2 as _$jni.JMethodIDPtr,
+            z ? 1 : 0,
+            uri.reference.pointer,
+            i)
         .check();
   }
 
-  static final _id_dispatchChange3 = _class.instanceMethodId(
+  static final _id_dispatchChange$3 = _class.instanceMethodId(
     r'dispatchChange',
     r'(ZLjava/util/Collection;I)V',
   );
 
-  static final _dispatchChange3 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
+  static final _dispatchChange$3 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
+                      (
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
+                      )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public final void dispatchChange(boolean z, java.util.Collection collection, int i)`
-  void dispatchChange3(
+  void dispatchChange$3(
     bool z,
-    jni.JObject collection,
+    _$jni.JObject collection,
     int i,
   ) {
-    _dispatchChange3(reference.pointer, _id_dispatchChange3 as jni.JMethodIDPtr,
-            z ? 1 : 0, collection.reference.pointer, i)
+    _dispatchChange$3(
+            reference.pointer,
+            _id_dispatchChange$3 as _$jni.JMethodIDPtr,
+            z ? 1 : 0,
+            collection.reference.pointer,
+            i)
         .check();
   }
 }
 
-final class $ContentObserverType extends jni.JObjType<ContentObserver> {
-  const $ContentObserverType();
+final class $ContentObserver$Type extends _$jni.JObjType<ContentObserver> {
+  @_$jni.internal
+  const $ContentObserver$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/database/ContentObserver;';
 
-  @override
-  ContentObserver fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  ContentObserver fromReference(_$jni.JReference reference) =>
       ContentObserver.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($ContentObserverType).hashCode;
+  @_$core.override
+  int get hashCode => ($ContentObserver$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($ContentObserverType) &&
-        other is $ContentObserverType;
+    return other.runtimeType == ($ContentObserver$Type) &&
+        other is $ContentObserver$Type;
   }
 }

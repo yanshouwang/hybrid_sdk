@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,54 +28,55 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../database/ContentObserver.dart' as contentobserver_;
 
 import '../net/Uri.dart' as uri_;
 
-import 'Context.dart' as context_;
-
 /// from: `android.content.ContentResolver$MimeTypeInfo`
-class ContentResolver_MimeTypeInfo extends jni.JObject {
-  @override
-  late final jni.JObjType<ContentResolver_MimeTypeInfo> $type = type;
+class ContentResolver_MimeTypeInfo extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<ContentResolver_MimeTypeInfo> $type;
 
+  @_$jni.internal
   ContentResolver_MimeTypeInfo.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'android/content/ContentResolver$MimeTypeInfo');
+      _$jni.JClass.forName(r'android/content/ContentResolver$MimeTypeInfo');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $ContentResolver_MimeTypeInfoType();
+  static const type = $ContentResolver_MimeTypeInfo$Type();
   static final _id_getIcon = _class.instanceMethodId(
     r'getIcon',
     r'()Landroid/graphics/drawable/Icon;',
   );
 
-  static final _getIcon = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getIcon = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.graphics.drawable.Icon getIcon()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getIcon() {
-    return _getIcon(reference.pointer, _id_getIcon as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getIcon() {
+    return _getIcon(reference.pointer, _id_getIcon as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getLabel = _class.instanceMethodId(
@@ -77,23 +84,23 @@ class ContentResolver_MimeTypeInfo extends jni.JObject {
     r'()Ljava/lang/CharSequence;',
   );
 
-  static final _getLabel = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getLabel = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.CharSequence getLabel()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getLabel() {
-    return _getLabel(reference.pointer, _id_getLabel as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getLabel() {
+    return _getLabel(reference.pointer, _id_getLabel as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getContentDescription = _class.instanceMethodId(
@@ -101,67 +108,76 @@ class ContentResolver_MimeTypeInfo extends jni.JObject {
     r'()Ljava/lang/CharSequence;',
   );
 
-  static final _getContentDescription = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getContentDescription = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.CharSequence getContentDescription()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getContentDescription() {
+  _$jni.JObject getContentDescription() {
     return _getContentDescription(
-            reference.pointer, _id_getContentDescription as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getContentDescription as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 }
 
-final class $ContentResolver_MimeTypeInfoType
-    extends jni.JObjType<ContentResolver_MimeTypeInfo> {
-  const $ContentResolver_MimeTypeInfoType();
+final class $ContentResolver_MimeTypeInfo$Type
+    extends _$jni.JObjType<ContentResolver_MimeTypeInfo> {
+  @_$jni.internal
+  const $ContentResolver_MimeTypeInfo$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/content/ContentResolver$MimeTypeInfo;';
 
-  @override
-  ContentResolver_MimeTypeInfo fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  ContentResolver_MimeTypeInfo fromReference(_$jni.JReference reference) =>
       ContentResolver_MimeTypeInfo.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($ContentResolver_MimeTypeInfoType).hashCode;
+  @_$core.override
+  int get hashCode => ($ContentResolver_MimeTypeInfo$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($ContentResolver_MimeTypeInfoType) &&
-        other is $ContentResolver_MimeTypeInfoType;
+    return other.runtimeType == ($ContentResolver_MimeTypeInfo$Type) &&
+        other is $ContentResolver_MimeTypeInfo$Type;
   }
 }
 
 /// from: `android.content.ContentResolver`
-class ContentResolver extends jni.JObject {
-  @override
-  late final jni.JObjType<ContentResolver> $type = type;
+class ContentResolver extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<ContentResolver> $type;
 
+  @_$jni.internal
   ContentResolver.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/content/ContentResolver');
+  static final _class =
+      _$jni.JClass.forName(r'android/content/ContentResolver');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $ContentResolverType();
+  static const type = $ContentResolver$Type();
   static final _id_ANY_CURSOR_ITEM_TYPE = _class.staticFieldId(
     r'ANY_CURSOR_ITEM_TYPE',
     r'Ljava/lang/String;',
@@ -169,8 +185,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String ANY_CURSOR_ITEM_TYPE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ANY_CURSOR_ITEM_TYPE =>
-      _id_ANY_CURSOR_ITEM_TYPE.get(_class, const jni.JStringType());
+  static _$jni.JString get ANY_CURSOR_ITEM_TYPE =>
+      _id_ANY_CURSOR_ITEM_TYPE.get(_class, const _$jni.JStringType());
 
   static final _id_CURSOR_DIR_BASE_TYPE = _class.staticFieldId(
     r'CURSOR_DIR_BASE_TYPE',
@@ -179,8 +195,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String CURSOR_DIR_BASE_TYPE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get CURSOR_DIR_BASE_TYPE =>
-      _id_CURSOR_DIR_BASE_TYPE.get(_class, const jni.JStringType());
+  static _$jni.JString get CURSOR_DIR_BASE_TYPE =>
+      _id_CURSOR_DIR_BASE_TYPE.get(_class, const _$jni.JStringType());
 
   static final _id_CURSOR_ITEM_BASE_TYPE = _class.staticFieldId(
     r'CURSOR_ITEM_BASE_TYPE',
@@ -189,8 +205,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String CURSOR_ITEM_BASE_TYPE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get CURSOR_ITEM_BASE_TYPE =>
-      _id_CURSOR_ITEM_BASE_TYPE.get(_class, const jni.JStringType());
+  static _$jni.JString get CURSOR_ITEM_BASE_TYPE =>
+      _id_CURSOR_ITEM_BASE_TYPE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_HONORED_ARGS = _class.staticFieldId(
     r'EXTRA_HONORED_ARGS',
@@ -199,8 +215,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_HONORED_ARGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_HONORED_ARGS =>
-      _id_EXTRA_HONORED_ARGS.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_HONORED_ARGS =>
+      _id_EXTRA_HONORED_ARGS.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_REFRESH_SUPPORTED = _class.staticFieldId(
     r'EXTRA_REFRESH_SUPPORTED',
@@ -209,8 +225,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_REFRESH_SUPPORTED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_REFRESH_SUPPORTED =>
-      _id_EXTRA_REFRESH_SUPPORTED.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_REFRESH_SUPPORTED =>
+      _id_EXTRA_REFRESH_SUPPORTED.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_SIZE = _class.staticFieldId(
     r'EXTRA_SIZE',
@@ -219,8 +235,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_SIZE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_SIZE =>
-      _id_EXTRA_SIZE.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_SIZE =>
+      _id_EXTRA_SIZE.get(_class, const _$jni.JStringType());
 
   static final _id_EXTRA_TOTAL_COUNT = _class.staticFieldId(
     r'EXTRA_TOTAL_COUNT',
@@ -229,8 +245,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String EXTRA_TOTAL_COUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get EXTRA_TOTAL_COUNT =>
-      _id_EXTRA_TOTAL_COUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get EXTRA_TOTAL_COUNT =>
+      _id_EXTRA_TOTAL_COUNT.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int NOTIFY_DELETE`
   static const NOTIFY_DELETE = 16;
@@ -253,8 +269,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_GROUP_COLUMNS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_GROUP_COLUMNS =>
-      _id_QUERY_ARG_GROUP_COLUMNS.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_GROUP_COLUMNS =>
+      _id_QUERY_ARG_GROUP_COLUMNS.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_LIMIT = _class.staticFieldId(
     r'QUERY_ARG_LIMIT',
@@ -263,8 +279,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_LIMIT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_LIMIT =>
-      _id_QUERY_ARG_LIMIT.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_LIMIT =>
+      _id_QUERY_ARG_LIMIT.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_OFFSET = _class.staticFieldId(
     r'QUERY_ARG_OFFSET',
@@ -273,8 +289,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_OFFSET`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_OFFSET =>
-      _id_QUERY_ARG_OFFSET.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_OFFSET =>
+      _id_QUERY_ARG_OFFSET.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SORT_COLLATION = _class.staticFieldId(
     r'QUERY_ARG_SORT_COLLATION',
@@ -283,8 +299,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SORT_COLLATION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SORT_COLLATION =>
-      _id_QUERY_ARG_SORT_COLLATION.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SORT_COLLATION =>
+      _id_QUERY_ARG_SORT_COLLATION.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SORT_COLUMNS = _class.staticFieldId(
     r'QUERY_ARG_SORT_COLUMNS',
@@ -293,8 +309,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SORT_COLUMNS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SORT_COLUMNS =>
-      _id_QUERY_ARG_SORT_COLUMNS.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SORT_COLUMNS =>
+      _id_QUERY_ARG_SORT_COLUMNS.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SORT_DIRECTION = _class.staticFieldId(
     r'QUERY_ARG_SORT_DIRECTION',
@@ -303,8 +319,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SORT_DIRECTION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SORT_DIRECTION =>
-      _id_QUERY_ARG_SORT_DIRECTION.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SORT_DIRECTION =>
+      _id_QUERY_ARG_SORT_DIRECTION.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SORT_LOCALE = _class.staticFieldId(
     r'QUERY_ARG_SORT_LOCALE',
@@ -313,8 +329,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SORT_LOCALE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SORT_LOCALE =>
-      _id_QUERY_ARG_SORT_LOCALE.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SORT_LOCALE =>
+      _id_QUERY_ARG_SORT_LOCALE.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SQL_GROUP_BY = _class.staticFieldId(
     r'QUERY_ARG_SQL_GROUP_BY',
@@ -323,8 +339,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SQL_GROUP_BY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SQL_GROUP_BY =>
-      _id_QUERY_ARG_SQL_GROUP_BY.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SQL_GROUP_BY =>
+      _id_QUERY_ARG_SQL_GROUP_BY.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SQL_HAVING = _class.staticFieldId(
     r'QUERY_ARG_SQL_HAVING',
@@ -333,8 +349,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SQL_HAVING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SQL_HAVING =>
-      _id_QUERY_ARG_SQL_HAVING.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SQL_HAVING =>
+      _id_QUERY_ARG_SQL_HAVING.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SQL_LIMIT = _class.staticFieldId(
     r'QUERY_ARG_SQL_LIMIT',
@@ -343,8 +359,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SQL_LIMIT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SQL_LIMIT =>
-      _id_QUERY_ARG_SQL_LIMIT.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SQL_LIMIT =>
+      _id_QUERY_ARG_SQL_LIMIT.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SQL_SELECTION = _class.staticFieldId(
     r'QUERY_ARG_SQL_SELECTION',
@@ -353,8 +369,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SQL_SELECTION`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SQL_SELECTION =>
-      _id_QUERY_ARG_SQL_SELECTION.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SQL_SELECTION =>
+      _id_QUERY_ARG_SQL_SELECTION.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SQL_SELECTION_ARGS = _class.staticFieldId(
     r'QUERY_ARG_SQL_SELECTION_ARGS',
@@ -363,8 +379,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SQL_SELECTION_ARGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SQL_SELECTION_ARGS =>
-      _id_QUERY_ARG_SQL_SELECTION_ARGS.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SQL_SELECTION_ARGS =>
+      _id_QUERY_ARG_SQL_SELECTION_ARGS.get(_class, const _$jni.JStringType());
 
   static final _id_QUERY_ARG_SQL_SORT_ORDER = _class.staticFieldId(
     r'QUERY_ARG_SQL_SORT_ORDER',
@@ -373,8 +389,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String QUERY_ARG_SQL_SORT_ORDER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get QUERY_ARG_SQL_SORT_ORDER =>
-      _id_QUERY_ARG_SQL_SORT_ORDER.get(_class, const jni.JStringType());
+  static _$jni.JString get QUERY_ARG_SQL_SORT_ORDER =>
+      _id_QUERY_ARG_SQL_SORT_ORDER.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int QUERY_SORT_DIRECTION_ASCENDING`
   static const QUERY_SORT_DIRECTION_ASCENDING = 0;
@@ -388,8 +404,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SCHEME_ANDROID_RESOURCE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SCHEME_ANDROID_RESOURCE =>
-      _id_SCHEME_ANDROID_RESOURCE.get(_class, const jni.JStringType());
+  static _$jni.JString get SCHEME_ANDROID_RESOURCE =>
+      _id_SCHEME_ANDROID_RESOURCE.get(_class, const _$jni.JStringType());
 
   static final _id_SCHEME_CONTENT = _class.staticFieldId(
     r'SCHEME_CONTENT',
@@ -398,8 +414,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SCHEME_CONTENT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SCHEME_CONTENT =>
-      _id_SCHEME_CONTENT.get(_class, const jni.JStringType());
+  static _$jni.JString get SCHEME_CONTENT =>
+      _id_SCHEME_CONTENT.get(_class, const _$jni.JStringType());
 
   static final _id_SCHEME_FILE = _class.staticFieldId(
     r'SCHEME_FILE',
@@ -408,8 +424,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SCHEME_FILE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SCHEME_FILE =>
-      _id_SCHEME_FILE.get(_class, const jni.JStringType());
+  static _$jni.JString get SCHEME_FILE =>
+      _id_SCHEME_FILE.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_ACCOUNT = _class.staticFieldId(
     r'SYNC_EXTRAS_ACCOUNT',
@@ -418,8 +434,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_ACCOUNT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_ACCOUNT =>
-      _id_SYNC_EXTRAS_ACCOUNT.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_ACCOUNT =>
+      _id_SYNC_EXTRAS_ACCOUNT.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS = _class.staticFieldId(
     r'SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS',
@@ -428,9 +444,9 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS =>
+  static _$jni.JString get SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS =>
       _id_SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_DO_NOT_RETRY = _class.staticFieldId(
     r'SYNC_EXTRAS_DO_NOT_RETRY',
@@ -439,8 +455,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_DO_NOT_RETRY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_DO_NOT_RETRY =>
-      _id_SYNC_EXTRAS_DO_NOT_RETRY.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_DO_NOT_RETRY =>
+      _id_SYNC_EXTRAS_DO_NOT_RETRY.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_EXPEDITED = _class.staticFieldId(
     r'SYNC_EXTRAS_EXPEDITED',
@@ -449,8 +465,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_EXPEDITED`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_EXPEDITED =>
-      _id_SYNC_EXTRAS_EXPEDITED.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_EXPEDITED =>
+      _id_SYNC_EXTRAS_EXPEDITED.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_FORCE = _class.staticFieldId(
     r'SYNC_EXTRAS_FORCE',
@@ -459,8 +475,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_FORCE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_FORCE =>
-      _id_SYNC_EXTRAS_FORCE.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_FORCE =>
+      _id_SYNC_EXTRAS_FORCE.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_IGNORE_BACKOFF = _class.staticFieldId(
     r'SYNC_EXTRAS_IGNORE_BACKOFF',
@@ -469,8 +485,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_IGNORE_BACKOFF`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_IGNORE_BACKOFF =>
-      _id_SYNC_EXTRAS_IGNORE_BACKOFF.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_IGNORE_BACKOFF =>
+      _id_SYNC_EXTRAS_IGNORE_BACKOFF.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_IGNORE_SETTINGS = _class.staticFieldId(
     r'SYNC_EXTRAS_IGNORE_SETTINGS',
@@ -479,8 +495,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_IGNORE_SETTINGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_IGNORE_SETTINGS =>
-      _id_SYNC_EXTRAS_IGNORE_SETTINGS.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_IGNORE_SETTINGS =>
+      _id_SYNC_EXTRAS_IGNORE_SETTINGS.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_INITIALIZE = _class.staticFieldId(
     r'SYNC_EXTRAS_INITIALIZE',
@@ -489,8 +505,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_INITIALIZE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_INITIALIZE =>
-      _id_SYNC_EXTRAS_INITIALIZE.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_INITIALIZE =>
+      _id_SYNC_EXTRAS_INITIALIZE.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_MANUAL = _class.staticFieldId(
     r'SYNC_EXTRAS_MANUAL',
@@ -499,8 +515,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_MANUAL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_MANUAL =>
-      _id_SYNC_EXTRAS_MANUAL.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_MANUAL =>
+      _id_SYNC_EXTRAS_MANUAL.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_OVERRIDE_TOO_MANY_DELETIONS =
       _class.staticFieldId(
@@ -510,9 +526,9 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_OVERRIDE_TOO_MANY_DELETIONS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_OVERRIDE_TOO_MANY_DELETIONS =>
+  static _$jni.JString get SYNC_EXTRAS_OVERRIDE_TOO_MANY_DELETIONS =>
       _id_SYNC_EXTRAS_OVERRIDE_TOO_MANY_DELETIONS.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_REQUIRE_CHARGING = _class.staticFieldId(
     r'SYNC_EXTRAS_REQUIRE_CHARGING',
@@ -521,8 +537,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_REQUIRE_CHARGING`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_REQUIRE_CHARGING =>
-      _id_SYNC_EXTRAS_REQUIRE_CHARGING.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_REQUIRE_CHARGING =>
+      _id_SYNC_EXTRAS_REQUIRE_CHARGING.get(_class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_SCHEDULE_AS_EXPEDITED_JOB = _class.staticFieldId(
     r'SYNC_EXTRAS_SCHEDULE_AS_EXPEDITED_JOB',
@@ -531,9 +547,9 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_SCHEDULE_AS_EXPEDITED_JOB`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_SCHEDULE_AS_EXPEDITED_JOB =>
+  static _$jni.JString get SYNC_EXTRAS_SCHEDULE_AS_EXPEDITED_JOB =>
       _id_SYNC_EXTRAS_SCHEDULE_AS_EXPEDITED_JOB.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   static final _id_SYNC_EXTRAS_UPLOAD = _class.staticFieldId(
     r'SYNC_EXTRAS_UPLOAD',
@@ -542,8 +558,8 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final java.lang.String SYNC_EXTRAS_UPLOAD`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SYNC_EXTRAS_UPLOAD =>
-      _id_SYNC_EXTRAS_UPLOAD.get(_class, const jni.JStringType());
+  static _$jni.JString get SYNC_EXTRAS_UPLOAD =>
+      _id_SYNC_EXTRAS_UPLOAD.get(_class, const _$jni.JStringType());
 
   /// from: `static public final int SYNC_OBSERVER_TYPE_ACTIVE`
   static const SYNC_OBSERVER_TYPE_ACTIVE = 4;
@@ -553,81 +569,56 @@ class ContentResolver extends jni.JObject {
 
   /// from: `static public final int SYNC_OBSERVER_TYPE_SETTINGS`
   static const SYNC_OBSERVER_TYPE_SETTINGS = 1;
-  static final _id_new0 = _class.constructorId(
-    r'(Landroid/content/Context;)V',
-  );
-
-  static final _new0 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
-
-  /// from: `public void <init>(android.content.Context context)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory ContentResolver(
-    context_.Context context,
-  ) {
-    return ContentResolver.fromReference(_new0(_class.reference.pointer,
-            _id_new0 as jni.JMethodIDPtr, context.reference.pointer)
-        .reference);
-  }
-
   static final _id_wrap = _class.staticMethodId(
     r'wrap',
     r'(Landroid/content/ContentProvider;)Landroid/content/ContentResolver;',
   );
 
-  static final _wrap = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _wrap = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.content.ContentResolver wrap(android.content.ContentProvider contentProvider)`
   /// The returned object must be released after use, by calling the [release] method.
   static ContentResolver wrap(
-    jni.JObject contentProvider,
+    _$jni.JObject contentProvider,
   ) {
-    return _wrap(_class.reference.pointer, _id_wrap as jni.JMethodIDPtr,
+    return _wrap(_class.reference.pointer, _id_wrap as _$jni.JMethodIDPtr,
             contentProvider.reference.pointer)
-        .object(const $ContentResolverType());
+        .object(const $ContentResolver$Type());
   }
 
-  static final _id_wrap1 = _class.staticMethodId(
+  static final _id_wrap$1 = _class.staticMethodId(
     r'wrap',
     r'(Landroid/content/ContentProviderClient;)Landroid/content/ContentResolver;',
   );
 
-  static final _wrap1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _wrap$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public android.content.ContentResolver wrap(android.content.ContentProviderClient contentProviderClient)`
   /// The returned object must be released after use, by calling the [release] method.
-  static ContentResolver wrap1(
-    jni.JObject contentProviderClient,
+  static ContentResolver wrap$1(
+    _$jni.JObject contentProviderClient,
   ) {
-    return _wrap1(_class.reference.pointer, _id_wrap1 as jni.JMethodIDPtr,
+    return _wrap$1(_class.reference.pointer, _id_wrap$1 as _$jni.JMethodIDPtr,
             contentProviderClient.reference.pointer)
-        .object(const $ContentResolverType());
+        .object(const $ContentResolver$Type());
   }
 
   static final _id_getType = _class.instanceMethodId(
@@ -635,25 +626,25 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)Ljava/lang/String;',
   );
 
-  static final _getType = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getType = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final java.lang.String getType(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getType(
+  _$jni.JString getType(
     uri_.Uri uri,
   ) {
-    return _getType(reference.pointer, _id_getType as jni.JMethodIDPtr,
+    return _getType(reference.pointer, _id_getType as _$jni.JMethodIDPtr,
             uri.reference.pointer)
-        .object(const jni.JStringType());
+        .object(const _$jni.JStringType());
   }
 
   static final _id_getStreamTypes = _class.instanceMethodId(
@@ -661,32 +652,35 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;)[Ljava/lang/String;',
   );
 
-  static final _getStreamTypes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getStreamTypes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.lang.String[] getStreamTypes(android.net.Uri uri, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JArray<jni.JString> getStreamTypes(
+  _$jni.JArray<_$jni.JString> getStreamTypes(
     uri_.Uri uri,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _getStreamTypes(
             reference.pointer,
-            _id_getStreamTypes as jni.JMethodIDPtr,
+            _id_getStreamTypes as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JArrayType(jni.JStringType()));
+        .object(const _$jni.JArrayType(_$jni.JStringType()));
   }
 
   static final _id_query = _class.instanceMethodId(
@@ -694,143 +688,143 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;',
   );
 
-  static final _query = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _query = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.database.Cursor query(android.net.Uri uri, java.lang.String[] strings, java.lang.String string, java.lang.String[] strings1, java.lang.String string1)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject query(
+  _$jni.JObject query(
     uri_.Uri uri,
-    jni.JArray<jni.JString> strings,
-    jni.JString string,
-    jni.JArray<jni.JString> strings1,
-    jni.JString string1,
+    _$jni.JArray<_$jni.JString> strings,
+    _$jni.JString string,
+    _$jni.JArray<_$jni.JString> strings1,
+    _$jni.JString string1,
   ) {
     return _query(
             reference.pointer,
-            _id_query as jni.JMethodIDPtr,
+            _id_query as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             strings.reference.pointer,
             string.reference.pointer,
             strings1.reference.pointer,
             string1.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_query1 = _class.instanceMethodId(
+  static final _id_query$1 = _class.instanceMethodId(
     r'query',
     r'(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;',
   );
 
-  static final _query1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _query$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.database.Cursor query(android.net.Uri uri, java.lang.String[] strings, java.lang.String string, java.lang.String[] strings1, java.lang.String string1, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject query1(
+  _$jni.JObject query$1(
     uri_.Uri uri,
-    jni.JArray<jni.JString> strings,
-    jni.JString string,
-    jni.JArray<jni.JString> strings1,
-    jni.JString string1,
-    jni.JObject cancellationSignal,
+    _$jni.JArray<_$jni.JString> strings,
+    _$jni.JString string,
+    _$jni.JArray<_$jni.JString> strings1,
+    _$jni.JString string1,
+    _$jni.JObject cancellationSignal,
   ) {
-    return _query1(
+    return _query$1(
             reference.pointer,
-            _id_query1 as jni.JMethodIDPtr,
+            _id_query$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             strings.reference.pointer,
             string.reference.pointer,
             strings1.reference.pointer,
             string1.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_query2 = _class.instanceMethodId(
+  static final _id_query$2 = _class.instanceMethodId(
     r'query',
     r'(Landroid/net/Uri;[Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/database/Cursor;',
   );
 
-  static final _query2 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _query$2 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.database.Cursor query(android.net.Uri uri, java.lang.String[] strings, android.os.Bundle bundle, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject query2(
+  _$jni.JObject query$2(
     uri_.Uri uri,
-    jni.JArray<jni.JString> strings,
-    jni.JObject bundle,
-    jni.JObject cancellationSignal,
+    _$jni.JArray<_$jni.JString> strings,
+    _$jni.JObject bundle,
+    _$jni.JObject cancellationSignal,
   ) {
-    return _query2(
+    return _query$2(
             reference.pointer,
-            _id_query2 as jni.JMethodIDPtr,
+            _id_query$2 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             strings.reference.pointer,
             bundle.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_canonicalize = _class.instanceMethodId(
@@ -838,16 +832,16 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)Landroid/net/Uri;',
   );
 
-  static final _canonicalize = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _canonicalize = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.net.Uri canonicalize(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
@@ -855,8 +849,8 @@ class ContentResolver extends jni.JObject {
     uri_.Uri uri,
   ) {
     return _canonicalize(reference.pointer,
-            _id_canonicalize as jni.JMethodIDPtr, uri.reference.pointer)
-        .object(const uri_.$UriType());
+            _id_canonicalize as _$jni.JMethodIDPtr, uri.reference.pointer)
+        .object(const uri_.$Uri$Type());
   }
 
   static final _id_uncanonicalize = _class.instanceMethodId(
@@ -864,16 +858,16 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)Landroid/net/Uri;',
   );
 
-  static final _uncanonicalize = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _uncanonicalize = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.net.Uri uncanonicalize(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
@@ -881,8 +875,8 @@ class ContentResolver extends jni.JObject {
     uri_.Uri uri,
   ) {
     return _uncanonicalize(reference.pointer,
-            _id_uncanonicalize as jni.JMethodIDPtr, uri.reference.pointer)
-        .object(const uri_.$UriType());
+            _id_uncanonicalize as _$jni.JMethodIDPtr, uri.reference.pointer)
+        .object(const uri_.$Uri$Type());
   }
 
   static final _id_refresh = _class.instanceMethodId(
@@ -890,34 +884,34 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Z',
   );
 
-  static final _refresh = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _refresh = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final boolean refresh(android.net.Uri uri, android.os.Bundle bundle, android.os.CancellationSignal cancellationSignal)`
   bool refresh(
     uri_.Uri uri,
-    jni.JObject bundle,
-    jni.JObject cancellationSignal,
+    _$jni.JObject bundle,
+    _$jni.JObject cancellationSignal,
   ) {
     return _refresh(
             reference.pointer,
-            _id_refresh as jni.JMethodIDPtr,
+            _id_refresh as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             bundle.reference.pointer,
             cancellationSignal.reference.pointer)
@@ -929,25 +923,25 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)Ljava/io/InputStream;',
   );
 
-  static final _openInputStream = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _openInputStream = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final java.io.InputStream openInputStream(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openInputStream(
+  _$jni.JObject openInputStream(
     uri_.Uri uri,
   ) {
     return _openInputStream(reference.pointer,
-            _id_openInputStream as jni.JMethodIDPtr, uri.reference.pointer)
-        .object(const jni.JObjectType());
+            _id_openInputStream as _$jni.JMethodIDPtr, uri.reference.pointer)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openOutputStream = _class.instanceMethodId(
@@ -955,58 +949,61 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)Ljava/io/OutputStream;',
   );
 
-  static final _openOutputStream = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _openOutputStream = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final java.io.OutputStream openOutputStream(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openOutputStream(
+  _$jni.JObject openOutputStream(
     uri_.Uri uri,
   ) {
     return _openOutputStream(reference.pointer,
-            _id_openOutputStream as jni.JMethodIDPtr, uri.reference.pointer)
-        .object(const jni.JObjectType());
+            _id_openOutputStream as _$jni.JMethodIDPtr, uri.reference.pointer)
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_openOutputStream1 = _class.instanceMethodId(
+  static final _id_openOutputStream$1 = _class.instanceMethodId(
     r'openOutputStream',
     r'(Landroid/net/Uri;Ljava/lang/String;)Ljava/io/OutputStream;',
   );
 
-  static final _openOutputStream1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openOutputStream$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final java.io.OutputStream openOutputStream(android.net.Uri uri, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openOutputStream1(
+  _$jni.JObject openOutputStream$1(
     uri_.Uri uri,
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _openOutputStream1(
+    return _openOutputStream$1(
             reference.pointer,
-            _id_openOutputStream1 as jni.JMethodIDPtr,
+            _id_openOutputStream$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openFile = _class.instanceMethodId(
@@ -1014,39 +1011,39 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;',
   );
 
-  static final _openFile = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openFile = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.os.ParcelFileDescriptor openFile(android.net.Uri uri, java.lang.String string, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openFile(
+  _$jni.JObject openFile(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject cancellationSignal,
+    _$jni.JString string,
+    _$jni.JObject cancellationSignal,
   ) {
     return _openFile(
             reference.pointer,
-            _id_openFile as jni.JMethodIDPtr,
+            _id_openFile as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openFileDescriptor = _class.instanceMethodId(
@@ -1054,72 +1051,75 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;',
   );
 
-  static final _openFileDescriptor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openFileDescriptor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.os.ParcelFileDescriptor openFileDescriptor(android.net.Uri uri, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openFileDescriptor(
+  _$jni.JObject openFileDescriptor(
     uri_.Uri uri,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _openFileDescriptor(
             reference.pointer,
-            _id_openFileDescriptor as jni.JMethodIDPtr,
+            _id_openFileDescriptor as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_openFileDescriptor1 = _class.instanceMethodId(
+  static final _id_openFileDescriptor$1 = _class.instanceMethodId(
     r'openFileDescriptor',
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;',
   );
 
-  static final _openFileDescriptor1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openFileDescriptor$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.os.ParcelFileDescriptor openFileDescriptor(android.net.Uri uri, java.lang.String string, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openFileDescriptor1(
+  _$jni.JObject openFileDescriptor$1(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject cancellationSignal,
+    _$jni.JString string,
+    _$jni.JObject cancellationSignal,
   ) {
-    return _openFileDescriptor1(
+    return _openFileDescriptor$1(
             reference.pointer,
-            _id_openFileDescriptor1 as jni.JMethodIDPtr,
+            _id_openFileDescriptor$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openAssetFile = _class.instanceMethodId(
@@ -1127,39 +1127,39 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;',
   );
 
-  static final _openAssetFile = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openAssetFile = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.res.AssetFileDescriptor openAssetFile(android.net.Uri uri, java.lang.String string, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openAssetFile(
+  _$jni.JObject openAssetFile(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject cancellationSignal,
+    _$jni.JString string,
+    _$jni.JObject cancellationSignal,
   ) {
     return _openAssetFile(
             reference.pointer,
-            _id_openAssetFile as jni.JMethodIDPtr,
+            _id_openAssetFile as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openAssetFileDescriptor = _class.instanceMethodId(
@@ -1167,72 +1167,75 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;',
   );
 
-  static final _openAssetFileDescriptor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openAssetFileDescriptor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.res.AssetFileDescriptor openAssetFileDescriptor(android.net.Uri uri, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openAssetFileDescriptor(
+  _$jni.JObject openAssetFileDescriptor(
     uri_.Uri uri,
-    jni.JString string,
+    _$jni.JString string,
   ) {
     return _openAssetFileDescriptor(
             reference.pointer,
-            _id_openAssetFileDescriptor as jni.JMethodIDPtr,
+            _id_openAssetFileDescriptor as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_openAssetFileDescriptor1 = _class.instanceMethodId(
+  static final _id_openAssetFileDescriptor$1 = _class.instanceMethodId(
     r'openAssetFileDescriptor',
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;',
   );
 
-  static final _openAssetFileDescriptor1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openAssetFileDescriptor$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.res.AssetFileDescriptor openAssetFileDescriptor(android.net.Uri uri, java.lang.String string, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openAssetFileDescriptor1(
+  _$jni.JObject openAssetFileDescriptor$1(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject cancellationSignal,
+    _$jni.JString string,
+    _$jni.JObject cancellationSignal,
   ) {
-    return _openAssetFileDescriptor1(
+    return _openAssetFileDescriptor$1(
             reference.pointer,
-            _id_openAssetFileDescriptor1 as jni.JMethodIDPtr,
+            _id_openAssetFileDescriptor$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openTypedAssetFile = _class.instanceMethodId(
@@ -1240,43 +1243,43 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;',
   );
 
-  static final _openTypedAssetFile = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _openTypedAssetFile = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.res.AssetFileDescriptor openTypedAssetFile(android.net.Uri uri, java.lang.String string, android.os.Bundle bundle, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openTypedAssetFile(
+  _$jni.JObject openTypedAssetFile(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject bundle,
-    jni.JObject cancellationSignal,
+    _$jni.JString string,
+    _$jni.JObject bundle,
+    _$jni.JObject cancellationSignal,
   ) {
     return _openTypedAssetFile(
             reference.pointer,
-            _id_openTypedAssetFile as jni.JMethodIDPtr,
+            _id_openTypedAssetFile as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             bundle.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_openTypedAssetFileDescriptor = _class.instanceMethodId(
@@ -1284,83 +1287,85 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/res/AssetFileDescriptor;',
   );
 
-  static final _openTypedAssetFileDescriptor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+  static final _openTypedAssetFileDescriptor =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.res.AssetFileDescriptor openTypedAssetFileDescriptor(android.net.Uri uri, java.lang.String string, android.os.Bundle bundle)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openTypedAssetFileDescriptor(
+  _$jni.JObject openTypedAssetFileDescriptor(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject bundle,
+    _$jni.JString string,
+    _$jni.JObject bundle,
   ) {
     return _openTypedAssetFileDescriptor(
             reference.pointer,
-            _id_openTypedAssetFileDescriptor as jni.JMethodIDPtr,
+            _id_openTypedAssetFileDescriptor as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             bundle.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_openTypedAssetFileDescriptor1 = _class.instanceMethodId(
+  static final _id_openTypedAssetFileDescriptor$1 = _class.instanceMethodId(
     r'openTypedAssetFileDescriptor',
     r'(Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;',
   );
 
-  static final _openTypedAssetFileDescriptor1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
-                      )>)>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+  static final _openTypedAssetFileDescriptor$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
+                          )>)>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.res.AssetFileDescriptor openTypedAssetFileDescriptor(android.net.Uri uri, java.lang.String string, android.os.Bundle bundle, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject openTypedAssetFileDescriptor1(
+  _$jni.JObject openTypedAssetFileDescriptor$1(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JObject bundle,
-    jni.JObject cancellationSignal,
+    _$jni.JString string,
+    _$jni.JObject bundle,
+    _$jni.JObject cancellationSignal,
   ) {
-    return _openTypedAssetFileDescriptor1(
+    return _openTypedAssetFileDescriptor$1(
             reference.pointer,
-            _id_openTypedAssetFileDescriptor1 as jni.JMethodIDPtr,
+            _id_openTypedAssetFileDescriptor$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             bundle.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_insert = _class.instanceMethodId(
@@ -1368,69 +1373,72 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;',
   );
 
-  static final _insert = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _insert = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.net.Uri insert(android.net.Uri uri, android.content.ContentValues contentValues)`
   /// The returned object must be released after use, by calling the [release] method.
   uri_.Uri insert(
     uri_.Uri uri,
-    jni.JObject contentValues,
+    _$jni.JObject contentValues,
   ) {
-    return _insert(reference.pointer, _id_insert as jni.JMethodIDPtr,
+    return _insert(reference.pointer, _id_insert as _$jni.JMethodIDPtr,
             uri.reference.pointer, contentValues.reference.pointer)
-        .object(const uri_.$UriType());
+        .object(const uri_.$Uri$Type());
   }
 
-  static final _id_insert1 = _class.instanceMethodId(
+  static final _id_insert$1 = _class.instanceMethodId(
     r'insert',
     r'(Landroid/net/Uri;Landroid/content/ContentValues;Landroid/os/Bundle;)Landroid/net/Uri;',
   );
 
-  static final _insert1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _insert$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.net.Uri insert(android.net.Uri uri, android.content.ContentValues contentValues, android.os.Bundle bundle)`
   /// The returned object must be released after use, by calling the [release] method.
-  uri_.Uri insert1(
+  uri_.Uri insert$1(
     uri_.Uri uri,
-    jni.JObject contentValues,
-    jni.JObject bundle,
+    _$jni.JObject contentValues,
+    _$jni.JObject bundle,
   ) {
-    return _insert1(
+    return _insert$1(
             reference.pointer,
-            _id_insert1 as jni.JMethodIDPtr,
+            _id_insert$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             contentValues.reference.pointer,
             bundle.reference.pointer)
-        .object(const uri_.$UriType());
+        .object(const uri_.$Uri$Type());
   }
 
   static final _id_applyBatch = _class.instanceMethodId(
@@ -1438,29 +1446,32 @@ class ContentResolver extends jni.JObject {
     r'(Ljava/lang/String;Ljava/util/ArrayList;)[Landroid/content/ContentProviderResult;',
   );
 
-  static final _applyBatch = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _applyBatch = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public java.lang.Object[] applyBatch(java.lang.String string, java.util.ArrayList arrayList)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JArray<jni.JObject> applyBatch(
-    jni.JString string,
-    jni.JObject arrayList,
+  _$jni.JArray<_$jni.JObject> applyBatch(
+    _$jni.JString string,
+    _$jni.JObject arrayList,
   ) {
-    return _applyBatch(reference.pointer, _id_applyBatch as jni.JMethodIDPtr,
+    return _applyBatch(reference.pointer, _id_applyBatch as _$jni.JMethodIDPtr,
             string.reference.pointer, arrayList.reference.pointer)
-        .object(const jni.JArrayType(jni.JObjectType()));
+        .object(const _$jni.JArrayType(_$jni.JObjectType()));
   }
 
   static final _id_bulkInsert = _class.instanceMethodId(
@@ -1468,26 +1479,29 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;[Landroid/content/ContentValues;)I',
   );
 
-  static final _bulkInsert = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _bulkInsert = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int bulkInsert(android.net.Uri uri, android.content.ContentValues[] contentValuess)`
   int bulkInsert(
     uri_.Uri uri,
-    jni.JArray<jni.JObject> contentValuess,
+    _$jni.JArray<_$jni.JObject> contentValuess,
   ) {
-    return _bulkInsert(reference.pointer, _id_bulkInsert as jni.JMethodIDPtr,
+    return _bulkInsert(reference.pointer, _id_bulkInsert as _$jni.JMethodIDPtr,
             uri.reference.pointer, contentValuess.reference.pointer)
         .integer;
   }
@@ -1497,65 +1511,68 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I',
   );
 
-  static final _delete = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _delete = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int delete(android.net.Uri uri, java.lang.String string, java.lang.String[] strings)`
   int delete(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JArray<jni.JString> strings,
+    _$jni.JString string,
+    _$jni.JArray<_$jni.JString> strings,
   ) {
     return _delete(
             reference.pointer,
-            _id_delete as jni.JMethodIDPtr,
+            _id_delete as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             strings.reference.pointer)
         .integer;
   }
 
-  static final _id_delete1 = _class.instanceMethodId(
+  static final _id_delete$1 = _class.instanceMethodId(
     r'delete',
     r'(Landroid/net/Uri;Landroid/os/Bundle;)I',
   );
 
-  static final _delete1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _delete$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int delete(android.net.Uri uri, android.os.Bundle bundle)`
-  int delete1(
+  int delete$1(
     uri_.Uri uri,
-    jni.JObject bundle,
+    _$jni.JObject bundle,
   ) {
-    return _delete1(reference.pointer, _id_delete1 as jni.JMethodIDPtr,
+    return _delete$1(reference.pointer, _id_delete$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer, bundle.reference.pointer)
         .integer;
   }
@@ -1565,37 +1582,37 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I',
   );
 
-  static final _update = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _update = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int update(android.net.Uri uri, android.content.ContentValues contentValues, java.lang.String string, java.lang.String[] strings)`
   int update(
     uri_.Uri uri,
-    jni.JObject contentValues,
-    jni.JString string,
-    jni.JArray<jni.JString> strings,
+    _$jni.JObject contentValues,
+    _$jni.JString string,
+    _$jni.JArray<_$jni.JString> strings,
   ) {
     return _update(
             reference.pointer,
-            _id_update as jni.JMethodIDPtr,
+            _id_update as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             contentValues.reference.pointer,
             string.reference.pointer,
@@ -1603,39 +1620,39 @@ class ContentResolver extends jni.JObject {
         .integer;
   }
 
-  static final _id_update1 = _class.instanceMethodId(
+  static final _id_update$1 = _class.instanceMethodId(
     r'update',
     r'(Landroid/net/Uri;Landroid/content/ContentValues;Landroid/os/Bundle;)I',
   );
 
-  static final _update1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _update$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final int update(android.net.Uri uri, android.content.ContentValues contentValues, android.os.Bundle bundle)`
-  int update1(
+  int update$1(
     uri_.Uri uri,
-    jni.JObject contentValues,
-    jni.JObject bundle,
+    _$jni.JObject contentValues,
+    _$jni.JObject bundle,
   ) {
-    return _update1(
+    return _update$1(
             reference.pointer,
-            _id_update1 as jni.JMethodIDPtr,
+            _id_update$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             contentValues.reference.pointer,
             bundle.reference.pointer)
@@ -1647,87 +1664,87 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;',
   );
 
-  static final _call = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _call = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.os.Bundle call(android.net.Uri uri, java.lang.String string, java.lang.String string1, android.os.Bundle bundle)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject call(
+  _$jni.JObject call(
     uri_.Uri uri,
-    jni.JString string,
-    jni.JString string1,
-    jni.JObject bundle,
+    _$jni.JString string,
+    _$jni.JString string1,
+    _$jni.JObject bundle,
   ) {
     return _call(
             reference.pointer,
-            _id_call as jni.JMethodIDPtr,
+            _id_call as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             string.reference.pointer,
             string1.reference.pointer,
             bundle.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_call1 = _class.instanceMethodId(
+  static final _id_call$1 = _class.instanceMethodId(
     r'call',
     r'(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;',
   );
 
-  static final _call1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _call$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.os.Bundle call(java.lang.String string, java.lang.String string1, java.lang.String string2, android.os.Bundle bundle)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject call1(
-    jni.JString string,
-    jni.JString string1,
-    jni.JString string2,
-    jni.JObject bundle,
+  _$jni.JObject call$1(
+    _$jni.JString string,
+    _$jni.JString string1,
+    _$jni.JString string2,
+    _$jni.JObject bundle,
   ) {
-    return _call1(
+    return _call$1(
             reference.pointer,
-            _id_call1 as jni.JMethodIDPtr,
+            _id_call$1 as _$jni.JMethodIDPtr,
             string.reference.pointer,
             string1.reference.pointer,
             string2.reference.pointer,
             bundle.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_acquireContentProviderClient = _class.instanceMethodId(
@@ -1735,55 +1752,57 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)Landroid/content/ContentProviderClient;',
   );
 
-  static final _acquireContentProviderClient = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _acquireContentProviderClient =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.ContentProviderClient acquireContentProviderClient(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject acquireContentProviderClient(
+  _$jni.JObject acquireContentProviderClient(
     uri_.Uri uri,
   ) {
     return _acquireContentProviderClient(
             reference.pointer,
-            _id_acquireContentProviderClient as jni.JMethodIDPtr,
+            _id_acquireContentProviderClient as _$jni.JMethodIDPtr,
             uri.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_acquireContentProviderClient1 = _class.instanceMethodId(
+  static final _id_acquireContentProviderClient$1 = _class.instanceMethodId(
     r'acquireContentProviderClient',
     r'(Ljava/lang/String;)Landroid/content/ContentProviderClient;',
   );
 
-  static final _acquireContentProviderClient1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _acquireContentProviderClient$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.ContentProviderClient acquireContentProviderClient(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject acquireContentProviderClient1(
-    jni.JString string,
+  _$jni.JObject acquireContentProviderClient$1(
+    _$jni.JString string,
   ) {
-    return _acquireContentProviderClient1(
+    return _acquireContentProviderClient$1(
             reference.pointer,
-            _id_acquireContentProviderClient1 as jni.JMethodIDPtr,
+            _id_acquireContentProviderClient$1 as _$jni.JMethodIDPtr,
             string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_acquireUnstableContentProviderClient =
@@ -1793,57 +1812,57 @@ class ContentResolver extends jni.JObject {
   );
 
   static final _acquireUnstableContentProviderClient =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JniResult Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.ContentProviderClient acquireUnstableContentProviderClient(android.net.Uri uri)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject acquireUnstableContentProviderClient(
+  _$jni.JObject acquireUnstableContentProviderClient(
     uri_.Uri uri,
   ) {
     return _acquireUnstableContentProviderClient(
             reference.pointer,
-            _id_acquireUnstableContentProviderClient as jni.JMethodIDPtr,
+            _id_acquireUnstableContentProviderClient as _$jni.JMethodIDPtr,
             uri.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_acquireUnstableContentProviderClient1 =
+  static final _id_acquireUnstableContentProviderClient$1 =
       _class.instanceMethodId(
     r'acquireUnstableContentProviderClient',
     r'(Ljava/lang/String;)Landroid/content/ContentProviderClient;',
   );
 
-  static final _acquireUnstableContentProviderClient1 =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JniResult Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _acquireUnstableContentProviderClient$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.ContentProviderClient acquireUnstableContentProviderClient(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject acquireUnstableContentProviderClient1(
-    jni.JString string,
+  _$jni.JObject acquireUnstableContentProviderClient$1(
+    _$jni.JString string,
   ) {
-    return _acquireUnstableContentProviderClient1(
+    return _acquireUnstableContentProviderClient$1(
             reference.pointer,
-            _id_acquireUnstableContentProviderClient1 as jni.JMethodIDPtr,
+            _id_acquireUnstableContentProviderClient$1 as _$jni.JMethodIDPtr,
             string.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_registerContentObserver = _class.instanceMethodId(
@@ -1851,20 +1870,24 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V',
   );
 
-  static final _registerContentObserver = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _registerContentObserver = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        $Int32,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              int,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void registerContentObserver(android.net.Uri uri, boolean z, android.database.ContentObserver contentObserver)`
   void registerContentObserver(
@@ -1874,7 +1897,7 @@ class ContentResolver extends jni.JObject {
   ) {
     _registerContentObserver(
             reference.pointer,
-            _id_registerContentObserver as jni.JMethodIDPtr,
+            _id_registerContentObserver as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             z ? 1 : 0,
             contentObserver.reference.pointer)
@@ -1886,16 +1909,16 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/database/ContentObserver;)V',
   );
 
-  static final _unregisterContentObserver = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _unregisterContentObserver = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void unregisterContentObserver(android.database.ContentObserver contentObserver)`
   void unregisterContentObserver(
@@ -1903,7 +1926,7 @@ class ContentResolver extends jni.JObject {
   ) {
     _unregisterContentObserver(
             reference.pointer,
-            _id_unregisterContentObserver as jni.JMethodIDPtr,
+            _id_unregisterContentObserver as _$jni.JMethodIDPtr,
             contentObserver.reference.pointer)
         .check();
   }
@@ -1913,119 +1936,134 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Landroid/database/ContentObserver;)V',
   );
 
-  static final _notifyChange = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _notifyChange = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void notifyChange(android.net.Uri uri, android.database.ContentObserver contentObserver)`
   void notifyChange(
     uri_.Uri uri,
     contentobserver_.ContentObserver contentObserver,
   ) {
-    _notifyChange(reference.pointer, _id_notifyChange as jni.JMethodIDPtr,
+    _notifyChange(reference.pointer, _id_notifyChange as _$jni.JMethodIDPtr,
             uri.reference.pointer, contentObserver.reference.pointer)
         .check();
   }
 
-  static final _id_notifyChange1 = _class.instanceMethodId(
+  static final _id_notifyChange$1 = _class.instanceMethodId(
     r'notifyChange',
     r'(Landroid/net/Uri;Landroid/database/ContentObserver;Z)V',
   );
 
-  static final _notifyChange1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _notifyChange$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `public void notifyChange(android.net.Uri uri, android.database.ContentObserver contentObserver, boolean z)`
-  void notifyChange1(
+  void notifyChange$1(
     uri_.Uri uri,
     contentobserver_.ContentObserver contentObserver,
     bool z,
   ) {
-    _notifyChange1(reference.pointer, _id_notifyChange1 as jni.JMethodIDPtr,
+    _notifyChange$1(reference.pointer, _id_notifyChange$1 as _$jni.JMethodIDPtr,
             uri.reference.pointer, contentObserver.reference.pointer, z ? 1 : 0)
         .check();
   }
 
-  static final _id_notifyChange2 = _class.instanceMethodId(
+  static final _id_notifyChange$2 = _class.instanceMethodId(
     r'notifyChange',
     r'(Landroid/net/Uri;Landroid/database/ContentObserver;I)V',
   );
 
-  static final _notifyChange2 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _notifyChange$2 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `public void notifyChange(android.net.Uri uri, android.database.ContentObserver contentObserver, int i)`
-  void notifyChange2(
+  void notifyChange$2(
     uri_.Uri uri,
     contentobserver_.ContentObserver contentObserver,
     int i,
   ) {
-    _notifyChange2(reference.pointer, _id_notifyChange2 as jni.JMethodIDPtr,
+    _notifyChange$2(reference.pointer, _id_notifyChange$2 as _$jni.JMethodIDPtr,
             uri.reference.pointer, contentObserver.reference.pointer, i)
         .check();
   }
 
-  static final _id_notifyChange3 = _class.instanceMethodId(
+  static final _id_notifyChange$3 = _class.instanceMethodId(
     r'notifyChange',
     r'(Ljava/util/Collection;Landroid/database/ContentObserver;I)V',
   );
 
-  static final _notifyChange3 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _notifyChange$3 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `public void notifyChange(java.util.Collection collection, android.database.ContentObserver contentObserver, int i)`
-  void notifyChange3(
-    jni.JObject collection,
+  void notifyChange$3(
+    _$jni.JObject collection,
     contentobserver_.ContentObserver contentObserver,
     int i,
   ) {
-    _notifyChange3(reference.pointer, _id_notifyChange3 as jni.JMethodIDPtr,
+    _notifyChange$3(reference.pointer, _id_notifyChange$3 as _$jni.JMethodIDPtr,
             collection.reference.pointer, contentObserver.reference.pointer, i)
         .check();
   }
@@ -2035,16 +2073,20 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;I)V',
   );
 
-  static final _takePersistableUriPermission = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+  static final _takePersistableUriPermission =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public void takePersistableUriPermission(android.net.Uri uri, int i)`
   void takePersistableUriPermission(
@@ -2053,7 +2095,7 @@ class ContentResolver extends jni.JObject {
   ) {
     _takePersistableUriPermission(
             reference.pointer,
-            _id_takePersistableUriPermission as jni.JMethodIDPtr,
+            _id_takePersistableUriPermission as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             i)
         .check();
@@ -2064,16 +2106,20 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;I)V',
   );
 
-  static final _releasePersistableUriPermission = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+  static final _releasePersistableUriPermission =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public void releasePersistableUriPermission(android.net.Uri uri, int i)`
   void releasePersistableUriPermission(
@@ -2082,7 +2128,7 @@ class ContentResolver extends jni.JObject {
   ) {
     _releasePersistableUriPermission(
             reference.pointer,
-            _id_releasePersistableUriPermission as jni.JMethodIDPtr,
+            _id_releasePersistableUriPermission as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             i)
         .check();
@@ -2093,24 +2139,25 @@ class ContentResolver extends jni.JObject {
     r'()Ljava/util/List;',
   );
 
-  static final _getPersistedUriPermissions = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getPersistedUriPermissions =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public java.util.List getPersistedUriPermissions()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getPersistedUriPermissions() {
+  _$jni.JList<_$jni.JObject> getPersistedUriPermissions() {
     return _getPersistedUriPermissions(reference.pointer,
-            _id_getPersistedUriPermissions as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _id_getPersistedUriPermissions as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_getOutgoingPersistedUriPermissions = _class.instanceMethodId(
@@ -2119,24 +2166,24 @@ class ContentResolver extends jni.JObject {
   );
 
   static final _getOutgoingPersistedUriPermissions =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                    ffi.Pointer<ffi.Void>,
-                    jni.JMethodIDPtr,
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
                   )>>('globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>();
 
   /// from: `public java.util.List getOutgoingPersistedUriPermissions()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getOutgoingPersistedUriPermissions() {
+  _$jni.JList<_$jni.JObject> getOutgoingPersistedUriPermissions() {
     return _getOutgoingPersistedUriPermissions(reference.pointer,
-            _id_getOutgoingPersistedUriPermissions as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _id_getOutgoingPersistedUriPermissions as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_startSync = _class.instanceMethodId(
@@ -2144,26 +2191,29 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Landroid/os/Bundle;)V',
   );
 
-  static final _startSync = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _startSync = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void startSync(android.net.Uri uri, android.os.Bundle bundle)`
   void startSync(
     uri_.Uri uri,
-    jni.JObject bundle,
+    _$jni.JObject bundle,
   ) {
-    _startSync(reference.pointer, _id_startSync as jni.JMethodIDPtr,
+    _startSync(reference.pointer, _id_startSync as _$jni.JMethodIDPtr,
             uri.reference.pointer, bundle.reference.pointer)
         .check();
   }
@@ -2173,62 +2223,64 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V',
   );
 
-  static final _requestSync = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _requestSync = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void requestSync(android.accounts.Account account, java.lang.String string, android.os.Bundle bundle)`
   static void requestSync(
-    jni.JObject account,
-    jni.JString string,
-    jni.JObject bundle,
+    _$jni.JObject account,
+    _$jni.JString string,
+    _$jni.JObject bundle,
   ) {
     _requestSync(
             _class.reference.pointer,
-            _id_requestSync as jni.JMethodIDPtr,
+            _id_requestSync as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer,
             bundle.reference.pointer)
         .check();
   }
 
-  static final _id_requestSync1 = _class.staticMethodId(
+  static final _id_requestSync$1 = _class.staticMethodId(
     r'requestSync',
     r'(Landroid/content/SyncRequest;)V',
   );
 
-  static final _requestSync1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _requestSync$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void requestSync(android.content.SyncRequest syncRequest)`
-  static void requestSync1(
-    jni.JObject syncRequest,
+  static void requestSync$1(
+    _$jni.JObject syncRequest,
   ) {
-    _requestSync1(_class.reference.pointer,
-            _id_requestSync1 as jni.JMethodIDPtr, syncRequest.reference.pointer)
+    _requestSync$1(
+            _class.reference.pointer,
+            _id_requestSync$1 as _$jni.JMethodIDPtr,
+            syncRequest.reference.pointer)
         .check();
   }
 
@@ -2237,24 +2289,24 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/os/Bundle;)V',
   );
 
-  static final _validateSyncExtrasBundle = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _validateSyncExtrasBundle = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void validateSyncExtrasBundle(android.os.Bundle bundle)`
   static void validateSyncExtrasBundle(
-    jni.JObject bundle,
+    _$jni.JObject bundle,
   ) {
     _validateSyncExtrasBundle(
             _class.reference.pointer,
-            _id_validateSyncExtrasBundle as jni.JMethodIDPtr,
+            _id_validateSyncExtrasBundle as _$jni.JMethodIDPtr,
             bundle.reference.pointer)
         .check();
   }
@@ -2264,52 +2316,58 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;)V',
   );
 
-  static final _cancelSync = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _cancelSync = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void cancelSync(android.net.Uri uri)`
   void cancelSync(
     uri_.Uri uri,
   ) {
-    _cancelSync(reference.pointer, _id_cancelSync as jni.JMethodIDPtr,
+    _cancelSync(reference.pointer, _id_cancelSync as _$jni.JMethodIDPtr,
             uri.reference.pointer)
         .check();
   }
 
-  static final _id_cancelSync1 = _class.staticMethodId(
+  static final _id_cancelSync$1 = _class.staticMethodId(
     r'cancelSync',
     r'(Landroid/accounts/Account;Ljava/lang/String;)V',
   );
 
-  static final _cancelSync1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _cancelSync$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void cancelSync(android.accounts.Account account, java.lang.String string)`
-  static void cancelSync1(
-    jni.JObject account,
-    jni.JString string,
+  static void cancelSync$1(
+    _$jni.JObject account,
+    _$jni.JString string,
   ) {
-    _cancelSync1(_class.reference.pointer, _id_cancelSync1 as jni.JMethodIDPtr,
-            account.reference.pointer, string.reference.pointer)
+    _cancelSync$1(
+            _class.reference.pointer,
+            _id_cancelSync$1 as _$jni.JMethodIDPtr,
+            account.reference.pointer,
+            string.reference.pointer)
         .check();
   }
 
@@ -2318,24 +2376,24 @@ class ContentResolver extends jni.JObject {
     r'()[Landroid/content/SyncAdapterType;',
   );
 
-  static final _getSyncAdapterTypes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getSyncAdapterTypes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public android.content.SyncAdapterType[] getSyncAdapterTypes()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JArray<jni.JObject> getSyncAdapterTypes() {
+  static _$jni.JArray<_$jni.JObject> getSyncAdapterTypes() {
     return _getSyncAdapterTypes(_class.reference.pointer,
-            _id_getSyncAdapterTypes as jni.JMethodIDPtr)
-        .object(const jni.JArrayType(jni.JObjectType()));
+            _id_getSyncAdapterTypes as _$jni.JMethodIDPtr)
+        .object(const _$jni.JArrayType(_$jni.JObjectType()));
   }
 
   static final _id_getSyncAutomatically = _class.staticMethodId(
@@ -2343,28 +2401,31 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;)Z',
   );
 
-  static final _getSyncAutomatically = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getSyncAutomatically = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean getSyncAutomatically(android.accounts.Account account, java.lang.String string)`
   static bool getSyncAutomatically(
-    jni.JObject account,
-    jni.JString string,
+    _$jni.JObject account,
+    _$jni.JString string,
   ) {
     return _getSyncAutomatically(
             _class.reference.pointer,
-            _id_getSyncAutomatically as jni.JMethodIDPtr,
+            _id_getSyncAutomatically as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer)
         .boolean;
@@ -2375,30 +2436,34 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;Z)V',
   );
 
-  static final _setSyncAutomatically = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _setSyncAutomatically = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public void setSyncAutomatically(android.accounts.Account account, java.lang.String string, boolean z)`
   static void setSyncAutomatically(
-    jni.JObject account,
-    jni.JString string,
+    _$jni.JObject account,
+    _$jni.JString string,
     bool z,
   ) {
     _setSyncAutomatically(
             _class.reference.pointer,
-            _id_setSyncAutomatically as jni.JMethodIDPtr,
+            _id_setSyncAutomatically as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer,
             z ? 1 : 0)
@@ -2410,37 +2475,37 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;J)V',
   );
 
-  static final _addPeriodicSync = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _addPeriodicSync = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Int64
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int64
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
               int)>();
 
   /// from: `static public void addPeriodicSync(android.accounts.Account account, java.lang.String string, android.os.Bundle bundle, long j)`
   static void addPeriodicSync(
-    jni.JObject account,
-    jni.JString string,
-    jni.JObject bundle,
+    _$jni.JObject account,
+    _$jni.JString string,
+    _$jni.JObject bundle,
     int j,
   ) {
     _addPeriodicSync(
             _class.reference.pointer,
-            _id_addPeriodicSync as jni.JMethodIDPtr,
+            _id_addPeriodicSync as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer,
             bundle.reference.pointer,
@@ -2453,61 +2518,63 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V',
   );
 
-  static final _removePeriodicSync = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _removePeriodicSync = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void removePeriodicSync(android.accounts.Account account, java.lang.String string, android.os.Bundle bundle)`
   static void removePeriodicSync(
-    jni.JObject account,
-    jni.JString string,
-    jni.JObject bundle,
+    _$jni.JObject account,
+    _$jni.JString string,
+    _$jni.JObject bundle,
   ) {
     _removePeriodicSync(
             _class.reference.pointer,
-            _id_removePeriodicSync as jni.JMethodIDPtr,
+            _id_removePeriodicSync as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer,
             bundle.reference.pointer)
         .check();
   }
 
-  static final _id_cancelSync2 = _class.staticMethodId(
+  static final _id_cancelSync$2 = _class.staticMethodId(
     r'cancelSync',
     r'(Landroid/content/SyncRequest;)V',
   );
 
-  static final _cancelSync2 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _cancelSync$2 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void cancelSync(android.content.SyncRequest syncRequest)`
-  static void cancelSync2(
-    jni.JObject syncRequest,
+  static void cancelSync$2(
+    _$jni.JObject syncRequest,
   ) {
-    _cancelSync2(_class.reference.pointer, _id_cancelSync2 as jni.JMethodIDPtr,
+    _cancelSync$2(
+            _class.reference.pointer,
+            _id_cancelSync$2 as _$jni.JMethodIDPtr,
             syncRequest.reference.pointer)
         .check();
   }
@@ -2517,32 +2584,35 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;)Ljava/util/List;',
   );
 
-  static final _getPeriodicSyncs = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getPeriodicSyncs = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public java.util.List getPeriodicSyncs(android.accounts.Account account, java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JList<jni.JObject> getPeriodicSyncs(
-    jni.JObject account,
-    jni.JString string,
+  static _$jni.JList<_$jni.JObject> getPeriodicSyncs(
+    _$jni.JObject account,
+    _$jni.JString string,
   ) {
     return _getPeriodicSyncs(
             _class.reference.pointer,
-            _id_getPeriodicSyncs as jni.JMethodIDPtr,
+            _id_getPeriodicSyncs as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer)
-        .object(const jni.JListType(jni.JObjectType()));
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_getIsSyncable = _class.staticMethodId(
@@ -2550,28 +2620,31 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;)I',
   );
 
-  static final _getIsSyncable = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _getIsSyncable = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getIsSyncable(android.accounts.Account account, java.lang.String string)`
   static int getIsSyncable(
-    jni.JObject account,
-    jni.JString string,
+    _$jni.JObject account,
+    _$jni.JString string,
   ) {
     return _getIsSyncable(
             _class.reference.pointer,
-            _id_getIsSyncable as jni.JMethodIDPtr,
+            _id_getIsSyncable as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer)
         .integer;
@@ -2582,30 +2655,34 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;I)V',
   );
 
-  static final _setIsSyncable = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _setIsSyncable = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `static public void setIsSyncable(android.accounts.Account account, java.lang.String string, int i)`
   static void setIsSyncable(
-    jni.JObject account,
-    jni.JString string,
+    _$jni.JObject account,
+    _$jni.JString string,
     int i,
   ) {
     _setIsSyncable(
             _class.reference.pointer,
-            _id_setIsSyncable as jni.JMethodIDPtr,
+            _id_setIsSyncable as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer,
             i)
@@ -2617,22 +2694,23 @@ class ContentResolver extends jni.JObject {
     r'()Z',
   );
 
-  static final _getMasterSyncAutomatically = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallStaticBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getMasterSyncAutomatically =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallStaticBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `static public boolean getMasterSyncAutomatically()`
   static bool getMasterSyncAutomatically() {
     return _getMasterSyncAutomatically(_class.reference.pointer,
-            _id_getMasterSyncAutomatically as jni.JMethodIDPtr)
+            _id_getMasterSyncAutomatically as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2641,22 +2719,22 @@ class ContentResolver extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setMasterSyncAutomatically = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallStaticVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setMasterSyncAutomatically =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallStaticVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `static public void setMasterSyncAutomatically(boolean z)`
   static void setMasterSyncAutomatically(
     bool z,
   ) {
     _setMasterSyncAutomatically(_class.reference.pointer,
-            _id_setMasterSyncAutomatically as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setMasterSyncAutomatically as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2665,28 +2743,31 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;)Z',
   );
 
-  static final _isSyncActive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _isSyncActive = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean isSyncActive(android.accounts.Account account, java.lang.String string)`
   static bool isSyncActive(
-    jni.JObject account,
-    jni.JString string,
+    _$jni.JObject account,
+    _$jni.JString string,
   ) {
     return _isSyncActive(
             _class.reference.pointer,
-            _id_isSyncActive as jni.JMethodIDPtr,
+            _id_isSyncActive as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer)
         .boolean;
@@ -2697,24 +2778,24 @@ class ContentResolver extends jni.JObject {
     r'()Landroid/content/SyncInfo;',
   );
 
-  static final _getCurrentSync = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getCurrentSync = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public android.content.SyncInfo getCurrentSync()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject getCurrentSync() {
+  static _$jni.JObject getCurrentSync() {
     return _getCurrentSync(
-            _class.reference.pointer, _id_getCurrentSync as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            _class.reference.pointer, _id_getCurrentSync as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getCurrentSyncs = _class.staticMethodId(
@@ -2722,24 +2803,24 @@ class ContentResolver extends jni.JObject {
     r'()Ljava/util/List;',
   );
 
-  static final _getCurrentSyncs = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getCurrentSyncs = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public java.util.List getCurrentSyncs()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JList<jni.JObject> getCurrentSyncs() {
+  static _$jni.JList<_$jni.JObject> getCurrentSyncs() {
     return _getCurrentSyncs(
-            _class.reference.pointer, _id_getCurrentSyncs as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _class.reference.pointer, _id_getCurrentSyncs as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_isSyncPending = _class.staticMethodId(
@@ -2747,28 +2828,31 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/accounts/Account;Ljava/lang/String;)Z',
   );
 
-  static final _isSyncPending = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _isSyncPending = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallStaticBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public boolean isSyncPending(android.accounts.Account account, java.lang.String string)`
   static bool isSyncPending(
-    jni.JObject account,
-    jni.JString string,
+    _$jni.JObject account,
+    _$jni.JString string,
   ) {
     return _isSyncPending(
             _class.reference.pointer,
-            _id_isSyncPending as jni.JMethodIDPtr,
+            _id_isSyncPending as _$jni.JMethodIDPtr,
             account.reference.pointer,
             string.reference.pointer)
         .boolean;
@@ -2779,29 +2863,30 @@ class ContentResolver extends jni.JObject {
     r'(ILandroid/content/SyncStatusObserver;)Ljava/lang/Object;',
   );
 
-  static final _addStatusChangeListener = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _addStatusChangeListener = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public java.lang.Object addStatusChangeListener(int i, android.content.SyncStatusObserver syncStatusObserver)`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject addStatusChangeListener(
+  static _$jni.JObject addStatusChangeListener(
     int i,
-    jni.JObject syncStatusObserver,
+    _$jni.JObject syncStatusObserver,
   ) {
     return _addStatusChangeListener(
             _class.reference.pointer,
-            _id_addStatusChangeListener as jni.JMethodIDPtr,
+            _id_addStatusChangeListener as _$jni.JMethodIDPtr,
             i,
             syncStatusObserver.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_removeStatusChangeListener = _class.staticMethodId(
@@ -2809,24 +2894,25 @@ class ContentResolver extends jni.JObject {
     r'(Ljava/lang/Object;)V',
   );
 
-  static final _removeStatusChangeListener = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallStaticVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _removeStatusChangeListener =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallStaticVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public void removeStatusChangeListener(java.lang.Object object)`
   static void removeStatusChangeListener(
-    jni.JObject object,
+    _$jni.JObject object,
   ) {
     _removeStatusChangeListener(
             _class.reference.pointer,
-            _id_removeStatusChangeListener as jni.JMethodIDPtr,
+            _id_removeStatusChangeListener as _$jni.JMethodIDPtr,
             object.reference.pointer)
         .check();
   }
@@ -2836,25 +2922,25 @@ class ContentResolver extends jni.JObject {
     r'(Ljava/lang/String;)Landroid/content/ContentResolver$MimeTypeInfo;',
   );
 
-  static final _getTypeInfo = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getTypeInfo = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final android.content.ContentResolver$MimeTypeInfo getTypeInfo(java.lang.String string)`
   /// The returned object must be released after use, by calling the [release] method.
   ContentResolver_MimeTypeInfo getTypeInfo(
-    jni.JString string,
+    _$jni.JString string,
   ) {
-    return _getTypeInfo(reference.pointer, _id_getTypeInfo as jni.JMethodIDPtr,
-            string.reference.pointer)
-        .object(const $ContentResolver_MimeTypeInfoType());
+    return _getTypeInfo(reference.pointer,
+            _id_getTypeInfo as _$jni.JMethodIDPtr, string.reference.pointer)
+        .object(const $ContentResolver_MimeTypeInfo$Type());
   }
 
   static final _id_loadThumbnail = _class.instanceMethodId(
@@ -2862,64 +2948,69 @@ class ContentResolver extends jni.JObject {
     r'(Landroid/net/Uri;Landroid/util/Size;Landroid/os/CancellationSignal;)Landroid/graphics/Bitmap;',
   );
 
-  static final _loadThumbnail = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _loadThumbnail = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public android.graphics.Bitmap loadThumbnail(android.net.Uri uri, android.util.Size size, android.os.CancellationSignal cancellationSignal)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject loadThumbnail(
+  _$jni.JObject loadThumbnail(
     uri_.Uri uri,
-    jni.JObject size,
-    jni.JObject cancellationSignal,
+    _$jni.JObject size,
+    _$jni.JObject cancellationSignal,
   ) {
     return _loadThumbnail(
             reference.pointer,
-            _id_loadThumbnail as jni.JMethodIDPtr,
+            _id_loadThumbnail as _$jni.JMethodIDPtr,
             uri.reference.pointer,
             size.reference.pointer,
             cancellationSignal.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 }
 
-final class $ContentResolverType extends jni.JObjType<ContentResolver> {
-  const $ContentResolverType();
+final class $ContentResolver$Type extends _$jni.JObjType<ContentResolver> {
+  @_$jni.internal
+  const $ContentResolver$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/content/ContentResolver;';
 
-  @override
-  ContentResolver fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  ContentResolver fromReference(_$jni.JReference reference) =>
       ContentResolver.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($ContentResolverType).hashCode;
+  @_$core.override
+  int get hashCode => ($ContentResolver$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($ContentResolverType) &&
-        other is $ContentResolverType;
+    return other.runtimeType == ($ContentResolver$Type) &&
+        other is $ContentResolver$Type;
   }
 }

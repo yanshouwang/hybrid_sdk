@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,45 +28,49 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 /// from: `android.os.Looper`
-class Looper extends jni.JObject {
-  @override
-  late final jni.JObjType<Looper> $type = type;
+class Looper extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Looper> $type;
 
+  @_$jni.internal
   Looper.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/os/Looper');
+  static final _class = _$jni.JClass.forName(r'android/os/Looper');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $LooperType();
+  static const type = $Looper$Type();
   static final _id_prepare = _class.staticMethodId(
     r'prepare',
     r'()V',
   );
 
-  static final _prepare = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _prepare = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public void prepare()`
   static void prepare() {
-    _prepare(_class.reference.pointer, _id_prepare as jni.JMethodIDPtr).check();
+    _prepare(_class.reference.pointer, _id_prepare as _$jni.JMethodIDPtr)
+        .check();
   }
 
   static final _id_prepareMainLooper = _class.staticMethodId(
@@ -68,22 +78,22 @@ class Looper extends jni.JObject {
     r'()V',
   );
 
-  static final _prepareMainLooper = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _prepareMainLooper = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public void prepareMainLooper()`
   static void prepareMainLooper() {
-    _prepareMainLooper(
-            _class.reference.pointer, _id_prepareMainLooper as jni.JMethodIDPtr)
+    _prepareMainLooper(_class.reference.pointer,
+            _id_prepareMainLooper as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -92,24 +102,24 @@ class Looper extends jni.JObject {
     r'()Landroid/os/Looper;',
   );
 
-  static final _getMainLooper = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getMainLooper = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public android.os.Looper getMainLooper()`
   /// The returned object must be released after use, by calling the [release] method.
   static Looper getMainLooper() {
     return _getMainLooper(
-            _class.reference.pointer, _id_getMainLooper as jni.JMethodIDPtr)
-        .object(const $LooperType());
+            _class.reference.pointer, _id_getMainLooper as _$jni.JMethodIDPtr)
+        .object(const $Looper$Type());
   }
 
   static final _id_loop = _class.staticMethodId(
@@ -117,21 +127,21 @@ class Looper extends jni.JObject {
     r'()V',
   );
 
-  static final _loop = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _loop = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public void loop()`
   static void loop() {
-    _loop(_class.reference.pointer, _id_loop as jni.JMethodIDPtr).check();
+    _loop(_class.reference.pointer, _id_loop as _$jni.JMethodIDPtr).check();
   }
 
   static final _id_myLooper = _class.staticMethodId(
@@ -139,23 +149,24 @@ class Looper extends jni.JObject {
     r'()Landroid/os/Looper;',
   );
 
-  static final _myLooper = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _myLooper = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public android.os.Looper myLooper()`
   /// The returned object must be released after use, by calling the [release] method.
   static Looper myLooper() {
-    return _myLooper(_class.reference.pointer, _id_myLooper as jni.JMethodIDPtr)
-        .object(const $LooperType());
+    return _myLooper(
+            _class.reference.pointer, _id_myLooper as _$jni.JMethodIDPtr)
+        .object(const $Looper$Type());
   }
 
   static final _id_myQueue = _class.staticMethodId(
@@ -163,23 +174,23 @@ class Looper extends jni.JObject {
     r'()Landroid/os/MessageQueue;',
   );
 
-  static final _myQueue = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _myQueue = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public android.os.MessageQueue myQueue()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JObject myQueue() {
-    return _myQueue(_class.reference.pointer, _id_myQueue as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  static _$jni.JObject myQueue() {
+    return _myQueue(_class.reference.pointer, _id_myQueue as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_isCurrentThread = _class.instanceMethodId(
@@ -187,22 +198,22 @@ class Looper extends jni.JObject {
     r'()Z',
   );
 
-  static final _isCurrentThread = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isCurrentThread = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isCurrentThread()`
   bool isCurrentThread() {
     return _isCurrentThread(
-            reference.pointer, _id_isCurrentThread as jni.JMethodIDPtr)
+            reference.pointer, _id_isCurrentThread as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -211,24 +222,24 @@ class Looper extends jni.JObject {
     r'(Landroid/util/Printer;)V',
   );
 
-  static final _setMessageLogging = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setMessageLogging = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setMessageLogging(android.util.Printer printer)`
   void setMessageLogging(
-    jni.JObject printer,
+    _$jni.JObject printer,
   ) {
     _setMessageLogging(
             reference.pointer,
-            _id_setMessageLogging as jni.JMethodIDPtr,
+            _id_setMessageLogging as _$jni.JMethodIDPtr,
             printer.reference.pointer)
         .check();
   }
@@ -238,21 +249,21 @@ class Looper extends jni.JObject {
     r'()V',
   );
 
-  static final _quit = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _quit = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void quit()`
   void quit() {
-    _quit(reference.pointer, _id_quit as jni.JMethodIDPtr).check();
+    _quit(reference.pointer, _id_quit as _$jni.JMethodIDPtr).check();
   }
 
   static final _id_quitSafely = _class.instanceMethodId(
@@ -260,21 +271,22 @@ class Looper extends jni.JObject {
     r'()V',
   );
 
-  static final _quitSafely = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _quitSafely = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void quitSafely()`
   void quitSafely() {
-    _quitSafely(reference.pointer, _id_quitSafely as jni.JMethodIDPtr).check();
+    _quitSafely(reference.pointer, _id_quitSafely as _$jni.JMethodIDPtr)
+        .check();
   }
 
   static final _id_getThread = _class.instanceMethodId(
@@ -282,23 +294,23 @@ class Looper extends jni.JObject {
     r'()Ljava/lang/Thread;',
   );
 
-  static final _getThread = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getThread = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.Thread getThread()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getThread() {
-    return _getThread(reference.pointer, _id_getThread as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getThread() {
+    return _getThread(reference.pointer, _id_getThread as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getQueue = _class.instanceMethodId(
@@ -306,23 +318,23 @@ class Looper extends jni.JObject {
     r'()Landroid/os/MessageQueue;',
   );
 
-  static final _getQueue = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getQueue = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.os.MessageQueue getQueue()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getQueue() {
-    return _getQueue(reference.pointer, _id_getQueue as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+  _$jni.JObject getQueue() {
+    return _getQueue(reference.pointer, _id_getQueue as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_dump = _class.instanceMethodId(
@@ -330,76 +342,84 @@ class Looper extends jni.JObject {
     r'(Landroid/util/Printer;Ljava/lang/String;)V',
   );
 
-  static final _dump = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _dump = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void dump(android.util.Printer printer, java.lang.String string)`
   void dump(
-    jni.JObject printer,
-    jni.JString string,
+    _$jni.JObject printer,
+    _$jni.JString string,
   ) {
-    _dump(reference.pointer, _id_dump as jni.JMethodIDPtr,
+    _dump(reference.pointer, _id_dump as _$jni.JMethodIDPtr,
             printer.reference.pointer, string.reference.pointer)
         .check();
   }
 
-  static final _id_toString1 = _class.instanceMethodId(
+  static final _id_toString$1 = _class.instanceMethodId(
     r'toString',
     r'()Ljava/lang/String;',
   );
 
-  static final _toString1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _toString$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.String toString()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString toString1() {
-    return _toString1(reference.pointer, _id_toString1 as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+  _$jni.JString toString$1() {
+    return _toString$1(reference.pointer, _id_toString$1 as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 }
 
-final class $LooperType extends jni.JObjType<Looper> {
-  const $LooperType();
+final class $Looper$Type extends _$jni.JObjType<Looper> {
+  @_$jni.internal
+  const $Looper$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/os/Looper;';
 
-  @override
-  Looper fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Looper fromReference(_$jni.JReference reference) =>
       Looper.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($LooperType).hashCode;
+  @_$core.override
+  int get hashCode => ($Looper$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($LooperType) && other is $LooperType;
+    return other.runtimeType == ($Looper$Type) && other is $Looper$Type;
   }
 }

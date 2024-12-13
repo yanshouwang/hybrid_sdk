@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,64 +28,66 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../../../android/database/ContentObserver.dart' as contentobserver_;
 
 import '../../../android/os/Handler.dart' as handler_;
 
 /// from: `dev.hebei.hybrid_os_android.ContentObserverImpl$ChangeCallback`
-class ContentObserverImpl_ChangeCallback extends jni.JObject {
-  @override
-  late final jni.JObjType<ContentObserverImpl_ChangeCallback> $type = type;
+class ContentObserverImpl_ChangeCallback extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<ContentObserverImpl_ChangeCallback> $type;
 
+  @_$jni.internal
   ContentObserverImpl_ChangeCallback.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'dev/hebei/hybrid_os_android/ContentObserverImpl$ChangeCallback');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $ContentObserverImpl_ChangeCallbackType();
+  static const type = $ContentObserverImpl_ChangeCallback$Type();
   static final _id_onChange = _class.instanceMethodId(
     r'onChange',
     r'()V',
   );
 
-  static final _onChange = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _onChange = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract void onChange()`
   void onChange() {
-    _onChange(reference.pointer, _id_onChange as jni.JMethodIDPtr).check();
+    _onChange(reference.pointer, _id_onChange as _$jni.JMethodIDPtr).check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $ContentObserverImpl_ChangeCallbackImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $ContentObserverImpl_ChangeCallback> _$impls =
+      {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -87,146 +95,173 @@ class ContentObserverImpl_ChangeCallback extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
       final $a = $i.args;
       if ($d == r'onChange()V') {
         _$impls[$p]!.onChange();
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory ContentObserverImpl_ChangeCallback.implement(
-    $ContentObserverImpl_ChangeCallbackImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $ContentObserverImpl_ChangeCallback $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = ContentObserverImpl_ChangeCallback.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'dev.hebei.hybrid_os_android.ContentObserverImpl$ChangeCallback',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'dev.hebei.hybrid_os_android.ContentObserverImpl$ChangeCallback',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onChange$async) r'onChange()V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory ContentObserverImpl_ChangeCallback.implement(
+    $ContentObserverImpl_ChangeCallback $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return ContentObserverImpl_ChangeCallback.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $ContentObserverImpl_ChangeCallbackImpl {
-  factory $ContentObserverImpl_ChangeCallbackImpl({
+abstract base mixin class $ContentObserverImpl_ChangeCallback {
+  factory $ContentObserverImpl_ChangeCallback({
     required void Function() onChange,
-  }) = _$ContentObserverImpl_ChangeCallbackImpl;
+    bool onChange$async,
+  }) = _$ContentObserverImpl_ChangeCallback;
 
   void onChange();
+  bool get onChange$async => false;
 }
 
-class _$ContentObserverImpl_ChangeCallbackImpl
-    implements $ContentObserverImpl_ChangeCallbackImpl {
-  _$ContentObserverImpl_ChangeCallbackImpl({
+final class _$ContentObserverImpl_ChangeCallback
+    with $ContentObserverImpl_ChangeCallback {
+  _$ContentObserverImpl_ChangeCallback({
     required void Function() onChange,
+    this.onChange$async = false,
   }) : _onChange = onChange;
 
   final void Function() _onChange;
+  final bool onChange$async;
 
   void onChange() {
     return _onChange();
   }
 }
 
-final class $ContentObserverImpl_ChangeCallbackType
-    extends jni.JObjType<ContentObserverImpl_ChangeCallback> {
-  const $ContentObserverImpl_ChangeCallbackType();
+final class $ContentObserverImpl_ChangeCallback$Type
+    extends _$jni.JObjType<ContentObserverImpl_ChangeCallback> {
+  @_$jni.internal
+  const $ContentObserverImpl_ChangeCallback$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Ldev/hebei/hybrid_os_android/ContentObserverImpl$ChangeCallback;';
 
-  @override
-  ContentObserverImpl_ChangeCallback fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  ContentObserverImpl_ChangeCallback fromReference(
+          _$jni.JReference reference) =>
       ContentObserverImpl_ChangeCallback.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($ContentObserverImpl_ChangeCallbackType).hashCode;
+  @_$core.override
+  int get hashCode => ($ContentObserverImpl_ChangeCallback$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($ContentObserverImpl_ChangeCallbackType) &&
-        other is $ContentObserverImpl_ChangeCallbackType;
+    return other.runtimeType == ($ContentObserverImpl_ChangeCallback$Type) &&
+        other is $ContentObserverImpl_ChangeCallback$Type;
   }
 }
 
 /// from: `dev.hebei.hybrid_os_android.ContentObserverImpl`
 class ContentObserverImpl extends contentobserver_.ContentObserver {
-  @override
-  late final jni.JObjType<ContentObserverImpl> $type = type;
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<ContentObserverImpl> $type;
 
+  @_$jni.internal
   ContentObserverImpl.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'dev/hebei/hybrid_os_android/ContentObserverImpl');
+      _$jni.JClass.forName(r'dev/hebei/hybrid_os_android/ContentObserverImpl');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $ContentObserverImplType();
-  static final _id_new1 = _class.constructorId(
+  static const type = $ContentObserverImpl$Type();
+  static final _id_new$ = _class.constructorId(
     r'(Landroid/os/Handler;Ldev/hebei/hybrid_os_android/ContentObserverImpl$ChangeCallback;)V',
   );
 
-  static final _new1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void <init>(android.os.Handler handler, dev.hebei.hybrid_os_android.ContentObserverImpl$ChangeCallback changeCallback)`
   /// The returned object must be released after use, by calling the [release] method.
-  factory ContentObserverImpl.new1(
+  factory ContentObserverImpl(
     handler_.Handler handler,
     ContentObserverImpl_ChangeCallback changeCallback,
   ) {
-    return ContentObserverImpl.fromReference(_new1(
+    return ContentObserverImpl.fromReference(_new$(
             _class.reference.pointer,
-            _id_new1 as jni.JMethodIDPtr,
+            _id_new$ as _$jni.JMethodIDPtr,
             handler.reference.pointer,
             changeCallback.reference.pointer)
         .reference);
@@ -237,47 +272,54 @@ class ContentObserverImpl extends contentobserver_.ContentObserver {
     r'(Z)V',
   );
 
-  static final _onChange = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _onChange = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void onChange(boolean z)`
   void onChange(
     bool z,
   ) {
-    _onChange(reference.pointer, _id_onChange as jni.JMethodIDPtr, z ? 1 : 0)
+    _onChange(reference.pointer, _id_onChange as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 }
 
-final class $ContentObserverImplType extends jni.JObjType<ContentObserverImpl> {
-  const $ContentObserverImplType();
+final class $ContentObserverImpl$Type
+    extends _$jni.JObjType<ContentObserverImpl> {
+  @_$jni.internal
+  const $ContentObserverImpl$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Ldev/hebei/hybrid_os_android/ContentObserverImpl;';
 
-  @override
-  ContentObserverImpl fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  ContentObserverImpl fromReference(_$jni.JReference reference) =>
       ContentObserverImpl.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const contentobserver_.$ContentObserverType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType =>
+      const contentobserver_.$ContentObserver$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 2;
 
-  @override
-  int get hashCode => ($ContentObserverImplType).hashCode;
+  @_$core.override
+  int get hashCode => ($ContentObserverImpl$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($ContentObserverImplType) &&
-        other is $ContentObserverImplType;
+    return other.runtimeType == ($ContentObserverImpl$Type) &&
+        other is $ContentObserverImpl$Type;
   }
 }

@@ -1,16 +1,14 @@
 import 'package:jni/jni.dart';
 
-import 'android/app/Activity.dart';
-import 'android/content/Context.dart';
+import 'android/app/_package.dart';
+import 'android/content/_package.dart';
 
-abstract base class Env {
-  static Activity get activity {
-    final reference = Jni.getCurrentActivity();
-    return Activity.fromReference(reference);
-  }
+Activity get activity {
+  final reference = Jni.getCurrentActivity();
+  return Activity.fromReference(reference);
+}
 
-  static Context get context {
-    final reference = Jni.getCurrentActivity();
-    return Context.fromReference(reference);
-  }
+Context get context {
+  final reference = Jni.getCachedApplicationContext();
+  return Context.fromReference(reference);
 }

@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,11 +28,11 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../content/Context.dart' as context_;
 
@@ -37,41 +43,44 @@ import '../os/Handler.dart' as handler_;
 import 'WindowManager.dart' as windowmanager_;
 
 /// from: `android.view.Window$Callback`
-class Window_Callback extends jni.JObject {
-  @override
-  late final jni.JObjType<Window_Callback> $type = type;
+class Window_Callback extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Window_Callback> $type;
 
+  @_$jni.internal
   Window_Callback.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/view/Window$Callback');
+  static final _class = _$jni.JClass.forName(r'android/view/Window$Callback');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Window_CallbackType();
+  static const type = $Window_Callback$Type();
   static final _id_dispatchKeyEvent = _class.instanceMethodId(
     r'dispatchKeyEvent',
     r'(Landroid/view/KeyEvent;)Z',
   );
 
-  static final _dispatchKeyEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _dispatchKeyEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean dispatchKeyEvent(android.view.KeyEvent keyEvent)`
   bool dispatchKeyEvent(
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
     return _dispatchKeyEvent(
             reference.pointer,
-            _id_dispatchKeyEvent as jni.JMethodIDPtr,
+            _id_dispatchKeyEvent as _$jni.JMethodIDPtr,
             keyEvent.reference.pointer)
         .boolean;
   }
@@ -81,24 +90,24 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/KeyEvent;)Z',
   );
 
-  static final _dispatchKeyShortcutEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _dispatchKeyShortcutEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean dispatchKeyShortcutEvent(android.view.KeyEvent keyEvent)`
   bool dispatchKeyShortcutEvent(
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
     return _dispatchKeyShortcutEvent(
             reference.pointer,
-            _id_dispatchKeyShortcutEvent as jni.JMethodIDPtr,
+            _id_dispatchKeyShortcutEvent as _$jni.JMethodIDPtr,
             keyEvent.reference.pointer)
         .boolean;
   }
@@ -108,24 +117,24 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/MotionEvent;)Z',
   );
 
-  static final _dispatchTouchEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _dispatchTouchEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean dispatchTouchEvent(android.view.MotionEvent motionEvent)`
   bool dispatchTouchEvent(
-    jni.JObject motionEvent,
+    _$jni.JObject motionEvent,
   ) {
     return _dispatchTouchEvent(
             reference.pointer,
-            _id_dispatchTouchEvent as jni.JMethodIDPtr,
+            _id_dispatchTouchEvent as _$jni.JMethodIDPtr,
             motionEvent.reference.pointer)
         .boolean;
   }
@@ -135,24 +144,24 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/MotionEvent;)Z',
   );
 
-  static final _dispatchTrackballEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _dispatchTrackballEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean dispatchTrackballEvent(android.view.MotionEvent motionEvent)`
   bool dispatchTrackballEvent(
-    jni.JObject motionEvent,
+    _$jni.JObject motionEvent,
   ) {
     return _dispatchTrackballEvent(
             reference.pointer,
-            _id_dispatchTrackballEvent as jni.JMethodIDPtr,
+            _id_dispatchTrackballEvent as _$jni.JMethodIDPtr,
             motionEvent.reference.pointer)
         .boolean;
   }
@@ -162,24 +171,25 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/MotionEvent;)Z',
   );
 
-  static final _dispatchGenericMotionEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _dispatchGenericMotionEvent =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean dispatchGenericMotionEvent(android.view.MotionEvent motionEvent)`
   bool dispatchGenericMotionEvent(
-    jni.JObject motionEvent,
+    _$jni.JObject motionEvent,
   ) {
     return _dispatchGenericMotionEvent(
             reference.pointer,
-            _id_dispatchGenericMotionEvent as jni.JMethodIDPtr,
+            _id_dispatchGenericMotionEvent as _$jni.JMethodIDPtr,
             motionEvent.reference.pointer)
         .boolean;
   }
@@ -190,24 +200,24 @@ class Window_Callback extends jni.JObject {
   );
 
   static final _dispatchPopulateAccessibilityEvent =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JniResult Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallBooleanMethod')
           .asFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent accessibilityEvent)`
   bool dispatchPopulateAccessibilityEvent(
-    jni.JObject accessibilityEvent,
+    _$jni.JObject accessibilityEvent,
   ) {
     return _dispatchPopulateAccessibilityEvent(
             reference.pointer,
-            _id_dispatchPopulateAccessibilityEvent as jni.JMethodIDPtr,
+            _id_dispatchPopulateAccessibilityEvent as _$jni.JMethodIDPtr,
             accessibilityEvent.reference.pointer)
         .boolean;
   }
@@ -217,22 +227,24 @@ class Window_Callback extends jni.JObject {
     r'(I)Landroid/view/View;',
   );
 
-  static final _onCreatePanelView = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _onCreatePanelView = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract android.view.View onCreatePanelView(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject onCreatePanelView(
+  _$jni.JObject onCreatePanelView(
     int i,
   ) {
     return _onCreatePanelView(
-            reference.pointer, _id_onCreatePanelView as jni.JMethodIDPtr, i)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_onCreatePanelView as _$jni.JMethodIDPtr, i)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_onCreatePanelMenu = _class.instanceMethodId(
@@ -240,25 +252,26 @@ class Window_Callback extends jni.JObject {
     r'(ILandroid/view/Menu;)Z',
   );
 
-  static final _onCreatePanelMenu = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _onCreatePanelMenu = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean onCreatePanelMenu(int i, android.view.Menu menu)`
   bool onCreatePanelMenu(
     int i,
-    jni.JObject menu,
+    _$jni.JObject menu,
   ) {
     return _onCreatePanelMenu(
             reference.pointer,
-            _id_onCreatePanelMenu as jni.JMethodIDPtr,
+            _id_onCreatePanelMenu as _$jni.JMethodIDPtr,
             i,
             menu.reference.pointer)
         .boolean;
@@ -269,30 +282,34 @@ class Window_Callback extends jni.JObject {
     r'(ILandroid/view/View;Landroid/view/Menu;)Z',
   );
 
-  static final _onPreparePanel = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _onPreparePanel = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        $Int32,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              int,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean onPreparePanel(int i, android.view.View view, android.view.Menu menu)`
   bool onPreparePanel(
     int i,
-    jni.JObject view,
-    jni.JObject menu,
+    _$jni.JObject view,
+    _$jni.JObject menu,
   ) {
     return _onPreparePanel(
             reference.pointer,
-            _id_onPreparePanel as jni.JMethodIDPtr,
+            _id_onPreparePanel as _$jni.JMethodIDPtr,
             i,
             view.reference.pointer,
             menu.reference.pointer)
@@ -304,24 +321,25 @@ class Window_Callback extends jni.JObject {
     r'(ILandroid/view/Menu;)Z',
   );
 
-  static final _onMenuOpened = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _onMenuOpened = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean onMenuOpened(int i, android.view.Menu menu)`
   bool onMenuOpened(
     int i,
-    jni.JObject menu,
+    _$jni.JObject menu,
   ) {
     return _onMenuOpened(reference.pointer,
-            _id_onMenuOpened as jni.JMethodIDPtr, i, menu.reference.pointer)
+            _id_onMenuOpened as _$jni.JMethodIDPtr, i, menu.reference.pointer)
         .boolean;
   }
 
@@ -330,25 +348,26 @@ class Window_Callback extends jni.JObject {
     r'(ILandroid/view/MenuItem;)Z',
   );
 
-  static final _onMenuItemSelected = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _onMenuItemSelected = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean onMenuItemSelected(int i, android.view.MenuItem menuItem)`
   bool onMenuItemSelected(
     int i,
-    jni.JObject menuItem,
+    _$jni.JObject menuItem,
   ) {
     return _onMenuItemSelected(
             reference.pointer,
-            _id_onMenuItemSelected as jni.JMethodIDPtr,
+            _id_onMenuItemSelected as _$jni.JMethodIDPtr,
             i,
             menuItem.reference.pointer)
         .boolean;
@@ -359,16 +378,16 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/WindowManager$LayoutParams;)V',
   );
 
-  static final _onWindowAttributesChanged = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onWindowAttributesChanged = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onWindowAttributesChanged(android.view.WindowManager$LayoutParams layoutParams)`
   void onWindowAttributesChanged(
@@ -376,7 +395,7 @@ class Window_Callback extends jni.JObject {
   ) {
     _onWindowAttributesChanged(
             reference.pointer,
-            _id_onWindowAttributesChanged as jni.JMethodIDPtr,
+            _id_onWindowAttributesChanged as _$jni.JMethodIDPtr,
             layoutParams.reference.pointer)
         .check();
   }
@@ -386,22 +405,22 @@ class Window_Callback extends jni.JObject {
     r'()V',
   );
 
-  static final _onContentChanged = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _onContentChanged = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract void onContentChanged()`
   void onContentChanged() {
     _onContentChanged(
-            reference.pointer, _id_onContentChanged as jni.JMethodIDPtr)
+            reference.pointer, _id_onContentChanged as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -410,22 +429,22 @@ class Window_Callback extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _onWindowFocusChanged = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _onWindowFocusChanged = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void onWindowFocusChanged(boolean z)`
   void onWindowFocusChanged(
     bool z,
   ) {
     _onWindowFocusChanged(reference.pointer,
-            _id_onWindowFocusChanged as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_onWindowFocusChanged as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -434,22 +453,22 @@ class Window_Callback extends jni.JObject {
     r'()V',
   );
 
-  static final _onAttachedToWindow = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _onAttachedToWindow = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract void onAttachedToWindow()`
   void onAttachedToWindow() {
     _onAttachedToWindow(
-            reference.pointer, _id_onAttachedToWindow as jni.JMethodIDPtr)
+            reference.pointer, _id_onAttachedToWindow as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -458,22 +477,22 @@ class Window_Callback extends jni.JObject {
     r'()V',
   );
 
-  static final _onDetachedFromWindow = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _onDetachedFromWindow = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract void onDetachedFromWindow()`
   void onDetachedFromWindow() {
     _onDetachedFromWindow(
-            reference.pointer, _id_onDetachedFromWindow as jni.JMethodIDPtr)
+            reference.pointer, _id_onDetachedFromWindow as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -482,24 +501,25 @@ class Window_Callback extends jni.JObject {
     r'(ILandroid/view/Menu;)V',
   );
 
-  static final _onPanelClosed = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _onPanelClosed = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onPanelClosed(int i, android.view.Menu menu)`
   void onPanelClosed(
     int i,
-    jni.JObject menu,
+    _$jni.JObject menu,
   ) {
-    _onPanelClosed(reference.pointer, _id_onPanelClosed as jni.JMethodIDPtr, i,
-            menu.reference.pointer)
+    _onPanelClosed(reference.pointer, _id_onPanelClosed as _$jni.JMethodIDPtr,
+            i, menu.reference.pointer)
         .check();
   }
 
@@ -508,48 +528,48 @@ class Window_Callback extends jni.JObject {
     r'()Z',
   );
 
-  static final _onSearchRequested = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _onSearchRequested = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract boolean onSearchRequested()`
   bool onSearchRequested() {
     return _onSearchRequested(
-            reference.pointer, _id_onSearchRequested as jni.JMethodIDPtr)
+            reference.pointer, _id_onSearchRequested as _$jni.JMethodIDPtr)
         .boolean;
   }
 
-  static final _id_onSearchRequested1 = _class.instanceMethodId(
+  static final _id_onSearchRequested$1 = _class.instanceMethodId(
     r'onSearchRequested',
     r'(Landroid/view/SearchEvent;)Z',
   );
 
-  static final _onSearchRequested1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onSearchRequested$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean onSearchRequested(android.view.SearchEvent searchEvent)`
-  bool onSearchRequested1(
-    jni.JObject searchEvent,
+  bool onSearchRequested$1(
+    _$jni.JObject searchEvent,
   ) {
-    return _onSearchRequested1(
+    return _onSearchRequested$1(
             reference.pointer,
-            _id_onSearchRequested1 as jni.JMethodIDPtr,
+            _id_onSearchRequested$1 as _$jni.JMethodIDPtr,
             searchEvent.reference.pointer)
         .boolean;
   }
@@ -559,57 +579,62 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;',
   );
 
-  static final _onWindowStartingActionMode = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _onWindowStartingActionMode =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract android.view.ActionMode onWindowStartingActionMode(android.view.ActionMode$Callback callback)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject onWindowStartingActionMode(
-    jni.JObject callback,
+  _$jni.JObject onWindowStartingActionMode(
+    _$jni.JObject callback,
   ) {
     return _onWindowStartingActionMode(
             reference.pointer,
-            _id_onWindowStartingActionMode as jni.JMethodIDPtr,
+            _id_onWindowStartingActionMode as _$jni.JMethodIDPtr,
             callback.reference.pointer)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
-  static final _id_onWindowStartingActionMode1 = _class.instanceMethodId(
+  static final _id_onWindowStartingActionMode$1 = _class.instanceMethodId(
     r'onWindowStartingActionMode',
     r'(Landroid/view/ActionMode$Callback;I)Landroid/view/ActionMode;',
   );
 
-  static final _onWindowStartingActionMode1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>, $Int32)>)>>(
-          'globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, int)>();
+  static final _onWindowStartingActionMode$1 =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public abstract android.view.ActionMode onWindowStartingActionMode(android.view.ActionMode$Callback callback, int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject onWindowStartingActionMode1(
-    jni.JObject callback,
+  _$jni.JObject onWindowStartingActionMode$1(
+    _$jni.JObject callback,
     int i,
   ) {
-    return _onWindowStartingActionMode1(
+    return _onWindowStartingActionMode$1(
             reference.pointer,
-            _id_onWindowStartingActionMode1 as jni.JMethodIDPtr,
+            _id_onWindowStartingActionMode$1 as _$jni.JMethodIDPtr,
             callback.reference.pointer,
             i)
-        .object(const jni.JObjectType());
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_onActionModeStarted = _class.instanceMethodId(
@@ -617,24 +642,24 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/ActionMode;)V',
   );
 
-  static final _onActionModeStarted = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onActionModeStarted = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onActionModeStarted(android.view.ActionMode actionMode)`
   void onActionModeStarted(
-    jni.JObject actionMode,
+    _$jni.JObject actionMode,
   ) {
     _onActionModeStarted(
             reference.pointer,
-            _id_onActionModeStarted as jni.JMethodIDPtr,
+            _id_onActionModeStarted as _$jni.JMethodIDPtr,
             actionMode.reference.pointer)
         .check();
   }
@@ -644,24 +669,24 @@ class Window_Callback extends jni.JObject {
     r'(Landroid/view/ActionMode;)V',
   );
 
-  static final _onActionModeFinished = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onActionModeFinished = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onActionModeFinished(android.view.ActionMode actionMode)`
   void onActionModeFinished(
-    jni.JObject actionMode,
+    _$jni.JObject actionMode,
   ) {
     _onActionModeFinished(
             reference.pointer,
-            _id_onActionModeFinished as jni.JMethodIDPtr,
+            _id_onActionModeFinished as _$jni.JMethodIDPtr,
             actionMode.reference.pointer)
         .check();
   }
@@ -671,30 +696,35 @@ class Window_Callback extends jni.JObject {
     r'(Ljava/util/List;Landroid/view/Menu;I)V',
   );
 
-  static final _onProvideKeyboardShortcuts = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
-                      (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
-                      )>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+  static final _onProvideKeyboardShortcuts =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>,
+                  int)>();
 
   /// from: `public void onProvideKeyboardShortcuts(java.util.List list, android.view.Menu menu, int i)`
   void onProvideKeyboardShortcuts(
-    jni.JList<jni.JObject> list,
-    jni.JObject menu,
+    _$jni.JList<_$jni.JObject> list,
+    _$jni.JObject menu,
     int i,
   ) {
     _onProvideKeyboardShortcuts(
             reference.pointer,
-            _id_onProvideKeyboardShortcuts as jni.JMethodIDPtr,
+            _id_onProvideKeyboardShortcuts as _$jni.JMethodIDPtr,
             list.reference.pointer,
             menu.reference.pointer,
             i)
@@ -706,37 +736,35 @@ class Window_Callback extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _onPointerCaptureChanged = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _onPointerCaptureChanged = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void onPointerCaptureChanged(boolean z)`
   void onPointerCaptureChanged(
     bool z,
   ) {
     _onPointerCaptureChanged(reference.pointer,
-            _id_onPointerCaptureChanged as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_onPointerCaptureChanged as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $Window_CallbackImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $Window_Callback> _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -744,338 +772,396 @@ class Window_Callback extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
       final $a = $i.args;
       if ($d == r'dispatchKeyEvent(Landroid/view/KeyEvent;)Z') {
         final $r = _$impls[$p]!.dispatchKeyEvent(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'dispatchKeyShortcutEvent(Landroid/view/KeyEvent;)Z') {
         final $r = _$impls[$p]!.dispatchKeyShortcutEvent(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'dispatchTouchEvent(Landroid/view/MotionEvent;)Z') {
         final $r = _$impls[$p]!.dispatchTouchEvent(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'dispatchTrackballEvent(Landroid/view/MotionEvent;)Z') {
         final $r = _$impls[$p]!.dispatchTrackballEvent(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'dispatchGenericMotionEvent(Landroid/view/MotionEvent;)Z') {
         final $r = _$impls[$p]!.dispatchGenericMotionEvent(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d ==
           r'dispatchPopulateAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)Z') {
         final $r = _$impls[$p]!.dispatchPopulateAccessibilityEvent(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'onCreatePanelView(I)Landroid/view/View;') {
         final $r = _$impls[$p]!.onCreatePanelView(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
         );
-        return ($r as jni.JObject)
-            .castTo(const jni.JObjectType())
+        return ($r as _$jni.JObject)
+            .as(const _$jni.JObjectType())
             .reference
             .toPointer();
       }
       if ($d == r'onCreatePanelMenu(ILandroid/view/Menu;)Z') {
         final $r = _$impls[$p]!.onCreatePanelMenu(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'onPreparePanel(ILandroid/view/View;Landroid/view/Menu;)Z') {
         final $r = _$impls[$p]!.onPreparePanel(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
-          $a[2].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
+          $a[2].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'onMenuOpened(ILandroid/view/Menu;)Z') {
         final $r = _$impls[$p]!.onMenuOpened(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'onMenuItemSelected(ILandroid/view/MenuItem;)Z') {
         final $r = _$impls[$p]!.onMenuItemSelected(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d ==
           r'onWindowAttributesChanged(Landroid/view/WindowManager$LayoutParams;)V') {
         _$impls[$p]!.onWindowAttributesChanged(
-          $a[0].castTo(const windowmanager_.$WindowManager_LayoutParamsType(),
+          $a[0].as(const windowmanager_.$WindowManager_LayoutParams$Type(),
               releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onContentChanged()V') {
         _$impls[$p]!.onContentChanged();
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onWindowFocusChanged(Z)V') {
         _$impls[$p]!.onWindowFocusChanged(
           $a[0]
-              .castTo(const jni.JBooleanType(), releaseOriginal: true)
+              .as(const _$jni.JBooleanType(), releaseOriginal: true)
               .booleanValue(releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onAttachedToWindow()V') {
         _$impls[$p]!.onAttachedToWindow();
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onDetachedFromWindow()V') {
         _$impls[$p]!.onDetachedFromWindow();
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onPanelClosed(ILandroid/view/Menu;)V') {
         _$impls[$p]!.onPanelClosed(
           $a[0]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onSearchRequested()Z') {
         final $r = _$impls[$p]!.onSearchRequested();
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d == r'onSearchRequested(Landroid/view/SearchEvent;)Z') {
-        final $r = _$impls[$p]!.onSearchRequested1(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+        final $r = _$impls[$p]!.onSearchRequested$1(
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.JBoolean($r).reference.toPointer();
+        return _$jni.JBoolean($r).reference.toPointer();
       }
       if ($d ==
           r'onWindowStartingActionMode(Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;') {
         final $r = _$impls[$p]!.onWindowStartingActionMode(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return ($r as jni.JObject)
-            .castTo(const jni.JObjectType())
+        return ($r as _$jni.JObject)
+            .as(const _$jni.JObjectType())
             .reference
             .toPointer();
       }
       if ($d ==
           r'onWindowStartingActionMode(Landroid/view/ActionMode$Callback;I)Landroid/view/ActionMode;') {
-        final $r = _$impls[$p]!.onWindowStartingActionMode1(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+        final $r = _$impls[$p]!.onWindowStartingActionMode$1(
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
           $a[1]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
         );
-        return ($r as jni.JObject)
-            .castTo(const jni.JObjectType())
+        return ($r as _$jni.JObject)
+            .as(const _$jni.JObjectType())
             .reference
             .toPointer();
       }
       if ($d == r'onActionModeStarted(Landroid/view/ActionMode;)V') {
         _$impls[$p]!.onActionModeStarted(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onActionModeFinished(Landroid/view/ActionMode;)V') {
         _$impls[$p]!.onActionModeFinished(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d ==
           r'onProvideKeyboardShortcuts(Ljava/util/List;Landroid/view/Menu;I)V') {
         _$impls[$p]!.onProvideKeyboardShortcuts(
-          $a[0].castTo(const jni.JListType(jni.JObjectType()),
+          $a[0].as(const _$jni.JListType(_$jni.JObjectType()),
               releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
           $a[2]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
       if ($d == r'onPointerCaptureChanged(Z)V') {
         _$impls[$p]!.onPointerCaptureChanged(
           $a[0]
-              .castTo(const jni.JBooleanType(), releaseOriginal: true)
+              .as(const _$jni.JBooleanType(), releaseOriginal: true)
               .booleanValue(releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory Window_Callback.implement(
-    $Window_CallbackImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $Window_Callback $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = Window_Callback.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.view.Window$Callback',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.view.Window$Callback',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onWindowAttributesChanged$async)
+          r'onWindowAttributesChanged(Landroid/view/WindowManager$LayoutParams;)V',
+        if ($impl.onContentChanged$async) r'onContentChanged()V',
+        if ($impl.onWindowFocusChanged$async) r'onWindowFocusChanged(Z)V',
+        if ($impl.onAttachedToWindow$async) r'onAttachedToWindow()V',
+        if ($impl.onDetachedFromWindow$async) r'onDetachedFromWindow()V',
+        if ($impl.onPanelClosed$async) r'onPanelClosed(ILandroid/view/Menu;)V',
+        if ($impl.onActionModeStarted$async)
+          r'onActionModeStarted(Landroid/view/ActionMode;)V',
+        if ($impl.onActionModeFinished$async)
+          r'onActionModeFinished(Landroid/view/ActionMode;)V',
+        if ($impl.onProvideKeyboardShortcuts$async)
+          r'onProvideKeyboardShortcuts(Ljava/util/List;Landroid/view/Menu;I)V',
+        if ($impl.onPointerCaptureChanged$async) r'onPointerCaptureChanged(Z)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory Window_Callback.implement(
+    $Window_Callback $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return Window_Callback.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $Window_CallbackImpl {
-  factory $Window_CallbackImpl({
-    required bool Function(jni.JObject keyEvent) dispatchKeyEvent,
-    required bool Function(jni.JObject keyEvent) dispatchKeyShortcutEvent,
-    required bool Function(jni.JObject motionEvent) dispatchTouchEvent,
-    required bool Function(jni.JObject motionEvent) dispatchTrackballEvent,
-    required bool Function(jni.JObject motionEvent) dispatchGenericMotionEvent,
-    required bool Function(jni.JObject accessibilityEvent)
+abstract base mixin class $Window_Callback {
+  factory $Window_Callback({
+    required bool Function(_$jni.JObject keyEvent) dispatchKeyEvent,
+    required bool Function(_$jni.JObject keyEvent) dispatchKeyShortcutEvent,
+    required bool Function(_$jni.JObject motionEvent) dispatchTouchEvent,
+    required bool Function(_$jni.JObject motionEvent) dispatchTrackballEvent,
+    required bool Function(_$jni.JObject motionEvent)
+        dispatchGenericMotionEvent,
+    required bool Function(_$jni.JObject accessibilityEvent)
         dispatchPopulateAccessibilityEvent,
-    required jni.JObject Function(int i) onCreatePanelView,
-    required bool Function(int i, jni.JObject menu) onCreatePanelMenu,
-    required bool Function(int i, jni.JObject view, jni.JObject menu)
+    required _$jni.JObject Function(int i) onCreatePanelView,
+    required bool Function(int i, _$jni.JObject menu) onCreatePanelMenu,
+    required bool Function(int i, _$jni.JObject view, _$jni.JObject menu)
         onPreparePanel,
-    required bool Function(int i, jni.JObject menu) onMenuOpened,
-    required bool Function(int i, jni.JObject menuItem) onMenuItemSelected,
+    required bool Function(int i, _$jni.JObject menu) onMenuOpened,
+    required bool Function(int i, _$jni.JObject menuItem) onMenuItemSelected,
     required void Function(
             windowmanager_.WindowManager_LayoutParams layoutParams)
         onWindowAttributesChanged,
+    bool onWindowAttributesChanged$async,
     required void Function() onContentChanged,
+    bool onContentChanged$async,
     required void Function(bool z) onWindowFocusChanged,
+    bool onWindowFocusChanged$async,
     required void Function() onAttachedToWindow,
+    bool onAttachedToWindow$async,
     required void Function() onDetachedFromWindow,
-    required void Function(int i, jni.JObject menu) onPanelClosed,
+    bool onDetachedFromWindow$async,
+    required void Function(int i, _$jni.JObject menu) onPanelClosed,
+    bool onPanelClosed$async,
     required bool Function() onSearchRequested,
-    required bool Function(jni.JObject searchEvent) onSearchRequested1,
-    required jni.JObject Function(jni.JObject callback)
+    required bool Function(_$jni.JObject searchEvent) onSearchRequested$1,
+    required _$jni.JObject Function(_$jni.JObject callback)
         onWindowStartingActionMode,
-    required jni.JObject Function(jni.JObject callback, int i)
-        onWindowStartingActionMode1,
-    required void Function(jni.JObject actionMode) onActionModeStarted,
-    required void Function(jni.JObject actionMode) onActionModeFinished,
-    required void Function(jni.JList<jni.JObject> list, jni.JObject menu, int i)
+    required _$jni.JObject Function(_$jni.JObject callback, int i)
+        onWindowStartingActionMode$1,
+    required void Function(_$jni.JObject actionMode) onActionModeStarted,
+    bool onActionModeStarted$async,
+    required void Function(_$jni.JObject actionMode) onActionModeFinished,
+    bool onActionModeFinished$async,
+    required void Function(
+            _$jni.JList<_$jni.JObject> list, _$jni.JObject menu, int i)
         onProvideKeyboardShortcuts,
+    bool onProvideKeyboardShortcuts$async,
     required void Function(bool z) onPointerCaptureChanged,
-  }) = _$Window_CallbackImpl;
+    bool onPointerCaptureChanged$async,
+  }) = _$Window_Callback;
 
-  bool dispatchKeyEvent(jni.JObject keyEvent);
-  bool dispatchKeyShortcutEvent(jni.JObject keyEvent);
-  bool dispatchTouchEvent(jni.JObject motionEvent);
-  bool dispatchTrackballEvent(jni.JObject motionEvent);
-  bool dispatchGenericMotionEvent(jni.JObject motionEvent);
-  bool dispatchPopulateAccessibilityEvent(jni.JObject accessibilityEvent);
-  jni.JObject onCreatePanelView(int i);
-  bool onCreatePanelMenu(int i, jni.JObject menu);
-  bool onPreparePanel(int i, jni.JObject view, jni.JObject menu);
-  bool onMenuOpened(int i, jni.JObject menu);
-  bool onMenuItemSelected(int i, jni.JObject menuItem);
+  bool dispatchKeyEvent(_$jni.JObject keyEvent);
+  bool dispatchKeyShortcutEvent(_$jni.JObject keyEvent);
+  bool dispatchTouchEvent(_$jni.JObject motionEvent);
+  bool dispatchTrackballEvent(_$jni.JObject motionEvent);
+  bool dispatchGenericMotionEvent(_$jni.JObject motionEvent);
+  bool dispatchPopulateAccessibilityEvent(_$jni.JObject accessibilityEvent);
+  _$jni.JObject onCreatePanelView(int i);
+  bool onCreatePanelMenu(int i, _$jni.JObject menu);
+  bool onPreparePanel(int i, _$jni.JObject view, _$jni.JObject menu);
+  bool onMenuOpened(int i, _$jni.JObject menu);
+  bool onMenuItemSelected(int i, _$jni.JObject menuItem);
   void onWindowAttributesChanged(
       windowmanager_.WindowManager_LayoutParams layoutParams);
+  bool get onWindowAttributesChanged$async => false;
   void onContentChanged();
+  bool get onContentChanged$async => false;
   void onWindowFocusChanged(bool z);
+  bool get onWindowFocusChanged$async => false;
   void onAttachedToWindow();
+  bool get onAttachedToWindow$async => false;
   void onDetachedFromWindow();
-  void onPanelClosed(int i, jni.JObject menu);
+  bool get onDetachedFromWindow$async => false;
+  void onPanelClosed(int i, _$jni.JObject menu);
+  bool get onPanelClosed$async => false;
   bool onSearchRequested();
-  bool onSearchRequested1(jni.JObject searchEvent);
-  jni.JObject onWindowStartingActionMode(jni.JObject callback);
-  jni.JObject onWindowStartingActionMode1(jni.JObject callback, int i);
-  void onActionModeStarted(jni.JObject actionMode);
-  void onActionModeFinished(jni.JObject actionMode);
+  bool onSearchRequested$1(_$jni.JObject searchEvent);
+  _$jni.JObject onWindowStartingActionMode(_$jni.JObject callback);
+  _$jni.JObject onWindowStartingActionMode$1(_$jni.JObject callback, int i);
+  void onActionModeStarted(_$jni.JObject actionMode);
+  bool get onActionModeStarted$async => false;
+  void onActionModeFinished(_$jni.JObject actionMode);
+  bool get onActionModeFinished$async => false;
   void onProvideKeyboardShortcuts(
-      jni.JList<jni.JObject> list, jni.JObject menu, int i);
+      _$jni.JList<_$jni.JObject> list, _$jni.JObject menu, int i);
+  bool get onProvideKeyboardShortcuts$async => false;
   void onPointerCaptureChanged(bool z);
+  bool get onPointerCaptureChanged$async => false;
 }
 
-class _$Window_CallbackImpl implements $Window_CallbackImpl {
-  _$Window_CallbackImpl({
-    required bool Function(jni.JObject keyEvent) dispatchKeyEvent,
-    required bool Function(jni.JObject keyEvent) dispatchKeyShortcutEvent,
-    required bool Function(jni.JObject motionEvent) dispatchTouchEvent,
-    required bool Function(jni.JObject motionEvent) dispatchTrackballEvent,
-    required bool Function(jni.JObject motionEvent) dispatchGenericMotionEvent,
-    required bool Function(jni.JObject accessibilityEvent)
+final class _$Window_Callback with $Window_Callback {
+  _$Window_Callback({
+    required bool Function(_$jni.JObject keyEvent) dispatchKeyEvent,
+    required bool Function(_$jni.JObject keyEvent) dispatchKeyShortcutEvent,
+    required bool Function(_$jni.JObject motionEvent) dispatchTouchEvent,
+    required bool Function(_$jni.JObject motionEvent) dispatchTrackballEvent,
+    required bool Function(_$jni.JObject motionEvent)
+        dispatchGenericMotionEvent,
+    required bool Function(_$jni.JObject accessibilityEvent)
         dispatchPopulateAccessibilityEvent,
-    required jni.JObject Function(int i) onCreatePanelView,
-    required bool Function(int i, jni.JObject menu) onCreatePanelMenu,
-    required bool Function(int i, jni.JObject view, jni.JObject menu)
+    required _$jni.JObject Function(int i) onCreatePanelView,
+    required bool Function(int i, _$jni.JObject menu) onCreatePanelMenu,
+    required bool Function(int i, _$jni.JObject view, _$jni.JObject menu)
         onPreparePanel,
-    required bool Function(int i, jni.JObject menu) onMenuOpened,
-    required bool Function(int i, jni.JObject menuItem) onMenuItemSelected,
+    required bool Function(int i, _$jni.JObject menu) onMenuOpened,
+    required bool Function(int i, _$jni.JObject menuItem) onMenuItemSelected,
     required void Function(
             windowmanager_.WindowManager_LayoutParams layoutParams)
         onWindowAttributesChanged,
+    this.onWindowAttributesChanged$async = false,
     required void Function() onContentChanged,
+    this.onContentChanged$async = false,
     required void Function(bool z) onWindowFocusChanged,
+    this.onWindowFocusChanged$async = false,
     required void Function() onAttachedToWindow,
+    this.onAttachedToWindow$async = false,
     required void Function() onDetachedFromWindow,
-    required void Function(int i, jni.JObject menu) onPanelClosed,
+    this.onDetachedFromWindow$async = false,
+    required void Function(int i, _$jni.JObject menu) onPanelClosed,
+    this.onPanelClosed$async = false,
     required bool Function() onSearchRequested,
-    required bool Function(jni.JObject searchEvent) onSearchRequested1,
-    required jni.JObject Function(jni.JObject callback)
+    required bool Function(_$jni.JObject searchEvent) onSearchRequested$1,
+    required _$jni.JObject Function(_$jni.JObject callback)
         onWindowStartingActionMode,
-    required jni.JObject Function(jni.JObject callback, int i)
-        onWindowStartingActionMode1,
-    required void Function(jni.JObject actionMode) onActionModeStarted,
-    required void Function(jni.JObject actionMode) onActionModeFinished,
-    required void Function(jni.JList<jni.JObject> list, jni.JObject menu, int i)
+    required _$jni.JObject Function(_$jni.JObject callback, int i)
+        onWindowStartingActionMode$1,
+    required void Function(_$jni.JObject actionMode) onActionModeStarted,
+    this.onActionModeStarted$async = false,
+    required void Function(_$jni.JObject actionMode) onActionModeFinished,
+    this.onActionModeFinished$async = false,
+    required void Function(
+            _$jni.JList<_$jni.JObject> list, _$jni.JObject menu, int i)
         onProvideKeyboardShortcuts,
+    this.onProvideKeyboardShortcuts$async = false,
     required void Function(bool z) onPointerCaptureChanged,
+    this.onPointerCaptureChanged$async = false,
   })  : _dispatchKeyEvent = dispatchKeyEvent,
         _dispatchKeyShortcutEvent = dispatchKeyShortcutEvent,
         _dispatchTouchEvent = dispatchTouchEvent,
@@ -1095,86 +1181,98 @@ class _$Window_CallbackImpl implements $Window_CallbackImpl {
         _onDetachedFromWindow = onDetachedFromWindow,
         _onPanelClosed = onPanelClosed,
         _onSearchRequested = onSearchRequested,
-        _onSearchRequested1 = onSearchRequested1,
+        _onSearchRequested$1 = onSearchRequested$1,
         _onWindowStartingActionMode = onWindowStartingActionMode,
-        _onWindowStartingActionMode1 = onWindowStartingActionMode1,
+        _onWindowStartingActionMode$1 = onWindowStartingActionMode$1,
         _onActionModeStarted = onActionModeStarted,
         _onActionModeFinished = onActionModeFinished,
         _onProvideKeyboardShortcuts = onProvideKeyboardShortcuts,
         _onPointerCaptureChanged = onPointerCaptureChanged;
 
-  final bool Function(jni.JObject keyEvent) _dispatchKeyEvent;
-  final bool Function(jni.JObject keyEvent) _dispatchKeyShortcutEvent;
-  final bool Function(jni.JObject motionEvent) _dispatchTouchEvent;
-  final bool Function(jni.JObject motionEvent) _dispatchTrackballEvent;
-  final bool Function(jni.JObject motionEvent) _dispatchGenericMotionEvent;
-  final bool Function(jni.JObject accessibilityEvent)
+  final bool Function(_$jni.JObject keyEvent) _dispatchKeyEvent;
+  final bool Function(_$jni.JObject keyEvent) _dispatchKeyShortcutEvent;
+  final bool Function(_$jni.JObject motionEvent) _dispatchTouchEvent;
+  final bool Function(_$jni.JObject motionEvent) _dispatchTrackballEvent;
+  final bool Function(_$jni.JObject motionEvent) _dispatchGenericMotionEvent;
+  final bool Function(_$jni.JObject accessibilityEvent)
       _dispatchPopulateAccessibilityEvent;
-  final jni.JObject Function(int i) _onCreatePanelView;
-  final bool Function(int i, jni.JObject menu) _onCreatePanelMenu;
-  final bool Function(int i, jni.JObject view, jni.JObject menu)
+  final _$jni.JObject Function(int i) _onCreatePanelView;
+  final bool Function(int i, _$jni.JObject menu) _onCreatePanelMenu;
+  final bool Function(int i, _$jni.JObject view, _$jni.JObject menu)
       _onPreparePanel;
-  final bool Function(int i, jni.JObject menu) _onMenuOpened;
-  final bool Function(int i, jni.JObject menuItem) _onMenuItemSelected;
+  final bool Function(int i, _$jni.JObject menu) _onMenuOpened;
+  final bool Function(int i, _$jni.JObject menuItem) _onMenuItemSelected;
   final void Function(windowmanager_.WindowManager_LayoutParams layoutParams)
       _onWindowAttributesChanged;
+  final bool onWindowAttributesChanged$async;
   final void Function() _onContentChanged;
+  final bool onContentChanged$async;
   final void Function(bool z) _onWindowFocusChanged;
+  final bool onWindowFocusChanged$async;
   final void Function() _onAttachedToWindow;
+  final bool onAttachedToWindow$async;
   final void Function() _onDetachedFromWindow;
-  final void Function(int i, jni.JObject menu) _onPanelClosed;
+  final bool onDetachedFromWindow$async;
+  final void Function(int i, _$jni.JObject menu) _onPanelClosed;
+  final bool onPanelClosed$async;
   final bool Function() _onSearchRequested;
-  final bool Function(jni.JObject searchEvent) _onSearchRequested1;
-  final jni.JObject Function(jni.JObject callback) _onWindowStartingActionMode;
-  final jni.JObject Function(jni.JObject callback, int i)
-      _onWindowStartingActionMode1;
-  final void Function(jni.JObject actionMode) _onActionModeStarted;
-  final void Function(jni.JObject actionMode) _onActionModeFinished;
-  final void Function(jni.JList<jni.JObject> list, jni.JObject menu, int i)
+  final bool Function(_$jni.JObject searchEvent) _onSearchRequested$1;
+  final _$jni.JObject Function(_$jni.JObject callback)
+      _onWindowStartingActionMode;
+  final _$jni.JObject Function(_$jni.JObject callback, int i)
+      _onWindowStartingActionMode$1;
+  final void Function(_$jni.JObject actionMode) _onActionModeStarted;
+  final bool onActionModeStarted$async;
+  final void Function(_$jni.JObject actionMode) _onActionModeFinished;
+  final bool onActionModeFinished$async;
+  final void Function(
+          _$jni.JList<_$jni.JObject> list, _$jni.JObject menu, int i)
       _onProvideKeyboardShortcuts;
+  final bool onProvideKeyboardShortcuts$async;
   final void Function(bool z) _onPointerCaptureChanged;
+  final bool onPointerCaptureChanged$async;
 
-  bool dispatchKeyEvent(jni.JObject keyEvent) {
+  bool dispatchKeyEvent(_$jni.JObject keyEvent) {
     return _dispatchKeyEvent(keyEvent);
   }
 
-  bool dispatchKeyShortcutEvent(jni.JObject keyEvent) {
+  bool dispatchKeyShortcutEvent(_$jni.JObject keyEvent) {
     return _dispatchKeyShortcutEvent(keyEvent);
   }
 
-  bool dispatchTouchEvent(jni.JObject motionEvent) {
+  bool dispatchTouchEvent(_$jni.JObject motionEvent) {
     return _dispatchTouchEvent(motionEvent);
   }
 
-  bool dispatchTrackballEvent(jni.JObject motionEvent) {
+  bool dispatchTrackballEvent(_$jni.JObject motionEvent) {
     return _dispatchTrackballEvent(motionEvent);
   }
 
-  bool dispatchGenericMotionEvent(jni.JObject motionEvent) {
+  bool dispatchGenericMotionEvent(_$jni.JObject motionEvent) {
     return _dispatchGenericMotionEvent(motionEvent);
   }
 
-  bool dispatchPopulateAccessibilityEvent(jni.JObject accessibilityEvent) {
+  bool dispatchPopulateAccessibilityEvent(_$jni.JObject accessibilityEvent) {
     return _dispatchPopulateAccessibilityEvent(accessibilityEvent);
   }
 
-  jni.JObject onCreatePanelView(int i) {
+  _$jni.JObject onCreatePanelView(int i) {
     return _onCreatePanelView(i);
   }
 
-  bool onCreatePanelMenu(int i, jni.JObject menu) {
+  bool onCreatePanelMenu(int i, _$jni.JObject menu) {
     return _onCreatePanelMenu(i, menu);
   }
 
-  bool onPreparePanel(int i, jni.JObject view, jni.JObject menu) {
+  bool onPreparePanel(int i, _$jni.JObject view, _$jni.JObject menu) {
     return _onPreparePanel(i, view, menu);
   }
 
-  bool onMenuOpened(int i, jni.JObject menu) {
+  bool onMenuOpened(int i, _$jni.JObject menu) {
     return _onMenuOpened(i, menu);
   }
 
-  bool onMenuItemSelected(int i, jni.JObject menuItem) {
+  bool onMenuItemSelected(int i, _$jni.JObject menuItem) {
     return _onMenuItemSelected(i, menuItem);
   }
 
@@ -1199,7 +1297,7 @@ class _$Window_CallbackImpl implements $Window_CallbackImpl {
     return _onDetachedFromWindow();
   }
 
-  void onPanelClosed(int i, jni.JObject menu) {
+  void onPanelClosed(int i, _$jni.JObject menu) {
     return _onPanelClosed(i, menu);
   }
 
@@ -1207,28 +1305,28 @@ class _$Window_CallbackImpl implements $Window_CallbackImpl {
     return _onSearchRequested();
   }
 
-  bool onSearchRequested1(jni.JObject searchEvent) {
-    return _onSearchRequested1(searchEvent);
+  bool onSearchRequested$1(_$jni.JObject searchEvent) {
+    return _onSearchRequested$1(searchEvent);
   }
 
-  jni.JObject onWindowStartingActionMode(jni.JObject callback) {
+  _$jni.JObject onWindowStartingActionMode(_$jni.JObject callback) {
     return _onWindowStartingActionMode(callback);
   }
 
-  jni.JObject onWindowStartingActionMode1(jni.JObject callback, int i) {
-    return _onWindowStartingActionMode1(callback, i);
+  _$jni.JObject onWindowStartingActionMode$1(_$jni.JObject callback, int i) {
+    return _onWindowStartingActionMode$1(callback, i);
   }
 
-  void onActionModeStarted(jni.JObject actionMode) {
+  void onActionModeStarted(_$jni.JObject actionMode) {
     return _onActionModeStarted(actionMode);
   }
 
-  void onActionModeFinished(jni.JObject actionMode) {
+  void onActionModeFinished(_$jni.JObject actionMode) {
     return _onActionModeFinished(actionMode);
   }
 
   void onProvideKeyboardShortcuts(
-      jni.JList<jni.JObject> list, jni.JObject menu, int i) {
+      _$jni.JList<_$jni.JObject> list, _$jni.JObject menu, int i) {
     return _onProvideKeyboardShortcuts(list, menu, i);
   }
 
@@ -1237,75 +1335,87 @@ class _$Window_CallbackImpl implements $Window_CallbackImpl {
   }
 }
 
-final class $Window_CallbackType extends jni.JObjType<Window_Callback> {
-  const $Window_CallbackType();
+final class $Window_Callback$Type extends _$jni.JObjType<Window_Callback> {
+  @_$jni.internal
+  const $Window_Callback$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/view/Window$Callback;';
 
-  @override
-  Window_Callback fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Window_Callback fromReference(_$jni.JReference reference) =>
       Window_Callback.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Window_CallbackType).hashCode;
+  @_$core.override
+  int get hashCode => ($Window_Callback$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Window_CallbackType) &&
-        other is $Window_CallbackType;
+    return other.runtimeType == ($Window_Callback$Type) &&
+        other is $Window_Callback$Type;
   }
 }
 
 /// from: `android.view.Window$OnFrameMetricsAvailableListener`
-class Window_OnFrameMetricsAvailableListener extends jni.JObject {
-  @override
-  late final jni.JObjType<Window_OnFrameMetricsAvailableListener> $type = type;
+class Window_OnFrameMetricsAvailableListener extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Window_OnFrameMetricsAvailableListener> $type;
 
+  @_$jni.internal
   Window_OnFrameMetricsAvailableListener.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'android/view/Window$OnFrameMetricsAvailableListener');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Window_OnFrameMetricsAvailableListenerType();
+  static const type = $Window_OnFrameMetricsAvailableListener$Type();
   static final _id_onFrameMetricsAvailable = _class.instanceMethodId(
     r'onFrameMetricsAvailable',
     r'(Landroid/view/Window;Landroid/view/FrameMetrics;I)V',
   );
 
-  static final _onFrameMetricsAvailable = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _onFrameMetricsAvailable = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              int)>();
 
   /// from: `public abstract void onFrameMetricsAvailable(android.view.Window window, android.view.FrameMetrics frameMetrics, int i)`
   void onFrameMetricsAvailable(
     Window window,
-    jni.JObject frameMetrics,
+    _$jni.JObject frameMetrics,
     int i,
   ) {
     _onFrameMetricsAvailable(
             reference.pointer,
-            _id_onFrameMetricsAvailable as jni.JMethodIDPtr,
+            _id_onFrameMetricsAvailable as _$jni.JMethodIDPtr,
             window.reference.pointer,
             frameMetrics.reference.pointer,
             i)
@@ -1313,18 +1423,16 @@ class Window_OnFrameMetricsAvailableListener extends jni.JObject {
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $Window_OnFrameMetricsAvailableListenerImpl> _$impls =
-      {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $Window_OnFrameMetricsAvailableListener>
+      _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -1332,15 +1440,15 @@ class Window_OnFrameMetricsAvailableListener extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
@@ -1348,155 +1456,180 @@ class Window_OnFrameMetricsAvailableListener extends jni.JObject {
       if ($d ==
           r'onFrameMetricsAvailable(Landroid/view/Window;Landroid/view/FrameMetrics;I)V') {
         _$impls[$p]!.onFrameMetricsAvailable(
-          $a[0].castTo(const $WindowType(), releaseOriginal: true),
-          $a[1].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const $Window$Type(), releaseOriginal: true),
+          $a[1].as(const _$jni.JObjectType(), releaseOriginal: true),
           $a[2]
-              .castTo(const jni.JIntegerType(), releaseOriginal: true)
+              .as(const _$jni.JIntegerType(), releaseOriginal: true)
               .intValue(releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory Window_OnFrameMetricsAvailableListener.implement(
-    $Window_OnFrameMetricsAvailableListenerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $Window_OnFrameMetricsAvailableListener $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = Window_OnFrameMetricsAvailableListener.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.view.Window$OnFrameMetricsAvailableListener',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.view.Window$OnFrameMetricsAvailableListener',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onFrameMetricsAvailable$async)
+          r'onFrameMetricsAvailable(Landroid/view/Window;Landroid/view/FrameMetrics;I)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory Window_OnFrameMetricsAvailableListener.implement(
+    $Window_OnFrameMetricsAvailableListener $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return Window_OnFrameMetricsAvailableListener.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $Window_OnFrameMetricsAvailableListenerImpl {
-  factory $Window_OnFrameMetricsAvailableListenerImpl({
-    required void Function(Window window, jni.JObject frameMetrics, int i)
+abstract base mixin class $Window_OnFrameMetricsAvailableListener {
+  factory $Window_OnFrameMetricsAvailableListener({
+    required void Function(Window window, _$jni.JObject frameMetrics, int i)
         onFrameMetricsAvailable,
-  }) = _$Window_OnFrameMetricsAvailableListenerImpl;
+    bool onFrameMetricsAvailable$async,
+  }) = _$Window_OnFrameMetricsAvailableListener;
 
-  void onFrameMetricsAvailable(Window window, jni.JObject frameMetrics, int i);
+  void onFrameMetricsAvailable(
+      Window window, _$jni.JObject frameMetrics, int i);
+  bool get onFrameMetricsAvailable$async => false;
 }
 
-class _$Window_OnFrameMetricsAvailableListenerImpl
-    implements $Window_OnFrameMetricsAvailableListenerImpl {
-  _$Window_OnFrameMetricsAvailableListenerImpl({
-    required void Function(Window window, jni.JObject frameMetrics, int i)
+final class _$Window_OnFrameMetricsAvailableListener
+    with $Window_OnFrameMetricsAvailableListener {
+  _$Window_OnFrameMetricsAvailableListener({
+    required void Function(Window window, _$jni.JObject frameMetrics, int i)
         onFrameMetricsAvailable,
+    this.onFrameMetricsAvailable$async = false,
   }) : _onFrameMetricsAvailable = onFrameMetricsAvailable;
 
-  final void Function(Window window, jni.JObject frameMetrics, int i)
+  final void Function(Window window, _$jni.JObject frameMetrics, int i)
       _onFrameMetricsAvailable;
+  final bool onFrameMetricsAvailable$async;
 
-  void onFrameMetricsAvailable(Window window, jni.JObject frameMetrics, int i) {
+  void onFrameMetricsAvailable(
+      Window window, _$jni.JObject frameMetrics, int i) {
     return _onFrameMetricsAvailable(window, frameMetrics, i);
   }
 }
 
-final class $Window_OnFrameMetricsAvailableListenerType
-    extends jni.JObjType<Window_OnFrameMetricsAvailableListener> {
-  const $Window_OnFrameMetricsAvailableListenerType();
+final class $Window_OnFrameMetricsAvailableListener$Type
+    extends _$jni.JObjType<Window_OnFrameMetricsAvailableListener> {
+  @_$jni.internal
+  const $Window_OnFrameMetricsAvailableListener$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/view/Window$OnFrameMetricsAvailableListener;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   Window_OnFrameMetricsAvailableListener fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       Window_OnFrameMetricsAvailableListener.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Window_OnFrameMetricsAvailableListenerType).hashCode;
+  @_$core.override
+  int get hashCode => ($Window_OnFrameMetricsAvailableListener$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Window_OnFrameMetricsAvailableListenerType) &&
-        other is $Window_OnFrameMetricsAvailableListenerType;
+    return other.runtimeType ==
+            ($Window_OnFrameMetricsAvailableListener$Type) &&
+        other is $Window_OnFrameMetricsAvailableListener$Type;
   }
 }
 
 /// from: `android.view.Window$OnRestrictedCaptionAreaChangedListener`
-class Window_OnRestrictedCaptionAreaChangedListener extends jni.JObject {
-  @override
-  late final jni.JObjType<Window_OnRestrictedCaptionAreaChangedListener> $type =
-      type;
+class Window_OnRestrictedCaptionAreaChangedListener extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Window_OnRestrictedCaptionAreaChangedListener> $type;
 
+  @_$jni.internal
   Window_OnRestrictedCaptionAreaChangedListener.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'android/view/Window$OnRestrictedCaptionAreaChangedListener');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Window_OnRestrictedCaptionAreaChangedListenerType();
+  static const type = $Window_OnRestrictedCaptionAreaChangedListener$Type();
   static final _id_onRestrictedCaptionAreaChanged = _class.instanceMethodId(
     r'onRestrictedCaptionAreaChanged',
     r'(Landroid/graphics/Rect;)V',
   );
 
-  static final _onRestrictedCaptionAreaChanged = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _onRestrictedCaptionAreaChanged =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onRestrictedCaptionAreaChanged(android.graphics.Rect rect)`
   void onRestrictedCaptionAreaChanged(
-    jni.JObject rect,
+    _$jni.JObject rect,
   ) {
     _onRestrictedCaptionAreaChanged(
             reference.pointer,
-            _id_onRestrictedCaptionAreaChanged as jni.JMethodIDPtr,
+            _id_onRestrictedCaptionAreaChanged as _$jni.JMethodIDPtr,
             rect.reference.pointer)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $Window_OnRestrictedCaptionAreaChangedListenerImpl>
+  static final _$core.Map<int, $Window_OnRestrictedCaptionAreaChangedListener>
       _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -1504,123 +1637,147 @@ class Window_OnRestrictedCaptionAreaChangedListener extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
       final $a = $i.args;
       if ($d == r'onRestrictedCaptionAreaChanged(Landroid/graphics/Rect;)V') {
         _$impls[$p]!.onRestrictedCaptionAreaChanged(
-          $a[0].castTo(const jni.JObjectType(), releaseOriginal: true),
+          $a[0].as(const _$jni.JObjectType(), releaseOriginal: true),
         );
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory Window_OnRestrictedCaptionAreaChangedListener.implement(
-    $Window_OnRestrictedCaptionAreaChangedListenerImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $Window_OnRestrictedCaptionAreaChangedListener $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = Window_OnRestrictedCaptionAreaChangedListener.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'android.view.Window$OnRestrictedCaptionAreaChangedListener',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'android.view.Window$OnRestrictedCaptionAreaChangedListener',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onRestrictedCaptionAreaChanged$async)
+          r'onRestrictedCaptionAreaChanged(Landroid/graphics/Rect;)V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory Window_OnRestrictedCaptionAreaChangedListener.implement(
+    $Window_OnRestrictedCaptionAreaChangedListener $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return Window_OnRestrictedCaptionAreaChangedListener.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $Window_OnRestrictedCaptionAreaChangedListenerImpl {
-  factory $Window_OnRestrictedCaptionAreaChangedListenerImpl({
-    required void Function(jni.JObject rect) onRestrictedCaptionAreaChanged,
-  }) = _$Window_OnRestrictedCaptionAreaChangedListenerImpl;
+abstract base mixin class $Window_OnRestrictedCaptionAreaChangedListener {
+  factory $Window_OnRestrictedCaptionAreaChangedListener({
+    required void Function(_$jni.JObject rect) onRestrictedCaptionAreaChanged,
+    bool onRestrictedCaptionAreaChanged$async,
+  }) = _$Window_OnRestrictedCaptionAreaChangedListener;
 
-  void onRestrictedCaptionAreaChanged(jni.JObject rect);
+  void onRestrictedCaptionAreaChanged(_$jni.JObject rect);
+  bool get onRestrictedCaptionAreaChanged$async => false;
 }
 
-class _$Window_OnRestrictedCaptionAreaChangedListenerImpl
-    implements $Window_OnRestrictedCaptionAreaChangedListenerImpl {
-  _$Window_OnRestrictedCaptionAreaChangedListenerImpl({
-    required void Function(jni.JObject rect) onRestrictedCaptionAreaChanged,
+final class _$Window_OnRestrictedCaptionAreaChangedListener
+    with $Window_OnRestrictedCaptionAreaChangedListener {
+  _$Window_OnRestrictedCaptionAreaChangedListener({
+    required void Function(_$jni.JObject rect) onRestrictedCaptionAreaChanged,
+    this.onRestrictedCaptionAreaChanged$async = false,
   }) : _onRestrictedCaptionAreaChanged = onRestrictedCaptionAreaChanged;
 
-  final void Function(jni.JObject rect) _onRestrictedCaptionAreaChanged;
+  final void Function(_$jni.JObject rect) _onRestrictedCaptionAreaChanged;
+  final bool onRestrictedCaptionAreaChanged$async;
 
-  void onRestrictedCaptionAreaChanged(jni.JObject rect) {
+  void onRestrictedCaptionAreaChanged(_$jni.JObject rect) {
     return _onRestrictedCaptionAreaChanged(rect);
   }
 }
 
-final class $Window_OnRestrictedCaptionAreaChangedListenerType
-    extends jni.JObjType<Window_OnRestrictedCaptionAreaChangedListener> {
-  const $Window_OnRestrictedCaptionAreaChangedListenerType();
+final class $Window_OnRestrictedCaptionAreaChangedListener$Type
+    extends _$jni.JObjType<Window_OnRestrictedCaptionAreaChangedListener> {
+  @_$jni.internal
+  const $Window_OnRestrictedCaptionAreaChangedListener$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Landroid/view/Window$OnRestrictedCaptionAreaChangedListener;';
 
-  @override
+  @_$jni.internal
+  @_$core.override
   Window_OnRestrictedCaptionAreaChangedListener fromReference(
-          jni.JReference reference) =>
+          _$jni.JReference reference) =>
       Window_OnRestrictedCaptionAreaChangedListener.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
+  @_$core.override
   int get hashCode =>
-      ($Window_OnRestrictedCaptionAreaChangedListenerType).hashCode;
+      ($Window_OnRestrictedCaptionAreaChangedListener$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
     return other.runtimeType ==
-            ($Window_OnRestrictedCaptionAreaChangedListenerType) &&
-        other is $Window_OnRestrictedCaptionAreaChangedListenerType;
+            ($Window_OnRestrictedCaptionAreaChangedListener$Type) &&
+        other is $Window_OnRestrictedCaptionAreaChangedListener$Type;
   }
 }
 
 /// from: `android.view.Window`
-class Window extends jni.JObject {
-  @override
-  late final jni.JObjType<Window> $type = type;
+class Window extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Window> $type;
 
+  @_$jni.internal
   Window.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/view/Window');
+  static final _class = _$jni.JClass.forName(r'android/view/Window');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $WindowType();
+  static const type = $Window$Type();
 
   /// from: `static public final int DECOR_CAPTION_SHADE_AUTO`
   static const DECOR_CAPTION_SHADE_AUTO = 0;
@@ -1630,9 +1787,6 @@ class Window extends jni.JObject {
 
   /// from: `static public final int DECOR_CAPTION_SHADE_LIGHT`
   static const DECOR_CAPTION_SHADE_LIGHT = 1;
-
-  /// from: `static protected final int DEFAULT_FEATURES`
-  static const DEFAULT_FEATURES = 65;
 
   /// from: `static public final int FEATURE_ACTION_BAR`
   static const FEATURE_ACTION_BAR = 8;
@@ -1686,9 +1840,9 @@ class Window extends jni.JObject {
 
   /// from: `static public final java.lang.String NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME =>
+  static _$jni.JString get NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME =>
       _id_NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME.get(
-          _class, const jni.JStringType());
+          _class, const _$jni.JStringType());
 
   /// from: `static public final int PROGRESS_END`
   static const PROGRESS_END = 10000;
@@ -1720,57 +1874,32 @@ class Window extends jni.JObject {
 
   /// from: `static public final java.lang.String STATUS_BAR_BACKGROUND_TRANSITION_NAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get STATUS_BAR_BACKGROUND_TRANSITION_NAME =>
+  static _$jni.JString get STATUS_BAR_BACKGROUND_TRANSITION_NAME =>
       _id_STATUS_BAR_BACKGROUND_TRANSITION_NAME.get(
-          _class, const jni.JStringType());
-
-  static final _id_new0 = _class.constructorId(
-    r'(Landroid/content/Context;)V',
-  );
-
-  static final _new0 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_NewObject')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
-
-  /// from: `public void <init>(android.content.Context context)`
-  /// The returned object must be released after use, by calling the [release] method.
-  factory Window(
-    context_.Context context,
-  ) {
-    return Window.fromReference(_new0(_class.reference.pointer,
-            _id_new0 as jni.JMethodIDPtr, context.reference.pointer)
-        .reference);
-  }
+          _class, const _$jni.JStringType());
 
   static final _id_getContext = _class.instanceMethodId(
     r'getContext',
     r'()Landroid/content/Context;',
   );
 
-  static final _getContext = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getContext = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final android.content.Context getContext()`
   /// The returned object must be released after use, by calling the [release] method.
   context_.Context getContext() {
-    return _getContext(reference.pointer, _id_getContext as jni.JMethodIDPtr)
-        .object(const context_.$ContextType());
+    return _getContext(reference.pointer, _id_getContext as _$jni.JMethodIDPtr)
+        .object(const context_.$Context$Type());
   }
 
   static final _id_getWindowStyle = _class.instanceMethodId(
@@ -1778,24 +1907,24 @@ class Window extends jni.JObject {
     r'()Landroid/content/res/TypedArray;',
   );
 
-  static final _getWindowStyle = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getWindowStyle = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final android.content.res.TypedArray getWindowStyle()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getWindowStyle() {
+  _$jni.JObject getWindowStyle() {
     return _getWindowStyle(
-            reference.pointer, _id_getWindowStyle as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getWindowStyle as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setContainer = _class.instanceMethodId(
@@ -1803,22 +1932,22 @@ class Window extends jni.JObject {
     r'(Landroid/view/Window;)V',
   );
 
-  static final _setContainer = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setContainer = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setContainer(android.view.Window window)`
   void setContainer(
     Window window,
   ) {
-    _setContainer(reference.pointer, _id_setContainer as jni.JMethodIDPtr,
+    _setContainer(reference.pointer, _id_setContainer as _$jni.JMethodIDPtr,
             window.reference.pointer)
         .check();
   }
@@ -1828,24 +1957,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/Window;',
   );
 
-  static final _getContainer = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getContainer = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final android.view.Window getContainer()`
   /// The returned object must be released after use, by calling the [release] method.
   Window getContainer() {
     return _getContainer(
-            reference.pointer, _id_getContainer as jni.JMethodIDPtr)
-        .object(const $WindowType());
+            reference.pointer, _id_getContainer as _$jni.JMethodIDPtr)
+        .object(const $Window$Type());
   }
 
   static final _id_hasChildren = _class.instanceMethodId(
@@ -1853,21 +1982,22 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _hasChildren = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _hasChildren = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final boolean hasChildren()`
   bool hasChildren() {
-    return _hasChildren(reference.pointer, _id_hasChildren as jni.JMethodIDPtr)
+    return _hasChildren(
+            reference.pointer, _id_hasChildren as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -1876,76 +2006,76 @@ class Window extends jni.JObject {
     r'(Landroid/view/WindowManager;Landroid/os/IBinder;Ljava/lang/String;)V',
   );
 
-  static final _setWindowManager = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _setWindowManager = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setWindowManager(android.view.WindowManager windowManager, android.os.IBinder iBinder, java.lang.String string)`
   void setWindowManager(
     windowmanager_.WindowManager windowManager,
-    jni.JObject iBinder,
-    jni.JString string,
+    _$jni.JObject iBinder,
+    _$jni.JString string,
   ) {
     _setWindowManager(
             reference.pointer,
-            _id_setWindowManager as jni.JMethodIDPtr,
+            _id_setWindowManager as _$jni.JMethodIDPtr,
             windowManager.reference.pointer,
             iBinder.reference.pointer,
             string.reference.pointer)
         .check();
   }
 
-  static final _id_setWindowManager1 = _class.instanceMethodId(
+  static final _id_setWindowManager$1 = _class.instanceMethodId(
     r'setWindowManager',
     r'(Landroid/view/WindowManager;Landroid/os/IBinder;Ljava/lang/String;Z)V',
   );
 
-  static final _setWindowManager1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _setWindowManager$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>,
-              jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>,
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>,
               int)>();
 
   /// from: `public void setWindowManager(android.view.WindowManager windowManager, android.os.IBinder iBinder, java.lang.String string, boolean z)`
-  void setWindowManager1(
+  void setWindowManager$1(
     windowmanager_.WindowManager windowManager,
-    jni.JObject iBinder,
-    jni.JString string,
+    _$jni.JObject iBinder,
+    _$jni.JString string,
     bool z,
   ) {
-    _setWindowManager1(
+    _setWindowManager$1(
             reference.pointer,
-            _id_setWindowManager1 as jni.JMethodIDPtr,
+            _id_setWindowManager$1 as _$jni.JMethodIDPtr,
             windowManager.reference.pointer,
             iBinder.reference.pointer,
             string.reference.pointer,
@@ -1958,24 +2088,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/WindowManager;',
   );
 
-  static final _getWindowManager = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getWindowManager = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.view.WindowManager getWindowManager()`
   /// The returned object must be released after use, by calling the [release] method.
   windowmanager_.WindowManager getWindowManager() {
     return _getWindowManager(
-            reference.pointer, _id_getWindowManager as jni.JMethodIDPtr)
-        .object(const windowmanager_.$WindowManagerType());
+            reference.pointer, _id_getWindowManager as _$jni.JMethodIDPtr)
+        .object(const windowmanager_.$WindowManager$Type());
   }
 
   static final _id_setCallback = _class.instanceMethodId(
@@ -1983,22 +2113,22 @@ class Window extends jni.JObject {
     r'(Landroid/view/Window$Callback;)V',
   );
 
-  static final _setCallback = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setCallback = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setCallback(android.view.Window$Callback callback)`
   void setCallback(
     Window_Callback callback,
   ) {
-    _setCallback(reference.pointer, _id_setCallback as jni.JMethodIDPtr,
+    _setCallback(reference.pointer, _id_setCallback as _$jni.JMethodIDPtr,
             callback.reference.pointer)
         .check();
   }
@@ -2008,23 +2138,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/Window$Callback;',
   );
 
-  static final _getCallback = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getCallback = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final android.view.Window$Callback getCallback()`
   /// The returned object must be released after use, by calling the [release] method.
   Window_Callback getCallback() {
-    return _getCallback(reference.pointer, _id_getCallback as jni.JMethodIDPtr)
-        .object(const $Window_CallbackType());
+    return _getCallback(
+            reference.pointer, _id_getCallback as _$jni.JMethodIDPtr)
+        .object(const $Window_Callback$Type());
   }
 
   static final _id_addOnFrameMetricsAvailableListener = _class.instanceMethodId(
@@ -2033,22 +2164,22 @@ class Window extends jni.JObject {
   );
 
   static final _addOnFrameMetricsAvailableListener =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
                           (
-                            ffi.Pointer<ffi.Void>,
-                            ffi.Pointer<ffi.Void>
+                            _$jni.Pointer<_$jni.Void>,
+                            _$jni.Pointer<_$jni.Void>
                           )>)>>('globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void addOnFrameMetricsAvailableListener(android.view.Window$OnFrameMetricsAvailableListener onFrameMetricsAvailableListener, android.os.Handler handler)`
   void addOnFrameMetricsAvailableListener(
@@ -2057,7 +2188,7 @@ class Window extends jni.JObject {
   ) {
     _addOnFrameMetricsAvailableListener(
             reference.pointer,
-            _id_addOnFrameMetricsAvailableListener as jni.JMethodIDPtr,
+            _id_addOnFrameMetricsAvailableListener as _$jni.JMethodIDPtr,
             onFrameMetricsAvailableListener.reference.pointer,
             handler.reference.pointer)
         .check();
@@ -2070,16 +2201,16 @@ class Window extends jni.JObject {
   );
 
   static final _removeOnFrameMetricsAvailableListener =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void removeOnFrameMetricsAvailableListener(android.view.Window$OnFrameMetricsAvailableListener onFrameMetricsAvailableListener)`
   void removeOnFrameMetricsAvailableListener(
@@ -2087,7 +2218,7 @@ class Window extends jni.JObject {
   ) {
     _removeOnFrameMetricsAvailableListener(
             reference.pointer,
-            _id_removeOnFrameMetricsAvailableListener as jni.JMethodIDPtr,
+            _id_removeOnFrameMetricsAvailableListener as _$jni.JMethodIDPtr,
             onFrameMetricsAvailableListener.reference.pointer)
         .check();
   }
@@ -2098,16 +2229,16 @@ class Window extends jni.JObject {
   );
 
   static final _setRestrictedCaptionAreaListener =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void setRestrictedCaptionAreaListener(android.view.Window$OnRestrictedCaptionAreaChangedListener onRestrictedCaptionAreaChangedListener)`
   void setRestrictedCaptionAreaListener(
@@ -2116,7 +2247,7 @@ class Window extends jni.JObject {
   ) {
     _setRestrictedCaptionAreaListener(
             reference.pointer,
-            _id_setRestrictedCaptionAreaListener as jni.JMethodIDPtr,
+            _id_setRestrictedCaptionAreaListener as _$jni.JMethodIDPtr,
             onRestrictedCaptionAreaChangedListener.reference.pointer)
         .check();
   }
@@ -2126,22 +2257,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setHideOverlayWindows = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setHideOverlayWindows = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final void setHideOverlayWindows(boolean z)`
   void setHideOverlayWindows(
     bool z,
   ) {
     _setHideOverlayWindows(reference.pointer,
-            _id_setHideOverlayWindows as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setHideOverlayWindows as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2150,22 +2281,22 @@ class Window extends jni.JObject {
     r'(Landroid/view/SurfaceHolder$Callback2;)V',
   );
 
-  static final _takeSurface = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _takeSurface = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void takeSurface(android.view.SurfaceHolder$Callback2 callback2)`
   void takeSurface(
-    jni.JObject callback2,
+    _$jni.JObject callback2,
   ) {
-    _takeSurface(reference.pointer, _id_takeSurface as jni.JMethodIDPtr,
+    _takeSurface(reference.pointer, _id_takeSurface as _$jni.JMethodIDPtr,
             callback2.reference.pointer)
         .check();
   }
@@ -2175,22 +2306,22 @@ class Window extends jni.JObject {
     r'(Landroid/view/InputQueue$Callback;)V',
   );
 
-  static final _takeInputQueue = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _takeInputQueue = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void takeInputQueue(android.view.InputQueue$Callback callback)`
   void takeInputQueue(
-    jni.JObject callback,
+    _$jni.JObject callback,
   ) {
-    _takeInputQueue(reference.pointer, _id_takeInputQueue as jni.JMethodIDPtr,
+    _takeInputQueue(reference.pointer, _id_takeInputQueue as _$jni.JMethodIDPtr,
             callback.reference.pointer)
         .check();
   }
@@ -2200,21 +2331,21 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _isFloating = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isFloating = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract boolean isFloating()`
   bool isFloating() {
-    return _isFloating(reference.pointer, _id_isFloating as jni.JMethodIDPtr)
+    return _isFloating(reference.pointer, _id_isFloating as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2223,22 +2354,23 @@ class Window extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setLayout = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setLayout = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setLayout(int i, int i1)`
   void setLayout(
     int i,
     int i1,
   ) {
-    _setLayout(reference.pointer, _id_setLayout as jni.JMethodIDPtr, i, i1)
+    _setLayout(reference.pointer, _id_setLayout as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -2247,21 +2379,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setGravity = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setGravity = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setGravity(int i)`
   void setGravity(
     int i,
   ) {
-    _setGravity(reference.pointer, _id_setGravity as jni.JMethodIDPtr, i)
+    _setGravity(reference.pointer, _id_setGravity as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -2270,21 +2402,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setType = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setType = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setType(int i)`
   void setType(
     int i,
   ) {
-    _setType(reference.pointer, _id_setType as jni.JMethodIDPtr, i).check();
+    _setType(reference.pointer, _id_setType as _$jni.JMethodIDPtr, i).check();
   }
 
   static final _id_setFormat = _class.instanceMethodId(
@@ -2292,21 +2424,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setFormat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setFormat = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setFormat(int i)`
   void setFormat(
     int i,
   ) {
-    _setFormat(reference.pointer, _id_setFormat as jni.JMethodIDPtr, i).check();
+    _setFormat(reference.pointer, _id_setFormat as _$jni.JMethodIDPtr, i)
+        .check();
   }
 
   static final _id_setWindowAnimations = _class.instanceMethodId(
@@ -2314,22 +2447,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setWindowAnimations = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setWindowAnimations = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setWindowAnimations(int i)`
   void setWindowAnimations(
     int i,
   ) {
     _setWindowAnimations(
-            reference.pointer, _id_setWindowAnimations as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setWindowAnimations as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -2338,22 +2471,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setSoftInputMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setSoftInputMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setSoftInputMode(int i)`
   void setSoftInputMode(
     int i,
   ) {
     _setSoftInputMode(
-            reference.pointer, _id_setSoftInputMode as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setSoftInputMode as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -2362,21 +2495,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _addFlags = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _addFlags = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void addFlags(int i)`
   void addFlags(
     int i,
   ) {
-    _addFlags(reference.pointer, _id_addFlags as jni.JMethodIDPtr, i).check();
+    _addFlags(reference.pointer, _id_addFlags as _$jni.JMethodIDPtr, i).check();
   }
 
   static final _id_clearFlags = _class.instanceMethodId(
@@ -2384,21 +2517,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _clearFlags = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _clearFlags = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void clearFlags(int i)`
   void clearFlags(
     int i,
   ) {
-    _clearFlags(reference.pointer, _id_clearFlags as jni.JMethodIDPtr, i)
+    _clearFlags(reference.pointer, _id_clearFlags as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -2407,22 +2540,23 @@ class Window extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setFlags = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setFlags = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setFlags(int i, int i1)`
   void setFlags(
     int i,
     int i1,
   ) {
-    _setFlags(reference.pointer, _id_setFlags as jni.JMethodIDPtr, i, i1)
+    _setFlags(reference.pointer, _id_setFlags as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -2431,21 +2565,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setColorMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setColorMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setColorMode(int i)`
   void setColorMode(
     int i,
   ) {
-    _setColorMode(reference.pointer, _id_setColorMode as jni.JMethodIDPtr, i)
+    _setColorMode(reference.pointer, _id_setColorMode as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -2454,22 +2588,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setPreferMinimalPostProcessing = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setPreferMinimalPostProcessing =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setPreferMinimalPostProcessing(boolean z)`
   void setPreferMinimalPostProcessing(
     bool z,
   ) {
     _setPreferMinimalPostProcessing(reference.pointer,
-            _id_setPreferMinimalPostProcessing as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setPreferMinimalPostProcessing as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2478,22 +2612,22 @@ class Window extends jni.JObject {
     r'()I',
   );
 
-  static final _getColorMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getColorMode = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int getColorMode()`
   int getColorMode() {
     return _getColorMode(
-            reference.pointer, _id_getColorMode as jni.JMethodIDPtr)
+            reference.pointer, _id_getColorMode as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -2502,22 +2636,22 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _isWideColorGamut = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isWideColorGamut = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public boolean isWideColorGamut()`
   bool isWideColorGamut() {
     return _isWideColorGamut(
-            reference.pointer, _id_isWideColorGamut as jni.JMethodIDPtr)
+            reference.pointer, _id_isWideColorGamut as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2526,21 +2660,21 @@ class Window extends jni.JObject {
     r'(F)V',
   );
 
-  static final _setDimAmount = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<(ffi.Double,)>)>>('globalEnv_CallVoidMethod')
+  static final _setDimAmount = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Double,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, double)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, double)>();
 
   /// from: `public void setDimAmount(float f)`
   void setDimAmount(
     double f,
   ) {
-    _setDimAmount(reference.pointer, _id_setDimAmount as jni.JMethodIDPtr, f)
+    _setDimAmount(reference.pointer, _id_setDimAmount as _$jni.JMethodIDPtr, f)
         .check();
   }
 
@@ -2549,22 +2683,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setDecorFitsSystemWindows = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setDecorFitsSystemWindows = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setDecorFitsSystemWindows(boolean z)`
   void setDecorFitsSystemWindows(
     bool z,
   ) {
     _setDecorFitsSystemWindows(reference.pointer,
-            _id_setDecorFitsSystemWindows as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setDecorFitsSystemWindows as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2573,22 +2707,22 @@ class Window extends jni.JObject {
     r'(Landroid/view/WindowManager$LayoutParams;)V',
   );
 
-  static final _setAttributes = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setAttributes = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setAttributes(android.view.WindowManager$LayoutParams layoutParams)`
   void setAttributes(
     windowmanager_.WindowManager_LayoutParams layoutParams,
   ) {
-    _setAttributes(reference.pointer, _id_setAttributes as jni.JMethodIDPtr,
+    _setAttributes(reference.pointer, _id_setAttributes as _$jni.JMethodIDPtr,
             layoutParams.reference.pointer)
         .check();
   }
@@ -2598,72 +2732,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/WindowManager$LayoutParams;',
   );
 
-  static final _getAttributes = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getAttributes = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final android.view.WindowManager$LayoutParams getAttributes()`
   /// The returned object must be released after use, by calling the [release] method.
   windowmanager_.WindowManager_LayoutParams getAttributes() {
     return _getAttributes(
-            reference.pointer, _id_getAttributes as jni.JMethodIDPtr)
-        .object(const windowmanager_.$WindowManager_LayoutParamsType());
-  }
-
-  static final _id_getForcedWindowFlags = _class.instanceMethodId(
-    r'getForcedWindowFlags',
-    r'()I',
-  );
-
-  static final _getForcedWindowFlags = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `protected final int getForcedWindowFlags()`
-  int getForcedWindowFlags() {
-    return _getForcedWindowFlags(
-            reference.pointer, _id_getForcedWindowFlags as jni.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_hasSoftInputMode = _class.instanceMethodId(
-    r'hasSoftInputMode',
-    r'()Z',
-  );
-
-  static final _hasSoftInputMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `protected final boolean hasSoftInputMode()`
-  bool hasSoftInputMode() {
-    return _hasSoftInputMode(
-            reference.pointer, _id_hasSoftInputMode as jni.JMethodIDPtr)
-        .boolean;
+            reference.pointer, _id_getAttributes as _$jni.JMethodIDPtr)
+        .object(const windowmanager_.$WindowManager_LayoutParams$Type());
   }
 
   static final _id_setSustainedPerformanceMode = _class.instanceMethodId(
@@ -2671,22 +2757,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setSustainedPerformanceMode = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setSustainedPerformanceMode =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setSustainedPerformanceMode(boolean z)`
   void setSustainedPerformanceMode(
     bool z,
   ) {
     _setSustainedPerformanceMode(reference.pointer,
-            _id_setSustainedPerformanceMode as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setSustainedPerformanceMode as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -2695,20 +2781,23 @@ class Window extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _requestFeature = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _requestFeature = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean requestFeature(int i)`
   bool requestFeature(
     int i,
   ) {
     return _requestFeature(
-            reference.pointer, _id_requestFeature as jni.JMethodIDPtr, i)
+            reference.pointer, _id_requestFeature as _$jni.JMethodIDPtr, i)
         .boolean;
   }
 
@@ -2717,21 +2806,22 @@ class Window extends jni.JObject {
     r'()V',
   );
 
-  static final _makeActive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _makeActive = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final void makeActive()`
   void makeActive() {
-    _makeActive(reference.pointer, _id_makeActive as jni.JMethodIDPtr).check();
+    _makeActive(reference.pointer, _id_makeActive as _$jni.JMethodIDPtr)
+        .check();
   }
 
   static final _id_isActive = _class.instanceMethodId(
@@ -2739,21 +2829,21 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _isActive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _isActive = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public final boolean isActive()`
   bool isActive() {
-    return _isActive(reference.pointer, _id_isActive as jni.JMethodIDPtr)
+    return _isActive(reference.pointer, _id_isActive as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -2762,22 +2852,24 @@ class Window extends jni.JObject {
     r'(I)Landroid/view/View;',
   );
 
-  static final _findViewById = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _findViewById = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public T findViewById(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  $T findViewById<$T extends jni.JObject>(
+  $T findViewById<$T extends _$jni.JObject>(
     int i, {
-    required jni.JObjType<$T> T,
+    required _$jni.JObjType<$T> T,
   }) {
     return _findViewById(
-            reference.pointer, _id_findViewById as jni.JMethodIDPtr, i)
+            reference.pointer, _id_findViewById as _$jni.JMethodIDPtr, i)
         .object(T);
   }
 
@@ -2786,22 +2878,24 @@ class Window extends jni.JObject {
     r'(I)Landroid/view/View;',
   );
 
-  static final _requireViewById = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallObjectMethod')
+  static final _requireViewById = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public final T requireViewById(int i)`
   /// The returned object must be released after use, by calling the [release] method.
-  $T requireViewById<$T extends jni.JObject>(
+  $T requireViewById<$T extends _$jni.JObject>(
     int i, {
-    required jni.JObjType<$T> T,
+    required _$jni.JObjType<$T> T,
   }) {
     return _requireViewById(
-            reference.pointer, _id_requireViewById as jni.JMethodIDPtr, i)
+            reference.pointer, _id_requireViewById as _$jni.JMethodIDPtr, i)
         .object(T);
   }
 
@@ -2810,76 +2904,82 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setContentView = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setContentView = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void setContentView(int i)`
   void setContentView(
     int i,
   ) {
     _setContentView(
-            reference.pointer, _id_setContentView as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setContentView as _$jni.JMethodIDPtr, i)
         .check();
   }
 
-  static final _id_setContentView1 = _class.instanceMethodId(
+  static final _id_setContentView$1 = _class.instanceMethodId(
     r'setContentView',
     r'(Landroid/view/View;)V',
   );
 
-  static final _setContentView1 = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setContentView$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setContentView(android.view.View view)`
-  void setContentView1(
-    jni.JObject view,
+  void setContentView$1(
+    _$jni.JObject view,
   ) {
-    _setContentView1(reference.pointer, _id_setContentView1 as jni.JMethodIDPtr,
-            view.reference.pointer)
+    _setContentView$1(reference.pointer,
+            _id_setContentView$1 as _$jni.JMethodIDPtr, view.reference.pointer)
         .check();
   }
 
-  static final _id_setContentView2 = _class.instanceMethodId(
+  static final _id_setContentView$2 = _class.instanceMethodId(
     r'setContentView',
     r'(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V',
   );
 
-  static final _setContentView2 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _setContentView$2 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setContentView(android.view.View view, android.view.ViewGroup$LayoutParams layoutParams)`
-  void setContentView2(
-    jni.JObject view,
-    jni.JObject layoutParams,
+  void setContentView$2(
+    _$jni.JObject view,
+    _$jni.JObject layoutParams,
   ) {
-    _setContentView2(reference.pointer, _id_setContentView2 as jni.JMethodIDPtr,
-            view.reference.pointer, layoutParams.reference.pointer)
+    _setContentView$2(
+            reference.pointer,
+            _id_setContentView$2 as _$jni.JMethodIDPtr,
+            view.reference.pointer,
+            layoutParams.reference.pointer)
         .check();
   }
 
@@ -2888,26 +2988,29 @@ class Window extends jni.JObject {
     r'(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V',
   );
 
-  static final _addContentView = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _addContentView = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void addContentView(android.view.View view, android.view.ViewGroup$LayoutParams layoutParams)`
   void addContentView(
-    jni.JObject view,
-    jni.JObject layoutParams,
+    _$jni.JObject view,
+    _$jni.JObject layoutParams,
   ) {
-    _addContentView(reference.pointer, _id_addContentView as jni.JMethodIDPtr,
+    _addContentView(reference.pointer, _id_addContentView as _$jni.JMethodIDPtr,
             view.reference.pointer, layoutParams.reference.pointer)
         .check();
   }
@@ -2917,24 +3020,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/View;',
   );
 
-  static final _getCurrentFocus = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getCurrentFocus = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract android.view.View getCurrentFocus()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getCurrentFocus() {
+  _$jni.JObject getCurrentFocus() {
     return _getCurrentFocus(
-            reference.pointer, _id_getCurrentFocus as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getCurrentFocus as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getLayoutInflater = _class.instanceMethodId(
@@ -2942,24 +3045,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/LayoutInflater;',
   );
 
-  static final _getLayoutInflater = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getLayoutInflater = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract android.view.LayoutInflater getLayoutInflater()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getLayoutInflater() {
+  _$jni.JObject getLayoutInflater() {
     return _getLayoutInflater(
-            reference.pointer, _id_getLayoutInflater as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getLayoutInflater as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setTitle = _class.instanceMethodId(
@@ -2967,22 +3070,22 @@ class Window extends jni.JObject {
     r'(Ljava/lang/CharSequence;)V',
   );
 
-  static final _setTitle = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setTitle = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setTitle(java.lang.CharSequence charSequence)`
   void setTitle(
-    jni.JObject charSequence,
+    _$jni.JObject charSequence,
   ) {
-    _setTitle(reference.pointer, _id_setTitle as jni.JMethodIDPtr,
+    _setTitle(reference.pointer, _id_setTitle as _$jni.JMethodIDPtr,
             charSequence.reference.pointer)
         .check();
   }
@@ -2992,21 +3095,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setTitleColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setTitleColor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void setTitleColor(int i)`
   void setTitleColor(
     int i,
   ) {
-    _setTitleColor(reference.pointer, _id_setTitleColor as jni.JMethodIDPtr, i)
+    _setTitleColor(
+            reference.pointer, _id_setTitleColor as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -3015,23 +3119,24 @@ class Window extends jni.JObject {
     r'(ILandroid/view/KeyEvent;)V',
   );
 
-  static final _openPanel = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _openPanel = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void openPanel(int i, android.view.KeyEvent keyEvent)`
   void openPanel(
     int i,
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
-    _openPanel(reference.pointer, _id_openPanel as jni.JMethodIDPtr, i,
+    _openPanel(reference.pointer, _id_openPanel as _$jni.JMethodIDPtr, i,
             keyEvent.reference.pointer)
         .check();
   }
@@ -3041,21 +3146,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _closePanel = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _closePanel = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void closePanel(int i)`
   void closePanel(
     int i,
   ) {
-    _closePanel(reference.pointer, _id_closePanel as jni.JMethodIDPtr, i)
+    _closePanel(reference.pointer, _id_closePanel as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -3064,23 +3169,24 @@ class Window extends jni.JObject {
     r'(ILandroid/view/KeyEvent;)V',
   );
 
-  static final _togglePanel = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _togglePanel = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void togglePanel(int i, android.view.KeyEvent keyEvent)`
   void togglePanel(
     int i,
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
-    _togglePanel(reference.pointer, _id_togglePanel as jni.JMethodIDPtr, i,
+    _togglePanel(reference.pointer, _id_togglePanel as _$jni.JMethodIDPtr, i,
             keyEvent.reference.pointer)
         .check();
   }
@@ -3090,22 +3196,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _invalidatePanelMenu = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _invalidatePanelMenu = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void invalidatePanelMenu(int i)`
   void invalidatePanelMenu(
     int i,
   ) {
     _invalidatePanelMenu(
-            reference.pointer, _id_invalidatePanelMenu as jni.JMethodIDPtr, i)
+            reference.pointer, _id_invalidatePanelMenu as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -3114,32 +3220,32 @@ class Window extends jni.JObject {
     r'(IILandroid/view/KeyEvent;I)Z',
   );
 
-  static final _performPanelShortcut = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _performPanelShortcut = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        $Int32,
-                        $Int32,
-                        ffi.Pointer<ffi.Void>,
-                        $Int32
+                        _$jni.Int32,
+                        _$jni.Int32,
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Int32
                       )>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              int, ffi.Pointer<ffi.Void>, int)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, int, _$jni.Pointer<_$jni.Void>, int)>();
 
   /// from: `public abstract boolean performPanelShortcut(int i, int i1, android.view.KeyEvent keyEvent, int i2)`
   bool performPanelShortcut(
     int i,
     int i1,
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
     int i2,
   ) {
     return _performPanelShortcut(
             reference.pointer,
-            _id_performPanelShortcut as jni.JMethodIDPtr,
+            _id_performPanelShortcut as _$jni.JMethodIDPtr,
             i,
             i1,
             keyEvent.reference.pointer,
@@ -3152,16 +3258,21 @@ class Window extends jni.JObject {
     r'(III)Z',
   );
 
-  static final _performPanelIdentifierAction = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, $Int32, $Int32)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int, int)>();
+  static final _performPanelIdentifierAction =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<
+                          (
+                            _$jni.Int32,
+                            _$jni.Int32,
+                            _$jni.Int32
+                          )>)>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, int, int, int)>();
 
   /// from: `public abstract boolean performPanelIdentifierAction(int i, int i1, int i2)`
   bool performPanelIdentifierAction(
@@ -3170,7 +3281,7 @@ class Window extends jni.JObject {
     int i2,
   ) {
     return _performPanelIdentifierAction(reference.pointer,
-            _id_performPanelIdentifierAction as jni.JMethodIDPtr, i, i1, i2)
+            _id_performPanelIdentifierAction as _$jni.JMethodIDPtr, i, i1, i2)
         .boolean;
   }
 
@@ -3179,21 +3290,21 @@ class Window extends jni.JObject {
     r'()V',
   );
 
-  static final _closeAllPanels = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _closeAllPanels = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract void closeAllPanels()`
   void closeAllPanels() {
-    _closeAllPanels(reference.pointer, _id_closeAllPanels as jni.JMethodIDPtr)
+    _closeAllPanels(reference.pointer, _id_closeAllPanels as _$jni.JMethodIDPtr)
         .check();
   }
 
@@ -3203,14 +3314,16 @@ class Window extends jni.JObject {
   );
 
   static final _performContextMenuIdentifierAction =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JniResult Function(ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr, ffi.VarArgs<($Int32, $Int32)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
               'globalEnv_CallBooleanMethod')
           .asFunction<
-              jni.JniResult Function(
-                  ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public abstract boolean performContextMenuIdentifierAction(int i, int i1)`
   bool performContextMenuIdentifierAction(
@@ -3218,7 +3331,7 @@ class Window extends jni.JObject {
     int i1,
   ) {
     return _performContextMenuIdentifierAction(reference.pointer,
-            _id_performContextMenuIdentifierAction as jni.JMethodIDPtr, i, i1)
+            _id_performContextMenuIdentifierAction as _$jni.JMethodIDPtr, i, i1)
         .boolean;
   }
 
@@ -3227,24 +3340,24 @@ class Window extends jni.JObject {
     r'(Landroid/content/res/Configuration;)V',
   );
 
-  static final _onConfigurationChanged = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _onConfigurationChanged = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void onConfigurationChanged(android.content.res.Configuration configuration)`
   void onConfigurationChanged(
-    jni.JObject configuration,
+    _$jni.JObject configuration,
   ) {
     _onConfigurationChanged(
             reference.pointer,
-            _id_onConfigurationChanged as jni.JMethodIDPtr,
+            _id_onConfigurationChanged as _$jni.JMethodIDPtr,
             configuration.reference.pointer)
         .check();
   }
@@ -3254,21 +3367,21 @@ class Window extends jni.JObject {
     r'(F)V',
   );
 
-  static final _setElevation = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<(ffi.Double,)>)>>('globalEnv_CallVoidMethod')
+  static final _setElevation = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Double,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, double)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, double)>();
 
   /// from: `public void setElevation(float f)`
   void setElevation(
     double f,
   ) {
-    _setElevation(reference.pointer, _id_setElevation as jni.JMethodIDPtr, f)
+    _setElevation(reference.pointer, _id_setElevation as _$jni.JMethodIDPtr, f)
         .check();
   }
 
@@ -3277,22 +3390,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setClipToOutline = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setClipToOutline = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setClipToOutline(boolean z)`
   void setClipToOutline(
     bool z,
   ) {
     _setClipToOutline(reference.pointer,
-            _id_setClipToOutline as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setClipToOutline as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -3301,22 +3414,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setBackgroundDrawableResource = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setBackgroundDrawableResource =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setBackgroundDrawableResource(int i)`
   void setBackgroundDrawableResource(
     int i,
   ) {
     _setBackgroundDrawableResource(reference.pointer,
-            _id_setBackgroundDrawableResource as jni.JMethodIDPtr, i)
+            _id_setBackgroundDrawableResource as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -3325,24 +3438,24 @@ class Window extends jni.JObject {
     r'(Landroid/graphics/drawable/Drawable;)V',
   );
 
-  static final _setBackgroundDrawable = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setBackgroundDrawable = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setBackgroundDrawable(android.graphics.drawable.Drawable drawable)`
   void setBackgroundDrawable(
-    jni.JObject drawable,
+    _$jni.JObject drawable,
   ) {
     _setBackgroundDrawable(
             reference.pointer,
-            _id_setBackgroundDrawable as jni.JMethodIDPtr,
+            _id_setBackgroundDrawable as _$jni.JMethodIDPtr,
             drawable.reference.pointer)
         .check();
   }
@@ -3352,22 +3465,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setBackgroundBlurRadius = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setBackgroundBlurRadius = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setBackgroundBlurRadius(int i)`
   void setBackgroundBlurRadius(
     int i,
   ) {
     _setBackgroundBlurRadius(reference.pointer,
-            _id_setBackgroundBlurRadius as jni.JMethodIDPtr, i)
+            _id_setBackgroundBlurRadius as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -3376,15 +3489,17 @@ class Window extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setFeatureDrawableResource = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+  static final _setFeatureDrawableResource =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public abstract void setFeatureDrawableResource(int i, int i1)`
   void setFeatureDrawableResource(
@@ -3392,7 +3507,7 @@ class Window extends jni.JObject {
     int i1,
   ) {
     _setFeatureDrawableResource(reference.pointer,
-            _id_setFeatureDrawableResource as jni.JMethodIDPtr, i, i1)
+            _id_setFeatureDrawableResource as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -3401,16 +3516,17 @@ class Window extends jni.JObject {
     r'(ILandroid/net/Uri;)V',
   );
 
-  static final _setFeatureDrawableUri = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _setFeatureDrawableUri = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setFeatureDrawableUri(int i, android.net.Uri uri)`
   void setFeatureDrawableUri(
@@ -3419,7 +3535,7 @@ class Window extends jni.JObject {
   ) {
     _setFeatureDrawableUri(
             reference.pointer,
-            _id_setFeatureDrawableUri as jni.JMethodIDPtr,
+            _id_setFeatureDrawableUri as _$jni.JMethodIDPtr,
             i,
             uri.reference.pointer)
         .check();
@@ -3430,25 +3546,26 @@ class Window extends jni.JObject {
     r'(ILandroid/graphics/drawable/Drawable;)V',
   );
 
-  static final _setFeatureDrawable = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _setFeatureDrawable = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setFeatureDrawable(int i, android.graphics.drawable.Drawable drawable)`
   void setFeatureDrawable(
     int i,
-    jni.JObject drawable,
+    _$jni.JObject drawable,
   ) {
     _setFeatureDrawable(
             reference.pointer,
-            _id_setFeatureDrawable as jni.JMethodIDPtr,
+            _id_setFeatureDrawable as _$jni.JMethodIDPtr,
             i,
             drawable.reference.pointer)
         .check();
@@ -3459,15 +3576,16 @@ class Window extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setFeatureDrawableAlpha = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setFeatureDrawableAlpha = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public abstract void setFeatureDrawableAlpha(int i, int i1)`
   void setFeatureDrawableAlpha(
@@ -3475,7 +3593,7 @@ class Window extends jni.JObject {
     int i1,
   ) {
     _setFeatureDrawableAlpha(reference.pointer,
-            _id_setFeatureDrawableAlpha as jni.JMethodIDPtr, i, i1)
+            _id_setFeatureDrawableAlpha as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -3484,15 +3602,16 @@ class Window extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setFeatureInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setFeatureInt = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public abstract void setFeatureInt(int i, int i1)`
   void setFeatureInt(
@@ -3500,7 +3619,7 @@ class Window extends jni.JObject {
     int i1,
   ) {
     _setFeatureInt(
-            reference.pointer, _id_setFeatureInt as jni.JMethodIDPtr, i, i1)
+            reference.pointer, _id_setFeatureInt as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -3509,22 +3628,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _takeKeyEvents = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _takeKeyEvents = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void takeKeyEvents(boolean z)`
   void takeKeyEvents(
     bool z,
   ) {
-    _takeKeyEvents(
-            reference.pointer, _id_takeKeyEvents as jni.JMethodIDPtr, z ? 1 : 0)
+    _takeKeyEvents(reference.pointer, _id_takeKeyEvents as _$jni.JMethodIDPtr,
+            z ? 1 : 0)
         .check();
   }
 
@@ -3533,24 +3652,24 @@ class Window extends jni.JObject {
     r'(Landroid/view/KeyEvent;)Z',
   );
 
-  static final _superDispatchKeyEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _superDispatchKeyEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean superDispatchKeyEvent(android.view.KeyEvent keyEvent)`
   bool superDispatchKeyEvent(
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
     return _superDispatchKeyEvent(
             reference.pointer,
-            _id_superDispatchKeyEvent as jni.JMethodIDPtr,
+            _id_superDispatchKeyEvent as _$jni.JMethodIDPtr,
             keyEvent.reference.pointer)
         .boolean;
   }
@@ -3560,24 +3679,25 @@ class Window extends jni.JObject {
     r'(Landroid/view/KeyEvent;)Z',
   );
 
-  static final _superDispatchKeyShortcutEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _superDispatchKeyShortcutEvent =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean superDispatchKeyShortcutEvent(android.view.KeyEvent keyEvent)`
   bool superDispatchKeyShortcutEvent(
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
     return _superDispatchKeyShortcutEvent(
             reference.pointer,
-            _id_superDispatchKeyShortcutEvent as jni.JMethodIDPtr,
+            _id_superDispatchKeyShortcutEvent as _$jni.JMethodIDPtr,
             keyEvent.reference.pointer)
         .boolean;
   }
@@ -3587,24 +3707,24 @@ class Window extends jni.JObject {
     r'(Landroid/view/MotionEvent;)Z',
   );
 
-  static final _superDispatchTouchEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _superDispatchTouchEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean superDispatchTouchEvent(android.view.MotionEvent motionEvent)`
   bool superDispatchTouchEvent(
-    jni.JObject motionEvent,
+    _$jni.JObject motionEvent,
   ) {
     return _superDispatchTouchEvent(
             reference.pointer,
-            _id_superDispatchTouchEvent as jni.JMethodIDPtr,
+            _id_superDispatchTouchEvent as _$jni.JMethodIDPtr,
             motionEvent.reference.pointer)
         .boolean;
   }
@@ -3614,24 +3734,25 @@ class Window extends jni.JObject {
     r'(Landroid/view/MotionEvent;)Z',
   );
 
-  static final _superDispatchTrackballEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _superDispatchTrackballEvent =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean superDispatchTrackballEvent(android.view.MotionEvent motionEvent)`
   bool superDispatchTrackballEvent(
-    jni.JObject motionEvent,
+    _$jni.JObject motionEvent,
   ) {
     return _superDispatchTrackballEvent(
             reference.pointer,
-            _id_superDispatchTrackballEvent as jni.JMethodIDPtr,
+            _id_superDispatchTrackballEvent as _$jni.JMethodIDPtr,
             motionEvent.reference.pointer)
         .boolean;
   }
@@ -3641,24 +3762,25 @@ class Window extends jni.JObject {
     r'(Landroid/view/MotionEvent;)Z',
   );
 
-  static final _superDispatchGenericMotionEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _superDispatchGenericMotionEvent =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JniResult Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean superDispatchGenericMotionEvent(android.view.MotionEvent motionEvent)`
   bool superDispatchGenericMotionEvent(
-    jni.JObject motionEvent,
+    _$jni.JObject motionEvent,
   ) {
     return _superDispatchGenericMotionEvent(
             reference.pointer,
-            _id_superDispatchGenericMotionEvent as jni.JMethodIDPtr,
+            _id_superDispatchGenericMotionEvent as _$jni.JMethodIDPtr,
             motionEvent.reference.pointer)
         .boolean;
   }
@@ -3668,24 +3790,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/View;',
   );
 
-  static final _getDecorView = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getDecorView = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract android.view.View getDecorView()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getDecorView() {
+  _$jni.JObject getDecorView() {
     return _getDecorView(
-            reference.pointer, _id_getDecorView as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getDecorView as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_peekDecorView = _class.instanceMethodId(
@@ -3693,24 +3815,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/View;',
   );
 
-  static final _peekDecorView = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _peekDecorView = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract android.view.View peekDecorView()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject peekDecorView() {
+  _$jni.JObject peekDecorView() {
     return _peekDecorView(
-            reference.pointer, _id_peekDecorView as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_peekDecorView as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_saveHierarchyState = _class.instanceMethodId(
@@ -3718,24 +3840,24 @@ class Window extends jni.JObject {
     r'()Landroid/os/Bundle;',
   );
 
-  static final _saveHierarchyState = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _saveHierarchyState = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract android.os.Bundle saveHierarchyState()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject saveHierarchyState() {
+  _$jni.JObject saveHierarchyState() {
     return _saveHierarchyState(
-            reference.pointer, _id_saveHierarchyState as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_saveHierarchyState as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_restoreHierarchyState = _class.instanceMethodId(
@@ -3743,71 +3865,26 @@ class Window extends jni.JObject {
     r'(Landroid/os/Bundle;)V',
   );
 
-  static final _restoreHierarchyState = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _restoreHierarchyState = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void restoreHierarchyState(android.os.Bundle bundle)`
   void restoreHierarchyState(
-    jni.JObject bundle,
+    _$jni.JObject bundle,
   ) {
     _restoreHierarchyState(
             reference.pointer,
-            _id_restoreHierarchyState as jni.JMethodIDPtr,
+            _id_restoreHierarchyState as _$jni.JMethodIDPtr,
             bundle.reference.pointer)
         .check();
-  }
-
-  static final _id_onActive = _class.instanceMethodId(
-    r'onActive',
-    r'()V',
-  );
-
-  static final _onActive = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `protected abstract void onActive()`
-  void onActive() {
-    _onActive(reference.pointer, _id_onActive as jni.JMethodIDPtr).check();
-  }
-
-  static final _id_getFeatures = _class.instanceMethodId(
-    r'getFeatures',
-    r'()I',
-  );
-
-  static final _getFeatures = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `protected final int getFeatures()`
-  int getFeatures() {
-    return _getFeatures(reference.pointer, _id_getFeatures as jni.JMethodIDPtr)
-        .integer;
   }
 
   static final _id_getDefaultFeatures = _class.staticMethodId(
@@ -3815,16 +3892,16 @@ class Window extends jni.JObject {
     r'(Landroid/content/Context;)I',
   );
 
-  static final _getDefaultFeatures = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _getDefaultFeatures = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallStaticIntMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `static public int getDefaultFeatures(android.content.Context context)`
   static int getDefaultFeatures(
@@ -3832,7 +3909,7 @@ class Window extends jni.JObject {
   ) {
     return _getDefaultFeatures(
             _class.reference.pointer,
-            _id_getDefaultFeatures as jni.JMethodIDPtr,
+            _id_getDefaultFeatures as _$jni.JMethodIDPtr,
             context.reference.pointer)
         .integer;
   }
@@ -3842,68 +3919,24 @@ class Window extends jni.JObject {
     r'(I)Z',
   );
 
-  static final _hasFeature = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallBooleanMethod')
+  static final _hasFeature = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni
+                      .VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JniResult Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public boolean hasFeature(int i)`
   bool hasFeature(
     int i,
   ) {
-    return _hasFeature(reference.pointer, _id_hasFeature as jni.JMethodIDPtr, i)
+    return _hasFeature(
+            reference.pointer, _id_hasFeature as _$jni.JMethodIDPtr, i)
         .boolean;
-  }
-
-  static final _id_getLocalFeatures = _class.instanceMethodId(
-    r'getLocalFeatures',
-    r'()I',
-  );
-
-  static final _getLocalFeatures = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
-
-  /// from: `protected final int getLocalFeatures()`
-  int getLocalFeatures() {
-    return _getLocalFeatures(
-            reference.pointer, _id_getLocalFeatures as jni.JMethodIDPtr)
-        .integer;
-  }
-
-  static final _id_setDefaultWindowFormat = _class.instanceMethodId(
-    r'setDefaultWindowFormat',
-    r'(I)V',
-  );
-
-  static final _setDefaultWindowFormat = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
-
-  /// from: `protected void setDefaultWindowFormat(int i)`
-  void setDefaultWindowFormat(
-    int i,
-  ) {
-    _setDefaultWindowFormat(reference.pointer,
-            _id_setDefaultWindowFormat as jni.JMethodIDPtr, i)
-        .check();
   }
 
   static final _id_setChildDrawable = _class.instanceMethodId(
@@ -3911,25 +3944,26 @@ class Window extends jni.JObject {
     r'(ILandroid/graphics/drawable/Drawable;)V',
   );
 
-  static final _setChildDrawable = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _setChildDrawable = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              int, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setChildDrawable(int i, android.graphics.drawable.Drawable drawable)`
   void setChildDrawable(
     int i,
-    jni.JObject drawable,
+    _$jni.JObject drawable,
   ) {
     _setChildDrawable(
             reference.pointer,
-            _id_setChildDrawable as jni.JMethodIDPtr,
+            _id_setChildDrawable as _$jni.JMethodIDPtr,
             i,
             drawable.reference.pointer)
         .check();
@@ -3940,22 +3974,24 @@ class Window extends jni.JObject {
     r'(II)V',
   );
 
-  static final _setChildInt = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setChildInt = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public abstract void setChildInt(int i, int i1)`
   void setChildInt(
     int i,
     int i1,
   ) {
-    _setChildInt(reference.pointer, _id_setChildInt as jni.JMethodIDPtr, i, i1)
+    _setChildInt(
+            reference.pointer, _id_setChildInt as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -3964,25 +4000,26 @@ class Window extends jni.JObject {
     r'(ILandroid/view/KeyEvent;)Z',
   );
 
-  static final _isShortcutKey = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32, ffi.Pointer<ffi.Void>)>)>>(
+  static final _isShortcutKey = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni
+                          .VarArgs<(_$jni.Int32, _$jni.Pointer<_$jni.Void>)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, int, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract boolean isShortcutKey(int i, android.view.KeyEvent keyEvent)`
   bool isShortcutKey(
     int i,
-    jni.JObject keyEvent,
+    _$jni.JObject keyEvent,
   ) {
     return _isShortcutKey(
             reference.pointer,
-            _id_isShortcutKey as jni.JMethodIDPtr,
+            _id_isShortcutKey as _$jni.JMethodIDPtr,
             i,
             keyEvent.reference.pointer)
         .boolean;
@@ -3993,22 +4030,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setVolumeControlStream = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setVolumeControlStream = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void setVolumeControlStream(int i)`
   void setVolumeControlStream(
     int i,
   ) {
     _setVolumeControlStream(reference.pointer,
-            _id_setVolumeControlStream as jni.JMethodIDPtr, i)
+            _id_setVolumeControlStream as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -4017,22 +4054,22 @@ class Window extends jni.JObject {
     r'()I',
   );
 
-  static final _getVolumeControlStream = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getVolumeControlStream = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract int getVolumeControlStream()`
   int getVolumeControlStream() {
     return _getVolumeControlStream(
-            reference.pointer, _id_getVolumeControlStream as jni.JMethodIDPtr)
+            reference.pointer, _id_getVolumeControlStream as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -4041,24 +4078,24 @@ class Window extends jni.JObject {
     r'(Landroid/media/session/MediaController;)V',
   );
 
-  static final _setMediaController = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setMediaController = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setMediaController(android.media.session.MediaController mediaController)`
   void setMediaController(
-    jni.JObject mediaController,
+    _$jni.JObject mediaController,
   ) {
     _setMediaController(
             reference.pointer,
-            _id_setMediaController as jni.JMethodIDPtr,
+            _id_setMediaController as _$jni.JMethodIDPtr,
             mediaController.reference.pointer)
         .check();
   }
@@ -4068,24 +4105,24 @@ class Window extends jni.JObject {
     r'()Landroid/media/session/MediaController;',
   );
 
-  static final _getMediaController = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getMediaController = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.media.session.MediaController getMediaController()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getMediaController() {
+  _$jni.JObject getMediaController() {
     return _getMediaController(
-            reference.pointer, _id_getMediaController as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getMediaController as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setUiOptions = _class.instanceMethodId(
@@ -4093,46 +4130,47 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setUiOptions = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setUiOptions = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setUiOptions(int i)`
   void setUiOptions(
     int i,
   ) {
-    _setUiOptions(reference.pointer, _id_setUiOptions as jni.JMethodIDPtr, i)
+    _setUiOptions(reference.pointer, _id_setUiOptions as _$jni.JMethodIDPtr, i)
         .check();
   }
 
-  static final _id_setUiOptions1 = _class.instanceMethodId(
+  static final _id_setUiOptions$1 = _class.instanceMethodId(
     r'setUiOptions',
     r'(II)V',
   );
 
-  static final _setUiOptions1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setUiOptions$1 = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setUiOptions(int i, int i1)`
-  void setUiOptions1(
+  void setUiOptions$1(
     int i,
     int i1,
   ) {
-    _setUiOptions1(
-            reference.pointer, _id_setUiOptions1 as jni.JMethodIDPtr, i, i1)
+    _setUiOptions$1(
+            reference.pointer, _id_setUiOptions$1 as _$jni.JMethodIDPtr, i, i1)
         .check();
   }
 
@@ -4141,21 +4179,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setIcon = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setIcon = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setIcon(int i)`
   void setIcon(
     int i,
   ) {
-    _setIcon(reference.pointer, _id_setIcon as jni.JMethodIDPtr, i).check();
+    _setIcon(reference.pointer, _id_setIcon as _$jni.JMethodIDPtr, i).check();
   }
 
   static final _id_setLogo = _class.instanceMethodId(
@@ -4163,21 +4201,21 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setLogo = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setLogo = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setLogo(int i)`
   void setLogo(
     int i,
   ) {
-    _setLogo(reference.pointer, _id_setLogo as jni.JMethodIDPtr, i).check();
+    _setLogo(reference.pointer, _id_setLogo as _$jni.JMethodIDPtr, i).check();
   }
 
   static final _id_setLocalFocus = _class.instanceMethodId(
@@ -4185,22 +4223,23 @@ class Window extends jni.JObject {
     r'(ZZ)V',
   );
 
-  static final _setLocalFocus = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32, $Int32)>)>>('globalEnv_CallVoidMethod')
+  static final _setLocalFocus = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Int32, _$jni.Int32)>)>>(
+          'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int, int)>();
 
   /// from: `public void setLocalFocus(boolean z, boolean z1)`
   void setLocalFocus(
     bool z,
     bool z1,
   ) {
-    _setLocalFocus(reference.pointer, _id_setLocalFocus as jni.JMethodIDPtr,
+    _setLocalFocus(reference.pointer, _id_setLocalFocus as _$jni.JMethodIDPtr,
             z ? 1 : 0, z1 ? 1 : 0)
         .check();
   }
@@ -4210,24 +4249,24 @@ class Window extends jni.JObject {
     r'(Landroid/view/InputEvent;)V',
   );
 
-  static final _injectInputEvent = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _injectInputEvent = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void injectInputEvent(android.view.InputEvent inputEvent)`
   void injectInputEvent(
-    jni.JObject inputEvent,
+    _$jni.JObject inputEvent,
   ) {
     _injectInputEvent(
             reference.pointer,
-            _id_injectInputEvent as jni.JMethodIDPtr,
+            _id_injectInputEvent as _$jni.JMethodIDPtr,
             inputEvent.reference.pointer)
         .check();
   }
@@ -4237,24 +4276,24 @@ class Window extends jni.JObject {
     r'()Landroid/transition/TransitionManager;',
   );
 
-  static final _getTransitionManager = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getTransitionManager = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.transition.TransitionManager getTransitionManager()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getTransitionManager() {
+  _$jni.JObject getTransitionManager() {
     return _getTransitionManager(
-            reference.pointer, _id_getTransitionManager as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getTransitionManager as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setTransitionManager = _class.instanceMethodId(
@@ -4262,24 +4301,24 @@ class Window extends jni.JObject {
     r'(Landroid/transition/TransitionManager;)V',
   );
 
-  static final _setTransitionManager = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setTransitionManager = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setTransitionManager(android.transition.TransitionManager transitionManager)`
   void setTransitionManager(
-    jni.JObject transitionManager,
+    _$jni.JObject transitionManager,
   ) {
     _setTransitionManager(
             reference.pointer,
-            _id_setTransitionManager as jni.JMethodIDPtr,
+            _id_setTransitionManager as _$jni.JMethodIDPtr,
             transitionManager.reference.pointer)
         .check();
   }
@@ -4289,24 +4328,24 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Scene;',
   );
 
-  static final _getContentScene = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getContentScene = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.transition.Scene getContentScene()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getContentScene() {
+  _$jni.JObject getContentScene() {
     return _getContentScene(
-            reference.pointer, _id_getContentScene as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getContentScene as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setEnterTransition = _class.instanceMethodId(
@@ -4314,24 +4353,24 @@ class Window extends jni.JObject {
     r'(Landroid/transition/Transition;)V',
   );
 
-  static final _setEnterTransition = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setEnterTransition = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setEnterTransition(android.transition.Transition transition)`
   void setEnterTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setEnterTransition(
             reference.pointer,
-            _id_setEnterTransition as jni.JMethodIDPtr,
+            _id_setEnterTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4341,24 +4380,24 @@ class Window extends jni.JObject {
     r'(Landroid/transition/Transition;)V',
   );
 
-  static final _setReturnTransition = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setReturnTransition = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setReturnTransition(android.transition.Transition transition)`
   void setReturnTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setReturnTransition(
             reference.pointer,
-            _id_setReturnTransition as jni.JMethodIDPtr,
+            _id_setReturnTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4368,24 +4407,24 @@ class Window extends jni.JObject {
     r'(Landroid/transition/Transition;)V',
   );
 
-  static final _setExitTransition = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setExitTransition = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setExitTransition(android.transition.Transition transition)`
   void setExitTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setExitTransition(
             reference.pointer,
-            _id_setExitTransition as jni.JMethodIDPtr,
+            _id_setExitTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4395,24 +4434,24 @@ class Window extends jni.JObject {
     r'(Landroid/transition/Transition;)V',
   );
 
-  static final _setReenterTransition = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _setReenterTransition = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JThrowablePtr Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setReenterTransition(android.transition.Transition transition)`
   void setReenterTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setReenterTransition(
             reference.pointer,
-            _id_setReenterTransition as jni.JMethodIDPtr,
+            _id_setReenterTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4422,24 +4461,24 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Transition;',
   );
 
-  static final _getEnterTransition = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getEnterTransition = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.transition.Transition getEnterTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getEnterTransition() {
+  _$jni.JObject getEnterTransition() {
     return _getEnterTransition(
-            reference.pointer, _id_getEnterTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getEnterTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getReturnTransition = _class.instanceMethodId(
@@ -4447,24 +4486,24 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Transition;',
   );
 
-  static final _getReturnTransition = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getReturnTransition = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.transition.Transition getReturnTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getReturnTransition() {
+  _$jni.JObject getReturnTransition() {
     return _getReturnTransition(
-            reference.pointer, _id_getReturnTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getReturnTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getExitTransition = _class.instanceMethodId(
@@ -4472,24 +4511,24 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Transition;',
   );
 
-  static final _getExitTransition = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getExitTransition = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.transition.Transition getExitTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getExitTransition() {
+  _$jni.JObject getExitTransition() {
     return _getExitTransition(
-            reference.pointer, _id_getExitTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getExitTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getReenterTransition = _class.instanceMethodId(
@@ -4497,24 +4536,24 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Transition;',
   );
 
-  static final _getReenterTransition = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getReenterTransition = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.transition.Transition getReenterTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getReenterTransition() {
+  _$jni.JObject getReenterTransition() {
     return _getReenterTransition(
-            reference.pointer, _id_getReenterTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getReenterTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setSharedElementEnterTransition = _class.instanceMethodId(
@@ -4522,24 +4561,25 @@ class Window extends jni.JObject {
     r'(Landroid/transition/Transition;)V',
   );
 
-  static final _setSharedElementEnterTransition = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _setSharedElementEnterTransition =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setSharedElementEnterTransition(android.transition.Transition transition)`
   void setSharedElementEnterTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setSharedElementEnterTransition(
             reference.pointer,
-            _id_setSharedElementEnterTransition as jni.JMethodIDPtr,
+            _id_setSharedElementEnterTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4550,24 +4590,24 @@ class Window extends jni.JObject {
   );
 
   static final _setSharedElementReturnTransition =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setSharedElementReturnTransition(android.transition.Transition transition)`
   void setSharedElementReturnTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setSharedElementReturnTransition(
             reference.pointer,
-            _id_setSharedElementReturnTransition as jni.JMethodIDPtr,
+            _id_setSharedElementReturnTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4577,24 +4617,25 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Transition;',
   );
 
-  static final _getSharedElementEnterTransition = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getSharedElementEnterTransition =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public android.transition.Transition getSharedElementEnterTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getSharedElementEnterTransition() {
+  _$jni.JObject getSharedElementEnterTransition() {
     return _getSharedElementEnterTransition(reference.pointer,
-            _id_getSharedElementEnterTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            _id_getSharedElementEnterTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getSharedElementReturnTransition = _class.instanceMethodId(
@@ -4603,24 +4644,24 @@ class Window extends jni.JObject {
   );
 
   static final _getSharedElementReturnTransition =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                    ffi.Pointer<ffi.Void>,
-                    jni.JMethodIDPtr,
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
                   )>>('globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>();
 
   /// from: `public android.transition.Transition getSharedElementReturnTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getSharedElementReturnTransition() {
+  _$jni.JObject getSharedElementReturnTransition() {
     return _getSharedElementReturnTransition(reference.pointer,
-            _id_getSharedElementReturnTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            _id_getSharedElementReturnTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setSharedElementExitTransition = _class.instanceMethodId(
@@ -4628,24 +4669,25 @@ class Window extends jni.JObject {
     r'(Landroid/transition/Transition;)V',
   );
 
-  static final _setSharedElementExitTransition = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _setSharedElementExitTransition =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setSharedElementExitTransition(android.transition.Transition transition)`
   void setSharedElementExitTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setSharedElementExitTransition(
             reference.pointer,
-            _id_setSharedElementExitTransition as jni.JMethodIDPtr,
+            _id_setSharedElementExitTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4656,24 +4698,24 @@ class Window extends jni.JObject {
   );
 
   static final _setSharedElementReenterTransition =
-      ProtectedJniExtensions.lookup<
-                  ffi.NativeFunction<
-                      jni.JThrowablePtr Function(
-                          ffi.Pointer<ffi.Void>,
-                          jni.JMethodIDPtr,
-                          ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
               'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr, ffi.Pointer<ffi.Void>)>();
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setSharedElementReenterTransition(android.transition.Transition transition)`
   void setSharedElementReenterTransition(
-    jni.JObject transition,
+    _$jni.JObject transition,
   ) {
     _setSharedElementReenterTransition(
             reference.pointer,
-            _id_setSharedElementReenterTransition as jni.JMethodIDPtr,
+            _id_setSharedElementReenterTransition as _$jni.JMethodIDPtr,
             transition.reference.pointer)
         .check();
   }
@@ -4683,24 +4725,25 @@ class Window extends jni.JObject {
     r'()Landroid/transition/Transition;',
   );
 
-  static final _getSharedElementExitTransition = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getSharedElementExitTransition =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public android.transition.Transition getSharedElementExitTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getSharedElementExitTransition() {
+  _$jni.JObject getSharedElementExitTransition() {
     return _getSharedElementExitTransition(reference.pointer,
-            _id_getSharedElementExitTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            _id_getSharedElementExitTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getSharedElementReenterTransition = _class.instanceMethodId(
@@ -4709,24 +4752,24 @@ class Window extends jni.JObject {
   );
 
   static final _getSharedElementReenterTransition =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                    ffi.Pointer<ffi.Void>,
-                    jni.JMethodIDPtr,
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
                   )>>('globalEnv_CallObjectMethod')
           .asFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>();
 
   /// from: `public android.transition.Transition getSharedElementReenterTransition()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getSharedElementReenterTransition() {
+  _$jni.JObject getSharedElementReenterTransition() {
     return _getSharedElementReenterTransition(reference.pointer,
-            _id_getSharedElementReenterTransition as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            _id_getSharedElementReenterTransition as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_setAllowEnterTransitionOverlap = _class.instanceMethodId(
@@ -4734,22 +4777,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setAllowEnterTransitionOverlap = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setAllowEnterTransitionOverlap =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setAllowEnterTransitionOverlap(boolean z)`
   void setAllowEnterTransitionOverlap(
     bool z,
   ) {
     _setAllowEnterTransitionOverlap(reference.pointer,
-            _id_setAllowEnterTransitionOverlap as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setAllowEnterTransitionOverlap as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -4758,22 +4801,23 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _getAllowEnterTransitionOverlap = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getAllowEnterTransitionOverlap =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean getAllowEnterTransitionOverlap()`
   bool getAllowEnterTransitionOverlap() {
     return _getAllowEnterTransitionOverlap(reference.pointer,
-            _id_getAllowEnterTransitionOverlap as jni.JMethodIDPtr)
+            _id_getAllowEnterTransitionOverlap as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -4782,22 +4826,24 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setAllowReturnTransitionOverlap = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setAllowReturnTransitionOverlap =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setAllowReturnTransitionOverlap(boolean z)`
   void setAllowReturnTransitionOverlap(
     bool z,
   ) {
-    _setAllowReturnTransitionOverlap(reference.pointer,
-            _id_setAllowReturnTransitionOverlap as jni.JMethodIDPtr, z ? 1 : 0)
+    _setAllowReturnTransitionOverlap(
+            reference.pointer,
+            _id_setAllowReturnTransitionOverlap as _$jni.JMethodIDPtr,
+            z ? 1 : 0)
         .check();
   }
 
@@ -4806,22 +4852,23 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _getAllowReturnTransitionOverlap = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getAllowReturnTransitionOverlap =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean getAllowReturnTransitionOverlap()`
   bool getAllowReturnTransitionOverlap() {
     return _getAllowReturnTransitionOverlap(reference.pointer,
-            _id_getAllowReturnTransitionOverlap as jni.JMethodIDPtr)
+            _id_getAllowReturnTransitionOverlap as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -4832,22 +4879,22 @@ class Window extends jni.JObject {
   );
 
   static final _getTransitionBackgroundFadeDuration =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                    ffi.Pointer<ffi.Void>,
-                    jni.JMethodIDPtr,
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
                   )>>('globalEnv_CallLongMethod')
           .asFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>();
 
   /// from: `public long getTransitionBackgroundFadeDuration()`
   int getTransitionBackgroundFadeDuration() {
     return _getTransitionBackgroundFadeDuration(reference.pointer,
-            _id_getTransitionBackgroundFadeDuration as jni.JMethodIDPtr)
+            _id_getTransitionBackgroundFadeDuration as _$jni.JMethodIDPtr)
         .long;
   }
 
@@ -4858,22 +4905,21 @@ class Window extends jni.JObject {
   );
 
   static final _setTransitionBackgroundFadeDuration =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Int64,)>)>>('globalEnv_CallVoidMethod')
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int64,)>)>>(
+              'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setTransitionBackgroundFadeDuration(long j)`
   void setTransitionBackgroundFadeDuration(
     int j,
   ) {
     _setTransitionBackgroundFadeDuration(reference.pointer,
-            _id_setTransitionBackgroundFadeDuration as jni.JMethodIDPtr, j)
+            _id_setTransitionBackgroundFadeDuration as _$jni.JMethodIDPtr, j)
         .check();
   }
 
@@ -4882,22 +4928,23 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _getSharedElementsUseOverlay = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getSharedElementsUseOverlay =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean getSharedElementsUseOverlay()`
   bool getSharedElementsUseOverlay() {
     return _getSharedElementsUseOverlay(reference.pointer,
-            _id_getSharedElementsUseOverlay as jni.JMethodIDPtr)
+            _id_getSharedElementsUseOverlay as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -4906,22 +4953,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setSharedElementsUseOverlay = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setSharedElementsUseOverlay =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setSharedElementsUseOverlay(boolean z)`
   void setSharedElementsUseOverlay(
     bool z,
   ) {
     _setSharedElementsUseOverlay(reference.pointer,
-            _id_setSharedElementsUseOverlay as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setSharedElementsUseOverlay as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -4930,22 +4977,22 @@ class Window extends jni.JObject {
     r'()I',
   );
 
-  static final _getStatusBarColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getStatusBarColor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract int getStatusBarColor()`
   int getStatusBarColor() {
     return _getStatusBarColor(
-            reference.pointer, _id_getStatusBarColor as jni.JMethodIDPtr)
+            reference.pointer, _id_getStatusBarColor as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -4954,22 +5001,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setStatusBarColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setStatusBarColor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void setStatusBarColor(int i)`
   void setStatusBarColor(
     int i,
   ) {
     _setStatusBarColor(
-            reference.pointer, _id_setStatusBarColor as jni.JMethodIDPtr, i)
+            reference.pointer, _id_setStatusBarColor as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -4978,22 +5025,22 @@ class Window extends jni.JObject {
     r'()I',
   );
 
-  static final _getNavigationBarColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getNavigationBarColor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract int getNavigationBarColor()`
   int getNavigationBarColor() {
     return _getNavigationBarColor(
-            reference.pointer, _id_getNavigationBarColor as jni.JMethodIDPtr)
+            reference.pointer, _id_getNavigationBarColor as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -5002,22 +5049,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setNavigationBarColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setNavigationBarColor = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void setNavigationBarColor(int i)`
   void setNavigationBarColor(
     int i,
   ) {
-    _setNavigationBarColor(
-            reference.pointer, _id_setNavigationBarColor as jni.JMethodIDPtr, i)
+    _setNavigationBarColor(reference.pointer,
+            _id_setNavigationBarColor as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -5026,22 +5073,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setNavigationBarDividerColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setNavigationBarDividerColor =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setNavigationBarDividerColor(int i)`
   void setNavigationBarDividerColor(
     int i,
   ) {
     _setNavigationBarDividerColor(reference.pointer,
-            _id_setNavigationBarDividerColor as jni.JMethodIDPtr, i)
+            _id_setNavigationBarDividerColor as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -5050,22 +5097,23 @@ class Window extends jni.JObject {
     r'()I',
   );
 
-  static final _getNavigationBarDividerColor = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallIntMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getNavigationBarDividerColor =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallIntMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public int getNavigationBarDividerColor()`
   int getNavigationBarDividerColor() {
     return _getNavigationBarDividerColor(reference.pointer,
-            _id_getNavigationBarDividerColor as jni.JMethodIDPtr)
+            _id_getNavigationBarDividerColor as _$jni.JMethodIDPtr)
         .integer;
   }
 
@@ -5074,22 +5122,22 @@ class Window extends jni.JObject {
     r'(Z)V',
   );
 
-  static final _setStatusBarContrastEnforced = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+  static final _setStatusBarContrastEnforced =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setStatusBarContrastEnforced(boolean z)`
   void setStatusBarContrastEnforced(
     bool z,
   ) {
     _setStatusBarContrastEnforced(reference.pointer,
-            _id_setStatusBarContrastEnforced as jni.JMethodIDPtr, z ? 1 : 0)
+            _id_setStatusBarContrastEnforced as _$jni.JMethodIDPtr, z ? 1 : 0)
         .check();
   }
 
@@ -5098,22 +5146,23 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _isStatusBarContrastEnforced = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _isStatusBarContrastEnforced =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean isStatusBarContrastEnforced()`
   bool isStatusBarContrastEnforced() {
     return _isStatusBarContrastEnforced(reference.pointer,
-            _id_isStatusBarContrastEnforced as jni.JMethodIDPtr)
+            _id_isStatusBarContrastEnforced as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -5123,22 +5172,23 @@ class Window extends jni.JObject {
   );
 
   static final _setNavigationBarContrastEnforced =
-      ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr, _$jni.VarArgs<(_$jni.Int32,)>)>>(
+              'globalEnv_CallVoidMethod')
           .asFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public void setNavigationBarContrastEnforced(boolean z)`
   void setNavigationBarContrastEnforced(
     bool z,
   ) {
-    _setNavigationBarContrastEnforced(reference.pointer,
-            _id_setNavigationBarContrastEnforced as jni.JMethodIDPtr, z ? 1 : 0)
+    _setNavigationBarContrastEnforced(
+            reference.pointer,
+            _id_setNavigationBarContrastEnforced as _$jni.JMethodIDPtr,
+            z ? 1 : 0)
         .check();
   }
 
@@ -5147,22 +5197,23 @@ class Window extends jni.JObject {
     r'()Z',
   );
 
-  static final _isNavigationBarContrastEnforced = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallBooleanMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _isNavigationBarContrastEnforced =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallBooleanMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public boolean isNavigationBarContrastEnforced()`
   bool isNavigationBarContrastEnforced() {
     return _isNavigationBarContrastEnforced(reference.pointer,
-            _id_isNavigationBarContrastEnforced as jni.JMethodIDPtr)
+            _id_isNavigationBarContrastEnforced as _$jni.JMethodIDPtr)
         .boolean;
   }
 
@@ -5171,24 +5222,25 @@ class Window extends jni.JObject {
     r'(Ljava/util/List;)V',
   );
 
-  static final _setSystemGestureExclusionRects = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _setSystemGestureExclusionRects =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void setSystemGestureExclusionRects(java.util.List list)`
   void setSystemGestureExclusionRects(
-    jni.JList<jni.JObject> list,
+    _$jni.JList<_$jni.JObject> list,
   ) {
     _setSystemGestureExclusionRects(
             reference.pointer,
-            _id_setSystemGestureExclusionRects as jni.JMethodIDPtr,
+            _id_setSystemGestureExclusionRects as _$jni.JMethodIDPtr,
             list.reference.pointer)
         .check();
   }
@@ -5198,24 +5250,25 @@ class Window extends jni.JObject {
     r'()Ljava/util/List;',
   );
 
-  static final _getSystemGestureExclusionRects = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getSystemGestureExclusionRects =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public java.util.List getSystemGestureExclusionRects()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JList<jni.JObject> getSystemGestureExclusionRects() {
+  _$jni.JList<_$jni.JObject> getSystemGestureExclusionRects() {
     return _getSystemGestureExclusionRects(reference.pointer,
-            _id_getSystemGestureExclusionRects as jni.JMethodIDPtr)
-        .object(const jni.JListType(jni.JObjectType()));
+            _id_getSystemGestureExclusionRects as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType(_$jni.JObjectType()));
   }
 
   static final _id_registerScrollCaptureCallback = _class.instanceMethodId(
@@ -5223,24 +5276,25 @@ class Window extends jni.JObject {
     r'(Landroid/view/ScrollCaptureCallback;)V',
   );
 
-  static final _registerScrollCaptureCallback = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _registerScrollCaptureCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void registerScrollCaptureCallback(android.view.ScrollCaptureCallback scrollCaptureCallback)`
   void registerScrollCaptureCallback(
-    jni.JObject scrollCaptureCallback,
+    _$jni.JObject scrollCaptureCallback,
   ) {
     _registerScrollCaptureCallback(
             reference.pointer,
-            _id_registerScrollCaptureCallback as jni.JMethodIDPtr,
+            _id_registerScrollCaptureCallback as _$jni.JMethodIDPtr,
             scrollCaptureCallback.reference.pointer)
         .check();
   }
@@ -5250,24 +5304,25 @@ class Window extends jni.JObject {
     r'(Landroid/view/ScrollCaptureCallback;)V',
   );
 
-  static final _unregisterScrollCaptureCallback = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _unregisterScrollCaptureCallback =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public void unregisterScrollCaptureCallback(android.view.ScrollCaptureCallback scrollCaptureCallback)`
   void unregisterScrollCaptureCallback(
-    jni.JObject scrollCaptureCallback,
+    _$jni.JObject scrollCaptureCallback,
   ) {
     _unregisterScrollCaptureCallback(
             reference.pointer,
-            _id_unregisterScrollCaptureCallback as jni.JMethodIDPtr,
+            _id_unregisterScrollCaptureCallback as _$jni.JMethodIDPtr,
             scrollCaptureCallback.reference.pointer)
         .check();
   }
@@ -5277,22 +5332,22 @@ class Window extends jni.JObject {
     r'(I)V',
   );
 
-  static final _setDecorCaptionShade = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<($Int32,)>)>>('globalEnv_CallVoidMethod')
+  static final _setDecorCaptionShade = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<(_$jni.Int32,)>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-              ffi.Pointer<ffi.Void>, jni.JMethodIDPtr, int)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>, _$jni.JMethodIDPtr, int)>();
 
   /// from: `public abstract void setDecorCaptionShade(int i)`
   void setDecorCaptionShade(
     int i,
   ) {
-    _setDecorCaptionShade(
-            reference.pointer, _id_setDecorCaptionShade as jni.JMethodIDPtr, i)
+    _setDecorCaptionShade(reference.pointer,
+            _id_setDecorCaptionShade as _$jni.JMethodIDPtr, i)
         .check();
   }
 
@@ -5301,24 +5356,25 @@ class Window extends jni.JObject {
     r'(Landroid/graphics/drawable/Drawable;)V',
   );
 
-  static final _setResizingCaptionDrawable = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JThrowablePtr Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
-          'globalEnv_CallVoidMethod')
-      .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+  static final _setResizingCaptionDrawable =
+      _$jni.ProtectedJniExtensions.lookup<
+                  _$jni.NativeFunction<
+                      _$jni.JThrowablePtr Function(
+                          _$jni.Pointer<_$jni.Void>,
+                          _$jni.JMethodIDPtr,
+                          _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
+              'globalEnv_CallVoidMethod')
+          .asFunction<
+              _$jni.JThrowablePtr Function(_$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public abstract void setResizingCaptionDrawable(android.graphics.drawable.Drawable drawable)`
   void setResizingCaptionDrawable(
-    jni.JObject drawable,
+    _$jni.JObject drawable,
   ) {
     _setResizingCaptionDrawable(
             reference.pointer,
-            _id_setResizingCaptionDrawable as jni.JMethodIDPtr,
+            _id_setResizingCaptionDrawable as _$jni.JMethodIDPtr,
             drawable.reference.pointer)
         .check();
   }
@@ -5328,24 +5384,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/WindowInsetsController;',
   );
 
-  static final _getInsetsController = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getInsetsController = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.view.WindowInsetsController getInsetsController()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getInsetsController() {
+  _$jni.JObject getInsetsController() {
     return _getInsetsController(
-            reference.pointer, _id_getInsetsController as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getInsetsController as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getRootSurfaceControl = _class.instanceMethodId(
@@ -5353,24 +5409,24 @@ class Window extends jni.JObject {
     r'()Landroid/view/AttachedSurfaceControl;',
   );
 
-  static final _getRootSurfaceControl = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getRootSurfaceControl = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public android.view.AttachedSurfaceControl getRootSurfaceControl()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getRootSurfaceControl() {
+  _$jni.JObject getRootSurfaceControl() {
     return _getRootSurfaceControl(
-            reference.pointer, _id_getRootSurfaceControl as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            reference.pointer, _id_getRootSurfaceControl as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 
   static final _id_getOnBackInvokedDispatcher = _class.instanceMethodId(
@@ -5378,48 +5434,54 @@ class Window extends jni.JObject {
     r'()Landroid/window/OnBackInvokedDispatcher;',
   );
 
-  static final _getOnBackInvokedDispatcher = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getOnBackInvokedDispatcher =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `public android.window.OnBackInvokedDispatcher getOnBackInvokedDispatcher()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JObject getOnBackInvokedDispatcher() {
+  _$jni.JObject getOnBackInvokedDispatcher() {
     return _getOnBackInvokedDispatcher(reference.pointer,
-            _id_getOnBackInvokedDispatcher as jni.JMethodIDPtr)
-        .object(const jni.JObjectType());
+            _id_getOnBackInvokedDispatcher as _$jni.JMethodIDPtr)
+        .object(const _$jni.JObjectType());
   }
 }
 
-final class $WindowType extends jni.JObjType<Window> {
-  const $WindowType();
+final class $Window$Type extends _$jni.JObjType<Window> {
+  @_$jni.internal
+  const $Window$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/view/Window;';
 
-  @override
-  Window fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Window fromReference(_$jni.JReference reference) =>
       Window.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($WindowType).hashCode;
+  @_$core.override
+  int get hashCode => ($Window$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($WindowType) && other is $WindowType;
+    return other.runtimeType == ($Window$Type) && other is $Window$Type;
   }
 }

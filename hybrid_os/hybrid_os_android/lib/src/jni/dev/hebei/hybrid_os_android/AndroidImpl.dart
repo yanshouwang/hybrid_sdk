@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,64 +28,65 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 import '../../../android/content/Intent.dart' as intent_;
 
 /// from: `dev.hebei.hybrid_os_android.AndroidImpl$StartActivityCallback`
-class AndroidImpl_StartActivityCallback extends jni.JObject {
-  @override
-  late final jni.JObjType<AndroidImpl_StartActivityCallback> $type = type;
+class AndroidImpl_StartActivityCallback extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AndroidImpl_StartActivityCallback> $type;
 
+  @_$jni.internal
   AndroidImpl_StartActivityCallback.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(
+  static final _class = _$jni.JClass.forName(
       r'dev/hebei/hybrid_os_android/AndroidImpl$StartActivityCallback');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AndroidImpl_StartActivityCallbackType();
+  static const type = $AndroidImpl_StartActivityCallback$Type();
   static final _id_onActivityResult = _class.instanceMethodId(
     r'onActivityResult',
     r'()V',
   );
 
-  static final _onActivityResult = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _onActivityResult = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JThrowablePtr Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public abstract void onActivityResult()`
   void onActivityResult() {
     _onActivityResult(
-            reference.pointer, _id_onActivityResult as jni.JMethodIDPtr)
+            reference.pointer, _id_onActivityResult as _$jni.JMethodIDPtr)
         .check();
   }
 
   /// Maps a specific port to the implemented interface.
-  static final Map<int, $AndroidImpl_StartActivityCallbackImpl> _$impls = {};
-  ReceivePort? _$p;
-
-  static jni.JObjectPtr _$invoke(
+  static final _$core.Map<int, $AndroidImpl_StartActivityCallback> _$impls = {};
+  static _$jni.JObjectPtr _$invoke(
     int port,
-    jni.JObjectPtr descriptor,
-    jni.JObjectPtr args,
+    _$jni.JObjectPtr descriptor,
+    _$jni.JObjectPtr args,
   ) {
     return _$invokeMethod(
       port,
-      $MethodInvocation.fromAddresses(
+      _$jni.MethodInvocation.fromAddresses(
         0,
         descriptor.address,
         args.address,
@@ -87,119 +94,142 @@ class AndroidImpl_StartActivityCallback extends jni.JObject {
     );
   }
 
-  static final ffi.Pointer<
-          ffi.NativeFunction<
-              jni.JObjectPtr Function(
-                  ffi.Uint64, jni.JObjectPtr, jni.JObjectPtr)>>
-      _$invokePointer = ffi.Pointer.fromFunction(_$invoke);
+  static final _$jni.Pointer<
+          _$jni.NativeFunction<
+              _$jni.JObjectPtr Function(
+                  _$jni.Int64, _$jni.JObjectPtr, _$jni.JObjectPtr)>>
+      _$invokePointer = _$jni.Pointer.fromFunction(_$invoke);
 
-  static ffi.Pointer<ffi.Void> _$invokeMethod(
+  static _$jni.Pointer<_$jni.Void> _$invokeMethod(
     int $p,
-    $MethodInvocation $i,
+    _$jni.MethodInvocation $i,
   ) {
     try {
       final $d = $i.methodDescriptor.toDartString(releaseOriginal: true);
       final $a = $i.args;
       if ($d == r'onActivityResult()V') {
         _$impls[$p]!.onActivityResult();
-        return jni.nullptr;
+        return _$jni.nullptr;
       }
     } catch (e) {
-      return ProtectedJniExtensions.newDartException(e);
+      return _$jni.ProtectedJniExtensions.newDartException(e);
     }
-    return jni.nullptr;
+    return _$jni.nullptr;
   }
 
-  factory AndroidImpl_StartActivityCallback.implement(
-    $AndroidImpl_StartActivityCallbackImpl $impl,
+  static void implementIn(
+    _$jni.JImplementer implementer,
+    $AndroidImpl_StartActivityCallback $impl,
   ) {
-    final $p = ReceivePort();
-    final $x = AndroidImpl_StartActivityCallback.fromReference(
-      ProtectedJniExtensions.newPortProxy(
-        r'dev.hebei.hybrid_os_android.AndroidImpl$StartActivityCallback',
-        $p,
-        _$invokePointer,
-      ),
-    ).._$p = $p;
-    final $a = $p.sendPort.nativePort;
-    _$impls[$a] = $impl;
-    $p.listen(($m) {
+    late final _$jni.RawReceivePort $p;
+    $p = _$jni.RawReceivePort(($m) {
       if ($m == null) {
         _$impls.remove($p.sendPort.nativePort);
         $p.close();
         return;
       }
-      final $i = $MethodInvocation.fromMessage($m as List<dynamic>);
+      final $i = _$jni.MethodInvocation.fromMessage($m);
       final $r = _$invokeMethod($p.sendPort.nativePort, $i);
-      ProtectedJniExtensions.returnResult($i.result, $r);
+      _$jni.ProtectedJniExtensions.returnResult($i.result, $r);
     });
-    return $x;
+    implementer.add(
+      r'dev.hebei.hybrid_os_android.AndroidImpl$StartActivityCallback',
+      $p,
+      _$invokePointer,
+      [
+        if ($impl.onActivityResult$async) r'onActivityResult()V',
+      ],
+    );
+    final $a = $p.sendPort.nativePort;
+    _$impls[$a] = $impl;
+  }
+
+  factory AndroidImpl_StartActivityCallback.implement(
+    $AndroidImpl_StartActivityCallback $impl,
+  ) {
+    final $i = _$jni.JImplementer();
+    implementIn($i, $impl);
+    return AndroidImpl_StartActivityCallback.fromReference(
+      $i.implementReference(),
+    );
   }
 }
 
-abstract interface class $AndroidImpl_StartActivityCallbackImpl {
-  factory $AndroidImpl_StartActivityCallbackImpl({
+abstract base mixin class $AndroidImpl_StartActivityCallback {
+  factory $AndroidImpl_StartActivityCallback({
     required void Function() onActivityResult,
-  }) = _$AndroidImpl_StartActivityCallbackImpl;
+    bool onActivityResult$async,
+  }) = _$AndroidImpl_StartActivityCallback;
 
   void onActivityResult();
+  bool get onActivityResult$async => false;
 }
 
-class _$AndroidImpl_StartActivityCallbackImpl
-    implements $AndroidImpl_StartActivityCallbackImpl {
-  _$AndroidImpl_StartActivityCallbackImpl({
+final class _$AndroidImpl_StartActivityCallback
+    with $AndroidImpl_StartActivityCallback {
+  _$AndroidImpl_StartActivityCallback({
     required void Function() onActivityResult,
+    this.onActivityResult$async = false,
   }) : _onActivityResult = onActivityResult;
 
   final void Function() _onActivityResult;
+  final bool onActivityResult$async;
 
   void onActivityResult() {
     return _onActivityResult();
   }
 }
 
-final class $AndroidImpl_StartActivityCallbackType
-    extends jni.JObjType<AndroidImpl_StartActivityCallback> {
-  const $AndroidImpl_StartActivityCallbackType();
+final class $AndroidImpl_StartActivityCallback$Type
+    extends _$jni.JObjType<AndroidImpl_StartActivityCallback> {
+  @_$jni.internal
+  const $AndroidImpl_StartActivityCallback$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature =>
       r'Ldev/hebei/hybrid_os_android/AndroidImpl$StartActivityCallback;';
 
-  @override
-  AndroidImpl_StartActivityCallback fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  AndroidImpl_StartActivityCallback fromReference(_$jni.JReference reference) =>
       AndroidImpl_StartActivityCallback.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AndroidImpl_StartActivityCallbackType).hashCode;
+  @_$core.override
+  int get hashCode => ($AndroidImpl_StartActivityCallback$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AndroidImpl_StartActivityCallbackType) &&
-        other is $AndroidImpl_StartActivityCallbackType;
+    return other.runtimeType == ($AndroidImpl_StartActivityCallback$Type) &&
+        other is $AndroidImpl_StartActivityCallback$Type;
   }
 }
 
 /// from: `dev.hebei.hybrid_os_android.AndroidImpl`
-class AndroidImpl extends jni.JObject {
-  @override
-  late final jni.JObjType<AndroidImpl> $type = type;
+class AndroidImpl extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<AndroidImpl> $type;
 
+  @_$jni.internal
   AndroidImpl.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
   static final _class =
-      jni.JClass.forName(r'dev/hebei/hybrid_os_android/AndroidImpl');
+      _$jni.JClass.forName(r'dev/hebei/hybrid_os_android/AndroidImpl');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $AndroidImplType();
+  static const type = $AndroidImpl$Type();
   static final _id_INSTANCE = _class.staticFieldId(
     r'INSTANCE',
     r'Ldev/hebei/hybrid_os_android/AndroidImpl;',
@@ -208,59 +238,68 @@ class AndroidImpl extends jni.JObject {
   /// from: `static public final dev.hebei.hybrid_os_android.AndroidImpl INSTANCE`
   /// The returned object must be released after use, by calling the [release] method.
   static AndroidImpl get INSTANCE =>
-      _id_INSTANCE.get(_class, const $AndroidImplType());
+      _id_INSTANCE.get(_class, const $AndroidImpl$Type());
 
   static final _id_startActivity = _class.instanceMethodId(
     r'startActivity',
     r'(Landroid/content/Intent;Ldev/hebei/hybrid_os_android/AndroidImpl$StartActivityCallback;)V',
   );
 
-  static final _startActivity = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JThrowablePtr Function(
-                  ffi.Pointer<ffi.Void>,
-                  jni.JMethodIDPtr,
-                  ffi.VarArgs<
+  static final _startActivity = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JThrowablePtr Function(
+                  _$jni.Pointer<_$jni.Void>,
+                  _$jni.JMethodIDPtr,
+                  _$jni.VarArgs<
                       (
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>
+                        _$jni.Pointer<_$jni.Void>,
+                        _$jni.Pointer<_$jni.Void>
                       )>)>>('globalEnv_CallVoidMethod')
       .asFunction<
-          jni.JThrowablePtr Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          _$jni.JThrowablePtr Function(
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr,
+              _$jni.Pointer<_$jni.Void>,
+              _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public final void startActivity(android.content.Intent intent, dev.hebei.hybrid_os_android.AndroidImpl$StartActivityCallback startActivityCallback)`
   void startActivity(
     intent_.Intent intent,
     AndroidImpl_StartActivityCallback startActivityCallback,
   ) {
-    _startActivity(reference.pointer, _id_startActivity as jni.JMethodIDPtr,
+    _startActivity(reference.pointer, _id_startActivity as _$jni.JMethodIDPtr,
             intent.reference.pointer, startActivityCallback.reference.pointer)
         .check();
   }
 }
 
-final class $AndroidImplType extends jni.JObjType<AndroidImpl> {
-  const $AndroidImplType();
+final class $AndroidImpl$Type extends _$jni.JObjType<AndroidImpl> {
+  @_$jni.internal
+  const $AndroidImpl$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Ldev/hebei/hybrid_os_android/AndroidImpl;';
 
-  @override
-  AndroidImpl fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  AndroidImpl fromReference(_$jni.JReference reference) =>
       AndroidImpl.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($AndroidImplType).hashCode;
+  @_$core.override
+  int get hashCode => ($AndroidImpl$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($AndroidImplType) && other is $AndroidImplType;
+    return other.runtimeType == ($AndroidImpl$Type) &&
+        other is $AndroidImpl$Type;
   }
 }

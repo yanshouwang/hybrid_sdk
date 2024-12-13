@@ -7,12 +7,18 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: doc_directive_unknown
 // ignore_for_file: file_names
+// ignore_for_file: inference_failure_on_untyped_parameter
+// ignore_for_file: invalid_internal_annotation
+// ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: library_prefixes
 // ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: only_throw_errors
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_double_quotes
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unused_element
@@ -22,25 +28,28 @@
 // ignore_for_file: unused_shown_name
 // ignore_for_file: use_super_parameters
 
-import 'dart:ffi' as ffi;
-import 'dart:isolate' show ReceivePort;
+import 'dart:core' show Object, String, bool, double, int;
+import 'dart:core' as _$core;
 
-import 'package:jni/internal_helpers_for_jnigen.dart';
-import 'package:jni/jni.dart' as jni;
+import 'package:jni/_internal.dart' as _$jni;
+import 'package:jni/jni.dart' as _$jni;
 
 /// from: `android.os.Build$Partition`
-class Build_Partition extends jni.JObject {
-  @override
-  late final jni.JObjType<Build_Partition> $type = type;
+class Build_Partition extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Build_Partition> $type;
 
+  @_$jni.internal
   Build_Partition.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/os/Build$Partition');
+  static final _class = _$jni.JClass.forName(r'android/os/Build$Partition');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Build_PartitionType();
+  static const type = $Build_Partition$Type();
   static final _id_PARTITION_NAME_SYSTEM = _class.staticFieldId(
     r'PARTITION_NAME_SYSTEM',
     r'Ljava/lang/String;',
@@ -48,31 +57,31 @@ class Build_Partition extends jni.JObject {
 
   /// from: `static public final java.lang.String PARTITION_NAME_SYSTEM`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PARTITION_NAME_SYSTEM =>
-      _id_PARTITION_NAME_SYSTEM.get(_class, const jni.JStringType());
+  static _$jni.JString get PARTITION_NAME_SYSTEM =>
+      _id_PARTITION_NAME_SYSTEM.get(_class, const _$jni.JStringType());
 
   static final _id_getName = _class.instanceMethodId(
     r'getName',
     r'()Ljava/lang/String;',
   );
 
-  static final _getName = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getName = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.String getName()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getName() {
-    return _getName(reference.pointer, _id_getName as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+  _$jni.JString getName() {
+    return _getName(reference.pointer, _id_getName as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_getFingerprint = _class.instanceMethodId(
@@ -80,24 +89,24 @@ class Build_Partition extends jni.JObject {
     r'()Ljava/lang/String;',
   );
 
-  static final _getFingerprint = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getFingerprint = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public java.lang.String getFingerprint()`
   /// The returned object must be released after use, by calling the [release] method.
-  jni.JString getFingerprint() {
+  _$jni.JString getFingerprint() {
     return _getFingerprint(
-            reference.pointer, _id_getFingerprint as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+            reference.pointer, _id_getFingerprint as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_getBuildTimeMillis = _class.instanceMethodId(
@@ -105,22 +114,22 @@ class Build_Partition extends jni.JObject {
     r'()J',
   );
 
-  static final _getBuildTimeMillis = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getBuildTimeMillis = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallLongMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public long getBuildTimeMillis()`
   int getBuildTimeMillis() {
     return _getBuildTimeMillis(
-            reference.pointer, _id_getBuildTimeMillis as jni.JMethodIDPtr)
+            reference.pointer, _id_getBuildTimeMillis as _$jni.JMethodIDPtr)
         .long;
   }
 
@@ -129,89 +138,97 @@ class Build_Partition extends jni.JObject {
     r'(Ljava/lang/Object;)Z',
   );
 
-  static final _equals = ProtectedJniExtensions.lookup<
-              ffi.NativeFunction<
-                  jni.JniResult Function(
-                      ffi.Pointer<ffi.Void>,
-                      jni.JMethodIDPtr,
-                      ffi.VarArgs<(ffi.Pointer<ffi.Void>,)>)>>(
+  static final _equals = _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                      _$jni.Pointer<_$jni.Void>,
+                      _$jni.JMethodIDPtr,
+                      _$jni.VarArgs<(_$jni.Pointer<_$jni.Void>,)>)>>(
           'globalEnv_CallBooleanMethod')
       .asFunction<
-          jni.JniResult Function(ffi.Pointer<ffi.Void>, jni.JMethodIDPtr,
-              ffi.Pointer<ffi.Void>)>();
+          _$jni.JniResult Function(_$jni.Pointer<_$jni.Void>,
+              _$jni.JMethodIDPtr, _$jni.Pointer<_$jni.Void>)>();
 
   /// from: `public boolean equals(java.lang.Object object)`
   bool equals(
-    jni.JObject object,
+    _$jni.JObject object,
   ) {
-    return _equals(reference.pointer, _id_equals as jni.JMethodIDPtr,
+    return _equals(reference.pointer, _id_equals as _$jni.JMethodIDPtr,
             object.reference.pointer)
         .boolean;
   }
 
-  static final _id_hashCode1 = _class.instanceMethodId(
+  static final _id_hashCode$1 = _class.instanceMethodId(
     r'hashCode',
     r'()I',
   );
 
-  static final _hashCode1 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _hashCode$1 = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallIntMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public int hashCode()`
-  int hashCode1() {
-    return _hashCode1(reference.pointer, _id_hashCode1 as jni.JMethodIDPtr)
+  int hashCode$1() {
+    return _hashCode$1(reference.pointer, _id_hashCode$1 as _$jni.JMethodIDPtr)
         .integer;
   }
 }
 
-final class $Build_PartitionType extends jni.JObjType<Build_Partition> {
-  const $Build_PartitionType();
+final class $Build_Partition$Type extends _$jni.JObjType<Build_Partition> {
+  @_$jni.internal
+  const $Build_Partition$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/os/Build$Partition;';
 
-  @override
-  Build_Partition fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Build_Partition fromReference(_$jni.JReference reference) =>
       Build_Partition.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Build_PartitionType).hashCode;
+  @_$core.override
+  int get hashCode => ($Build_Partition$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Build_PartitionType) &&
-        other is $Build_PartitionType;
+    return other.runtimeType == ($Build_Partition$Type) &&
+        other is $Build_Partition$Type;
   }
 }
 
 /// from: `android.os.Build$VERSION`
-class Build_VERSION extends jni.JObject {
-  @override
-  late final jni.JObjType<Build_VERSION> $type = type;
+class Build_VERSION extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Build_VERSION> $type;
 
+  @_$jni.internal
   Build_VERSION.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/os/Build$VERSION');
+  static final _class = _$jni.JClass.forName(r'android/os/Build$VERSION');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Build_VERSIONType();
+  static const type = $Build_VERSION$Type();
   static final _id_BASE_OS = _class.staticFieldId(
     r'BASE_OS',
     r'Ljava/lang/String;',
@@ -219,8 +236,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String BASE_OS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BASE_OS =>
-      _id_BASE_OS.get(_class, const jni.JStringType());
+  static _$jni.JString get BASE_OS =>
+      _id_BASE_OS.get(_class, const _$jni.JStringType());
 
   static final _id_CODENAME = _class.staticFieldId(
     r'CODENAME',
@@ -229,8 +246,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String CODENAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get CODENAME =>
-      _id_CODENAME.get(_class, const jni.JStringType());
+  static _$jni.JString get CODENAME =>
+      _id_CODENAME.get(_class, const _$jni.JStringType());
 
   static final _id_INCREMENTAL = _class.staticFieldId(
     r'INCREMENTAL',
@@ -239,8 +256,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String INCREMENTAL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get INCREMENTAL =>
-      _id_INCREMENTAL.get(_class, const jni.JStringType());
+  static _$jni.JString get INCREMENTAL =>
+      _id_INCREMENTAL.get(_class, const _$jni.JStringType());
 
   static final _id_MEDIA_PERFORMANCE_CLASS = _class.staticFieldId(
     r'MEDIA_PERFORMANCE_CLASS',
@@ -249,7 +266,7 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final int MEDIA_PERFORMANCE_CLASS`
   static int get MEDIA_PERFORMANCE_CLASS =>
-      _id_MEDIA_PERFORMANCE_CLASS.get(_class, const jni.jintType());
+      _id_MEDIA_PERFORMANCE_CLASS.get(_class, const _$jni.jintType());
 
   static final _id_PREVIEW_SDK_INT = _class.staticFieldId(
     r'PREVIEW_SDK_INT',
@@ -258,7 +275,7 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final int PREVIEW_SDK_INT`
   static int get PREVIEW_SDK_INT =>
-      _id_PREVIEW_SDK_INT.get(_class, const jni.jintType());
+      _id_PREVIEW_SDK_INT.get(_class, const _$jni.jintType());
 
   static final _id_RELEASE = _class.staticFieldId(
     r'RELEASE',
@@ -267,8 +284,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String RELEASE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RELEASE =>
-      _id_RELEASE.get(_class, const jni.JStringType());
+  static _$jni.JString get RELEASE =>
+      _id_RELEASE.get(_class, const _$jni.JStringType());
 
   static final _id_RELEASE_OR_CODENAME = _class.staticFieldId(
     r'RELEASE_OR_CODENAME',
@@ -277,8 +294,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String RELEASE_OR_CODENAME`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RELEASE_OR_CODENAME =>
-      _id_RELEASE_OR_CODENAME.get(_class, const jni.JStringType());
+  static _$jni.JString get RELEASE_OR_CODENAME =>
+      _id_RELEASE_OR_CODENAME.get(_class, const _$jni.JStringType());
 
   static final _id_RELEASE_OR_PREVIEW_DISPLAY = _class.staticFieldId(
     r'RELEASE_OR_PREVIEW_DISPLAY',
@@ -287,8 +304,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String RELEASE_OR_PREVIEW_DISPLAY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RELEASE_OR_PREVIEW_DISPLAY =>
-      _id_RELEASE_OR_PREVIEW_DISPLAY.get(_class, const jni.JStringType());
+  static _$jni.JString get RELEASE_OR_PREVIEW_DISPLAY =>
+      _id_RELEASE_OR_PREVIEW_DISPLAY.get(_class, const _$jni.JStringType());
 
   static final _id_SDK = _class.staticFieldId(
     r'SDK',
@@ -297,7 +314,8 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String SDK`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SDK => _id_SDK.get(_class, const jni.JStringType());
+  static _$jni.JString get SDK =>
+      _id_SDK.get(_class, const _$jni.JStringType());
 
   static final _id_SDK_INT = _class.staticFieldId(
     r'SDK_INT',
@@ -305,7 +323,7 @@ class Build_VERSION extends jni.JObject {
   );
 
   /// from: `static public final int SDK_INT`
-  static int get SDK_INT => _id_SDK_INT.get(_class, const jni.jintType());
+  static int get SDK_INT => _id_SDK_INT.get(_class, const _$jni.jintType());
 
   static final _id_SECURITY_PATCH = _class.staticFieldId(
     r'SECURITY_PATCH',
@@ -314,73 +332,81 @@ class Build_VERSION extends jni.JObject {
 
   /// from: `static public final java.lang.String SECURITY_PATCH`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SECURITY_PATCH =>
-      _id_SECURITY_PATCH.get(_class, const jni.JStringType());
+  static _$jni.JString get SECURITY_PATCH =>
+      _id_SECURITY_PATCH.get(_class, const _$jni.JStringType());
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Build_VERSION() {
     return Build_VERSION.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 }
 
-final class $Build_VERSIONType extends jni.JObjType<Build_VERSION> {
-  const $Build_VERSIONType();
+final class $Build_VERSION$Type extends _$jni.JObjType<Build_VERSION> {
+  @_$jni.internal
+  const $Build_VERSION$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/os/Build$VERSION;';
 
-  @override
-  Build_VERSION fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Build_VERSION fromReference(_$jni.JReference reference) =>
       Build_VERSION.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Build_VERSIONType).hashCode;
+  @_$core.override
+  int get hashCode => ($Build_VERSION$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Build_VERSIONType) &&
-        other is $Build_VERSIONType;
+    return other.runtimeType == ($Build_VERSION$Type) &&
+        other is $Build_VERSION$Type;
   }
 }
 
 /// from: `android.os.Build$VERSION_CODES`
-class Build_VERSION_CODES extends jni.JObject {
-  @override
-  late final jni.JObjType<Build_VERSION_CODES> $type = type;
+class Build_VERSION_CODES extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Build_VERSION_CODES> $type;
 
+  @_$jni.internal
   Build_VERSION_CODES.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/os/Build$VERSION_CODES');
+  static final _class = _$jni.JClass.forName(r'android/os/Build$VERSION_CODES');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $Build_VERSION_CODESType();
+  static const type = $Build_VERSION_CODES$Type();
 
   /// from: `static public final int BASE`
   static const BASE = 1;
@@ -486,70 +512,79 @@ class Build_VERSION_CODES extends jni.JObject {
 
   /// from: `static public final int UPSIDE_DOWN_CAKE`
   static const UPSIDE_DOWN_CAKE = 34;
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Build_VERSION_CODES() {
     return Build_VERSION_CODES.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 }
 
-final class $Build_VERSION_CODESType extends jni.JObjType<Build_VERSION_CODES> {
-  const $Build_VERSION_CODESType();
+final class $Build_VERSION_CODES$Type
+    extends _$jni.JObjType<Build_VERSION_CODES> {
+  @_$jni.internal
+  const $Build_VERSION_CODES$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/os/Build$VERSION_CODES;';
 
-  @override
-  Build_VERSION_CODES fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Build_VERSION_CODES fromReference(_$jni.JReference reference) =>
       Build_VERSION_CODES.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($Build_VERSION_CODESType).hashCode;
+  @_$core.override
+  int get hashCode => ($Build_VERSION_CODES$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($Build_VERSION_CODESType) &&
-        other is $Build_VERSION_CODESType;
+    return other.runtimeType == ($Build_VERSION_CODES$Type) &&
+        other is $Build_VERSION_CODES$Type;
   }
 }
 
 /// from: `android.os.Build`
-class Build extends jni.JObject {
-  @override
-  late final jni.JObjType<Build> $type = type;
+class Build extends _$jni.JObject {
+  @_$jni.internal
+  @_$core.override
+  final _$jni.JObjType<Build> $type;
 
+  @_$jni.internal
   Build.fromReference(
-    jni.JReference reference,
-  ) : super.fromReference(reference);
+    _$jni.JReference reference,
+  )   : $type = type,
+        super.fromReference(reference);
 
-  static final _class = jni.JClass.forName(r'android/os/Build');
+  static final _class = _$jni.JClass.forName(r'android/os/Build');
 
   /// The type which includes information such as the signature of this class.
-  static const type = $BuildType();
+  static const type = $Build$Type();
   static final _id_BOARD = _class.staticFieldId(
     r'BOARD',
     r'Ljava/lang/String;',
@@ -557,8 +592,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String BOARD`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BOARD =>
-      _id_BOARD.get(_class, const jni.JStringType());
+  static _$jni.JString get BOARD =>
+      _id_BOARD.get(_class, const _$jni.JStringType());
 
   static final _id_BOOTLOADER = _class.staticFieldId(
     r'BOOTLOADER',
@@ -567,8 +602,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String BOOTLOADER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BOOTLOADER =>
-      _id_BOOTLOADER.get(_class, const jni.JStringType());
+  static _$jni.JString get BOOTLOADER =>
+      _id_BOOTLOADER.get(_class, const _$jni.JStringType());
 
   static final _id_BRAND = _class.staticFieldId(
     r'BRAND',
@@ -577,8 +612,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String BRAND`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get BRAND =>
-      _id_BRAND.get(_class, const jni.JStringType());
+  static _$jni.JString get BRAND =>
+      _id_BRAND.get(_class, const _$jni.JStringType());
 
   static final _id_CPU_ABI = _class.staticFieldId(
     r'CPU_ABI',
@@ -587,8 +622,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String CPU_ABI`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get CPU_ABI =>
-      _id_CPU_ABI.get(_class, const jni.JStringType());
+  static _$jni.JString get CPU_ABI =>
+      _id_CPU_ABI.get(_class, const _$jni.JStringType());
 
   static final _id_CPU_ABI2 = _class.staticFieldId(
     r'CPU_ABI2',
@@ -597,8 +632,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String CPU_ABI2`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get CPU_ABI2 =>
-      _id_CPU_ABI2.get(_class, const jni.JStringType());
+  static _$jni.JString get CPU_ABI2 =>
+      _id_CPU_ABI2.get(_class, const _$jni.JStringType());
 
   static final _id_DEVICE = _class.staticFieldId(
     r'DEVICE',
@@ -607,8 +642,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String DEVICE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DEVICE =>
-      _id_DEVICE.get(_class, const jni.JStringType());
+  static _$jni.JString get DEVICE =>
+      _id_DEVICE.get(_class, const _$jni.JStringType());
 
   static final _id_DISPLAY = _class.staticFieldId(
     r'DISPLAY',
@@ -617,8 +652,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String DISPLAY`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get DISPLAY =>
-      _id_DISPLAY.get(_class, const jni.JStringType());
+  static _$jni.JString get DISPLAY =>
+      _id_DISPLAY.get(_class, const _$jni.JStringType());
 
   static final _id_FINGERPRINT = _class.staticFieldId(
     r'FINGERPRINT',
@@ -627,8 +662,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String FINGERPRINT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get FINGERPRINT =>
-      _id_FINGERPRINT.get(_class, const jni.JStringType());
+  static _$jni.JString get FINGERPRINT =>
+      _id_FINGERPRINT.get(_class, const _$jni.JStringType());
 
   static final _id_HARDWARE = _class.staticFieldId(
     r'HARDWARE',
@@ -637,8 +672,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String HARDWARE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get HARDWARE =>
-      _id_HARDWARE.get(_class, const jni.JStringType());
+  static _$jni.JString get HARDWARE =>
+      _id_HARDWARE.get(_class, const _$jni.JStringType());
 
   static final _id_HOST = _class.staticFieldId(
     r'HOST',
@@ -647,7 +682,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String HOST`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get HOST => _id_HOST.get(_class, const jni.JStringType());
+  static _$jni.JString get HOST =>
+      _id_HOST.get(_class, const _$jni.JStringType());
 
   static final _id_ID = _class.staticFieldId(
     r'ID',
@@ -656,7 +692,7 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String ID`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ID => _id_ID.get(_class, const jni.JStringType());
+  static _$jni.JString get ID => _id_ID.get(_class, const _$jni.JStringType());
 
   static final _id_MANUFACTURER = _class.staticFieldId(
     r'MANUFACTURER',
@@ -665,8 +701,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String MANUFACTURER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get MANUFACTURER =>
-      _id_MANUFACTURER.get(_class, const jni.JStringType());
+  static _$jni.JString get MANUFACTURER =>
+      _id_MANUFACTURER.get(_class, const _$jni.JStringType());
 
   static final _id_MODEL = _class.staticFieldId(
     r'MODEL',
@@ -675,8 +711,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String MODEL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get MODEL =>
-      _id_MODEL.get(_class, const jni.JStringType());
+  static _$jni.JString get MODEL =>
+      _id_MODEL.get(_class, const _$jni.JStringType());
 
   static final _id_ODM_SKU = _class.staticFieldId(
     r'ODM_SKU',
@@ -685,8 +721,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String ODM_SKU`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get ODM_SKU =>
-      _id_ODM_SKU.get(_class, const jni.JStringType());
+  static _$jni.JString get ODM_SKU =>
+      _id_ODM_SKU.get(_class, const _$jni.JStringType());
 
   static final _id_PRODUCT = _class.staticFieldId(
     r'PRODUCT',
@@ -695,8 +731,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String PRODUCT`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get PRODUCT =>
-      _id_PRODUCT.get(_class, const jni.JStringType());
+  static _$jni.JString get PRODUCT =>
+      _id_PRODUCT.get(_class, const _$jni.JStringType());
 
   static final _id_RADIO = _class.staticFieldId(
     r'RADIO',
@@ -705,8 +741,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String RADIO`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get RADIO =>
-      _id_RADIO.get(_class, const jni.JStringType());
+  static _$jni.JString get RADIO =>
+      _id_RADIO.get(_class, const _$jni.JStringType());
 
   static final _id_SERIAL = _class.staticFieldId(
     r'SERIAL',
@@ -715,8 +751,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String SERIAL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SERIAL =>
-      _id_SERIAL.get(_class, const jni.JStringType());
+  static _$jni.JString get SERIAL =>
+      _id_SERIAL.get(_class, const _$jni.JStringType());
 
   static final _id_SKU = _class.staticFieldId(
     r'SKU',
@@ -725,7 +761,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String SKU`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SKU => _id_SKU.get(_class, const jni.JStringType());
+  static _$jni.JString get SKU =>
+      _id_SKU.get(_class, const _$jni.JStringType());
 
   static final _id_SOC_MANUFACTURER = _class.staticFieldId(
     r'SOC_MANUFACTURER',
@@ -734,8 +771,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String SOC_MANUFACTURER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SOC_MANUFACTURER =>
-      _id_SOC_MANUFACTURER.get(_class, const jni.JStringType());
+  static _$jni.JString get SOC_MANUFACTURER =>
+      _id_SOC_MANUFACTURER.get(_class, const _$jni.JStringType());
 
   static final _id_SOC_MODEL = _class.staticFieldId(
     r'SOC_MODEL',
@@ -744,8 +781,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String SOC_MODEL`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get SOC_MODEL =>
-      _id_SOC_MODEL.get(_class, const jni.JStringType());
+  static _$jni.JString get SOC_MODEL =>
+      _id_SOC_MODEL.get(_class, const _$jni.JStringType());
 
   static final _id_SUPPORTED_32_BIT_ABIS = _class.staticFieldId(
     r'SUPPORTED_32_BIT_ABIS',
@@ -754,9 +791,9 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String[] SUPPORTED_32_BIT_ABIS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JArray<jni.JString> get SUPPORTED_32_BIT_ABIS =>
+  static _$jni.JArray<_$jni.JString> get SUPPORTED_32_BIT_ABIS =>
       _id_SUPPORTED_32_BIT_ABIS.get(
-          _class, const jni.JArrayType(jni.JStringType()));
+          _class, const _$jni.JArrayType(_$jni.JStringType()));
 
   static final _id_SUPPORTED_64_BIT_ABIS = _class.staticFieldId(
     r'SUPPORTED_64_BIT_ABIS',
@@ -765,9 +802,9 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String[] SUPPORTED_64_BIT_ABIS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JArray<jni.JString> get SUPPORTED_64_BIT_ABIS =>
+  static _$jni.JArray<_$jni.JString> get SUPPORTED_64_BIT_ABIS =>
       _id_SUPPORTED_64_BIT_ABIS.get(
-          _class, const jni.JArrayType(jni.JStringType()));
+          _class, const _$jni.JArrayType(_$jni.JStringType()));
 
   static final _id_SUPPORTED_ABIS = _class.staticFieldId(
     r'SUPPORTED_ABIS',
@@ -776,8 +813,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String[] SUPPORTED_ABIS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JArray<jni.JString> get SUPPORTED_ABIS =>
-      _id_SUPPORTED_ABIS.get(_class, const jni.JArrayType(jni.JStringType()));
+  static _$jni.JArray<_$jni.JString> get SUPPORTED_ABIS => _id_SUPPORTED_ABIS
+      .get(_class, const _$jni.JArrayType(_$jni.JStringType()));
 
   static final _id_TAGS = _class.staticFieldId(
     r'TAGS',
@@ -786,7 +823,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String TAGS`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TAGS => _id_TAGS.get(_class, const jni.JStringType());
+  static _$jni.JString get TAGS =>
+      _id_TAGS.get(_class, const _$jni.JStringType());
 
   static final _id_TIME = _class.staticFieldId(
     r'TIME',
@@ -794,7 +832,7 @@ class Build extends jni.JObject {
   );
 
   /// from: `static public final long TIME`
-  static int get TIME => _id_TIME.get(_class, const jni.jlongType());
+  static int get TIME => _id_TIME.get(_class, const _$jni.jlongType());
 
   static final _id_TYPE = _class.staticFieldId(
     r'TYPE',
@@ -803,7 +841,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String TYPE`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get TYPE => _id_TYPE.get(_class, const jni.JStringType());
+  static _$jni.JString get TYPE =>
+      _id_TYPE.get(_class, const _$jni.JStringType());
 
   static final _id_UNKNOWN = _class.staticFieldId(
     r'UNKNOWN',
@@ -812,8 +851,8 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String UNKNOWN`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get UNKNOWN =>
-      _id_UNKNOWN.get(_class, const jni.JStringType());
+  static _$jni.JString get UNKNOWN =>
+      _id_UNKNOWN.get(_class, const _$jni.JStringType());
 
   static final _id_USER = _class.staticFieldId(
     r'USER',
@@ -822,29 +861,30 @@ class Build extends jni.JObject {
 
   /// from: `static public final java.lang.String USER`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString get USER => _id_USER.get(_class, const jni.JStringType());
+  static _$jni.JString get USER =>
+      _id_USER.get(_class, const _$jni.JStringType());
 
-  static final _id_new0 = _class.constructorId(
+  static final _id_new$ = _class.constructorId(
     r'()V',
   );
 
-  static final _new0 = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _new$ = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_NewObject')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `public void <init>()`
   /// The returned object must be released after use, by calling the [release] method.
   factory Build() {
     return Build.fromReference(
-        _new0(_class.reference.pointer, _id_new0 as jni.JMethodIDPtr)
+        _new$(_class.reference.pointer, _id_new$ as _$jni.JMethodIDPtr)
             .reference);
   }
 
@@ -853,24 +893,24 @@ class Build extends jni.JObject {
     r'()Ljava/lang/String;',
   );
 
-  static final _getSerial = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getSerial = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public java.lang.String getSerial()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString getSerial() {
+  static _$jni.JString getSerial() {
     return _getSerial(
-            _class.reference.pointer, _id_getSerial as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+            _class.reference.pointer, _id_getSerial as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 
   static final _id_getFingerprintedPartitions = _class.staticMethodId(
@@ -878,24 +918,25 @@ class Build extends jni.JObject {
     r'()Ljava/util/List;',
   );
 
-  static final _getFingerprintedPartitions = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
-              )>>('globalEnv_CallStaticObjectMethod')
-      .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
-          )>();
+  static final _getFingerprintedPartitions =
+      _$jni.ProtectedJniExtensions.lookup<
+              _$jni.NativeFunction<
+                  _$jni.JniResult Function(
+                    _$jni.Pointer<_$jni.Void>,
+                    _$jni.JMethodIDPtr,
+                  )>>('globalEnv_CallStaticObjectMethod')
+          .asFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
+              )>();
 
   /// from: `static public java.util.List getFingerprintedPartitions()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JList<Build_Partition> getFingerprintedPartitions() {
+  static _$jni.JList<Build_Partition> getFingerprintedPartitions() {
     return _getFingerprintedPartitions(_class.reference.pointer,
-            _id_getFingerprintedPartitions as jni.JMethodIDPtr)
-        .object(const jni.JListType($Build_PartitionType()));
+            _id_getFingerprintedPartitions as _$jni.JMethodIDPtr)
+        .object(const _$jni.JListType($Build_Partition$Type()));
   }
 
   static final _id_getRadioVersion = _class.staticMethodId(
@@ -903,48 +944,53 @@ class Build extends jni.JObject {
     r'()Ljava/lang/String;',
   );
 
-  static final _getRadioVersion = ProtectedJniExtensions.lookup<
-          ffi.NativeFunction<
-              jni.JniResult Function(
-                ffi.Pointer<ffi.Void>,
-                jni.JMethodIDPtr,
+  static final _getRadioVersion = _$jni.ProtectedJniExtensions.lookup<
+          _$jni.NativeFunction<
+              _$jni.JniResult Function(
+                _$jni.Pointer<_$jni.Void>,
+                _$jni.JMethodIDPtr,
               )>>('globalEnv_CallStaticObjectMethod')
       .asFunction<
-          jni.JniResult Function(
-            ffi.Pointer<ffi.Void>,
-            jni.JMethodIDPtr,
+          _$jni.JniResult Function(
+            _$jni.Pointer<_$jni.Void>,
+            _$jni.JMethodIDPtr,
           )>();
 
   /// from: `static public java.lang.String getRadioVersion()`
   /// The returned object must be released after use, by calling the [release] method.
-  static jni.JString getRadioVersion() {
+  static _$jni.JString getRadioVersion() {
     return _getRadioVersion(
-            _class.reference.pointer, _id_getRadioVersion as jni.JMethodIDPtr)
-        .object(const jni.JStringType());
+            _class.reference.pointer, _id_getRadioVersion as _$jni.JMethodIDPtr)
+        .object(const _$jni.JStringType());
   }
 }
 
-final class $BuildType extends jni.JObjType<Build> {
-  const $BuildType();
+final class $Build$Type extends _$jni.JObjType<Build> {
+  @_$jni.internal
+  const $Build$Type();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   String get signature => r'Landroid/os/Build;';
 
-  @override
-  Build fromReference(jni.JReference reference) =>
+  @_$jni.internal
+  @_$core.override
+  Build fromReference(_$jni.JReference reference) =>
       Build.fromReference(reference);
 
-  @override
-  jni.JObjType get superType => const jni.JObjectType();
+  @_$jni.internal
+  @_$core.override
+  _$jni.JObjType get superType => const _$jni.JObjectType();
 
-  @override
+  @_$jni.internal
+  @_$core.override
   final superCount = 1;
 
-  @override
-  int get hashCode => ($BuildType).hashCode;
+  @_$core.override
+  int get hashCode => ($Build$Type).hashCode;
 
-  @override
+  @_$core.override
   bool operator ==(Object other) {
-    return other.runtimeType == ($BuildType) && other is $BuildType;
+    return other.runtimeType == ($Build$Type) && other is $Build$Type;
   }
 }

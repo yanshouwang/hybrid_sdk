@@ -59,7 +59,7 @@ final class AndroidImpl implements Android {
   Window get window {
     var window = _window;
     if (window == null) {
-      final jWindow = jni.Env.activity.getWindow();
+      final jWindow = jni.activity.getWindow();
       _window = window = WindowImpl(jWindow);
     }
     return window;
@@ -67,16 +67,16 @@ final class AndroidImpl implements Android {
 
   @override
   Future<void> startManageWriteSettingsActivity() {
-    final packageName = jni.Env.context.getPackageName().toDartString(
+    final packageName = jni.context.getPackageName().toDartString(
           releaseOriginal: true,
         );
     final uriString = jni.JString.fromString("package:$packageName");
     final uri = jni.Uri.parse(uriString);
-    final intent =
-        jni.Intent.new2(jni.Settings.ACTION_MANAGE_WRITE_SETTINGS).setData(uri);
+    final intent = jni.Intent.new$2(jni.Settings.ACTION_MANAGE_WRITE_SETTINGS)
+        .setData(uri);
     final completer = Completer<void>();
     final callback = jni.AndroidImpl_StartActivityCallback.implement(
-      jni.$AndroidImpl_StartActivityCallbackImpl(
+      jni.$AndroidImpl_StartActivityCallback(
         onActivityResult: () => completer.complete(),
       ),
     );
@@ -95,7 +95,7 @@ final class SettingsImpl implements Settings {
   jni.ContentObserver? brightnessModeObserver;
   jni.ContentObserver? brightnessObserver;
 
-  SettingsImpl() : contentResolver = jni.Env.context.getContentResolver() {
+  SettingsImpl() : contentResolver = jni.context.getContentResolver() {
     brightnessModeChangedController = StreamController.broadcast(
       onListen: onListenBrightnessModeChanged,
       onCancel: onCancelBrightnessModeChanged,
@@ -107,33 +107,33 @@ final class SettingsImpl implements Settings {
   }
 
   @override
-  bool get canWrite => jni.Settings_System.canWrite(jni.Env.context);
+  bool get canWrite => jni.Settings_System.canWrite(jni.context);
 
   @override
   ScreenBrightnessMode get brightnessMode {
-    final contentResolver = jni.Env.context.getContentResolver();
-    final value = jni.Settings_System.getInt1(
+    final contentResolver = jni.context.getContentResolver();
+    final value = jni.Settings_System.getInt$1(
         contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS_MODE);
     return ScreenBrightnessMode.fromValue(value);
   }
 
   @override
   set brightnessMode(ScreenBrightnessMode value) {
-    final contentResolver = jni.Env.context.getContentResolver();
+    final contentResolver = jni.context.getContentResolver();
     jni.Settings_System.putInt(contentResolver,
         jni.Settings_System.SCREEN_BRIGHTNESS_MODE, value.value);
   }
 
   @override
   int get brightness {
-    final contentResolver = jni.Env.context.getContentResolver();
-    return jni.Settings_System.getInt1(
+    final contentResolver = jni.context.getContentResolver();
+    return jni.Settings_System.getInt$1(
         contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS);
   }
 
   @override
   set brightness(int value) {
-    final contentResolver = jni.Env.context.getContentResolver();
+    final contentResolver = jni.context.getContentResolver();
     jni.Settings_System.putInt(
         contentResolver, jni.Settings_System.SCREEN_BRIGHTNESS, value);
   }
@@ -145,16 +145,16 @@ final class SettingsImpl implements Settings {
   Stream<int> get brightnessChanged => brightnessChangedController.stream;
 
   void onListenBrightnessModeChanged() {
-    final uri = jni.Settings_System.getUriFor1(
+    final uri = jni.Settings_System.getUriFor$1(
         jni.Settings_System.SCREEN_BRIGHTNESS_MODE);
     final looper = jni.Looper.getMainLooper();
-    final handler = jni.Handler.new2(looper);
+    final handler = jni.Handler.new$2(looper);
     final callback = jni.ContentObserverImpl_ChangeCallback.implement(
-      jni.$ContentObserverImpl_ChangeCallbackImpl(
+      jni.$ContentObserverImpl_ChangeCallback(
         onChange: () => brightnessModeChangedController.add(brightnessMode),
       ),
     );
-    final observer = jni.ContentObserverImpl.new1(handler, callback);
+    final observer = jni.ContentObserverImpl(handler, callback);
     contentResolver.registerContentObserver(uri, false, observer);
     brightnessModeObserver = observer;
   }
@@ -166,15 +166,15 @@ final class SettingsImpl implements Settings {
 
   void onListenBrightnessChanged() {
     final uri =
-        jni.Settings_System.getUriFor1(jni.Settings_System.SCREEN_BRIGHTNESS);
+        jni.Settings_System.getUriFor$1(jni.Settings_System.SCREEN_BRIGHTNESS);
     final looper = jni.Looper.getMainLooper();
-    final handler = jni.Handler.new2(looper);
+    final handler = jni.Handler.new$2(looper);
     final callback = jni.ContentObserverImpl_ChangeCallback.implement(
-      jni.$ContentObserverImpl_ChangeCallbackImpl(
+      jni.$ContentObserverImpl_ChangeCallback(
         onChange: () => brightnessChangedController.add(brightness),
       ),
     );
-    final observer = jni.ContentObserverImpl.new1(handler, callback);
+    final observer = jni.ContentObserverImpl(handler, callback);
     contentResolver.registerContentObserver(uri, false, observer);
     brightnessObserver = observer;
   }
@@ -218,7 +218,7 @@ final class WindowImpl implements Window {
 
   void onListenAttrsChanged() {
     final callback1 = jni.Window_Callback.implement(
-      jni.$Window_CallbackImpl(
+      jni.$Window_Callback(
         dispatchKeyEvent: (event) => false,
         dispatchKeyShortcutEvent: (event) => false,
         dispatchTouchEvent: (event) => false,
@@ -241,10 +241,10 @@ final class WindowImpl implements Window {
         onDetachedFromWindow: () {},
         onPanelClosed: (id, menu) {},
         onSearchRequested: () => false,
-        onSearchRequested1: (event) => false,
+        onSearchRequested$1: (event) => false,
         onWindowStartingActionMode: (callback) =>
             jni.JObject.fromReference(jni.jNullReference),
-        onWindowStartingActionMode1: (callback, type) =>
+        onWindowStartingActionMode$1: (callback, type) =>
             jni.JObject.fromReference(jni.jNullReference),
         onActionModeStarted: (actionMode) {},
         onActionModeFinished: (actionMode) {},
