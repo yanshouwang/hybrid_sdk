@@ -1,7 +1,8 @@
-## 0.1.0-dev.2
+## 0.1.0-dev.3
 
 * Upgrade `jni` and `jnigen`.
 * Move `AndroidSDKVersions` to `VersionCodes`.
+* Add more APIs.
 
 ## 0.0.2
 

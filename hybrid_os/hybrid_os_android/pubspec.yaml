@@ -1,6 +1,6 @@
 name: hybrid_os_android
 description: 'Android implementation of the hybrid_os plugin.'
-version: 0.1.0-dev.2
+version: 0.1.0-dev.3
 repository: 'https://github.com/yanshouwang/hybrid_sdk'
 
 environment:

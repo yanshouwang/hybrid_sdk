@@ -5,8 +5,10 @@ import 'package:jni/jni.dart' as jni;
 
 import 'android.dart';
 import 'jni.dart' as jni;
+import 'partition.dart';
 import 'screen_brightness_mode.dart';
 import 'settings.dart';
+import 'version_codes.dart';
 import 'window.dart';
 import 'window_attributes.dart';
 
@@ -15,13 +17,19 @@ final class AndroidImpl implements Android {
   Window? _window;
 
   @override
-  String get baseOS => jni.Build_VERSION.BASE_OS.toDartString();
+  String get baseOS => jni.Build_VERSION.BASE_OS.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
-  String get codename => jni.Build_VERSION.CODENAME.toDartString();
+  String get codename => jni.Build_VERSION.CODENAME.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
-  String get incremental => jni.Build_VERSION.INCREMENTAL.toDartString();
+  String get incremental => jni.Build_VERSION.INCREMENTAL.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
   int get mediaPerformanceClass => jni.Build_VERSION.MEDIA_PERFORMANCE_CLASS;
@@ -30,21 +38,29 @@ final class AndroidImpl implements Android {
   int get previewSDK => jni.Build_VERSION.PREVIEW_SDK_INT;
 
   @override
-  String get release => jni.Build_VERSION.RELEASE.toDartString();
+  String get release => jni.Build_VERSION.RELEASE.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
   String get releaseOrCodename =>
-      jni.Build_VERSION.RELEASE_OR_CODENAME.toDartString();
+      jni.Build_VERSION.RELEASE_OR_CODENAME.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
   String get releaseOrPreviewDisplay =>
-      jni.Build_VERSION.RELEASE_OR_PREVIEW_DISPLAY.toDartString();
+      jni.Build_VERSION.RELEASE_OR_PREVIEW_DISPLAY.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
   int get sdk => jni.Build_VERSION.SDK_INT;
 
   @override
-  String get securityPatch => jni.Build_VERSION.SECURITY_PATCH.toDartString();
+  String get securityPatch => jni.Build_VERSION.SECURITY_PATCH.toDartString(
+        releaseOriginal: true,
+      );
 
   @override
   Settings get settings {
@@ -83,6 +99,174 @@ final class AndroidImpl implements Android {
     jni.AndroidImpl.INSTANCE.startActivity(intent, callback);
     return completer.future;
   }
+
+  @override
+  String get board => jni.Build.BOARD.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get bootloader => jni.Build.BOOTLOADER.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get brand => jni.Build.BRAND.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get cpuABI => jni.Build.CPU_ABI.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get cpuABI2 => jni.Build.CPU_ABI2.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get device => jni.Build.DEVICE.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get display => jni.Build.DISPLAY.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get fingerprint => jni.Build.FINGERPRINT.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  List<Partition> get fingerprintedPartitions =>
+      jni.Build.getFingerprintedPartitions()
+          .map((jPartition) => PartitionImpl(jPartition))
+          .toList();
+
+  @override
+  String get hardware => jni.Build.HARDWARE.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get host => jni.Build.HOST.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get id => jni.Build.ID.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get manufacturer => jni.Build.MANUFACTURER.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get model => jni.Build.MODEL.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get odmSKU => jni.Build.ODM_SKU.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get product => jni.Build.PRODUCT.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get radio => jni.Build.RADIO.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String? get radioVersion {
+    final jRadioVersion = jni.Build.getRadioVersion();
+    return jRadioVersion.isNull
+        ? null
+        : jRadioVersion.toDartString(
+            releaseOriginal: true,
+          );
+  }
+
+  @override
+  String get serial => sdk >= VersionCodes.o
+      ? jni.Build.getSerial().toDartString(
+          releaseOriginal: true,
+        )
+      : jni.Build.SERIAL.toDartString(
+          releaseOriginal: true,
+        );
+
+  @override
+  String get sku => jni.Build.SKU.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get socManufacturer => jni.Build.SOC_MANUFACTURER.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get socModel => jni.Build.SOC_MODEL.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  List<String> get supported32BitABIs =>
+      jni.Build.SUPPORTED_32_BIT_ABIS.toList();
+
+  @override
+  List<String> get supported64BitABIs =>
+      jni.Build.SUPPORTED_64_BIT_ABIS.toList();
+
+  @override
+  List<String> get supportedABIs => jni.Build.SUPPORTED_ABIS.toList();
+
+  @override
+  String get tags => jni.Build.TAGS.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  int get time => jni.Build.TIME;
+
+  @override
+  String get type => jni.Build.TYPE.toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get user => jni.Build.USER.toDartString(
+        releaseOriginal: true,
+      );
+}
+
+final class PartitionImpl implements Partition {
+  final jni.Build_Partition _jPartition;
+
+  PartitionImpl(this._jPartition);
+
+  @override
+  int get buildTimeMills => _jPartition.getBuildTimeMillis();
+
+  @override
+  String get fingerprint => _jPartition.getFingerprint().toDartString(
+        releaseOriginal: true,
+      );
+
+  @override
+  String get name => _jPartition.getName().toDartString(
+        releaseOriginal: true,
+      );
 }
 
 final class SettingsImpl implements Settings {
@@ -279,5 +463,18 @@ final class WindowAttributesImpl implements WindowAttributes {
   set brightness(double? value) {
     jParams.screenBrightness =
         value ?? jni.WindowManager_LayoutParams.BRIGHTNESS_OVERRIDE_NONE;
+  }
+}
+
+extension on jni.JArray<jni.JString> {
+  List<String> toList() {
+    final items = <String>[];
+    for (var i = 0; i < length; i++) {
+      final item = this[i].toDartString(
+        releaseOriginal: true,
+      );
+      items.add(item);
+    }
+    return items;
   }
 }
